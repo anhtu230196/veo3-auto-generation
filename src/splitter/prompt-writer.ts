@@ -2,6 +2,7 @@ import { generateText } from "../llm/gemini.js";
 import type { Scene } from "./scenes.js";
 import type { CharacterProfile } from "../characters/extract.js";
 import type { SettingProfile } from "../settings/extract.js";
+import type { PropProfile } from "../props/extract.js";
 import { STYLE_NAME, SCENE_STYLE_BLOCK, MOTION_SUFFIX, PERIOD_ANCHOR, ERA_DESCRIPTOR } from "../styleDNA.js";
 
 export interface VeoPrompt {
@@ -18,6 +19,12 @@ export interface VeoPrompt {
    */
   settingNames?: string[];
   /**
+   * Tên đạo cụ/vật dụng cố định xuất hiện trong cảnh (khớp PropProfile.name) — dùng để attach
+   * Prop asset trong Flow, giữ ĐÚNG hình dạng vật đó qua nhiều cảnh (vd 1 con tàu, 1 bản đồ cụ
+   * thể). Rỗng nếu cảnh không dùng đạo cụ nào cần giữ nhất quán qua nhiều cảnh.
+   */
+  propNames?: string[];
+  /**
    * "modern" CHỈ dùng cho cảnh cố ý đặt trong hiện tại/thời nay (vd vệ tinh NASA, biển
    * đường phố, tượng đài) — mặc định "period" (thời đại câu chuyện, xem ERA_DESCRIPTOR).
    * Quyết định có append PERIOD_ANCHOR hay không (xem writeVeoPrompts bên dưới).
@@ -28,12 +35,20 @@ export interface VeoPrompt {
 /** Gộp nhiều cảnh vào 1 lần gọi Gemini để tiết kiệm quota (free tier giới hạn rất thấp số request/ngày). */
 const BATCH_SIZE = 10;
 
-function buildSystemPrompt(characters: CharacterProfile[], settings: SettingProfile[]): string {
+function buildSystemPrompt(
+  characters: CharacterProfile[],
+  settings: SettingProfile[],
+  props: PropProfile[]
+): string {
   const roster = characters.map((c) => `- ${c.name}`).join("\n");
   const settingRoster =
     settings.length > 0
       ? settings.map((s) => `- ${s.name}: ${s.description}`).join("\n")
       : "(không có bối cảnh cố định nào được khai báo trước — bỏ qua settingNames, luôn để rỗng)";
+  const propRoster =
+    props.length > 0
+      ? props.map((p) => `- ${p.name}: ${p.description}`).join("\n")
+      : "(không có đạo cụ cố định nào được khai báo trước — bỏ qua propNames, luôn để rỗng)";
   return `Bạn là đạo diễn hình ảnh chuyển thể kịch bản (lịch sử/khám phá/tài liệu) thành storyboard video
 hoạt hình (Veo3), mỗi cảnh dài 7-8 giây, phong cách ${STYLE_NAME.toUpperCase()} — KHÔNG photorealistic,
 không mô tả kết cấu da/ánh sáng như ảnh chụp thật.
@@ -45,9 +60,13 @@ Danh sách bối cảnh/địa điểm cố định đã có sẵn Setting refer
 nội thất/bố cục — Flow tự giữ khi bối cảnh được @mention đính kèm):
 ${settingRoster}
 
+Danh sách đạo cụ/vật dụng cố định đã có sẵn Prop reference trong Flow (KHÔNG cần mô tả lại hình dạng cố
+định — Flow tự giữ khi đạo cụ được @mention đính kèm):
+${propRoster}
+
 Bạn sẽ nhận nhiều cảnh cùng lúc, mỗi cảnh đánh số "Cảnh #N". Trả về JSON thuần dạng mảng, ĐÚNG THỨ TỰ,
 ĐỦ SỐ PHẦN TỬ bằng số cảnh nhận được, mỗi phần tử ứng với 1 cảnh:
-[{"videoPrompt": "...", "characterNames": ["Tên nhân vật xuất hiện trong cảnh này"], "settingNames": ["Tên bối cảnh xuất hiện trong cảnh này"], "era": "period"}, ...]
+[{"videoPrompt": "...", "characterNames": ["..."], "settingNames": ["..."], "propNames": ["..."], "era": "period"}, ...]
 
 era: "period" (mặc định, thời đại của câu chuyện) hoặc "modern" — CHỈ dùng "modern" cho cảnh cố ý đặt
 trong hiện tại/thời nay (vd vệ tinh, đường phố ngày nay, tượng đài, TV/tin tức). Mọi cảnh khác PHẢI để
@@ -92,6 +111,14 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   không cố định), để settingNames RỖNG.
 - KHÔNG tự đặt tên bối cảnh mới ngoài danh sách đã cho — settingNames chỉ được chứa tên khớp CHÍNH XÁC
   với danh sách bối cảnh ở trên.
+
+QUY TẮC ĐẠO CỤ/VẬT DỤNG (propNames) — chỉ áp dụng nếu danh sách đạo cụ ở trên không rỗng:
+- Nếu cảnh có xuất hiện RÕ 1 đạo cụ đã có trong danh sách (vd 1 con tàu cụ thể, 1 bản đồ/vật biểu tượng
+  cụ thể) và hình dạng đúng của nó quan trọng với cảnh đó, điền tên đạo cụ vào propNames.
+- Nếu cảnh chỉ nhắc thoáng qua hoặc đạo cụ không phải trọng tâm hình ảnh của cảnh, để propNames RỖNG —
+  không cần @mention mọi lần đạo cụ được nhắc trong lời kể, chỉ khi hình dạng đúng của nó thực sự cần
+  hiện rõ trên màn hình.
+- KHÔNG tự đặt tên đạo cụ mới ngoài danh sách đã cho.
 
 BỐI CẢNH THỜI ĐẠI (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp qua ảnh render thật): câu chuyện diễn ra ở
 ${ERA_DESCRIPTOR}. Nhân vật/đối tượng CÓ tên riêng trong danh sách trên được Character asset giữ đúng
@@ -151,6 +178,7 @@ function parseBatchResponse(text: string): {
   videoPrompt: string;
   characterNames: string[];
   settingNames?: string[];
+  propNames?: string[];
   era?: "period" | "modern";
 }[] {
   const jsonMatch = text.match(/\[[\s\S]*\]/);
@@ -168,9 +196,10 @@ export async function writeVeoPrompts(
   scenes: Scene[],
   characters: CharacterProfile[],
   settings: SettingProfile[],
+  props: PropProfile[],
   onBatchComplete?: (resultsSoFar: VeoPrompt[]) => Promise<void> | void
 ): Promise<VeoPrompt[]> {
-  const systemPrompt = buildSystemPrompt(characters, settings);
+  const systemPrompt = buildSystemPrompt(characters, settings, props);
   const results: VeoPrompt[] = [];
   let recentPrompts: string[] = [];
 
@@ -203,6 +232,7 @@ export async function writeVeoPrompts(
         videoPrompt: `${anchoredPrompt} ${MOTION_SUFFIX}`,
         characterNames: item.characterNames ?? [],
         settingNames: item.settingNames ?? [],
+        propNames: item.propNames ?? [],
         era,
       });
       console.log(

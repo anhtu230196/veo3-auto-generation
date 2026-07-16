@@ -5,9 +5,11 @@ import { config } from "../config.js";
 import type { VeoPrompt } from "../splitter/prompt-writer.js";
 import type { CharacterProfile } from "../characters/extract.js";
 import type { SettingProfile } from "../settings/extract.js";
+import type { PropProfile } from "../props/extract.js";
 import { ensureProjects, waitForProjectReady } from "./project.js";
 import { ensureCharactersInFlow } from "./characters.js";
 import { ensureSettingsInFlow } from "./settings.js";
+import { ensurePropsInFlow } from "./props.js";
 import { launchVeo3Browser } from "./browser.js";
 
 const POLL_INTERVAL_MS = 5000;
@@ -102,10 +104,11 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
  * cuối tránh được hẳn lỗi này. Cuối cùng XÁC MINH số chip void trong DOM = số nhân vật, nếu
  * thiếu thì throw để vòng retry chạy lại (KHÔNG tạo clip với mặt sai).
  *
- * Setting asset (bối cảnh cố định, xem settings.ts) dùng CHUNG cơ chế @mention này — dialog
- * chọn asset tìm theo tên, không lọc theo loại Character/Setting, nên chỉ cần gộp
- * characterNames + settingNames thành 1 danh sách tên để chèn chip, miễn tên không trùng
- * giữa 2 danh sách (đảm bảo ở bước đặt tên nhân vật/bối cảnh).
+ * Setting/Prop asset (bối cảnh/đạo cụ cố định, xem settings.ts/props.ts) dùng CHUNG cơ chế
+ * @mention này — dialog chọn asset tìm theo tên, không lọc theo loại Character/Setting/Prop,
+ * nên chỉ cần gộp characterNames + settingNames + propNames thành 1 danh sách tên để chèn
+ * chip, miễn tên không trùng giữa các danh sách (đảm bảo ở bước đặt tên nhân vật/bối cảnh/
+ * đạo cụ).
  */
 async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<void> {
   const promptBox = page.locator('div[contenteditable="true"]').first();
@@ -114,8 +117,8 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   await page.keyboard.press("ControlOrMeta+A");
   await page.keyboard.press("Backspace");
 
-  const { videoPrompt: text, characterNames, settingNames } = prompt;
-  const mentionNames = [...characterNames, ...(settingNames ?? [])];
+  const { videoPrompt: text, characterNames, settingNames, propNames } = prompt;
+  const mentionNames = [...characterNames, ...(settingNames ?? []), ...(propNames ?? [])];
   // 1) Gõ toàn bộ mô tả tại con trỏ — đúng thứ tự.
   await page.keyboard.type(text);
   if (mentionNames.length === 0) return;
@@ -143,7 +146,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     // đang nằm trong chính prompt), khớp exact tên.
     const card = page.locator('[role="dialog"]').getByText(name, { exact: true }).last();
     if (!(await card.count())) {
-      throw new Error(`Không thấy Character/Setting "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
+      throw new Error(`Không thấy Character/Setting/Prop "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
     }
     await card.click();
     await page.waitForTimeout(400);
@@ -325,6 +328,7 @@ export async function generateClips(
   prompts: VeoPrompt[],
   characters: CharacterProfile[],
   settings: SettingProfile[],
+  props: PropProfile[],
   outDir: string
 ): Promise<ClipResult[]> {
   await fs.mkdir(outDir, { recursive: true });
@@ -360,11 +364,12 @@ export async function generateClips(
       const page = await context.newPage();
       await page.goto(projectUrls[i], { waitUntil: "domcontentloaded", timeout: 45000 });
       await waitForProjectReady(page);
-      // Chưa chắc Character/Setting asset là tài nguyên toàn tài khoản hay riêng theo từng
-      // project — luôn kiểm tra lại ở project MỚI tạo cho worker này (hàm tự bỏ qua nếu đã
-      // tồn tại nên rẻ), thay vì giả định và có thể để lọt cảnh không @mention được.
+      // Chưa chắc Character/Setting/Prop asset là tài nguyên toàn tài khoản hay riêng theo
+      // từng project — luôn kiểm tra lại ở project MỚI tạo cho worker này (hàm tự bỏ qua nếu
+      // đã tồn tại nên rẻ), thay vì giả định và có thể để lọt cảnh không @mention được.
       await ensureCharactersInFlow(page, characters, projectUrls[i]);
       await ensureSettingsInFlow(page, settings, projectUrls[i]);
+      await ensurePropsInFlow(page, props, projectUrls[i]);
       pages.push(page);
     }
 
