@@ -1,0 +1,126 @@
+import type { Page } from "playwright";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { config } from "../config.js";
+
+const VEO3_BASE_URL = "https://labs.google/fx/tools/flow";
+const PROJECT_STATE_FILE = path.join(config.stateDir, "project.json");
+const PROJECTS_STATE_FILE = path.join(config.stateDir, "projects.json");
+
+/**
+ * Phải chờ tường minh nút "Add Media" (luôn có mặt bên trong 1 project đã load xong)
+ * trước khi coi là sẵn sàng, vì "networkidle" bắn xong trước khi Flow hydrate xong.
+ * LƯU Ý: textContent thật của nút là "addAdd Media" (icon ligature "add" dính liền
+ * label, KHÔNG có khoảng trắng) — selector chỉ nên match phần label "Add Media"
+ * (has-text làm substring match nên vẫn khớp đúng phần này bên trong chuỗi dính liền).
+ */
+export async function waitForProjectReady(page: Page): Promise<void> {
+  const addMediaButton = page.locator('button:has-text("Add Media")');
+  try {
+    await addMediaButton.waitFor({ state: "visible", timeout: 45000 });
+  } catch {
+    console.log("[project] tải chậm hơn dự kiến, reload và thử lại...");
+    // Không chờ "load"/"networkidle" đầy đủ — project nhiều media khiến 2 sự kiện này
+    // không bao giờ fire ổn định (xác nhận trực tiếp qua debug). Chỉ cần DOM parse xong
+    // rồi tự chờ đúng tín hiệu sẵn sàng thật (nút "Add Media").
+    await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+    try {
+      await addMediaButton.waitFor({ state: "visible", timeout: 45000 });
+    } catch (err) {
+      await fs.mkdir(config.stateDir, { recursive: true });
+      const debugPath = path.join(config.stateDir, `project-ready-timeout-${Date.now()}.png`);
+      await page.screenshot({ path: debugPath }).catch(() => {});
+      console.log(`[project] vẫn lỗi sau reload, đã lưu ảnh debug: ${debugPath}`);
+      throw err;
+    }
+  }
+}
+
+/**
+ * labs.google/fx/tools/flow trả về trang landing "Create characters and cast
+ * them anywhere" nếu chưa có project nào đang mở — sidebar "All Media"/"Characters"
+ * và ô prompt tạo video chỉ tồn tại BÊN TRONG 1 project. Hàm này đảm bảo luôn có
+ * 1 project để làm việc, và cache lại project đã tạo để các lần chạy (characters
+ * step + generate step, hoặc resume) đều dùng chung 1 project thay vì tạo mới liên tục.
+ */
+export async function ensureProject(page: Page): Promise<string> {
+  const cached = await fs.readFile(PROJECT_STATE_FILE, "utf-8").catch(() => null);
+  // waitUntil "domcontentloaded" thay vì mặc định "load" — project nhiều media (audio/
+  // video đã tạo) khiến sự kiện "load" không bao giờ fire ổn định, gây goto() timeout
+  // dù trang thực chất đã tương tác được (xác nhận trực tiếp qua debug).
+  if (cached) {
+    const { projectUrl } = JSON.parse(cached) as { projectUrl: string };
+    await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await waitForProjectReady(page);
+    return projectUrl;
+  }
+
+  await page.goto(VEO3_BASE_URL, { waitUntil: "domcontentloaded", timeout: 45000 });
+  await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
+
+  const newProjectButton = page.locator('button:has-text("New project")').first();
+  if (await newProjectButton.count()) {
+    await newProjectButton.click();
+    await page.waitForURL((url) => /\/project\//.test(url.pathname), { timeout: 30000 });
+  }
+  // Nếu Flow tự redirect thẳng vào project có sẵn (không có nút "New project"),
+  // page.url() bên dưới sẽ tự phản ánh đúng project đó.
+
+  const projectUrl = page.url();
+  if (!/\/project\//.test(projectUrl)) {
+    throw new Error(
+      `Không vào được project nào trong Flow (vẫn ở landing page: ${projectUrl}). Kiểm tra thủ công UI.`
+    );
+  }
+
+  await waitForProjectReady(page);
+
+  await fs.mkdir(config.stateDir, { recursive: true });
+  await fs.writeFile(PROJECT_STATE_FILE, JSON.stringify({ projectUrl }, null, 2));
+  console.log(`[project] dùng project: ${projectUrl}`);
+  return projectUrl;
+}
+
+/**
+ * Đảm bảo có đủ `count` project Flow riêng biệt để chạy N tab song song, mỗi tab 1
+ * project — tránh hoàn toàn việc lưới media (video[src]/"Failed") của tab này lẫn vào
+ * tab khác. Project #0 LUÔN là project cũ (state/project.json, đã dùng để tạo Character
+ * asset + 83 clip đầu) để giữ lịch sử, không tạo lãng phí. Cache danh sách vào
+ * state/projects.json để lần chạy sau resume đúng các project đã tạo.
+ */
+export async function ensureProjects(page: Page, count: number): Promise<string[]> {
+  const cached = await fs.readFile(PROJECTS_STATE_FILE, "utf-8").catch(() => null);
+  let urls: string[] = cached ? JSON.parse(cached) : [];
+
+  if (urls.length === 0) {
+    const legacyUrl = await ensureProject(page);
+    urls = [legacyUrl];
+  }
+
+  while (urls.length < count) {
+    await page.goto(VEO3_BASE_URL, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
+
+    const newProjectButton = page.locator('button:has-text("New project")').first();
+    if (await newProjectButton.count()) {
+      await newProjectButton.click();
+      await page.waitForURL((url) => /\/project\//.test(url.pathname), { timeout: 30000 });
+    }
+
+    const projectUrl = page.url();
+    if (!/\/project\//.test(projectUrl)) {
+      throw new Error(
+        `Không tạo được project mới trong Flow để chạy song song (vẫn ở landing page: ${projectUrl}).`
+      );
+    }
+    await waitForProjectReady(page);
+
+    urls.push(projectUrl);
+    console.log(`[project] đã tạo project song song #${urls.length}: ${projectUrl}`);
+
+    await fs.mkdir(config.stateDir, { recursive: true });
+    await fs.writeFile(PROJECTS_STATE_FILE, JSON.stringify(urls, null, 2));
+  }
+
+  return urls.slice(0, count);
+}

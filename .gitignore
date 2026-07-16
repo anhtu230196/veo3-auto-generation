@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+output/
+output-test/
+state/
+state-test/
+.auth/
+input/story.txt
+*.log
