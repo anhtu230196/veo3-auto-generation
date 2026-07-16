@@ -4,8 +4,10 @@ import path from "node:path";
 import { config } from "../config.js";
 import type { VeoPrompt } from "../splitter/prompt-writer.js";
 import type { CharacterProfile } from "../characters/extract.js";
+import type { SettingProfile } from "../settings/extract.js";
 import { ensureProjects, waitForProjectReady } from "./project.js";
 import { ensureCharactersInFlow } from "./characters.js";
+import { ensureSettingsInFlow } from "./settings.js";
 import { launchVeo3Browser } from "./browser.js";
 
 const POLL_INTERVAL_MS = 5000;
@@ -99,6 +101,11 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
  * card làm mất focus editor nên nếu chèn chip xen giữa sẽ mất phần text gõ sau — đặt chip ở
  * cuối tránh được hẳn lỗi này. Cuối cùng XÁC MINH số chip void trong DOM = số nhân vật, nếu
  * thiếu thì throw để vòng retry chạy lại (KHÔNG tạo clip với mặt sai).
+ *
+ * Setting asset (bối cảnh cố định, xem settings.ts) dùng CHUNG cơ chế @mention này — dialog
+ * chọn asset tìm theo tên, không lọc theo loại Character/Setting, nên chỉ cần gộp
+ * characterNames + settingNames thành 1 danh sách tên để chèn chip, miễn tên không trùng
+ * giữa 2 danh sách (đảm bảo ở bước đặt tên nhân vật/bối cảnh).
  */
 async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<void> {
   const promptBox = page.locator('div[contenteditable="true"]').first();
@@ -107,13 +114,14 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   await page.keyboard.press("ControlOrMeta+A");
   await page.keyboard.press("Backspace");
 
-  const { videoPrompt: text, characterNames } = prompt;
+  const { videoPrompt: text, characterNames, settingNames } = prompt;
+  const mentionNames = [...characterNames, ...(settingNames ?? [])];
   // 1) Gõ toàn bộ mô tả tại con trỏ — đúng thứ tự.
   await page.keyboard.type(text);
-  if (characterNames.length === 0) return;
+  if (mentionNames.length === 0) return;
 
-  // 2) Chèn chip @mention từng nhân vật (loại bỏ trùng) vào cuối prompt.
-  const uniqueNames = [...new Set(characterNames)];
+  // 2) Chèn chip @mention từng nhân vật/bối cảnh (loại bỏ trùng) vào cuối prompt.
+  const uniqueNames = [...new Set(mentionNames)];
   for (const name of uniqueNames) {
     // Đưa con trỏ về cuối tài liệu rồi mở picker bằng "@".
     await promptBox.click();
@@ -135,7 +143,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     // đang nằm trong chính prompt), khớp exact tên.
     const card = page.locator('[role="dialog"]').getByText(name, { exact: true }).last();
     if (!(await card.count())) {
-      throw new Error(`Không thấy Character "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
+      throw new Error(`Không thấy Character/Setting "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
     }
     await card.click();
     await page.waitForTimeout(400);
@@ -196,9 +204,23 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     await page.waitForTimeout(POLL_INTERVAL_MS);
   }
   if ((await videoLocatorAll.count()) <= baselineVideoCount) {
-    throw new Error(
-      `Hết thời gian chờ generate cảnh #${prompt.index} — video không xuất hiện. Kiểm tra thủ công trong Flow.`
+    // XÁC NHẬN TRỰC TIẾP (2026-07-16): cảnh #25 bị báo "hết thời gian chờ" nhưng video THẬT
+    // RA đã tạo xong trong Flow (thấy rõ trong media grid, đúng khớp prompt) — bot chỉ không
+    // phát hiện kịp trong lúc poll trực tiếp trên trang đang mở (không rõ do hàng đợi "Lower
+    // Priority" hoàn tất chậm hơn deadline, hay do grid cần reload mới hiển thị đúng phần tử
+    // mới). Trước khi kết luận là lỗi thật/bỏ qua oan 1 cảnh đã xong, reload lại trang 1 lần
+    // và kiểm tra lại — nếu video đã có thì coi là thành công, KHÔNG bỏ qua.
+    console.log(
+      `[veo3bot] cảnh #${prompt.index} chưa thấy video sau ${GENERATE_TIMEOUT_MS / 60000} phút, reload để kiểm tra lại trước khi kết luận lỗi...`
     );
+    await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+    await page.waitForTimeout(3000);
+    if ((await videoLocatorAll.count()) <= baselineVideoCount) {
+      throw new Error(
+        `Hết thời gian chờ generate cảnh #${prompt.index} — video không xuất hiện kể cả sau khi reload. Kiểm tra thủ công trong Flow.`
+      );
+    }
+    console.log(`[veo3bot] cảnh #${prompt.index} thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục tải về.`);
   }
 
   const videoSrc = await videoLocator.getAttribute("src");
@@ -302,6 +324,7 @@ async function processQueue(
 export async function generateClips(
   prompts: VeoPrompt[],
   characters: CharacterProfile[],
+  settings: SettingProfile[],
   outDir: string
 ): Promise<ClipResult[]> {
   await fs.mkdir(outDir, { recursive: true });
@@ -337,10 +360,11 @@ export async function generateClips(
       const page = await context.newPage();
       await page.goto(projectUrls[i], { waitUntil: "domcontentloaded", timeout: 45000 });
       await waitForProjectReady(page);
-      // Chưa chắc Character asset là tài nguyên toàn tài khoản hay riêng theo từng project —
-      // luôn kiểm tra lại ở project MỚI tạo cho worker này (hàm tự bỏ qua nếu đã tồn tại nên
-      // rẻ), thay vì giả định và có thể để lọt cảnh không @mention được nhân vật.
+      // Chưa chắc Character/Setting asset là tài nguyên toàn tài khoản hay riêng theo từng
+      // project — luôn kiểm tra lại ở project MỚI tạo cho worker này (hàm tự bỏ qua nếu đã
+      // tồn tại nên rẻ), thay vì giả định và có thể để lọt cảnh không @mention được.
       await ensureCharactersInFlow(page, characters, projectUrls[i]);
+      await ensureSettingsInFlow(page, settings, projectUrls[i]);
       pages.push(page);
     }
 

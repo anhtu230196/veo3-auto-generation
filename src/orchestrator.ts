@@ -4,7 +4,9 @@ import { config } from "./config.js";
 import { splitIntoScenes } from "./splitter/scenes.js";
 import { writeVeoPrompts, type VeoPrompt } from "./splitter/prompt-writer.js";
 import { extractCharacters, type CharacterProfile } from "./characters/extract.js";
+import { extractSettings, type SettingProfile } from "./settings/extract.js";
 import { ensureCharactersInFlow } from "./veo3bot/characters.js";
+import { ensureSettingsInFlow } from "./veo3bot/settings.js";
 import { ensureProject } from "./veo3bot/project.js";
 import { launchVeo3Browser } from "./veo3bot/browser.js";
 import { synthesizeScenes } from "./tts/elevenlabs.js";
@@ -12,6 +14,7 @@ import { generateClips } from "./veo3bot/generate.js";
 import { assembleFinalVideo, type ScenePair } from "./assembler/ffmpeg.js";
 
 const CHARACTERS_STATE_FILE = path.join(config.stateDir, "characters.json");
+const SETTINGS_STATE_FILE = path.join(config.stateDir, "settings.json");
 const PROMPTS_STATE_FILE = path.join(config.stateDir, "prompts.json");
 const CHROME_PROFILE_DIR = path.join(config.authDir, "chrome-profile");
 
@@ -35,6 +38,31 @@ async function loadOrExtractCharacters(storyText: string): Promise<CharacterProf
   return characters;
 }
 
+/**
+ * Bối cảnh cố định (Setting asset) — KHÔNG BẮT BUỘC như characters, để state/settings.json
+ * trống hoặc không tồn tại vẫn chạy bình thường (không có bối cảnh nào cần giữ nhất quán).
+ */
+async function loadOrExtractSettings(storyText: string): Promise<SettingProfile[]> {
+  const cached = await fs.readFile(SETTINGS_STATE_FILE, "utf-8").catch(() => null);
+  if (cached) {
+    console.log("[orchestrator] dùng danh sách bối cảnh đã trích xuất trước đó (state/settings.json)");
+    return JSON.parse(cached) as SettingProfile[];
+  }
+
+  if (!config.hasGemini) {
+    console.log(
+      "[orchestrator] chưa có state/settings.json và chưa cấu hình GEMINI_API_KEY — bỏ qua Setting asset " +
+        "(nhờ Claude viết state/settings.json nếu muốn giữ nhất quán 1 địa điểm qua nhiều cảnh)."
+    );
+    return [];
+  }
+
+  const settings = await extractSettings(storyText);
+  await fs.mkdir(config.stateDir, { recursive: true });
+  await fs.writeFile(SETTINGS_STATE_FILE, JSON.stringify(settings, null, 2));
+  return settings;
+}
+
 async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
   await fs.mkdir(config.stateDir, { recursive: true });
   await fs.writeFile(PROMPTS_STATE_FILE, JSON.stringify(prompts, null, 2));
@@ -45,7 +73,11 @@ async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
  * giữa chừng (vd hết quota Gemini theo ngày), lần chạy lại chỉ cần xử lý tiếp các cảnh
  * còn thiếu thay vì làm lại từ đầu.
  */
-async function loadOrWritePrompts(storyText: string, characters: CharacterProfile[]): Promise<VeoPrompt[]> {
+async function loadOrWritePrompts(
+  storyText: string,
+  characters: CharacterProfile[],
+  settings: SettingProfile[]
+): Promise<VeoPrompt[]> {
   let scenes = splitIntoScenes(storyText);
   console.log(`[orchestrator] đã chia truyện thành ${scenes.length} cảnh`);
   if (config.testSceneLimit) {
@@ -75,7 +107,7 @@ async function loadOrWritePrompts(storyText: string, characters: CharacterProfil
   }
 
   const remainingScenes = scenes.slice(existingPrompts.length);
-  const newPrompts = await writeVeoPrompts(remainingScenes, characters, async (soFar) => {
+  const newPrompts = await writeVeoPrompts(remainingScenes, characters, settings, async (soFar) => {
     await savePromptsProgress([...existingPrompts, ...soFar]);
   });
 
@@ -88,10 +120,11 @@ async function main() {
   const storyText = await fs.readFile(config.storyInputPath, "utf-8");
   await fs.mkdir(config.outputDir, { recursive: true });
 
-  // 1. Trích xuất nhân vật chính (cache lại để resume không gọi LLM lại)
+  // 1. Trích xuất nhân vật chính + bối cảnh cố định (cache lại để resume không gọi LLM lại)
   const characters = await loadOrExtractCharacters(storyText);
+  const settings = await loadOrExtractSettings(storyText);
 
-  // 2. Đảm bảo mỗi nhân vật có Character asset trong Flow (giữ ngoại hình nhất quán)
+  // 2. Đảm bảo mỗi nhân vật/bối cảnh có Character/Setting asset trong Flow (giữ nhất quán)
   const profileExists = await fs.access(CHROME_PROFILE_DIR).then(() => true).catch(() => false);
   if (!profileExists) {
     throw new Error(`Chưa có session Veo3. Chạy "npm run login:veo3" trước.`);
@@ -101,6 +134,7 @@ async function main() {
     const charPage = charContext.pages()[0] ?? (await charContext.newPage());
     const projectUrl = await ensureProject(charPage);
     await ensureCharactersInFlow(charPage, characters, projectUrl);
+    await ensureSettingsInFlow(charPage, settings, projectUrl);
   } finally {
     // Persistent context KHÔNG được để mở nếu bước trên lỗi — vẫn giữ khóa profile dir,
     // khiến lần chạy lại tiếp theo mở context thứ 2 trên CÙNG profile bị xung đột (2 cửa
@@ -108,8 +142,8 @@ async function main() {
     await charContext.close().catch(() => {});
   }
 
-  // 3. Chia cảnh + sinh prompt Veo3 (mỗi cảnh gắn tên nhân vật xuất hiện)
-  const prompts = await loadOrWritePrompts(storyText, characters);
+  // 3. Chia cảnh + sinh prompt Veo3 (mỗi cảnh gắn tên nhân vật/bối cảnh xuất hiện)
+  const prompts = await loadOrWritePrompts(storyText, characters, settings);
   const scenes = prompts.map((p) => ({ index: p.index, text: p.sceneText }));
 
   // 4. TTS từng cảnh (bỏ qua file đã tồn tại — resume-safe). Bỏ hẳn bước này nếu chưa
@@ -122,11 +156,11 @@ async function main() {
     console.log("[orchestrator] bỏ qua bước TTS (chưa cấu hình ELEVENLABS_API_KEY) — video sẽ không có giọng đọc.");
   }
 
-  // 5. Generate video từng cảnh qua Veo3, đính kèm đúng Character asset theo cảnh.
+  // 5. Generate video từng cảnh qua Veo3, đính kèm đúng Character/Setting asset theo cảnh.
   // Cảnh bị Flow từ chối tạo (chính sách nội dung) sẽ bị bỏ qua khỏi kết quả — lọc lại
   // audio tương ứng theo index để giữ đồng bộ khi ghép, thay vì để lệch cặp clip/audio.
   const clipDir = path.join(config.outputDir, "clips");
-  const clipResults = await generateClips(prompts, characters, clipDir);
+  const clipResults = await generateClips(prompts, characters, settings, clipDir);
 
   // Dùng index THẬT của từng cảnh (không phải vị trí mảng) khi ghép — tránh lệch khi
   // mảng bị "nén" do có cảnh bị bỏ qua (xem chi tiết trong assembler/ffmpeg.ts).

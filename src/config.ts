@@ -28,7 +28,7 @@ export const config = {
   /** Nếu đặt, chỉ xử lý N cảnh đầu tiên — dùng để test pipeline trước khi chạy full truyện. */
   testSceneLimit: process.env.TEST_SCENE_LIMIT ? Number(process.env.TEST_SCENE_LIMIT) : undefined,
   /** Số tab Flow chạy song song khi generate video — mỗi tab dùng 1 project riêng biệt. */
-  parallelWorkers: Number(process.env.PARALLEL_WORKERS ?? 3),
+  parallelWorkers: Number(process.env.PARALLEL_WORKERS ?? 1),
   get hasAudio(): boolean {
     return Boolean(this.elevenLabsApiKey && this.elevenLabsVoiceId);
   },

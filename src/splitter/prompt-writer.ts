@@ -1,7 +1,8 @@
 import { generateText } from "../llm/gemini.js";
 import type { Scene } from "./scenes.js";
 import type { CharacterProfile } from "../characters/extract.js";
-import { STYLE_NAME, SCENE_STYLE_BLOCK, MOTION_SUFFIX } from "../styleDNA.js";
+import type { SettingProfile } from "../settings/extract.js";
+import { STYLE_NAME, SCENE_STYLE_BLOCK, MOTION_SUFFIX, PERIOD_ANCHOR, ERA_DESCRIPTOR } from "../styleDNA.js";
 
 export interface VeoPrompt {
   index: number;
@@ -9,13 +10,30 @@ export interface VeoPrompt {
   videoPrompt: string;
   /** Tên các nhân vật xuất hiện trong cảnh (khớp CharacterProfile.name) — dùng để attach Character asset trong Flow. */
   characterNames: string[];
+  /**
+   * Tên bối cảnh/địa điểm cố định xuất hiện trong cảnh (khớp SettingProfile.name) — dùng để
+   * attach Setting asset trong Flow, giữ ĐÚNG cùng 1 không gian khi cắt cảnh rộng → cận trong
+   * cùng 1 địa điểm (vd toàn cảnh 1 căn phòng rồi cắt cận 1 nhân vật đang nói, vẫn đúng căn
+   * phòng đó). Rỗng nếu cảnh không dùng bối cảnh nào cần giữ nhất quán qua nhiều cảnh.
+   */
+  settingNames?: string[];
+  /**
+   * "modern" CHỈ dùng cho cảnh cố ý đặt trong hiện tại/thời nay (vd vệ tinh NASA, biển
+   * đường phố, tượng đài) — mặc định "period" (thời đại câu chuyện, xem ERA_DESCRIPTOR).
+   * Quyết định có append PERIOD_ANCHOR hay không (xem writeVeoPrompts bên dưới).
+   */
+  era?: "period" | "modern";
 }
 
 /** Gộp nhiều cảnh vào 1 lần gọi Gemini để tiết kiệm quota (free tier giới hạn rất thấp số request/ngày). */
 const BATCH_SIZE = 10;
 
-function buildSystemPrompt(characters: CharacterProfile[]): string {
+function buildSystemPrompt(characters: CharacterProfile[], settings: SettingProfile[]): string {
   const roster = characters.map((c) => `- ${c.name}`).join("\n");
+  const settingRoster =
+    settings.length > 0
+      ? settings.map((s) => `- ${s.name}: ${s.description}`).join("\n")
+      : "(không có bối cảnh cố định nào được khai báo trước — bỏ qua settingNames, luôn để rỗng)";
   return `Bạn là đạo diễn hình ảnh chuyển thể kịch bản (lịch sử/khám phá/tài liệu) thành storyboard video
 hoạt hình (Veo3), mỗi cảnh dài 7-8 giây, phong cách ${STYLE_NAME.toUpperCase()} — KHÔNG photorealistic,
 không mô tả kết cấu da/ánh sáng như ảnh chụp thật.
@@ -23,9 +41,17 @@ Danh sách nhân vật đã có sẵn Character reference trong Flow, đã đư�
 ${STYLE_NAME} (KHÔNG cần mô tả lại ngoại hình cố định — Flow tự giữ khi nhân vật được @mention đính kèm):
 ${roster}
 
+Danh sách bối cảnh/địa điểm cố định đã có sẵn Setting reference trong Flow (KHÔNG cần mô tả lại chi tiết
+nội thất/bố cục — Flow tự giữ khi bối cảnh được @mention đính kèm):
+${settingRoster}
+
 Bạn sẽ nhận nhiều cảnh cùng lúc, mỗi cảnh đánh số "Cảnh #N". Trả về JSON thuần dạng mảng, ĐÚNG THỨ TỰ,
 ĐỦ SỐ PHẦN TỬ bằng số cảnh nhận được, mỗi phần tử ứng với 1 cảnh:
-[{"videoPrompt": "...", "characterNames": ["Tên nhân vật xuất hiện trong cảnh này"]}, ...]
+[{"videoPrompt": "...", "characterNames": ["Tên nhân vật xuất hiện trong cảnh này"], "settingNames": ["Tên bối cảnh xuất hiện trong cảnh này"], "era": "period"}, ...]
+
+era: "period" (mặc định, thời đại của câu chuyện) hoặc "modern" — CHỈ dùng "modern" cho cảnh cố ý đặt
+trong hiện tại/thời nay (vd vệ tinh, đường phố ngày nay, tượng đài, TV/tin tức). Mọi cảnh khác PHẢI để
+"period" hoặc bỏ trống field này.
 
 videoPrompt: tiếng Anh, NGẮN GỌN — tối đa 2-3 câu. Mỗi cảnh chỉ 7-8 giây, và Veo3 RẤT DỄ lỗi/lẫn nhân
 vật nếu prompt dồn quá nhiều hành động cùng lúc — nguyên tắc quan trọng nhất: MỖI NHÂN VẬT XUẤT HIỆN CHỈ
@@ -55,6 +81,31 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
   RỖNG — đừng gán nhân vật cho cảnh không thật sự thấy rõ họ.
 - Nếu 1 cảnh có từ 2 nhân vật trở lên cùng xuất hiện, mô tả rõ TỪNG nhân vật đang làm gì (không gộp mơ
   hồ "they"), để characterNames liệt kê đủ.
+
+QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu danh sách bối cảnh ở trên không rỗng:
+- Nếu cảnh diễn ra ở ĐÚNG 1 địa điểm đã có trong danh sách bối cảnh (dù là toàn cảnh rộng hay cận cảnh 1
+  nhân vật bên trong đó), điền tên bối cảnh đó vào settingNames — kể cả khi cảnh liền trước/liền sau CŨNG
+  ở địa điểm này (vd toàn cảnh 1 căn phòng có nhiều người thảo luận, cảnh sau cắt cận 1 nhân vật đang nói
+  — CẢ HAI cảnh đều phải ghi cùng 1 tên bối cảnh đó vào settingNames, để Flow giữ đúng cùng 1 không gian
+  giữa 2 cú cắt thay vì tự vẽ lại phòng khác).
+- Nếu cảnh không diễn ra ở địa điểm nào trong danh sách (địa điểm mới/chỉ xuất hiện 1 lần/ngoài trời
+  không cố định), để settingNames RỖNG.
+- KHÔNG tự đặt tên bối cảnh mới ngoài danh sách đã cho — settingNames chỉ được chứa tên khớp CHÍNH XÁC
+  với danh sách bối cảnh ở trên.
+
+BỐI CẢNH THỜI ĐẠI (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp qua ảnh render thật): câu chuyện diễn ra ở
+${ERA_DESCRIPTOR}. Nhân vật/đối tượng CÓ tên riêng trong danh sách trên được Character asset giữ đúng
+ngoại hình, nhưng nhân vật QUẦN CHÚNG không tên (thủy thủ khác, dân làng, lính gác, người định cư...) và
+bối cảnh chung chung (cảng, tàu buôn, khu chợ, boong tàu) KHÔNG có gì neo giữ — Veo3 sẽ mặc định vẽ theo
+nghĩa HIỆN ĐẠI của các danh từ chung này (đã xác nhận: prompt "a young unnamed sailor... merchant ship's
+deck" ra hình thủy thủ áo kẻ sọc thời nay đứng cạnh container/cần cẩu cảng hiện đại). Vì vậy:
+- MỌI cảnh không tên riêng phải mô tả RÕ trang phục/vật dụng đúng thời đại (áo vải len/lanh, quần thô,
+  dây thừng, tàu buồm gỗ, kiến trúc đá/gỗ...) — không chỉ nói chung "a sailor" hay "a ship" mà không có
+  chi tiết thời đại nào đi kèm.
+- Đặt era: "modern" CHỈ cho cảnh cố ý ở hiện tại (vệ tinh, đường phố ngày nay, tượng đài, tin tức) — các
+  cảnh này ngược lại phải rõ ràng là hiện đại, không lẫn chi tiết thời cổ.
+- Với mọi cảnh còn lại, để era: "period" (hoặc bỏ trống) — hệ thống sẽ tự thêm neo thời đại đầy đủ, bạn
+  chỉ cần đảm bảo mô tả trong videoPrompt không mâu thuẫn với thời đại (không tự ý thêm chi tiết hiện đại).
 
 Giữ nhất quán bối cảnh/thời điểm xuyên suốt các cảnh (kể cả với ngữ cảnh cảnh trước cung cấp bên dưới,
 nếu có) — không lặp lại y hệt bối cảnh/khoảng cách của cảnh liền trước, đổi cỡ cảnh TĨNH để tránh đơn
@@ -96,7 +147,12 @@ silhouette bạo lực) theo QUY TẮC NHÂN VẬT ở trên.
 Chỉ trả JSON, không giải thích thêm.`;
 }
 
-function parseBatchResponse(text: string): { videoPrompt: string; characterNames: string[] }[] {
+function parseBatchResponse(text: string): {
+  videoPrompt: string;
+  characterNames: string[];
+  settingNames?: string[];
+  era?: "period" | "modern";
+}[] {
   const jsonMatch = text.match(/\[[\s\S]*\]/);
   if (!jsonMatch) throw new Error(`Không parse được JSON mảng prompt từ LLM: ${text}`);
   return JSON.parse(jsonMatch[0]);
@@ -111,9 +167,10 @@ function parseBatchResponse(text: string): { videoPrompt: string; characterNames
 export async function writeVeoPrompts(
   scenes: Scene[],
   characters: CharacterProfile[],
+  settings: SettingProfile[],
   onBatchComplete?: (resultsSoFar: VeoPrompt[]) => Promise<void> | void
 ): Promise<VeoPrompt[]> {
-  const systemPrompt = buildSystemPrompt(characters);
+  const systemPrompt = buildSystemPrompt(characters, settings);
   const results: VeoPrompt[] = [];
   let recentPrompts: string[] = [];
 
@@ -123,6 +180,7 @@ export async function writeVeoPrompts(
       recentPrompts.length > 0
         ? `Các prompt cảnh ngay trước đó (để giữ nhất quán bối cảnh):\n${recentPrompts.join("\n")}\n\n`
         : "";
+        
     const sceneList = batch.map((s) => `Cảnh #${s.index}:\n"""${s.text}"""`).join("\n\n");
     const userPrompt = `${context}Viết prompt Veo3 cho ${batch.length} cảnh sau, trả về mảng JSON đúng thứ tự, đủ ${batch.length} phần tử:\n\n${sceneList}`;
 
@@ -133,13 +191,19 @@ export async function writeVeoPrompts(
       const scene = batch[j];
       const item = items[j];
       if (!item) throw new Error(`Thiếu kết quả cho cảnh #${scene.index} trong lô Gemini trả về.`);
-      // Suffix giữ style append bằng CODE (không dựa vào LLM tuân thủ) — đảm bảo mọi
-      // prompt đều giữ đúng phong cách/hạn chế lỗi Veo3 (xem styleDNA.ts).
+      // Suffix giữ style + neo thời đại append bằng CODE (không dựa vào LLM tuân thủ) —
+      // đảm bảo mọi prompt đều giữ đúng phong cách/thời đại/hạn chế lỗi Veo3 (styleDNA.ts).
+      // PERIOD_ANCHOR CHỈ bỏ qua khi LLM chủ động đánh dấu era "modern" (cảnh cố ý hiện đại).
+      const era = item.era ?? "period";
+      const anchoredPrompt =
+        era === "modern" ? item.videoPrompt : `${item.videoPrompt} ${PERIOD_ANCHOR}`;
       results.push({
         index: scene.index,
         sceneText: scene.text,
-        videoPrompt: `${item.videoPrompt} ${MOTION_SUFFIX}`,
+        videoPrompt: `${anchoredPrompt} ${MOTION_SUFFIX}`,
         characterNames: item.characterNames ?? [],
+        settingNames: item.settingNames ?? [],
+        era,
       });
       console.log(
         `[prompt-writer] cảnh #${scene.index} [${(item.characterNames ?? []).join(", ")}] → ${item.videoPrompt.slice(0, 80)}...`
