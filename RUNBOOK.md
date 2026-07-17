@@ -381,6 +381,52 @@ chạy đúng 1 lần trên project chính. Nếu tăng `PARALLEL_WORKERS` và g
 riêng theo từng project), `status: "success"` ghi từ project đầu sẽ khiến các project song
 song sau bị bỏ qua việc tạo asset — CHƯA kiểm chứng trực tiếp trường hợp này.
 
+### 4.19. Setting neo SAI ánh sáng ngày/đêm — ảnh reference khoá cứng 1 điều kiện, mood text không ghi đè được
+**XÁC NHẬN TRỰC TIẾP**: Setting "Pinta Deck" (bối cảnh chòi quan sát trên tàu Pinta) có
+`description` trong `state/settings.json` KHÔNG chỉ định ngày/đêm ("Open dark ocean visible on
+all sides" — không có "at night"). Ảnh asset thật được Flow tạo ra là **BAN NGÀY**, rồi bị kéo
+vào **cả 9 cảnh** dùng @mention nó — toàn bộ 9 cảnh đó đều là cảnh đêm/trăng theo kịch bản
+("Cool moonlit blue-white tones", "night", "moonlight"...). Cùng lúc phát hiện thêm 1 lỗi tệ
+hơn: Setting "Santa María Deck" (boong tàu chính của Columbus, 8 cảnh) có `description` bị
+COPY-PASTE NHẦM từ "Style Anchor" — mô tả 1 bãi biển vắng, không hề có tàu/boong tàu nào, dù
+đã `status: "success"` (tưởng đã tạo xong đúng).
+
+**Bài học cốt lõi**: ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT — nếu mô tả không
+chỉ định rõ ngày/đêm, Flow tự chọn 1 điều kiện ánh sáng cố định (thường mặc định ban ngày), và
+mood/tông màu viết trong `videoPrompt` từng cảnh **KHÔNG đủ mạnh để ghi đè** ảnh đã "khoá cứng"
+đó khi @mention — đúng bài học đã có ở mục 4.12 (nội dung ảnh Ingredient LÀ đúng thứ sẽ bị kéo
+vào video), áp dụng thêm cho khía cạnh ánh sáng/thời điểm trong ngày, không chỉ hình dạng vật
+thể.
+
+**Đã sửa cho project hiện tại**: đổi tên 2 Setting này (thêm hậu tố mới, vd "Pinta Deck" →
+"Pinta Deck Night") thay vì sửa tại chỗ — vì asset cũ đã tạo (status "success") trong Flow với
+nội dung sai, sửa mô tả rồi để nguyên tên sẽ khiến bot tra tên thấy asset cũ vẫn "tồn tại" và
+bỏ qua, không bao giờ tạo lại. Đổi tên buộc bot tạo asset MỚI hoàn toàn dưới tên mới (không cần
+xoá gì trong Flow, asset cũ chỉ nằm đó không dùng nữa). Với "Pinta Deck Night": bake THẲNG ánh
+sáng đêm vào description (an toàn vì cả 9 cảnh dùng nó đều là đêm). Với "Santa María Ship Deck"
+(dùng ở cả cảnh ngày lẫn đêm): sửa lại đúng nội dung (boong tàu) nhưng **KHÔNG** bake ánh sáng
+cụ thể — để mood/tông màu trong videoPrompt tự điều chỉnh theo từng cảnh như thiết kế ban đầu.
+
+**Đã thêm cơ chế phòng ngừa cho kịch bản SAU** (`src/splitter/prompt-writer.ts`):
+- Thêm 1 đoạn quy tắc mới vào system prompt (`buildSystemPrompt`, ngay sau QUY TẮC BỐI
+  CẢNH/ĐỊA ĐIỂM) giải thích rõ ảnh Setting neo 1 điều kiện ánh sáng cố định, để LLM (khi thật
+  sự gọi Gemini qua `writeVeoPrompts`, hoặc Claude tự viết tay theo cùng tinh thần quy tắc này)
+  không viết mood mâu thuẫn ánh sáng cho cùng 1 settingName.
+- Thêm hàm `warnInconsistentSettingLighting()` chạy CODE (không phụ thuộc LLM tuân thủ) sau khi
+  `writeVeoPrompts` sinh xong toàn bộ prompt — quét MỌI cảnh, nhóm theo `settingNames`, phát
+  hiện qua từ khoá (night/moonlit/... vs daylight/sunny/...) nếu 1 setting bị gán CẢ cảnh đêm
+  LẪN cảnh ngày, in CẢNH BÁO ra console (không throw, vì có thể là cố ý nếu Setting mô tả trung
+  lập ánh sáng — vd "Santa María Ship Deck" cố ý trung lập vì dùng cả 2 điều kiện). `STYLE_ANCHOR_
+  NAME` được LOẠI TRỪ khỏi check này — theo thiết kế nó gắn vào MỌI cảnh mồ côi bất kể mood, xung
+  đột với nó là bình thường, không phải lỗi.
+- **LƯU Ý QUAN TRỌNG**: hàm cảnh báo này chỉ chạy khi `writeVeoPrompts` thực sự được gọi (dùng
+  Gemini qua `GEMINI_API_KEY`, hoặc cache prompts.json CHƯA đủ số cảnh). Với project hiện tại,
+  `state/prompts.json` đã viết tay xong đủ 168 cảnh từ trước — `loadOrWritePrompts` trong
+  `orchestrator.ts` dùng cache có sẵn, KHÔNG gọi lại `writeVeoPrompts`, nên cơ chế cảnh báo mới
+  này KHÔNG tự chạy lại trên state hiện tại. Nếu nghi ngờ còn Setting nào khác bị xung đột
+  ngày/đêm chưa phát hiện, cần tự chạy lại logic quét (xem cách làm thủ công đã dùng khi sửa bug
+  này) hoặc đợi dự án lịch sử MỚI (viết prompts.json từ đầu) để cơ chế này tự kích hoạt.
+
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
 Các bug nghiêm trọng nhất (sai hình ảnh Ingredient, trùng lặp clip, phong cách
@@ -407,6 +453,11 @@ lỗi runtime) — chỉ lộ ra khi soi bằng mắt. Quy trình verify chuẩn
 6. **Khựng khi chuyển cảnh:** trích frame ngay TRƯỚC và SAU 1 điểm cắt, xem có
    khung hình lặp/đứng hình bất thường không (chỉ áp dụng nếu bật audio/mux
    theo cảnh — hiện project KHÔNG bật, xem mục 1).
+7. **Ánh sáng ngày/đêm sai ở cảnh có settingNames:** xem mục 4.19 — soi 1 frame
+   mỗi cảnh có `settingNames` không rỗng, so mood/tông màu trong `videoPrompt`
+   (night/moonlit vs daylight/sunny) với ánh sáng THẬT của frame. Đặc biệt nghi
+   ngờ nếu 1 setting được dùng ở cả cảnh ngày lẫn đêm mà mô tả trong
+   `state/settings.json` không nói rõ mô tả đó trung lập ánh sáng.
 
 ## 6. Việc còn dang dở / có thể làm tiếp
 

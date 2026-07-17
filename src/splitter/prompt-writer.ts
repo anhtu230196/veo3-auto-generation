@@ -132,6 +132,18 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   trôi phong cách nhất. KHÔNG thêm "${STYLE_ANCHOR_NAME}" vào cảnh đã có nhân vật/bối cảnh/đạo cụ có tên
   riêng khác (đã có Ingredient neo rồi, không cần thêm).
 
+QUY TẮC ÁNH SÁNG/THỜI ĐIỂM CỦA BỐI CẢNH (settingNames) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19,
+Setting "Pinta Deck"): ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT, mang theo ĐÚNG 1 điều
+kiện ánh sáng cố định (ban ngày HOẶC ban đêm) — mood/tông màu viết trong videoPrompt KHÔNG đủ mạnh để
+ghi đè ánh sáng đã "khoá cứng" sẵn trong ảnh asset đó khi @mention. Vì vậy:
+- Nếu 1 bối cảnh trong danh sách trên CHỈ dùng cho cảnh ở 1 điều kiện ánh sáng xuyên suốt câu chuyện (vd
+  luôn là cảnh đêm), MỌI cảnh gán settingName đó PHẢI viết mood/tông màu khớp ĐÚNG điều kiện đó — TUYỆT
+  ĐỐI không viết "bright daylight"/"sunny" cho 1 bối cảnh mà mọi cảnh khác dùng nó đều là "night"/"moonlit".
+- Nếu câu chuyện thật sự cần dùng lại 1 địa điểm ở CẢ 2 điều kiện ánh sáng khác nhau, đó là dấu hiệu mô tả
+  Setting (ngoài phạm vi file này, xem state/settings.json) không nên khoá cứng ánh sáng cụ thể vào
+  description — nhưng bạn KHÔNG sửa được state/settings.json từ đây, chỉ cần đảm bảo videoPrompt không tự
+  mâu thuẫn với ánh sáng đã dùng cho CÙNG settingName ở các cảnh khác đã thấy trong ngữ cảnh cung cấp.
+
 QUY TẮC ĐẠO CỤ/VẬT DỤNG (propNames) — chỉ áp dụng nếu danh sách đạo cụ ở trên không rỗng:
 - Nếu cảnh có xuất hiện RÕ 1 đạo cụ đã có trong danh sách (vd 1 con tàu cụ thể, 1 bản đồ/vật biểu tượng
   cụ thể) và hình dạng đúng của nó quan trọng với cảnh đó, điền tên đạo cụ vào propNames.
@@ -192,6 +204,72 @@ thay vì mô tả động tác tay tỉ mỉ).
 characterNames: chỉ liệt kê tên đúng như trong danh sách trên, nhân vật thực sự xuất hiện rõ (không phải
 silhouette bạo lực) theo QUY TẮC NHÂN VẬT ở trên.
 Chỉ trả JSON, không giải thích thêm.`;
+}
+
+const NIGHT_LIGHTING_KEYWORDS = [
+  "night",
+  "moonlit",
+  "moonlight",
+  "midnight",
+  "nighttime",
+  "under the stars",
+  "starry sky",
+];
+const DAY_LIGHTING_KEYWORDS = [
+  "daylight",
+  "bright sun",
+  "sunny",
+  "midday",
+  "broad daylight",
+  "daytime",
+  "bright afternoon",
+];
+
+function detectLighting(text: string): "night" | "day" | null {
+  const lower = text.toLowerCase();
+  const isNight = NIGHT_LIGHTING_KEYWORDS.some((k) => lower.includes(k));
+  const isDay = DAY_LIGHTING_KEYWORDS.some((k) => lower.includes(k));
+  if (isNight && !isDay) return "night";
+  if (isDay && !isNight) return "day";
+  return null; // mơ hồ (dawn/dusk) hoặc không nhắc ánh sáng — không đủ tin cậy để so sánh
+}
+
+/**
+ * XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19, bug Setting "Pinta Deck") — ảnh Setting reference trong
+ * Flow là ảnh TĨNH DUY NHẤT, neo giữ ĐÚNG 1 điều kiện ánh sáng cố định; mood/tông màu viết trong
+ * videoPrompt KHÔNG đủ mạnh để ghi đè khi @mention. Quét lại TOÀN BỘ prompt sau khi sinh xong —
+ * nếu 1 settingName được gán cho cả cảnh "night" LẪN cảnh "day" (theo từ khoá rõ ràng, bỏ qua
+ * mood mơ hồ như dawn/dusk), in CẢNH BÁO ra console (KHÔNG throw — mismatch có thể là cố ý nếu
+ * mô tả Setting không khoá cứng ánh sáng cụ thể) để người viết prompt/Setting kiểm tra TRƯỚC khi
+ * generate video, thay vì phải tự phát hiện bằng mắt sau khi đã tốn credit tạo sai như lần trước.
+ */
+function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
+  const bySetting = new Map<string, { night: number[]; day: number[] }>();
+  for (const p of prompts) {
+    const lighting = detectLighting(p.videoPrompt);
+    if (!lighting) continue;
+    for (const name of p.settingNames ?? []) {
+      // Style Anchor KHÔNG phải 1 địa điểm thật — theo thiết kế, nó được gắn @mention vào MỌI
+      // cảnh mồ côi bất kể mood/ánh sáng (xem QUY TẮC BỐI CẢNH ở buildSystemPrompt), nên xung
+      // đột ngày/đêm với nó là chuyện BÌNH THƯỜNG, không phải dấu hiệu lỗi — bỏ qua để tránh
+      // cảnh báo giả liên tục che lấp các cảnh báo thật (Setting là địa điểm thật trong truyện).
+      if (name === STYLE_ANCHOR_NAME) continue;
+      const entry = bySetting.get(name) ?? { night: [], day: [] };
+      entry[lighting].push(p.index);
+      bySetting.set(name, entry);
+    }
+  }
+  for (const [name, { night, day }] of bySetting) {
+    if (night.length > 0 && day.length > 0) {
+      console.warn(
+        `[prompt-writer] CẢNH BÁO: Setting "${name}" được gán cho cả cảnh ĐÊM (#${night.join(", #")}) ` +
+          `lẫn cảnh NGÀY (#${day.join(", #")}) — ảnh Setting reference trong Flow chỉ neo được 1 điều ` +
+          `kiện ánh sáng cố định (xem RUNBOOK mục 4.19, bug "Pinta Deck"). Nếu đây không phải cố ý, sửa ` +
+          `mood/tông màu cho khớp 1 điều kiện xuyên suốt, hoặc kiểm tra mô tả "${name}" trong ` +
+          `state/settings.json có đang khoá cứng 1 điều kiện ánh sáng cụ thể trước khi generate video.`
+      );
+    }
+  }
 }
 
 function parseBatchResponse(text: string): {
@@ -272,5 +350,6 @@ export async function writeVeoPrompts(
     if (onBatchComplete) await onBatchComplete(results);
   }
 
+  warnInconsistentSettingLighting(results);
   return results;
 }
