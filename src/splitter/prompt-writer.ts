@@ -3,6 +3,7 @@ import type { Scene } from "./scenes.js";
 import type { CharacterProfile } from "../characters/extract.js";
 import type { SettingProfile } from "../settings/extract.js";
 import type { PropProfile } from "../props/extract.js";
+import type { AssetStatus } from "../assetStatus.js";
 import {
   STYLE_NAME,
   SCENE_STYLE_BLOCK,
@@ -38,6 +39,12 @@ export interface VeoPrompt {
    * Quyết định có append PERIOD_ANCHOR hay không (xem writeVeoPrompts bên dưới).
    */
   era?: "period" | "modern";
+  /**
+   * Trạng thái tạo clip video cho cảnh này (xem assetStatus.ts) — cập nhật + lưu lại trong
+   * veo3bot/generate.ts::generateClips. "success" = đã có clip file thật, bỏ qua khi resume.
+   * "waiting" khi mới sinh prompt (chưa generate lần nào); "failed" nếu Flow từ chối/timeout.
+   */
+  status?: AssetStatus;
 }
 
 /** Gộp nhiều cảnh vào 1 lần gọi Gemini để tiết kiệm quota (free tier giới hạn rất thấp số request/ngày). */
@@ -254,6 +261,7 @@ export async function writeVeoPrompts(
         settingNames,
         propNames: item.propNames ?? [],
         era,
+        status: "waiting",
       });
       console.log(
         `[prompt-writer] cảnh #${scene.index} [${(item.characterNames ?? []).join(", ")}] → ${item.videoPrompt.slice(0, 80)}...`

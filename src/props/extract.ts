@@ -1,9 +1,12 @@
 import { generateText } from "../llm/gemini.js";
+import type { AssetStatus } from "../assetStatus.js";
 
 export interface PropProfile {
   name: string;
   /** Mô tả cố định của đạo cụ/vật dụng (hình dáng, chất liệu, màu sắc), dùng tạo Prop asset trong Flow. */
   description: string;
+  /** Trạng thái tạo Prop asset trong Flow — xem assetStatus.ts. Cập nhật + lưu lại trong veo3bot/props.ts::ensurePropsInFlow. */
+  status?: AssetStatus;
 }
 
 const SYSTEM_PROMPT = `Bạn đọc 1 truyện và liệt kê các ĐẠO CỤ/VẬT DỤNG cố định xuất hiện LẶP LẠI ở nhiều

@@ -1,8 +1,17 @@
 import type { Page } from "playwright";
 import { debugCapture, debugLog } from "./debug.js";
 
-const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
+// XÁC NHẬN TRỰC TIẾP (2026-07-18): "Spanish Royal Banner" (Prop quốc kỳ/biểu tượng) vẫn CHƯA
+// xong sau đủ 3 phút + reload-recheck cũ (chỉ chờ thêm 3 giây cố định) — throw oan dù người
+// dùng tự kiểm tra thấy ảnh ĐÃ tạo xong trong Flow (chỉ chưa đổi tên, vì code throw trước khi
+// chạy tới bước rename). Ảnh có nội dung biểu tượng/quốc kỳ có vẻ cần thời gian kiểm duyệt lâu
+// hơn ảnh thường — tăng timeout chính lên 5 phút, và quan trọng hơn: đổi cơ chế reload-recheck
+// từ "chờ cố định 3 giây rồi chốt" sang "chờ trang thật sự sẵn sàng (Add Media hiện ra, giống
+// mục 4.14) rồi POLL thêm 1 khoảng đủ dài" — 3 giây là quá ngắn để trang tải lại lưới media đã
+// tích luỹ nhiều (168 cảnh + nhiều Character/Setting/Prop khác) trước khi kết luận lỗi thật.
+const GENERATE_TIMEOUT_MS = 5 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
+const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
 /**
  * Tạo 1 ảnh Ingredient dùng chung cho Setting/Prop (bối cảnh/đạo cụ) — luồng "Image mode, số
@@ -84,8 +93,17 @@ export async function createImageIngredient(
       `[imageAsset] chưa thấy ảnh cho "${name}" sau ${GENERATE_TIMEOUT_MS / 60000} phút, reload để kiểm tra lại trước khi kết luận lỗi...`
     );
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
-    await page.waitForTimeout(3000);
-    if ((await imageLinksAll.count()) <= baselineCount) {
+    // Chờ trang THẬT SỰ sẵn sàng (lưới media đã render) trước khi đếm lại — "Add Media" luôn
+    // xuất hiện khi trang tương tác được thật sự (xem mục 4.14 RUNBOOK), đáng tin hơn 1 mốc
+    // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
+    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
+    const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
+    let foundAfterReload = (await imageLinksAll.count()) > baselineCount;
+    while (!foundAfterReload && Date.now() < recheckDeadline) {
+      await page.waitForTimeout(POLL_INTERVAL_MS);
+      foundAfterReload = (await imageLinksAll.count()) > baselineCount;
+    }
+    if (!foundAfterReload) {
       await debugCapture(page, `timeout-ingredient-${name}`);
       throw new Error(`Hết thời gian chờ tạo ảnh cho "${name}" — kiểm tra thủ công trong Flow.`);
     }

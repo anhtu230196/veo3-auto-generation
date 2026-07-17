@@ -105,22 +105,63 @@ async function createCharacter(page: Page, character: CharacterProfile, projectU
 }
 
 /**
- * Đảm bảo mỗi nhân vật trong danh sách đã có Character asset trong Flow.
- * Bỏ qua nhân vật đã tồn tại (tra theo tên) để resume-safe và tránh tốn credit tạo lại.
+ * Đảm bảo mỗi nhân vật trong danh sách đã có Character asset trong Flow — dựa trên field
+ * `status` (xem assetStatus.ts, CharacterProfile.status) thay vì tra tên qua Flow UI mỗi lần
+ * chạy như trước:
+ * - `status === "success"`: BỎ QUA hẳn, không query Flow (tin tưởng đã tạo + đổi tên xong).
+ * - `status` khác (waiting/failed/thiếu field — dữ liệu cũ trước khi có field này): vẫn tra
+ *   tên qua Flow UI 1 lần trước khi tạo mới (giữ lại `characterAlreadyExists` làm lưới an
+ *   toàn) — tránh tạo TRÙNG asset đã tồn tại thật ngoài Flow mà status chưa kịp ghi "success"
+ *   (vd do lỗi/crash giữa chừng, xem RUNBOOK mục 4.15 cập nhật 2026-07-18 — bug "Spanish Royal
+ *   Banner" tạo xong nhưng chưa đổi tên/lưu status vì bot throw giữa chừng).
+ * Lỗi tạo asset KHÔNG còn làm crash cả pipeline — bắt lỗi, đánh dấu `status = "failed"`, log
+ * rõ, rồi tiếp tục nhân vật kế tiếp (lần chạy sau sẽ tự thử lại nhân vật lỗi này).
+ * `onProgress` (nếu có) được gọi sau MỖI lần đổi status để orchestrator lưu lại
+ * state/characters.json ngay, không mất tiến độ nếu pipeline crash ở nhân vật sau.
+ *
+ * GIẢ ĐỊNH: Character asset dùng chung cho MỌI project trong tài khoản (không phải tài
+ * nguyên riêng theo từng project) — với `PARALLEL_WORKERS=1` (mặc định), hàm này chỉ được gọi
+ * đúng 1 lần trên project chính nên giả định này không ảnh hưởng. Nếu tăng `PARALLEL_WORKERS`
+ * và giả định sai (asset hoá ra riêng theo project), `status: "success"` từ project đầu sẽ
+ * khiến các project song song sau BỊ BỎ QUA việc tạo asset — chưa xác nhận trực tiếp trường
+ * hợp này, cân nhắc trước khi chạy song song nhiều tab.
  */
 export async function ensureCharactersInFlow(
   page: Page,
   characters: CharacterProfile[],
-  projectUrl: string
+  projectUrl: string,
+  onProgress?: (characters: CharacterProfile[]) => Promise<void> | void
 ): Promise<void> {
   for (const character of characters) {
-    const exists = await characterAlreadyExists(page, character.name);
-    if (exists) {
-      console.log(`[characters] "${character.name}" đã có sẵn trong Flow, bỏ qua`);
+    if (character.status === "success") {
+      console.log(`[characters] "${character.name}" status=success, bỏ qua (không query lại Flow).`);
       continue;
     }
+
+    const exists = await characterAlreadyExists(page, character.name);
+    if (exists) {
+      console.log(`[characters] "${character.name}" đã có sẵn trong Flow (tra tên), đánh dấu success.`);
+      character.status = "success";
+      await onProgress?.(characters);
+      continue;
+    }
+
     console.log(`[characters] đang tạo Character "${character.name}" trong Flow...`);
-    await createCharacter(page, character, projectUrl);
-    console.log(`[characters] đã tạo "${character.name}"`);
+    try {
+      await createCharacter(page, character, projectUrl);
+      character.status = "success";
+      console.log(`[characters] đã tạo "${character.name}"`);
+    } catch (err) {
+      character.status = "failed";
+      console.error(
+        `[characters] LỖI tạo "${character.name}", đánh dấu failed để thử lại lần chạy sau: ${(err as Error).message}`
+      );
+    }
+    await onProgress?.(characters);
+  }
+
+  const failed = characters.filter((c) => c.status === "failed");
+  if (failed.length > 0) {
+    console.warn(`[characters] còn ${failed.length} nhân vật lỗi, cần chạy lại "npm run run": ${failed.map((c) => c.name).join(", ")}`);
   }
 }

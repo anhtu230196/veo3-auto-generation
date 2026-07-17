@@ -12,10 +12,28 @@ const STYLE_DESCRIPTOR =
   "minimal to no gradient shading, simplified geometric shapes and proportions, modern " +
   "motion-graphic aesthetic, limited flat color palette";
 
+/**
+ * Outline bắt buộc trên MỌI đối tượng trong khung hình — TRÊN CẢ ảnh Ingredient neo
+ * (Character/Prop/Setting/Style Anchor, xem CHARACTER_SHEET_STYLE_BLOCK/SETTING_SHEET_STYLE_
+ * BLOCK bên dưới) VÀ MỌI video prompt (append bằng CODE trong prompt-writer.ts, giống cách
+ * làm với MOTION_SUFFIX/PERIOD_ANCHOR — không phụ thuộc LLM có tuân thủ hay không).
+ * LÝ DO PHẢI LIỆT KÊ TƯỜNG MINH CỤ THỂ (không chỉ nói "outlines" chung chung như trong
+ * STYLE_DESCRIPTOR ở trên): cùng bài học đã xác nhận ở mục 4.16 RUNBOOK (glow/sparkle) — mô tả
+ * chung chung không đủ để mô hình áp dụng NHẤT QUÁN cho MỌI loại vật thể (nhân vật, đạo cụ,
+ * kiến trúc, cây cối, bầu trời...), phải liệt kê rõ từng nhóm đối tượng cần outline.
+ */
+export const OUTLINE_BLOCK =
+  "Every character, animal, object, prop, piece of furniture, building, ship, and background " +
+  "scenery shape (rocks, trees, clouds, waves) must have a clean, bold, uniform-width black " +
+  "outline drawn around its entire silhouette — apply the SAME bold outline treatment to " +
+  "foreground characters AND background objects/scenery alike, with no exceptions. No " +
+  "outline-less soft-edge shapes, no faint/thin/broken outlines, no gaps in the outline where " +
+  "two shapes overlap or meet.";
+
 /** Dùng khi gửi prompt tạo Character/Prop asset (ảnh nền xanh, có turnaround) trong Flow. */
 export const CHARACTER_SHEET_STYLE_BLOCK =
   `${STYLE_DESCRIPTOR}, solid chroma-key green background (#00FF00), flat even lighting, ` +
-  "full body character turnaround, front view and 3/4 view, 16:9 aspect ratio.";
+  `full body character turnaround, front view and 3/4 view, 16:9 aspect ratio. ${OUTLINE_BLOCK}`;
 
 /**
  * Dùng khi gửi prompt tạo Setting asset — KHÁC HẲN Character/Prop: xác nhận trực tiếp qua
@@ -30,7 +48,7 @@ export const SETTING_SHEET_STYLE_BLOCK =
   "background — NOT a solid color backdrop, NOT a chroma-key green screen. Full-bleed image " +
   "filling the entire frame edge to edge: NO decorative border, NO ornamental frame, NO " +
   "vignette around the edges. NO people, NO characters, NO figures of any kind in the shot " +
-  "— empty space only, 16:9 aspect ratio.";
+  `— empty space only, 16:9 aspect ratio. ${OUTLINE_BLOCK}`;
 
 /** Chèn vào system prompt viết video prompt — mô tả tông màu/không khí theo mood cảnh. */
 export const SCENE_STYLE_BLOCK =
@@ -42,14 +60,16 @@ export const SCENE_STYLE_BLOCK =
 /**
  * Suffix bắt buộc, append vào CUỐI mọi video prompt bằng code (không phụ thuộc LLM có
  * tuân thủ hay không) — giữ đúng style xuyên suốt và hạn chế lỗi Veo3 (camera động, hiệu
- * ứng lạ làm trôi phong cách).
+ * ứng lạ làm trôi phong cách). Gồm cả OUTLINE_BLOCK để đảm bảo MỌI cảnh (kể cả cảnh không có
+ * Ingredient nào neo) đều được nhắc outline tường minh, không chỉ dựa vào ảnh Character/Setting
+ * tham chiếu (cảnh mồ côi không có gì để "học" outline từ đó).
  */
 export const MOTION_SUFFIX =
   `Maintain the exact ${STYLE_NAME} style and color palette from the reference. Simple ` +
   "grounded movement only — natural gestures, subtle idle motion, gentle parallax. No " +
   "camera pans, no zoom, no visual effects, no style drift. No glow, no sparkle, no light " +
   "flares, no particle effects, no shine bursts or radiance around objects — flat matte " +
-  "surfaces only, even on metal, gold, or gemstones.";
+  `surfaces only, even on metal, gold, or gemstones. ${OUTLINE_BLOCK}`;
 
 /**
  * Mốc thời đại của câu chuyện — đổi hằng số này nếu dự án khác dùng bối cảnh khác.
@@ -93,7 +113,8 @@ export const STYLE_ANCHOR_NAME = "Style Anchor";
 
 export const STYLE_ANCHOR_DESCRIPTION =
   "A generic empty coastal landscape at dusk — distant rocky cliffs, calm open sea, soft " +
-  "clouds, a few gulls in the sky, no buildings, no landmarks. Full-bleed image filling the " +
+  "clouds, a few gulls in the sky, no buildings, no landmarks, every shape (cliffs, waves, " +
+  "clouds, gulls) drawn with a clean bold black outline. Full-bleed image filling the " +
   "entire frame edge to edge: NO decorative border, NO ornamental frame, NO vignette. NO " +
   "people, NO figures, NO characters, nothing living in the image.";
 

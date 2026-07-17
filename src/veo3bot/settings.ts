@@ -24,23 +24,49 @@ async function settingAlreadyExists(page: Page, name: string): Promise<boolean> 
 }
 
 /**
- * Đảm bảo mỗi bối cảnh trong danh sách đã có Setting asset trong Flow. Bỏ qua bối cảnh đã tồn
- * tại (tra theo tên) để resume-safe và tránh tốn credit tạo lại — cùng logic với
- * ensureCharactersInFlow (xem characters.ts).
+ * Đảm bảo mỗi bối cảnh trong danh sách đã có Setting asset trong Flow — dựa trên field
+ * `status` (xem assetStatus.ts, SettingProfile.status), cùng cơ chế với
+ * ensureCharactersInFlow (characters.ts, đọc comment ở đó để hiểu đầy đủ lý do): status
+ * "success" bỏ qua hẳn không query Flow; status khác vẫn tra tên 1 lần làm lưới an toàn trước
+ * khi tạo mới; lỗi tạo asset KHÔNG làm crash pipeline — đánh dấu "failed" rồi tiếp tục bối
+ * cảnh kế tiếp; `onProgress` lưu tiến độ ngay sau mỗi thay đổi status.
  */
 export async function ensureSettingsInFlow(
   page: Page,
   settings: SettingProfile[],
-  projectUrl: string
+  projectUrl: string,
+  onProgress?: (settings: SettingProfile[]) => Promise<void> | void
 ): Promise<void> {
   for (const setting of settings) {
-    const exists = await settingAlreadyExists(page, setting.name);
-    if (exists) {
-      console.log(`[settings] "${setting.name}" đã có sẵn trong Flow, bỏ qua`);
+    if (setting.status === "success") {
+      console.log(`[settings] "${setting.name}" status=success, bỏ qua (không query lại Flow).`);
       continue;
     }
+
+    const exists = await settingAlreadyExists(page, setting.name);
+    if (exists) {
+      console.log(`[settings] "${setting.name}" đã có sẵn trong Flow (tra tên), đánh dấu success.`);
+      setting.status = "success";
+      await onProgress?.(settings);
+      continue;
+    }
+
     console.log(`[settings] đang tạo Setting "${setting.name}" trong Flow...`);
-    await createImageIngredient(page, setting.name, setting.description, SETTING_SHEET_STYLE_BLOCK, projectUrl);
-    console.log(`[settings] đã tạo "${setting.name}"`);
+    try {
+      await createImageIngredient(page, setting.name, setting.description, SETTING_SHEET_STYLE_BLOCK, projectUrl);
+      setting.status = "success";
+      console.log(`[settings] đã tạo "${setting.name}"`);
+    } catch (err) {
+      setting.status = "failed";
+      console.error(
+        `[settings] LỖI tạo "${setting.name}", đánh dấu failed để thử lại lần chạy sau: ${(err as Error).message}`
+      );
+    }
+    await onProgress?.(settings);
+  }
+
+  const failed = settings.filter((s) => s.status === "failed");
+  if (failed.length > 0) {
+    console.warn(`[settings] còn ${failed.length} bối cảnh lỗi, cần chạy lại "npm run run": ${failed.map((s) => s.name).join(", ")}`);
   }
 }

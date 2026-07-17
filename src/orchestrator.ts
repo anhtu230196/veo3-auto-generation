@@ -97,6 +97,24 @@ async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
 }
 
 /**
+ * Lưu lại state/characters|settings|props.json ngay sau MỖI lần status thay đổi (xem
+ * ensureCharactersInFlow/ensureSettingsInFlow/ensurePropsInFlow trong veo3bot/) — không mất
+ * tiến độ nếu pipeline crash giữa chừng lúc đang tạo asset thứ N/M.
+ */
+async function saveCharactersProgress(characters: CharacterProfile[]): Promise<void> {
+  await fs.mkdir(config.stateDir, { recursive: true });
+  await fs.writeFile(CHARACTERS_STATE_FILE, JSON.stringify(characters, null, 2));
+}
+async function saveSettingsProgress(settings: SettingProfile[]): Promise<void> {
+  await fs.mkdir(config.stateDir, { recursive: true });
+  await fs.writeFile(SETTINGS_STATE_FILE, JSON.stringify(settings, null, 2));
+}
+async function savePropsProgress(props: PropProfile[]): Promise<void> {
+  await fs.mkdir(config.stateDir, { recursive: true });
+  await fs.writeFile(PROPS_STATE_FILE, JSON.stringify(props, null, 2));
+}
+
+/**
  * Sinh prompt theo lô (xem prompt-writer.ts), lưu tiến độ sau MỖI LÔ — nếu bị gián đoạn
  * giữa chừng (vd hết quota Gemini theo ngày), lần chạy lại chỉ cần xử lý tiếp các cảnh
  * còn thiếu thay vì làm lại từ đầu.
@@ -163,9 +181,9 @@ async function main() {
   try {
     const charPage = charContext.pages()[0] ?? (await charContext.newPage());
     const projectUrl = await ensureProject(charPage);
-    await ensureCharactersInFlow(charPage, characters, projectUrl);
-    await ensureSettingsInFlow(charPage, settings, projectUrl);
-    await ensurePropsInFlow(charPage, props, projectUrl);
+    await ensureCharactersInFlow(charPage, characters, projectUrl, saveCharactersProgress);
+    await ensureSettingsInFlow(charPage, settings, projectUrl, saveSettingsProgress);
+    await ensurePropsInFlow(charPage, props, projectUrl, savePropsProgress);
   } finally {
     // Persistent context KHÔNG được để mở nếu bước trên lỗi — vẫn giữ khóa profile dir,
     // khiến lần chạy lại tiếp theo mở context thứ 2 trên CÙNG profile bị xung đột (2 cửa
@@ -191,7 +209,7 @@ async function main() {
   // Cảnh bị Flow từ chối tạo (chính sách nội dung) sẽ bị bỏ qua khỏi kết quả — lọc lại
   // audio tương ứng theo index để giữ đồng bộ khi ghép, thay vì để lệch cặp clip/audio.
   const clipDir = path.join(config.outputDir, "clips");
-  const clipResults = await generateClips(prompts, characters, settings, props, clipDir);
+  const clipResults = await generateClips(prompts, characters, settings, props, clipDir, savePromptsProgress);
 
   // Dùng index THẬT của từng cảnh (không phải vị trí mảng) khi ghép — tránh lệch khi
   // mảng bị "nén" do có cảnh bị bỏ qua (xem chi tiết trong assembler/ffmpeg.ts).

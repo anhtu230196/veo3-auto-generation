@@ -1,9 +1,12 @@
 import { generateText } from "../llm/gemini.js";
+import type { AssetStatus } from "../assetStatus.js";
 
 export interface SettingProfile {
   name: string;
   /** Mô tả bối cảnh cố định (không gian, nội thất, ánh sáng đặc trưng), dùng tạo Setting asset trong Flow. */
   description: string;
+  /** Trạng thái tạo Setting asset trong Flow — xem assetStatus.ts. Cập nhật + lưu lại trong veo3bot/settings.ts::ensureSettingsInFlow. */
+  status?: AssetStatus;
 }
 
 const SYSTEM_PROMPT = `Bạn đọc 1 truyện và liệt kê các BỐI CẢNH/ĐỊA ĐIỂM cố định xuất hiện LẶP LẠI ở nhiều

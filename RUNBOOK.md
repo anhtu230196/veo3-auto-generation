@@ -306,6 +306,29 @@ kiểm tra lại baseline-diff — nếu phát hiện được sau reload thì c
 công. Áp dụng ở CẢ 2 nơi: `generateOneClip` (`generate.ts`) và
 `createImageIngredient` (`imageAsset.ts`).
 
+**CẬP NHẬT (2026-07-18) — bản reload-recheck ban đầu VẪN CHƯA ĐỦ**: xác nhận
+trực tiếp Prop "Spanish Royal Banner" — sau khi hết `GENERATE_TIMEOUT_MS` +
+reload + chờ CỐ ĐỊNH 3 giây, code vẫn throw "hết thời gian chờ", nhưng người
+dùng tự kiểm tra trong Flow thấy ảnh **đã tạo xong thật**, chỉ chưa kịp
+đổi tên (vì code throw trước khi chạy tới bước rename). Nguyên nhân: 3 giây cố
+định sau reload không đủ để trang tải lại lưới media khi project đã tích luỹ
+nhiều (168 cảnh + nhiều Character/Setting/Prop khác) — cùng lớp lỗi mục 4.14.
+Đã sửa ở CẢ 2 nơi: sau reload, chờ `button:has-text("Add Media")` HIỆN RA
+(dấu hiệu trang thật sự tương tác được, timeout 90s) rồi **POLL THÊM** tối đa
+`RELOAD_RECHECK_TIMEOUT_MS` (90 giây) thay vì chốt ngay sau 1 mốc cố định.
+Cũng tăng `GENERATE_TIMEOUT_MS` của `imageAsset.ts` từ 3 phút lên 5 phút — nghi
+ngờ ảnh có nội dung biểu tượng/quốc kỳ cần thời gian kiểm duyệt lâu hơn ảnh
+thường (giống hiện tượng cảnh thẩm vấn/toà án cần 10 phút thay vì 5 phút, đã
+ghi ở đầu mục này).
+
+**LƯU Ý KHI GẶP LẠI LỖI NÀY (asset đã tạo trong Flow nhưng bot báo lỗi trước
+khi kịp đổi tên)**: đừng chạy lại `npm run run` ngay — `ensurePropsInFlow`/
+`ensureSettingsInFlow` tra asset đã tồn tại BẰNG TÊN, ảnh chưa đổi tên sẽ
+KHÔNG được tìm thấy, khiến bot tạo THÊM 1 ảnh trùng nội dung (tốn credit, lẫn
+lộn 2 ảnh cùng là "banner" nhưng chỉ 1 cái được đặt tên đúng). Vào Flow,
+right-click ảnh vừa tạo (chưa tên) → Rename → gõ đúng tên (vd "Spanish Royal
+Banner") → Done, RỒI mới chạy lại pipeline để nó nhận ra asset đã có sẵn.
+
 ### 4.16. `MOTION_SUFFIX` cần cấm rõ glow/sparkle, "no visual effects" chung chung không đủ
 Vật thể sáng bóng (vàng, kim loại, đá quý) trong cảnh dễ bị Veo3 tự thêm hiệu
 ứng toả sáng/lấp lánh dù prompt đã có "no visual effects" — câu này quá chung
@@ -322,6 +345,41 @@ tiếp: prompt "a young unnamed sailor... merchant ship's deck" ra hình thủy 
 áo kẻ sọc thời nay đứng cạnh container/cần cẩu cảng hiện đại, dù style đã là
 flat vector đúng. Fix: `PERIOD_ANCHOR` (xem `styleDNA.ts`) append bằng CODE vào
 MỌI cảnh không cố ý hiện đại (`era: "period"`, mặc định).
+
+### 4.18. Đổi sang tracking `status` (waiting/failed/success) thay vì crash cả pipeline khi 1 asset lỗi
+**BỐI CẢNH**: bug "Spanish Royal Banner" (mục 4.15 cập nhật ở trên) không chỉ là 1 lần dương
+tính giả — nó còn lộ ra vấn đề kiến trúc nghiêm trọng hơn: TRƯỚC ĐÂY, `ensureCharactersInFlow`/
+`ensureSettingsInFlow`/`ensurePropsInFlow` chạy 1 vòng `for` KHÔNG có `try/catch` — 1 nhân
+vật/bối cảnh/đạo cụ lỗi (timeout, bị Flow từ chối...) sẽ THROW và làm CRASH TOÀN BỘ
+`orchestrator.ts` ngay lập tức, kể cả khi 20 cái khác trước đó đã tạo thành công. Đồng thời,
+việc "đã tạo chưa" trước đây LUÔN tra lại bằng cách query UI Flow (tìm theo tên trong dialog
+"Add Media") ở MỌI lần chạy — chậm và phụ thuộc UI dễ vỡ.
+
+**Đã đổi sang cơ chế status persistent**: mỗi `CharacterProfile`/`SettingProfile`/`PropProfile`
+(`state/characters|settings|props.json`) và mỗi `VeoPrompt` (`state/prompts.json`) giờ có thêm
+field `status?: "waiting" | "failed" | "success"` (xem `src/assetStatus.ts`):
+- `status === "success"`: lần chạy sau BỎ QUA HẲN, không query lại Flow (khác hẳn cơ chế cũ).
+- `status` khác (waiting/failed/thiếu field — dữ liệu cũ trước khi có field này): với
+  Character/Setting/Prop, VẪN tra tên qua Flow UI 1 lần trước khi tạo mới (giữ
+  `characterAlreadyExists`/`settingAlreadyExists`/`propAlreadyExists` làm LƯỚI AN TOÀN, tránh
+  tạo trùng asset đã tồn tại thật mà status chưa kịp ghi "success" — đúng kịch bản "Spanish
+  Royal Banner"). Với clip video, dùng file `output/clips/clip_NNN.mp4` tồn tại làm nguồn sự
+  thật cuối cùng, tự đồng bộ lại `status` theo file thực tế mỗi lần chạy (file có → success dù
+  status cũ nói khác; file mất → waiting dù status cũ nói success).
+- Lỗi tạo asset (throw từ `createCharacter`/`createImageIngredient`) giờ được BẮT bằng
+  `try/catch` NGAY TRONG vòng lặp — đánh dấu `status = "failed"`, log rõ, rồi **tiếp tục xử lý
+  các nhân vật/bối cảnh/đạo cụ còn lại** thay vì crash cả tiến trình. Lần chạy `npm run run`
+  sau sẽ tự thử lại đúng những cái `status !== "success"`.
+- `onProgress` callback (`veo3bot/characters.ts`/`settings.ts`/`props.ts`/`generate.ts` đều
+  nhận tham số này) được gọi NGAY sau mỗi lần đổi status — ghi lại `state/*.json` tức thì,
+  không đợi xử lý xong cả danh sách, để không mất tiến độ nếu pipeline crash ở phần tử sau.
+
+**GIẢ ĐỊNH CHƯA XÁC NHẬN**: cơ chế status giả định Character/Setting/Prop asset dùng CHUNG cho
+mọi project trong tài khoản (không phải tài nguyên riêng theo từng project Flow) — với
+`PARALLEL_WORKERS=1` (mặc định), giả định này không ảnh hưởng vì `ensureCharactersInFlow` chỉ
+chạy đúng 1 lần trên project chính. Nếu tăng `PARALLEL_WORKERS` và giả định sai (asset hoá ra
+riêng theo từng project), `status: "success"` ghi từ project đầu sẽ khiến các project song
+song sau bị bỏ qua việc tạo asset — CHƯA kiểm chứng trực tiếp trường hợp này.
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
@@ -370,6 +428,17 @@ lỗi runtime) — chỉ lộ ra khi soi bằng mắt. Quy trình verify chuẩn
   lần trong quá trình làm project này (nghiên cứu nhân vật có thật, đồng nhất
   nhiều mốc tuổi, Setting/Prop Ingredient, neo thời đại) — đọc skill đó trước
   khi bắt đầu 1 project lịch sử/Flow MỚI để tận dụng bài học đã tích luỹ.
+- **Vừa thêm `OUTLINE_BLOCK` (`src/styleDNA.ts`, 2026-07-17)** — yêu cầu outline
+  đen đậm, đều nét trên MỌI nhân vật/đạo cụ/kiến trúc/cảnh vật, áp dụng vào
+  `CHARACTER_SHEET_STYLE_BLOCK`, `SETTING_SHEET_STYLE_BLOCK` (ảnh Ingredient
+  neo), `MOTION_SUFFIX` (append code vào mọi video prompt) và
+  `STYLE_ANCHOR_DESCRIPTION`. **CHƯA XÁC NHẬN BẰNG MẮT** — mọi Character/Setting/
+  Prop asset đã tạo TRƯỚC thời điểm này (kể cả Style Anchor v3) dùng style block
+  CŨ, chưa chắc có outline đậm/đều như yêu cầu mới. Trước khi tin tưởng áp dụng
+  đại trà cho các cảnh còn lại, cần: (1) soi lại các asset cũ xem outline có đủ
+  đậm/đều không, xoá+tạo lại nếu cần; (2) generate thử vài clip mới, xác nhận
+  outline hiện rõ nhất quán trên cả nhân vật lẫn cảnh vật nền trước khi chạy đại
+  trà cho 148 cảnh còn thiếu.
 
 ## 7. Repo
 

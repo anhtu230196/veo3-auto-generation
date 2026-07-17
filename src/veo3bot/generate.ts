@@ -20,6 +20,11 @@ const POLL_INTERVAL_MS = 5000;
 // phải bị chặn hẳn, vì không có card "Failed" nào xuất hiện, chỉ là chưa xong trong 5 phút).
 // Tăng lên 10 phút để kiểm chứng giả thuyết này trước khi kết luận là bị chặn thật.
 const GENERATE_TIMEOUT_MS = 10 * 60 * 1000;
+// Cùng bug class đã gặp ở imageAsset.ts (2026-07-18): reload-recheck cũ chỉ chờ cố định 3 giây
+// rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
+// sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
+// lỗi thật (xem generateOneClip bên dưới).
+const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
 /**
  * Text nút/tab xác nhận trực tiếp trên labs.google/fx/tools/flow ngày 2026-07-13.
@@ -234,8 +239,17 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
       `[veo3bot] cảnh #${prompt.index} chưa thấy video sau ${GENERATE_TIMEOUT_MS / 60000} phút, reload để kiểm tra lại trước khi kết luận lỗi...`
     );
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
-    await page.waitForTimeout(3000);
-    if ((await videoLocatorAll.count()) <= baselineVideoCount) {
+    // Chờ trang THẬT SỰ sẵn sàng rồi POLL thêm 1 khoảng đủ dài thay vì chốt sau 1 mốc thời gian
+    // cố định — cùng bug đã xác nhận ở imageAsset.ts (2026-07-18): 1 project có nhiều media
+    // (168 cảnh + Character/Setting/Prop) tải lại chậm hơn vài giây cố định.
+    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
+    const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
+    let foundAfterReload = (await videoLocatorAll.count()) > baselineVideoCount;
+    while (!foundAfterReload && Date.now() < recheckDeadline) {
+      await page.waitForTimeout(POLL_INTERVAL_MS);
+      foundAfterReload = (await videoLocatorAll.count()) > baselineVideoCount;
+    }
+    if (!foundAfterReload) {
       await debugCapture(page, `timeout-scene${prompt.index}`);
       throw new Error(
         `Hết thời gian chờ generate cảnh #${prompt.index} — video không xuất hiện kể cả sau khi reload. Kiểm tra thủ công trong Flow.`
@@ -274,7 +288,9 @@ async function processQueue(
   projectUrl: string,
   queue: VeoPrompt[],
   outDir: string,
-  results: ClipResult[]
+  results: ClipResult[],
+  allPrompts: VeoPrompt[],
+  onProgress?: (prompts: VeoPrompt[]) => Promise<void> | void
 ): Promise<void> {
   const RELOAD_EVERY = 15;
   let generatedSinceReload = 0;
@@ -327,6 +343,11 @@ async function processQueue(
     }
 
     generatedSinceReload++;
+    // Cập nhật + lưu status ngay (thay vì chỉ dựa vào file tồn tại) — resume-safe hơn khi
+    // pipeline crash giữa chừng, và cho phép lần chạy sau phân biệt "waiting"/"failed" bằng mắt
+    // trong state/prompts.json (xem assetStatus.ts).
+    p.status = status === "ok" ? "success" : "failed";
+    await onProgress?.(allPrompts);
     if (status === "ok") {
       results.push({ index: p.index, file: outFile });
       log(`đã tải ${outFile}`);
@@ -348,21 +369,36 @@ export async function generateClips(
   characters: CharacterProfile[],
   settings: SettingProfile[],
   props: PropProfile[],
-  outDir: string
+  outDir: string,
+  onProgress?: (prompts: VeoPrompt[]) => Promise<void> | void
 ): Promise<ClipResult[]> {
   await fs.mkdir(outDir, { recursive: true });
 
+  // File clip trên đĩa vẫn là NGUỒN SỰ THẬT cuối cùng (status có thể lệch nếu file bị xoá tay
+  // hoặc pipeline crash trước khi ghi status) — đối chiếu cả 2, tự đồng bộ lại status theo
+  // file thực tế thay vì tin mù status cũ trong state/prompts.json.
   const results: ClipResult[] = [];
   const queue: VeoPrompt[] = [];
+  let statusChanged = false;
   for (const p of prompts) {
     const outFile = path.join(outDir, `clip_${String(p.index).padStart(3, "0")}.mp4`);
     const alreadyDone = await fs.access(outFile).then(() => true).catch(() => false);
     if (alreadyDone) {
+      if (p.status !== "success") {
+        p.status = "success";
+        statusChanged = true;
+      }
       results.push({ index: p.index, file: outFile });
     } else {
+      if (p.status === "success") {
+        // status nói đã xong nhưng file không còn — coi như chưa xong, tạo lại.
+        p.status = "waiting";
+        statusChanged = true;
+      }
       queue.push(p);
     }
   }
+  if (statusChanged) await onProgress?.(prompts);
   if (queue.length === 0) return results;
 
   const workerCount = Math.max(1, Math.min(config.parallelWorkers, queue.length));
@@ -397,7 +433,7 @@ export async function generateClips(
     await Promise.all(pages.map((p) => p.waitForTimeout(3000)));
 
     await Promise.all(
-      pages.map((page, i) => processQueue(i, page, projectUrls[i], queue, outDir, results))
+      pages.map((page, i) => processQueue(i, page, projectUrls[i], queue, outDir, results, prompts, onProgress))
     );
   } finally {
     // Luôn đóng context kể cả khi setup/worker lỗi giữa chừng — nếu để mở, lần chạy lại

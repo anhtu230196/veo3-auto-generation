@@ -1,9 +1,12 @@
 import { generateText } from "../llm/gemini.js";
+import type { AssetStatus } from "../assetStatus.js";
 
 export interface CharacterProfile {
   name: string;
   /** Mô tả ngoại hình/trang phục cố định, dùng để tạo Character asset trong Flow. */
   description: string;
+  /** Trạng thái tạo Character asset trong Flow — xem assetStatus.ts. Cập nhật + lưu lại trong veo3bot/characters.ts::ensureCharactersInFlow. */
+  status?: AssetStatus;
 }
 
 const SYSTEM_PROMPT = `Bạn đọc 1 truyện và liệt kê các nhân vật CHÍNH xuất hiện lặp lại (bỏ qua nhân vật phụ thoáng qua).
