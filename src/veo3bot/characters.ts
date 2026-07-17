@@ -93,8 +93,15 @@ async function createCharacter(page: Page, character: CharacterProfile, projectU
 
   // Quay lại canvas chính của project — tránh trạng thái DOM không ổn định (phần tử bị
   // detach giữa chừng) khi vòng lặp xử lý nhân vật tiếp theo ngay trên trang tạo character.
-  await page.goto(projectUrl);
-  await page.waitForLoadState("networkidle");
+  //
+  // LỖI ĐÃ GẶP (2026-07-16): "networkidle" KHÔNG bao giờ fire ổn định khi project đã có
+  // nhiều media (xem ghi chú tương tự trong generate.ts::ensureModelAndDuration) — ban đầu
+  // không lỗi vì project còn ít media, nhưng timeout ngay khi project tích luỹ đủ nhiều
+  // (character/setting/prop asset sau) dù trang đã tương tác được thật sự. Dùng
+  // "domcontentloaded" + chờ 1 phần tử cụ thể chắc chắn có (nút "Add Media") thay vì chờ
+  // network im lặng hoàn toàn.
+  await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+  await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
 }
 
 /**

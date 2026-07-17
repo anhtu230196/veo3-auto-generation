@@ -3,7 +3,15 @@ import type { Scene } from "./scenes.js";
 import type { CharacterProfile } from "../characters/extract.js";
 import type { SettingProfile } from "../settings/extract.js";
 import type { PropProfile } from "../props/extract.js";
-import { STYLE_NAME, SCENE_STYLE_BLOCK, MOTION_SUFFIX, PERIOD_ANCHOR, ERA_DESCRIPTOR } from "../styleDNA.js";
+import {
+  STYLE_NAME,
+  SCENE_STYLE_BLOCK,
+  MOTION_SUFFIX,
+  PERIOD_ANCHOR,
+  ERA_DESCRIPTOR,
+  STYLE_ANCHOR_NAME,
+  STYLE_ANCHOR_MENTION_SENTENCE,
+} from "../styleDNA.js";
 
 export interface VeoPrompt {
   index: number;
@@ -111,6 +119,11 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   không cố định), để settingNames RỖNG.
 - KHÔNG tự đặt tên bối cảnh mới ngoài danh sách đã cho — settingNames chỉ được chứa tên khớp CHÍNH XÁC
   với danh sách bối cảnh ở trên.
+- Nếu danh sách bối cảnh có tên "${STYLE_ANCHOR_NAME}" (asset đặc biệt chỉ để neo phong cách, KHÔNG phải
+  địa điểm thật trong truyện — xem styleDNA.ts): CHỈ cân nhắc thêm vào settingNames cho cảnh có nhân vật
+  KHÔNG tên riêng (vd "a young unnamed sailor") và KHÔNG có settingNames nào khác — đây là kiểu cảnh dễ
+  trôi phong cách nhất. KHÔNG thêm "${STYLE_ANCHOR_NAME}" vào cảnh đã có nhân vật/bối cảnh/đạo cụ có tên
+  riêng khác (đã có Ingredient neo rồi, không cần thêm).
 
 QUY TẮC ĐẠO CỤ/VẬT DỤNG (propNames) — chỉ áp dụng nếu danh sách đạo cụ ở trên không rỗng:
 - Nếu cảnh có xuất hiện RÕ 1 đạo cụ đã có trong danh sách (vd 1 con tàu cụ thể, 1 bản đồ/vật biểu tượng
@@ -226,12 +239,19 @@ export async function writeVeoPrompts(
       const era = item.era ?? "period";
       const anchoredPrompt =
         era === "modern" ? item.videoPrompt : `${item.videoPrompt} ${PERIOD_ANCHOR}`;
+      const settingNames = item.settingNames ?? [];
+      // THỬ NGHIỆM LẦN 2 (xem styleDNA.ts): nếu cảnh có gắn Setting "Style Anchor", thêm câu
+      // tường minh nhắc @mention NGAY TRONG TEXT — chỉ append khi thực sự có mặt trong
+      // settingNames (tức là CÓ chip @mention thật đi kèm, không phải câu suông không neo).
+      const styleAnchorSentence = settingNames.includes(STYLE_ANCHOR_NAME)
+        ? ` ${STYLE_ANCHOR_MENTION_SENTENCE}`
+        : "";
       results.push({
         index: scene.index,
         sceneText: scene.text,
-        videoPrompt: `${anchoredPrompt} ${MOTION_SUFFIX}`,
+        videoPrompt: `${anchoredPrompt}${styleAnchorSentence} ${MOTION_SUFFIX}`,
         characterNames: item.characterNames ?? [],
-        settingNames: item.settingNames ?? [],
+        settingNames,
         propNames: item.propNames ?? [],
         era,
       });

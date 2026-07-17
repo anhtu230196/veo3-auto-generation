@@ -109,6 +109,16 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
  * nên chỉ cần gộp characterNames + settingNames + propNames thành 1 danh sách tên để chèn
  * chip, miễn tên không trùng giữa các danh sách (đảm bảo ở bước đặt tên nhân vật/bối cảnh/
  * đạo cụ).
+ *
+ * ĐÃ THỬ VÀ BỎ (2026-07-16): từng thêm 1 "Style Anchor" @mention vào MỌI cảnh để chống trôi
+ * phong cách ở cảnh không có Ingredient nào. GỠ BỎ vì tác dụng phụ nghiêm trọng hơn: asset đó
+ * được tạo qua công cụ "Create Character" (dành cho tạo NGƯỜI) nên luôn ra 1 nhân vật người cụ
+ * thể dù mô tả là khung viền trừu tượng — @mention nó vào MỌI cảnh khiến nhân vật đó đè lên
+ * bất kỳ người vô danh nào trong cảnh (xác nhận trực tiếp: cảnh "a young unnamed mapmaker" ra
+ * đúng hình người mặc hoodie cam của Style Anchor thay vì người chung chung đúng thời đại).
+ * KHÔNG lặp lại cách này — nếu muốn neo style cho cảnh không Ingredient, phải dùng asset
+ * loại Prop/Image (qua imageAsset.ts) chứ không phải Character, và cần kiểm tra thật kỹ liệu
+ * việc gắn nó vào cảnh có người có gây lẫn nhân dạng không trước khi áp dụng đại trà.
  */
 async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<void> {
   const promptBox = page.locator('div[contenteditable="true"]').first();
