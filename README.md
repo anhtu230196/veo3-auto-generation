@@ -1,9 +1,12 @@
 # veo3-story-pipeline
 
-Pipeline: kịch bản văn bản → trích xuất nhân vật/bối cảnh/đạo cụ + audio (tuỳ
-chọn, ElevenLabs) → tạo Character/Setting/Prop asset trong Google Flow (giữ
-hình ảnh nhất quán) → nhiều clip Veo3 (4-8s/clip, tạo qua Playwright, phong
-cách 2D flat vector illustration) → ghép thành 1 video hoàn chỉnh (ffmpeg).
+Pipeline: kịch bản văn bản → nhân vật/bối cảnh/đạo cụ (`state/*.json`, Claude
+viết tay — xem RUNBOOK mục 4.20) → tạo Character/Setting/Prop asset trong
+Google Flow (giữ hình ảnh nhất quán) → nhiều clip Veo3 (4-8s/clip, tạo qua
+Playwright, phong cách 2D flat vector illustration) → ghép thành 1 video hoàn
+chỉnh (ffmpeg). KHÔNG dùng Gemini/ElevenLabs (đã bỏ, xem RUNBOOK mục 4.20) —
+toàn bộ nội dung nhân vật/bối cảnh/đạo cụ/prompt đều do Claude viết trực tiếp
+trong hội thoại, video không có giọng đọc.
 
 **Đọc [RUNBOOK.md](RUNBOOK.md) trước** nếu tiếp quản project đang dang dở —
 file đó có trạng thái hiện tại + toàn bộ bài học/bug đã sửa.
@@ -15,15 +18,15 @@ npm install
 npx playwright install chromium
 ```
 
-Không cần tạo `.env` nếu chỉ tiếp tục project đã có sẵn `state/characters.json`
-/ `settings.json` / `props.json` / `prompts.json` (viết tay hoặc đã sinh sẵn).
-Chỉ cần `cp .env.example .env` rồi điền nếu muốn:
+Không cần tạo `.env` để chạy — mặc định đã hợp lý. Chỉ cần `cp .env.example
+.env` rồi điều chỉnh nếu muốn đổi `PARALLEL_WORKERS`, `TEST_SCENE_LIMIT`, hoặc
+bật `DEBUG=1` (xem `.env.example`).
 
-- `ELEVENLABS_API_KEY` + `ELEVENLABS_VOICE_ID` (tuỳ chọn, bật giọng đọc):
-  https://elevenlabs.io/app/settings/api-keys
-- `GEMINI_API_KEY` (tuỳ chọn, miễn phí, tự sinh nhân vật/bối cảnh/đạo cụ/prompt
-  cho kịch bản MỚI thay vì viết tay): https://aistudio.google.com/apikey —
-  dùng chung gmail với tài khoản Veo3/Flow (trieudev99@gmail.com)
+Trước khi chạy, cần có sẵn `state/characters.json` (bắt buộc) và tuỳ chọn
+`state/settings.json` / `props.json` / `prompts.json` — nhờ Claude viết các
+file này dựa trên kịch bản (xem SPEC trong `src/characters/extract.ts`,
+`src/settings/extract.ts`, `src/props/extract.ts`,
+`src/splitter/prompt-writer.ts::buildPromptWritingGuide`).
 
 ## Chạy
 
@@ -48,11 +51,12 @@ Kết quả: `output/video_final.mp4`.
   nên UI có thể đổi bất cứ lúc nào. Nếu bot lỗi, dùng
   `npx playwright codegen --channel=chrome --user-data-dir=".auth/chrome-profile" https://labs.google/fx/tools/flow`
   (dùng lại session đã đăng nhập, không cần login lại) để soi lại UI mới.
-- Pipeline có thể **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI,
-  hết quota...), chạy lại `npm run run` sẽ bỏ qua nhân vật/bối cảnh/đạo cụ/
-  audio/clip đã tạo và tiếp tục.
-- `state/*.json` cache kết quả (viết tay hoặc Gemini) để không tốn quota/công
-  sức viết lại mỗi lần resume. Xoá file tương ứng nếu muốn sinh lại.
+- Pipeline có thể **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI...),
+  chạy lại `npm run run` sẽ bỏ qua nhân vật/bối cảnh/đạo cụ/clip đã tạo (dựa
+  trên field `status` trong `state/*.json`, xem `src/assetStatus.ts`) và tiếp
+  tục các mục còn `waiting`/`failed`.
+- `state/*.json` do Claude viết tay — xoá file/entry tương ứng nếu muốn viết
+  lại, hoặc sửa `status` về `"waiting"` để pipeline tự tạo lại asset đó.
 - Model Veo3 mặc định là **"Veo 3.1 - Lite [Lower Priority]"** (rẻ/chậm hơn) —
   đổi trong `src/veo3bot/generate.ts` (`TEXT.modelLite`) nếu muốn dùng Fast/Quality.
 - `PARALLEL_WORKERS` mặc định = 1 (xem `src/config.ts`) — xem RUNBOOK.md mục

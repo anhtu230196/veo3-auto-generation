@@ -27,6 +27,43 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
   bị lẫn vào video — CHƯA có xác nhận cuối cùng là clip #0/#5 sau khi tạo lại
   đã ổn hoàn toàn chưa. Xem mục 4.16.
 
+### ⚠️ NẾU NGƯỜI DÙNG ĐƯA 1 KỊCH BẢN KHÁC HẲN (không phải Columbus) — đọc TRƯỚC KHI viết gì
+
+Mục "Kịch bản đang dùng" ở trên mô tả trạng thái CỦA RIÊNG `state/`/`output/` hiện
+tại — KHÔNG phải giả định cố định về nội dung project. Nếu kịch bản người dùng đưa
+rõ ràng là 1 câu chuyện khác (chủ đề/nhân vật/thời đại khác hẳn Columbus), đây là
+tín hiệu bắt đầu 1 project MỚI — ĐỪNG tự viết đè lên `state/characters.json` v.v.
+mà không hỏi trước. Lý do phải cẩn thận: `state/` và `output/` đều bị `.gitignore`
+(mục trên) — **không có git backup nào** cho 168 cảnh + clip đã tạo của Columbus,
+ghi đè nhầm là MẤT VĨNH VIỄN, không khôi phục được.
+
+**Việc cần làm**: hỏi rõ người dùng muốn 1 trong 2 hướng sau trước khi viết bất kỳ
+`state/*.json` nào cho kịch bản mới:
+1. **Chạy song song, KHÔNG đụng vào Columbus** (mặc định nên đề xuất, rủi ro = 0):
+   dùng `STATE_DIR`/`OUTPUT_DIR`/`STORY_INPUT_PATH` khác trong `.env` (vd
+   `STATE_DIR=./state-<tenkichban>`, `OUTPUT_DIR=./output-<tenkichban>`,
+   `STORY_INPUT_PATH=./input/<tenkichban>.txt`) — `config.ts` đã hỗ trợ sẵn 3 biến
+   này, không cần sửa code. `.auth/` (session Google) dùng chung, không cần đổi.
+   Columbus giữ nguyên trong `state/`/`output/` mặc định, có thể quay lại tiếp tục
+   bất cứ lúc nào.
+2. **Thay hẳn Columbus** (người dùng đã xác nhận 2026-07-18: chấp nhận ghi đè theo
+   hướng này khi cần):
+   - BẮT BUỘC backup `state/` và `output/` hiện tại trước (đổi tên thành
+     `state-columbus-backup/`/`output-columbus-backup/`, hoặc nén lại) — xác nhận
+     backup thành công rồi mới viết đè file mới vào `state/`/`output/` mặc định.
+     Bước backup này KHÔNG bị bỏ qua dù người dùng đồng ý ghi đè — "chấp nhận ghi
+     đè" chỉ có nghĩa là chấp nhận `state/`/`output/` mặc định đổi sang project mới,
+     không có nghĩa là bỏ qua an toàn dữ liệu.
+   - **TUYỆT ĐỐI KHÔNG tái sử dụng dữ liệu Columbus cũ** khi viết `state/*.json` cho
+     kịch bản mới — không mang theo/thừa hưởng bất kỳ nhân vật, bối cảnh, đạo cụ,
+     hay lựa chọn style nào của Columbus. Viết hoàn toàn mới từ đầu, đúng theo nội
+     dung kịch bản mới (dùng skill `flow-historical-video-prompts` + các
+     `*_EXTRACTION_GUIDE`/`buildPromptWritingGuide()` như quy trình ở mục 1 —
+     không phải chỉnh sửa/kế thừa file Columbus cũ).
+   - Sau đó PHẢI cập nhật lại mục 0 này (và mục "Quy trình khi có kịch bản MỚI" ở
+     mục 1) để mô tả đúng project mới đang "sống" trong `state/`/`output/` mặc định —
+     RUNBOOK phải luôn khớp với project thật đang nằm trong 2 thư mục đó.
+
 ## 1. Dự án làm gì
 
 Chuyển 1 kịch bản văn bản (lịch sử/khám phá — hiện tại: Columbus 1492) thành 1
@@ -48,27 +85,49 @@ Setting và Prop **KHÔNG** tạo qua "Create Character"/"Create Scene" như suy
 ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế độ **Image, số lượng
 1** rồi đổi tên (xem `src/veo3bot/imageAsset.ts` và mục 4.10-4.12).
 
-**Luồng xử lý** (`src/orchestrator.ts`):
-1. Đọc `state/characters.json` / `settings.json` / `props.json` (cache sẵn,
-   viết tay — KHÔNG gọi Gemini trong project này) hoặc tự trích xuất qua Gemini
-   nếu có `GEMINI_API_KEY` và chưa có cache.
+**Luồng xử lý** (`src/orchestrator.ts`) — ĐÃ BỎ HẲN Gemini/ElevenLabs (mục 4.20),
+`state/*.json` giờ LUÔN do Claude viết tay, không có nhánh gọi LLM/TTS nào nữa:
+1. Đọc `state/characters.json` (bắt buộc) / `settings.json` / `props.json`
+   (tuỳ chọn) — chỉ ĐỌC cache, báo lỗi rõ nếu thiếu thay vì tự sinh.
 2. Tạo Character/Setting/Prop asset trong Google Flow cho từng mục (giữ hình
    ảnh nhất quán) — `ensureCharactersInFlow` / `ensureSettingsInFlow` /
    `ensurePropsInFlow`.
-3. Chia kịch bản thành các cảnh 7-8 giây, mỗi cảnh có sẵn prompt tiếng Anh chi
-   tiết cho Veo3 trong `state/prompts.json` (viết tay hoặc Gemini).
-4. TTS từng cảnh bằng ElevenLabs → `output/audio/audio_NNN.mp3` — **BỊ BỎ QUA**
-   trong cấu hình hiện tại (`ELEVENLABS_API_KEY` trống trong `.env`) vì project
-   này chưa cần giọng đọc. Video ra sẽ ghép thẳng clip Veo3, không audio.
-5. Tự động hoá Google Flow bằng Playwright để tạo video Veo3 cho từng cảnh,
+3. Đọc `state/prompts.json` (đã viết đủ tay theo đúng số cảnh của
+   `input/story.txt`) — báo lỗi rõ nếu thiếu cảnh. Chạy
+   `warnInconsistentSettingLighting` ngay sau khi đọc (mục 4.19).
+4. Tự động hoá Google Flow bằng Playwright để tạo video Veo3 cho từng cảnh,
    đính đúng Character/Setting/Prop asset qua `@mention` →
    `output/clips/clip_NNN.mp4`.
-6. Ghép clip (+ audio nếu có) từng cảnh, nối tất cả thành video cuối (ffmpeg) →
+5. Ghép clip thành video cuối (ffmpeg, KHÔNG audio) →
    `output/video_final.mp4`.
 
-`ELEVENLABS_API_KEY`/`GEMINI_API_KEY` đều **KHÔNG BẮT BUỘC** (xem
-`config.ts::hasAudio`/`hasGemini`) — pipeline tự bỏ qua bước tương ứng nếu
-thiếu, miễn là `state/*.json` đã có cache sẵn (viết tay).
+**Quy trình khi có KỊCH BẢN MỚI (viết `state/*.json` từ đầu, không dùng Gemini)**:
+đây là việc **Claude tự làm bằng tay trong hội thoại**, KHÔNG có code nào tự
+động thực thi — ghi rõ thứ tự ở đây vì dễ mất nếu phiên bị `/clear` giữa chừng:
+1. Kích hoạt skill `flow-historical-video-prompts` (skill ngoài repo — xem mục
+   4.20/4.21) — skill có quy trình chi tiết hơn: bảng kiểm kê tài sản trước
+   khi viết prompt, cách nghiên cứu ngoại hình nhân vật có thật, xử lý bạo
+   lực/silhouette, outline bắt buộc trên nền/vật thể, ánh sáng ngày/đêm khoá
+   cứng theo Setting.
+2. Lưu kịch bản vào `input/story.txt`.
+3. Chạy `node scripts/split-scenes.mjs` → `state/scenes.json` — ranh giới cảnh
+   CHÍNH XÁC theo thuật toán `splitIntoScenes` (không cần LLM), đảm bảo số
+   cảnh viết trong `state/prompts.json` khớp đúng với check của
+   `orchestrator.ts::loadPrompts`.
+4. Đọc toàn bộ kịch bản 1 lượt, xuất bảng kiểm kê tài sản (nhân vật + từng mốc
+   tuổi, đạo cụ cần giữ nhất quán, bối cảnh lặp lại) — DỪNG LẠI xin người dùng
+   xác nhận trước khi viết prompt đầy đủ, trừ khi họ đã nói đi thẳng luôn.
+5. Viết `state/characters.json`/`settings.json`/`props.json` theo
+   `CHARACTER_EXTRACTION_GUIDE`/`SETTING_EXTRACTION_GUIDE`/`PROP_EXTRACTION_GUIDE`
+   (`src/characters|settings|props/extract.ts`) — LƯU Ý mục 4.19: bối cảnh
+   dùng ở NHIỀU điều kiện ánh sáng → mô tả trung lập; CHỈ 1 điều kiện xuyên
+   suốt → bake thẳng điều kiện đó vào mô tả.
+6. Viết `state/prompts.json` — mỗi cảnh 1 entry khớp `state/scenes.json`, theo
+   `buildPromptWritingGuide()` (`src/splitter/prompt-writer.ts`) — tự ghép
+   PERIOD_ANCHOR/STYLE_ANCHOR_MENTION_SENTENCE/MOTION_SUFFIX vào cuối
+   `videoPrompt` theo đúng thứ tự ghi trong mục "VIDEOPROMPT CUỐI CÙNG PHẢI
+   GỒM" của hàm đó, gán `status: "waiting"` cho mọi entry mới.
+7. Người dùng chạy `npm run login:veo3` (nếu chưa đăng nhập) rồi `npm run run`.
 
 ## 2. Cài đặt & chạy (xem thêm README.md)
 
@@ -79,12 +138,11 @@ npm run login:veo3     # đăng nhập Google 1 lần, lưu session vào .auth/ 
 npm run run            # chạy pipeline, resume-safe (Ctrl+C giữa chừng thì chạy lại được)
 ```
 
-KHÔNG cần tạo `.env`/điền API key nào nếu chỉ tiếp tục project hiện tại —
-`state/*.json` đã có cache sẵn. Chỉ cần `.env` nếu muốn:
-- Bật TTS: điền `ELEVENLABS_API_KEY` + `ELEVENLABS_VOICE_ID`.
-- Dùng Gemini tự sinh prompt cho kịch bản MỚI thay vì Claude viết tay: điền
-  `GEMINI_API_KEY`.
-- Giới hạn số cảnh khi test: `TEST_SCENE_LIMIT=3`.
+KHÔNG cần tạo `.env` nếu chỉ tiếp tục project hiện tại — `state/*.json` đã có
+cache sẵn. Gemini/ElevenLabs đã BỎ HẲN khỏi codebase (mục 4.20) — không còn
+API key nào để điền cho 2 việc đó nữa. Chỉ cần `.env` nếu muốn đổi
+`PARALLEL_WORKERS`, giới hạn số cảnh khi test (`TEST_SCENE_LIMIT=3`), hoặc bật
+`DEBUG=1`.
 
 Biến môi trường quan trọng: `PARALLEL_WORKERS` — **mặc định đã đổi thành 1**
 trong `config.ts` (khác bản gốc dự án mặc định 3), để tránh lặp lại bug mục 4.4
@@ -408,24 +466,78 @@ sáng đêm vào description (an toàn vì cả 9 cảnh dùng nó đều là đ
 cụ thể — để mood/tông màu trong videoPrompt tự điều chỉnh theo từng cảnh như thiết kế ban đầu.
 
 **Đã thêm cơ chế phòng ngừa cho kịch bản SAU** (`src/splitter/prompt-writer.ts`):
-- Thêm 1 đoạn quy tắc mới vào system prompt (`buildSystemPrompt`, ngay sau QUY TẮC BỐI
-  CẢNH/ĐỊA ĐIỂM) giải thích rõ ảnh Setting neo 1 điều kiện ánh sáng cố định, để LLM (khi thật
-  sự gọi Gemini qua `writeVeoPrompts`, hoặc Claude tự viết tay theo cùng tinh thần quy tắc này)
-  không viết mood mâu thuẫn ánh sáng cho cùng 1 settingName.
-- Thêm hàm `warnInconsistentSettingLighting()` chạy CODE (không phụ thuộc LLM tuân thủ) sau khi
-  `writeVeoPrompts` sinh xong toàn bộ prompt — quét MỌI cảnh, nhóm theo `settingNames`, phát
-  hiện qua từ khoá (night/moonlit/... vs daylight/sunny/...) nếu 1 setting bị gán CẢ cảnh đêm
-  LẪN cảnh ngày, in CẢNH BÁO ra console (không throw, vì có thể là cố ý nếu Setting mô tả trung
-  lập ánh sáng — vd "Santa María Ship Deck" cố ý trung lập vì dùng cả 2 điều kiện). `STYLE_ANCHOR_
-  NAME` được LOẠI TRỪ khỏi check này — theo thiết kế nó gắn vào MỌI cảnh mồ côi bất kể mood, xung
-  đột với nó là bình thường, không phải lỗi.
-- **LƯU Ý QUAN TRỌNG**: hàm cảnh báo này chỉ chạy khi `writeVeoPrompts` thực sự được gọi (dùng
-  Gemini qua `GEMINI_API_KEY`, hoặc cache prompts.json CHƯA đủ số cảnh). Với project hiện tại,
-  `state/prompts.json` đã viết tay xong đủ 168 cảnh từ trước — `loadOrWritePrompts` trong
-  `orchestrator.ts` dùng cache có sẵn, KHÔNG gọi lại `writeVeoPrompts`, nên cơ chế cảnh báo mới
-  này KHÔNG tự chạy lại trên state hiện tại. Nếu nghi ngờ còn Setting nào khác bị xung đột
-  ngày/đêm chưa phát hiện, cần tự chạy lại logic quét (xem cách làm thủ công đã dùng khi sửa bug
-  này) hoặc đợi dự án lịch sử MỚI (viết prompts.json từ đầu) để cơ chế này tự kích hoạt.
+- Thêm 1 đoạn quy tắc mới vào `buildPromptWritingGuide` (SPEC viết prompt, xem mục 4.20 — trước
+  đây tên `buildSystemPrompt`, dùng để gọi Gemini; nay dùng làm tài liệu tham khảo khi Claude viết
+  tay), ngay sau QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM, giải thích rõ ảnh Setting neo 1 điều kiện ánh sáng cố
+  định — để không viết mood mâu thuẫn ánh sáng cho cùng 1 settingName.
+- Thêm hàm `warnInconsistentSettingLighting()` — quét MỌI cảnh trong `state/prompts.json`, nhóm
+  theo `settingNames`, phát hiện qua từ khoá (night/moonlit/... vs daylight/sunny/...) nếu 1
+  setting bị gán CẢ cảnh đêm LẪN cảnh ngày, in CẢNH BÁO ra console (không throw, vì có thể là cố ý
+  nếu Setting mô tả trung lập ánh sáng — vd "Santa María Ship Deck" cố ý trung lập vì dùng cả 2
+  điều kiện). `STYLE_ANCHOR_NAME` được LOẠI TRỪ khỏi check này — theo thiết kế nó gắn vào MỌI cảnh
+  mồ côi bất kể mood, xung đột với nó là bình thường, không phải lỗi. **Sau refactor bỏ Gemini
+  (mục 4.20), hàm này được gọi UNCONDITIONALLY trong `orchestrator.ts::loadPrompts` mỗi lần chạy**
+  — khác bản đầu (chỉ chạy khi gọi Gemini qua `writeVeoPrompts`, nên trước đây KHÔNG tự chạy lại
+  trên `state/prompts.json` đã có sẵn 168 cảnh). Giờ mọi lần `npm run run` đều tự rà soát lại.
+
+### 4.20. Đã bỏ HẲN Gemini/ElevenLabs khỏi codebase — Claude viết prompt trực tiếp
+**XÁC NHẬN TRỰC TIẾP (2026-07-18)**: kiểm tra `.env` thật — `GEMINI_API_KEY` và
+`ELEVENLABS_API_KEY`/`ELEVENLABS_VOICE_ID` đều để trống, `state/characters|settings|props|
+prompts.json` đã có sẵn ĐỦ dữ liệu (168/168 cảnh) — nghĩa là 2 tích hợp này **chưa từng được gọi
+thật** trong suốt project, chỉ là nhánh dự phòng không dùng tới. Người dùng xác nhận: quy trình
+thật sự là Claude viết tay toàn bộ `state/*.json` trong hội thoại, KHÔNG qua Gemini/ElevenLabs.
+
+**Đã xoá** (API-calling code thật sự, không dùng nữa):
+- `src/llm/gemini.ts` (client gọi Gemini API) — xoá hẳn.
+- `src/tts/elevenlabs.ts` (client gọi ElevenLabs TTS) — xoá hẳn.
+- `config.ts`: bỏ `geminiApiKeys`, `elevenLabsApiKey`, `elevenLabsVoiceId`, `hasGemini`, `hasAudio`.
+- `orchestrator.ts`: bỏ hẳn bước TTS (audio luôn `undefined`, video ghép thẳng clip Veo3) và mọi
+  nhánh gọi Gemini trong `loadOrExtractCharacters/Settings/Props`/`loadOrWritePrompts` — các hàm
+  `load*` giờ CHỈ đọc cache `state/*.json`, throw lỗi rõ ràng nếu thiếu (bắt buộc với characters/
+  prompts, bỏ qua với settings/props vì không bắt buộc).
+- `characters/settings/props/extract.ts`: bỏ hàm `extractCharacters/Settings/Props` (gọi Gemini).
+- `splitter/prompt-writer.ts`: bỏ `writeVeoPrompts` (vòng lặp gọi Gemini theo lô) và
+  `parseBatchResponse`.
+
+**KHÔNG xoá** (đây là phần "cần thiết để tạo prompt" đã xây dựng từ đầu project, theo yêu cầu
+người dùng — chỉ đổi vai trò từ "system prompt gọi API" sang "SPEC để Claude đọc và viết tay"):
+- `CharacterProfile`/`SettingProfile`/`PropProfile` (interface) — vẫn dùng xuyên suốt codebase.
+- `CHARACTER_EXTRACTION_GUIDE`/`SETTING_EXTRACTION_GUIDE`/`PROP_EXTRACTION_GUIDE` (hằng số string,
+  đổi tên từ `SYSTEM_PROMPT` trong từng `extract.ts`) — toàn bộ quy tắc viết mô tả nhân vật (đa mốc
+  tuổi, nhân vật có thật...), bối cảnh, đạo cụ vẫn giữ nguyên nội dung.
+- `buildPromptWritingGuide()` (đổi tên từ `buildSystemPrompt`, `splitter/prompt-writer.ts`) — TOÀN
+  BỘ quy tắc viết `videoPrompt` (nhân vật, bối cảnh, ánh sáng ngày/đêm mục 4.19, thời đại, bạo lực,
+  giới hạn vật lý Veo3...) vẫn giữ nguyên, chỉ đổi từ "gọi Gemini" sang "hàm export, Claude tự đọc
+  source code này khi cần viết/rà soát lại `state/prompts.json`".
+- `warnInconsistentSettingLighting()` — vẫn chạy, giờ UNCONDITIONALLY mỗi lần `npm run run` (xem
+  mục 4.19, cập nhật 2026-07-18) thay vì chỉ khi gọi Gemini.
+- `VeoPrompt` interface (bao gồm `status`, xem mục 4.18) — không đổi.
+
+**KHÔNG đổi/không cần đổi**: `package.json` (không có SDK Gemini/ElevenLabs, cả 2 đều gọi bằng
+`fetch` thô nên không có dependency nào phải gỡ). `state/*.json` (dữ liệu hiện tại không đổi, vẫn
+đúng định dạng cũ).
+
+**Nếu bắt đầu project lịch sử MỚI**: đọc `CHARACTER_EXTRACTION_GUIDE`/`SETTING_EXTRACTION_GUIDE`/
+`PROP_EXTRACTION_GUIDE`/`buildPromptWritingGuide()` (import và gọi thử, hoặc đọc trực tiếp source)
+làm SPEC trước khi viết tay `state/characters|settings|props|prompts.json` — cùng nội dung/quy tắc
+đã đúc kết qua toàn bộ project Columbus này, chỉ khác người/máy thực thi.
+
+### 4.21. Đã cập nhật skill `flow-historical-video-prompts` với 2 bài học mục 4.16/4.19
+**Bối cảnh**: skill `flow-historical-video-prompts` (ngoài repo — nằm trong danh sách skill khả
+dụng của Claude Code, đường dẫn thật tại thời điểm ghi chú này:
+`%APPDATA%\Claude\local-agent-mode-sessions\skills-plugin\<id>\<id>\skills\flow-historical-video-prompts\SKILL.md`,
+đường dẫn có thể đổi giữa các phiên/máy — dùng `find`/`Glob` tìm lại theo tên file nếu cần) là kiến
+thức DÙNG CHUNG cho MỌI project lịch sử/Flow, tách biệt khỏi RUNBOOK.md (chỉ ghi riêng project
+Columbus này). 2 bài học sau đủ tổng quát nên đã merge thẳng vào skill (bằng `skill-creator`, sửa
+trực tiếp SKILL.md, không chạy full eval loop vì đây là merge nội dung đã có sẵn, không phải thiết
+kế skill mới):
+1. Outline bắt buộc áp dụng RÕ RÀNG cho cả nền/vật thể, không chỉ nhân vật (thêm rule #6 trong mục
+   "Avoiding Veo3 errors" của skill — xem mục 4.16 RUNBOOK này để biết bối cảnh gốc: glow/sparkle).
+2. Setting Ingredient khoá cứng 1 điều kiện ánh sáng ngày/đêm mà mood text không ghi đè được (thêm
+   đoạn mới trong mục "Setting/environment Ingredients" của skill — xem mục 4.19 RUNBOOK này để
+   biết bối cảnh gốc: bug "Pinta Deck").
+Nếu sau này sửa tiếp 2 bug này trong RUNBOOK (mục 4.16/4.19), cân nhắc đồng bộ lại nội dung skill
+cho khớp — 2 nơi này có thể lệch nhau theo thời gian nếu chỉ sửa 1 bên.
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 

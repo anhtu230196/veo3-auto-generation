@@ -95,6 +95,40 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
   await page.keyboard.press("Escape");
 }
 
+interface MentionOccurrence {
+  name: string;
+  start: number;
+  end: number;
+}
+
+/**
+ * Tìm MỌI vị trí xuất hiện dạng CHỮ THẬT của từng tên trong `text` — ưu tiên khớp tên DÀI HƠN
+ * trước (vd "Santa María Ship Deck" trước "Santa María") để 1 tên ngắn không "ăn" nhầm vào
+ * giữa 1 tên dài hơn có chứa nó làm substring. Trả về danh sách đã sort theo vị trí, không
+ * chồng lấn. 1 tên có thể xuất hiện NHIỀU LẦN trong cùng 1 prompt (QUY TẮC NHÂN VẬT yêu cầu
+ * nhắc tên đầy đủ mỗi khi nhân vật hành động) — TẤT CẢ các lần xuất hiện đều được thay bằng
+ * chip, không chỉ lần đầu.
+ */
+function findMentionOccurrences(text: string, names: string[]): MentionOccurrence[] {
+  const sortedByLength = [...names].sort((a, b) => b.length - a.length);
+  const occupied = new Array(text.length).fill(false);
+  const occurrences: MentionOccurrence[] = [];
+  for (const name of sortedByLength) {
+    let searchFrom = 0;
+    while (true) {
+      const idx = text.indexOf(name, searchFrom);
+      if (idx === -1) break;
+      const end = idx + name.length;
+      searchFrom = end;
+      if (occupied.slice(idx, end).some(Boolean)) continue;
+      occurrences.push({ name, start: idx, end });
+      occupied.fill(true, idx, end);
+    }
+  }
+  occurrences.sort((a, b) => a.start - b.start);
+  return occurrences;
+}
+
 /**
  * Điền prompt + chèn chip @mention Character THẬT để ràng buộc đúng khuôn mặt.
  *
@@ -103,12 +137,30 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
  * assets"] + các card asset, mỗi card có subtitle loại "Character"/"Image"/...). Phải:
  * điền tên vào ô Search rồi click đúng card loại Character → dialog đóng, chip được gắn.
  *
- * CÁCH LÀM ỔN ĐỊNH: gõ TOÀN BỘ mô tả trước bằng page.keyboard.type (giữ đúng thứ tự — KHÔNG
- * dùng promptBox.type() từng đoạn vì nó tự focus lại làm ĐẢO THỨ TỰ text, đã gặp thực tế),
- * rồi chèn chip vào CUỐI prompt (vị trí chip không ảnh hưởng việc binding). Click chuột vào
- * card làm mất focus editor nên nếu chèn chip xen giữa sẽ mất phần text gõ sau — đặt chip ở
- * cuối tránh được hẳn lỗi này. Cuối cùng XÁC MINH số chip void trong DOM = số nhân vật, nếu
- * thiếu thì throw để vòng retry chạy lại (KHÔNG tạo clip với mặt sai).
+ * ĐỔI CÁCH CHÈN (2026-07-19) — chèn chip NGAY TẠI VỊ TRÍ tên xuất hiện trong câu, không còn
+ * gộp hết ở cuối. LÝ DO: Flow từ chối tạo cảnh với lỗi "might violate our policies about
+ * generating prominent people" dù đã có chip @mention đúng nhân vật — nghi ngờ trực tiếp bộ
+ * lọc chính sách quét CẢ text thô trong ô prompt (tên chữ của nhân vật lịch sử có thật), không
+ * chỉ riêng ảnh Ingredient. Xoá hẳn tên CHỮ khỏi prompt (thay bằng chip tại đúng vị trí đó) để
+ * tránh bị chính sách quét trúng text thô, đồng thời chip vẫn đứng đúng ngữ pháp câu (rõ ràng
+ * hơn cả cách cũ, vì trước đây chip tách rời hẳn khỏi câu, đứng dồn cục ở cuối).
+ *
+ * CÁCH LÀM ỔN ĐỊNH (giữ nguyên nguyên tắc cũ, chỉ áp dụng nhiều lần thay vì 1 lần ở cuối): mọi
+ * thao tác gõ/chèn chip đều xảy ra ở ĐÚNG VỊ TRÍ CUỐI của phần đã gõ tính đến thời điểm đó —
+ * KHÔNG BAO GIỜ nhảy vào giữa văn bản đã gõ trước đó để chèn chip (đó là nguyên nhân bản cũ né
+ * hẳn việc chèn xen giữa: click card làm mất focus editor, nếu cursor đang ở giữa 1 đoạn text
+ * đã gõ trước, phần gõ SAU đó sẽ bị mất). Cụ thể: gõ đoạn text TRƯỚC tên đầu tiên → chèn chip
+ * (luôn đang ở cuối tài liệu tại bước này) → re-focus + đưa cursor về cuối (để chắc chắn) → gõ
+ * đoạn text TIẾP THEO cho đến tên kế tiếp → lặp lại. Vì mỗi lần chèn chip đều diễn ra khi cursor
+ * đang ở CUỐI tài liệu (không phải giữa), không tái diễn lỗi mất text của cách chèn-giữa ngây
+ * thơ trước đây.
+ *
+ * Nếu 1 tên KHÔNG xuất hiện dạng chữ trong `videoPrompt` (Setting/Prop không được nhắc trong
+ * lời văn, hoặc do STYLE_ANCHOR_MENTION_SENTENCE đã có sẵn "@Style Anchor" dạng chữ — xử lý
+ * riêng, xem bên dưới), chip của tên đó vẫn được chèn ở CUỐI như cơ chế cũ (không đổi).
+ *
+ * Cuối cùng XÁC MINH số chip void trong DOM = tổng số lần chèn dự kiến (đếm cả tên lặp lại
+ * nhiều lần trong câu), nếu thiếu thì throw để vòng retry chạy lại (KHÔNG tạo clip với mặt sai).
  *
  * Setting/Prop asset (bối cảnh/đạo cụ cố định, xem settings.ts/props.ts) dùng CHUNG cơ chế
  * @mention này — dialog chọn asset tìm theo tên, không lọc theo loại Character/Setting/Prop,
@@ -135,14 +187,17 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
 
   const { videoPrompt: text, characterNames, settingNames, propNames } = prompt;
   const mentionNames = [...characterNames, ...(settingNames ?? []), ...(propNames ?? [])];
-  // 1) Gõ toàn bộ mô tả tại con trỏ — đúng thứ tự.
-  await page.keyboard.type(text);
-  if (mentionNames.length === 0) return;
-
-  // 2) Chèn chip @mention từng nhân vật/bối cảnh (loại bỏ trùng) vào cuối prompt.
   const uniqueNames = [...new Set(mentionNames)];
-  for (const name of uniqueNames) {
-    // Đưa con trỏ về cuối tài liệu rồi mở picker bằng "@".
+
+  if (uniqueNames.length === 0) {
+    await page.keyboard.type(text);
+    return;
+  }
+
+  async function insertMentionChip(name: string): Promise<void> {
+    // Luôn mở picker khi cursor đang ở CUỐI tài liệu (xem docstring trên) — chủ động re-focus +
+    // đưa cursor về cuối TRƯỚC khi gõ "@" (an toàn kép, dù theo lý thuyết cursor đã ở đúng vị
+    // trí từ bước trước — cùng triết lý phòng thủ đã dùng xuyên suốt code UI dễ vỡ này).
     await promptBox.click();
     await page.keyboard.press("ControlOrMeta+ArrowDown");
     await page.keyboard.press("End");
@@ -175,16 +230,51 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
       await addBtn.click().catch(() => {});
     }
     await page.waitForTimeout(700);
+
+    // Click card có thể làm mất focus editor — re-focus + đưa cursor về CUỐI tài liệu trước
+    // khi gõ tiếp, tránh tái diễn lỗi mất text của cách chèn-giữa ngây thơ (xem docstring).
+    await promptBox.click();
+    await page.keyboard.press("ControlOrMeta+ArrowDown");
+    await page.keyboard.press("End");
   }
 
-  // 3) XÁC MINH chip void đã chèn đủ (mỗi Character = 1 node data-slate-void).
+  const occurrences = findMentionOccurrences(text, uniqueNames);
+  const inlineNames = new Set(occurrences.map((o) => o.name));
+  const trailingNames = uniqueNames.filter((n) => !inlineNames.has(n));
+
+  // 1) Gõ xen kẽ: đoạn text trước mỗi tên → chèn chip TẠI vị trí đó (thay hẳn tên chữ) → tiếp
+  // tục đoạn sau. Luôn ở cuối tài liệu tại mọi thời điểm (xem docstring).
+  let cursor = 0;
+  for (const occ of occurrences) {
+    let before = text.slice(cursor, occ.start);
+    // STYLE_ANCHOR_MENTION_SENTENCE viết sẵn "@Style Anchor" dạng chữ (styleDNA.ts) — nếu tên
+    // vừa khớp đứng ngay sau 1 dấu "@" thừa trong text, bỏ dấu đó đi vì chip tự là tham chiếu,
+    // không cần "@" đứng trước nữa (tránh còn sót "@[chip]" thừa 1 dấu @ trong câu).
+    if (before.endsWith("@")) before = before.slice(0, -1);
+    if (before) await page.keyboard.type(before);
+    await insertMentionChip(occ.name);
+    cursor = occ.end;
+  }
+  const remainder = text.slice(cursor);
+  if (remainder) await page.keyboard.type(remainder);
+
+  // 2) Tên KHÔNG xuất hiện dạng chữ trong prompt — chèn chip ở cuối như cơ chế cũ.
+  for (const name of trailingNames) {
+    await insertMentionChip(name);
+  }
+
+  // 3) XÁC MINH chip void đã chèn đủ — tổng số lần chèn dự kiến (đếm cả tên lặp lại nhiều lần).
+  const expectedChipCount = occurrences.length + trailingNames.length;
   const html = await promptBox.innerHTML();
   const voidChips = (html.match(/data-slate-void="true"/g) || []).length;
-  debugLog("mentions", `cảnh #${prompt.index}: ${voidChips}/${uniqueNames.length} chip @mention (${uniqueNames.join(", ")})`);
-  if (voidChips < uniqueNames.length) {
+  debugLog(
+    "mentions",
+    `cảnh #${prompt.index}: ${voidChips}/${expectedChipCount} chip @mention (${uniqueNames.join(", ")})`
+  );
+  if (voidChips < expectedChipCount) {
     await debugCapture(page, `chip-mismatch-scene${prompt.index}`);
     throw new Error(
-      `Chip @mention chưa đủ cho cảnh #${prompt.index} (có ${voidChips}/${uniqueNames.length}) — thử lại để tránh sai nhân vật.`
+      `Chip @mention chưa đủ cho cảnh #${prompt.index} (có ${voidChips}/${expectedChipCount}) — thử lại để tránh sai nhân vật.`
     );
   }
 }

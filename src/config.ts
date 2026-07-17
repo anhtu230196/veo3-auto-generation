@@ -7,19 +7,6 @@ function optional(name: string): string | undefined {
 }
 
 export const config = {
-  /** Không bắt buộc — nếu để trống, pipeline bỏ qua bước TTS, video ra không có giọng đọc. */
-  elevenLabsApiKey: optional("ELEVENLABS_API_KEY"),
-  elevenLabsVoiceId: optional("ELEVENLABS_VOICE_ID"),
-  /**
-   * Danh sách key Gemini, cách nhau bằng dấu phẩy — tự động chuyển key kế tiếp khi hết quota/ngày.
-   * Không bắt buộc — nếu để trống, orchestrator CHỈ dùng characters/prompts đã có sẵn trong
-   * state/*.json (do Claude viết thẳng thay vì gọi Gemini); sẽ báo lỗi rõ nếu thiếu cache mà
-   * không có key.
-   */
-  geminiApiKeys: (optional("GEMINI_API_KEY") ?? "")
-    .split(",")
-    .map((k) => k.trim())
-    .filter(Boolean),
   storyInputPath: path.resolve(process.env.STORY_INPUT_PATH ?? "./input/story.txt"),
   outputDir: path.resolve(process.env.OUTPUT_DIR ?? "./output"),
   stateDir: path.resolve(process.env.STATE_DIR ?? "./state"),
@@ -36,10 +23,4 @@ export const config = {
    * định TẮT để không tốn dung lượng/thời gian khi chạy production 168 cảnh.
    */
   debug: optional("DEBUG") === "1",
-  get hasAudio(): boolean {
-    return Boolean(this.elevenLabsApiKey && this.elevenLabsVoiceId);
-  },
-  get hasGemini(): boolean {
-    return this.geminiApiKeys.length > 0;
-  },
 };

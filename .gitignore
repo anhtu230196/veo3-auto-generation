@@ -2,9 +2,9 @@ node_modules/
 dist/
 .env
 output/
-output-test/
+output-*/
 state/
-state-test/
+state-*/
 .auth/
-input/story.txt
+input/*.txt
 *.log

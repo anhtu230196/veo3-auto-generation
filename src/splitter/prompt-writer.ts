@@ -1,5 +1,3 @@
-import { generateText } from "../llm/gemini.js";
-import type { Scene } from "./scenes.js";
 import type { CharacterProfile } from "../characters/extract.js";
 import type { SettingProfile } from "../settings/extract.js";
 import type { PropProfile } from "../props/extract.js";
@@ -36,7 +34,7 @@ export interface VeoPrompt {
   /**
    * "modern" CHỈ dùng cho cảnh cố ý đặt trong hiện tại/thời nay (vd vệ tinh NASA, biển
    * đường phố, tượng đài) — mặc định "period" (thời đại câu chuyện, xem ERA_DESCRIPTOR).
-   * Quyết định có append PERIOD_ANCHOR hay không (xem writeVeoPrompts bên dưới).
+   * Quyết định có append PERIOD_ANCHOR hay không khi viết videoPrompt (xem PROMPT_WRITING_GUIDE).
    */
   era?: "period" | "modern";
   /**
@@ -47,10 +45,13 @@ export interface VeoPrompt {
   status?: AssetStatus;
 }
 
-/** Gộp nhiều cảnh vào 1 lần gọi Gemini để tiết kiệm quota (free tier giới hạn rất thấp số request/ngày). */
-const BATCH_SIZE = 10;
-
-function buildSystemPrompt(
+/**
+ * Toàn bộ quy tắc/kiến thức viết `videoPrompt` cho `state/prompts.json` — TRƯỚC ĐÂY là system
+ * prompt gọi Gemini theo lô, NAY dùng làm SPEC để Claude đọc và tự viết prompt bằng tay trong
+ * hội thoại (đã bỏ gọi Gemini/ElevenLabs tự động, xem RUNBOOK.md mục 4.20). Toàn bộ quy tắc
+ * đã đúc kết qua thực tế (mục 4 RUNBOOK) vẫn giữ nguyên giá trị dù ai/cái gì viết prompt.
+ */
+export function buildPromptWritingGuide(
   characters: CharacterProfile[],
   settings: SettingProfile[],
   props: PropProfile[]
@@ -79,9 +80,8 @@ Danh sách đạo cụ/vật dụng cố định đã có sẵn Prop reference t
 định — Flow tự giữ khi đạo cụ được @mention đính kèm):
 ${propRoster}
 
-Bạn sẽ nhận nhiều cảnh cùng lúc, mỗi cảnh đánh số "Cảnh #N". Trả về JSON thuần dạng mảng, ĐÚNG THỨ TỰ,
-ĐỦ SỐ PHẦN TỬ bằng số cảnh nhận được, mỗi phần tử ứng với 1 cảnh:
-[{"videoPrompt": "...", "characterNames": ["..."], "settingNames": ["..."], "propNames": ["..."], "era": "period"}, ...]
+Mỗi cảnh viết 1 phần tử JSON dạng:
+{"videoPrompt": "...", "characterNames": ["..."], "settingNames": ["..."], "propNames": ["..."], "era": "period"}
 
 era: "period" (mặc định, thời đại của câu chuyện) hoặc "modern" — CHỈ dùng "modern" cho cảnh cố ý đặt
 trong hiện tại/thời nay (vd vệ tinh, đường phố ngày nay, tượng đài, TV/tin tức). Mọi cảnh khác PHẢI để
@@ -163,12 +163,13 @@ deck" ra hình thủy thủ áo kẻ sọc thời nay đứng cạnh container/c
   chi tiết thời đại nào đi kèm.
 - Đặt era: "modern" CHỈ cho cảnh cố ý ở hiện tại (vệ tinh, đường phố ngày nay, tượng đài, tin tức) — các
   cảnh này ngược lại phải rõ ràng là hiện đại, không lẫn chi tiết thời cổ.
-- Với mọi cảnh còn lại, để era: "period" (hoặc bỏ trống) — hệ thống sẽ tự thêm neo thời đại đầy đủ, bạn
-  chỉ cần đảm bảo mô tả trong videoPrompt không mâu thuẫn với thời đại (không tự ý thêm chi tiết hiện đại).
+- Với mọi cảnh còn lại, để era: "period" (hoặc bỏ trống) — PERIOD_ANCHOR (styleDNA.ts) sẽ được append vào
+  cuối videoPrompt để neo thời đại đầy đủ, chỉ cần đảm bảo mô tả không mâu thuẫn với thời đại (không tự ý
+  thêm chi tiết hiện đại).
 
-Giữ nhất quán bối cảnh/thời điểm xuyên suốt các cảnh (kể cả với ngữ cảnh cảnh trước cung cấp bên dưới,
-nếu có) — không lặp lại y hệt bối cảnh/khoảng cách của cảnh liền trước, đổi cỡ cảnh TĨNH để tránh đơn
-điệu (KHÔNG dùng chuyển động máy quay để tạo khác biệt — xem mục 1 ở trên).
+Giữ nhất quán bối cảnh/thời điểm xuyên suốt các cảnh liền kề — không lặp lại y hệt bối cảnh/khoảng cách
+của cảnh liền trước, đổi cỡ cảnh TĨNH để tránh đơn điệu (KHÔNG dùng chuyển động máy quay để tạo khác biệt
+— xem mục 1 ở trên).
 
 TÔNG MÀU/KHÔNG KHÍ — dựng bằng phong cách ${STYLE_NAME}, tông màu đi theo TÂM TRẠNG từng cảnh (không cố
 định 1 tông cho toàn bộ video). Áp dụng: ${SCENE_STYLE_BLOCK}
@@ -203,7 +204,12 @@ vì đếm số cụ thể, "blurred text scrolling" thay vì yêu cầu đọc 
 thay vì mô tả động tác tay tỉ mỉ).
 characterNames: chỉ liệt kê tên đúng như trong danh sách trên, nhân vật thực sự xuất hiện rõ (không phải
 silhouette bạo lực) theo QUY TẮC NHÂN VẬT ở trên.
-Chỉ trả JSON, không giải thích thêm.`;
+
+VIDEOPROMPT CUỐI CÙNG PHẢI GỒM (append bằng tay theo đúng thứ tự, xem styleDNA.ts để lấy đúng text):
+1. Nội dung cảnh (theo các quy tắc ở trên).
+2. PERIOD_ANCHOR nếu era "period" (bỏ qua nếu "modern").
+3. STYLE_ANCHOR_MENTION_SENTENCE NẾU settingNames có chứa "${STYLE_ANCHOR_NAME}".
+4. MOTION_SUFFIX (luôn luôn, mọi cảnh) — đã gồm cả yêu cầu outline (OUTLINE_BLOCK).`;
 }
 
 const NIGHT_LIGHTING_KEYWORDS = [
@@ -237,22 +243,22 @@ function detectLighting(text: string): "night" | "day" | null {
 /**
  * XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19, bug Setting "Pinta Deck") — ảnh Setting reference trong
  * Flow là ảnh TĨNH DUY NHẤT, neo giữ ĐÚNG 1 điều kiện ánh sáng cố định; mood/tông màu viết trong
- * videoPrompt KHÔNG đủ mạnh để ghi đè khi @mention. Quét lại TOÀN BỘ prompt sau khi sinh xong —
- * nếu 1 settingName được gán cho cả cảnh "night" LẪN cảnh "day" (theo từ khoá rõ ràng, bỏ qua
- * mood mơ hồ như dawn/dusk), in CẢNH BÁO ra console (KHÔNG throw — mismatch có thể là cố ý nếu
- * mô tả Setting không khoá cứng ánh sáng cụ thể) để người viết prompt/Setting kiểm tra TRƯỚC khi
- * generate video, thay vì phải tự phát hiện bằng mắt sau khi đã tốn credit tạo sai như lần trước.
+ * videoPrompt KHÔNG đủ mạnh để ghi đè khi @mention. Quét TOÀN BỘ prompt (viết tay hay máy) — nếu
+ * 1 settingName được gán cho cả cảnh "night" LẪN cảnh "day" (theo từ khoá rõ ràng, bỏ qua mood
+ * mơ hồ như dawn/dusk), in CẢNH BÁO ra console (KHÔNG throw — mismatch có thể là cố ý nếu mô tả
+ * Setting không khoá cứng ánh sáng cụ thể) để người viết prompt/Setting kiểm tra TRƯỚC khi
+ * generate video. Gọi trong `orchestrator.ts` ngay sau khi load `state/prompts.json`.
  */
-function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
+export function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
   const bySetting = new Map<string, { night: number[]; day: number[] }>();
   for (const p of prompts) {
     const lighting = detectLighting(p.videoPrompt);
     if (!lighting) continue;
     for (const name of p.settingNames ?? []) {
       // Style Anchor KHÔNG phải 1 địa điểm thật — theo thiết kế, nó được gắn @mention vào MỌI
-      // cảnh mồ côi bất kể mood/ánh sáng (xem QUY TẮC BỐI CẢNH ở buildSystemPrompt), nên xung
-      // đột ngày/đêm với nó là chuyện BÌNH THƯỜNG, không phải dấu hiệu lỗi — bỏ qua để tránh
-      // cảnh báo giả liên tục che lấp các cảnh báo thật (Setting là địa điểm thật trong truyện).
+      // cảnh mồ côi bất kể mood/ánh sáng, nên xung đột ngày/đêm với nó là chuyện BÌNH THƯỜNG,
+      // không phải dấu hiệu lỗi — bỏ qua để tránh cảnh báo giả che lấp cảnh báo thật (Setting
+      // là địa điểm thật trong truyện).
       if (name === STYLE_ANCHOR_NAME) continue;
       const entry = bySetting.get(name) ?? { night: [], day: [] };
       entry[lighting].push(p.index);
@@ -270,86 +276,4 @@ function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
       );
     }
   }
-}
-
-function parseBatchResponse(text: string): {
-  videoPrompt: string;
-  characterNames: string[];
-  settingNames?: string[];
-  propNames?: string[];
-  era?: "period" | "modern";
-}[] {
-  const jsonMatch = text.match(/\[[\s\S]*\]/);
-  if (!jsonMatch) throw new Error(`Không parse được JSON mảng prompt từ LLM: ${text}`);
-  return JSON.parse(jsonMatch[0]);
-}
-
-/**
- * Sinh prompt Veo3 cho từng cảnh theo từng lô (BATCH_SIZE cảnh/lần gọi Gemini) để tiết
- * kiệm quota, có truyền vài prompt trước làm ngữ cảnh giữ liên tục bối cảnh/thời điểm.
- * onBatchComplete (nếu có) được gọi sau mỗi lô để lưu tiến độ, tránh mất công nếu bị
- * gián đoạn giữa chừng (vd hết quota Gemini).
- */
-export async function writeVeoPrompts(
-  scenes: Scene[],
-  characters: CharacterProfile[],
-  settings: SettingProfile[],
-  props: PropProfile[],
-  onBatchComplete?: (resultsSoFar: VeoPrompt[]) => Promise<void> | void
-): Promise<VeoPrompt[]> {
-  const systemPrompt = buildSystemPrompt(characters, settings, props);
-  const results: VeoPrompt[] = [];
-  let recentPrompts: string[] = [];
-
-  for (let i = 0; i < scenes.length; i += BATCH_SIZE) {
-    const batch = scenes.slice(i, i + BATCH_SIZE);
-    const context =
-      recentPrompts.length > 0
-        ? `Các prompt cảnh ngay trước đó (để giữ nhất quán bối cảnh):\n${recentPrompts.join("\n")}\n\n`
-        : "";
-        
-    const sceneList = batch.map((s) => `Cảnh #${s.index}:\n"""${s.text}"""`).join("\n\n");
-    const userPrompt = `${context}Viết prompt Veo3 cho ${batch.length} cảnh sau, trả về mảng JSON đúng thứ tự, đủ ${batch.length} phần tử:\n\n${sceneList}`;
-
-    const text = await generateText(systemPrompt, userPrompt);
-    const items = parseBatchResponse(text);
-
-    for (let j = 0; j < batch.length; j++) {
-      const scene = batch[j];
-      const item = items[j];
-      if (!item) throw new Error(`Thiếu kết quả cho cảnh #${scene.index} trong lô Gemini trả về.`);
-      // Suffix giữ style + neo thời đại append bằng CODE (không dựa vào LLM tuân thủ) —
-      // đảm bảo mọi prompt đều giữ đúng phong cách/thời đại/hạn chế lỗi Veo3 (styleDNA.ts).
-      // PERIOD_ANCHOR CHỈ bỏ qua khi LLM chủ động đánh dấu era "modern" (cảnh cố ý hiện đại).
-      const era = item.era ?? "period";
-      const anchoredPrompt =
-        era === "modern" ? item.videoPrompt : `${item.videoPrompt} ${PERIOD_ANCHOR}`;
-      const settingNames = item.settingNames ?? [];
-      // THỬ NGHIỆM LẦN 2 (xem styleDNA.ts): nếu cảnh có gắn Setting "Style Anchor", thêm câu
-      // tường minh nhắc @mention NGAY TRONG TEXT — chỉ append khi thực sự có mặt trong
-      // settingNames (tức là CÓ chip @mention thật đi kèm, không phải câu suông không neo).
-      const styleAnchorSentence = settingNames.includes(STYLE_ANCHOR_NAME)
-        ? ` ${STYLE_ANCHOR_MENTION_SENTENCE}`
-        : "";
-      results.push({
-        index: scene.index,
-        sceneText: scene.text,
-        videoPrompt: `${anchoredPrompt}${styleAnchorSentence} ${MOTION_SUFFIX}`,
-        characterNames: item.characterNames ?? [],
-        settingNames,
-        propNames: item.propNames ?? [],
-        era,
-        status: "waiting",
-      });
-      console.log(
-        `[prompt-writer] cảnh #${scene.index} [${(item.characterNames ?? []).join(", ")}] → ${item.videoPrompt.slice(0, 80)}...`
-      );
-    }
-
-    recentPrompts = results.slice(-3).map((r) => `#${r.index}: ${r.videoPrompt}`);
-    if (onBatchComplete) await onBatchComplete(results);
-  }
-
-  warnInconsistentSettingLighting(results);
-  return results;
 }
