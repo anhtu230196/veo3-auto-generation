@@ -1,4 +1,5 @@
 import type { Page } from "playwright";
+import { debugCapture, debugLog } from "./debug.js";
 
 const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
@@ -61,6 +62,7 @@ export async function createImageIngredient(
   // nhầm sang ảnh cũ đã có sẵn trong lưới media của project).
   const imageLinksAll = page.getByRole("link", { name: "Generated image" });
   const baselineCount = await imageLinksAll.count();
+  debugLog("baseline", `ingredient "${name}": baselineCount=${baselineCount}`);
 
   await page.locator('button:has-text("arrow_forward")').last().click();
 
@@ -84,6 +86,7 @@ export async function createImageIngredient(
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     await page.waitForTimeout(3000);
     if ((await imageLinksAll.count()) <= baselineCount) {
+      await debugCapture(page, `timeout-ingredient-${name}`);
       throw new Error(`Hết thời gian chờ tạo ảnh cho "${name}" — kiểm tra thủ công trong Flow.`);
     }
     console.log(`[imageAsset] ảnh cho "${name}" thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục đổi tên.`);

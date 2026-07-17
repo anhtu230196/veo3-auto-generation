@@ -11,6 +11,7 @@ import { ensureCharactersInFlow } from "./characters.js";
 import { ensureSettingsInFlow } from "./settings.js";
 import { ensurePropsInFlow } from "./props.js";
 import { launchVeo3Browser } from "./browser.js";
+import { debugCapture, debugLog } from "./debug.js";
 
 const POLL_INTERVAL_MS = 5000;
 // Cảnh có nội dung căng thẳng (thẩm vấn/toà án) từng bị timeout LẶP LẠI RẤT NHIỀU LẦN
@@ -147,6 +148,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     try {
       await search.waitFor({ state: "visible", timeout: 8000 });
     } catch {
+      await debugCapture(page, `mention-picker-fail-scene${prompt.index}`);
       throw new Error(`Không mở được picker @mention cho "${name}" (cảnh #${prompt.index}) — thử lại.`);
     }
     await search.fill(name);
@@ -156,6 +158,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     // đang nằm trong chính prompt), khớp exact tên.
     const card = page.locator('[role="dialog"]').getByText(name, { exact: true }).last();
     if (!(await card.count())) {
+      await debugCapture(page, `mention-card-missing-scene${prompt.index}`);
       throw new Error(`Không thấy Character/Setting/Prop "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
     }
     await card.click();
@@ -172,7 +175,9 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   // 3) XÁC MINH chip void đã chèn đủ (mỗi Character = 1 node data-slate-void).
   const html = await promptBox.innerHTML();
   const voidChips = (html.match(/data-slate-void="true"/g) || []).length;
+  debugLog("mentions", `cảnh #${prompt.index}: ${voidChips}/${uniqueNames.length} chip @mention (${uniqueNames.join(", ")})`);
   if (voidChips < uniqueNames.length) {
+    await debugCapture(page, `chip-mismatch-scene${prompt.index}`);
     throw new Error(
       `Chip @mention chưa đủ cho cảnh #${prompt.index} (có ${voidChips}/${uniqueNames.length}) — thử lại để tránh sai nhân vật.`
     );
@@ -201,6 +206,7 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
   const baselineFailedCount = await failedLocatorAll.count();
   const videoLocatorAll = page.locator("video[src]");
   const baselineVideoCount = await videoLocatorAll.count();
+  debugLog("baseline", `cảnh #${prompt.index}: baselineVideoCount=${baselineVideoCount}, baselineFailedCount=${baselineFailedCount}`);
 
   await page.locator(`button:has-text("${TEXT.generate}")`).last().click();
 
@@ -212,6 +218,7 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
       console.warn(
         `[veo3bot] cảnh #${prompt.index} bị Flow từ chối tạo (có thể do chính sách nội dung) — bỏ qua cảnh này.`
       );
+      await debugCapture(page, `flow-rejected-scene${prompt.index}`);
       return "skipped";
     }
     await page.waitForTimeout(POLL_INTERVAL_MS);
@@ -229,6 +236,7 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     await page.waitForTimeout(3000);
     if ((await videoLocatorAll.count()) <= baselineVideoCount) {
+      await debugCapture(page, `timeout-scene${prompt.index}`);
       throw new Error(
         `Hết thời gian chờ generate cảnh #${prompt.index} — video không xuất hiện kể cả sau khi reload. Kiểm tra thủ công trong Flow.`
       );
@@ -313,6 +321,7 @@ async function processQueue(
         status = await generateOneClip(page, p, outFile);
       } catch (err2) {
         log(`cảnh #${p.index} vẫn lỗi sau khi thử lại — bỏ qua: ${(err2 as Error).message}`);
+        await debugCapture(page, `worker${workerId}-final-fail-scene${p.index}`);
         status = "skipped";
       }
     }

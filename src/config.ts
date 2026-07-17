@@ -29,6 +29,13 @@ export const config = {
   testSceneLimit: process.env.TEST_SCENE_LIMIT ? Number(process.env.TEST_SCENE_LIMIT) : undefined,
   /** Số tab Flow chạy song song khi generate video — mỗi tab dùng 1 project riêng biệt. */
   parallelWorkers: Number(process.env.PARALLEL_WORKERS ?? 1),
+  /**
+   * Bật qua `DEBUG=1` trong `.env` — khi bật: log chi tiết từng bước trung gian (baseline
+   * count, số chip @mention đã chèn, trạng thái reload...) VÀ lưu screenshot + HTML dump vào
+   * `output/debug/` mỗi khi generateOneClip/createImageIngredient gặp lỗi hoặc timeout. Mặc
+   * định TẮT để không tốn dung lượng/thời gian khi chạy production 168 cảnh.
+   */
+  debug: optional("DEBUG") === "1",
   get hasAudio(): boolean {
     return Boolean(this.elevenLabsApiKey && this.elevenLabsVoiceId);
   },
