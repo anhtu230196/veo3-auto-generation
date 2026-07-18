@@ -115,6 +115,13 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
   RỖNG — đừng gán nhân vật cho cảnh không thật sự thấy rõ họ.
 - Nếu 1 cảnh có từ 2 nhân vật trở lên cùng xuất hiện, mô tả rõ TỪNG nhân vật đang làm gì (không gộp mơ
   hồ "they"), để characterNames liệt kê đủ.
+- NGƯỜI THÂN CỦA NHÂN VẬT NỔI TIẾNG — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP: Flow từng từ chối tạo cảnh với lỗi
+  "might violate our policies about generating prominent people" dù đã @mention đúng Character, vì nhân
+  vật đó là NGƯỜI THÂN của 1 nhân vật nổi tiếng khác (dùng tên lịch sử thật của họ). Nếu danh sách nhân
+  vật ở trên có tên dạng quan hệ sở hữu (vd "Columbus's Brother" thay vì "Bartholomew Columbus") — đây
+  là CÓ CHỦ ĐÍCH, không phải lỗi đặt tên. LUÔN dùng ĐÚNG tên đã cho trong danh sách (kể cả dạng quan hệ
+  sở hữu) khi nhắc trong videoPrompt — TUYỆT ĐỐI không tự đổi lại thành tên lịch sử thật của họ dù bạn
+  biết tên đó, vì sẽ tái diễn lỗi bị chặn.
 
 QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu danh sách bối cảnh ở trên không rỗng:
 - Nếu cảnh diễn ra ở ĐÚNG 1 địa điểm đã có trong danh sách bối cảnh (dù là toàn cảnh rộng hay cận cảnh 1

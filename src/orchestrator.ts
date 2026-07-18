@@ -69,9 +69,26 @@ async function loadProps(): Promise<PropProfile[]> {
   return JSON.parse(cached) as PropProfile[];
 }
 
+/**
+ * XÁC NHẬN TRỰC TIẾP (2026-07-19) — `state/prompts.json` bị phát hiện RỖNG HOÀN TOÀN (0 byte),
+ * mất sạch dữ liệu 168 cảnh. Nghi ngờ trực tiếp: `fs.writeFile` KHÔNG atomic — nó truncate file
+ * về 0 byte TRƯỚC khi ghi nội dung mới; nếu process bị crash/kill đúng lúc giữa 2 bước đó (rất
+ * có thể do process cũ còn chạy từ trước khi các fix trong phiên này được áp dụng, xem RUNBOOK
+ * mục 4.23), file bị bỏ lại ở trạng thái 0 byte vĩnh viễn — không có git backup nào cho
+ * `state/` (đã .gitignore) để khôi phục. Sửa bằng ghi ATOMIC: ghi ra file TẠM trước, rồi
+ * `rename` đè lên file đích — `rename` trên cùng ổ đĩa là 1 thao tác nguyên tử ở tầng hệ điều
+ * hành (không có trạng thái "nửa vời" giữa chừng), nên dù crash bất cứ lúc nào, file đích hoặc
+ * giữ nguyên nội dung CŨ hoàn toàn, hoặc có nội dung MỚI hoàn toàn — không bao giờ rỗng/hỏng.
+ */
+async function atomicWriteJson(filePath: string, data: unknown): Promise<void> {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
+  await fs.writeFile(tmpPath, JSON.stringify(data, null, 2));
+  await fs.rename(tmpPath, filePath);
+}
+
 async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
-  await fs.mkdir(config.stateDir, { recursive: true });
-  await fs.writeFile(PROMPTS_STATE_FILE, JSON.stringify(prompts, null, 2));
+  await atomicWriteJson(PROMPTS_STATE_FILE, prompts);
 }
 
 /**
@@ -80,16 +97,13 @@ async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
  * tiến độ nếu pipeline crash giữa chừng lúc đang tạo asset thứ N/M.
  */
 async function saveCharactersProgress(characters: CharacterProfile[]): Promise<void> {
-  await fs.mkdir(config.stateDir, { recursive: true });
-  await fs.writeFile(CHARACTERS_STATE_FILE, JSON.stringify(characters, null, 2));
+  await atomicWriteJson(CHARACTERS_STATE_FILE, characters);
 }
 async function saveSettingsProgress(settings: SettingProfile[]): Promise<void> {
-  await fs.mkdir(config.stateDir, { recursive: true });
-  await fs.writeFile(SETTINGS_STATE_FILE, JSON.stringify(settings, null, 2));
+  await atomicWriteJson(SETTINGS_STATE_FILE, settings);
 }
 async function savePropsProgress(props: PropProfile[]): Promise<void> {
-  await fs.mkdir(config.stateDir, { recursive: true });
-  await fs.writeFile(PROPS_STATE_FILE, JSON.stringify(props, null, 2));
+  await atomicWriteJson(PROPS_STATE_FILE, props);
 }
 
 /**

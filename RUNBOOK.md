@@ -16,16 +16,34 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
 - **`state/characters.json`, `state/prompts.json`, `state/settings.json`,
   `state/props.json`** đều do **Claude viết tay trực tiếp trong hội thoại**
   (không gọi Gemini) — xem mục 1 để hiểu vì sao việc này khả thi.
-- **Đã generate xong `output/clips/clip_000.mp4` → `clip_017.mp4`,
-  `clip_026.mp4`, `clip_028.mp4`** (20/168 cảnh) tính đến thời điểm ghi tài liệu
-  này. Chạy `npm run run` để tiếp tục — resume-safe, tự bỏ qua clip đã có.
+- **Đã generate xong `output/clips/clip_000.mp4` → `clip_004.mp4`** (5/168 cảnh)
+  tính đến thời điểm ghi tài liệu này (2026-07-19) — SỐ NÀY GIẢM so với ghi chú
+  cũ (từng ghi 20/168) do sự cố mất dữ liệu `state/prompts.json`, xem mục 4.23.
+  Chạy `npm run run` để tiếp tục — resume-safe, tự bỏ qua clip đã có.
+- **`state/prompts.json` VỪA ĐƯỢC VIẾT LẠI TOÀN BỘ (2026-07-19, mục 4.23)** sau
+  sự cố mất dữ liệu — nội dung MỚI, CHƯA generate thử/soi bằng mắt để xác nhận
+  chất lượng. Có backup dạng script tại `scripts/rebuild-prompts.mjs` +
+  `batch1.mjs`-`batch6.mjs` (chạy lại được nếu mất lần nữa).
 - **Git đã init** (KHÔNG có remote) — dùng `git status`/`git diff` để xem thay
   đổi thay vì hỏi lại. `state/`, `output/`, `.env`, `.auth/`,
-  `input/story.txt` đều bị `.gitignore` — không nằm trong git.
-- **Việc CHƯA xác nhận xong**: cơ chế "Style Anchor" (neo phong cách cho cảnh
-  không có Ingredient nào) đang ở phiên bản thứ 3, vừa sửa xong lỗi khung viền
-  bị lẫn vào video — CHƯA có xác nhận cuối cùng là clip #0/#5 sau khi tạo lại
-  đã ổn hoàn toàn chưa. Xem mục 4.16.
+  `input/story.txt` đều bị `.gitignore` — không nằm trong git (rủi ro mất dữ
+  liệu đã xảy ra thật, xem mục 4.23 — LUÔN cẩn trọng khi ghi vào các file này).
+
+### 🔴 Ưu tiên xử lý tiếp theo (đọc trước khi chạy `npm run run` đại trà)
+
+3 việc CHƯA XÁC NHẬN đang chặn việc chạy đại trà 163 cảnh còn thiếu, theo đúng thứ tự nên làm:
+
+1. **Cảnh #6 (Christopher Columbus) có còn bị chặn "prominent people" không** (mục 4.24, mới
+   nhất) — đã sửa người thân (Bartholomew → "Columbus's Brother") nhưng CHÍNH Columbus thì
+   không thể đổi tên quan hệ được. Generate thử cảnh #6 trước — nếu vẫn bị chặn, đây là giới
+   hạn cứng ảnh hưởng đến RẤT NHIỀU cảnh có Columbus trong 168 cảnh.
+2. **Nội dung 168 cảnh vừa viết lại (mục 4.23) chưa generate thử lần nào** — ưu tiên cảnh #5-9,
+   #77-89 (cao trào Rodrigo/Columbus) trước khi chạy đại trà, tránh tốn credit nếu có sai sót.
+3. **Style Anchor v3 (mục 4.12, lần 3)** — sửa lỗi khung viền lẫn vào video, chưa xác nhận cuối
+   cùng đã ổn hoàn toàn chưa (ảnh hưởng mọi cảnh mồ côi không có Ingredient).
+
+Dùng `scripts/generate-test-scenes.ts` (`npx tsx scripts/generate-test-scenes.ts <index...>`) để
+test 1 tập cảnh cụ thể mà không chạy toàn bộ pipeline — xem chi tiết cách dùng trong chính file.
 
 ### ⚠️ NẾU NGƯỜI DÙNG ĐƯA 1 KỊCH BẢN KHÁC HẲN (không phải Columbus) — đọc TRƯỚC KHI viết gì
 
@@ -539,6 +557,126 @@ kế skill mới):
 Nếu sau này sửa tiếp 2 bug này trong RUNBOOK (mục 4.16/4.19), cân nhắc đồng bộ lại nội dung skill
 cho khớp — 2 nơi này có thể lệch nhau theo thời gian nếu chỉ sửa 1 bên.
 
+### 4.22. Lỗi "prominent people" — đổi cách chèn @mention từ "dồn cục ở cuối" sang "xen kẽ đúng vị trí"
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: cảnh #4 (Rodrigo de Triana chỉ tay hô hoán, xem mục 4.19)
+bị Flow từ chối tạo với lỗi `"This prompt might violate our policies about generating prominent
+people"` — DÙ ĐÃ có chip @mention Character đúng gắn vào cảnh. Nghi ngờ trực tiếp: bộ lọc chính
+sách của Flow quét CẢ text thô trong ô prompt (tên chữ "Rodrigo de Triana" xuất hiện theo QUY TẮC
+NHÂN VẬT — phải nhắc tên đầy đủ mỗi khi nhân vật hành động), không chỉ riêng ảnh Ingredient được
+tham chiếu qua chip.
+
+**Đã đổi `fillPromptWithMentions` (`src/veo3bot/generate.ts`)**: trước đây gõ TOÀN BỘ `videoPrompt`
+trước (giữ nguyên tên chữ của nhân vật/bối cảnh/đạo cụ trong câu), rồi chèn hết chip @mention DỒN
+CỤC ở cuối prompt (chip tách rời hẳn khỏi câu). Giờ đổi sang: tìm MỌI vị trí tên xuất hiện dạng chữ
+trong `videoPrompt` (hàm `findMentionOccurrences`, ưu tiên khớp tên DÀI hơn trước để tránh 1 tên
+ngắn "ăn" nhầm vào tên dài chứa nó làm substring, vd "Santa María" vs "Santa María Ship Deck"), rồi
+gõ xen kẽ: đoạn text trước tên → chèn CHIP NGAY TẠI vị trí đó (thay hẳn tên chữ, không gõ tên nữa)
+→ đoạn text sau → lặp lại. Tên xuất hiện NHIỀU LẦN trong cùng 1 prompt (thường gặp vì QUY TẮC NHÂN
+VẬT yêu cầu nhắc lại mỗi khi hành động) đều được thay TẤT CẢ, không chỉ lần đầu. Tên KHÔNG xuất
+hiện dạng chữ trong câu (Setting/Prop không được nhắc trong lời văn, hoặc trường hợp
+`STYLE_ANCHOR_MENTION_SENTENCE` đã có sẵn `"@Style Anchor"` dạng chữ — xử lý riêng: bỏ dấu "@" thừa
+đứng ngay trước, để chip tự thay thế trọn vẹn cụm "@Style Anchor" cũ) vẫn chèn chip ở cuối như cơ
+chế cũ, không đổi.
+
+**KHÔNG tái diễn bug đã né trước đây** (mục 4.1 cũ: "chèn chip xen giữa làm mất text gõ sau vì
+click card làm mất focus editor"): nguyên tắc giữ nguyên — mọi thao tác chèn chip chỉ xảy ra khi
+cursor đang ở ĐÚNG CUỐI của phần đã gõ tính đến thời điểm đó (không bao giờ nhảy vào GIỮA text đã
+gõ trước để chèn), nên không tái diễn lỗi mất text. Sau mỗi lần chèn chip (cả trước lẫn sau, an
+toàn kép) đều chủ động re-focus + đưa cursor về cuối tài liệu bằng `Ctrl+ArrowDown` + `End`.
+
+**CHƯA XÁC NHẬN CUỐI CÙNG** liệu cách chèn mới này có THẬT SỰ giải quyết được lỗi "prominent
+people" hay không (nghi ngờ hợp lý dựa trên việc "xoá tên chữ khỏi text thô" nhưng Flow không có
+API chính thức nên không thể biết chắc bộ lọc thực sự dựa vào gì) — CẦN chạy lại cảnh #4 (và các
+cảnh khác từng bị chặn tương tự) sau khi áp dụng thay đổi này để xác nhận bằng mắt trước khi tin
+tưởng đây là fix triệt để.
+
+**CẬP NHẬT (mục 4.24)**: đã xác nhận cách chèn xen kẽ ở mục này KHÔNG đủ — bộ lọc vẫn chặn dù
+không còn tên chữ thô trong prompt. Xem mục 4.24 để biết hướng xử lý tiếp (đổi tên quan hệ cho
+người thân của nhân vật nổi tiếng) và câu hỏi còn bỏ ngỏ (chính nhân vật nổi tiếng có bị chặn
+vĩnh viễn hay không).
+
+### 4.23. `state/prompts.json` bị mất trắng (0 byte) — nguyên nhân, khôi phục, và ghi atomic
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: `state/prompts.json` (168 cảnh Claude viết tay) bị phát
+hiện RỖNG HOÀN TOÀN (0 byte). `state/` bị `.gitignore` nên KHÔNG có git backup nào. Nghi ngờ
+nguyên nhân trực tiếp: `savePromptsProgress` (`orchestrator.ts`) dùng `fs.writeFile` — thao tác
+này KHÔNG atomic, nó truncate file về 0 byte TRƯỚC khi ghi nội dung mới. Nếu process bị
+crash/kill đúng lúc giữa 2 bước đó — rất có thể do **process cũ còn chạy từ trước khi các fix
+trong phiên này được áp dụng** (đã cảnh báo trực tiếp với người dùng trước khi sự cố xảy ra,
+xem hội thoại lúc phát hiện lỗi "prominent people") — file bị bỏ lại ở trạng thái 0 byte vĩnh
+viễn.
+
+**Đã sửa gốc rễ**: thêm `atomicWriteJson()` trong `orchestrator.ts` — ghi ra file TẠM
+(`<path>.tmp-<pid>-<timestamp>`) trước, rồi `fs.rename()` đè lên file đích. `rename` trên cùng ổ
+đĩa là thao tác NGUYÊN TỬ ở tầng hệ điều hành — không có trạng thái "nửa vời" giữa chừng, nên dù
+crash bất cứ lúc nào, file đích chỉ có thể giữ nguyên bản CŨ hoàn toàn hoặc có bản MỚI hoàn toàn,
+không bao giờ rỗng/hỏng nữa. Áp dụng cho CẢ 4 hàm save (`savePromptsProgress`,
+`saveCharactersProgress`, `saveSettingsProgress`, `savePropsProgress`) — cùng lỗ hổng như nhau.
+
+**Đã khôi phục dữ liệu**: `state/scenes.json` (168 cảnh gốc từ `input/story.txt`) và
+`state/characters|settings|props.json` đều KHÔNG bị mất (chỉ riêng `prompts.json` bị 0 byte) —
+dùng làm nền để Claude viết lại TOÀN BỘ `videoPrompt`/`characterNames`/`settingNames`/
+`propNames`/`era` cho 168 cảnh, theo đúng `buildPromptWritingGuide()` + mọi bài học đã đúc kết
+(outline, ánh sáng ngày/đêm mục 4.19, era anchor, mention xen kẽ mục 4.22). Cảnh #5 khôi phục
+được 1 phần từ file debug HTML cũ (`output/debug/mention-card-missing-scene5-...html` — trang
+web lưu lại prompt đang gõ dở lúc gặp lỗi, xem cơ chế `debugCapture` mục "thêm chức năng debug").
+Cảnh #0-4 đã có clip thật trong `output/clips/` — giữ nguyên clip, đánh dấu `status: "success"`
+dù không có prompt gốc chính xác 100% (không cần tạo lại, chỉ cần soi lại bằng mắt nếu nghi ngờ
+nội dung không khớp — xem mục 5).
+
+**Script khôi phục đã lưu lại làm backup thật sự** (`scripts/rebuild-prompts.mjs` +
+`scripts/batch1.mjs` → `batch6.mjs`, không dùng npm install, chỉ Node core): mỗi file batch chứa
+nội dung 28-30 cảnh Claude đã viết, `rebuild-prompts.mjs` ghép với `state/scenes.json` + áp
+suffix (PERIOD_ANCHOR/STYLE_ANCHOR_MENTION_SENTENCE/MOTION_SUFFIX, copy y hệt `styleDNA.ts` tại
+thời điểm viết) rồi ghi atomic. Nếu `state/prompts.json` lại bị mất lần nữa, chạy lại
+`node scripts/batch1.mjs && node scripts/batch2.mjs && ... && node scripts/batch6.mjs` khôi phục
+lại trong vài giây — KHÔNG cần viết lại từ đầu. **LƯU Ý**: nếu sửa `styleDNA.ts` sau thời điểm
+này, các hằng số copy trong `rebuild-prompts.mjs` sẽ LỆCH bản mới — cập nhật lại file này nếu
+`styleDNA.ts` đổi, hoặc chỉ dùng các script này như tài liệu tham khảo nội dung cảnh, không dùng
+lại phần suffix nếu style đã đổi.
+
+**CHƯA XÁC NHẬN BẰNG MẮT** nội dung 168 cảnh vừa viết lại — đã qua kiểm tra tự động (index liên
+tục 0-167, tên nhân vật/bối cảnh/đạo cụ khớp roster, không xung đột ánh sáng ngày/đêm), nhưng
+CHƯA generate thử để xác nhận chất lượng thực tế. Cần chạy `npm run run` (nhớ dừng process cũ
+nếu còn) và soi vài clip đầu theo quy trình mục 5.
+
+### 4.24. Bộ lọc "prominent people" chặn CẢ người thân của nhân vật nổi tiếng, kể cả khi đã @mention đúng
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: cảnh #6 (Christopher Columbus trên boong Santa María) vẫn bị Flow từ
+chối với lỗi `"might violate our policies about generating prominent people"` — SAU KHI đã áp dụng fix mục
+4.22 (chèn chip @mention ngay tại vị trí tên, không còn tên chữ thô trong prompt). Đồng thời phát hiện
+thêm: Character "Bartholomew Columbus" (em trai Christopher Columbus, KHÔNG tự thân nổi tiếng) cũng từng
+bị chặn cùng lỗi dù đã @mention đúng qua Ingredient. Kết luận: bộ lọc "prominent people" **không chỉ dựa
+vào text thô** như giả thuyết ở mục 4.22 — nó có vẻ quét TRÚNG bất kỳ tên nào gắn với 1 người thật/lịch sử
+đã biết, kể cả khi tên đó chỉ tồn tại dưới dạng nhãn của chip @mention (không phải chữ gõ tay), và kể cả
+người thân ít nổi tiếng hơn nhiều so với nhân vật chính (Bartholomew không nổi tiếng độc lập, nhưng mang
+họ "Columbus" và là em trai người rất nổi tiếng).
+
+**Đã sửa** (theo yêu cầu người dùng — áp dụng cả trong code project này VÀ skill
+`flow-historical-video-prompts` để dùng được cho project khác sau này):
+- `src/characters/extract.ts::CHARACTER_EXTRACTION_GUIDE` — thêm quy tắc: NGƯỜI THÂN (cha/mẹ/anh/chị/em/
+  con...) của 1 nhân vật THỰC SỰ nổi tiếng trong truyện KHÔNG được đặt tên lịch sử thật làm tên Character
+  — thay bằng tên quan hệ sở hữu (vd `"Columbus's Brother"` thay vì `"Bartholomew Columbus"`), áp dụng cho
+  CẢ field `name` của Character asset LẪN cách nhắc trong `videoPrompt`.
+- `src/splitter/prompt-writer.ts::buildPromptWritingGuide()` — thêm nhắc nhở trong QUY TẮC NHÂN VẬT: LUÔN
+  dùng đúng tên đã cho trong danh sách nhân vật (kể cả dạng quan hệ sở hữu), KHÔNG tự đổi lại thành tên
+  lịch sử thật dù biết tên đó.
+- **Skill `flow-historical-video-prompts`** (ngoài repo, xem đường dẫn ở mục 4.21): thêm quy tắc tương tự
+  vào "Character sheet prompts" (đặt tên quan hệ cho người thân của nhân vật nổi tiếng) và sửa lại mục
+  "Named person / content-block workaround" — bản cũ khẳng định "chỉ cần dùng Ingredient là đủ", nay sửa
+  thành "Ingredient là bước ĐẦU nhưng KHÔNG đủ với người thân của nhân vật nổi tiếng", kèm hướng dẫn kiểm
+  tra quan hệ họ hàng + đổi tên quan hệ nếu vẫn bị chặn.
+- **Dữ liệu project hiện tại**: đổi `"Bartholomew Columbus"` → `"Columbus's Brother"` trong
+  `state/characters.json` (xoá `status` để tạo lại asset Flow dưới tên mới — asset cũ tên
+  "Bartholomew Columbus" bị bỏ không dùng, không cần xoá thủ công) và trong `state/prompts.json` (cảnh #17,
+  #21, #34 — cả `characterNames` lẫn text `videoPrompt`). Đồng bộ luôn `scripts/batch1.mjs`/`batch2.mjs`
+  (nguồn backup) để không tái sinh lại tên cũ nếu chạy lại script khôi phục sau này.
+
+**CHƯA XÁC NHẬN**: liệu cảnh #6 (Christopher Columbus — CHÍNH nhân vật nổi tiếng, không phải người thân)
+có tiếp tục bị chặn hay không — quy tắc đổi tên quan hệ CHỈ áp dụng được cho người thân, KHÔNG áp dụng
+được cho chính nhân vật nổi tiếng (không thể gọi Columbus là "ai đó's brother"). Nếu cảnh #6 và các cảnh
+Columbus khác tiếp tục bị chặn dù đã làm đúng mọi bước, đây có thể là giới hạn KHÔNG khắc phục được bằng
+prompt engineering — cần xác nhận qua thực tế generate lại trước khi kết luận, xem skill mục "Named
+person / content-block workaround" (điểm 2) cho hướng xử lý nếu đúng là giới hạn cứng.
+
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
 Các bug nghiêm trọng nhất (sai hình ảnh Ingredient, trùng lặp clip, phong cách
@@ -573,16 +711,20 @@ lỗi runtime) — chỉ lộ ra khi soi bằng mắt. Quy trình verify chuẩn
 
 ## 6. Việc còn dang dở / có thể làm tiếp
 
-- **Xác nhận cuối cùng Style Anchor v3 (mục 4.12, lần 3)**: vừa xoá + tạo lại
-  Style Anchor asset (nội dung mới: phong cảnh, không khung viền) và
-  `clip_000.mp4`/`clip_005.mp4`. CẦN kiểm tra bằng mắt kết quả sau khi
-  `npm run run` chạy xong lần tiếp theo trước khi tin tưởng áp dụng cho 74 cảnh
-  mồ côi còn lại.
-- **148/168 cảnh còn thiếu clip** — tiếp tục chạy `npm run run` (resume-safe).
-- **Audio/TTS đang tắt** — nếu sau này muốn bật giọng đọc, điền
-  `ELEVENLABS_API_KEY`/`ELEVENLABS_VOICE_ID` vào `.env`, pipeline tự bật lại
-  bước TTS + mux audio/video theo cảnh (logic `ffmpeg.ts::muxSceneAudio` vẫn
-  còn nguyên, chưa test lại với kịch bản Columbus).
+(3 việc CHƯA XÁC NHẬN quan trọng nhất — Style Anchor v3, nội dung 168 cảnh viết lại, và bug
+"prominent people" — đã gộp vào danh sách ưu tiên ở mục 0, đọc ở đó trước. Các mục dưới đây là
+việc phụ/dài hạn hơn, không chặn việc chạy tiếp pipeline.)
+
+- **163/168 cảnh còn thiếu clip** — tiếp tục chạy `npm run run` (resume-safe)
+  SAU KHI đã xác nhận xong 3 ưu tiên ở mục 0. Số này tăng so với ghi chú cũ
+  (từng 148) do sự cố mất `prompts.json` (mục 4.23) — 15 cảnh từng generate
+  xong trước đó (ngoài 5 cảnh #0-4 còn giữ được clip) đã mất dấu vết.
+- **Audio/TTS đã BỎ HẲN** (ElevenLabs xoá khỏi codebase, mục 4.20) — video ra
+  KHÔNG có giọng đọc, không còn là "tuỳ chọn tắt" nữa. Logic mux audio/video
+  theo cảnh (`ffmpeg.ts::muxSceneAudio`) vẫn còn nguyên trong code (generic,
+  không phụ thuộc ElevenLabs) nhưng không có gì gọi tới nữa — chỉ dùng lại được
+  nếu sau này có nguồn audio khác (không phải bật lại ElevenLabs, vì client đã
+  xoá hẳn).
 - **`ensurePropsInFlow` dùng "Create Character" reuse** (không phải chế độ
   Image như Setting) — hoạt động ổn định nhưng khác luồng với Setting, có thể
   cân nhắc thống nhất về 1 luồng nếu phát sinh vấn đề tương tự mục 4.10.
@@ -601,7 +743,7 @@ lỗi runtime) — chỉ lộ ra khi soi bằng mắt. Quy trình verify chuẩn
   đại trà cho các cảnh còn lại, cần: (1) soi lại các asset cũ xem outline có đủ
   đậm/đều không, xoá+tạo lại nếu cần; (2) generate thử vài clip mới, xác nhận
   outline hiện rõ nhất quán trên cả nhân vật lẫn cảnh vật nền trước khi chạy đại
-  trà cho 148 cảnh còn thiếu.
+  trà cho 163 cảnh còn thiếu.
 
 ## 7. Repo
 
