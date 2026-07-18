@@ -38,7 +38,9 @@ const PERIOD_ANCHOR =
   "architecture. NO modern clothing, NO modern ports/harbors/cranes/shipping containers, " +
   "NO modern equipment of any kind.";
 
-const STYLE_ANCHOR_MENTION_SENTENCE = `Maintain the exact same illustration style as @${STYLE_ANCHOR_NAME}.`;
+// KHÔNG có "@" trước tên — xem RUNBOOK mục 4.25 (gõ "@" dạng chữ thật tự mở dialog Flow giữa
+// chừng, làm hỏng text gõ sau đó). Khớp đúng styleDNA.ts sau khi sửa 2026-07-18.
+const STYLE_ANCHOR_MENTION_SENTENCE = `Maintain the exact same illustration style as ${STYLE_ANCHOR_NAME}.`;
 
 const stateDir = path.resolve("./state");
 const scenesPath = path.join(stateDir, "scenes.json");

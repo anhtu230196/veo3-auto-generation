@@ -22,7 +22,9 @@ const NEW_MOTION_SUFFIX =
   "surfaces only, even on metal, gold, or gemstones.";
 
 const STYLE_ANCHOR_NAME = "Style Anchor";
-const STYLE_ANCHOR_SENTENCE = "Maintain the exact same illustration style as @Style Anchor.";
+// KHÔNG có "@" trước tên — xem RUNBOOK mục 4.25 (gõ "@" dạng chữ thật tự mở dialog Flow giữa
+// chừng, làm hỏng text gõ sau đó). Khớp đúng styleDNA.ts sau khi sửa 2026-07-18.
+const STYLE_ANCHOR_SENTENCE = "Maintain the exact same illustration style as Style Anchor.";
 
 const prompts = JSON.parse(fs.readFileSync(PROMPTS_PATH, "utf-8"));
 

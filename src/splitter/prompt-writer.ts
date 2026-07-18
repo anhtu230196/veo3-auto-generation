@@ -9,7 +9,6 @@ import {
   PERIOD_ANCHOR,
   ERA_DESCRIPTOR,
   STYLE_ANCHOR_NAME,
-  STYLE_ANCHOR_MENTION_SENTENCE,
 } from "../styleDNA.js";
 
 export interface VeoPrompt {
@@ -115,6 +114,13 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
   RỖNG — đừng gán nhân vật cho cảnh không thật sự thấy rõ họ.
 - Nếu 1 cảnh có từ 2 nhân vật trở lên cùng xuất hiện, mô tả rõ TỪNG nhân vật đang làm gì (không gộp mơ
   hồ "they"), để characterNames liệt kê đủ.
+- TRƯỚC KHI viết "a young unnamed X"/"an unnamed X" cho BẤT KỲ nhân vật nào trong cảnh, ĐỐI CHIẾU LẠI với
+  danh sách nhân vật đã có sẵn ở trên xem có entry nào KHỚP với người đang được mô tả không (kể cả nhân
+  vật ở mốc tuổi khác, tên rút gọn, hay tên dạng quan hệ sở hữu) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục
+  4.29, cảnh #11): cảnh mô tả rõ ràng Christopher Columbus đang nghiên cứu bản đồ lại bị viết thành "a
+  young unnamed mapmaker" dù Character "Christopher" ĐÃ có sẵn trong danh sách — khiến Veo3 không @mention
+  được nhân vật này, tự vẽ ra 1 người khác hoàn toàn (mất nhất quán hình ảnh). Chỉ dùng "unnamed" khi
+  THẬT SỰ là nhân vật quần chúng không có Character asset nào tương ứng, không phải vì quên đối chiếu.
 - TÊN NHÂN VẬT NỔI TIẾNG (CẢ chính nhân vật LẪN người thân) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP: Flow từng từ chối
   tạo cảnh với lỗi "might violate our policies about generating prominent people" dù đã @mention đúng
   Character, xảy ra với CẢ 2 trường hợp: (1) chính nhân vật nổi tiếng dùng tên ĐẦY ĐỦ kèm họ (vd
@@ -136,11 +142,13 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   không cố định), để settingNames RỖNG.
 - KHÔNG tự đặt tên bối cảnh mới ngoài danh sách đã cho — settingNames chỉ được chứa tên khớp CHÍNH XÁC
   với danh sách bối cảnh ở trên.
-- Nếu danh sách bối cảnh có tên "${STYLE_ANCHOR_NAME}" (asset đặc biệt chỉ để neo phong cách, KHÔNG phải
-  địa điểm thật trong truyện — xem styleDNA.ts): CHỈ cân nhắc thêm vào settingNames cho cảnh có nhân vật
-  KHÔNG tên riêng (vd "a young unnamed sailor") và KHÔNG có settingNames nào khác — đây là kiểu cảnh dễ
-  trôi phong cách nhất. KHÔNG thêm "${STYLE_ANCHOR_NAME}" vào cảnh đã có nhân vật/bối cảnh/đạo cụ có tên
-  riêng khác (đã có Ingredient neo rồi, không cần thêm).
+- KHÔNG còn dùng "${STYLE_ANCHOR_NAME}" làm điểm neo phong cách nữa (quyết định của người dùng,
+  2026-07-19, xem RUNBOOK mục 4.30) — MỌI cảnh (kể cả cảnh mồ côi hoàn toàn hoặc chỉ có Prop) chỉ dựa
+  vào block style text (MOTION_SUFFIX, append bằng code vào cuối mọi videoPrompt) để giữ phong cách,
+  KHÔNG cần @mention thêm bất kỳ Ingredient nào chỉ để neo style. (LỊCH SỬ: RUNBOOK mục 4.12/4.29 từng
+  xác nhận trực tiếp 1 cảnh chỉ có Prop bị trôi phong cách thành ảnh thật dù đã có đủ MOTION_SUFFIX,
+  và cơ chế Style Anchor từng được thêm để khắc phục — người dùng đã cân nhắc và chủ động chấp nhận đổi
+  lại, ưu tiên đơn giản hoá pipeline hơn rủi ro trôi phong cách hiếm gặp ở cảnh Prop-only/mồ côi.)
 
 QUY TẮC ÁNH SÁNG/THỜI ĐIỂM CỦA BỐI CẢNH (settingNames) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19,
 Setting "Pinta Deck"): ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT, mang theo ĐÚNG 1 điều
@@ -218,8 +226,8 @@ silhouette bạo lực) theo QUY TẮC NHÂN VẬT ở trên.
 VIDEOPROMPT CUỐI CÙNG PHẢI GỒM (append bằng tay theo đúng thứ tự, xem styleDNA.ts để lấy đúng text):
 1. Nội dung cảnh (theo các quy tắc ở trên).
 2. PERIOD_ANCHOR nếu era "period" (bỏ qua nếu "modern").
-3. STYLE_ANCHOR_MENTION_SENTENCE NẾU settingNames có chứa "${STYLE_ANCHOR_NAME}".
-4. MOTION_SUFFIX (luôn luôn, mọi cảnh) — đã gồm cả yêu cầu outline (OUTLINE_BLOCK).`;
+3. MOTION_SUFFIX (luôn luôn, mọi cảnh) — đã gồm cả yêu cầu outline (OUTLINE_BLOCK) và là điểm neo
+   phong cách DUY NHẤT (không còn dùng Style Anchor Ingredient, xem QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM ở trên).`;
 }
 
 const NIGHT_LIGHTING_KEYWORDS = [
