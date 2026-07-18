@@ -14,12 +14,14 @@ import { launchVeo3Browser } from "./browser.js";
 import { debugCapture, debugLog } from "./debug.js";
 
 const POLL_INTERVAL_MS = 5000;
-// Cảnh có nội dung căng thẳng (thẩm vấn/toà án) từng bị timeout LẶP LẠI RẤT NHIỀU LẦN
-// (5-7 lần liên tiếp) ở mốc 5 phút trong khi mọi cảnh khác xung quanh đều generate xong
-// bình thường — nghi ngờ các cảnh này cần thời gian kiểm duyệt/render lâu hơn hẳn (không
-// phải bị chặn hẳn, vì không có card "Failed" nào xuất hiện, chỉ là chưa xong trong 5 phút).
-// Tăng lên 10 phút để kiểm chứng giả thuyết này trước khi kết luận là bị chặn thật.
-const GENERATE_TIMEOUT_MS = 10 * 60 * 1000;
+// XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #14, xem RUNBOOK mục 4.27): người dùng KHÔNG muốn đợi 10
+// phút mỗi khi có lỗi thật (bị chặn/kẹt) — chấp nhận đánh đổi: cảnh nào THẬT SỰ cần lâu hơn 3
+// phút (vd nội dung căng thẳng cần kiểm duyệt lâu, xem lịch sử bug bên dưới) sẽ rơi vào nhánh
+// reload-recheck rồi thất bại/retry ở lần chạy sau, thay vì ngồi chờ tại chỗ. Giảm từ 10 xuống 3
+// phút. Lịch sử: cảnh nội dung căng thẳng (thẩm vấn/toà án) từng bị timeout LẶP LẠI RẤT NHIỀU LẦN
+// ở mốc 5 phút — nghi ngờ cần thời gian kiểm duyệt lâu hơn hẳn (không phải bị chặn hẳn, vì không
+// có card "Failed" nào xuất hiện, chỉ là chưa xong).
+const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
 // Cùng bug class đã gặp ở imageAsset.ts (2026-07-18): reload-recheck cũ chỉ chờ cố định 3 giây
 // rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
 // sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
@@ -212,12 +214,42 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
       throw new Error(`Không mở được picker @mention cho "${name}" (cảnh #${prompt.index}) — thử lại.`);
     }
     await search.fill(name);
-    await page.waitForTimeout(1200);
+
+    // XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #7, prop "Santa María", xem RUNBOOK mục 4.25 cập
+    // nhật): search "Santa María" khớp CẢ hàng trăm clip/ảnh khác có nhắc cụm từ đó trong
+    // prompt (không chỉ đúng 1 asset tên "Santa María"), danh sách kết quả dùng react-virtuoso
+    // (ảo hoá — chỉ RENDER item đang ở viewport, `padding-bottom` phản ánh ~640 item CHƯA render
+    // phía dưới). Sort mặc định "Recent" đẩy asset tạo từ đầu dự án xuống tít cuối, ngoài tầm với
+    // dù đợi bao lâu nếu không cuộn. Thử đổi sort sang "Name/A-Z" trước (best-effort, im lặng bỏ
+    // qua nếu Flow không có tuỳ chọn này) — tên ĐÚNG (không hậu tố) luôn xếp trước các tên dài
+    // hơn cùng tiền tố theo thứ tự bảng chữ cái, giúp tìm thấy nhanh hơn nhiều so với "Recent".
+    try {
+      const sortTrigger = page
+        .locator('[role="dialog"]')
+        .locator('div:has(#add-menu-input)')
+        .locator('xpath=following-sibling::button[1]');
+      await sortTrigger.click({ timeout: 2000 });
+      await page.getByRole("menuitem", { name: /name|a.?z|alphabet/i }).first().click({ timeout: 2000 });
+    } catch {
+      await page.keyboard.press("Escape").catch(() => {});
+    }
 
     // Click đúng card trong DIALOG (scope theo [role="dialog"] để không khớp nhầm text tên
-    // đang nằm trong chính prompt), khớp exact tên.
+    // đang nằm trong chính prompt), khớp exact tên. POLL + CUỘN danh sách ảo hoá xuống dần thay
+    // vì chỉ chờ 1 mốc cố định — item đúng có thể chưa được render vào DOM cho tới khi cuộn tới.
     const card = page.locator('[role="dialog"]').getByText(name, { exact: true }).last();
-    if (!(await card.count())) {
+    const scroller = page.locator('[data-testid="virtuoso-scroller"]').first();
+    const searchDeadline = Date.now() + 20000;
+    let cardFound = false;
+    while (Date.now() < searchDeadline) {
+      if (await card.count()) {
+        cardFound = true;
+        break;
+      }
+      await scroller.evaluate((el) => { el.scrollTop += el.clientHeight * 0.8; }).catch(() => {});
+      await page.waitForTimeout(400);
+    }
+    if (!cardFound) {
       await debugCapture(page, `mention-card-missing-scene${prompt.index}`);
       throw new Error(`Không thấy Character/Setting/Prop "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
     }
@@ -247,9 +279,11 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   let cursor = 0;
   for (const occ of occurrences) {
     let before = text.slice(cursor, occ.start);
-    // STYLE_ANCHOR_MENTION_SENTENCE viết sẵn "@Style Anchor" dạng chữ (styleDNA.ts) — nếu tên
-    // vừa khớp đứng ngay sau 1 dấu "@" thừa trong text, bỏ dấu đó đi vì chip tự là tham chiếu,
-    // không cần "@" đứng trước nữa (tránh còn sót "@[chip]" thừa 1 dấu @ trong câu).
+    // LƯỚI AN TOÀN (không còn xảy ra với STYLE_ANCHOR_MENTION_SENTENCE từ khi bỏ "@" khỏi
+    // styleDNA.ts, xem RUNBOOK mục 4.25, nhưng vẫn giữ phòng trường hợp Claude viết tay
+    // state/prompts.json lỡ gõ sẵn "@Tên" trong videoPrompt): nếu tên vừa khớp đứng ngay sau 1
+    // dấu "@" thừa trong text, bỏ dấu đó đi — gõ "@" dạng CHỮ THẬT (không qua picker có kiểm
+    // soát) sẽ tự mở dialog chọn asset của Flow giữa chừng, làm hỏng cả đoạn text gõ sau đó.
     if (before.endsWith("@")) before = before.slice(0, -1);
     if (before) await page.keyboard.type(before);
     await insertMentionChip(occ.name);
@@ -279,6 +313,28 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   }
 }
 
+/**
+ * XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #14, xem RUNBOOK mục 4.27): đếm SỐ LƯỢNG `video[src]` để
+ * so baseline (cách cũ) không đáng tin — soi debug capture lúc lỗi thấy trang CHỈ CÓ ĐÚNG 1 thẻ
+ * `<video src>` (không phải cả lưới nhiều video như tưởng), cả TRƯỚC lẫn SAU khi generate xong
+ * thật (người dùng xác nhận trực tiếp trong Flow) — nghĩa là Flow chỉ giữ 1 phần tử `<video>`
+ * "đang xem/preview" DUY NHẤT và đổi `src` của NÓ tại chỗ khi có clip mới, chứ không thêm phần tử
+ * mới vào DOM. Đếm SỐ LƯỢNG không bao giờ tăng trong trường hợp này → luôn báo timeout oan dù đã
+ * xong thật. Đổi sang so sánh TẬP HỢP giá trị `src` — coi là xong khi xuất hiện 1 giá trị `src`
+ * KHÔNG có trong baseline (dù số lượng phần tử tăng hay chỉ đổi src tại chỗ, cách này đều bắt
+ * được).
+ */
+async function currentVideoSrcs(page: Page): Promise<Set<string>> {
+  const locators = page.locator("video[src]");
+  const count = await locators.count();
+  const srcs = new Set<string>();
+  for (let i = 0; i < count; i++) {
+    const src = await locators.nth(i).getAttribute("src");
+    if (src) srcs.add(src);
+  }
+  return srcs;
+}
+
 async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): Promise<"ok" | "skipped"> {
   await ensureModelAndDuration(page);
   await fillPromptWithMentions(page, prompt);
@@ -287,28 +343,23 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
   // (không biến mất kể cả reload) — nếu chỉ kiểm tra sự tồn tại, mọi cảnh SAU lần lỗi
   // đầu tiên sẽ bị hiểu nhầm là lỗi ngay lập tức. Đếm số lượng "Failed" TRƯỚC khi bấm
   // generate, chỉ coi là lỗi thật nếu số lượng TĂNG so với baseline này.
-  //
-  // LỖI NGHIÊM TRỌNG ĐÃ SỬA: tương tự vậy, video[src] của các cảnh TRƯỚC cũng luôn có
-  // sẵn trên trang (lưới media giữ lại mọi video đã tạo). Trước đây code chỉ kiểm tra
-  // "có video[src] nào không" mà không so với baseline — khiến bot tưởng cảnh mới xong
-  // NGAY LẬP TỨC và tải nhầm video CŨ của cảnh khác, gây trùng lặp clip hàng loạt trong
-  // video cuối (xác nhận qua kiểm tra hash: >20 cặp clip bị trùng y hệt nhau).
   // getByText khớp cả text ẩn/không hiển thị (vd data JSON nhúng sẵn trong trang chứa
   // chữ "Failed" trong nội dung i18n) — xác nhận trực tiếp: 1 project HOÀN TOÀN TRỐNG,
   // chưa từng tạo gì, vẫn báo failedCount=2 ngay khi vừa mở. Phải lọc chỉ đếm phần tử
   // THỰC SỰ HIỂN THỊ trên màn hình bằng locator(":visible").
   const failedLocatorAll = page.getByText("Failed", { exact: false }).locator(":visible");
   const baselineFailedCount = await failedLocatorAll.count();
-  const videoLocatorAll = page.locator("video[src]");
-  const baselineVideoCount = await videoLocatorAll.count();
-  debugLog("baseline", `cảnh #${prompt.index}: baselineVideoCount=${baselineVideoCount}, baselineFailedCount=${baselineFailedCount}`);
+  const baselineVideoSrcs = await currentVideoSrcs(page);
+  debugLog("baseline", `cảnh #${prompt.index}: baselineVideoSrcs=${baselineVideoSrcs.size}, baselineFailedCount=${baselineFailedCount}`);
 
   await page.locator(`button:has-text("${TEXT.generate}")`).last().click();
 
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
-  const videoLocator = videoLocatorAll.first();
+  let newVideoSrc: string | undefined;
   while (Date.now() < deadline) {
-    if ((await videoLocatorAll.count()) > baselineVideoCount) break;
+    const srcs = await currentVideoSrcs(page);
+    newVideoSrc = [...srcs].find((s) => !baselineVideoSrcs.has(s));
+    if (newVideoSrc) break;
     if ((await failedLocatorAll.count()) > baselineFailedCount) {
       console.warn(
         `[veo3bot] cảnh #${prompt.index} bị Flow từ chối tạo (có thể do chính sách nội dung) — bỏ qua cảnh này.`
@@ -318,7 +369,7 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     }
     await page.waitForTimeout(POLL_INTERVAL_MS);
   }
-  if ((await videoLocatorAll.count()) <= baselineVideoCount) {
+  if (!newVideoSrc) {
     // XÁC NHẬN TRỰC TIẾP (2026-07-16): cảnh #25 bị báo "hết thời gian chờ" nhưng video THẬT
     // RA đã tạo xong trong Flow (thấy rõ trong media grid, đúng khớp prompt) — bot chỉ không
     // phát hiện kịp trong lúc poll trực tiếp trên trang đang mở (không rõ do hàng đợi "Lower
@@ -334,12 +385,13 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     // (168 cảnh + Character/Setting/Prop) tải lại chậm hơn vài giây cố định.
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
-    let foundAfterReload = (await videoLocatorAll.count()) > baselineVideoCount;
-    while (!foundAfterReload && Date.now() < recheckDeadline) {
+    while (!newVideoSrc && Date.now() < recheckDeadline) {
+      const srcs = await currentVideoSrcs(page);
+      newVideoSrc = [...srcs].find((s) => !baselineVideoSrcs.has(s));
+      if (newVideoSrc) break;
       await page.waitForTimeout(POLL_INTERVAL_MS);
-      foundAfterReload = (await videoLocatorAll.count()) > baselineVideoCount;
     }
-    if (!foundAfterReload) {
+    if (!newVideoSrc) {
       await debugCapture(page, `timeout-scene${prompt.index}`);
       throw new Error(
         `Hết thời gian chờ generate cảnh #${prompt.index} — video không xuất hiện kể cả sau khi reload. Kiểm tra thủ công trong Flow.`
@@ -348,12 +400,9 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     console.log(`[veo3bot] cảnh #${prompt.index} thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục tải về.`);
   }
 
-  const videoSrc = await videoLocator.getAttribute("src");
-  if (!videoSrc) throw new Error(`Không lấy được URL video cho cảnh #${prompt.index}.`);
-
   // src trả về là đường dẫn tương đối (vd "/fx/api/trpc/media.getMediaUrlRedirect?..."),
   // phải ghép với origin của trang mới fetch được.
-  const absoluteVideoUrl = new URL(videoSrc, page.url()).href;
+  const absoluteVideoUrl = new URL(newVideoSrc, page.url()).href;
   const response = await page.request.get(absoluteVideoUrl);
   await fs.writeFile(outFile, await response.body());
   return "ok";
