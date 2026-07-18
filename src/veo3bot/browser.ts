@@ -15,6 +15,7 @@ export async function launchVeo3Browser(): Promise<BrowserContext> {
   return chromium.launchPersistentContext(PROFILE_DIR, {
     headless: false,
     channel: "chrome",
+    acceptDownloads: true,
     args: [
       "--disable-blink-features=AutomationControlled",
       // Không set window-size sẽ mở full màn hình ảo, tràn ra ngoài màn hình Mac thật.

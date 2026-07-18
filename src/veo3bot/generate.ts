@@ -21,7 +21,7 @@ const POLL_INTERVAL_MS = 5000;
 // phút. Lịch sử: cảnh nội dung căng thẳng (thẩm vấn/toà án) từng bị timeout LẶP LẠI RẤT NHIỀU LẦN
 // ở mốc 5 phút — nghi ngờ cần thời gian kiểm duyệt lâu hơn hẳn (không phải bị chặn hẳn, vì không
 // có card "Failed" nào xuất hiện, chỉ là chưa xong).
-const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
+const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
 // Cùng bug class đã gặp ở imageAsset.ts (2026-07-18): reload-recheck cũ chỉ chờ cố định 3 giây
 // rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
 // sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
@@ -67,6 +67,11 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
     // Sau nhiều chục lần generate liên tiếp, trang đôi khi vào trạng thái lag/kẹt —
     // reload để làm mới DOM trước khi thử lại, tránh crash cả pipeline.
     console.log("[veo3bot] pill cài đặt không phản hồi, reload trang và thử lại...");
+    // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19 — bản cũ chỉ chụp SAU reload/
+    // recheck, lúc đó DOM đã bị reload làm mới nên lỗi thật (nếu có dialog/thông báo/trạng thái
+    // kẹt cụ thể) đã biến mất, khiến debug capture không phản ánh đúng nguyên nhân gốc): lưu lại
+    // trạng thái trang NGAY LÚC phát hiện bất thường, trước khi reload xoá mất bằng chứng.
+    await debugCapture(page, "pre-reload-pill-stuck");
     // waitUntil "domcontentloaded" — "load"/"networkidle" không bao giờ fire ổn định khi
     // project có nhiều media, gây timeout dù trang đã tương tác được thật sự.
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
@@ -335,7 +340,50 @@ async function currentVideoSrcs(page: Page): Promise<Set<string>> {
   return srcs;
 }
 
-async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): Promise<"ok" | "skipped"> {
+/**
+ * XÁC NHẬN TRỰC TIẾP (2026-07-19, soi debug capture `rename-card-missing-scene0-*.html`): giả
+ * thuyết ban đầu "Generated video" (đoán theo mẫu "Generated image" của Setting/Prop) SAI — tên
+ * thật của mỗi item video là **"Video thumbnail"** (từ `alt` của `<img>` bên trong thẻ `<a>` chứa
+ * nó, xem lịch sử điều tra ở lần sửa đầu). Nhưng SỬA LẦN 1 (dùng "Video thumbnail" + baseline-diff
+ * SỐ LƯỢNG như cách đã dùng cho ảnh Setting/Prop) VẪN THẤT BẠI — soi debug capture LẦN 2 phát hiện
+ * nguyên nhân THẬT: lưới media chính CŨNG ảo hoá bằng `react-virtuoso` (cùng lớp bug đã gặp ở
+ * picker @mention, mục 4.25) — `data-testid="virtuoso-item-list"` giữ ỔN ĐỊNH ~5 item render
+ * trong viewport bất kể tổng số item thật có bao nhiêu: thêm 1 clip mới ở ĐẦU danh sách thì 1 clip
+ * cũ bị ĐẨY RA khỏi vùng render ở cuối — tổng số lượng `role="link"` tên "Video thumbnail" RENDER
+ * ĐƯỢC không hề tăng (xác nhận trực tiếp: đúng 5 thẻ `<video src>` cả trước lẫn sau, chỉ khác giá
+ * trị `src` — item mới `b8bc6e58-...` xuất hiện, item cũ nhất `e6dd9489-...` biến mất). Đếm số
+ * lượng theo kiểu "chờ tăng so với baseline" KHÔNG BAO GIỜ đúng với lưới ảo hoá kiểu này.
+ *
+ * **CÁCH SỬA ĐÚNG**: KHÔNG đếm/so baseline nữa — tìm THẲNG đúng item vừa tạo bằng giá trị
+ * `newVideoSrc` đã biết chắc chắn (chính là src `generateOneClip` vừa dùng để xác nhận generate
+ * THÀNH CÔNG qua `currentVideoSrcs()`, xem mục 4.27) — tuyệt đối chính xác, không phụ thuộc
+ * đếm/thứ tự/virtualization: `video[src="..."]` rồi đi lên ancestor `<a>` gần nhất để right-click
+ * (giữ nguyên tinh thần "right-click thẻ `<a>` chứa media" như Setting/Prop, chỉ khác cách TÌM ra
+ * đúng thẻ đó).
+ */
+async function renameLatestVideo(page: Page, name: string, videoSrc: string, sceneIndex: number): Promise<void> {
+  const videoTag = page.locator(`video[src="${videoSrc}"]`).first();
+  const card = videoTag.locator("xpath=ancestor::a[1]");
+  if (!(await card.count())) {
+    await debugCapture(page, `rename-card-missing-scene${sceneIndex}`);
+    throw new Error(`Không thấy item video vừa tạo (src="${videoSrc}") trong lưới media để đổi tên (cảnh #${sceneIndex}) — thử lại.`);
+  }
+
+  await card.click({ button: "right" });
+  try {
+    await page.getByRole("menuitem", { name: /rename/i }).click({ timeout: 8000 });
+  } catch {
+    await debugCapture(page, `rename-menu-missing-scene${sceneIndex}`);
+    throw new Error(`Không thấy menuitem "Rename" cho cảnh #${sceneIndex} — thử lại.`);
+  }
+
+  const nameInput = page.getByRole("textbox", { name: "Editable text" });
+  await nameInput.press("ControlOrMeta+a");
+  await nameInput.fill(name);
+  await page.getByRole("button", { name: /done/i }).click();
+}
+
+async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string): Promise<"ok" | "skipped"> {
   await ensureModelAndDuration(page);
   await fillPromptWithMentions(page, prompt);
 
@@ -354,18 +402,57 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
 
   await page.locator(`button:has-text("${TEXT.generate}")`).last().click();
 
+  // XÁC NHẬN TRỰC TIẾP (2026-07-19, người dùng yêu cầu): trước đây cảnh bị Flow từ chối (policy
+  // "prominent people"...) bị bỏ qua NGAY LẬP TỨC, KHÔNG hề thử lại — Flow tự hiện sẵn nút "Retry"
+  // ngay trên card lỗi (bấm lại y hệt generate nhưng KHÔNG cần gõ lại prompt/chọn lại model, nhanh
+  // hơn nhiều so với nhánh catch/reopenPage ở processQueue vốn phải làm lại từ đầu). Giờ bấm
+  // "Retry" NGAY (không đợi gì thêm) tối đa `MAX_INLINE_RETRIES` lần trước khi thật sự bỏ qua.
+  //
+  // CHƯA XÁC NHẬN (đoán theo mẫu icon-ligature + hidden label đã thấy ở toolbar item thành công —
+  // "download"/"undo"("Reuse Prompt")/"delete"("Move to trash"), xem debug capture mục 4.33):
+  // nút "Retry" trên card LỖI nhiều khả năng cùng cấu trúc toolbar, hidden label "Retry" — dùng
+  // `getByRole("button", {name: /retry/i}).first()` (an toàn dù có nhiều card lỗi CŨ từ trước còn
+  // hiện nút Retry, vì "Recent" sort đẩy card MỚI NHẤT lên đầu, `.first()` luôn đúng card vừa lỗi).
+  //
+  // Đếm "Failed" theo kiểu PHÁT HIỆN CẠNH (edge-detect: so với lần đếm gần nhất, không phải so cố
+  // định với baseline ban đầu) — vì sau khi bấm Retry, card lỗi cũ được TÁI SỬ DỤNG (không phải
+  // card mới), số lượng "Failed" có thể tạm giảm về baseline lúc đang generate lại rồi tăng lại
+  // nếu Retry cũng lỗi; so cạnh (currentCount > lastSeenCount) bắt được cả lần lỗi ĐẦU lẫn các lần
+  // lỗi SAU mỗi lần Retry, không chỉ đúng 1 lần duy nhất.
+  const MAX_INLINE_RETRIES = 2;
+  let inlineRetries = 0;
+  let lastFailedCount = baselineFailedCount;
+
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
   let newVideoSrc: string | undefined;
   while (Date.now() < deadline) {
     const srcs = await currentVideoSrcs(page);
     newVideoSrc = [...srcs].find((s) => !baselineVideoSrcs.has(s));
     if (newVideoSrc) break;
-    if ((await failedLocatorAll.count()) > baselineFailedCount) {
+
+    const currentFailedCount = await failedLocatorAll.count();
+    if (currentFailedCount > lastFailedCount) {
+      lastFailedCount = currentFailedCount;
+      if (inlineRetries >= MAX_INLINE_RETRIES) {
+        console.warn(
+          `[veo3bot] cảnh #${prompt.index} bị Flow từ chối sau ${inlineRetries} lần Retry — bỏ qua cảnh này.`
+        );
+        await debugCapture(page, `flow-rejected-final-scene${prompt.index}`);
+        return "skipped";
+      }
+      inlineRetries++;
       console.warn(
-        `[veo3bot] cảnh #${prompt.index} bị Flow từ chối tạo (có thể do chính sách nội dung) — bỏ qua cảnh này.`
+        `[veo3bot] cảnh #${prompt.index} bị Flow từ chối (có thể do chính sách nội dung) — bấm "Retry" ngay (lần ${inlineRetries}/${MAX_INLINE_RETRIES}), không đợi thêm.`
       );
-      await debugCapture(page, `flow-rejected-scene${prompt.index}`);
-      return "skipped";
+      await debugCapture(page, `flow-rejected-before-retry${inlineRetries}-scene${prompt.index}`);
+      try {
+        await page.getByRole("button", { name: /retry/i }).first().click({ timeout: 5000 });
+      } catch {
+        await debugCapture(page, `retry-button-missing-scene${prompt.index}`);
+        console.warn(`[veo3bot] không bấm được nút "Retry" cho cảnh #${prompt.index} — bỏ qua cảnh này.`);
+        return "skipped";
+      }
+      continue; // kiểm tra lại NGAY, không chờ POLL_INTERVAL_MS
     }
     await page.waitForTimeout(POLL_INTERVAL_MS);
   }
@@ -379,6 +466,13 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     console.log(
       `[veo3bot] cảnh #${prompt.index} chưa thấy video sau ${GENERATE_TIMEOUT_MS / 60000} phút, reload để kiểm tra lại trước khi kết luận lỗi...`
     );
+    // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19 — bản cũ chỉ chụp SAU khi
+    // reload + recheck 90s vẫn thất bại, lúc đó trang đã reload nên trạng thái lỗi THẬT tại thời
+    // điểm timeout (vd thông báo lỗi cụ thể, dialog còn mở, prompt vẫn đang gõ dở) đã bị xoá mất
+    // — khiến debug capture cũ không phản ánh đúng nguyên nhân gốc, chỉ thấy được trạng thái
+    // trang SAU reload chứ không phải lúc timeout thật sự xảy ra): lưu lại NGAY TẠI ĐÂY, trước
+    // dòng reload bên dưới.
+    await debugCapture(page, `pre-reload-timeout-scene${prompt.index}`);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     // Chờ trang THẬT SỰ sẵn sàng rồi POLL thêm 1 khoảng đủ dài thay vì chốt sau 1 mốc thời gian
     // cố định — cùng bug đã xác nhận ở imageAsset.ts (2026-07-18): 1 project có nhiều media
@@ -400,16 +494,18 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, outFile: string): 
     console.log(`[veo3bot] cảnh #${prompt.index} thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục tải về.`);
   }
 
-  // src trả về là đường dẫn tương đối (vd "/fx/api/trpc/media.getMediaUrlRedirect?..."),
-  // phải ghép với origin của trang mới fetch được.
-  const absoluteVideoUrl = new URL(newVideoSrc, page.url()).href;
-  const response = await page.request.get(absoluteVideoUrl);
-  await fs.writeFile(outFile, await response.body());
+  // KHÔNG còn tải file về ngay tại đây (quyết định người dùng, 2026-07-19, xem RUNBOOK mục
+  // 4.31) — chỉ đổi tên clip vừa tạo theo đúng chỉ số cảnh để tìm lại được sau này, tải về
+  // (chất lượng 1080p) dồn vào lệnh riêng `npm run download` chạy SAU khi mọi cảnh đã xong.
+  await renameLatestVideo(page, clipName, newVideoSrc, prompt.index);
   return "ok";
 }
 
 export interface ClipResult {
   index: number;
+  /** Đường dẫn file local DỰ KIẾN sau khi tải về (chưa chắc đã tồn tại — xem RUNBOOK mục 4.31,
+   * `generateOneClip` giờ chỉ đổi tên clip trong Flow chứ KHÔNG tải về; `npm run download` mới
+   * là lệnh thực sự ghi file này). */
   file: string;
 }
 
@@ -455,7 +551,8 @@ async function processQueue(
   while (queue.length > 0) {
     const p = queue.shift();
     if (!p) break;
-    const outFile = path.join(outDir, `clip_${String(p.index).padStart(3, "0")}.mp4`);
+    const clipName = `clip_${String(p.index).padStart(3, "0")}`;
+    const outFile = path.join(outDir, `${clipName}.mp4`); // đường dẫn DỰ KIẾN, xem ClipResult
 
     if (generatedSinceReload >= RELOAD_EVERY) {
       log("mở lại tab mới định kỳ để làm mới trang...");
@@ -467,13 +564,13 @@ async function processQueue(
 
     let status: "ok" | "skipped";
     try {
-      status = await generateOneClip(page, p, outFile);
+      status = await generateOneClip(page, p, clipName);
     } catch (err) {
       log(`lỗi cảnh #${p.index}, mở tab mới và thử lại: ${(err as Error).message}`);
       try {
         await reopenPage();
         generatedSinceReload = 0;
-        status = await generateOneClip(page, p, outFile);
+        status = await generateOneClip(page, p, clipName);
       } catch (err2) {
         log(`cảnh #${p.index} vẫn lỗi sau khi thử lại — bỏ qua: ${(err2 as Error).message}`);
         await debugCapture(page, `worker${workerId}-final-fail-scene${p.index}`);
@@ -482,14 +579,14 @@ async function processQueue(
     }
 
     generatedSinceReload++;
-    // Cập nhật + lưu status ngay (thay vì chỉ dựa vào file tồn tại) — resume-safe hơn khi
-    // pipeline crash giữa chừng, và cho phép lần chạy sau phân biệt "waiting"/"failed" bằng mắt
-    // trong state/prompts.json (xem assetStatus.ts).
+    // Cập nhật + lưu status ngay — giờ là NGUỒN SỰ THẬT DUY NHẤT cho "cảnh này đã tạo+đổi tên
+    // xong trong Flow chưa" (không còn file local để đối chiếu tại bước generate, xem RUNBOOK
+    // mục 4.31) — resume-safe vì ghi ngay sau mỗi cảnh, không đợi xử lý xong cả hàng đợi.
     p.status = status === "ok" ? "success" : "failed";
     await onProgress?.(allPrompts);
     if (status === "ok") {
       results.push({ index: p.index, file: outFile });
-      log(`đã tải ${outFile}`);
+      log(`đã tạo + đổi tên "${clipName}" trong Flow (chưa tải về — chạy "npm run download" sau khi xong hết)`);
     }
   }
 }
@@ -499,9 +596,10 @@ async function processQueue(
  * trong CÙNG 1 trình duyệt persistent — mỗi tab dùng 1 project Flow RIÊNG BIỆT (xem
  * project.ts::ensureProjects) để lưới media của tab này không thể lẫn vào tab khác, tránh
  * tái diễn lỗi trùng lặp clip đã gặp trước đây khi chạy đơn luồng trên 1 project chung.
- * Bỏ qua clip đã tồn tại để có thể resume khi lỗi giữa chừng. Cảnh bị Flow từ chối tạo
- * (chính sách nội dung) sẽ bị bỏ qua, KHÔNG có mặt trong kết quả trả về — orchestrator cần
- * lọc audio tương ứng để giữ đồng bộ khi ghép video.
+ * Bỏ qua cảnh đã `status: "success"` để có thể resume khi lỗi giữa chừng (xem RUNBOOK mục
+ * 4.31 — KHÔNG còn tải video về ở bước này, chỉ tạo + đổi tên trong Flow; `npm run download`
+ * là lệnh tải về thật). Cảnh bị Flow từ chối tạo (chính sách nội dung) sẽ bị bỏ qua, KHÔNG có
+ * mặt trong kết quả trả về.
  */
 export async function generateClips(
   prompts: VeoPrompt[],
@@ -513,31 +611,24 @@ export async function generateClips(
 ): Promise<ClipResult[]> {
   await fs.mkdir(outDir, { recursive: true });
 
-  // File clip trên đĩa vẫn là NGUỒN SỰ THẬT cuối cùng (status có thể lệch nếu file bị xoá tay
-  // hoặc pipeline crash trước khi ghi status) — đối chiếu cả 2, tự đồng bộ lại status theo
-  // file thực tế thay vì tin mù status cũ trong state/prompts.json.
+  // KHÔNG còn file local để đối chiếu ở bước này (xem RUNBOOK mục 4.31 — generateOneClip chỉ
+  // đổi tên clip trong Flow, tải về dồn vào `npm run download` chạy sau). Field `status` trong
+  // `state/prompts.json` giờ là NGUỒN SỰ THẬT DUY NHẤT cho "cảnh này đã tạo+đổi tên xong chưa" —
+  // khác cơ chế cũ (mục 4.18) vốn ưu tiên file trên đĩa. Rủi ro đã biết: nếu generateOneClip
+  // tạo clip THÀNH CÔNG trong Flow nhưng bước đổi tên sau đó throw, cảnh vẫn bị đánh dấu
+  // "failed" và sẽ được TẠO LẠI (thêm 1 clip mới) ở lần chạy sau — có thể để lại 1 clip trùng
+  // CHƯA đổi tên nằm không dùng trong Flow (cùng loại rủi ro đã chấp nhận với Setting/Prop, xem
+  // mục 4.15 cập nhật) — không tự động dọn, chấp nhận đánh đổi để giữ code đơn giản.
   const results: ClipResult[] = [];
   const queue: VeoPrompt[] = [];
-  let statusChanged = false;
   for (const p of prompts) {
     const outFile = path.join(outDir, `clip_${String(p.index).padStart(3, "0")}.mp4`);
-    const alreadyDone = await fs.access(outFile).then(() => true).catch(() => false);
-    if (alreadyDone) {
-      if (p.status !== "success") {
-        p.status = "success";
-        statusChanged = true;
-      }
+    if (p.status === "success") {
       results.push({ index: p.index, file: outFile });
     } else {
-      if (p.status === "success") {
-        // status nói đã xong nhưng file không còn — coi như chưa xong, tạo lại.
-        p.status = "waiting";
-        statusChanged = true;
-      }
       queue.push(p);
     }
   }
-  if (statusChanged) await onProgress?.(prompts);
   if (queue.length === 0) return results;
 
   const workerCount = Math.max(1, Math.min(config.parallelWorkers, queue.length));

@@ -9,7 +9,7 @@ import { debugCapture, debugLog } from "./debug.js";
 // từ "chờ cố định 3 giây rồi chốt" sang "chờ trang thật sự sẵn sàng (Add Media hiện ra, giống
 // mục 4.14) rồi POLL thêm 1 khoảng đủ dài" — 3 giây là quá ngắn để trang tải lại lưới media đã
 // tích luỹ nhiều (168 cảnh + nhiều Character/Setting/Prop khác) trước khi kết luận lỗi thật.
-const GENERATE_TIMEOUT_MS = 5 * 60 * 1000;
+const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
 const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
@@ -42,6 +42,9 @@ export async function createImageIngredient(
     await pill.click({ timeout: 15000 });
   } catch {
     console.log("[imageAsset] pill cài đặt không phản hồi, reload trang và thử lại...");
+    // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19, xem generate.ts cùng bug) —
+    // reload xoá mất trạng thái lỗi thật trước khi kịp chụp nếu chụp SAU.
+    await debugCapture(page, `pre-reload-pill-stuck-${name}`);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
     await pill.click({ timeout: 15000 });
@@ -92,6 +95,9 @@ export async function createImageIngredient(
     console.log(
       `[imageAsset] chưa thấy ảnh cho "${name}" sau ${GENERATE_TIMEOUT_MS / 60000} phút, reload để kiểm tra lại trước khi kết luận lỗi...`
     );
+    // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19, xem generate.ts cùng bug) —
+    // reload xoá mất trạng thái lỗi thật trước khi kịp chụp nếu chụp SAU.
+    await debugCapture(page, `pre-reload-timeout-ingredient-${name}`);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     // Chờ trang THẬT SỰ sẵn sàng (lưới media đã render) trước khi đếm lại — "Add Media" luôn
     // xuất hiện khi trang tương tác được thật sự (xem mục 4.14 RUNBOOK), đáng tin hơn 1 mốc

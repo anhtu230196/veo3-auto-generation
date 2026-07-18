@@ -7,7 +7,6 @@ import type { CharacterProfile } from "./characters/extract.js";
 import type { SettingProfile } from "./settings/extract.js";
 import type { PropProfile } from "./props/extract.js";
 import { generateClips } from "./veo3bot/generate.js";
-import { assembleFinalVideo, type ScenePair } from "./assembler/ffmpeg.js";
 
 const CHARACTERS_STATE_FILE = path.join(config.stateDir, "characters.json");
 const SETTINGS_STATE_FILE = path.join(config.stateDir, "settings.json");
@@ -16,10 +15,12 @@ const PROMPTS_STATE_FILE = path.join(config.stateDir, "prompts.json");
 const CHROME_PROFILE_DIR = path.join(config.authDir, "chrome-profile");
 
 /**
- * Lệnh RIÊNG chỉ generate video từng cảnh + ghép video cuối — KHÔNG tạo Character/Setting/Prop
- * Ingredient (chạy `npm run assets` trước). Tách ra để có thể chạy lại generate nhiều lần (vd
- * retry cảnh bị Flow chặn, viết lại prompt) mà không phải tra lại toàn bộ tài sản trong Flow
- * mỗi lần — `ensureCharactersInFlow`/`ensureSettingsInFlow`/`ensurePropsInFlow` chỉ chạy trong
+ * Lệnh RIÊNG chỉ generate video từng cảnh (tạo + đổi tên trong Flow) — KHÔNG tạo Character/
+ * Setting/Prop Ingredient (chạy `npm run assets` trước), và KHÔNG tải video về/ghép video cuối
+ * nữa (xem RUNBOOK mục 4.31 — 2 việc đó dồn vào lệnh riêng `npm run download`, chạy SAU khi
+ * lệnh này xong). Tách khỏi `assets` để có thể chạy lại generate nhiều lần (vd retry cảnh bị
+ * Flow chặn, viết lại prompt) mà không phải tra lại toàn bộ tài sản trong Flow mỗi lần —
+ * `ensureCharactersInFlow`/`ensureSettingsInFlow`/`ensurePropsInFlow` chỉ chạy trong
  * `createAssets.ts`.
  */
 async function readJson<T>(filePath: string, fallback: T): Promise<T> {
@@ -84,35 +85,26 @@ async function main() {
 
   const prompts = await loadPrompts(storyText);
 
-  // Generate video từng cảnh qua Veo3, đính kèm đúng Character/Setting/Prop asset theo cảnh.
-  // Cảnh bị Flow từ chối tạo (chính sách nội dung) sẽ bị bỏ qua khỏi kết quả.
+  // Generate video từng cảnh qua Veo3, đính kèm đúng Character/Setting/Prop asset theo cảnh, rồi
+  // đổi tên trong Flow theo chỉ số cảnh (xem generate.ts::renameLatestVideo) — KHÔNG tải video
+  // về/ghép video cuối ở đây nữa (xem RUNBOOK mục 4.31). Cảnh bị Flow từ chối tạo (chính sách nội
+  // dung) sẽ bị bỏ qua khỏi kết quả.
   const clipDir = path.join(config.outputDir, "clips");
   const clipResults = await generateClips(prompts, characters, settings, props, clipDir, savePromptsProgress);
 
-  // Dùng index THẬT của từng cảnh (không phải vị trí mảng) khi ghép — tránh lệch khi mảng bị
-  // "nén" do có cảnh bị bỏ qua (xem chi tiết trong assembler/ffmpeg.ts). Không có audio
-  // (TTS/ElevenLabs đã bỏ, xem RUNBOOK mục 4.20) — audioFile luôn undefined.
-  const scenePairs: ScenePair[] = clipResults.map((r) => ({
-    index: r.index,
-    clipFile: r.file,
-    audioFile: undefined,
-  }));
-
-  const finalVideo = await assembleFinalVideo(scenePairs, config.outputDir);
-
-  // QUAN TRỌNG: không được coi là "hoàn tất" nếu còn thiếu cảnh — thiếu cảnh nghĩa là mạch
-  // truyện bị mất nội dung thật, phải chạy lại (có thể cần viết lại prompt cho cảnh bị chặn)
-  // cho đến khi đủ, không được im lặng hoàn thành với video ngắn hơn.
   if (clipResults.length < prompts.length) {
     const missingIndices = prompts.map((p) => p.index).filter((i) => !clipResults.some((r) => r.index === i));
     console.error(
       `\n❌ CHƯA HOÀN TẤT: thiếu ${prompts.length - clipResults.length}/${prompts.length} cảnh: [${missingIndices.join(", ")}].` +
-        `\nVideo tạm thời: ${finalVideo} (KHÔNG đầy đủ). Cần viết lại prompt cho các cảnh trên rồi chạy lại "npm run generate".`
+        `\nCần viết lại prompt cho các cảnh trên rồi chạy lại "npm run generate".`
     );
     process.exit(1);
   }
 
-  console.log(`\n✅ Hoàn tất đầy đủ ${prompts.length}/${prompts.length} cảnh: ${finalVideo}`);
+  console.log(
+    `\n✅ Đã tạo + đổi tên xong ${prompts.length}/${prompts.length} cảnh trong Flow.` +
+      `\nChạy "npm run download" để tải toàn bộ về (1080p) và ghép thành video cuối.`
+  );
 }
 
 main().catch((err) => {

@@ -3,7 +3,7 @@ import type { CharacterProfile } from "../characters/extract.js";
 import { CHARACTER_SHEET_STYLE_BLOCK } from "../styleDNA.js";
 
 const CHARACTERS_TOOL_URL_SUFFIX = "/characters";
-const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
+const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
 
 /**

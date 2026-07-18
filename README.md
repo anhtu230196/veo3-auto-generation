@@ -42,14 +42,22 @@ file này dựa trên kịch bản (xem SPEC trong `src/characters/extract.ts`,
    npm run assets
    ```
 4. Sau khi asset đã tạo xong (không còn `status: "failed"`), generate video
-   từng cảnh + ghép video cuối:
+   từng cảnh — mỗi cảnh tạo xong trong Flow sẽ được ĐỔI TÊN theo chỉ số cảnh
+   (vd "clip_017"), KHÔNG tải về ở bước này:
    ```bash
    npm run generate
    ```
+5. Sau khi generate xong (toàn bộ hoặc một phần, resume-safe), tải toàn bộ
+   clip đã `status: "success"` về ở chất lượng **1080p** rồi ghép thành video
+   cuối:
+   ```bash
+   npm run download
+   ```
 
-Kết quả: `output/video_final.mp4`. 2 lệnh trên tách rời — chạy lại `npm run
+Kết quả: `output/video_final.mp4`. 3 lệnh trên tách rời — chạy lại `npm run
 generate` nhiều lần (vd sau khi viết lại prompt cho cảnh bị chặn) không cần
-chạy lại `npm run assets`, trừ khi vừa thêm/sửa nhân vật/bối cảnh/đạo cụ mới.
+chạy lại `npm run assets`; chạy lại `npm run download` nhiều lần cũng an toàn
+(chỉ tải cảnh chưa có file local, rồi ghép lại đúng với những gì đã tải được).
 
 ## Ghi chú
 
@@ -58,10 +66,12 @@ chạy lại `npm run assets`, trừ khi vừa thêm/sửa nhân vật/bối c�
   nên UI có thể đổi bất cứ lúc nào. Nếu bot lỗi, dùng
   `npx playwright codegen --channel=chrome --user-data-dir=".auth/chrome-profile" https://labs.google/fx/tools/flow`
   (dùng lại session đã đăng nhập, không cần login lại) để soi lại UI mới.
-- Cả 2 lệnh đều **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI...),
-  chạy lại `npm run assets` hoặc `npm run generate` sẽ bỏ qua nhân vật/bối
-  cảnh/đạo cụ/clip đã tạo (dựa trên field `status` trong `state/*.json`, xem
-  `src/assetStatus.ts`) và tiếp tục các mục còn `waiting`/`failed`.
+- Cả 3 lệnh đều **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI...),
+  chạy lại sẽ bỏ qua phần đã xong và tiếp tục phần còn thiếu. `npm run assets`/
+  `npm run generate` dựa vào field `status` trong `state/*.json` (xem
+  `src/assetStatus.ts`); `npm run download` dựa vào file đã tồn tại trong
+  `output/clips/` (mỗi lệnh dùng nguồn sự thật phù hợp với việc nó làm — xem
+  RUNBOOK mục 4.31).
 - `state/*.json` do Claude viết tay — xoá file/entry tương ứng nếu muốn viết
   lại, hoặc sửa `status` về `"waiting"` để pipeline tự tạo lại asset đó.
 - Model Veo3 mặc định là **"Veo 3.1 - Lite [Lower Priority]"** (rẻ/chậm hơn) —

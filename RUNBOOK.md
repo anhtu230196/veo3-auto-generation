@@ -48,23 +48,33 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
   vật trước khi viết "unnamed") vào skill ngoài repo `flow-historical-video-prompts` (mục 4.21) —
   cả code trong repo (`prompt-writer.ts`) LẪN skill ngoài repo đều đã cập nhật, không còn dang dở.
 
-- **Mục 4.30 (2026-07-19, MỚI NHẤT) — đã bỏ hẳn cơ chế Style Anchor** theo yêu cầu chủ động của người
-  dùng (code + skill chung + dữ liệu đều đã sửa xong) — đã xoá `"Style Anchor"` khỏi `settingNames` +
-  câu nhắc khỏi `videoPrompt` cho toàn bộ 84 cảnh từng có (nhiều hơn 44 cảnh mục 4.29 vì còn cả batch cũ
-  từ `scripts/apply-style-anchor-and-fix-glow.mjs`) — xác nhận lại: 0 cảnh nào trong 168 cảnh còn nhắc
-  "Style Anchor" ở bất kỳ field nào. KHÔNG việc gì còn dang dở từ quyết định này.
+- **Mục 4.30 — đã bỏ hẳn cơ chế Style Anchor** theo yêu cầu chủ động của người dùng (code + skill
+  chung + dữ liệu đều đã sửa xong) — đã xoá `"Style Anchor"` khỏi `settingNames` + câu nhắc khỏi
+  `videoPrompt` cho toàn bộ 84 cảnh từng có. 0 cảnh nào trong 168 cảnh còn nhắc "Style Anchor" ở
+  bất kỳ field nào. KHÔNG việc gì còn dang dở từ quyết định này.
+- **Mục 4.31 (2026-07-19, MỚI NHẤT) — pipeline giờ TÁCH THÀNH 3 LỆNH**: `npm run assets` (tạo
+  Ingredient, không đổi) → `npm run generate` (tạo video + ĐỔI TÊN trong Flow theo chỉ số cảnh,
+  KHÔNG còn tải về/ghép video) → **`npm run download`** (MỚI — tải toàn bộ clip `status: "success"`
+  về ở 1080p + ghép video cuối). **CHƯA CHẠY THỬ THẬT LẦN NÀO** — mọi selector mới trong
+  `renameLatestVideo()`/`downloadClip()` đều SUY ĐOÁN, xem chi tiết + rủi ro đã biết ở mục 4.31.
+  Đây là ƯU TIÊN CAO NHẤT cần xác nhận trước khi chạy đại trà 163 cảnh còn thiếu.
 
 ### 🔴 Ưu tiên xử lý tiếp theo (đọc trước khi chạy `npm run generate` đại trà)
 
 Các việc CHƯA XÁC NHẬN còn lại, theo đúng thứ tự nên làm:
 
-1. **Soi bằng mắt 11 clip vừa tạo lại sau fix mục 4.29** (`clip_000/013/017/019/020/022/023/024/
+1. **Test luồng generate+rename+download MỚI (mục 4.31) trên vài cảnh nhỏ TRƯỚC** —
+   `npx tsx scripts/generate-test-scenes.ts <vài index>` rồi `npm run download`, xác nhận: (a)
+   clip được đổi tên đúng "clip_NNN" trong Flow, (b) `npm run download` tìm + tải đúng file về
+   `output/clips/`, (c) file tải về THẬT SỰ là 1080p (không phải bản xem trước độ phân giải thấp).
+   Sửa lại `renameLatestVideo()`/`downloadClip()` theo debug capture thật nếu bước nào sai selector.
+2. **Soi bằng mắt 11 clip vừa tạo lại sau fix mục 4.29** (`clip_000/013/017/019/020/022/023/024/
    025/027/034.mp4`) — xác nhận đúng phong cách 2D flat vector (không còn trôi photorealistic) và
    đúng tên nhân vật (#17/21/34), theo quy trình mục 5.
-2. **Cảnh #6 (Christopher Columbus) có còn bị chặn "prominent people" không** (mục 4.24/4.28) — đã
+3. **Cảnh #6 (Christopher Columbus) có còn bị chặn "prominent people" không** (mục 4.24/4.28) — đã
    xác nhận tên rút gọn (bỏ họ) hết bị chặn kể cả với chính nhân vật nổi tiếng; kiểm tra dữ liệu
    thật đã đổi tên đúng theo hướng này chưa (xem mục "Trạng thái hiện tại" ở trên).
-3. **Nội dung 168 cảnh vừa viết lại (mục 4.23) vẫn cần tiếp tục generate đại trà** — resume-safe,
+4. **Nội dung 168 cảnh vừa viết lại (mục 4.23) vẫn cần tiếp tục generate đại trà** — resume-safe,
    `npm run generate` tự bỏ qua cảnh đã có clip.
 
 Dùng `scripts/generate-test-scenes.ts` (`npx tsx scripts/generate-test-scenes.ts <index...>`) để
@@ -130,8 +140,9 @@ ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế đ�
 
 **Luồng xử lý** — ĐÃ BỎ HẲN Gemini/ElevenLabs (mục 4.20), `state/*.json` giờ
 LUÔN do Claude viết tay, không có nhánh gọi LLM/TTS nào nữa. **Từ 2026-07-19,
-pipeline TÁCH thành 2 lệnh riêng** (trước đây gộp chung trong
-`src/orchestrator.ts`/`npm run run` — file đó đã bị XOÁ, không còn tồn tại):
+pipeline TÁCH thành 3 LỆNH riêng** (trước đây 2 lệnh, xem mục 4.31 — tách
+thêm bước download khỏi generate theo yêu cầu người dùng; trước đó nữa gộp
+chung trong `src/orchestrator.ts`/`npm run run` — file đó đã bị XOÁ):
 
 **Lệnh 1 — `npm run assets`** (`src/createAssets.ts`) — chỉ tạo Ingredient,
 KHÔNG động đến video:
@@ -141,23 +152,36 @@ KHÔNG động đến video:
    ảnh nhất quán) — `ensureCharactersInFlow` / `ensureSettingsInFlow` /
    `ensurePropsInFlow`.
 
-**Lệnh 2 — `npm run generate`** (`src/generateVideo.ts`) — chỉ generate video,
-KHÔNG tạo/tra lại Ingredient (giả định `npm run assets` đã chạy xong trước):
+**Lệnh 2 — `npm run generate`** (`src/generateVideo.ts`) — chỉ generate +
+đổi tên video, KHÔNG tạo/tra lại Ingredient, KHÔNG tải video về/ghép video cuối
+(xem mục 4.31):
 3. Đọc `state/prompts.json` (đã viết đủ tay theo đúng số cảnh của
    `input/story.txt`) — báo lỗi rõ nếu thiếu cảnh. Chạy
    `warnInconsistentSettingLighting` ngay sau khi đọc (mục 4.19).
 4. Tự động hoá Google Flow bằng Playwright để tạo video Veo3 cho từng cảnh,
-   đính đúng Character/Setting/Prop asset qua `@mention` →
-   `output/clips/clip_NNN.mp4`.
-5. Ghép clip thành video cuối (ffmpeg, KHÔNG audio) →
+   đính đúng Character/Setting/Prop asset qua `@mention`, rồi ĐỔI TÊN clip vừa
+   tạo trong Flow theo chỉ số cảnh (vd "clip_017", `renameLatestVideo()`) —
+   KHÔNG tải file về ở bước này.
+
+**Lệnh 3 — `npm run download`** (`src/downloadVideos.ts`, MỚI, mục 4.31) —
+chỉ tải video + ghép video cuối, chạy SAU KHI `npm run generate` đã xong (toàn
+bộ hoặc một phần, resume-safe):
+5. Đọc `state/prompts.json`, lọc cảnh `status: "success"` chưa có file local.
+6. Mở lần lượt mọi project Flow đã biết, tìm clip theo tên đã đổi, tải về ở
+   chất lượng **1080p** (`downloadClip()`) → `output/clips/clip_NNN.mp4`.
+7. Ghép mọi clip đã có file local thành video cuối (ffmpeg, KHÔNG audio) →
    `output/video_final.mp4`.
 
-**Vì sao tách**: cho phép tạo xong toàn bộ nhân vật/bối cảnh/đạo cụ 1 lần, xác
-nhận bằng mắt trong Flow (đúng hình, đúng tên, không lẫn style — xem mục 4.10-
-4.12/4.19), rồi mới chạy generate video nhiều lần (retry cảnh bị chặn, viết
-lại prompt) mà không phải tra lại Ingredient mỗi lần. Cả 2 lệnh đều
-resume-safe (dựa vào field `status`, xem `src/assetStatus.ts`) và đều dùng
-`atomicWriteJson()` khi ghi `state/*.json` (mục 4.23).
+**Vì sao tách 2→3 lệnh**: (assets vs generate, lý do gốc) cho phép tạo xong
+toàn bộ nhân vật/bối cảnh/đạo cụ 1 lần, xác nhận bằng mắt trong Flow (đúng
+hình, đúng tên, không lẫn style — xem mục 4.10-4.12/4.19), rồi mới chạy
+generate video nhiều lần (retry cảnh bị chặn, viết lại prompt) mà không phải
+tra lại Ingredient mỗi lần. (generate vs download, lý do mục 4.31) người dùng
+muốn generate nhanh/gọn hơn (không tốn thời gian tải từng file ngay lúc
+generate) và tải về 1 lần cuối ở chất lượng cao hơn (1080p). Cả 3 lệnh đều
+resume-safe — `assets`/`generate` dựa vào field `status` (`src/assetStatus.ts`),
+`download` dựa vào file đã tồn tại trong `output/clips/` — và `assets`/
+`generate` đều dùng `atomicWriteJson()` khi ghi `state/*.json` (mục 4.23).
 
 **Quy trình khi có KỊCH BẢN MỚI (viết `state/*.json` từ đầu, không dùng Gemini)**:
 đây là việc **Claude tự làm bằng tay trong hội thoại**, KHÔNG có code nào tự
@@ -196,7 +220,8 @@ npm install
 npx playwright install chromium
 npm run login:veo3     # đăng nhập Google 1 lần, lưu session vào .auth/ (trieudev99@gmail.com)
 npm run assets          # tạo Character/Setting/Prop trong Flow, resume-safe
-npm run generate        # tạo video từng cảnh + ghép video cuối, resume-safe
+npm run generate        # tạo video từng cảnh + đổi tên trong Flow, resume-safe (mục 4.31)
+npm run download        # tải video (1080p) + ghép video cuối, resume-safe (mục 4.31)
 ```
 
 KHÔNG cần tạo `.env` nếu chỉ tiếp tục project hiện tại — `state/*.json` đã có
@@ -991,6 +1016,185 @@ dùng — quyết định này áp dụng cho project SAU cũng dùng skill này
 Anchor Ingredient — nếu 1 project cụ thể gặp trôi phong cách rõ rệt ở cảnh Prop-only/mồ côi, đây là lựa
 chọn có thể bật lại CÓ CHỦ ĐÍCH (tham khảo cơ chế cũ ở mục 4.12/4.29 nếu cần khôi phục), không phải mặc
 định nữa.
+
+### 4.31. Tách `npm run generate` thành 2 bước: generate+rename (Flow) và download+ghép (local) — theo yêu cầu người dùng
+**BỐI CẢNH (2026-07-19)**: người dùng chủ động yêu cầu đổi luồng — (1) sau khi 1 cảnh generate
+thành công trong Flow, ĐỔI TÊN clip đó theo đúng chỉ số cảnh (`state/prompts.json`), KHÔNG tải về
+ngay; (2) thêm 1 lệnh RIÊNG để tải hàng loạt video về sau, ở chất lượng **1080p**. Lý do suy đoán
+(không phải người dùng nói rõ, nhưng khớp bối cảnh phiên này): tách generate khỏi download giúp
+generate nhanh hơn/ổn định hơn (không tốn thời gian fetch từng file ngay lúc generate), và tải về
+1 lần ở cuối cho phép chọn chất lượng cao hơn (1080p) so với việc fetch trực tiếp `src` của thẻ
+`<video>` preview (nhiều khả năng chỉ là bản xem trước độ phân giải thấp, không phải bản gốc).
+
+**Đã sửa**:
+- `src/veo3bot/generate.ts::generateOneClip` — bỏ hẳn bước `page.request.get(newVideoSrc)` +
+  `fs.writeFile` (tải trực tiếp qua src của thẻ `<video>` preview, xem mục 4.27) — thay bằng
+  hàm mới `renameLatestVideo()`: right-click item media mới nhất → menuitem "Rename" → gõ tên
+  `clip_NNN` (khớp đúng quy ước đặt tên file cũ, vd "clip_017") → "Done". Cùng cơ chế right-click
+  → Rename đã dùng cho Setting/Prop (`imageAsset.ts`, mục 4.10), khác ở chỗ dùng baseline-diff
+  trên `getByRole("link", {name: /Generated video/i})` để tìm đúng item vừa tạo (thay vì
+  `getByRole("link", {name: "Generated image"})` dùng cho ảnh).
+- `generateClips()` — đổi nguồn sự thật cho "cảnh này đã xong chưa" từ FILE TRÊN ĐĨA (mục 4.18)
+  sang FIELD `status` TRONG `state/prompts.json` — vì giờ không còn file local nào được tạo ở
+  bước generate nữa. Bỏ luôn cơ chế tự đồng bộ status↔file cũ (mục 4.18) vì không còn áp dụng
+  được (không có file để đối chiếu).
+- **File mới `src/veo3bot/download.ts`** (`downloadClip()`) — tìm 1 clip theo tên đã đổi (search
+  trên lưới media chính), right-click → menuitem "Download" → (best-effort) chọn "1080p" nếu có
+  submenu chất lượng → bắt sự kiện `page.waitForEvent("download")` → lưu về `output/clips/
+  clip_NNN.mp4`. Trả về `false` (không throw) nếu không tìm thấy clip trong project hiện tại, để
+  nơi gọi thử project KHÁC trước khi kết luận thật sự không có (mỗi project Flow có lưới media
+  riêng biệt, xem mục 4.4).
+- **File mới `src/downloadVideos.ts`** (lệnh `npm run download`) — đọc `state/prompts.json`, lọc
+  cảnh `status: "success"` CHƯA có file local (`output/clips/clip_NNN.mp4` — file local LÀ nguồn
+  sự thật ở BƯỚC NÀY, khác bước generate dùng `status`), mở lần lượt MỌI project Flow đã biết
+  (`state/projects.json`/`project.json`) tìm + tải từng clip, rồi gọi `assembleFinalVideo` từ MỌI
+  cảnh đã có file local (không chỉ cảnh vừa tải) để ghép `output/video_final.mp4` — resume-safe,
+  chạy lại nhiều lần an toàn.
+- `src/generateVideo.ts` — bỏ hẳn bước gọi `assembleFinalVideo` (dồn sang `downloadVideos.ts`) —
+  giờ chỉ báo "đã tạo + đổi tên xong trong Flow, chạy npm run download tiếp" khi hoàn tất.
+- `src/veo3bot/browser.ts::launchVeo3Browser` — thêm `acceptDownloads: true` vào
+  `launchPersistentContext` để Playwright bắt được sự kiện `download` thay vì để Chrome tự xử lý
+  file tải về ngoài tầm kiểm soát của code.
+- `package.json` — thêm script `"download": "tsx src/downloadVideos.ts"`. `README.md` — cập nhật
+  luồng 3 lệnh (`assets` → `generate` → `download`).
+
+**CHƯA XÁC NHẬN TRỰC TIẾP (quan trọng — đọc trước khi chạy thật)**: TOÀN BỘ selector mới trong
+`renameLatestVideo()` (`getByRole("link", {name: /Generated video/i})` — suy đoán theo mẫu ảnh
+"Generated image" của Setting/Prop, CHƯA quan sát trực tiếp text thật cho video) và trong
+`downloadClip()` (ô search trên lưới media chính, menuitem "Download", submenu/tuỳ chọn "1080p")
+đều là SUY ĐOÁN theo mẫu đã xác nhận ở chỗ khác trong codebase — CHƯA chạy thử thật lần nào. Nếu
+sai, mỗi bước đều có `debugCapture` riêng lưu bằng chứng (screenshot + HTML) — sửa theo đúng bằng
+chứng thật đó, cùng quy trình đã dùng cho MỌI bug UI khác trong project này (mục 4), KHÔNG đoán
+lại từ đầu. Test trước bằng vài cảnh nhỏ (`npx tsx scripts/generate-test-scenes.ts <index...>` rồi
+`npm run download`) trước khi tin tưởng chạy đại trà 168 cảnh.
+
+**RỦI RO ĐÃ BIẾT, CHẤP NHẬN**: nếu `generateOneClip` tạo clip THÀNH CÔNG trong Flow nhưng bước
+`renameLatestVideo` sau đó throw (vd không tìm thấy menuitem), cảnh vẫn bị đánh dấu `"failed"` và
+sẽ được TẠO LẠI (thêm 1 clip MỚI) ở lần chạy `npm run generate` sau — có thể để lại 1 clip trùng
+nội dung CHƯA đổi tên nằm không dùng trong Flow. Cùng loại rủi ro đã chấp nhận với Setting/Prop
+(mục 4.15 cập nhật, vd "Spanish Royal Banner") — không tự động dọn dẹp, chỉ cần biết để kiểm tra
+thủ công trong Flow nếu nghi ngờ có clip rác.
+
+### 4.32. Debug capture chụp SAU reload làm mất bằng chứng lỗi thật — chụp THÊM 1 lần TRƯỚC reload
+**XÁC NHẬN TRỰC TIẾP (2026-07-19, người dùng phát hiện khi soi lại `output/debug/`)**: mọi nhánh
+"nghi ngờ lỗi/timeout → reload để kiểm tra lại trước khi kết luận" (mục 4.14/4.15/4.27) đều chỉ
+gọi `debugCapture`/screenshot SAU KHI đã reload (và sau cả vòng recheck nếu có) — nghĩa là ảnh/HTML
+lưu lại phản ánh trạng thái trang SAU khi reload đã làm mới toàn bộ DOM, KHÔNG PHẢI trạng thái THẬT
+tại đúng lúc lỗi/timeout xảy ra. Bất kỳ dấu hiệu cụ thể nào chỉ tồn tại nhất thời (dialog lỗi còn
+mở, prompt đang gõ dở, thẻ "Failed" vừa xuất hiện, trang bị kẹt ở 1 trạng thái JS cụ thể...) đều đã
+biến mất trước khi được chụp lại — khiến việc soi debug capture để tìm nguyên nhân gốc không hiệu
+quả (đúng như người dùng mô tả: "chụp hình lại sau khi reload page và hình lỗi bị mất nên khi kiểm
+tra sẽ không thấy được thật sự lỗi gì").
+
+**Đã sửa**: thêm 1 lần `debugCapture`/screenshot NGAY TRƯỚC mỗi lệnh `page.reload()` dùng cho mục
+đích "recheck sau nghi ngờ lỗi" (KHÔNG áp dụng cho lần reload định kỳ vô hại trong `processQueue`,
+vì đó không phải phản ứng với lỗi) — giữ NGUYÊN cả debug capture SAU reload đã có từ trước (vẫn hữu
+ích để so sánh trước/sau, xác nhận reload có thực sự khắc phục được không):
+- `src/veo3bot/generate.ts::ensureModelAndDuration` — tag `pre-reload-pill-stuck`.
+- `src/veo3bot/generate.ts::generateOneClip` (nhánh timeout) — tag `pre-reload-timeout-scene{index}`.
+- `src/veo3bot/imageAsset.ts::createImageIngredient` (2 nhánh: pill kẹt + timeout ảnh) — tag
+  `pre-reload-pill-stuck-{name}` / `pre-reload-timeout-ingredient-{name}`.
+- `src/veo3bot/project.ts::waitForProjectReady` — dùng `page.screenshot()` trực tiếp (hàm này
+  không dùng `debugCapture`/`config.debug`, tự lưu PNG vào `state/` từ trước) — tag
+  `pre-reload-project-ready-{timestamp}`.
+
+**LƯU Ý dùng debug capture từ giờ về sau**: mỗi lần nghi ngờ lỗi timeout/reload trong
+`output/debug/`, LUÔN kiểm tra file `pre-reload-*` (trạng thái lỗi THẬT tại thời điểm xảy ra)
+TRƯỚC, không chỉ nhìn file không có tiền tố này (đó là trạng thái SAU khi đã reload, có thể không
+còn phản ánh nguyên nhân gốc).
+
+### 4.33. Selector `renameLatestVideo` đoán sai hoàn toàn — accessible name thật là "Video thumbnail", không phải "Generated video"
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng chạy `npm run generate` sau khi có tính năng đổi
+tên (mục 4.31) — báo video đã tạo xong trong Flow nhưng KHÔNG đổi tên được. Soi debug capture
+`rename-card-missing-scene0-*.html` (đếm mọi `role="..."` xuất hiện trong trang: chỉ có button/
+toolbar/status/textbox/presentation/alert — **0 lần** `role="link"`) xác nhận giả thuyết ban đầu
+"Generated video" (đoán theo mẫu "Generated image" của Setting/Prop) SAI HOÀN TOÀN.
+
+Soi cấu trúc DOM thật quanh 1 item media: mỗi clip là `<a href="/fx/tools/flow/project/.../edit/
+...">` (role "link" NGẦM ĐỊNH từ `href`, không cần khai báo `role="link"` tường minh — đây là lý
+do đếm literal `role="link"` ra 0 nhưng Playwright vẫn nhận đúng qua accessibility tree tính toán
+runtime, KHÔNG phải qua thuộc tính HTML tường minh) chứa `<button><video src=".."/><img
+alt="Video thumbnail"/></button>` — accessible NAME của `<a>` được suy ra từ nội dung con, ở đây
+là **"Video thumbnail"** (từ `alt` của `<img>`, `<video>` không đóng góp tên). Đối chiếu mọi
+`alt="..."` khác trong trang: chỉ có "User profile image"/"Video thumbnail"/"Character reference
+image" — xác nhận "Video thumbnail" DÙNG CHUNG cho MỌI item video (không phân biệt clip nào),
+đúng kiểu "tên chung + baseline-diff + `.first()`" đã dùng cho ảnh Setting/Prop.
+
+Cũng phát hiện thêm: `<video src>` KHÔNG chỉ có ĐÚNG 1 thẻ trên toàn trang như mục 4.27 từng xác
+nhận — dump này có **5 thẻ `<video src>`** khác nhau cùng lúc. Suy đoán hợp lý: mục 4.27 quan sát
+lúc project còn ít media (virtualized list `react-virtuoso` chỉ render 1 item trong viewport);
+giờ project đã tích luỹ nhiều clip hơn nên nhiều item cùng lọt viewport → nhiều thẻ `<video>` cùng
+tồn tại. `currentVideoSrcs()` (so TẬP HỢP `src`, không phải đếm số lượng) vẫn đúng trong cả 2
+trường hợp — không cần sửa gì thêm ở phần phát hiện thành công, chỉ rename mới bị ảnh hưởng.
+
+**Đã sửa** (`src/veo3bot/generate.ts::renameLatestVideo` + baseline count trong `generateOneClip`):
+- `getByRole("link", { name: /Generated video/i })` → `getByRole("link", { name: "Video thumbnail" })`.
+- `getByRole("menuitem", { name: "whiteboard Rename" })` → `getByRole("menuitem", { name: /rename/i })`
+  (nới lỏng vì CHƯA xác nhận icon ligature đứng trước "Rename" của menu video — tìm thấy chuỗi dịch
+  `"applet_card_menu_rename": "Rename"` nhúng sẵn trong trang, xác nhận menu THẬT có tuỳ chọn này,
+  nhưng không biết chắc tên icon).
+- Nút `"done Done"` → `getByRole("button", { name: /done/i })` (cùng lý do nới lỏng).
+
+**RỦI RO ĐÃ XẢY RA**: cảnh #0 thử generate 2 lần (cả 2 đều fail ở bước rename do bug trên, theo
+retry logic trong `processQueue`) — nhiều khả năng để lại **2 clip trùng nội dung CHƯA đổi tên**
+trong Flow (đúng rủi ro đã ghi ở mục 4.31) — không tự động dọn, có thể vào Flow xoá tay nếu muốn.
+
+**CẬP NHẬT (2026-07-19) — fix trên VẪN CHƯA ĐỦ**: người dùng chạy lại, cảnh #0 vẫn lỗi y hệt
+(`rename-card-missing-scene0` lần 3). Soi debug capture mới: đúng "Video thumbnail" đã đúng tên,
+NHƯNG nguyên nhân THẬT là **lưới media chính CŨNG ảo hoá bằng `react-virtuoso`** (cùng lớp bug mục
+4.25, lần này ở lưới chính chứ không phải dialog @mention) — xác nhận trực tiếp: `data-testid=
+"virtuoso-item-list"` giữ ỔN ĐỊNH đúng 5 thẻ `<video src>` render trong DOM cả TRƯỚC lẫn SAU khi
+có clip mới (chỉ khác 1 giá trị `src` — clip mới nhất xuất hiện, clip cũ nhất bị đẩy ra khỏi vùng
+render). Đếm SỐ LƯỢNG "Video thumbnail" rồi chờ TĂNG so với baseline (y hệt cách dùng cho ảnh
+Setting/Prop) không bao giờ đúng với lưới virtualized kiểu này — số lượng render gần như không đổi
+dù tổng số item thật tăng lên.
+
+**Đã sửa LẦN 2 (đúng gốc rễ)**: bỏ HẲN cách đếm/so baseline — tìm THẲNG đúng item vừa tạo bằng giá
+trị `src` đã biết CHẮC CHẮN (`newVideoSrc`, chính là giá trị `generateOneClip` đã dùng để xác nhận
+generate thành công qua `currentVideoSrcs()`, mục 4.27) thay vì dò theo tên chung + số lượng:
+`renameLatestVideo(page, clipName, newVideoSrc, sceneIndex)` — tìm `video[src="..."]` rồi đi lên
+`ancestor::a[1]` để right-click, tuyệt đối chính xác bất kể virtualization/thứ tự render. Bỏ tham
+số `baselineLinkCount`/dòng `baselineVideoLinkCount` không còn cần thiết trong `generateOneClip`.
+
+**BÀI HỌC**: nếu 1 danh sách trong Flow dùng `react-virtuoso` (nhận diện qua `data-testid=
+"virtuoso-scroller"`/`"virtuoso-item-list"` trong debug capture), KHÔNG dùng chiến lược "đếm số
+lượng phần tử khớp tên chung rồi chờ TĂNG so với baseline" để tìm "item mới nhất" — chiến lược này
+chỉ đúng với danh sách KHÔNG ảo hoá (mọi item đều render đủ trong DOM). Với danh sách ảo hoá, PHẢI
+tìm bằng 1 giá trị ĐỊNH DANH DUY NHẤT đã biết chắc chắn của chính item đó (ở đây là `src` của thẻ
+`<video>`) thay vì đếm/so sánh số lượng.
+
+**CHƯA XÁC NHẬN TIẾP**: fix lần 2 CHƯA chạy thử thật. Test lại cảnh #0 trước khi tin tưởng chạy đại
+trà — nếu vẫn lỗi, debug capture mới sẽ cho bằng chứng ở bước cụ thể nào (tìm `<a>` ancestor / mở
+menu / gõ tên / bấm Done) để sửa tiếp.
+
+### 4.34. Bấm "Retry" ngay tại chỗ khi Flow từ chối cảnh (2 lần) trước khi thật sự bỏ qua
+**BỐI CẢNH (2026-07-19)**: người dùng yêu cầu — trước đây cảnh bị Flow từ chối (vd policy
+"prominent people", xem ảnh chụp card lỗi có sẵn nút "Retry"/undo/delete) bị **bỏ qua NGAY LẬP
+TỨC, không hề thử lại** (`generateOneClip` trả `"skipped"` ngay khi thấy "Failed" tăng so với
+baseline). Người dùng muốn: bấm "Retry" NGAY (không đợi thêm), tối đa 2 lần, hết 2 lần vẫn lỗi mới
+thật sự bỏ qua sang cảnh tiếp theo.
+
+**Đã sửa** (`src/veo3bot/generate.ts::generateOneClip`): khi phát hiện "Failed" TĂNG (so kiểu PHÁT
+HIỆN CẠNH — so với lần đếm gần nhất `lastFailedCount`, KHÔNG so cố định với baseline ban đầu, vì
+bấm Retry tái sử dụng LẠI card lỗi cũ thay vì tạo card mới — số lượng "Failed" có thể tạm về lại
+baseline lúc đang generate lại rồi tăng lại nếu Retry cũng lỗi; so cạnh bắt được cả lần lỗi ĐẦU lẫn
+mọi lần lỗi SAU mỗi Retry), bấm luôn `getByRole("button", {name: /retry/i}).first()` — tối đa
+`MAX_INLINE_RETRIES = 2` lần — rồi `continue` kiểm tra lại NGAY (bỏ qua `POLL_INTERVAL_MS` chờ,
+đúng yêu cầu "không đợi nữa"). Hết 2 lần vẫn lỗi (hoặc không bấm được nút Retry) mới trả
+`"skipped"`.
+
+**Vì sao nhanh hơn hẳn retry cũ**: nhánh catch/`reopenPage()` trong `processQueue` (dùng cho lỗi
+khác — picker/chip mismatch/crash) phải mở tab MỚI, vào lại project, gõ lại TOÀN BỘ prompt +
+@mention từ đầu — chậm và tốn. Bấm "Retry" tại chỗ tái dùng ĐÚNG prompt/card đã có sẵn trong Flow,
+không cần gõ lại gì — đúng ý người dùng "nhấn Retry liền, không đợi".
+
+**CHƯA XÁC NHẬN TRỰC TIẾP** (chưa chạy thử thật lần nào): selector `getByRole("button", {name:
+/retry/i})` là SUY ĐOÁN theo mẫu icon-ligature + hidden label đã xác nhận ở toolbar item THÀNH
+CÔNG ("download"/"undo" ẩn danh "Reuse Prompt"/"delete" ẩn danh "Move to trash", xem mục 4.33) —
+CHƯA có debug capture thật của 1 card LỖI để xác nhận cấu trúc/tên nút "Retry" đúng y hệt. Nếu
+sai, mỗi lần thử đều có `debugCapture` riêng (`flow-rejected-before-retry{N}-scene{index}` và
+`retry-button-missing-scene{index}`) — soi debug capture đó để sửa đúng theo bằng chứng thật, cùng
+quy trình đã dùng cho mọi bug UI khác (mục 4).
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 

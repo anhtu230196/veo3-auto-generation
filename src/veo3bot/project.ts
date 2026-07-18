@@ -20,6 +20,11 @@ export async function waitForProjectReady(page: Page): Promise<void> {
     await addMediaButton.waitFor({ state: "visible", timeout: 45000 });
   } catch {
     console.log("[project] tải chậm hơn dự kiến, reload và thử lại...");
+    // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19, cùng bug đã sửa ở
+    // generate.ts/imageAsset.ts) — bản cũ chỉ chụp SAU reload+recheck thất bại, lúc đó trạng
+    // thái lỗi thật (lý do "Add Media" không xuất hiện lần đầu) đã bị reload xoá mất.
+    await fs.mkdir(config.stateDir, { recursive: true });
+    await page.screenshot({ path: path.join(config.stateDir, `pre-reload-project-ready-${Date.now()}.png`) }).catch(() => {});
     // Không chờ "load"/"networkidle" đầy đủ — project nhiều media khiến 2 sự kiện này
     // không bao giờ fire ổn định (xác nhận trực tiếp qua debug). Chỉ cần DOM parse xong
     // rồi tự chờ đúng tín hiệu sẵn sàng thật (nút "Add Media").
