@@ -67,6 +67,6 @@ export async function ensureSettingsInFlow(
 
   const failed = settings.filter((s) => s.status === "failed");
   if (failed.length > 0) {
-    console.warn(`[settings] còn ${failed.length} bối cảnh lỗi, cần chạy lại "npm run run": ${failed.map((s) => s.name).join(", ")}`);
+    console.warn(`[settings] còn ${failed.length} bối cảnh lỗi, cần chạy lại "npm run assets": ${failed.map((s) => s.name).join(", ")}`);
   }
 }

@@ -68,6 +68,6 @@ export async function ensurePropsInFlow(
 
   const failed = props.filter((p) => p.status === "failed");
   if (failed.length > 0) {
-    console.warn(`[props] còn ${failed.length} đạo cụ lỗi, cần chạy lại "npm run run": ${failed.map((p) => p.name).join(", ")}`);
+    console.warn(`[props] còn ${failed.length} đạo cụ lỗi, cần chạy lại "npm run assets": ${failed.map((p) => p.name).join(", ")}`);
   }
 }

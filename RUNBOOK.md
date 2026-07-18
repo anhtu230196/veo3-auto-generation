@@ -19,7 +19,9 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
 - **Đã generate xong `output/clips/clip_000.mp4` → `clip_004.mp4`** (5/168 cảnh)
   tính đến thời điểm ghi tài liệu này (2026-07-19) — SỐ NÀY GIẢM so với ghi chú
   cũ (từng ghi 20/168) do sự cố mất dữ liệu `state/prompts.json`, xem mục 4.23.
-  Chạy `npm run run` để tiếp tục — resume-safe, tự bỏ qua clip đã có.
+  Chạy `npm run generate` để tiếp tục — resume-safe, tự bỏ qua clip đã có (xem
+  mục 1: pipeline đã tách thành 2 lệnh riêng `npm run assets` /
+  `npm run generate`, không còn `npm run run` gộp chung nữa).
 - **`state/prompts.json` VỪA ĐƯỢC VIẾT LẠI TOÀN BỘ (2026-07-19, mục 4.23)** sau
   sự cố mất dữ liệu — nội dung MỚI, CHƯA generate thử/soi bằng mắt để xác nhận
   chất lượng. Có backup dạng script tại `scripts/rebuild-prompts.mjs` +
@@ -29,7 +31,7 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
   `input/story.txt` đều bị `.gitignore` — không nằm trong git (rủi ro mất dữ
   liệu đã xảy ra thật, xem mục 4.23 — LUÔN cẩn trọng khi ghi vào các file này).
 
-### 🔴 Ưu tiên xử lý tiếp theo (đọc trước khi chạy `npm run run` đại trà)
+### 🔴 Ưu tiên xử lý tiếp theo (đọc trước khi chạy `npm run generate` đại trà)
 
 3 việc CHƯA XÁC NHẬN đang chặn việc chạy đại trà 163 cảnh còn thiếu, theo đúng thứ tự nên làm:
 
@@ -103,13 +105,21 @@ Setting và Prop **KHÔNG** tạo qua "Create Character"/"Create Scene" như suy
 ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế độ **Image, số lượng
 1** rồi đổi tên (xem `src/veo3bot/imageAsset.ts` và mục 4.10-4.12).
 
-**Luồng xử lý** (`src/orchestrator.ts`) — ĐÃ BỎ HẲN Gemini/ElevenLabs (mục 4.20),
-`state/*.json` giờ LUÔN do Claude viết tay, không có nhánh gọi LLM/TTS nào nữa:
+**Luồng xử lý** — ĐÃ BỎ HẲN Gemini/ElevenLabs (mục 4.20), `state/*.json` giờ
+LUÔN do Claude viết tay, không có nhánh gọi LLM/TTS nào nữa. **Từ 2026-07-19,
+pipeline TÁCH thành 2 lệnh riêng** (trước đây gộp chung trong
+`src/orchestrator.ts`/`npm run run` — file đó đã bị XOÁ, không còn tồn tại):
+
+**Lệnh 1 — `npm run assets`** (`src/createAssets.ts`) — chỉ tạo Ingredient,
+KHÔNG động đến video:
 1. Đọc `state/characters.json` (bắt buộc) / `settings.json` / `props.json`
    (tuỳ chọn) — chỉ ĐỌC cache, báo lỗi rõ nếu thiếu thay vì tự sinh.
 2. Tạo Character/Setting/Prop asset trong Google Flow cho từng mục (giữ hình
    ảnh nhất quán) — `ensureCharactersInFlow` / `ensureSettingsInFlow` /
    `ensurePropsInFlow`.
+
+**Lệnh 2 — `npm run generate`** (`src/generateVideo.ts`) — chỉ generate video,
+KHÔNG tạo/tra lại Ingredient (giả định `npm run assets` đã chạy xong trước):
 3. Đọc `state/prompts.json` (đã viết đủ tay theo đúng số cảnh của
    `input/story.txt`) — báo lỗi rõ nếu thiếu cảnh. Chạy
    `warnInconsistentSettingLighting` ngay sau khi đọc (mục 4.19).
@@ -118,6 +128,13 @@ ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế đ�
    `output/clips/clip_NNN.mp4`.
 5. Ghép clip thành video cuối (ffmpeg, KHÔNG audio) →
    `output/video_final.mp4`.
+
+**Vì sao tách**: cho phép tạo xong toàn bộ nhân vật/bối cảnh/đạo cụ 1 lần, xác
+nhận bằng mắt trong Flow (đúng hình, đúng tên, không lẫn style — xem mục 4.10-
+4.12/4.19), rồi mới chạy generate video nhiều lần (retry cảnh bị chặn, viết
+lại prompt) mà không phải tra lại Ingredient mỗi lần. Cả 2 lệnh đều
+resume-safe (dựa vào field `status`, xem `src/assetStatus.ts`) và đều dùng
+`atomicWriteJson()` khi ghi `state/*.json` (mục 4.23).
 
 **Quy trình khi có KỊCH BẢN MỚI (viết `state/*.json` từ đầu, không dùng Gemini)**:
 đây là việc **Claude tự làm bằng tay trong hội thoại**, KHÔNG có code nào tự
@@ -131,7 +148,7 @@ ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế đ�
 3. Chạy `node scripts/split-scenes.mjs` → `state/scenes.json` — ranh giới cảnh
    CHÍNH XÁC theo thuật toán `splitIntoScenes` (không cần LLM), đảm bảo số
    cảnh viết trong `state/prompts.json` khớp đúng với check của
-   `orchestrator.ts::loadPrompts`.
+   `generateVideo.ts::loadPrompts`.
 4. Đọc toàn bộ kịch bản 1 lượt, xuất bảng kiểm kê tài sản (nhân vật + từng mốc
    tuổi, đạo cụ cần giữ nhất quán, bối cảnh lặp lại) — DỪNG LẠI xin người dùng
    xác nhận trước khi viết prompt đầy đủ, trừ khi họ đã nói đi thẳng luôn.
@@ -145,7 +162,9 @@ ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế đ�
    PERIOD_ANCHOR/STYLE_ANCHOR_MENTION_SENTENCE/MOTION_SUFFIX vào cuối
    `videoPrompt` theo đúng thứ tự ghi trong mục "VIDEOPROMPT CUỐI CÙNG PHẢI
    GỒM" của hàm đó, gán `status: "waiting"` cho mọi entry mới.
-7. Người dùng chạy `npm run login:veo3` (nếu chưa đăng nhập) rồi `npm run run`.
+7. Người dùng chạy `npm run login:veo3` (nếu chưa đăng nhập) rồi `npm run assets`
+   (tạo Character/Setting/Prop), xác nhận bằng mắt trong Flow, rồi
+   `npm run generate` (tạo video từng cảnh + ghép video cuối).
 
 ## 2. Cài đặt & chạy (xem thêm README.md)
 
@@ -153,7 +172,8 @@ ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế đ�
 npm install
 npx playwright install chromium
 npm run login:veo3     # đăng nhập Google 1 lần, lưu session vào .auth/ (trieudev99@gmail.com)
-npm run run            # chạy pipeline, resume-safe (Ctrl+C giữa chừng thì chạy lại được)
+npm run assets          # tạo Character/Setting/Prop trong Flow, resume-safe
+npm run generate        # tạo video từng cảnh + ghép video cuối, resume-safe
 ```
 
 KHÔNG cần tạo `.env` nếu chỉ tiếp tục project hiện tại — `state/*.json` đã có
@@ -398,7 +418,7 @@ thường (giống hiện tượng cảnh thẩm vấn/toà án cần 10 phút t
 ghi ở đầu mục này).
 
 **LƯU Ý KHI GẶP LẠI LỖI NÀY (asset đã tạo trong Flow nhưng bot báo lỗi trước
-khi kịp đổi tên)**: đừng chạy lại `npm run run` ngay — `ensurePropsInFlow`/
+khi kịp đổi tên)**: đừng chạy lại `npm run assets` ngay — `ensurePropsInFlow`/
 `ensureSettingsInFlow` tra asset đã tồn tại BẰNG TÊN, ảnh chưa đổi tên sẽ
 KHÔNG được tìm thấy, khiến bot tạo THÊM 1 ảnh trùng nội dung (tốn credit, lẫn
 lộn 2 ảnh cùng là "banner" nhưng chỉ 1 cái được đặt tên đúng). Vào Flow,
@@ -444,7 +464,7 @@ field `status?: "waiting" | "failed" | "success"` (xem `src/assetStatus.ts`):
   status cũ nói khác; file mất → waiting dù status cũ nói success).
 - Lỗi tạo asset (throw từ `createCharacter`/`createImageIngredient`) giờ được BẮT bằng
   `try/catch` NGAY TRONG vòng lặp — đánh dấu `status = "failed"`, log rõ, rồi **tiếp tục xử lý
-  các nhân vật/bối cảnh/đạo cụ còn lại** thay vì crash cả tiến trình. Lần chạy `npm run run`
+  các nhân vật/bối cảnh/đạo cụ còn lại** thay vì crash cả tiến trình. Lần chạy `npm run assets`
   sau sẽ tự thử lại đúng những cái `status !== "success"`.
 - `onProgress` callback (`veo3bot/characters.ts`/`settings.ts`/`props.ts`/`generate.ts` đều
   nhận tham số này) được gọi NGAY sau mỗi lần đổi status — ghi lại `state/*.json` tức thì,
@@ -494,9 +514,11 @@ cụ thể — để mood/tông màu trong videoPrompt tự điều chỉnh theo
   nếu Setting mô tả trung lập ánh sáng — vd "Santa María Ship Deck" cố ý trung lập vì dùng cả 2
   điều kiện). `STYLE_ANCHOR_NAME` được LOẠI TRỪ khỏi check này — theo thiết kế nó gắn vào MỌI cảnh
   mồ côi bất kể mood, xung đột với nó là bình thường, không phải lỗi. **Sau refactor bỏ Gemini
-  (mục 4.20), hàm này được gọi UNCONDITIONALLY trong `orchestrator.ts::loadPrompts` mỗi lần chạy**
-  — khác bản đầu (chỉ chạy khi gọi Gemini qua `writeVeoPrompts`, nên trước đây KHÔNG tự chạy lại
-  trên `state/prompts.json` đã có sẵn 168 cảnh). Giờ mọi lần `npm run run` đều tự rà soát lại.
+  (mục 4.20), hàm này được gọi UNCONDITIONALLY trong `loadPrompts` mỗi lần chạy** (hàm này nằm
+  trong `src/generateVideo.ts` từ sau khi tách lệnh, xem mục 1 — trước đó nằm trong
+  `orchestrator.ts` nay đã xoá) — khác bản đầu (chỉ chạy khi gọi Gemini qua `writeVeoPrompts`, nên
+  trước đây KHÔNG tự chạy lại trên `state/prompts.json` đã có sẵn 168 cảnh). Giờ mọi lần
+  `npm run generate` đều tự rà soát lại.
 
 ### 4.20. Đã bỏ HẲN Gemini/ElevenLabs khỏi codebase — Claude viết prompt trực tiếp
 **XÁC NHẬN TRỰC TIẾP (2026-07-18)**: kiểm tra `.env` thật — `GEMINI_API_KEY` và
@@ -527,8 +549,8 @@ người dùng — chỉ đổi vai trò từ "system prompt gọi API" sang "SP
   BỘ quy tắc viết `videoPrompt` (nhân vật, bối cảnh, ánh sáng ngày/đêm mục 4.19, thời đại, bạo lực,
   giới hạn vật lý Veo3...) vẫn giữ nguyên, chỉ đổi từ "gọi Gemini" sang "hàm export, Claude tự đọc
   source code này khi cần viết/rà soát lại `state/prompts.json`".
-- `warnInconsistentSettingLighting()` — vẫn chạy, giờ UNCONDITIONALLY mỗi lần `npm run run` (xem
-  mục 4.19, cập nhật 2026-07-18) thay vì chỉ khi gọi Gemini.
+- `warnInconsistentSettingLighting()` — vẫn chạy, giờ UNCONDITIONALLY mỗi lần `npm run generate`
+  (xem mục 4.19, cập nhật 2026-07-18) thay vì chỉ khi gọi Gemini.
 - `VeoPrompt` interface (bao gồm `status`, xem mục 4.18) — không đổi.
 
 **KHÔNG đổi/không cần đổi**: `package.json` (không có SDK Gemini/ElevenLabs, cả 2 đều gọi bằng
@@ -636,8 +658,8 @@ lại phần suffix nếu style đã đổi.
 
 **CHƯA XÁC NHẬN BẰNG MẮT** nội dung 168 cảnh vừa viết lại — đã qua kiểm tra tự động (index liên
 tục 0-167, tên nhân vật/bối cảnh/đạo cụ khớp roster, không xung đột ánh sáng ngày/đêm), nhưng
-CHƯA generate thử để xác nhận chất lượng thực tế. Cần chạy `npm run run` (nhớ dừng process cũ
-nếu còn) và soi vài clip đầu theo quy trình mục 5.
+CHƯA generate thử để xác nhận chất lượng thực tế. Cần chạy `npm run generate` (nhớ dừng process
+cũ nếu còn) và soi vài clip đầu theo quy trình mục 5.
 
 ### 4.24. Bộ lọc "prominent people" chặn CẢ người thân của nhân vật nổi tiếng, kể cả khi đã @mention đúng
 **XÁC NHẬN TRỰC TIẾP (2026-07-19)**: cảnh #6 (Christopher Columbus trên boong Santa María) vẫn bị Flow từ
@@ -715,7 +737,7 @@ lỗi runtime) — chỉ lộ ra khi soi bằng mắt. Quy trình verify chuẩn
 "prominent people" — đã gộp vào danh sách ưu tiên ở mục 0, đọc ở đó trước. Các mục dưới đây là
 việc phụ/dài hạn hơn, không chặn việc chạy tiếp pipeline.)
 
-- **163/168 cảnh còn thiếu clip** — tiếp tục chạy `npm run run` (resume-safe)
+- **163/168 cảnh còn thiếu clip** — tiếp tục chạy `npm run generate` (resume-safe)
   SAU KHI đã xác nhận xong 3 ưu tiên ở mục 0. Số này tăng so với ghi chú cũ
   (từng 148) do sự cố mất `prompts.json` (mục 4.23) — 15 cảnh từng generate
   xong trước đó (ngoài 5 cảnh #0-4 còn giữ được clip) đã mất dấu vết.

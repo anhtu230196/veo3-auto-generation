@@ -37,12 +37,19 @@ file này dựa trên kịch bản (xem SPEC trong `src/characters/extract.ts`,
    ```
    Đăng nhập bằng trieudev99@gmail.com trong cửa sổ Chrome mở ra, xong quay lại
    terminal nhấn Enter.
-3. Chạy pipeline:
+3. Tạo Character/Setting/Prop (nhân vật/bối cảnh/đạo cụ) trong Flow:
    ```bash
-   npm run run
+   npm run assets
+   ```
+4. Sau khi asset đã tạo xong (không còn `status: "failed"`), generate video
+   từng cảnh + ghép video cuối:
+   ```bash
+   npm run generate
    ```
 
-Kết quả: `output/video_final.mp4`.
+Kết quả: `output/video_final.mp4`. 2 lệnh trên tách rời — chạy lại `npm run
+generate` nhiều lần (vd sau khi viết lại prompt cho cảnh bị chặn) không cần
+chạy lại `npm run assets`, trừ khi vừa thêm/sửa nhân vật/bối cảnh/đạo cụ mới.
 
 ## Ghi chú
 
@@ -51,10 +58,10 @@ Kết quả: `output/video_final.mp4`.
   nên UI có thể đổi bất cứ lúc nào. Nếu bot lỗi, dùng
   `npx playwright codegen --channel=chrome --user-data-dir=".auth/chrome-profile" https://labs.google/fx/tools/flow`
   (dùng lại session đã đăng nhập, không cần login lại) để soi lại UI mới.
-- Pipeline có thể **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI...),
-  chạy lại `npm run run` sẽ bỏ qua nhân vật/bối cảnh/đạo cụ/clip đã tạo (dựa
-  trên field `status` trong `state/*.json`, xem `src/assetStatus.ts`) và tiếp
-  tục các mục còn `waiting`/`failed`.
+- Cả 2 lệnh đều **resume**: nếu bị gián đoạn giữa chừng (mất mạng, lỗi UI...),
+  chạy lại `npm run assets` hoặc `npm run generate` sẽ bỏ qua nhân vật/bối
+  cảnh/đạo cụ/clip đã tạo (dựa trên field `status` trong `state/*.json`, xem
+  `src/assetStatus.ts`) và tiếp tục các mục còn `waiting`/`failed`.
 - `state/*.json` do Claude viết tay — xoá file/entry tương ứng nếu muốn viết
   lại, hoặc sửa `status` về `"waiting"` để pipeline tự tạo lại asset đó.
 - Model Veo3 mặc định là **"Veo 3.1 - Lite [Lower Priority]"** (rẻ/chậm hơn) —

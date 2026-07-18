@@ -162,6 +162,6 @@ export async function ensureCharactersInFlow(
 
   const failed = characters.filter((c) => c.status === "failed");
   if (failed.length > 0) {
-    console.warn(`[characters] còn ${failed.length} nhân vật lỗi, cần chạy lại "npm run run": ${failed.map((c) => c.name).join(", ")}`);
+    console.warn(`[characters] còn ${failed.length} nhân vật lỗi, cần chạy lại "npm run assets": ${failed.map((c) => c.name).join(", ")}`);
   }
 }
