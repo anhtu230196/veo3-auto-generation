@@ -119,9 +119,14 @@ export const STYLE_ANCHOR_DESCRIPTION =
   "people, NO figures, NO characters, nothing living in the image.";
 
 /**
- * Câu tường minh nhắc @mention NGAY TRONG TEXT của video prompt — append CÙNG với chip
- * @mention thật (gắn trong generate.ts khi settingNames có STYLE_ANCHOR_NAME), không thay thế
- * chip. Mục đích: giúp mô hình hiểu đây là tham chiếu phong cách, không phải lệnh chèn vật
- * thể cụ thể vào khung hình.
+ * Câu tường minh nhắc tới Style Anchor NGAY TRONG TEXT của video prompt — mục đích: giúp mô
+ * hình hiểu đây là tham chiếu phong cách, không phải lệnh chèn vật thể cụ thể vào khung hình.
+ *
+ * KHÔNG viết sẵn dấu "@" trước tên (XÁC NHẬN TRỰC TIẾP 2026-07-18, RUNBOOK mục 4.25): gõ "@"
+ * dạng CHỮ THẬT vào ô prompt (qua `page.keyboard.type`, không phải qua picker có kiểm soát) tự
+ * mở luôn dialog chọn asset của Flow giữa chừng — làm hỏng cả đoạn text gõ sau đó. Để tên
+ * "Style Anchor" xuất hiện TRẦN (không "@"), `findMentionOccurrences`/`fillPromptWithMentions`
+ * (`generate.ts`) tự tìm đúng vị trí này trong câu và thay bằng chip @mention THẬT tại đó —
+ * cùng kết quả cuối cùng (chip đứng đúng ngữ pháp câu), không cần bake "@" vào text nguồn.
  */
-export const STYLE_ANCHOR_MENTION_SENTENCE = `Maintain the exact same illustration style as @${STYLE_ANCHOR_NAME}.`;
+export const STYLE_ANCHOR_MENTION_SENTENCE = `Maintain the exact same illustration style as ${STYLE_ANCHOR_NAME}.`;

@@ -28,23 +28,41 @@ dùng hình dung phổ biến/quen thuộc nhất được biết đến rộng 
 
 NHIỀU MỐC TUỔI CỦA CÙNG 1 NGƯỜI: nếu truyện mô tả rõ cùng 1 nhân vật ở các giai đoạn cuộc đời khác biệt rõ
 rệt (trẻ em/thiếu niên/trưởng thành/già), trả về NHIỀU entry riêng cho người đó (mỗi entry 1 mốc tuổi, tên
-phân biệt rõ mốc tuổi, vd "Young Columbus" và "Christopher Columbus" và "Older Columbus"). Ở TẤT CẢ các
+phân biệt rõ mốc tuổi, vd "Young Christopher" và "Christopher" và "Older Christopher" — xem quy tắc TÊN
+NGẮN CHO NHÂN VẬT NỔI TIẾNG ngay dưới đây để biết vì sao KHÔNG dùng họ "Columbus" trong tên). Ở TẤT CẢ các
 mốc tuổi, PHẢI giữ nguyên cùng 1 khuôn mặt và kiểu tóc cốt lõi (hình dáng tóc, màu tóc gốc, cấu trúc khuôn
 mặt) — chỉ được đổi: mốc trẻ em → tỉ lệ cơ thể/khuôn mặt nhỏ hơn, tròn hơn (giữ nguyên hình dáng tóc, thu
 nhỏ theo tỉ lệ); mốc già → giữ nguyên hình dáng tóc nhưng đổi màu tóc sang bạc/trắng, thêm nếp nhăn, dáng
 đi khom. TUYỆT ĐỐI không viết lại khuôn mặt/kiểu tóc khác hẳn cho từng mốc tuổi — đó phải là CÙNG 1 người.
 
-NGƯỜI THÂN CỦA NHÂN VẬT NỔI TIẾNG (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp qua render thật): Google
-Flow có bộ lọc chặn nội dung "prominent people" — KHÔNG chỉ chặn chính nhân vật nổi tiếng, mà dường như còn
-quét trúng TÊN THẬT của bất kỳ ai gắn với 1 nhân vật lịch sử/công chúng đã biết, kể cả người thân ít nổi
-tiếng hơn nhiều (vd anh trai/cha của người đó) — xác nhận trực tiếp: cảnh dùng Character "Bartholomew
-Columbus" (em trai Christopher Columbus) vẫn bị Flow từ chối với lỗi "might violate our policies about
-generating prominent people", dù bản thân Bartholomew không phải nhân vật nổi tiếng độc lập. Vì vậy: nếu 1
-nhân vật là NGƯỜI THÂN (cha/mẹ/anh/chị/em/con/vợ/chồng...) của 1 nhân vật ĐÃ nổi tiếng khác trong cùng câu
-chuyện, TUYỆT ĐỐI KHÔNG đặt tên riêng lịch sử thật của họ làm tên Character (vd KHÔNG dùng "Bartholomew
-Columbus") — thay vào đó đặt tên theo QUAN HỆ SỞ HỮU với nhân vật nổi tiếng đó, ví dụ "Columbus's Brother",
-"Columbus's Father". Dùng tên quan hệ này làm CẢ tên field \`name\` của Character asset LẪN tên nhắc trong
-videoPrompt ở mọi cảnh có mặt họ — KHÔNG dùng tên lịch sử thật của họ ở bất kỳ đâu trong pipeline (kể cả
-mô tả ngoại hình vẫn viết bình thường theo NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên nếu có thông tin, chỉ riêng
-FIELD TÊN là đổi sang dạng quan hệ). CHỈ áp dụng quy tắc này cho người thân của nhân vật THỰC SỰ nổi tiếng
-(rủi ro cao) — không cần áp dụng máy móc cho người thân của nhân vật lịch sử ít người biết đến.`;
+TÊN NGẮN CHO CHÍNH NHÂN VẬT NỔI TIẾNG, KHÔNG CHỈ NGƯỜI THÂN (RẤT QUAN TRỌNG — xác nhận trực tiếp qua render
+thật, 2026-07-18): Google Flow có bộ lọc chặn nội dung "prominent people". Ban đầu tưởng chỉ ảnh hưởng
+NGƯỜI THÂN của nhân vật nổi tiếng (xem mục dưới), nhưng xác nhận trực tiếp CHÍNH nhân vật nổi tiếng cũng bị
+chặn khi Character asset đặt tên ĐẦY ĐỦ kèm họ (vd "Christopher Columbus" — cảnh dùng tên này bị Flow từ
+chối với lỗi "might violate our policies about generating prominent people"); đổi sang tên NGẮN chỉ gồm tên
+riêng, bỏ hẳn họ (vd "Christopher" — không có "Columbus") thì KHÔNG còn bị chặn, dù mô tả ngoại hình bên
+dưới field \`name\` vẫn viết đầy đủ theo ngoại hình thật của nhân vật đó. Kết luận: bộ lọc dường như quét
+theo CHUỖI TÊN ĐẦY ĐỦ (tên + họ) khớp với 1 người nổi tiếng đã biết, không phải chỉ tên riêng đứng một
+mình (tên riêng một mình quá chung chung để định danh 1 người cụ thể). Vì vậy: với BẤT KỲ nhân vật nào
+(kể cả nhân vật CHÍNH, không chỉ người thân) mà tên đầy đủ trùng khớp 1 người thật/lịch sử nổi tiếng, đặt
+tên Character asset CHỈ bằng tên riêng (hoặc 1 phần tên không đủ để định danh cụ thể người đó), KHÔNG bao
+giờ ghép đầy đủ họ tên thật — dùng tên ngắn này làm CẢ field \`name\` LẪN tên nhắc trong videoPrompt ở mọi
+cảnh có mặt họ, mô tả ngoại hình vẫn viết đầy đủ/chính xác theo NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên.
+
+NGƯỜI THÂN CỦA NHÂN VẬT NỔI TIẾNG (cùng bộ lọc như trên): dường như còn quét trúng TÊN THẬT của bất kỳ ai
+gắn với 1 nhân vật lịch sử/công chúng đã biết, kể cả người thân ít nổi tiếng hơn nhiều (vd anh trai/cha của
+người đó) — xác nhận trực tiếp: cảnh dùng Character "Bartholomew Columbus" (em trai Christopher Columbus)
+vẫn bị Flow từ chối với lỗi "might violate our policies about generating prominent people", dù bản thân
+Bartholomew không phải nhân vật nổi tiếng độc lập. Vì vậy: nếu 1 nhân vật là NGƯỜI THÂN (cha/mẹ/anh/chị/
+em/con/vợ/chồng...) của 1 nhân vật ĐÃ nổi tiếng khác trong cùng câu chuyện, TUYỆT ĐỐI KHÔNG đặt tên riêng
+lịch sử thật của họ làm tên Character (vd KHÔNG dùng "Bartholomew Columbus") — thay vào đó đặt tên theo
+QUAN HỆ SỞ HỮU với nhân vật nổi tiếng đó, ví dụ "Columbus's Brother", "Columbus's Father" (LƯU Ý: nếu chính
+nhân vật nổi tiếng cũng đã đổi sang tên ngắn theo quy tắc trên, ví dụ "Christopher" thay vì "Christopher
+Columbus", cân nhắc dùng tên ngắn đó trong cụm quan hệ sở hữu thay vì họ đầy đủ, ví dụ "Christopher's
+Brother" thay vì "Columbus's Brother", để nhất quán và giảm thêm rủi ro — CHƯA xác nhận trực tiếp việc này
+có cần thiết hay không, vì "Columbus's Brother" một mình đã xác nhận KHÔNG bị chặn). Dùng tên quan hệ này
+làm CẢ tên field \`name\` của Character asset LẪN tên nhắc trong videoPrompt ở mọi cảnh có mặt họ — KHÔNG
+dùng tên lịch sử thật của họ ở bất kỳ đâu trong pipeline (kể cả mô tả ngoại hình vẫn viết bình thường theo
+NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên nếu có thông tin, chỉ riêng FIELD TÊN là đổi sang dạng quan hệ). CHỈ áp
+dụng quy tắc này cho người thân của nhân vật THỰC SỰ nổi tiếng (rủi ro cao) — không cần áp dụng máy móc cho
+người thân của nhân vật lịch sử ít người biết đến.`;
