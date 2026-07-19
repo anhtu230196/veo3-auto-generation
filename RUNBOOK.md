@@ -8,77 +8,96 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
-- **Kịch bản đang dùng**: câu chuyện Christopher Columbus / Rodrigo de Triana
-  (1492, ai thực sự nhìn thấy đất liền trước) — KHÔNG PHẢI truyện true-crime cũ.
-  168 cảnh (`state/scenes.json` / `state/prompts.json`).
+- **Kịch bản đang dùng (từ 2026-07-20)**: cuộc đua chinh phục Bắc Cực —
+  Frederick Cook vs Robert Peary (1877–1911, epilogue 1968). **264 cảnh**
+  (`state/scenes.json` đã tách bằng `scripts/split-scenes.mjs`).
+  **THAY THẾ HOÀN TOÀN project Columbus cũ**: người dùng xác nhận đã tự tải toàn
+  bộ clip + dữ liệu Columbus về folder cá nhân, đồng ý xoá không cần backup
+  trong repo — `state/` + `output/` đã dọn sạch (kể cả `projects.json`, nên
+  pipeline sẽ tạo project Flow MỚI; Ingredient Columbus cũ vẫn nằm trong Flow
+  cloud nhưng không còn được tham chiếu).
 - **Phong cách hình ảnh**: 2D flat vector illustration (không photorealistic).
-  Xem `src/styleDNA.ts` — nguồn duy nhất định nghĩa style.
+  Xem `src/styleDNA.ts` — nguồn duy nhất định nghĩa style (GIỮ NGUYÊN từ
+  Columbus, không đổi style giữa 2 project).
 - **`state/characters.json`, `state/prompts.json`, `state/settings.json`,
   `state/props.json`** đều do **Claude viết tay trực tiếp trong hội thoại**
-  (không gọi Gemini) — xem mục 1 để hiểu vì sao việc này khả thi.
-- **Đã generate xong `output/clips/clip_000.mp4` → `clip_004.mp4`** (5/168 cảnh)
-  tính đến thời điểm ghi tài liệu này (2026-07-19) — SỐ NÀY GIẢM so với ghi chú
-  cũ (từng ghi 20/168) do sự cố mất dữ liệu `state/prompts.json`, xem mục 4.23.
-  Chạy `npm run generate` để tiếp tục — resume-safe, tự bỏ qua clip đã có (xem
-  mục 1: pipeline đã tách thành 2 lệnh riêng `npm run assets` /
-  `npm run generate`, không còn `npm run run` gộp chung nữa).
-- **`state/prompts.json` VỪA ĐƯỢC VIẾT LẠI TOÀN BỘ (2026-07-19, mục 4.23)** sau
-  sự cố mất dữ liệu — nội dung MỚI, CHƯA generate thử/soi bằng mắt để xác nhận
-  chất lượng. Có backup dạng script tại `scripts/rebuild-prompts.mjs` +
-  `batch1.mjs`-`batch6.mjs` (chạy lại được nếu mất lần nữa).
+  (không gọi Gemini) — xem mục 1. **HIỆN TRẠNG project Bắc Cực (2026-07-20): ĐÃ
+  VIẾT XONG CẢ 4 FILE** — 12 Character, 10 Setting, 9 Prop, và 264 cảnh
+  `prompts.json` (mọi `status: "waiting"`, `isDownloaded: false`). Đã chạy kiểm
+  tra: 12/12 char + 10/10 setting + 9/9 prop đều được dùng và khớp CHÍNH XÁC tên
+  (không tên mồ côi 2 chiều), 0 cảnh thiếu OUTLINE_BLOCK ở đuôi, không setting
+  nào bị gán cả cảnh ngày lẫn đêm (bug 4.19). **CHƯA generate/soi bằng mắt cảnh
+  nào** — nội dung hoàn toàn mới.
+- **`prompts.json` được sinh bằng build script** `scripts/build-arctic-prompts.mjs`
+  (+ `arctic-scenes-part1..4.mjs`) — giữ nội dung sáng tạo từng cảnh + gán asset,
+  bake PERIOD_ANCHOR + MOTION_SUFFIX bằng code. Chạy lại `node
+  scripts/build-arctic-prompts.mjs` để sinh lại nếu mất/sửa (là backup, giống vai
+  trò `rebuild-prompts.mjs` của Columbus cũ). ⚠️ Chạy lại sẽ RESET mọi `status`
+  về "waiting" — KHÔNG chạy khi đã generate được một phần (sẽ mất tiến độ resume).
+- **Chưa generate clip nào** của project Bắc Cực — `output/clips/` rỗng.
+- **ERA đã đổi trong `styleDNA.ts`**: `ERA_DESCRIPTOR`/`PERIOD_ANCHOR` giờ là bối
+  cảnh thám hiểm Bắc Cực đầu thế kỷ 20 (fur parka, chó kéo xe, tàu buồm-hơi
+  nước...) thay cho thế kỷ 15 của Columbus. `STYLE_NAME`/`MOTION_SUFFIX`/
+  `OUTLINE_BLOCK` giữ nguyên (style 2D flat vector không đổi).
+- **✅ `npm run assets` ĐÃ XONG HOÀN TOÀN (2026-07-20)** — 12/12 Character +
+  10/10 Setting + 9/9 Prop đều `status: "success"`. Người dùng đã tự dọn bản
+  trùng + rename tay trong Flow theo đúng tên `state/*.json` (xem mục 4.45) —
+  lần chạy `npm run assets` sau đó tra thấy đủ 13 asset còn thiếu BẰNG TÊN,
+  không tạo mới cái nào. Fix `imageAsset.ts` ở mục 4.45 đã được XÁC NHẬN hoạt
+  động đúng qua lần chạy này (dù chỉ gián tiếp — mọi asset đều tra thấy sẵn,
+  chưa có dịp test nhánh "tạo ảnh mới" của code đã sửa; sẽ được test tiếp khi
+  `npm run generate` tạo Style/thêm asset nếu cần).
+  **CHƯA soi bằng mắt xác nhận từng ảnh đúng nội dung/style** (mục 5) — nên
+  làm trước khi generate đại trà 264 cảnh.
 - **Git đã init** (KHÔNG có remote) — dùng `git status`/`git diff` để xem thay
   đổi thay vì hỏi lại. `state/`, `output/`, `.env`, `.auth/`,
   `input/story.txt` đều bị `.gitignore` — không nằm trong git (rủi ro mất dữ
   liệu đã xảy ra thật, xem mục 4.23 — LUÔN cẩn trọng khi ghi vào các file này).
-- **Character "Young Columbus"** (mục 4.26) đã `status: "success"` (asset tạo xong trong Flow).
-  Tên nhân vật vẫn đang dùng dạng ĐẦY ĐỦ ("Christopher Columbus"/"Columbus's Brother"/"Young
-  Columbus") trong `state/characters.json` — mục 4.28 phát hiện lẽ ra nên rút gọn còn
-  "Christopher"/"Older Christopher"/"Young Christopher" để tránh chặn "prominent people", nhưng
-  người dùng chủ động tự đổi (CHƯA xác nhận đã đổi xong chưa ở lần đọc RUNBOOK gần nhất — hỏi lại
-  nếu cần biết chắc). `state/prompts.json` HIỆN đang dùng tên NGẮN ("Christopher"/"Columbus's
-  Brother") khớp đúng hướng sửa mục 4.28 — có thể `characters.json` đã được đổi theo, kiểm tra lại
-  bằng `Grep` nếu cần chắc chắn thay vì giả định.
-- **Mục 4.29 (2026-07-18, MỚI NHẤT) — đã sửa xong 2 bug (Prop không đủ neo Style Anchor cảnh #8,
-  nhân vật đã đăng ký bị viết "unnamed" cảnh #11) + xử lý xong 1 race condition nghiêm trọng**
-  (`npm run generate` đang chạy song song tự ghi đè mất fix trực tiếp vào `state/prompts.json`) —
-  đọc mục 4.29 TRƯỚC KHI sửa tay `state/prompts.json` lúc có khả năng `npm run generate` đang chạy.
-  Đã re-apply xong 44 cảnh Style Anchor + 3 cảnh tên (#17/21/34), xoá 11 clip cũ để tạo lại, người
-  dùng xác nhận chạy lại ổn — CHƯA soi bằng mắt lại các cảnh này (xem mục 5).
-- **Đã đồng bộ xong** 2 bài học mục 4.29 (Prop không đủ neo phong cách; đối chiếu danh sách nhân
-  vật trước khi viết "unnamed") vào skill ngoài repo `flow-historical-video-prompts` (mục 4.21) —
-  cả code trong repo (`prompt-writer.ts`) LẪN skill ngoài repo đều đã cập nhật, không còn dang dở.
+- **LƯU Ý tên nhân vật (mục 4.24/4.28 + skill)**: kịch bản mới có RẤT NHIỀU
+  nhân vật có thật nổi tiếng (Cook, Peary, Henson, Theodore Roosevelt, Bell...)
+  — MỌI tên asset/prompt PHẢI dùng dạng đã khử-định-danh ngay từ đầu
+  ("Frederick"/"Robert"/"Matthew"/"The President"/nhãn vai trò), TUYỆT ĐỐI
+  không dùng họ tên đầy đủ ở bất kỳ field nào. Tàu "Roosevelt" của Peary cũng
+  KHÔNG đặt tên asset là "The Roosevelt" (trùng tên người nổi tiếng) — dùng
+  "Robert's Ship".
+- **✅ Mục 4.31 — pipeline 3 LỆNH ĐÃ XÁC NHẬN HOẠT ĐỘNG ĐÚNG (2026-07-20)**:
+  test `npx tsx scripts/generate-test-scenes.ts 0 1 2 3 4 5` rồi `npm run
+  download` — 5/6 cảnh (#0,1,2,4,5) thành công: đổi tên đúng "clip_NNN" trong
+  Flow, `npm run download` tìm + tải đúng file về `output/clips/`, và ĐÃ XÁC
+  NHẬN BẰNG CÁCH ĐỌC TRỰC TIẾP HEADER MP4 (không tin log) rằng file tải về
+  THẬT SỰ là **1920x1080** (không phải bản preview độ phân giải thấp). Không
+  còn "CHƯA CHẠY THỬ THẬT" nữa — an toàn để generate đại trà 264 cảnh.
+  `npm run download` tự `exit(1)` khi chưa đủ 264/264 (đúng thiết kế mục 4.8,
+  KHÔNG phải bug) — chạy full thì sẽ không còn báo lỗi này.
+  Cảnh #3 (chân dung Frederick) lỗi lần đầu do transient Playwright error
+  ("Target page, context or browser has been closed") — thử lại riêng lẻ
+  thành công sạch (không phải bị Flow chặn nội dung, chỉ là sự cố ngẫu
+  nhiên). **Cả 6/6 cảnh test (#0-5) giờ đều `success` + đã tải về local,
+  xác nhận đúng 1920x1080 bằng cách đọc header MP4 trực tiếp.**
 
-- **Mục 4.30 — đã bỏ hẳn cơ chế Style Anchor** theo yêu cầu chủ động của người dùng (code + skill
-  chung + dữ liệu đều đã sửa xong) — đã xoá `"Style Anchor"` khỏi `settingNames` + câu nhắc khỏi
-  `videoPrompt` cho toàn bộ 84 cảnh từng có. 0 cảnh nào trong 168 cảnh còn nhắc "Style Anchor" ở
-  bất kỳ field nào. KHÔNG việc gì còn dang dở từ quyết định này.
-- **Mục 4.31 (2026-07-19, MỚI NHẤT) — pipeline giờ TÁCH THÀNH 3 LỆNH**: `npm run assets` (tạo
-  Ingredient, không đổi) → `npm run generate` (tạo video + ĐỔI TÊN trong Flow theo chỉ số cảnh,
-  KHÔNG còn tải về/ghép video) → **`npm run download`** (MỚI — tải toàn bộ clip `status: "success"`
-  về ở 1080p + ghép video cuối). **CHƯA CHẠY THỬ THẬT LẦN NÀO** — mọi selector mới trong
-  `renameLatestVideo()`/`downloadClip()` đều SUY ĐOÁN, xem chi tiết + rủi ro đã biết ở mục 4.31.
-  Đây là ƯU TIÊN CAO NHẤT cần xác nhận trước khi chạy đại trà 163 cảnh còn thiếu.
+### 🔴 Ưu tiên xử lý tiếp theo (project Bắc Cực, cập nhật 2026-07-20)
 
-### 🔴 Ưu tiên xử lý tiếp theo (đọc trước khi chạy `npm run generate` đại trà)
+Theo đúng thứ tự nên làm:
 
-Các việc CHƯA XÁC NHẬN còn lại, theo đúng thứ tự nên làm:
-
-1. **Test luồng generate+rename+download MỚI (mục 4.31) trên vài cảnh nhỏ TRƯỚC** —
+1. **Chạy `npm run login:veo3` (nếu chưa) rồi `npm run assets`** — tạo 12 Character + 10 Setting
+   + 9 Prop trong Flow, xác nhận bằng mắt (đúng hình, đúng tên, Setting không lẫn người/nền xanh
+   — mục 4.10-4.12/4.19). LƯU Ý mọi tên người thật đã khử-định-danh (Frederick/Robert/Matthew/
+   The Financier...) — nếu Flow vẫn chặn "prominent people" ở tên nào, xem mục 4.24/4.28.
+2. **Test luồng generate+rename+download (mục 4.31) trên vài cảnh nhỏ TRƯỚC** —
    `npx tsx scripts/generate-test-scenes.ts <vài index>` rồi `npm run download`, xác nhận: (a)
    clip được đổi tên đúng "clip_NNN" trong Flow, (b) `npm run download` tìm + tải đúng file về
    `output/clips/`, (c) file tải về THẬT SỰ là 1080p (không phải bản xem trước độ phân giải thấp).
    Sửa lại `renameLatestVideo()`/`downloadClip()` theo debug capture thật nếu bước nào sai selector.
-2. **Soi bằng mắt 11 clip vừa tạo lại sau fix mục 4.29** (`clip_000/013/017/019/020/022/023/024/
-   025/027/034.mp4`) — xác nhận đúng phong cách 2D flat vector (không còn trôi photorealistic) và
-   đúng tên nhân vật (#17/21/34), theo quy trình mục 5.
-3. **Cảnh #6 (Christopher Columbus) có còn bị chặn "prominent people" không** (mục 4.24/4.28) — đã
-   xác nhận tên rút gọn (bỏ họ) hết bị chặn kể cả với chính nhân vật nổi tiếng; kiểm tra dữ liệu
-   thật đã đổi tên đúng theo hướng này chưa (xem mục "Trạng thái hiện tại" ở trên).
-4. **Nội dung 168 cảnh vừa viết lại (mục 4.23) vẫn cần tiếp tục generate đại trà** — resume-safe,
-   `npm run generate` tự bỏ qua cảnh đã có clip.
+   CHƯA TỪNG chạy thử thật — mọi selector đều suy đoán.
+3. **Generate đại trà 264 cảnh** — resume-safe, `npm run generate` tự bỏ qua cảnh đã có clip.
 
 Dùng `scripts/generate-test-scenes.ts` (`npx tsx scripts/generate-test-scenes.ts <index...>`) để
 test 1 tập cảnh cụ thể mà không chạy toàn bộ pipeline — xem chi tiết cách dùng trong chính file.
+
+LƯU Ý: các script một-lần `scripts/rebuild-prompts.mjs` + `batch1.mjs`–`batch6.mjs` (mục 4.23)
+là dữ liệu CỦA COLUMBUS — KHÔNG chạy lại cho project Bắc Cực (sẽ ghi đè prompts.json bằng nội
+dung Columbus cũ). Tương tự `apply-period-anchor.mjs`/`apply-settings-props.mjs`/
+`apply-style-anchor-and-fix-glow.mjs` đều đã lỗi thời với project mới.
 
 ### ⚠️ NẾU NGƯỜI DÙNG ĐƯA 1 KỊCH BẢN KHÁC HẲN (không phải Columbus) — đọc TRƯỚC KHI viết gì
 
@@ -1556,6 +1575,54 @@ sạch "Failed" (như xác nhận trên), nên vòng reload-recheck (dù có ki�
 timeout ~7 phút như 2 lần trước), coi như đã sửa đúng lớp bug NÀY — nhưng câu hỏi gốc "tên ngắn
 'Christopher' có thật sự đủ để hết bị chặn không" (mục 4.43) vẫn CHƯA có câu trả lời, vì cả 2 lần
 test trước đều chưa từng thực sự chạm được cơ chế Retry để biết Retry có giúp vượt qua hay không.
+
+### 4.45. 🔴 `imageAsset.ts` (Setting/Prop) dùng ĐẾM SỐ LƯỢNG để phát hiện ảnh mới — vỡ khi project vượt ~17 media (lưới ảo hoá), tạo hàng loạt bản trùng
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, project "Cuộc đua Bắc Cực", `npm run assets` lần đầu)**: 12
+Character + 5 Setting đầu (Pack Ice Field, Greenland Ice Cap, Night Ice Camp, Annoatok Base, Ship
+Deck) tạo thành công LIÊN TIẾP, đúng 17 asset — rồi từ asset thứ 18 (Setting "New York Harbor")
+trở đi, **TOÀN BỘ 14 asset còn lại** (5 Setting + 9 Prop) đều timeout y hệt nhau ("chưa thấy ảnh...
+sau 2 phút", kể cả sau reload+90s recheck) dù soi debug screenshot xác nhận ảnh đã tạo ĐÚNG nội
+dung, ĐÚNG style. Chạy lại `npm run assets` (kể cả bật `DEBUG=1`) KHÔNG sửa được gì — mỗi lần chạy
+lại tạo THÊM 1 bản trùng mới cho asset đó (baselineCount log ra CỐ ĐỊNH ở 5 xuyên suốt nhiều asset
+liên tiếp khác nhau — dấu hiệu rõ ràng bộ đếm không phản ánh đúng tổng số ảnh thật).
+
+**Nguyên nhân gốc**: `createImageIngredient` (`imageAsset.ts`) dùng cơ chế đếm SỐ LƯỢNG
+`page.getByRole("link", {name: "Generated image"}).count()` trước/sau khi bấm Create, chờ số
+lượng TĂNG — ĐÚNG Y HỆT cách `generate.ts` từng làm cho video TRƯỚC KHI sửa ở mục 4.33. Lưới media
+chính của Flow dùng **virtualized list** (`react-virtuoso`, đã xác nhận ở mục 4.25/4.33): chỉ
+render 1 số lượng CỐ ĐỊNH phần tử trong viewport (quan sát thực tế: luôn đúng 5) bất kể project có
+bao nhiêu ảnh — ảnh mới chèn vào ĐẦU danh sách thì 1 ảnh cũ bị đẩy khỏi vùng render ở cuối, nên
+tổng số phần tử `"Generated image"` RENDER ĐƯỢC không hề tăng. `imageAsset.ts` được viết TRƯỚC khi
+mục 4.33 phát hiện + sửa bug này cho video — bản sửa đó KHÔNG được đồng bộ ngược lại
+`imageAsset.ts`, nên Setting/Prop vẫn mang lỗi cũ cho đến khi project đủ lớn để lộ ra (đúng như
+video đã từng "ẩn" cho đến khi đủ nhiều clip).
+
+**Hậu quả nghiêm trọng**: mỗi lần `npm run assets` chạy lại tưởng đang "retry" 1 asset failed,
+thực ra đang TẠO THÊM 1 bản ảnh trùng lặp (đã tốn credit) mà không hề hay biết — càng chạy lại
+càng chồng thêm rác vào project, không bao giờ tự khỏi vì bug nằm ở cơ chế phát hiện, không phải ở
+nội dung/model.
+
+**Đã sửa** (`src/veo3bot/imageAsset.ts`) — port đúng cách sửa đã xác nhận cho video (mục 4.33) sang
+ảnh: thêm `firstImageSrc()` theo dõi `src` của ẢNH Ở VỊ TRÍ 0 (dựa vào sort "Recent" mặc định của
+Flow) thay vì đếm số lượng — coi là "có ảnh mới" CHỈ KHI src vị trí 0 đổi khác so với lúc trước khi
+bấm Create. Bước rename cũng đổi từ `.first()` mù sang tìm ĐÚNG ảnh bằng `img[src="..."]` đã biết
+chắc chắn (giống `renameLatestVideo` tìm video bằng `video[src="..."]`). Typecheck sạch
+(`npx tsc --noEmit`) — **CHƯA CHẠY THỬ THẬT sau khi sửa**, cần xác nhận lại trên vài Setting/Prop
+còn thiếu của project Bắc Cực trước khi tin tưởng hoàn toàn.
+
+**`characters.ts` (Character) KHÔNG dính bug này** — dùng flow hoàn toàn khác (điều hướng sang
+trang "Create Character" riêng biệt, không phải lưới media ảo hoá của canvas chính), nên không cần
+sửa.
+
+**Dọn dẹp thủ công CẦN LÀM trước khi chạy lại `npm run assets`** cho project Bắc Cực: project hiện
+có NHIỀU bản ảnh trùng lặp CHƯA đặt tên trong Flow do lỗi trên (ước tính 11 asset bị tạo ít nhất 2
+lần: Setting — The Newsroom, The Banquet Hall, The Press Room, The Ceremony Stage; Prop — Robert's
+Ship, The Miranda, The Brass Sextant, The Three Crates, The Iron Meteorite, The Expedition Flag,
+The Wooden Sledge — cộng thêm khả năng 1 bản dư của "New York Harbor" dù đã thành công ở lần 2).
+Cần vào Flow xoá bản thừa, giữ 1 bản tốt nhất mỗi tên, sau đó right-click → Rename → gõ ĐÚNG tên
+(khớp chính xác `state/settings.json`/`props.json`) TRƯỚC khi chạy lại `npm run assets` — nếu
+không, `ensureSettingsInFlow`/`ensurePropsInFlow` sẽ không tìm thấy asset (tra theo tên) và tạo
+thêm bản trùng nữa (xem mục 4.15).
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 

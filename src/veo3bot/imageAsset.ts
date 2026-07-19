@@ -14,6 +14,27 @@ const POLL_INTERVAL_MS = 4000;
 const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
 /**
+ * XÁC NHẬN TRỰC TIẾP (2026-07-20, project "Cuộc đua Bắc Cực") — cùng lớp bug đã xác nhận cho
+ * video trong generate.ts::firstVideoSrc (mục 4.33 RUNBOOK): lưới media ảo hoá (`react-virtuoso`)
+ * chỉ render 1 SỐ LƯỢNG CỐ ĐỊNH phần tử trong viewport (quan sát thực tế: luôn đúng 5), bất kể
+ * project có bao nhiêu ảnh — thêm 1 ảnh mới ở ĐẦU danh sách thì 1 ảnh cũ bị đẩy khỏi vùng render
+ * ở cuối, nên `imageLinksAll.count()` KHÔNG BAO GIỜ tăng một khi project vượt ngưỡng render ban
+ * đầu (~17 asset trở lên, đúng lúc gặp trực tiếp: 12 Character + 5 Setting đầu thành công, rồi
+ * 14 asset SAU ĐÓ liên tục "timeout" dù ảnh đã tạo đúng, thấy rõ trong debug capture). Đếm kiểu
+ * "chờ tăng so với baseline" (như cũ) khiến mọi lần chạy lại tạo THÊM 1 bản trùng cho asset đó.
+ *
+ * SỬA giống hệt tinh thần `firstVideoSrc`: không đếm nữa — theo dõi ĐÚNG 1 VỊ TRÍ (item đầu tiên,
+ * dựa vào sort "Recent" mặc định của Flow, đã dùng nhất quán ở `.first()` trong toàn bộ file này)
+ * và coi là "có ảnh mới" CHỈ KHI `src` ở vị trí 0 đổi khác so với lúc trước khi bấm Create — không
+ * phụ thuộc số lượng phần tử render được.
+ */
+async function firstImageSrc(page: Page): Promise<string | undefined> {
+  const first = page.getByRole("link", { name: "Generated image" }).first().locator("img").first();
+  if (!(await first.count())) return undefined;
+  return (await first.getAttribute("src")) ?? undefined;
+}
+
+/**
  * Tạo 1 ảnh Ingredient dùng chung cho Setting/Prop (bối cảnh/đạo cụ) — luồng "Image mode, số
  * lượng 1" ngay trên canvas chính, rồi đổi tên (right-click → Rename) để tìm lại được qua
  * @mention. XÁC NHẬN TRỰC TIẾP bằng codegen thật do người dùng cung cấp (2026-07-16) — khác
@@ -69,20 +90,21 @@ export async function createImageIngredient(
   await page.keyboard.press("Backspace");
   await page.keyboard.type(`${name}: ${description}. ${styleBlock}`);
 
-  // Baseline-diff giống hệt cơ chế chống trùng lặp trong generate.ts::generateOneClip — đếm
-  // số ảnh "Generated image" TRƯỚC khi bấm Create, chỉ coi là xong khi số lượng TĂNG (tránh
-  // nhầm sang ảnh cũ đã có sẵn trong lưới media của project).
-  const imageLinksAll = page.getByRole("link", { name: "Generated image" });
-  const baselineCount = await imageLinksAll.count();
-  debugLog("baseline", `ingredient "${name}": baselineCount=${baselineCount}`);
+  // Baseline-diff theo SRC vị trí đầu tiên (KHÔNG đếm số lượng nữa — xem docstring firstImageSrc
+  // ở trên, lưới ảo hoá khiến đếm số lượng sai khi project đã tích luỹ nhiều media).
+  const baselineFirstSrc = await firstImageSrc(page);
+  debugLog("baseline", `ingredient "${name}": baselineFirstSrc=${baselineFirstSrc ?? "(none)"}`);
 
   await page.locator('button:has-text("arrow_forward")').last().click();
 
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
   let done = false;
+  let newImageSrc: string | undefined;
   while (Date.now() < deadline) {
-    if ((await imageLinksAll.count()) > baselineCount) {
+    const current = await firstImageSrc(page);
+    if (current !== undefined && current !== baselineFirstSrc) {
       done = true;
+      newImageSrc = current;
       break;
     }
     await page.waitForTimeout(POLL_INTERVAL_MS);
@@ -104,21 +126,33 @@ export async function createImageIngredient(
     // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
-    let foundAfterReload = (await imageLinksAll.count()) > baselineCount;
+    let currentAfterReload = await firstImageSrc(page);
+    let foundAfterReload = currentAfterReload !== undefined && currentAfterReload !== baselineFirstSrc;
     while (!foundAfterReload && Date.now() < recheckDeadline) {
       await page.waitForTimeout(POLL_INTERVAL_MS);
-      foundAfterReload = (await imageLinksAll.count()) > baselineCount;
+      currentAfterReload = await firstImageSrc(page);
+      foundAfterReload = currentAfterReload !== undefined && currentAfterReload !== baselineFirstSrc;
     }
     if (!foundAfterReload) {
       await debugCapture(page, `timeout-ingredient-${name}`);
       throw new Error(`Hết thời gian chờ tạo ảnh cho "${name}" — kiểm tra thủ công trong Flow.`);
     }
+    newImageSrc = currentAfterReload;
     console.log(`[imageAsset] ảnh cho "${name}" thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục đổi tên.`);
   }
 
-  // Ảnh mới nhất xuất hiện ĐẦU danh sách (media grid sort "Recent") — cùng giả định đã dùng
-  // cho video trong generate.ts (.first() sau baseline-diff luôn lấy đúng video mới nhất).
-  const newImage = imageLinksAll.first();
+  // Tìm ĐÚNG ảnh vừa tạo bằng src đã biết chắc chắn (newImageSrc) — KHÔNG dùng .first() mù
+  // (xem docstring firstImageSrc: vị trí 0 có thể lệch nếu có thao tác khác chen giữa lúc poll
+  // và lúc rename). Giống hệt cách renameLatestVideo tìm video trong generate.ts.
+  if (!newImageSrc) {
+    await debugCapture(page, `new-image-src-missing-${name}`);
+    throw new Error(`Không xác định được src ảnh vừa tạo cho "${name}" — thử lại.`);
+  }
+  const newImage = page.locator(`img[src="${newImageSrc}"]`).locator("xpath=ancestor::a[1]").first();
+  if (!(await newImage.count())) {
+    await debugCapture(page, `rename-card-missing-${name}`);
+    throw new Error(`Không thấy item ảnh vừa tạo (src="${newImageSrc}") trong lưới media để đổi tên "${name}" — thử lại.`);
+  }
   await newImage.click({ button: "right" });
   await page.getByRole("menuitem", { name: "whiteboard Rename" }).click();
 

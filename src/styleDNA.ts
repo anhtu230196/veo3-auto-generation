@@ -79,17 +79,21 @@ export const MOTION_SUFFIX =
  * trực tiếp: prompt "a young unnamed sailor... merchant ship's deck" ra hình thủy thủ áo kẻ
  * sọc thời nay đứng cạnh container/cần cẩu cảng hiện đại, dù style đã là flat vector.
  */
-export const ERA_DESCRIPTOR = "15th-century Age of Discovery (Spain/Portugal, late 1400s)";
+export const ERA_DESCRIPTOR =
+  "turn-of-the-20th-century golden age of polar exploration (roughly 1880s–1910s)";
 
 /**
  * Append vào MỌI cảnh KHÔNG cố ý hiện đại (xem VeoPrompt.era trong prompt-writer.ts) — bằng
  * CODE, không phụ thuộc LLM tuân thủ, giống cách làm với MOTION_SUFFIX.
  */
 export const PERIOD_ANCHOR =
-  `${ERA_DESCRIPTOR} setting — period-accurate wool, linen, and leather clothing, wooden ` +
-  "sailing ships with canvas sails and rope rigging, cobblestone streets and stone " +
-  "architecture. NO modern clothing, NO modern ports/harbors/cranes/shipping containers, " +
-  "NO modern equipment of any kind.";
+  `${ERA_DESCRIPTOR} setting — period-accurate heavy fur parkas and hooded anoraks, wool ` +
+  "coats, leather and sealskin boots, fur mittens; wooden dog sledges, wooden sail-and-steam " +
+  "ships with tall masts and a single smokestack, oil lamps and brass navigation instruments; " +
+  "in city scenes, early-1900s formal suits, waistcoats, high collars, long dresses, " +
+  "horse-drawn carriages and brick or stone architecture. NO modern clothing, NO snowmobiles, " +
+  "motorboats, aircraft, cars or trucks, NO plastic or synthetic materials, NO modern " +
+  "buildings or equipment of any kind.";
 
 /**
  * LẦN 1 ĐÃ THỬ VÀ BỎ (2026-07-16) — "Style Anchor" tạo qua "Create Character": công cụ này
