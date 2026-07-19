@@ -21,7 +21,18 @@ const POLL_INTERVAL_MS = 5000;
 // phút. Lịch sử: cảnh nội dung căng thẳng (thẩm vấn/toà án) từng bị timeout LẶP LẠI RẤT NHIỀU LẦN
 // ở mốc 5 phút — nghi ngờ cần thời gian kiểm duyệt lâu hơn hẳn (không phải bị chặn hẳn, vì không
 // có card "Failed" nào xuất hiện, chỉ là chưa xong).
-const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
+// XÁC NHẬN TRỰC TIẾP (2026-07-19, cảnh #6): giá trị 2 phút (không rõ ai/khi nào đổi từ 3 phút ghi
+// trong comment trên xuống 2 phút, không khớp nữa) tạo ra 1 RACE THẬT: card "Failed - prominent
+// people" của Flow xuất hiện RẤT SÁT mốc 2 phút — vòng poll luôn vừa kịp thoát do hết giờ TRƯỚC KHI
+// kịp phát hiện (lần kiểm tra cuối cùng luôn rơi vào đúng khoảng vài giây trước khi Failed xuất
+// hiện). Tệ hơn: `page.reload()` sau đó XOÁ MẤT dấu hiệu "Failed" (xác nhận trực tiếp: card không
+// còn tồn tại — kể cả ẩn — trong DOM sau reload, khác giả định ban đầu ở mục 4.43 rằng nó "vẫn còn
+// nguyên" — giả định đó SAI, dựa trên nhầm lẫn khớp phải 1 chuỗi i18n ẩn giống hệt câu lỗi, không
+// phải card thật), nên vòng reload-recheck (dù đã thêm `checkFailedAndRetry` ở mục 4.43) không còn
+// gì để phát hiện nữa — "Failed" là trạng thái TẠM THỜI trong phiên hiện tại, không phải asset lưu
+// trữ vĩnh viễn như video/ảnh thành công. Tăng lại lên 3 phút để có đủ khoảng đệm cho vòng poll bắt
+// được "Failed" NHIỀU LẦN (mỗi 5s) trước khi chạm mốc timeout, thay vì đúng lúc chạm mốc.
+const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
 // Cùng bug class đã gặp ở imageAsset.ts (2026-07-18): reload-recheck cũ chỉ chờ cố định 3 giây
 // rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
 // sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
@@ -316,6 +327,26 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
       `Chip @mention chưa đủ cho cảnh #${prompt.index} (có ${voidChips}/${expectedChipCount}) — thử lại để tránh sai nhân vật.`
     );
   }
+
+  // XÁC NHẬN TRỰC TIẾP (2026-07-19, cảnh #41): đếm chip ĐỦ vẫn có thể lọt 1 lỗi khác NGHIÊM
+  // TRỌNG HƠN — phần VĂN BẢN THUẦN (không phải chip) bị RỚT MẤT phần lớn giữa chừng (soi debug
+  // capture thật: prompt gửi lên Flow chỉ còn "Medium shot, Luis speaking urgently to Spanish
+  // Royal Banner Spanish Royal Court Hall Queen" — mất toàn bộ phần sau "Queen" gồm cả
+  // PERIOD_ANCHOR/MOTION_SUFFIX, dù số chip vẫn có thể đã đủ). Nghi ngờ nguyên nhân: 1 bước gõ
+  // "before"/"remainder" nào đó bị gõ NHẦM vào nơi khác (vd ô search của 1 dialog @mention chưa
+  // đóng hẳn) thay vì vào promptBox thật, nên hoàn toàn không xuất hiện trong nội dung cuối cùng
+  // dù luồng code vẫn tưởng đã gõ xong. Kiểm tra thêm: đoạn ĐUÔI của `text` gốc (KHÔNG chứa tên
+  // @mention nào, luôn là 1 phần của MOTION_SUFFIX — xem styleDNA.ts) phải xuất hiện trong nội
+  // dung promptBox hiện tại; nếu thiếu, coi như prompt đã bị hỏng giữa chừng, throw để retry thay
+  // vì âm thầm generate video với prompt sai/thiếu.
+  const expectedTail = text.slice(-60);
+  const actualText = (await promptBox.innerText()).replace(/\s+/g, " ").trim();
+  if (!actualText.includes(expectedTail.replace(/\s+/g, " ").trim())) {
+    await debugCapture(page, `prompt-text-truncated-scene${prompt.index}`);
+    throw new Error(
+      `Prompt cảnh #${prompt.index} bị mất văn bản giữa chừng (đủ chip nhưng thiếu đoạn cuối MOTION_SUFFIX) — thử lại.`
+    );
+  }
 }
 
 /**
@@ -364,8 +395,19 @@ async function firstVideoSrc(page: Page): Promise<string | undefined> {
  * đếm/thứ tự/virtualization: `video[src="..."]` rồi đi lên ancestor `<a>` gần nhất để right-click
  * (giữ nguyên tinh thần "right-click thẻ `<a>` chứa media" như Setting/Prop, chỉ khác cách TÌM ra
  * đúng thẻ đó).
+ *
+ * XÁC NHẬN TRỰC TIẾP (2026-07-19, RUNBOOK mục 4.39) — menuitem "Rename" cho VIDEO (khác Setting/
+ * Prop, `imageAsset.ts`) rất có thể KHÔNG mở modal tại chỗ mà ĐIỀU HƯỚNG SANG TRANG "Edit" RIÊNG
+ * của clip đó (soi debug capture `pre-reload-pill-stuck-*`: trang kế tiếp bị kẹt hiện đúng UI
+ * editor timeline của 1 clip cũ, tiêu đề clip nằm trong ô `aria-label="Editable text"` + có nút
+ * "Done" ở navbar — TRÙNG HỆT tên 2 phần tử code này đang tìm, nên code "tưởng" đã xong nhưng thực
+ * ra vừa gõ tên vào Ô TIÊU ĐỀ TRANG EDIT rồi bấm "Done" thoát editor, để lại trang KẸT ở URL edit
+ * này thay vì quay về lưới media chính — cảnh SAU đó không tìm thấy pill "crop_16_9" vì đang ở
+ * sai trang). Fix: LUÔN điều hướng THẲNG về `projectUrl` (biết chắc chắn, không đoán link "Back")
+ * ngay sau khi rename xong, bất kể rename thực chất là modal tại chỗ hay điều hướng sang trang
+ * khác — đảm bảo KHÔNG BAO GIỜ để lại trang ở trạng thái không xác định cho cảnh sau.
  */
-async function renameLatestVideo(page: Page, name: string, videoSrc: string, sceneIndex: number): Promise<void> {
+async function renameLatestVideo(page: Page, name: string, videoSrc: string, sceneIndex: number, projectUrl: string): Promise<void> {
   const videoTag = page.locator(`video[src="${videoSrc}"]`).first();
   const card = videoTag.locator("xpath=ancestor::a[1]");
   if (!(await card.count())) {
@@ -385,9 +427,14 @@ async function renameLatestVideo(page: Page, name: string, videoSrc: string, sce
   await nameInput.press("ControlOrMeta+a");
   await nameInput.fill(name);
   await page.getByRole("button", { name: /done/i }).click();
+
+  // LUÔN quay về ĐÚNG project canvas sau khi rename — không tin "Done" đã tự đưa mình về đúng chỗ
+  // (xem docstring trên: rất có thể vừa thoát khỏi trang Edit riêng, không phải đóng modal).
+  await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+  await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
 }
 
-async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string): Promise<"ok" | "skipped"> {
+async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, projectUrl: string): Promise<"ok" | "skipped"> {
   await ensureModelAndDuration(page);
   await fillPromptWithMentions(page, prompt);
 
@@ -423,9 +470,48 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
   // card mới), số lượng "Failed" có thể tạm giảm về baseline lúc đang generate lại rồi tăng lại
   // nếu Retry cũng lỗi; so cạnh (currentCount > lastSeenCount) bắt được cả lần lỗi ĐẦU lẫn các lần
   // lỗi SAU mỗi lần Retry, không chỉ đúng 1 lần duy nhất.
+  //
+  // XÁC NHẬN TRỰC TIẾP (2026-07-19, cảnh #6) — bản đầu CHỈ kiểm tra "Failed" trong vòng poll
+  // CHÍNH, KHÔNG kiểm tra lại trong vòng reload-recheck bên dưới (vốn chỉ tìm video mới) — nếu
+  // Flow từ chối MUỘN (gần/sau mốc GENERATE_TIMEOUT_MS, card "Failed" xuất hiện đúng lúc vòng
+  // poll chính vừa thoát do hết giờ), toàn bộ thời gian reload-recheck (90s) bị lãng phí chờ 1
+  // video sẽ KHÔNG BAO GIỜ xuất hiện (vì đã bị từ chối, không phải đang xử lý chậm), rồi mới throw
+  // timeout chung chung — không bao giờ tận dụng được cơ chế bấm Retry nhanh. Gộp logic kiểm
+  // tra+Retry vào 1 hàm dùng chung `checkFailedAndRetry()`, gọi ở CẢ vòng poll chính LẪN vòng
+  // reload-recheck, để phát hiện đúng ngay cả khi từ chối xảy ra muộn/sau khi đã reload.
   const MAX_INLINE_RETRIES = 2;
-  let inlineRetries = 0;
-  let lastFailedCount = baselineFailedCount;
+  const retryState = { lastFailedCount: baselineFailedCount, inlineRetries: 0 };
+
+  async function checkFailedAndRetry(): Promise<"gave-up" | "retried" | "no-failure"> {
+    const currentFailedCount = await failedLocatorAll.count();
+    if (currentFailedCount <= retryState.lastFailedCount) return "no-failure";
+    retryState.lastFailedCount = currentFailedCount;
+    if (retryState.inlineRetries >= MAX_INLINE_RETRIES) {
+      console.warn(
+        `[veo3bot] cảnh #${prompt.index} bị Flow từ chối sau ${retryState.inlineRetries} lần Retry — bỏ qua cảnh này.`
+      );
+      await debugCapture(page, `flow-rejected-final-scene${prompt.index}`);
+      return "gave-up";
+    }
+    retryState.inlineRetries++;
+    console.warn(
+      `[veo3bot] cảnh #${prompt.index} bị Flow từ chối (có thể do chính sách nội dung) — bấm "Retry" ngay (lần ${retryState.inlineRetries}/${MAX_INLINE_RETRIES}), không đợi thêm.`
+    );
+    await debugCapture(page, `flow-rejected-before-retry${retryState.inlineRetries}-scene${prompt.index}`);
+    try {
+      await page.getByRole("button", { name: /retry/i }).first().click({ timeout: 5000 });
+    } catch {
+      await debugCapture(page, `retry-button-missing-scene${prompt.index}`);
+      console.warn(`[veo3bot] không bấm được nút "Retry" cho cảnh #${prompt.index} — bỏ qua cảnh này.`);
+      return "gave-up";
+    }
+    // XÁC NHẬN TRỰC TIẾP (2026-07-19, người dùng quan sát trực tiếp): bấm "Retry" làm trang RELOAD
+    // LẠI (không phải regenerate tại chỗ trong DOM hiện có như giả định ban đầu) — chờ trang THẬT
+    // SỰ sẵn sàng (nút "Add Media" xuất hiện) trước khi tiếp tục vòng lặp kiểm tra, tránh đọc nhầm
+    // trạng thái khi DOM đang giữa chừng load lại.
+    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 45000 }).catch(() => {});
+    return "retried";
+  }
 
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
   let newVideoSrc: string | undefined;
@@ -436,31 +522,25 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
       break;
     }
 
-    const currentFailedCount = await failedLocatorAll.count();
-    if (currentFailedCount > lastFailedCount) {
-      lastFailedCount = currentFailedCount;
-      if (inlineRetries >= MAX_INLINE_RETRIES) {
-        console.warn(
-          `[veo3bot] cảnh #${prompt.index} bị Flow từ chối sau ${inlineRetries} lần Retry — bỏ qua cảnh này.`
-        );
-        await debugCapture(page, `flow-rejected-final-scene${prompt.index}`);
-        return "skipped";
-      }
-      inlineRetries++;
-      console.warn(
-        `[veo3bot] cảnh #${prompt.index} bị Flow từ chối (có thể do chính sách nội dung) — bấm "Retry" ngay (lần ${inlineRetries}/${MAX_INLINE_RETRIES}), không đợi thêm.`
-      );
-      await debugCapture(page, `flow-rejected-before-retry${inlineRetries}-scene${prompt.index}`);
-      try {
-        await page.getByRole("button", { name: /retry/i }).first().click({ timeout: 5000 });
-      } catch {
-        await debugCapture(page, `retry-button-missing-scene${prompt.index}`);
-        console.warn(`[veo3bot] không bấm được nút "Retry" cho cảnh #${prompt.index} — bỏ qua cảnh này.`);
-        return "skipped";
-      }
-      continue; // kiểm tra lại NGAY, không chờ POLL_INTERVAL_MS
-    }
+    const failedResult = await checkFailedAndRetry();
+    if (failedResult === "gave-up") return "skipped";
+    if (failedResult === "retried") continue; // kiểm tra lại NGAY, không chờ POLL_INTERVAL_MS
     await page.waitForTimeout(POLL_INTERVAL_MS);
+  }
+  // Kiểm tra NGAY 1 lần cuối, KHÔNG chờ, trước khi kết luận timeout — vòng while trên có thể thoát
+  // đúng lúc `Date.now() < deadline` vừa chuyển false ngay SAU khi 1 video/"Failed" mới xuất hiện
+  // (xác nhận trực tiếp gây lỡ mất "Failed" của cảnh #6, xem ghi chú `GENERATE_TIMEOUT_MS` ở đầu
+  // file) — 1 lần kiểm tra thêm gần như miễn phí, tránh rơi oan vào nhánh reload tốn kém bên dưới.
+  if (!newVideoSrc) {
+    const currentFirstSrc = await firstVideoSrc(page);
+    if (currentFirstSrc && currentFirstSrc !== baselineFirstSrc) {
+      newVideoSrc = currentFirstSrc;
+    } else {
+      const failedResult = await checkFailedAndRetry();
+      if (failedResult === "gave-up") return "skipped";
+      // "retried" ở đây: đã bấm Retry, để nhánh reload bên dưới xử lý tiếp bình thường (vẫn an
+      // toàn dù không cần reload nữa, vì trang đã tự reload khi bấm Retry).
+    }
   }
   if (!newVideoSrc) {
     // XÁC NHẬN TRỰC TIẾP (2026-07-16): cảnh #25 bị báo "hết thời gian chờ" nhưng video THẬT
@@ -491,6 +571,13 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
         newVideoSrc = currentFirstSrc;
         break;
       }
+      // XÁC NHẬN TRỰC TIẾP (2026-07-19, cảnh #6, xem ghi chú ở khai báo checkFailedAndRetry phía
+      // trên): PHẢI kiểm tra "Failed" ở đây nữa — thẻ lỗi vẫn còn nguyên sau reload (đã xác nhận
+      // trực tiếp qua debug capture), nếu không kiểm tra lại thì cảnh bị từ chối MUỘN sẽ lãng phí
+      // hết 90s recheck rồi throw timeout chung chung, không bao giờ bấm Retry.
+      const failedResult = await checkFailedAndRetry();
+      if (failedResult === "gave-up") return "skipped";
+      if (failedResult === "retried") continue; // kiểm tra lại NGAY, không chờ POLL_INTERVAL_MS
       await page.waitForTimeout(POLL_INTERVAL_MS);
     }
     if (!newVideoSrc) {
@@ -505,7 +592,7 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
   // KHÔNG còn tải file về ngay tại đây (quyết định người dùng, 2026-07-19, xem RUNBOOK mục
   // 4.31) — chỉ đổi tên clip vừa tạo theo đúng chỉ số cảnh để tìm lại được sau này, tải về
   // (chất lượng 1080p) dồn vào lệnh riêng `npm run download` chạy SAU khi mọi cảnh đã xong.
-  await renameLatestVideo(page, clipName, newVideoSrc, prompt.index);
+  await renameLatestVideo(page, clipName, newVideoSrc, prompt.index, projectUrl);
   return "ok";
 }
 
@@ -572,13 +659,13 @@ async function processQueue(
 
     let status: "ok" | "skipped";
     try {
-      status = await generateOneClip(page, p, clipName);
+      status = await generateOneClip(page, p, clipName, projectUrl);
     } catch (err) {
       log(`lỗi cảnh #${p.index}, mở tab mới và thử lại: ${(err as Error).message}`);
       try {
         await reopenPage();
         generatedSinceReload = 0;
-        status = await generateOneClip(page, p, clipName);
+        status = await generateOneClip(page, p, clipName, projectUrl);
       } catch (err2) {
         log(`cảnh #${p.index} vẫn lỗi sau khi thử lại — bỏ qua: ${(err2 as Error).message}`);
         await debugCapture(page, `worker${workerId}-final-fail-scene${p.index}`);

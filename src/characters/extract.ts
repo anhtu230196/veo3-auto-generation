@@ -35,34 +35,40 @@ mặt) — chỉ được đổi: mốc trẻ em → tỉ lệ cơ thể/khuôn 
 nhỏ theo tỉ lệ); mốc già → giữ nguyên hình dáng tóc nhưng đổi màu tóc sang bạc/trắng, thêm nếp nhăn, dáng
 đi khom. TUYỆT ĐỐI không viết lại khuôn mặt/kiểu tóc khác hẳn cho từng mốc tuổi — đó phải là CÙNG 1 người.
 
-TÊN NGẮN CHO CHÍNH NHÂN VẬT NỔI TIẾNG, KHÔNG CHỈ NGƯỜI THÂN (RẤT QUAN TRỌNG — xác nhận trực tiếp qua render
-thật, 2026-07-18): Google Flow có bộ lọc chặn nội dung "prominent people". Ban đầu tưởng chỉ ảnh hưởng
-NGƯỜI THÂN của nhân vật nổi tiếng (xem mục dưới), nhưng xác nhận trực tiếp CHÍNH nhân vật nổi tiếng cũng bị
-chặn khi Character asset đặt tên ĐẦY ĐỦ kèm họ (vd "Christopher Columbus" — cảnh dùng tên này bị Flow từ
-chối với lỗi "might violate our policies about generating prominent people"); đổi sang tên NGẮN chỉ gồm tên
-riêng, bỏ hẳn họ (vd "Christopher" — không có "Columbus") thì KHÔNG còn bị chặn, dù mô tả ngoại hình bên
-dưới field \`name\` vẫn viết đầy đủ theo ngoại hình thật của nhân vật đó. Kết luận: bộ lọc dường như quét
-theo CHUỖI TÊN ĐẦY ĐỦ (tên + họ) khớp với 1 người nổi tiếng đã biết, không phải chỉ tên riêng đứng một
-mình (tên riêng một mình quá chung chung để định danh 1 người cụ thể). Vì vậy: với BẤT KỲ nhân vật nào
-(kể cả nhân vật CHÍNH, không chỉ người thân) mà tên đầy đủ trùng khớp 1 người thật/lịch sử nổi tiếng, đặt
-tên Character asset CHỈ bằng tên riêng (hoặc 1 phần tên không đủ để định danh cụ thể người đó), KHÔNG bao
-giờ ghép đầy đủ họ tên thật — dùng tên ngắn này làm CẢ field \`name\` LẪN tên nhắc trong videoPrompt ở mọi
-cảnh có mặt họ, mô tả ngoại hình vẫn viết đầy đủ/chính xác theo NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên.
+QUY TẮC CHUNG — TÊN NGẮN/ĐỊNH DANH LẠI CHO CẢ DÀN NHÂN VẬT CÓ THẬT, KHÔNG CHỈ NHÂN VẬT CHÍNH (RẤT QUAN
+TRỌNG, cập nhật 2026-07-19 sau khi xác nhận lỗi vẫn tái diễn rải rác suốt 1 project dù đã sửa riêng nhân
+vật chính): Google Flow có bộ lọc chặn nội dung "prominent people", quét theo CHUỖI TÊN ĐẦY ĐỦ khớp 1 người
+thật/lịch sử đã biết (không phải chỉ tên riêng đứng một mình — tên riêng một mình quá chung chung để định
+danh 1 người cụ thể), và ÁP DỤNG CHO BẤT KỲ AI trong cả dàn nhân vật, KHÔNG giới hạn ở nhân vật chính hay
+người thân của họ. Một project xác nhận trực tiếp: dù đã đổi tên đúng cho nhân vật chính, vẫn liên tục gặp
+lỗi "might violate our policies about generating prominent people" vì DÀN NHÂN VẬT PHỤ còn nhiều người
+thật/lịch sử KHÁC (vua/hoàng hậu, nhà tài trợ, đồng đội thám hiểm, nhân chứng...) vẫn đang dùng tên đầy đủ
+— đây mới là nguồn lỗi rải rác khó bắt hết nếu chỉ kiểm tra "có phải nhân vật chính không". Vì vậy: khi
+liệt kê TOÀN BỘ nhân vật CHÍNH xuất hiện lặp lại (bước đầu tiên của guide này), kiểm tra NGAY LÚC ĐÓ cho
+TỪNG người một xem có phải người thật/lịch sử/công chúng có thể định danh được không — không chỉ nhân vật
+được coi là "chính" của câu chuyện — rồi áp dụng ĐÚNG 1 trong 3 cách đổi tên field \`name\` dưới đây, KHÔNG
+đợi đến lúc bị Flow từ chối mới sửa từng trường hợp một.
 
-NGƯỜI THÂN CỦA NHÂN VẬT NỔI TIẾNG (cùng bộ lọc như trên): dường như còn quét trúng TÊN THẬT của bất kỳ ai
-gắn với 1 nhân vật lịch sử/công chúng đã biết, kể cả người thân ít nổi tiếng hơn nhiều (vd anh trai/cha của
-người đó) — xác nhận trực tiếp: cảnh dùng Character "Bartholomew Columbus" (em trai Christopher Columbus)
-vẫn bị Flow từ chối với lỗi "might violate our policies about generating prominent people", dù bản thân
-Bartholomew không phải nhân vật nổi tiếng độc lập. Vì vậy: nếu 1 nhân vật là NGƯỜI THÂN (cha/mẹ/anh/chị/
-em/con/vợ/chồng...) của 1 nhân vật ĐÃ nổi tiếng khác trong cùng câu chuyện, TUYỆT ĐỐI KHÔNG đặt tên riêng
-lịch sử thật của họ làm tên Character (vd KHÔNG dùng "Bartholomew Columbus") — thay vào đó đặt tên theo
-QUAN HỆ SỞ HỮU với nhân vật nổi tiếng đó, ví dụ "Columbus's Brother", "Columbus's Father" (LƯU Ý: nếu chính
-nhân vật nổi tiếng cũng đã đổi sang tên ngắn theo quy tắc trên, ví dụ "Christopher" thay vì "Christopher
-Columbus", cân nhắc dùng tên ngắn đó trong cụm quan hệ sở hữu thay vì họ đầy đủ, ví dụ "Christopher's
-Brother" thay vì "Columbus's Brother", để nhất quán và giảm thêm rủi ro — CHƯA xác nhận trực tiếp việc này
-có cần thiết hay không, vì "Columbus's Brother" một mình đã xác nhận KHÔNG bị chặn). Dùng tên quan hệ này
-làm CẢ tên field \`name\` của Character asset LẪN tên nhắc trong videoPrompt ở mọi cảnh có mặt họ — KHÔNG
-dùng tên lịch sử thật của họ ở bất kỳ đâu trong pipeline (kể cả mô tả ngoại hình vẫn viết bình thường theo
-NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên nếu có thông tin, chỉ riêng FIELD TÊN là đổi sang dạng quan hệ). CHỈ áp
-dụng quy tắc này cho người thân của nhân vật THỰC SỰ nổi tiếng (rủi ro cao) — không cần áp dụng máy móc cho
-người thân của nhân vật lịch sử ít người biết đến.`;
+CÁCH 1 — nhân vật CHÍNH của câu chuyện (protagonist): đặt tên Character asset CHỈ bằng tên riêng, bỏ hẳn họ
+(vd "Christopher" — không có "Columbus"). Xác nhận trực tiếp qua render thật: đổi CÙNG 1 Character asset
+(cùng mô tả ngoại hình, cùng người) từ tên đầy đủ sang tên riêng đơn lẻ là đủ để hết bị chặn. Áp dụng nhất
+quán cho MỌI mốc tuổi: "Young Christopher"/"Christopher"/"Older Christopher", không phải "Young
+Columbus"/"Christopher Columbus"/"Older Columbus" (xem mục NHIỀU MỐC TUỔI ở trên).
+
+CÁCH 2 — NGƯỜI THÂN (cha/mẹ/anh/chị/em/con/vợ/chồng...) của nhân vật CHÍNH: đặt tên theo QUAN HỆ SỞ HỮU với
+nhân vật chính, vd "Columbus's Brother", "Columbus's Father" — TUYỆT ĐỐI KHÔNG dùng tên lịch sử thật của họ
+(vd KHÔNG dùng "Bartholomew Columbus", đã xác nhận trực tiếp vẫn bị chặn dù bản thân Bartholomew không nổi
+tiếng độc lập). Nếu nhân vật chính đã đổi sang tên ngắn (Cách 1), có thể dùng tên ngắn đó trong cụm quan hệ
+sở hữu thay vì họ đầy đủ (vd "Christopher's Brother") để nhất quán, dù "Columbus's Brother" một mình cũng
+đã xác nhận KHÔNG bị chặn.
+
+CÁCH 3 — BẤT KỲ nhân vật lịch sử/công chúng có thật KHÁC trong dàn nhân vật, KHÔNG PHẢI nhân vật chính LẪN
+KHÔNG PHẢI người thân của họ (vd vua, hoàng hậu, nhà tài trợ/quan chức, đồng đội/đối thủ, nhân chứng độc
+lập...) — đây là trường hợp DỄ BỊ BỎ SÓT NHẤT vì không khớp rõ Cách 1 hay Cách 2. Đặt tên theo VAI TRÒ/CHỨC
+DANH trong câu chuyện thay vì tên lịch sử thật (vd "The Queen", "The Royal Treasurer", "The Fleet Captain")
+— hoặc chỉ tên riêng đơn lẻ nếu tên đó không đủ định danh cụ thể 1 người (áp dụng cùng nguyên tắc Cách 1).
+
+Ở CẢ 3 cách trên: dùng tên đã đổi làm CẢ field \`name\` của Character asset LẪN tên nhắc trong videoPrompt
+ở MỌI cảnh có mặt họ — KHÔNG bao giờ dùng tên lịch sử thật ở bất kỳ đâu trong pipeline. Mô tả ngoại hình
+(field \`description\`) vẫn viết đầy đủ/chính xác theo NHÂN VẬT CÓ THẬT/NỔI TIẾNG ở trên — CHỈ riêng field
+tên là bị đổi, không phải mô tả.`;

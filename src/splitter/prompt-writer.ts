@@ -131,16 +131,20 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
   young unnamed mapmaker" dù Character "Christopher" ĐÃ có sẵn trong danh sách — khiến Veo3 không @mention
   được nhân vật này, tự vẽ ra 1 người khác hoàn toàn (mất nhất quán hình ảnh). Chỉ dùng "unnamed" khi
   THẬT SỰ là nhân vật quần chúng không có Character asset nào tương ứng, không phải vì quên đối chiếu.
-- TÊN NHÂN VẬT NỔI TIẾNG (CẢ chính nhân vật LẪN người thân) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP: Flow từng từ chối
-  tạo cảnh với lỗi "might violate our policies about generating prominent people" dù đã @mention đúng
-  Character, xảy ra với CẢ 2 trường hợp: (1) chính nhân vật nổi tiếng dùng tên ĐẦY ĐỦ kèm họ (vd
-  "Christopher Columbus" — đổi sang tên ngắn "Christopher", bỏ họ, thì hết bị chặn); (2) người thân của
-  nhân vật nổi tiếng dùng tên lịch sử thật của họ (vd "Bartholomew Columbus" — đổi sang tên quan hệ sở
-  hữu "Columbus's Brother" thì hết bị chặn). Nếu danh sách nhân vật ở trên đã dùng tên NGẮN (chỉ tên
-  riêng, vd "Christopher") hoặc tên dạng quan hệ sở hữu (vd "Columbus's Brother") thay vì tên lịch sử
-  đầy đủ — đây là CÓ CHỦ ĐÍCH, không phải lỗi đặt tên. LUÔN dùng ĐÚNG tên đã cho trong danh sách (kể cả
-  dạng tên ngắn/quan hệ sở hữu) khi nhắc trong videoPrompt — TUYỆT ĐỐI không tự đổi lại/ghép thêm thành
-  tên lịch sử đầy đủ của họ dù bạn biết tên đó, vì sẽ tái diễn lỗi bị chặn.
+- TÊN NHÂN VẬT LỊCH SỬ/CÔNG CHÚNG CÓ THẬT (CẢ dàn nhân vật, KHÔNG chỉ nhân vật chính hay người thân của họ
+  — cập nhật 2026-07-19 sau khi xác nhận lỗi vẫn tái diễn ở nhân vật phụ khác) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP:
+  Flow từng từ chối tạo cảnh với lỗi "might violate our policies about generating prominent people" dù đã
+  @mention đúng Character, xảy ra với BẤT KỲ ai trong dàn nhân vật có tên đầy đủ trùng khớp người thật/lịch
+  sử — không chỉ nhân vật chính (vd "Christopher Columbus" → đổi tên ngắn "Christopher" hết bị chặn) hay
+  người thân của họ (vd "Bartholomew Columbus" → đổi tên quan hệ sở hữu "Columbus's Brother" hết bị chặn),
+  mà CẢ nhân vật phụ khác không liên quan họ hàng (vua/hoàng hậu, nhà tài trợ, đồng đội...) cũng có nguy cơ
+  y hệt nếu tên đăng ký là tên lịch sử thật đầy đủ. Nếu danh sách nhân vật ở trên đã dùng tên NGẮN (chỉ tên
+  riêng, vd "Christopher"), tên quan hệ sở hữu (vd "Columbus's Brother"), hoặc tên vai trò/chức danh (vd
+  "The Queen", "The Fleet Captain") thay vì tên lịch sử đầy đủ — đây là CÓ CHỦ ĐÍCH (xem quy tắc 3 cách đổi
+  tên trong CHARACTER_EXTRACTION_GUIDE, file characters/extract.ts), không phải lỗi đặt tên. LUÔN dùng ĐÚNG
+  tên đã cho trong danh sách (kể cả dạng tên ngắn/quan hệ sở hữu/vai trò) khi nhắc trong videoPrompt —
+  TUYỆT ĐỐI không tự đổi lại/ghép thêm thành tên lịch sử đầy đủ của họ dù bạn biết tên đó, vì sẽ tái diễn
+  lỗi bị chặn.
 
 QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu danh sách bối cảnh ở trên không rỗng:
 - Nếu cảnh diễn ra ở ĐÚNG 1 địa điểm đã có trong danh sách bối cảnh (dù là toàn cảnh rộng hay cận cảnh 1

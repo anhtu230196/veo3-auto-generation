@@ -1326,6 +1326,237 @@ nội dung THẬT của từng clip (không xem được video) — người dù
 **CHƯA XÁC NHẬN TIẾP**: fix `firstVideoSrc()` CHƯA chạy thử thật sau khi sửa — cần generate lại vài
 cảnh (đặc biệt cảnh ngay sau 1 cảnh vừa có duplicate) để xác nhận không còn tái diễn gán nhầm.
 
+### 4.39. Sau khi rename video, trang có thể bị "mắc kẹt" ở trang Edit riêng của clip — luôn ép quay về đúng project URL
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng hỏi vì sao debug capture `pre-reload-pill-stuck-*`
+lại hiện clip #73 trong 1 màn hình EDIT (timeline, "Describe your edits", nút "Done" ở navbar) thay
+vì lưới media chính. Điều tra: ô tiêu đề clip trên trang Edit này dùng ĐÚNG `aria-label="Editable
+text"` và có ĐÚNG nút "Done" — TRÙNG HỆT 2 selector `renameLatestVideo()` đang dùng để gõ tên +
+xác nhận rename. Suy luận có căn cứ cao: menuitem "Rename" cho VIDEO (khác Setting/Prop —
+`imageAsset.ts` xác nhận mở MODAL tại chỗ) rất có thể thực ra ĐIỀU HƯỚNG SANG TRANG "Edit" riêng
+của clip đó — code cũ gõ tên vào Ô TIÊU ĐỀ của trang Edit (không phải ô input của 1 modal), bấm
+"Done" (thoát editor, không phải "xác nhận rename & đóng modal"), rồi KHÔNG có bước nào đưa trang
+quay lại lưới media chính — để trang kẹt nguyên ở URL edit đó cho tới khi cảnh SAU gọi
+`ensureModelAndDuration` và không tìm thấy pill "crop_16_9" (vì sai trang), kích hoạt reload (vẫn
+sai trang, reload không đổi URL) rồi cuối cùng throw, rơi vào nhánh catch/`reopenPage()` của
+`processQueue` — ĐÂY mới thực sự là chỗ code TỰ HỒI PHỤC (vì `reopenPage()` gọi `page.goto(projectUrl)`),
+giải thích vì sao bug này không làm crash hẳn pipeline nhưng âm thầm làm hỏng/lãng phí 1 lượt xử lý
+cảnh mỗi lần xảy ra.
+
+**Đã sửa**:
+- `src/veo3bot/debug.ts::debugCapture` — lưu thêm `<base>.url.txt` chứa `page.url()` hiện tại (bản
+  cũ chỉ có screenshot + HTML, KHÔNG có URL — HTML/`page.content()` không phản ánh thanh địa chỉ,
+  khiến việc xác định "trang đang ở đâu" khi có bug kiểu này khó hơn nhiều). Áp dụng cho MỌI lần gọi
+  `debugCapture` từ nay, không cần sửa từng chỗ gọi.
+- `src/veo3bot/generate.ts::renameLatestVideo` — nhận thêm tham số `projectUrl`, sau khi gõ tên +
+  bấm "Done" xong, LUÔN chủ động `page.goto(projectUrl)` + chờ "Add Media" xuất hiện — KHÔNG tin
+  rằng bấm "Done" đã tự đưa trang về đúng lưới media chính (dù rename thực chất là modal tại chỗ
+  hay điều hướng sang trang khác, hành động này đều AN TOÀN và đưa trang về trạng thái known-good).
+  Truyền `projectUrl` xuyên suốt `generateOneClip` → gọi từ `processQueue` (đã có sẵn `projectUrl`
+  trong scope).
+
+**BÀI HỌC**: khi 1 hành động UI (rename, v.v.) có thể ĐIỀU HƯỚNG sang trang khác thay vì chỉ mở
+modal tại chỗ, đừng giả định trang sẽ tự "quay lại" đúng chỗ sau khi hành động xong — luôn CHỦ ĐỘNG
+điều hướng về 1 URL đã biết chắc chắn (`page.goto(knownGoodUrl)`) trước khi tiếp tục bước kế tiếp,
+đặc biệt nếu bước kế đó giả định đang đứng ở 1 trang cụ thể (ở đây là lưới media chính có pill
+"crop_16_9"). Cũng nên **luôn lưu `page.url()` trong debug capture** — thiếu thông tin này khiến 1
+bug dạng "sai trang" mất nhiều công điều tra hơn hẳn cần thiết.
+
+**CHƯA XÁC NHẬN TIẾP**: fix CHƯA chạy thử thật. Cần generate lại vài cảnh để xác nhận sau khi
+rename, trang luôn quay đúng về lưới media chính (không còn kẹt ở trang Edit), và cảnh liền sau đó
+không còn gặp lỗi "pill cài đặt không phản hồi" do sai trang.
+
+### 4.40. Skill: mở rộng quy tắc "prominent people" ra CẢ DÀN NHÂN VẬT, không chỉ nhân vật chính + người thân
+**BỐI CẢNH (2026-07-19)**: người dùng báo vẫn hay gặp lỗi "prominent people" dù skill đã có quy tắc
+đổi tên ngắn cho nhân vật chính (mục 4.28) và tên quan hệ cho người thân (mục 4.24). Kiểm tra
+`state/characters.json` của project này thấy: NGOÀI "Christopher Columbus"/"Older Columbus"/"Young
+Columbus" (đã biết cần đổi), còn RẤT NHIỀU nhân vật lịch sử có thật KHÁC vẫn dùng tên đầy đủ —
+`"Rodrigo de Triana"`, `"Queen Isabella"`, `"King Ferdinand"`, `"Martín Alonso Pinzón"`, `"Vicente
+Yáñez Pinzón"`, `"Luis de Santángel"` — đây đều là người có thật, KHÔNG PHẢI nhân vật chính lẫn
+người thân của Columbus, nên 2 quy tắc cũ trong skill (chỉ nhắc "nhân vật chính" và "người thân")
+KHÔNG bao trùm được — đây chính là lỗ hổng khiến lỗi cứ tái diễn rải rác suốt quá trình sản xuất.
+
+**Người dùng yêu cầu rõ**: chỉ cập nhật SKILL cho project SAU, KHÔNG cần sửa dữ liệu
+`state/characters.json`/`state/prompts.json` của project NÀY — đã tuân thủ, KHÔNG đổi gì trong
+`state/` ở lần sửa này.
+
+**Đã sửa skill `flow-historical-video-prompts`** (ngoài repo, xem đường dẫn mục 4.21):
+- Mở rộng quy tắc thành nguyên tắc CHUNG: áp dụng cho MỌI nhân vật trong cả dàn nhân vật là người
+  thật/có thể định danh được — không giới hạn ở nhân vật chính hay người thân của họ. Thêm case
+  thứ 3 (nhân vật lịch sử có thật KHÁC, không phải chính/người thân — vd vua/hoàng hậu, nhà tài
+  trợ, đồng đội thám hiểm...) — dùng nhãn vai trò/chức danh (`The Queen`, `The Fleet Captain`) hoặc
+  tên riêng đơn lẻ nếu tên đó không đủ định danh cụ thể.
+- Chuyển việc kiểm tra này lên NGAY bước 1 của workflow (bảng kiểm kê tài sản) — bắt buộc rà soát
+  CẢ DÀN NHÂN VẬT một lần duy nhất trước khi viết prompt, thay vì phát hiện rải rác từng cảnh một
+  trong lúc render (nguyên nhân gốc khiến lỗi "cứ xuất hiện lai rai suốt dự án" thay vì bắt hết một
+  lần).
+- Cập nhật "Named person / content-block workaround" — thêm bước xử lý thứ 4 cho case nhân vật
+  lịch sử KHÔNG phải chính/người thân.
+
+**Đồng bộ luôn 2 file guide trong REPO này** (khác skill ngoài repo — đây là code Claude tự đọc khi
+viết/rà soát `state/characters.json`/`state/prompts.json`, kể cả cho project Columbus hiện tại nếu
+sau này viết thêm nhân vật mới):
+- `src/characters/extract.ts::CHARACTER_EXTRACTION_GUIDE` — viết lại thành quy tắc chung + 3 CÁCH cụ
+  thể (nhân vật chính → tên ngắn; người thân → tên quan hệ sở hữu; nhân vật lịch sử khác → tên vai
+  trò/chức danh), thay vì 2 mục tách rời chỉ nói "chính nhân vật" và "người thân".
+- `src/splitter/prompt-writer.ts::buildPromptWritingGuide()` — cập nhật quy tắc "TÊN NHÂN VẬT" cho
+  khớp, thêm nhắc tên vai trò/chức danh là dạng CÓ CHỦ ĐÍCH thứ 3 (trước chỉ biết tên ngắn/quan hệ
+  sở hữu).
+
+**Dữ liệu THẬT của project Columbus** (`state/characters.json`/`state/prompts.json`) — theo đúng yêu
+cầu người dùng, KHÔNG bị đổi gì trong lần sửa này. Người dùng sẽ tự quyết định có đổi tên các nhân
+vật còn lại (`Rodrigo de Triana`, `Queen Isabella`, `King Ferdinand`, `Martín Alonso Pinzón`,
+`Vicente Yáñez Pinzón`, `Luis de Santángel`) hay không — nếu sau này quyết định đổi, áp dụng CÁCH 3
+(tên vai trò/chức danh) cho những nhân vật này theo đúng guide vừa cập nhật.
+
+### 4.41. Bấm nút "Retry" làm trang RELOAD LẠI — bản mục 4.34 thiếu bước chờ trang ổn định trước khi kiểm tra tiếp
+**XÁC NHẬN TRỰC TIẾP (2026-07-19, người dùng quan sát trực tiếp trình duyệt)**: bấm nút "Retry" trên
+card lỗi (mục 4.34) làm TRANG RELOAD LẠI — khác giả định ban đầu (regenerate tại chỗ trong DOM hiện
+có, không điều hướng/reload gì cả). Code cũ `continue` thẳng vào vòng kiểm tra lại NGAY sau khi bấm
+Retry, không chờ gì — có thể đọc nhầm trạng thái (`firstVideoSrc`/đếm "Failed") nếu DOM đang giữa
+chừng load lại chưa ổn định.
+
+**Đã sửa** (`src/veo3bot/generate.ts`, nhánh xử lý "Failed" trong `generateOneClip`): sau khi bấm
+"Retry" xong, chờ trang THẬT SỰ sẵn sàng (nút "Add Media" xuất hiện, timeout 45s, cùng tín hiệu đã
+dùng ở mọi chỗ reload khác trong file) TRƯỚC KHI `continue` vào vòng lặp kiểm tra lại — không còn
+kiểm tra ngay lập tức trên trang có thể chưa load xong.
+
+**Không cần sửa gì thêm**: `failedLocatorAll` (Playwright Locator, không phải element handle) và
+`baselineFirstSrc`/`lastFailedCount` (giá trị string/number đơn thuần) đều vẫn hợp lệ xuyên suốt
+reload — Locator tự truy vấn lại DOM hiện tại mỗi lần gọi `.count()`, không bị "stale" như element
+handle thông thường.
+
+**CHƯA XÁC NHẬN TIẾP**: fix CHƯA chạy thử thật sau khi thêm bước chờ. Cần xác nhận: (1) chờ "Add
+Media" đủ hay cần lâu hơn nếu trang có nhiều media; (2) sau khi Retry + reload, cơ chế so
+`firstVideoSrc`/đếm "Failed" vẫn phát hiện đúng kết quả (thành công hay lại lỗi) như kỳ vọng.
+
+### 4.42. 🔴 Prompt bị RỚT MẤT văn bản giữa chừng khi chèn @mention — đủ chip nhưng thiếu câu, lọt qua mọi kiểm tra cũ
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng báo prompt hiện trên Flow cho cảnh #41 bị "thiếu" —
+soi debug capture `pre-reload-timeout-scene41-2026-07-19T11-04-44-112Z.png` thấy card bị Flow đánh
+dấu **"Failed - prominent people"** với caption thật là: *"Medium shot, Luis speaking urgently to
+Spanish Royal Banner Spanish Royal Court Hall Queen"* — so với `videoPrompt` gốc trong
+`state/prompts.json` ("Medium shot, Luis speaking urgently to Queen in the court hall, one hand
+gesturing... [PERIOD_ANCHOR]... [MOTION_SUFFIX]"), bản gửi lên Flow bị MẤT gần hết câu (toàn bộ
+phần sau vị trí đáng lẽ là "Queen" — bao gồm cả PERIOD_ANCHOR/MOTION_SUFFIX) VÀ 2 chip Setting/Prop
+(đáng lẽ nằm CUỐI câu — "Spanish Royal Court Hall"/"Spanish Royal Banner" là trailing names, không
+xuất hiện dạng chữ trong text) lại chèn LẪN vào GIỮA câu, đẩy "Queen" ra cuối cùng.
+
+**Nguyên nhân gốc CHƯA xác định chính xác được bước nào gây lỗi** (không đủ debug capture chi tiết
+từng bước để soi) — nghi ngờ hợp lý: 1 bước gõ "before"/"remainder" text trong
+`fillPromptWithMentions` bị gõ NHẦM vào nơi khác (vd ô search của 1 dialog @mention CHƯA đóng hẳn
+từ lần chèn chip trước) thay vì vào `promptBox` thật, khiến đoạn đó biến mất khỏi nội dung cuối
+cùng dù code vẫn tưởng đã gõ xong (không throw, không log lỗi).
+
+**LỖ HỔNG QUAN TRỌNG NHẤT phát hiện được**: bước xác minh cuối cùng của `fillPromptWithMentions`
+(mục 3, "XÁC MINH chip void đã chèn đủ") TRƯỚC ĐÂY chỉ đếm SỐ LƯỢNG chip @mention, KHÔNG kiểm tra
+phần VĂN BẢN THUẦN (không phải chip) có còn đầy đủ hay không — nên đúng lỗi này (đủ chip, nhưng
+mất phần lớn câu chữ + PERIOD_ANCHOR/MOTION_SUFFIX) HOÀN TOÀN LỌT QUA kiểm tra cũ, khiến Flow nhận
+1 prompt bị hỏng/thiếu mà code vẫn tưởng đã gõ đúng và cứ thế bấm Generate.
+
+**Đã sửa** (`src/veo3bot/generate.ts::fillPromptWithMentions`): thêm bước kiểm tra MỚI ngay sau
+bước đếm chip — lấy 60 ký tự CUỐI của `text` gốc (luôn nằm trong `MOTION_SUFFIX`, KHÔNG chứa tên
+@mention nào, xem `styleDNA.ts`) và xác nhận đoạn này THẬT SỰ xuất hiện trong nội dung hiện tại của
+`promptBox` (qua `innerText()`, so sau khi chuẩn hoá khoảng trắng). Nếu thiếu → coi là prompt đã bị
+hỏng giữa chừng, `debugCapture` (tag `prompt-text-truncated-scene{index}`) rồi throw để cảnh được
+RETRY (qua nhánh catch/`reopenPage()` của `processQueue`) thay vì âm thầm generate video với prompt
+sai/thiếu.
+
+**PHÁT HIỆN PHỤ (chưa xử lý, cần người dùng xác nhận)**: soi cùng ảnh debug thấy 2 Character asset
+trong Flow đã bị đổi tên NGẮN — "Martín Alonso Pinzón" → hiện thị "Martín", và 1 asset khác hiện
+tên "Luis" (nhiều khả năng đổi từ "Luis de Santángel") — nhưng `state/characters.json` VẪN còn ghi
+tên ĐẦY ĐỦ cũ. Nếu đúng là bạn đã tự đổi tên trong Flow (theo hướng dẫn mục 4.28/4.40) mà CHƯA cập
+nhật lại `state/characters.json`, cần đồng bộ lại field `name` cho khớp — nếu không, lần chạy
+`npm run assets` sau có thể không tìm thấy asset cũ (đang tìm theo tên ĐẦY ĐỦ) và tạo THÊM 1 asset
+trùng dưới tên đầy đủ (dễ bị chặn lại y hệt bug đã sửa). CHƯA xác nhận chắc `state/characters.json`
+cần đổi thành gì chính xác — hỏi lại người dùng tên hiện tại của TỪNG asset trong Flow trước khi
+sửa file này.
+
+**TRẠNG THÁI CẢNH #41 HIỆN TẠI**: `status: "success"` trong `state/prompts.json` — NHƯNG do lịch sử
+nhiều lần generate với prompt bị hỏng (xác nhận ít nhất 1 lần "Failed" ở bản ghi 11:04, cộng nhiều
+lần timeout khác suốt từ 18/7), KHÔNG chắc chắn clip hiện đang đứng tên "clip_041" trong Flow có
+đúng nội dung hay không — cần người dùng tự kiểm tra lại bằng mắt trong Flow trước khi tin tưởng,
+CHƯA tự ý reset lại status vì có thể lần thành công sau cùng đã dùng đúng prompt.
+
+**CHƯA XÁC NHẬN TIẾP**: fix kiểm tra văn bản CHƯA chạy thử thật. Cần generate lại vài cảnh để xác
+nhận: (1) không báo lỗi giả (false positive) cho cảnh bình thường; (2) THẬT SỰ bắt được lại đúng
+lỗi này nếu tái diễn.
+
+### 4.43. Vòng reload-recheck không kiểm tra "Failed" — lãng phí toàn bộ thời gian chờ khi Flow từ chối MUỘN
+**XÁC NHẬN TRỰC TIẾP (2026-07-19, test riêng cảnh #6)**: chạy `npx tsx scripts/generate-test-scenes.ts 6`
+để kiểm tra lại xem cảnh #6 (Character "Christopher", tên ngắn) có còn bị chặn "prominent people"
+không (mục ưu tiên đã ghi ở mục 0). Log chỉ báo "timeout" (không báo "bị Flow từ chối"), nhưng soi
+debug capture `pre-reload-timeout-scene6-2026-07-19T14-35-18-687Z.png` thấy RÕ RÀNG 1 card
+**"Failed - This prompt might violate our policies about generating prominent people"** đã hiện
+sẵn — nghĩa là code KHÔNG hề phát hiện ra lỗi này trong lúc đang chạy, dù nó hiển thị rõ ràng trên
+màn hình.
+
+**Nguyên nhân**: bản mục 4.34/4.41 CHỈ kiểm tra "Failed" trong vòng poll CHÍNH (`GENERATE_TIMEOUT_MS`
+= hiện là 2 phút, không phải 3 phút như mục 4.27 từng ghi — có vẻ đã bị đổi lại ở đâu đó không rõ
+thời điểm), KHÔNG kiểm tra lại trong vòng reload-recheck (90s) phía sau — nếu Flow từ chối MUỘN
+(card "Failed" xuất hiện đúng lúc/sau khi vòng poll chính vừa hết giờ), toàn bộ 90 giây recheck bị
+lãng phí chờ 1 video sẽ KHÔNG BAO GIỜ xuất hiện (đã bị từ chối, không phải xử lý chậm), rồi mới
+throw lỗi "timeout" chung chung — không bao giờ có cơ hội bấm "Retry" nhanh. Xác nhận trực tiếp:
+soi HTML dump SAU reload (`timeout-scene6-2026-07-19T14-36-52-491Z.html`) thấy thẻ "Failed" VẪN
+CÒN NGUYÊN — chứng tỏ đây không phải lỗi thoáng qua mà là trạng thái ổn định bị bỏ sót hoàn toàn.
+Hệ quả: 1 cảnh bị từ chối kiểu này tốn tới ~7 phút (2 phút poll + 90s recheck, x2 lần vì
+`processQueue` mở tab mới thử lại toàn bộ) thay vì bấm Retry trong vài giây.
+
+**Đã sửa** (`src/veo3bot/generate.ts::generateOneClip`): gộp toàn bộ logic "đếm Failed theo kiểu
+edge-detect + bấm Retry + chờ trang ổn định" thành 1 hàm dùng chung `checkFailedAndRetry()`, gọi ở
+CẢ vòng poll chính LẪN vòng reload-recheck — đảm bảo phát hiện đúng bất kể lỗi xảy ra SỚM hay MUỘN
+(kể cả sau khi đã reload).
+
+**⚠️ PHÁT HIỆN QUAN TRỌNG, MÂU THUẪN VỚI MỤC 4.28**: cảnh #6 dùng Character "Christopher" (tên
+NGẮN, đã bỏ họ "Columbus" theo đúng fix mục 4.28) **VẪN bị chặn "prominent people"** — mục 4.28
+từng xác nhận trực tiếp đổi tên ngắn là ĐỦ để hết bị chặn (dựa trên 1 cảnh khác, #17). 2 khả năng:
+(1) bộ lọc không hoàn toàn xác định — CÙNG 1 tên có thể lúc bị chặn lúc không tuỳ ngữ cảnh khác của
+prompt (không chỉ dựa vào tên); (2) nội dung CỤ THỂ của cảnh #6 ("stepping forward... claim đó là
+của mình", tranh công) có thể tự nó chạm 1 lớp lọc khác (tranh chấp/xung đột danh tính?) trùng
+thông báo lỗi. **CHƯA KẾT LUẬN ĐƯỢC** — cần test thêm "Christopher" ở vài cảnh #6 KHÁC (không phải
+tranh công) để xác định đây là do TÊN hay do NỘI DUNG CẢNH cụ thể. Nếu tái diễn ở nhiều cảnh khác
+dùng "Christopher", kết luận mục 4.28 (tên ngắn là ĐỦ) cần xem lại — có thể cần tên ngắn hơn nữa
+hoặc chấp nhận đây là giới hạn không khắc phục được hoàn toàn bằng đổi tên.
+
+**Trạng thái cảnh #6 sau lần test này**: vẫn `"failed"` trong `state/prompts.json` (2 lần thử đều
+timeout do bug trên, chưa từng thực sự chạm nhánh Retry) — CẦN chạy lại sau khi có fix mục 4.44
+dưới đây.
+
+**ĐÍNH CHÍNH (2026-07-19, ngay sau khi chạy lại lần 2)**: giả định "thẻ Failed vẫn còn nguyên sau
+reload" ở mục này SAI — dựa trên nhầm lẫn tự khớp phải 1 chuỗi i18n ẩn giống hệt câu lỗi
+("applet_chat_error_safety") khi tôi tự kiểm tra bằng `html.indexOf(...)` không lọc theo hiển thị
+thực tế, không phải card THẬT còn hiển thị. Xem mục 4.44 để biết nguyên nhân + fix ĐÚNG.
+
+### 4.44. Nguyên nhân THẬT: "Failed" xuất hiện quá sát mốc timeout, reload xoá mất dấu hiệu (không phải "vẫn còn nguyên")
+**XÁC NHẬN TRỰC TIẾP (2026-07-19, chạy lại cảnh #6 lần 2 sau fix mục 4.43)**: vẫn timeout y hệt, dù
+đã thêm `checkFailedAndRetry()` vào CẢ 2 vòng lặp. Soi lại kỹ bằng cách tìm ĐÚNG cấu trúc DOM của
+card "Failed" hiển thị thật (`>warning</i><div><div class="...">Failed</div>`, không phải chỉ tìm
+chuỗi "This prompt might violate" — chuỗi đó khớp CẢ với 1 i18n key ẩn `applet_chat_error_safety`
+không liên quan): card Failed CÓ MẶT ở capture TRƯỚC reload (`pre-reload-timeout-scene6-*`), nhưng
+**HOÀN TOÀN KHÔNG CÒN** ở capture SAU khi reload+90s recheck hết giờ (`timeout-scene6-*`) — "Failed"
+là trạng thái TẠM THỜI của phiên hiện tại (client-side, gắn với lần submit cụ thể), KHÔNG phải asset
+lưu trữ vĩnh viễn như video/ảnh thành công — `page.reload()` xoá sạch dấu hiệu này, không phải nó
+"vẫn còn nguyên" như mục 4.43 nhầm tưởng.
+
+**Nguyên nhân THẬT sự khiến `checkFailedAndRetry()` không bắt được**: card "Failed" của Flow xuất
+hiện RẤT SÁT mốc `GENERATE_TIMEOUT_MS` (khi đó = 2 phút, không rõ ai/lúc nào đổi từ 3 phút xuống 2
+phút, lệch với chính comment cũ của hằng số này) — vòng poll chính LUÔN vừa kịp thoát do hết giờ
+NGAY TRƯỚC KHI lần kiểm tra tiếp theo có cơ hội thấy "Failed" (lần kiểm tra cuối cùng trước khi
+sleep 5s luôn rơi vào đúng khoảng vài giây TRƯỚC khi Failed thật sự xuất hiện). Sau đó reload xoá
+sạch "Failed" (như xác nhận trên), nên vòng reload-recheck (dù có kiểm tra) không còn gì để bắt.
+
+**Đã sửa** (`src/veo3bot/generate.ts`):
+- Tăng `GENERATE_TIMEOUT_MS` từ 2 phút → **3 phút** (khớp lại đúng ý định ghi trong comment cũ) —
+  cho vòng poll chính đủ khoảng đệm để bắt "Failed" ở NHIỀU lần kiểm tra (mỗi 5s) trước khi chạm
+  mốc timeout, thay vì đúng lúc chạm mốc.
+- Thêm 1 LẦN KIỂM TRA CUỐI (video mới + `checkFailedAndRetry()`) NGAY LẬP TỨC, không chờ, đúng thời
+  điểm vòng poll chính vừa thoát do hết giờ — trước khi rơi vào nhánh reload tốn kém — phòng trường
+  hợp lỗi/video xuất hiện ĐÚNG NGAY sau lần kiểm tra cuối cùng trong vòng lặp.
+
+**CHƯA XÁC NHẬN TIẾP**: fix CHƯA chạy thử thật. Cần chạy lại cảnh #6 lần nữa — nếu vẫn bị chặn
+"prominent people" nhưng LẦN NÀY code bắt đúng và bấm Retry thành công trong vài giây (thay vì
+timeout ~7 phút như 2 lần trước), coi như đã sửa đúng lớp bug NÀY — nhưng câu hỏi gốc "tên ngắn
+'Christopher' có thật sự đủ để hết bị chặn không" (mục 4.43) vẫn CHƯA có câu trả lời, vì cả 2 lần
+test trước đều chưa từng thực sự chạm được cơ chế Retry để biết Retry có giúp vượt qua hay không.
+
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
 Các bug nghiêm trọng nhất (sai hình ảnh Ingredient, trùng lặp clip, phong cách

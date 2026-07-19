@@ -26,7 +26,11 @@ export async function debugCapture(page: Page, tag: string): Promise<void> {
     await page.screenshot({ path: `${base}.png`, fullPage: true }).catch(() => {});
     const html = await page.content().catch(() => "");
     if (html) await fs.writeFile(`${base}.html`, html);
-    console.log(`[debug:${tag}] đã lưu ${base}.png / .html`);
+    // XÁC NHẬN TRỰC TIẾP (2026-07-19): thiếu URL hiện tại từng làm khó xác định nguyên nhân 1
+    // bug (trang bị "mắc kẹt" ở URL edit riêng của 1 clip, xem RUNBOOK mục 4.39) — page.content()
+    // không phản ánh URL (đó là địa chỉ THANH URL, không nằm trong DOM), phải lưu riêng.
+    await fs.writeFile(`${base}.url.txt`, page.url()).catch(() => {});
+    console.log(`[debug:${tag}] đã lưu ${base}.png / .html / .url.txt (url=${page.url()})`);
   } catch (err) {
     console.warn(`[debug:${tag}] lưu debug capture thất bại (bỏ qua, không ảnh hưởng luồng chính): ${(err as Error).message}`);
   }
