@@ -319,25 +319,29 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
 }
 
 /**
- * XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #14, xem RUNBOOK mục 4.27): đếm SỐ LƯỢNG `video[src]` để
- * so baseline (cách cũ) không đáng tin — soi debug capture lúc lỗi thấy trang CHỈ CÓ ĐÚNG 1 thẻ
- * `<video src>` (không phải cả lưới nhiều video như tưởng), cả TRƯỚC lẫn SAU khi generate xong
- * thật (người dùng xác nhận trực tiếp trong Flow) — nghĩa là Flow chỉ giữ 1 phần tử `<video>`
- * "đang xem/preview" DUY NHẤT và đổi `src` của NÓ tại chỗ khi có clip mới, chứ không thêm phần tử
- * mới vào DOM. Đếm SỐ LƯỢNG không bao giờ tăng trong trường hợp này → luôn báo timeout oan dù đã
- * xong thật. Đổi sang so sánh TẬP HỢP giá trị `src` — coi là xong khi xuất hiện 1 giá trị `src`
- * KHÔNG có trong baseline (dù số lượng phần tử tăng hay chỉ đổi src tại chỗ, cách này đều bắt
- * được).
+ * XÁC NHẬN TRỰC TIẾP (2026-07-19, cảnh #41 bị gán NHẦM đúng nội dung của cảnh #0) — cách so TẬP
+ * HỢP mọi giá trị `src` đang render (bản trước, mục 4.27) có LỖ HỔNG NGHIÊM TRỌNG với lưới media
+ * ẢO HOÁ (`react-virtuoso`, xác nhận ở mục 4.33): lưới chỉ render ~5 item trong viewport tại 1
+ * thời điểm, KHÔNG PHẢI toàn bộ lịch sử clip. 1 clip CŨ (vd bản duplicate CHƯA đổi tên còn sót lại
+ * của cảnh #0 do lỗi rename trước đây, xem mục 4.33/4.37) có thể "trôi vào" vùng render đúng lúc
+ * đang xử lý 1 cảnh KHÁC (không phải do cảnh đó vừa generate xong) — src của nó chưa từng có
+ * trong baseline (baseline chỉ chụp đúng lúc đó, không phải toàn bộ lịch sử), nên bị hiểu NHẦM là
+ * "video mới của cảnh đang xử lý". Hậu quả: `renameLatestVideo` gán tên cảnh SAI vào ĐÚNG clip của
+ * 1 cảnh khác — lỗi HOÀN TOÀN ÂM THẦM, không log/exception nào báo hiệu, chỉ lộ ra khi người dùng
+ * tự soi lại nội dung trong Flow.
+ *
+ * **SỬA**: không so TẬP HỢP nữa — chỉ theo dõi ĐÚNG 1 VỊ TRÍ: item ĐẦU TIÊN trong lưới (dựa vào
+ * sort "Recent" mặc định của Flow, item mới nhất luôn ở vị trí 0 — cùng giả định `.first()` đã
+ * dùng nhất quán ở mọi nơi khác trong codebase, vd `renameLatestVideo`/`imageAsset.ts`). Coi là
+ * "có video mới" CHỈ KHI src ở vị trí 0 đổi khác so với lúc trước khi bấm generate — đúng cho CẢ
+ * 2 trường hợp đã gặp: Flow chỉ có 1 thẻ `<video>` "preview" duy nhất (mục 4.27 — vị trí 0 = phần
+ * tử duy nhất, đổi src tại chỗ) LẪN lưới nhiều item ảo hoá (mục 4.33 — vị trí 0 luôn đúng là item
+ * MỚI NHẤT thật sự, không bị nhiễu bởi item cũ trôi vào/ra vùng render ở các vị trí SAU vị trí 0).
  */
-async function currentVideoSrcs(page: Page): Promise<Set<string>> {
-  const locators = page.locator("video[src]");
-  const count = await locators.count();
-  const srcs = new Set<string>();
-  for (let i = 0; i < count; i++) {
-    const src = await locators.nth(i).getAttribute("src");
-    if (src) srcs.add(src);
-  }
-  return srcs;
+async function firstVideoSrc(page: Page): Promise<string | undefined> {
+  const first = page.locator("video[src]").first();
+  if (!(await first.count())) return undefined;
+  return (await first.getAttribute("src")) ?? undefined;
 }
 
 /**
@@ -356,7 +360,7 @@ async function currentVideoSrcs(page: Page): Promise<Set<string>> {
  *
  * **CÁCH SỬA ĐÚNG**: KHÔNG đếm/so baseline nữa — tìm THẲNG đúng item vừa tạo bằng giá trị
  * `newVideoSrc` đã biết chắc chắn (chính là src `generateOneClip` vừa dùng để xác nhận generate
- * THÀNH CÔNG qua `currentVideoSrcs()`, xem mục 4.27) — tuyệt đối chính xác, không phụ thuộc
+ * THÀNH CÔNG qua `firstVideoSrc()`, xem mục 4.27/4.38) — tuyệt đối chính xác, không phụ thuộc
  * đếm/thứ tự/virtualization: `video[src="..."]` rồi đi lên ancestor `<a>` gần nhất để right-click
  * (giữ nguyên tinh thần "right-click thẻ `<a>` chứa media" như Setting/Prop, chỉ khác cách TÌM ra
  * đúng thẻ đó).
@@ -397,8 +401,8 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
   // THỰC SỰ HIỂN THỊ trên màn hình bằng locator(":visible").
   const failedLocatorAll = page.getByText("Failed", { exact: false }).locator(":visible");
   const baselineFailedCount = await failedLocatorAll.count();
-  const baselineVideoSrcs = await currentVideoSrcs(page);
-  debugLog("baseline", `cảnh #${prompt.index}: baselineVideoSrcs=${baselineVideoSrcs.size}, baselineFailedCount=${baselineFailedCount}`);
+  const baselineFirstSrc = await firstVideoSrc(page);
+  debugLog("baseline", `cảnh #${prompt.index}: baselineFirstSrc=${baselineFirstSrc}, baselineFailedCount=${baselineFailedCount}`);
 
   await page.locator(`button:has-text("${TEXT.generate}")`).last().click();
 
@@ -426,9 +430,11 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
   let newVideoSrc: string | undefined;
   while (Date.now() < deadline) {
-    const srcs = await currentVideoSrcs(page);
-    newVideoSrc = [...srcs].find((s) => !baselineVideoSrcs.has(s));
-    if (newVideoSrc) break;
+    const currentFirstSrc = await firstVideoSrc(page);
+    if (currentFirstSrc && currentFirstSrc !== baselineFirstSrc) {
+      newVideoSrc = currentFirstSrc;
+      break;
+    }
 
     const currentFailedCount = await failedLocatorAll.count();
     if (currentFailedCount > lastFailedCount) {
@@ -480,9 +486,11 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string):
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
     while (!newVideoSrc && Date.now() < recheckDeadline) {
-      const srcs = await currentVideoSrcs(page);
-      newVideoSrc = [...srcs].find((s) => !baselineVideoSrcs.has(s));
-      if (newVideoSrc) break;
+      const currentFirstSrc = await firstVideoSrc(page);
+      if (currentFirstSrc && currentFirstSrc !== baselineFirstSrc) {
+        newVideoSrc = currentFirstSrc;
+        break;
+      }
       await page.waitForTimeout(POLL_INTERVAL_MS);
     }
     if (!newVideoSrc) {

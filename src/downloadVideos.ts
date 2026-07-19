@@ -23,6 +23,18 @@ async function readJson<T>(filePath: string, fallback: T): Promise<T> {
   return raw ? (JSON.parse(raw) as T) : fallback;
 }
 
+/** Ghi ATOMIC (file tạm rồi rename) — xem RUNBOOK mục 4.23 vì sao bắt buộc. */
+async function atomicWriteJson(filePath: string, data: unknown): Promise<void> {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
+  await fs.writeFile(tmpPath, JSON.stringify(data, null, 2));
+  await fs.rename(tmpPath, filePath);
+}
+
+async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
+  await atomicWriteJson(PROMPTS_STATE_FILE, prompts);
+}
+
 /** Project #0 (`state/project.json`) LUÔN được tạo trước, `state/projects.json` là danh sách
  * đầy đủ khi có chạy song song (`PARALLEL_WORKERS > 1`) — đọc cả 2, ưu tiên danh sách đầy đủ. */
 async function loadKnownProjectUrls(): Promise<string[]> {
@@ -45,18 +57,33 @@ async function main() {
   const clipDir = path.join(config.outputDir, "clips");
   await fs.mkdir(clipDir, { recursive: true });
 
-  // Chỉ tải cảnh ĐÃ "success" trong Flow (đã tạo + đổi tên xong, xem generate.ts) VÀ chưa có
-  // file local — file trên đĩa là nguồn sự thật cho "đã tải chưa" ở BƯỚC NÀY (khác bước generate
-  // giờ chỉ dựa vào `status`, xem RUNBOOK mục 4.31 — 2 bước khác nhau, mỗi bước có 1 nguồn sự
-  // thật phù hợp với việc nó thực sự làm).
+  // Nguồn sự thật để resume giờ là field `isDownloaded` (xem RUNBOOK mục 4.35, theo yêu cầu
+  // người dùng) — nhanh hơn hẳn so với việc phải kiểm tra sự tồn tại file mỗi lần chạy. Vẫn ĐỐI
+  // CHIẾU với file thật trên đĩa để tự đồng bộ lại cờ (cùng cơ chế status↔file mục 4.18): file có
+  // → đánh dấu `isDownloaded = true` dù cờ cũ nói khác (vd tải bằng tay); file mất (xoá nhầm/dọn
+  // ổ đĩa) → đánh dấu lại `false` để tải lại, KHÔNG tin mù cờ cũ.
   const needed: VeoPrompt[] = [];
+  let flagsChanged = false;
   for (const p of prompts) {
-    if (p.status !== "success") continue;
-    const already = await fs.access(clipFilePath(clipDir, p.index)).then(() => true).catch(() => false);
-    if (!already) needed.push(p);
+    if (p.status !== "success") continue; // chưa tạo+đổi tên xong trong Flow, chưa tải được
+    const outFile = clipFilePath(clipDir, p.index);
+    const fileExists = await fs.access(outFile).then(() => true).catch(() => false);
+    if (fileExists) {
+      if (!p.isDownloaded) {
+        p.isDownloaded = true;
+        flagsChanged = true;
+      }
+    } else {
+      if (p.isDownloaded) {
+        p.isDownloaded = false; // cờ nói đã tải nhưng file không còn — coi như chưa tải, tải lại
+        flagsChanged = true;
+      }
+      needed.push(p);
+    }
   }
+  if (flagsChanged) await savePromptsProgress(prompts);
 
-  console.log(`[download] ${needed.length} cảnh đã "success" trong Flow nhưng chưa có file local.`);
+  console.log(`[download] ${needed.length} cảnh đã "success" trong Flow nhưng chưa tải (isDownloaded !== true).`);
 
   if (needed.length > 0) {
     const projectUrls = await loadKnownProjectUrls();
@@ -74,8 +101,32 @@ async function main() {
       // lần lượt từng project đã biết cho đến khi tìm đủ, không giả định trước clip nào ở đâu.
       for (const projectUrl of projectUrls) {
         if (stillNeeded.size === 0) break;
-        await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
-        await waitForProjectReady(page);
+
+        // XÁC NHẬN TRỰC TIẾP (2026-07-19): `state/projects.json` có thể chứa project ĐÃ HỎNG/
+        // không truy cập được nữa (Flow báo "Something went wrong. Back to projects") — trước đây
+        // `page.goto` + `waitForProjectReady` không có try/catch ở tầng NÀY, nên 1 project hỏng
+        // làm crash TOÀN BỘ lệnh (throw thoát khỏi cả vòng lặp), dù project khác trong danh sách
+        // vẫn còn dùng được và có thể chứa đủ clip cần tìm. Bọc try/catch để bỏ qua project hỏng,
+        // thử tiếp project khác — không được để 1 project chết chặn cả lệnh.
+        try {
+          await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+          // Phát hiện NHANH trang báo lỗi ("Something went wrong. Back to projects" — xác nhận
+          // trực tiếp 2026-07-19, project bị xoá/hỏng) thay vì để `waitForProjectReady` chờ hết
+          // toàn bộ chuỗi timeout/reload (hàng chục giây tới vài phút) rồi mới throw.
+          const brokenProject = await page
+            .getByText("Something went wrong", { exact: false })
+            .first()
+            .isVisible({ timeout: 3000 })
+            .catch(() => false);
+          if (brokenProject) {
+            console.warn(`[download] project "${projectUrl}" báo lỗi ("Something went wrong") — bỏ qua, thử project khác.`);
+            continue;
+          }
+          await waitForProjectReady(page);
+        } catch (err) {
+          console.warn(`[download] project "${projectUrl}" không mở được (có thể đã hỏng/xoá) — bỏ qua, thử project khác: ${(err as Error).message}`);
+          continue;
+        }
 
         for (const p of [...stillNeeded.values()]) {
           const clipName = `clip_${String(p.index).padStart(3, "0")}`;
@@ -85,6 +136,11 @@ async function main() {
             if (found) {
               console.log(`[download] đã tải cảnh #${p.index} (1080p): ${outFile}`);
               stillNeeded.delete(p.index);
+              // Ghi ngay sau MỖI cảnh (không đợi xử lý xong cả hàng đợi) — resume-safe nếu lệnh
+              // bị gián đoạn giữa chừng (mất mạng, đóng nhầm cửa sổ...), giống pattern đã dùng
+              // cho `status` trong generate.ts::processQueue.
+              p.isDownloaded = true;
+              await savePromptsProgress(prompts);
             }
           } catch (err) {
             console.warn(`[download] lỗi tải cảnh #${p.index}, sẽ thử lại ở project khác/lần chạy sau: ${(err as Error).message}`);

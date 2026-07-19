@@ -1196,6 +1196,136 @@ sai, mỗi lần thử đều có `debugCapture` riêng (`flow-rejected-before-r
 `retry-button-missing-scene{index}`) — soi debug capture đó để sửa đúng theo bằng chứng thật, cùng
 quy trình đã dùng cho mọi bug UI khác (mục 4).
 
+### 4.35. Thêm field `isDownloaded` — resume `npm run download` qua state thay vì chỉ dò file trên đĩa
+**BỐI CẢNH (2026-07-19)**: người dùng yêu cầu — cảnh nào tải thành công thì đánh dấu lại bằng 1
+field trong `state/prompts.json` (`isDownloaded`), để `npm run download` chạy lại sau không tải
+lại những video đã tải rồi.
+
+**Đã sửa**:
+- `src/splitter/prompt-writer.ts::VeoPrompt` — thêm field `isDownloaded?: boolean`.
+- `src/downloadVideos.ts` — thêm `atomicWriteJson`/`savePromptsProgress` (copy pattern từ
+  `generateVideo.ts`, mục 4.23) để ghi `state/prompts.json` an toàn. Nguồn sự thật để quyết định
+  "cảnh này cần tải không" giờ là `isDownloaded` (nhanh, không cần `fs.access` mọi lần) — NHƯNG vẫn
+  đối chiếu với file thật trên đĩa mỗi lần chạy để TỰ ĐỒNG BỘ lại cờ (cùng cơ chế status↔file mục
+  4.18): file có mà cờ nói chưa tải → sửa cờ thành `true`; file mất mà cờ nói đã tải (vd người dùng
+  xoá tay) → sửa cờ về `false` để tải lại — không tin mù cờ cũ nếu thực tế trên đĩa khác đi. Ghi
+  `state/prompts.json` NGAY sau MỖI cảnh tải thành công (không đợi xong cả hàng đợi) — resume-safe
+  nếu lệnh bị gián đoạn giữa chừng.
+- Docstring `VeoPrompt.status` cũng được làm rõ lại: `"success"` giờ CHỈ có nghĩa "đã tạo+đổi tên
+  xong TRONG FLOW" (mục 4.31), KHÔNG có nghĩa đã có file local nữa — tách bạch rõ với
+  `isDownloaded` (đã tải file THẬT về máy).
+
+### 4.36. `npm run download` vào nhầm project hỏng — nguyên nhân gốc: `downloadClip` luôn "không tìm thấy" (im lặng, không debug capture) khiến rơi qua project khác
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng chạy `npm run download`, trình duyệt điều hướng
+sang project `a2a56e6c-...` (project THỨ 2 trong `state/projects.json`, hiện đã HỎNG — Flow báo
+"Something went wrong. Back to projects") thay vì dừng lại ở project ĐÚNG `1d64f24f-...` (project
+THẬT đang dùng, đứng ĐẦU danh sách). Điều tra: `downloadClip()` bản đầu có 2 chỗ SAI khiến nó luôn
+báo "không tìm thấy" (trả `false`, KHÔNG throw, KHÔNG debugCapture — lỗi HOÀN TOÀN IM LẶNG) ngay
+cả với project ĐÚNG có đủ clip, khiến vòng lặp ở `downloadVideos.ts` tưởng project 1 không có clip
+nào và tự động thử tiếp project 2 (hỏng) → crash (xem mục 4.35 phần sửa try/catch — đã chặn crash,
+nhưng CHƯA sửa nguyên nhân gốc là tìm sai clip ngay từ project đúng).
+
+**2 chỗ sai đã sửa** (`src/veo3bot/download.ts::downloadClip`):
+1. Ô search: đoán `input[placeholder="Search assets"]` — SAI, chuỗi này chỉ là i18n key
+   `add_menu_search_placeholder` dành cho DIALOG @mention "Add Media" (nhúng sẵn trong trang dạng
+   JSON, không phải placeholder thật render ra — cùng bẫy "text ẩn" đã gặp ở mục 4.6/4.29), KHÔNG
+   PHẢI ô search trên trang lưới media CHÍNH. Soi toàn bộ `<input>` thật trong debug capture: trang
+   chính dùng `<input data-testid="search-input" type="text">` (không có `type="search"`, không có
+   placeholder) — đã sửa lại đúng selector này.
+2. Tìm card: đoán `getByText(clipName, {exact:true})` (tìm text hiển thị đúng tên đã rename trên
+   card) — CHƯA có bằng chứng card có hiển thị tên rename làm caption hay không (mọi card đã soi
+   đều hiện TEXT PROMPT GỐC làm caption, không phải tên rename) — nếu giả định sai, `getByText` sẽ
+   KHÔNG BAO GIỜ khớp, khiến `downloadClip` luôn trả `false` dù clip có tồn tại. Đổi sang: gõ tên
+   vào ô search ĐÚNG rồi LẤY THẲNG kết quả ĐẦU TIÊN dạng `getByRole("link", {name: "Video
+   thumbnail"})` (tin tưởng search đã lọc đúng, giống pattern baseline-diff + `.first()` đã dùng ở
+   nơi khác) thay vì cố khớp text hiển thị.
+3. Thêm `debugCapture` vào nhánh "không tìm thấy card" (`download-card-missing-{clipName}`) — bản
+   đầu thiếu hẳn, khiến lỗi này HOÀN TOÀN IM LẶNG không để lại bằng chứng gì để điều tra.
+
+**CHƯA XÁC NHẬN TRỰC TIẾP**: fix này CHƯA chạy thử thật. Nếu ô search KHÔNG lọc theo tên rename mà
+lọc theo nội dung khác (vd prompt text), kết quả `.first()` sau khi gõ "clip_017" có thể vẫn SAI
+(lấy nhầm clip khác) — cần verify bằng mắt: tải thử 1 cảnh rồi mở file xem đúng nội dung cảnh đó
+không, đừng chỉ tin "tải được là xong".
+
+### 4.37. Bấm "Download" kích hoạt UPSCALE (vài phút) trước khi tải được — timeout 45s cũ luôn quá ngắn
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng báo cảnh #0/#1/#3 "thiếu dù kiểm tra trên Flow đã
+có" — soi debug capture `download-fail-clip_000/001-*.png` thấy rõ: sau khi bấm "Download", Flow
+hiện toast **"Upscaling your video. This may take several minutes. Refrain from starting multiple
+upscaling jobs for the best results."** — nghĩa là clip gốc KHÔNG phải sẵn 1080p, bấm Download
+kích hoạt 1 job UPSCALE lên 1080p chạy nền, chỉ sau khi upscale xong mới thực sự tải được. Timeout
+chờ sự kiện `download` cũ (45 giây) LUÔN quá ngắn so với việc này — mọi cảnh đều timeout dù chờ bao
+lâu ở mốc 45s.
+
+Đồng thời xác nhận: card #0 tìm ra 2 kết quả trùng khi search "clip_000" (cảnh #1 chỉ ra đúng 1 —
+không phải bug chung, mà do cảnh #0 từng bị lỗi rename nhiều lần trước khi sửa xong, xem mục
+4.31/4.33/4.34 — rủi ro "clip trùng chưa đổi tên" đã cảnh báo trước có vẻ đã xảy ra thật). Cần vào
+Flow kiểm tra tay project và xoá bớt clip trùng/thừa cho cảnh #0 nếu có, tránh nhầm lẫn khi tìm
+kiếm về sau.
+
+**Đã sửa** (`src/veo3bot/download.ts`):
+- Tăng timeout chờ sự kiện `download` từ 45 giây → **`UPSCALE_DOWNLOAD_TIMEOUT_MS = 10 phút`**.
+- Phát hiện toast "Upscaling your video" sau khi bấm Download, log rõ cho người dùng biết đang chờ
+  (tránh hiểu nhầm là bị kẹt/lỗi khi thấy terminal đứng yên vài phút).
+
+**HỆ QUẢ QUAN TRỌNG NGƯỜI DÙNG CẦN BIẾT**: mỗi cảnh tải về giờ có thể mất **VÀI PHÚT** (không phải
+vài giây) do bước upscale — tải hết 168 cảnh THEO KIỂU TUẦN TỰ (đúng cảnh báo của Flow "refrain
+from starting multiple upscaling jobs", code đã tự nhiên tuân thủ vì xử lý từng cảnh một, KHÔNG
+chạy song song) có thể mất **NHIỀU GIỜ** cho 1 lần chạy `npm run download` đầy đủ. Đây là đặc tính
+của Flow, không phải lỗi — cần kiên nhẫn hoặc cân nhắc chạy `npm run download` qua đêm/nhiều lần
+(resume-safe nhờ `isDownloaded`, mục 4.35 — dừng giữa chừng rồi chạy lại không mất tiến độ).
+
+**CHƯA XÁC NHẬN TIẾP**: 10 phút là ước lượng an toàn dựa trên "vài phút" Flow tự nói — nếu vẫn có
+cảnh timeout ở mốc này (nội dung phức tạp hơn cần upscale lâu hơn), tăng thêm
+`UPSCALE_DOWNLOAD_TIMEOUT_MS`.
+
+### 4.38. 🔴 BUG NGHIÊM TRỌNG: cảnh bị gán NHẦM nội dung của cảnh KHÁC — do lỗ hổng trong cách phát hiện "video mới" với lưới ảo hoá
+**XÁC NHẬN TRỰC TIẾP (2026-07-19)**: người dùng phát hiện clip đổi tên "clip_041" trong Flow lại
+CHỨA ĐÚNG nội dung/prompt của cảnh #0 ("Wide shot, three small wooden sailing ships Niña, Pinta,
+Santa María...") — nghĩa là khi generate cảnh #41, hệ thống đã ĐỔI TÊN NHẦM 1 clip CŨ (không phải
+clip vừa tạo cho cảnh #41) thành "clip_041". Đây là hậu quả TRỰC TIẾP của bug đã nghi ngờ nhưng
+chưa xác nhận ở mục 4.33: `currentVideoSrcs()` so TẬP HỢP mọi giá trị `src` đang RENDER trong lưới
+ẢO HOÁ (`react-virtuoso`, chỉ ~5 item trong viewport tại 1 thời điểm, KHÔNG PHẢI toàn bộ lịch sử
+clip) — nếu 1 clip CŨ (rất có thể là 1 trong 2 bản duplicate CHƯA đổi tên còn sót lại của cảnh #0
+do lỗi rename trước đây, xem mục 4.33/4.37) "trôi vào" vùng render đúng lúc đang generate cảnh #41
+(vì lưới liên tục thay đổi item nào được render khi có hoạt động khác), src của nó CHƯA từng có
+trong baseline (baseline chỉ chụp đúng thời điểm đó, không phải toàn bộ lịch sử) → bị hiểu NHẦM là
+"video vừa tạo của cảnh #41" → `renameLatestVideo` đổi tên ĐÚNG clip SAI này thành "clip_041". Lỗi
+HOÀN TOÀN ÂM THẦM — không log/exception/debug capture nào báo hiệu, chỉ lộ ra khi người dùng tự
+soi lại nội dung trong Flow.
+
+**Đã sửa** (`src/veo3bot/generate.ts`): bỏ hẳn `currentVideoSrcs()` (so TẬP HỢP), thay bằng
+`firstVideoSrc()` — chỉ theo dõi ĐÚNG 1 VỊ TRÍ: item ĐẦU TIÊN trong lưới (dựa vào sort "Recent"
+mặc định, item mới nhất luôn ở vị trí 0 — cùng giả định `.first()` đã dùng nhất quán ở mọi nơi
+khác trong codebase). Coi là "có video mới" CHỈ KHI src ở vị trí 0 đổi khác so với lúc trước khi
+bấm generate — đúng cho CẢ 2 trường hợp đã gặp: Flow chỉ có 1 thẻ `<video>` "preview" duy nhất
+(mục 4.27) LẪN lưới nhiều item ảo hoá (mục 4.33) — vị trí 0 luôn là item MỚI NHẤT thật sự, không
+bị nhiễu bởi item cũ trôi vào/ra vùng render ở các vị trí SAU vị trí 0. Áp dụng nhất quán ở CẢ vòng
+poll chính LẪN vòng reload-recheck trong `generateOneClip`.
+
+**BÀI HỌC TỔNG QUÁT (áp dụng cho MỌI cơ chế baseline-diff trên danh sách CÓ THỂ ảo hoá)**: "so TẬP
+HỢP mọi giá trị đang render, tìm giá trị KHÔNG có trong baseline" chỉ đáng tin nếu danh sách đó
+render ĐẦY ĐỦ mọi item (không ảo hoá) — với danh sách ẢO HOÁ, tập hợp render được tại 1 thời điểm
+chỉ là 1 "cửa sổ" thay đổi liên tục, không phản ánh đúng "cái gì thực sự mới xuất hiện". Phải theo
+dõi 1 VỊ TRÍ CỤ THỂ (đầu danh sách, nếu sort mới-nhất-trước) thay vì so tập hợp, để tránh nhầm lẫn
+giữa "mới THẬT SỰ" và "mới XUẤT HIỆN TRONG VÙNG RENDER do trôi/cuộn".
+
+**⚠️ RỦI RO DỮ LIỆU ĐÃ XẢY RA — CẦN NGƯỜI DÙNG TỰ KIỂM TRA**: bug này có thể đã ảnh hưởng đến
+NHIỀU cảnh khác ngoài #41 (bất kỳ cảnh nào generate SAU khi có clip CŨ/duplicate trôi nổi chưa
+được dọn trong Flow — đặc biệt các cảnh generate sau cảnh #0, #17, #21, #34 vốn đã biết có
+duplicate do lỗi rename trước đó, xem mục 4.31/4.33/4.34). KHÔNG có cách nào tôi tự kiểm tra được
+nội dung THẬT của từng clip (không xem được video) — người dùng cần:
+1. Vào Flow, kiểm tra lại TỪNG clip đã đổi tên (`clip_NNN`) xem nội dung có ĐÚNG khớp prompt của
+   cảnh N trong `state/prompts.json` không — ưu tiên các cảnh generate ngay SAU những cảnh từng có
+   duplicate (dễ bị ảnh hưởng nhất).
+2. Với clip bị gán sai (như "clip_041" chứa nội dung cảnh #0): đổi tên lại cho ĐÚNG cảnh thật sự
+   chứa nội dung đó, rồi tìm/generate lại clip THẬT SỰ cho cảnh bị thiếu (ở đây là #41 — status
+   `"success"` hiện đang SAI, cần đặt lại `"waiting"` để `npm run generate` tạo lại đúng).
+3. Dọn (xoá) các clip duplicate/chưa đổi tên còn sót trong Flow (đặc biệt quanh cảnh #0) để giảm
+   rủi ro tái diễn cho các cảnh generate tiếp theo.
+
+**CHƯA XÁC NHẬN TIẾP**: fix `firstVideoSrc()` CHƯA chạy thử thật sau khi sửa — cần generate lại vài
+cảnh (đặc biệt cảnh ngay sau 1 cảnh vừa có duplicate) để xác nhận không còn tái diễn gán nhầm.
+
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
 Các bug nghiêm trọng nhất (sai hình ảnh Ingredient, trùng lặp clip, phong cách

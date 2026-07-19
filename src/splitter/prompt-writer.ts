@@ -37,11 +37,21 @@ export interface VeoPrompt {
    */
   era?: "period" | "modern";
   /**
-   * Trạng thái tạo clip video cho cảnh này (xem assetStatus.ts) — cập nhật + lưu lại trong
-   * veo3bot/generate.ts::generateClips. "success" = đã có clip file thật, bỏ qua khi resume.
-   * "waiting" khi mới sinh prompt (chưa generate lần nào); "failed" nếu Flow từ chối/timeout.
+   * Trạng thái TẠO + ĐỔI TÊN clip video trong Flow cho cảnh này (xem assetStatus.ts) — cập nhật +
+   * lưu lại trong veo3bot/generate.ts::generateClips. "success" = đã tạo+đổi tên xong TRONG FLOW,
+   * bỏ qua khi `npm run generate` resume — KHÔNG có nghĩa là đã có file local (xem RUNBOOK mục
+   * 4.31, generate không còn tải video về nữa). "waiting" khi mới sinh prompt (chưa generate lần
+   * nào); "failed" nếu Flow từ chối/timeout.
    */
   status?: AssetStatus;
+  /**
+   * true khi đã TẢI THÀNH CÔNG clip 1080p về `output/clips/clip_NNN.mp4` — cập nhật + lưu lại
+   * trong `downloadVideos.ts` (lệnh `npm run download`, xem RUNBOOK mục 4.31/4.35), dùng để
+   * resume: lần chạy `npm run download` sau bỏ qua mọi cảnh đã `isDownloaded === true`, không tải
+   * lại. Tự đồng bộ lại theo file THẬT SỰ có tồn tại trên đĩa hay không mỗi lần chạy (giống cơ chế
+   * status↔file cũ mục 4.18) — nếu file bị xoá tay, cờ này tự về `false` để tải lại.
+   */
+  isDownloaded?: boolean;
 }
 
 /**
