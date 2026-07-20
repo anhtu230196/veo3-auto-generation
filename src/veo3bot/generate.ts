@@ -428,18 +428,22 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
   await ensureModelAndDuration(page);
   await fillPromptWithMentions(page, prompt);
 
-  // Thẻ "Failed" của các lần lỗi TRƯỚC vẫn nằm trong lưới media của project mãi mãi
-  // (không biến mất kể cả reload) — nếu chỉ kiểm tra sự tồn tại, mọi cảnh SAU lần lỗi
-  // đầu tiên sẽ bị hiểu nhầm là lỗi ngay lập tức. Đếm số lượng "Failed" TRƯỚC khi bấm
-  // generate, chỉ coi là lỗi thật nếu số lượng TĂNG so với baseline này.
-  // getByText khớp cả text ẩn/không hiển thị (vd data JSON nhúng sẵn trong trang chứa
-  // chữ "Failed" trong nội dung i18n) — xác nhận trực tiếp: 1 project HOÀN TOÀN TRỐNG,
-  // chưa từng tạo gì, vẫn báo failedCount=2 ngay khi vừa mở. Phải lọc chỉ đếm phần tử
-  // THỰC SỰ HIỂN THỊ trên màn hình bằng locator(":visible").
-  const failedLocatorAll = page.getByText("Failed", { exact: false }).locator(":visible");
-  const baselineFailedCount = await failedLocatorAll.count();
+  // PHÁT HIỆN CẢNH BỊ TỪ CHỐI/LỖI qua chính NÚT "Retry" trên card lỗi (KHÔNG dùng chữ "Failed" nữa).
+  // XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #58 — soi DOM dump `pre-reload-timeout-scene58.html`):
+  // detection CŨ `getByText("Failed").locator(":visible")` SAI HOÀN TOÀN — card lỗi là
+  // `<div>Failed</div>` (KHÔNG có phần tử con), mà `.locator(":visible")` tìm phần tử con HIỂN THỊ
+  // BÊN TRONG các element khớp "Failed" → 1 div text thuần không có con nào → LUÔN đếm được 0, nên
+  // `checkFailedAndRetry` LUÔN trả "no-failure" và KHÔNG BAO GIỜ chạm tới bước bấm Retry. Đây mới là
+  // nguyên nhân thật của "card Failed + nút Retry hiện rõ nhưng bot không bấm" (mục 4.44 kết luận
+  // NHẦM là do timing). Nút Retry thật có cấu trúc `<button><i>refresh</i><span sr-only>Retry</span>
+  // </button>` — accessible name "Retry" (từ span ẩn clip-rect, vẫn trong accessibility tree), khớp
+  // đúng `getByRole("button", {name:/retry/i})` (chính selector code vẫn dùng để CLICK — nên click
+  // luôn đúng, chỉ detection sai). Đếm SỐ nút Retry theo phát hiện cạnh (edge-detect như cũ): nút
+  // Retry chỉ xuất hiện trên card lỗi, card mới nhất ở đầu (Recent sort) nên tăng số nút = có lỗi mới.
+  const retryButtonLocator = page.getByRole("button", { name: /retry/i });
+  const baselineRetryCount = await retryButtonLocator.count();
   const baselineFirstSrc = await firstVideoSrc(page);
-  debugLog("baseline", `cảnh #${prompt.index}: baselineFirstSrc=${baselineFirstSrc}, baselineFailedCount=${baselineFailedCount}`);
+  debugLog("baseline", `cảnh #${prompt.index}: baselineFirstSrc=${baselineFirstSrc}, baselineRetryCount=${baselineRetryCount}`);
 
   await page.locator(`button:has-text("${TEXT.generate}")`).last().click();
 
@@ -470,12 +474,12 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
   // tra+Retry vào 1 hàm dùng chung `checkFailedAndRetry()`, gọi ở CẢ vòng poll chính LẪN vòng
   // reload-recheck, để phát hiện đúng ngay cả khi từ chối xảy ra muộn/sau khi đã reload.
   const MAX_INLINE_RETRIES = 2;
-  const retryState = { lastFailedCount: baselineFailedCount, inlineRetries: 0 };
+  const retryState = { lastRetryCount: baselineRetryCount, inlineRetries: 0 };
 
   async function checkFailedAndRetry(): Promise<"gave-up" | "retried" | "no-failure"> {
-    const currentFailedCount = await failedLocatorAll.count();
-    if (currentFailedCount <= retryState.lastFailedCount) return "no-failure";
-    retryState.lastFailedCount = currentFailedCount;
+    const currentRetryCount = await retryButtonLocator.count();
+    if (currentRetryCount <= retryState.lastRetryCount) return "no-failure";
+    retryState.lastRetryCount = currentRetryCount;
     if (retryState.inlineRetries >= MAX_INLINE_RETRIES) {
       console.warn(
         `[veo3bot] cảnh #${prompt.index} bị Flow từ chối sau ${retryState.inlineRetries} lần Retry — bỏ qua cảnh này.`
@@ -500,6 +504,12 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
     // SỰ sẵn sàng (nút "Add Media" xuất hiện) trước khi tiếp tục vòng lặp kiểm tra, tránh đọc nhầm
     // trạng thái khi DOM đang giữa chừng load lại.
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 45000 }).catch(() => {});
+    // Bấm "Retry" làm trang RELOAD → số nút Retry trong DOM reset. Re-baseline `lastRetryCount` theo
+    // số nút SAU reload, để nếu lần Retry NÀY cũng bị chặn (card lỗi mới xuất hiện), phát-hiện-cạnh
+    // ở vòng poll sau vẫn bắt được (currentRetryCount > lastRetryCount mới) — nếu không, lastRetryCount
+    // giữ giá trị cũ trước reload sẽ khiến lần chặn tiếp theo bị bỏ lỡ (đúng hiện tượng cảnh #58: lần
+    // Retry 2/2 trong cùng tab không kích hoạt vì count sau reload = count cũ).
+    retryState.lastRetryCount = await retryButtonLocator.count();
     return "retried";
   }
 
@@ -556,7 +566,19 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
     // trang SAU reload chứ không phải lúc timeout thật sự xảy ra): lưu lại NGAY TẠI ĐÂY, trước
     // dòng reload bên dưới.
     await debugCapture(page, `pre-reload-timeout-scene${prompt.index}`);
-    await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+
+    // KIỂM TRA "Failed" LẦN CHÓT NGAY TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-20, cảnh #58 bị
+    // chặn "prominent people"): card "Failed" + nút "Retry" của hàng LOWER PRIORITY thường xuất hiện
+    // MUỘN (~3 phút, đúng sau khi vòng poll chính + grace poll vừa kết thúc) — chính debug capture
+    // `pre-reload-timeout` ở trên ĐÃ CHỤP ĐƯỢC card + nút Retry đang hiện rõ tại đây, nhưng code cũ đi
+    // thẳng vào reload, mà reload XOÁ MẤT card (mục 4.44) nên vòng recheck sau đó không còn gì để bấm
+    // → lãng phí, không bao giờ bấm Retry. Bấm NGAY tại thời điểm card được xác nhận đang hiện, TRƯỚC
+    // khi reload xoá nó. Nếu bấm được Retry (trang tự reload) thì BỎ QUA bước reload thủ công bên dưới.
+    const preReloadFailed = await checkFailedAndRetry();
+    if (preReloadFailed === "gave-up") return "skipped";
+    if (preReloadFailed !== "retried") {
+      await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+    }
     // Chờ trang THẬT SỰ sẵn sàng rồi POLL thêm 1 khoảng đủ dài thay vì chốt sau 1 mốc thời gian
     // cố định — cùng bug đã xác nhận ở imageAsset.ts (2026-07-18): 1 project có nhiều media
     // (168 cảnh + Character/Setting/Prop) tải lại chậm hơn vài giây cố định.

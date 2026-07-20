@@ -1544,7 +1544,15 @@ reload" ở mục này SAI — dựa trên nhầm lẫn tự khớp phải 1 chu
 ("applet_chat_error_safety") khi tôi tự kiểm tra bằng `html.indexOf(...)` không lọc theo hiển thị
 thực tế, không phải card THẬT còn hiển thị. Xem mục 4.44 để biết nguyên nhân + fix ĐÚNG.
 
-### 4.44. Nguyên nhân THẬT: "Failed" xuất hiện quá sát mốc timeout, reload xoá mất dấu hiệu (không phải "vẫn còn nguyên")
+### 4.44. ⚠️ KẾT LUẬN NÀY SAI PHẦN LỚN — nguyên nhân thật là selector detection hỏng, xem mục 4.50
+**ĐÍNH CHÍNH (2026-07-20)**: mục 4.44 dưới đây kết luận "Failed xuất hiện quá sát mốc timeout +
+reload xoá mất dấu hiệu" là nguyên nhân khiến bot không bấm Retry. **PHẦN LỚN SAI**: nguyên nhân
+GỐC là DETECTION `getByText("Failed").locator(":visible")` HỎNG HOÀN TOÀN (luôn đếm 0), nên
+`checkFailedAndRetry` chưa BAO GIỜ chạm tới bước bấm Retry — bất kể timing. Xem mục 4.50. Phần
+đúng còn giữ giá trị của 4.44: reload thật sự xoá card "Failed" (nên vẫn nên bấm Retry TRƯỚC khi
+reload — mục 4.48). Đọc 4.50 trước khi tin nội dung 4.44 bên dưới.
+
+### 4.44 (bản gốc). Nguyên nhân "Failed" xuất hiện quá sát mốc timeout, reload xoá mất dấu hiệu
 **XÁC NHẬN TRỰC TIẾP (2026-07-19, chạy lại cảnh #6 lần 2 sau fix mục 4.43)**: vẫn timeout y hệt, dù
 đã thêm `checkFailedAndRetry()` vào CẢ 2 vòng lặp. Soi lại kỹ bằng cách tìm ĐÚNG cấu trúc DOM của
 card "Failed" hiển thị thật (`>warning</i><div><div class="...">Failed</div>`, không phải chỉ tìm
@@ -1763,6 +1771,44 @@ audio-generation-failed / prominent-people hiện trễ hơn cả những gì 4.
   không audio thay vì đánh dấu cả clip "Failed". Sau khi bật, các cảnh #38/40/41/42 (từng "failed",
   nghi "prominent people") generate LẠI BÌNH THƯỜNG — xác nhận lỗi trước đó là do audio, không phải
   chặn tên "Young Robert"/"Robert" (tên riêng đã an toàn theo mục 4.28).
+
+### 4.50. 🔴 NGUYÊN NHÂN GỐC "card Failed + nút Retry hiện rõ nhưng bot không bấm": detection `.locator(":visible")` HỎNG — luôn đếm 0
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #58 "Wide shot of Robert leading a small expedition...")**:
+người dùng quan sát trực tiếp — khi generate, card "Failed — This prompt might violate our policies
+about generating prominent people" + nút "Retry" HIỆN RÕ trên màn hình, nhưng bot KHÔNG bấm mà cứ
+đợi hết 3 phút rồi reload (rồi retry-toàn-bộ tab mới). Soi DOM dump thật (`pre-reload-timeout-scene58
+.html`): card lỗi CÓ trong DOM (grep "prominent people"/"Failed" đều thấy), nút Retry CÓ trong DOM.
+Nhưng log luôn `baselineRetryCount`/`checkFailedAndRetry` trả "no-failure".
+
+**Nguyên nhân GỐC (khác hẳn kết luận timing ở mục 4.44)**: detection cũ
+`page.getByText("Failed", {exact:false}).locator(":visible")`. Cú pháp `A.locator(":visible")` trong
+Playwright KHÔNG lọc chính A theo tính hiển thị — nó tìm PHẦN TỬ CON hiển thị BÊN TRONG A. Card lỗi
+là `<div class="...">Failed</div>` — 1 div chứa TEXT THUẦN, KHÔNG có phần tử con nào → `.locator(
+":visible")` luôn khớp 0 → `failedLocatorAll.count()` LUÔN = 0 → `checkFailedAndRetry` luôn thấy
+"currentFailedCount(0) <= lastFailedCount(0)" → trả "no-failure" NGAY, KHÔNG BAO GIỜ chạm bước bấm
+Retry. Tức là cơ chế Retry (thêm ở mục 4.34/4.41/4.43/4.44) CHƯA BAO GIỜ THỰC SỰ CHẠY kể từ đầu —
+mọi "cải tiến timing" ở các mục đó đều vá nhầm chỗ. `.first().click()` để bấm Retry thì ĐÚNG (nút
+Retry = `<button><i>refresh</i><span sr-only>Retry</span></button>`, accessible name "Retry", khớp
+`getByRole("button",{name:/retry/i})`) — chỉ mỗi DETECTION sai khiến không bao giờ tới đó.
+
+**Đã sửa** (`src/veo3bot/generate.ts`): bỏ hẳn `getByText("Failed").locator(":visible")`. Phát hiện
+lỗi qua chính NÚT RETRY: `retryButtonLocator = page.getByRole("button", {name:/retry/i})`, đếm
+`baselineRetryCount` TRƯỚC khi generate, `checkFailedAndRetry` so `currentRetryCount >
+lastRetryCount` (phát hiện cạnh như cũ) — nút Retry chỉ xuất hiện trên card lỗi, card mới nhất ở đầu
+(Recent sort) nên số nút tăng = có lỗi mới → bấm `.first()`. Kết hợp fix mục 4.48 (bấm Retry NGAY
+TRƯỚC reload, đúng lúc card được xác nhận hiện). Typecheck sạch. Đang test lại #58.
+
+**KẾT QUẢ TEST (2026-07-20, sau khi sửa detection)**: chạy lại #58 — detection ĐÃ BẮT ĐÚNG, log
+hiện "bị Flow từ chối... bấm Retry ngay (lần 1/2)" (trước đây KHÔNG bao giờ tới bước này). Cơ chế
+Retry XÁC NHẬN HOẠT ĐỘNG. NHƯNG #58 vẫn fail cuối cùng: bấm Retry rồi VẪN bị chặn lại (cả 2 lần
+qua 2 tab) → block của #58 là **CỐ ĐỊNH cho riêng cảnh này**, Retry KHÔNG cứu được. #58 cần VIẾT
+LẠI PROMPT (bỏ/đổi cụm dễ trigger — "Robert leading a small expedition party", tên "Robert" lặp 2
+lần...) chứ không phải lỗi cơ chế. Các cảnh Robert/Young Robert khác đều qua → block CHỈ riêng #58.
+Thêm 1 cải tiến: sau khi bấm Retry (trang reload), re-baseline `lastRetryCount` theo số nút sau
+reload để lần Retry 2/2 trong cùng tab kích hoạt đúng (trước đó count cũ trước reload khiến lần 2
+bị bỏ lỡ). Chiến lược xử lý cảnh bị chặn CỐ ĐỊNH: chạy full generate với cơ chế Retry đã sửa (tự
+cứu block NGẪU NHIÊN), sau đó thu thập các cảnh vẫn fail (block cố định) và viết lại prompt riêng
+từng cảnh đó — data-driven, không đoán trước.
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
