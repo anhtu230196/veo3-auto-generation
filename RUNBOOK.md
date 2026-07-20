@@ -1624,6 +1624,146 @@ Cần vào Flow xoá bản thừa, giữ 1 bản tốt nhất mỗi tên, sau đ
 không, `ensureSettingsInFlow`/`ensurePropsInFlow` sẽ không tìm thấy asset (tra theo tên) và tạo
 thêm bản trùng nữa (xem mục 4.15).
 
+### 4.46. Cảnh "chân dung trần" (không mô tả bối cảnh, không gán setting/prop) khiến Veo3 lấy ví dụ đồ vật trong PERIOD_ANCHOR làm nội dung thật
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, project "Cuộc đua Bắc Cực", `clip_003`)**: cảnh #3 — "Medium
+portrait shot of Frederick standing confidently in his fur anorak..., warm golden celebratory
+light. Frederick looks steadily ahead." — hoàn toàn KHÔNG mô tả bối cảnh nào, không gán
+`settingNames`/`propNames`. Người dùng soi bằng mắt phát hiện Frederick đứng ở **bánh lái tàu, đầy
+đủ dây thừng buồm và cả 1 cây kèn đồng** — hoàn toàn không hợp lý về mặt bối cảnh (không có băng,
+trông như đang chạy trên biển hở, không phải Bắc Cực đóng băng, và cảnh này còn không liên quan gì
+đến việc lái tàu).
+
+**Nguyên nhân gốc**: `PERIOD_ANCHOR` (`styleDNA.ts`, append bằng code vào CUỐI mọi videoPrompt để
+neo thời đại — xem mục 4.17) liệt kê ví dụ đồ vật thời đại để neo các danh từ chung KHÔNG có
+Ingredient (vd "a sailor" → quần áo đúng thời đại): "...wooden dog sledges, **wooden sail-and-steam
+ships with tall masts and a single smokestack**, oil lamps and brass navigation instruments...".
+Cơ chế này hoạt động đúng khi cảnh ĐÃ mô tả sẵn 1 bối cảnh/vật thể chung chung cần neo thời đại
+(mục 4.17). NHƯNG khi cảnh HOÀN TOÀN không mô tả bối cảnh nào (chân dung "trần", chỉ có nhân
+vật + ánh sáng/tâm trạng), Veo3 không có gì khác để bám ngoài chính danh sách VÍ DỤ trong
+PERIOD_ANCHOR — và nó lấy luôn "tàu buồm" trong ví dụ đó làm NỘI DUNG THẬT của khung hình, dù
+PERIOD_ANCHOR chỉ có ý định minh hoạ phong cách thời đại, không phải liệt kê thứ PHẢI xuất hiện
+trong MỌI cảnh.
+
+**Quét toàn bộ 264 cảnh phát hiện đúng 3 cảnh "chân dung trần" cùng dạng lỗi**: #3, #6, #239 (đều
+`"Medium/portrait shot of <Character> standing..., <mood> light."` — không 1 chữ nào mô tả không
+gian xung quanh). Cảnh #54 ("...standing in a doorway...") CÓ mô tả địa điểm tối thiểu nên an
+toàn hơn, không sửa.
+
+**Đã sửa** — thêm cụm mô tả PHÔNG NỀN TRUNG TÍNH tường minh + cấm rõ tàu/thuyền vào nội dung gốc
+của cả 3 cảnh: "against a plain softly blurred [warm/cold]-toned background with no distinct
+objects, furniture, or setting visible — no ship, no rigging, no nautical elements of any kind."
+Sửa trực tiếp trong `scripts/arctic-scenes-part1.mjs`/`part4.mjs` (nguồn gốc, để đồng bộ nếu build
+lại từ đầu) — nhưng KHÔNG chạy lại `build-arctic-prompts.mjs` cho việc này (sẽ RESET status mọi
+cảnh về "waiting", mất tiến độ đã generate, xem cảnh báo ở mục 0/ghi chú trong chính file build
+script) — thay vào đó viết `scripts/patch-bare-portrait-scenes.mjs` vá TRỰC TIẾP đúng 3 index vào
+`state/prompts.json`, giữ nguyên mọi cảnh khác, tự reset `status`/`isDownloaded` CHỈ cho 3 cảnh vừa
+sửa để `npm run generate` tạo lại.
+
+**LƯU Ý khi vá lại video ĐÃ generate trước đó**: PHẢI xoá file local cũ trong `output/clips/`
+TRƯỚC khi generate lại — cơ chế resume của `npm run download` coi "file đã tồn tại trên đĩa" là đã
+tải xong (mục 4.35), nếu không xoá sẽ giữ nguyên bản SAI dù Flow đã có bản mới đúng. Bản clip cũ
+(sai) vẫn còn nằm lại trong Flow dưới cùng tên (vd "clip_003") — `downloadClip` tìm theo tên rồi
+lấy `.first()` (dựa vào sort "Recent" mặc định), nên vẫn lấy đúng bản MỚI, nhưng để dọn rác nên xoá
+tay bản cũ trong Flow khi tiện.
+
+**Bài học tổng quát cho quy trình viết prompt (áp dụng cho MỌI project sau này)**: bất kỳ cảnh nào
+là "chân dung/cận cảnh nhân vật" mà KHÔNG mô tả TÍ GÌ về không gian xung quanh đều có rủi ro bị
+PERIOD_ANCHOR "rò rỉ" ví dụ đồ vật vào làm nội dung thật — LUÔN thêm 1 cụm mô tả phông nền tối
+thiểu (dù chỉ là "against a plain blurred background") cho MỌI cảnh dạng chân dung không có
+setting/prop, đừng để trống hoàn toàn dù chủ đích là "không cần bối cảnh cụ thể".
+
+### 4.47. Chèn chip @mention INLINE cho Setting/Prop gây mất text (bug 4.42 tái diễn) — chỉ inline cho Character, Setting/Prop luôn trailing
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #29 — settingNames=["Pack Ice Field"], propNames=["The
+Wooden Sledge"], KHÔNG có Character)**: generate lỗi "Prompt bị mất văn bản giữa chừng (đủ chip
+nhưng thiếu đoạn cuối MOTION_SUFFIX)" — soi debug capture `prompt-text-truncated-scene29`: ô prompt
+chỉ còn "Wide shot of an Inuit driver on [chip Pack Ice Field][chip The Wooden Sledge]", TOÀN BỘ
+phần text sau "on" ("pulled by a fanned-out team of husky dogs racing across the frozen sea..." +
+PERIOD_ANCHOR + MOTION_SUFFIX) BIẾN MẤT, và dialog chọn asset vẫn đang mở. Đúng bug mục 4.42 (text
+`remainder` bị gõ nhầm vào ô search của dialog @mention chưa đóng hẳn).
+
+**Nguyên nhân gốc — thiết kế inline áp dụng NHẦM cho Setting/Prop**: `fillPromptWithMentions` chèn
+chip @mention XEN GIỮA CÂU (thay tên chữ bằng chip tại đúng vị trí nó xuất hiện) cho MỌI loại tên
+(character + setting + prop, gộp chung `uniqueNames`). Cơ chế inline này SINH RA CHỈ ĐỂ tránh bộ
+lọc "prominent people" quét tên nhân vật lịch sử có thật trong text thô (mục 4.28/docstring
+`fillPromptWithMentions`). "The Wooden Sledge" nằm giữa câu #29 → bị chèn inline → sau khi chèn chip
+xong, dialog chưa kịp đóng thì đoạn text còn lại bị gõ nhầm vào ô search dialog → mất sạch. Setting/
+Prop KHÔNG phải người thật nên KHÔNG có rủi ro "prominent people" → chèn inline cho chúng là RỦI RO
+THỪA, không lợi ích.
+
+**Đã sửa** (`src/veo3bot/generate.ts::fillPromptWithMentions`): chỉ tính `occurrences` (vị trí chèn
+inline) trên `characterNames` — Setting/Prop LUÔN vào `trailingNames` (chèn chip ở CUỐI, sau khi đã
+gõ trọn vẹn toàn bộ text 1 lần). Cách này: (1) giữ nguyên bảo vệ prominent-people cho tên Character
+(mục đích gốc của inline), (2) bỏ hẳn thao tác inline dễ vỡ cho Setting/Prop, (3) với cảnh chỉ có
+Setting/Prop (như #29) thì text được gõ 1 lần liền mạch TRƯỚC, không còn text nào bị gõ sau khi
+picker mở. Tên Setting/Prop vẫn nằm dạng CHỮ trong prompt (mô tả) + có thêm chip ở cuối — đúng như
+cơ chế cũ trước khi có inline (mục 4.1/4.2: nên nhắc tên trong lời văn). Typecheck sạch.
+
+**CHƯA ĐỦ — xem mục 4.49**: fix này CHỈ giải quyết cảnh có Setting/Prop giữa câu (như #29). Cảnh có
+NHIỀU CHARACTER inline (vd two-shot 2 nhân vật) VẪN vỡ vì Character vẫn chèn inline — cần fix bổ
+sung ở mục 4.49.
+
+### 4.49. 🔴 Bug truncation THẬT SỰ nằm ở dialog @mention chưa đóng hẳn — fix bằng chờ ô search biến mất (không phải bỏ inline)
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #57 — two-shot "Robert appraising Young Frederick...Young
+Frederick standing hopeful", 3 chip inline)**: dù đã sửa mục 4.47 (Setting/Prop trailing), #57 VẪN
+lỗi truncation vì cả 3 chip đều là Character (chèn inline). Soi debug capture
+`prompt-text-truncated-scene57`: **ô SEARCH của dialog @mention chứa đúng ĐUÔI MOTION_SUFFIX**
+("...no gaps in the outline where two shapes overlap or meet."), còn ô prompt thiếu hẳn phần đó —
+tức là sau khi chèn chip inline CUỐI, dialog @mention CHƯA ĐÓNG HẲN, nên bước `remainder` (gõ đoạn
+text còn lại sau chip cuối) bị gõ NHẦM vào ô search dialog thay vì promptBox → mất sạch.
+
+**Đây mới là nguyên nhân GỐC của cả bug 4.42 lẫn 4.47**: không phải bản thân việc chèn inline sai,
+mà là code KHÔNG chờ dialog @mention đóng hẳn trước khi gõ text tiếp — chỉ `waitForTimeout(700)` mù,
+không đủ/không chắc chắn. Mục 4.47 (Setting/Prop trailing) chỉ GIẢM số lần chèn inline (giảm xác
+suất trúng bug) chứ không chữa gốc; cảnh nhiều Character inline vẫn trúng.
+
+**ĐÃ THỬ VÁ (KHÔNG ĐỦ)**: thêm bước chờ ô search `input[placeholder="Search assets"]` chuyển state
+"hidden" sau khi chọn card (+ Escape fallback) trước khi gõ tiếp. Chạy lại #57 VẪN vỡ y hệt — soi
+DOM dump lần 2 xác nhận: ô search vẫn chứa nguyên remainder + MOTION_SUFFIX, prompt vẫn thiếu. Dialog
+thỉnh thoảng KHÔNG đóng kịp/không đóng (đặc biệt khi chèn LẠI cùng 1 tên lần 2 — "Young Frederick"
+xuất hiện 2 lần), và click re-focus promptBox bị modal chặn pointer nên focus kẹt trong search. Vá
+kiểu "chờ đóng" không bao giờ chắc chắn 100% với thao tác xen kẽ gõ-text-mở-dialog liên tục.
+
+**ĐÃ SỬA TẬN GỐC** (`src/veo3bot/generate.ts::fillPromptWithMentions`): BỎ HẲN chèn inline. Gõ TRỌN
+VẸN `text` 1 lần (không dialog nào mở → không thể mất text), RỒI mới mở picker append MỌI chip ở CUỐI
+(trailing). Nếu 1 chip lỗi thì text vẫn nguyên vẹn, chỉ thiếu chip (bước xác minh `voidChips <
+expectedChipCount` bắt được để retry) — không bao giờ gửi Flow prompt thiếu nội dung. Xoá luôn hàm
+`findMentionOccurrences` (chỉ phục vụ inline, giờ dead code).
+
+**VÌ SAO BỎ ĐƯỢC INLINE**: cơ chế inline SINH RA CHỈ để tránh bộ lọc "prominent people" quét tên
+nhân vật lịch sử THẬT trong text thô (mục 4.28). Nhưng quy trình viết prompt HIỆN NAY (skill +
+CHARACTER_EXTRACTION_GUIDE) đã BẮT BUỘC khử-định-danh MỌI tên nhân vật thành tên riêng đơn/nhãn vai
+trò (Frederick, Robert, The Financier...) CHÍNH XÁC để tên thô không kích hoạt bộ lọc → tên thô
+trong text LUÔN an toàn → inline trở nên THỪA. Nếu project tương lai lỡ dùng tên lịch sử đầy đủ,
+sửa ở KHÂU ĐẶT TÊN (khử định danh — vốn đã là quy tắc bắt buộc) chứ KHÔNG quay lại inline dễ vỡ.
+Fix 4.47 (Setting/Prop trailing) giờ là TẬP CON của fix này (mọi thứ đều trailing). Typecheck sạch.
+**ĐÃ XÁC NHẬN CHẠY THẬT (2026-07-20)**: cảnh #57 (two-shot Robert + Young Frederick, đã fail 3 lần
+liên tiếp vì truncation) chạy lại BÁO "2/2 chip @mention" (mỗi tên duy nhất 1 chip thay vì 3/3 đếm
+cả lần lặp) + KHÔNG còn lỗi truncation + tạo/đổi tên "clip_057" thành công. Bug truncation đã chữa
+tận gốc.
+
+### 4.48. Rút ngắn thời gian reload-recheck + thêm "grace poll" bắt nút Retry hiện muộn (theo yêu cầu người dùng)
+**BỐI CẢNH (2026-07-20)**: người dùng quan sát trực tiếp khi generate — mỗi khi 1 cảnh timeout, quá
+trình reload + chờ trang sẵn sàng + poll lại QUÁ LÂU (tổng ~5-6 phút/cảnh lỗi), và có tình huống
+"card Failed + nút Retry hiện ra nhưng bot không bấm mà cứ đợi hết 3 phút rồi reload" (nút Retry
+hiện MUỘN, sát/sau mốc `GENERATE_TIMEOUT_MS`, rồi reload xoá mất — cùng lớp bug 4.44 nhưng với lỗi
+audio-generation-failed / prominent-people hiện trễ hơn cả những gì 4.44 từng đo).
+
+**Đã làm** (`src/veo3bot/generate.ts`):
+- `RELOAD_RECHECK_TIMEOUT_MS` 90s → **20s**, thêm `RELOAD_READY_TIMEOUT_MS` = **30s** (thay số cứng
+  90000 ở nhánh reload-recheck của `generateOneClip`). GIỮ NGUYÊN `GENERATE_TIMEOUT_MS` = 3 phút
+  (đây là thời gian Veo3 GENERATE THẬT, không phải thời gian lỗi — rút xuống sẽ khiến MỌI cảnh bình
+  thường bị timeout oan hàng loạt rồi tạo bản trùng; đã giải thích + người dùng đồng ý giữ).
+- Thêm **vòng "grace poll" ~16s** (mỗi 2s) NGAY SAU khi hết `GENERATE_TIMEOUT_MS`, TRƯỚC KHI reload:
+  poll cả video mới LẪN "Failed"/Retry — bắt được card lỗi + bấm nút Retry (tối đa
+  `MAX_INLINE_RETRIES`=2 lần) khi nó hiện muộn quanh mốc timeout, mà KHÔNG tốn cả chu kỳ reload đắt
+  đỏ. Trước đây chỉ kiểm tra 1 lần rồi reload luôn nên hay bỏ lỡ.
+- **Lỗi audio-generation-failed**: card "Failed" ở cảnh #3 hoá ra là "Audio generation failed" (Veo3
+  cố tạo audio dù pipeline không dùng) — KHÔNG phải bị chặn nội dung. Khắc phục GỐC bằng cách BẬT
+  tuỳ chọn "Return silent videos" trong Settings của Flow (người dùng đã bật) → Flow trả video
+  không audio thay vì đánh dấu cả clip "Failed". Sau khi bật, các cảnh #38/40/41/42 (từng "failed",
+  nghi "prominent people") generate LẠI BÌNH THƯỜNG — xác nhận lỗi trước đó là do audio, không phải
+  chặn tên "Young Robert"/"Robert" (tên riêng đã an toàn theo mục 4.28).
+
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 
 Các bug nghiêm trọng nhất (sai hình ảnh Ingredient, trùng lặp clip, phong cách

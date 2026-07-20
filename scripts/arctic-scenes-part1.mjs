@@ -7,13 +7,13 @@ export const part1 = [
   // 2
   ["Medium shot of an antique desktop globe in a study turned to show the empty white cap of the North Pole at the very top, warm lamplight beside it.", [], [], []],
   // 3
-  ["Medium portrait shot of Frederick standing confidently in his fur anorak with a slight proud smile, warm golden celebratory light. Frederick looks steadily ahead.", ["Frederick"], [], []],
+  ["Medium portrait shot of Frederick standing confidently in his fur anorak with a slight proud smile, warm golden celebratory light, against a plain softly blurred warm-toned background with no distinct objects, furniture, or setting visible — no ship, no rigging, no nautical elements of any kind. Frederick looks steadily ahead.", ["Frederick"], [], []],
   // 4
   ["Medium shot inside The Newsroom of the great printing press abruptly halted mid-run, a single sheet frozen half-printed, tense cool lighting.", [], ["The Newsroom"], []],
   // 5
   ["Medium shot in The Newsroom of a fresh newspaper slapped down hard onto a wooden desk, papers scattering, sharp cool blue-grey tension.", [], ["The Newsroom"], ["The Newspaper"]],
   // 6
-  ["Medium portrait shot of Robert standing stern and defiant in his fur parka, his large mustache set and arms crossed. Cold steel-blue tone.", ["Robert"], [], []],
+  ["Medium portrait shot of Robert standing stern and defiant in his fur parka, his large mustache set and arms crossed, against a plain softly blurred cold-toned background with no distinct objects, furniture, or setting visible — no ship, no rigging, no nautical elements of any kind. Cold steel-blue tone.", ["Robert"], [], []],
   // 7
   ["Wide shot of the Pack Ice Field, two lone fur-clad explorer figures standing far apart on the endless ice, each facing the distant Pole, tension between them. Cold pale light.", [], ["Pack Ice Field"], []],
   // 8

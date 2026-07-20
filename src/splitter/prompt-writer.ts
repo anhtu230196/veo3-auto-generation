@@ -199,6 +199,18 @@ deck" ra hình thủy thủ áo kẻ sọc thời nay đứng cạnh container/c
   cuối videoPrompt để neo thời đại đầy đủ, chỉ cần đảm bảo mô tả không mâu thuẫn với thời đại (không tự ý
   thêm chi tiết hiện đại).
 
+CẢNH "CHÂN DUNG TRẦN" (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp qua ảnh render thật, RUNBOOK mục 4.46):
+KHÔNG BAO GIỜ viết 1 cảnh chỉ có nhân vật + ánh sáng/tâm trạng mà KHÔNG mô tả TÍ GÌ về không gian xung
+quanh (vd "Medium portrait shot of X standing confidently..., warm golden light." — không 1 chữ nào tả
+bối cảnh). PERIOD_ANCHOR (styleDNA.ts) liệt kê VÍ DỤ đồ vật thời đại (tàu buồm, xe trượt, đèn dầu...) để
+neo các danh từ chung ĐÃ CÓ trong câu — nhưng khi cảnh hoàn toàn không mô tả bối cảnh, Veo3 không có gì
+khác để bám ngoài chính danh sách ví dụ đó, và sẽ lấy luôn 1 món trong đó (đã xác nhận: "tàu buồm" xuất
+hiện làm phông nền thật cho 1 cảnh chân dung không hề liên quan gì đến tàu thuyền). MỌI cảnh dạng chân
+dung/cận cảnh nhân vật KHÔNG gán settingNames/propNames PHẢI thêm 1 cụm mô tả phông nền tối thiểu, dù chỉ
+là phông nền trung tính — vd "against a plain softly blurred [tông màu]-toned background with no distinct
+objects, furniture, or setting visible". Đừng để trống hoàn toàn dù chủ đích là "không cần bối cảnh cụ
+thể" cho cảnh đó.
+
 Giữ nhất quán bối cảnh/thời điểm xuyên suốt các cảnh liền kề — không lặp lại y hệt bối cảnh/khoảng cách
 của cảnh liền trước, đổi cỡ cảnh TĨNH để tránh đơn điệu (KHÔNG dùng chuyển động máy quay để tạo khác biệt
 — xem mục 1 ở trên).

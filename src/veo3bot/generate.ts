@@ -37,7 +37,14 @@ const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
 // rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
 // sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
 // lỗi thật (xem generateOneClip bên dưới).
-const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
+// RÚT NGẮN (2026-07-20, theo yêu cầu người dùng sau khi quan sát trực tiếp reload-recheck quá
+// lâu ở project Bắc Cực) — từ 90s xuống 20s. Đánh đổi CÓ CHỦ Ý: chấp nhận rủi ro bỏ lỡ 1 số
+// trường hợp video/Failed xuất hiện muộn hơn 20s sau khi trang sẵn sàng (rơi vào nhánh retry
+// toàn bộ ở processQueue thay vì được cứu ở đây), đổi lấy tổng thời gian generate 264 cảnh nhanh
+// hơn đáng kể. Nếu sau này thấy tỉ lệ retry-toàn-bộ quá cao, cân nhắc tăng lại.
+const RELOAD_RECHECK_TIMEOUT_MS = 20 * 1000;
+// Thời gian chờ "Add Media" xuất hiện lại sau reload — cùng lý do rút ngắn ở trên, từ 90s xuống 30s.
+const RELOAD_READY_TIMEOUT_MS = 30 * 1000;
 
 /**
  * Text nút/tab xác nhận trực tiếp trên labs.google/fx/tools/flow ngày 2026-07-13.
@@ -113,39 +120,10 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
   await page.keyboard.press("Escape");
 }
 
-interface MentionOccurrence {
-  name: string;
-  start: number;
-  end: number;
-}
-
-/**
- * Tìm MỌI vị trí xuất hiện dạng CHỮ THẬT của từng tên trong `text` — ưu tiên khớp tên DÀI HƠN
- * trước (vd "Santa María Ship Deck" trước "Santa María") để 1 tên ngắn không "ăn" nhầm vào
- * giữa 1 tên dài hơn có chứa nó làm substring. Trả về danh sách đã sort theo vị trí, không
- * chồng lấn. 1 tên có thể xuất hiện NHIỀU LẦN trong cùng 1 prompt (QUY TẮC NHÂN VẬT yêu cầu
- * nhắc tên đầy đủ mỗi khi nhân vật hành động) — TẤT CẢ các lần xuất hiện đều được thay bằng
- * chip, không chỉ lần đầu.
- */
-function findMentionOccurrences(text: string, names: string[]): MentionOccurrence[] {
-  const sortedByLength = [...names].sort((a, b) => b.length - a.length);
-  const occupied = new Array(text.length).fill(false);
-  const occurrences: MentionOccurrence[] = [];
-  for (const name of sortedByLength) {
-    let searchFrom = 0;
-    while (true) {
-      const idx = text.indexOf(name, searchFrom);
-      if (idx === -1) break;
-      const end = idx + name.length;
-      searchFrom = end;
-      if (occupied.slice(idx, end).some(Boolean)) continue;
-      occurrences.push({ name, start: idx, end });
-      occupied.fill(true, idx, end);
-    }
-  }
-  occurrences.sort((a, b) => a.start - b.start);
-  return occurrences;
-}
+// GHI CHÚ (2026-07-20): trước đây có `findMentionOccurrences()` để tìm vị trí tên trong câu phục
+// vụ chèn chip INLINE. Đã BỎ HẲN inline (quá dễ vỡ — xem RUNBOOK mục 4.49 + docstring
+// fillPromptWithMentions), chuyển sang gõ trọn text 1 lần rồi append chip ở cuối, nên hàm đó không
+// còn cần nữa và đã được gỡ bỏ.
 
 /**
  * Điền prompt + chèn chip @mention Character THẬT để ràng buộc đúng khuôn mặt.
@@ -277,7 +255,23 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     if (await addBtn.count()) {
       await addBtn.click().catch(() => {});
     }
-    await page.waitForTimeout(700);
+
+    // CHỜ DIALOG @mention ĐÓNG HẲN (ô search biến mất) TRƯỚC KHI cho gõ text tiếp — nếu dialog
+    // chưa đóng, MỌI text gõ sau (before/remainder của bước kế) rơi vào Ô SEARCH thay vì promptBox,
+    // mất sạch (bug mục 4.42/4.47/4.49). XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #57 — two-shot 2 nhân
+    // vật): soi debug capture `prompt-text-truncated-scene57` thấy ô search chứa đúng đuôi
+    // MOTION_SUFFIX ("...no gaps in the outline where two shapes overlap or meet."), prompt thiếu
+    // hẳn phần đó — remainder bị gõ vào dialog chưa đóng sau chip inline cuối. Chờ tường minh
+    // state "hidden" (Playwright coi detached = hidden) thay cho `waitForTimeout(700)` mù; nếu quá
+    // hạn vẫn chưa đóng thì chủ động Escape rồi chờ tiếp.
+    const searchAfter = page.locator('input[placeholder="Search assets"]');
+    try {
+      await searchAfter.waitFor({ state: "hidden", timeout: 4000 });
+    } catch {
+      await page.keyboard.press("Escape").catch(() => {});
+      await searchAfter.waitFor({ state: "hidden", timeout: 3000 }).catch(() => {});
+    }
+    await page.waitForTimeout(300);
 
     // Click card có thể làm mất focus editor — re-focus + đưa cursor về CUỐI tài liệu trước
     // khi gõ tiếp, tránh tái diễn lỗi mất text của cách chèn-giữa ngây thơ (xem docstring).
@@ -286,35 +280,31 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     await page.keyboard.press("End");
   }
 
-  const occurrences = findMentionOccurrences(text, uniqueNames);
-  const inlineNames = new Set(occurrences.map((o) => o.name));
-  const trailingNames = uniqueNames.filter((n) => !inlineNames.has(n));
-
-  // 1) Gõ xen kẽ: đoạn text trước mỗi tên → chèn chip TẠI vị trí đó (thay hẳn tên chữ) → tiếp
-  // tục đoạn sau. Luôn ở cuối tài liệu tại mọi thời điểm (xem docstring).
-  let cursor = 0;
-  for (const occ of occurrences) {
-    let before = text.slice(cursor, occ.start);
-    // LƯỚI AN TOÀN (không còn xảy ra với STYLE_ANCHOR_MENTION_SENTENCE từ khi bỏ "@" khỏi
-    // styleDNA.ts, xem RUNBOOK mục 4.25, nhưng vẫn giữ phòng trường hợp Claude viết tay
-    // state/prompts.json lỡ gõ sẵn "@Tên" trong videoPrompt): nếu tên vừa khớp đứng ngay sau 1
-    // dấu "@" thừa trong text, bỏ dấu đó đi — gõ "@" dạng CHỮ THẬT (không qua picker có kiểm
-    // soát) sẽ tự mở dialog chọn asset của Flow giữa chừng, làm hỏng cả đoạn text gõ sau đó.
-    if (before.endsWith("@")) before = before.slice(0, -1);
-    if (before) await page.keyboard.type(before);
-    await insertMentionChip(occ.name);
-    cursor = occ.end;
-  }
-  const remainder = text.slice(cursor);
-  if (remainder) await page.keyboard.type(remainder);
-
-  // 2) Tên KHÔNG xuất hiện dạng chữ trong prompt — chèn chip ở cuối như cơ chế cũ.
-  for (const name of trailingNames) {
+  // GÕ TRỌN VẸN TEXT 1 LẦN rồi mới APPEND MỌI CHIP Ở CUỐI (trailing) — KHÔNG chèn xen giữa câu.
+  // XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #57 two-shot 2 nhân vật, xem RUNBOOK mục 4.49): cơ chế
+  // chèn inline (thay tên chữ bằng chip tại đúng vị trí) BẢN CHẤT dễ vỡ — mỗi lần chèn chip phải mở
+  // dialog @mention giữa chừng lúc đang gõ text; nếu dialog chưa đóng hẳn trước bước gõ tiếp, phần
+  // text sau bị gõ NHẦM vào ô search dialog và mất sạch (soi DOM dump: ô search chứa nguyên cả
+  // remainder + MOTION_SUFFIX, prompt thiếu hẳn phần đó). Đã thử vá bằng "chờ ô search biến mất sau
+  // khi chọn card" nhưng VẪN vỡ (dialog thỉnh thoảng không đóng kịp/không đóng khi chèn lại cùng 1
+  // tên). Cách bền vững tuyệt đối: gõ hết text TRƯỚC (không dialog nào mở → không thể mất text), rồi
+  // mở picker append chip ở cuối — nếu 1 chip lỗi thì TEXT vẫn còn nguyên, chỉ thiếu chip (bước xác
+  // minh chip bên dưới bắt được để retry), không bao giờ gửi Flow prompt thiếu nội dung.
+  //
+  // VÌ SAO BỎ ĐƯỢC INLINE (cơ chế inline vốn sinh ra để tránh bộ lọc "prominent people" quét tên
+  // nhân vật lịch sử THẬT trong text thô): quy trình viết prompt HIỆN NAY (skill flow-historical +
+  // CHARACTER_EXTRACTION_GUIDE) đã BẮT BUỘC khử-định-danh MỌI tên nhân vật thành tên riêng đơn/nhãn
+  // vai trò (Frederick, Robert, The Financier... — mục 4.28) CHÍNH XÁC để tên thô không kích hoạt bộ
+  // lọc. Khi thực hành này được tuân thủ (nó là BẮT BUỘC), tên thô trong text luôn an toàn → inline
+  // trở nên thừa. Nếu 1 project tương lai lỡ dùng tên lịch sử ĐẦY ĐỦ, sửa ở KHÂU ĐẶT TÊN (khử định
+  // danh) chứ KHÔNG quay lại inline dễ vỡ.
+  await page.keyboard.type(text.replace(/@/g, "")); // bỏ "@" thừa (gõ "@" chữ thật tự mở dialog)
+  for (const name of uniqueNames) {
     await insertMentionChip(name);
   }
 
-  // 3) XÁC MINH chip void đã chèn đủ — tổng số lần chèn dự kiến (đếm cả tên lặp lại nhiều lần).
-  const expectedChipCount = occurrences.length + trailingNames.length;
+  // 3) XÁC MINH chip void đã chèn đủ — mỗi tên duy nhất đúng 1 chip ở cuối.
+  const expectedChipCount = uniqueNames.length;
   const html = await promptBox.innerHTML();
   const voidChips = (html.match(/data-slate-void="true"/g) || []).length;
   debugLog(
@@ -527,19 +517,26 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
     if (failedResult === "retried") continue; // kiểm tra lại NGAY, không chờ POLL_INTERVAL_MS
     await page.waitForTimeout(POLL_INTERVAL_MS);
   }
-  // Kiểm tra NGAY 1 lần cuối, KHÔNG chờ, trước khi kết luận timeout — vòng while trên có thể thoát
-  // đúng lúc `Date.now() < deadline` vừa chuyển false ngay SAU khi 1 video/"Failed" mới xuất hiện
-  // (xác nhận trực tiếp gây lỡ mất "Failed" của cảnh #6, xem ghi chú `GENERATE_TIMEOUT_MS` ở đầu
-  // file) — 1 lần kiểm tra thêm gần như miễn phí, tránh rơi oan vào nhánh reload tốn kém bên dưới.
+  // VÒNG "GRACE POLL" NGẮN sau khi hết GENERATE_TIMEOUT_MS, TRƯỚC KHI reload (xác nhận trực tiếp
+  // 2026-07-20, người dùng quan sát: cảnh bị chặn "prominent people"/"Failed" thường hiện card lỗi
+  // + nút "Retry" NGAY QUANH mốc timeout, nhưng vòng poll chính vừa thoát do hết giờ nên bỏ lỡ —
+  // rồi reload XOÁ MẤT card "Failed" (mục 4.44), khiến không bao giờ bấm được Retry mà chờ vô ích).
+  // Thay vì chỉ kiểm tra 1 lần rồi reload, poll thêm tối đa GRACE_POLL_MS (mỗi 2s) tìm CẢ video mới
+  // LẪN "Failed"/Retry — bắt được lỗi hiện muộn mà KHÔNG tốn cả chu kỳ reload đắt đỏ.
+  const GRACE_POLL_MS = 16 * 1000;
+  const GRACE_INTERVAL_MS = 2000;
   if (!newVideoSrc) {
-    const currentFirstSrc = await firstVideoSrc(page);
-    if (currentFirstSrc && currentFirstSrc !== baselineFirstSrc) {
-      newVideoSrc = currentFirstSrc;
-    } else {
+    const graceDeadline = Date.now() + GRACE_POLL_MS;
+    while (!newVideoSrc && Date.now() < graceDeadline) {
+      const currentFirstSrc = await firstVideoSrc(page);
+      if (currentFirstSrc && currentFirstSrc !== baselineFirstSrc) {
+        newVideoSrc = currentFirstSrc;
+        break;
+      }
       const failedResult = await checkFailedAndRetry();
       if (failedResult === "gave-up") return "skipped";
-      // "retried" ở đây: đã bấm Retry, để nhánh reload bên dưới xử lý tiếp bình thường (vẫn an
-      // toàn dù không cần reload nữa, vì trang đã tự reload khi bấm Retry).
+      if (failedResult === "retried") break; // đã bấm Retry (trang tự reload) — để nhánh dưới poll tiếp
+      await page.waitForTimeout(GRACE_INTERVAL_MS);
     }
   }
   if (!newVideoSrc) {
@@ -563,7 +560,8 @@ async function generateOneClip(page: Page, prompt: VeoPrompt, clipName: string, 
     // Chờ trang THẬT SỰ sẵn sàng rồi POLL thêm 1 khoảng đủ dài thay vì chốt sau 1 mốc thời gian
     // cố định — cùng bug đã xác nhận ở imageAsset.ts (2026-07-18): 1 project có nhiều media
     // (168 cảnh + Character/Setting/Prop) tải lại chậm hơn vài giây cố định.
-    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
+    // Thời lượng rút ngắn theo yêu cầu người dùng (2026-07-20) — xem RELOAD_READY_TIMEOUT_MS.
+    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: RELOAD_READY_TIMEOUT_MS }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
     while (!newVideoSrc && Date.now() < recheckDeadline) {
       const currentFirstSrc = await firstVideoSrc(page);

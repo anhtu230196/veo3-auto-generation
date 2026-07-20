@@ -1,10 +1,10 @@
 node_modules/
 dist/
-.env
+# .env
 output/
 output-*/
-state/
-state-*/
+# state/
+# state-*/
 .auth/
-input/*.txt
+# input/*.txt
 *.log

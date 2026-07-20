@@ -83,7 +83,7 @@ export const part4 = [
   // 238
   ["Close-up of an ornate official government document with a wax seal and ribbon, its text shown as abstract lines, carefully worded, warm formal light.", [], [], []],
   // 239
-  ["Medium portrait shot of Robert standing in a formal rear-admiral's dress uniform with medals, dignified and honored, warm formal light. Robert stands at attention.", ["Robert"], [], []],
+  ["Medium portrait shot of Robert standing in a formal rear-admiral's dress uniform with medals, dignified and honored, warm formal light, against a plain softly blurred warm-toned background with no distinct objects, furniture, or setting visible — no ship, no rigging, no nautical elements of any kind. Robert stands at attention.", ["Robert"], [], []],
   // 240
   ["Medium shot of Robert placing his Arctic diary into a drawer and closing it, sealing away his secrets, cool dim lamplight. Robert shuts the drawer.", ["Robert"], [], []],
   // 241

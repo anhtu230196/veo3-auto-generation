@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Pack Ice Field",
+    "description": "A vast Arctic sea-ice field drawn in 2D flat vector style — an endless plain of broken white and pale-blue pack ice, jagged pressure ridges heaving up in angular slabs, and dark cracks and leads of black open water cutting across the surface. A flat white horizon under an open sky. No people, no structures. Lighting-neutral (used across day, storm, and dusk scenes). Solid flat color fills, bold black outlines on every ice slab and ridge.",
+    "status": "success"
+  },
+  {
+    "name": "Greenland Ice Cap",
+    "description": "The vast interior ice cap of Greenland drawn in 2D flat vector style — a smooth, rolling plateau of unbroken white snow stretching to a flat horizon, gentle wind-carved ridges and low snow drifts, distant pale-blue mountains at the far edges. Wider and smoother than broken sea ice, with no open water. No people, no structures. Lighting-neutral. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "Night Ice Camp",
+    "description": "A small Arctic camp on the sea ice seen at NIGHT under deep moonlight, drawn in 2D flat vector style — a low dome tent or a small snow-block shelter, a wooden sledge parked beside it, faint tracks in the snow. Deep desaturated navy-blue and indigo night tones throughout, a pale moon and scattered stars overhead, cold blue shadows on the snow — NOT daylight, NOT sunny, NOT a bright blue sky. No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "Annoatok Base",
+    "description": "A small remote Arctic expedition base on the rocky Greenland coast drawn in 2D flat vector style — one or two low wooden and stone huts with turf roofs, wooden crates and barrels stacked outside, drying racks, a snowy rocky shoreline meeting frozen sea in the background. Lighting-neutral (used in different seasons). No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "Ship Deck",
+    "description": "The wooden deck of a turn-of-the-century polar expedition ship drawn in 2D flat vector style — weathered wooden planking, thick rope rigging, a tall mast, a coiled anchor chain, wooden crates and barrels lashed down, a metal railing, and frozen sea visible beyond the rail. Lighting-neutral. No people in the base image. Solid flat color fills, bold black outlines on every plank, rope and fixture.",
+    "status": "success"
+  },
+  {
+    "name": "New York Harbor",
+    "description": "An early-1900s New York harbor drawn in 2D flat vector style — a busy wooden dock with tall-masted sail-and-steam ships, wooden pilings, stacked cargo crates and barrels, coiled ropes, and a skyline of low brick warehouses and early skyscrapers with smokestacks in the background. Lighting-neutral (day-dominant). No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "The Newsroom",
+    "description": "A busy early-1900s newspaper office drawn in 2D flat vector style — rows of wooden desks piled with papers, black cast-iron typewriters, a large printing press with rollers and gears against the back wall, stacks of freshly printed broadsheets, hanging electric bulb lamps, and tall windows. Lighting-neutral. No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "The Banquet Hall",
+    "description": "An opulent 1900s New York banquet hall drawn in 2D flat vector style — a long formal dining table draped in white cloth set with silver and candlesticks, ornate gilded columns and moulding, large crystal chandeliers glowing warmly, deep red carpet and drapery, a warm amber golden atmosphere. No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "The Press Room",
+    "description": "A grand hotel press-conference room in the Waldorf Astoria style drawn in 2D flat vector style — an elegant paneled room with a raised podium and a small table at the front, rows of wooden chairs facing it, tall draped windows, warm electric wall sconces, and a formal refined atmosphere. Distinct from a dining hall — no long banquet table. No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  },
+  {
+    "name": "The Ceremony Stage",
+    "description": "A formal early-1900s awards ceremony stage and auditorium drawn in 2D flat vector style — a raised wooden stage with a draped lectern and large American-flag bunting behind it, a decorative arch, rows of theater seating fading into the background, warm stage lighting from above. Distinct from both a dining hall and a press room. No people in the base image. Solid flat color fills, bold black outlines.",
+    "status": "success"
+  }
+]
