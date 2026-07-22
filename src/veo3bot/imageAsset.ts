@@ -43,10 +43,10 @@ async function firstImageSrc(page: Page): Promise<string | undefined> {
  * được bình thường sau khi đổi tên (đã xác nhận trực tiếp bởi người dùng: gõ "@", tìm theo
  * tên, chọn kết quả khớp).
  *
- * `styleBlock` do NGƯỜI GỌI truyền vào (settings.ts dùng SETTING_SHEET_STYLE_BLOCK, props.ts
- * dùng CHARACTER_SHEET_STYLE_BLOCK) — KHÔNG hard-code trong hàm này. Xác nhận trực tiếp
- * (2026-07-17): dùng chung 1 style block cho cả Setting lẫn Prop ra kết quả SAI cho Setting
- * (nền xanh + tự chèn người vào ảnh bối cảnh).
+ * `styleBlock` do NGƯỜI GỌI truyền vào (props.ts dùng CHARACTER_SHEET_STYLE_BLOCK, sceneImages.ts
+ * dùng SCENE_STILL_STYLE_BLOCK) — KHÔNG hard-code trong hàm này. (LỊCH SỬ: 2026-07-17, khi còn
+ * Setting Ingredient — dùng chung 1 style block cho cả Setting lẫn Prop từng ra kết quả SAI cho
+ * Setting, nền xanh + tự chèn người vào ảnh bối cảnh; Setting Ingredient đã bị bỏ 2026-07-22.)
  */
 export async function createImageIngredient(
   page: Page,

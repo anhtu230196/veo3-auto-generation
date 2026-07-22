@@ -4,14 +4,13 @@ import path from "node:path";
 import { config } from "../config.js";
 import type { VeoPrompt } from "../splitter/prompt-writer.js";
 import type { CharacterProfile } from "../characters/extract.js";
-import type { SettingProfile } from "../settings/extract.js";
 import type { PropProfile } from "../props/extract.js";
 import { ensureProjects, waitForProjectReady } from "./project.js";
 import { ensureCharactersInFlow } from "./characters.js";
-import { ensureSettingsInFlow } from "./settings.js";
 import { ensurePropsInFlow } from "./props.js";
 import { launchVeo3Browser } from "./browser.js";
 import { debugCapture, debugLog } from "./debug.js";
+import { animateChosenImage } from "./animateImage.js";
 
 const POLL_INTERVAL_MS = 5000;
 // XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #14, xem RUNBOOK mục 4.27): người dùng KHÔNG muốn đợi 10
@@ -71,7 +70,7 @@ function durationTabLabel(seconds: number): "4s" | "6s" | "8s" {
 // cũ (dùng overlay riêng) đã bị loại bỏ, thay bằng chèn @mention trực tiếp trong
 // fillPromptWithMentions bên dưới.
 
-async function ensureModelAndDuration(page: Page): Promise<void> {
+export async function ensureModelAndDuration(page: Page): Promise<void> {
   // Pill hiển thị model/tỷ lệ khung hình hiện tại — label thay đổi theo chế độ đang chọn
   // (vd "Video · 8s ..." nếu đang ở Video, hoặc "🍌 Nano Banana 2 ..." nếu đang ở Image,
   // do việc tạo Character trước đó dùng model ảnh làm đổi chế độ mặc định của canvas
@@ -151,18 +150,18 @@ async function ensureModelAndDuration(page: Page): Promise<void> {
  * đang ở CUỐI tài liệu (không phải giữa), không tái diễn lỗi mất text của cách chèn-giữa ngây
  * thơ trước đây.
  *
- * Nếu 1 tên KHÔNG xuất hiện dạng chữ trong `videoPrompt` (Setting/Prop không được nhắc trong
- * lời văn, hoặc do STYLE_ANCHOR_MENTION_SENTENCE đã có sẵn "@Style Anchor" dạng chữ — xử lý
- * riêng, xem bên dưới), chip của tên đó vẫn được chèn ở CUỐI như cơ chế cũ (không đổi).
+ * Nếu 1 tên KHÔNG xuất hiện dạng chữ trong `videoPrompt` (Prop không được nhắc trong lời văn,
+ * hoặc do STYLE_ANCHOR_MENTION_SENTENCE đã có sẵn "@Style Anchor" dạng chữ — xử lý riêng, xem
+ * bên dưới), chip của tên đó vẫn được chèn ở CUỐI như cơ chế cũ (không đổi).
  *
  * Cuối cùng XÁC MINH số chip void trong DOM = tổng số lần chèn dự kiến (đếm cả tên lặp lại
  * nhiều lần trong câu), nếu thiếu thì throw để vòng retry chạy lại (KHÔNG tạo clip với mặt sai).
  *
- * Setting/Prop asset (bối cảnh/đạo cụ cố định, xem settings.ts/props.ts) dùng CHUNG cơ chế
- * @mention này — dialog chọn asset tìm theo tên, không lọc theo loại Character/Setting/Prop,
- * nên chỉ cần gộp characterNames + settingNames + propNames thành 1 danh sách tên để chèn
- * chip, miễn tên không trùng giữa các danh sách (đảm bảo ở bước đặt tên nhân vật/bối cảnh/
- * đạo cụ).
+ * Prop asset (đạo cụ cố định, xem props.ts) dùng CHUNG cơ chế @mention này — dialog chọn asset
+ * tìm theo tên, không lọc theo loại Character/Prop, nên chỉ cần gộp characterNames + propNames
+ * thành 1 danh sách tên để chèn chip, miễn tên không trùng giữa 2 danh sách (đảm bảo ở bước đặt
+ * tên nhân vật/đạo cụ). (ĐÃ BỎ Setting khỏi cơ chế này 2026-07-22 — không còn Setting Ingredient
+ * nào để @mention nữa, xem RUNBOOK mục 0.)
  *
  * ĐÃ THỬ VÀ BỎ (2026-07-16): từng thêm 1 "Style Anchor" @mention vào MỌI cảnh để chống trôi
  * phong cách ở cảnh không có Ingredient nào. GỠ BỎ vì tác dụng phụ nghiêm trọng hơn: asset đó
@@ -181,8 +180,8 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   await page.keyboard.press("ControlOrMeta+A");
   await page.keyboard.press("Backspace");
 
-  const { videoPrompt: text, characterNames, settingNames, propNames } = prompt;
-  const mentionNames = [...characterNames, ...(settingNames ?? []), ...(propNames ?? [])];
+  const { videoPrompt: text, characterNames, propNames } = prompt;
+  const mentionNames = [...characterNames, ...(propNames ?? [])];
   const uniqueNames = [...new Set(mentionNames)];
 
   if (uniqueNames.length === 0) {
@@ -245,7 +244,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     }
     if (!cardFound) {
       await debugCapture(page, `mention-card-missing-scene${prompt.index}`);
-      throw new Error(`Không thấy Character/Setting/Prop "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
+      throw new Error(`Không thấy Character/Prop "${name}" trong picker (cảnh #${prompt.index}) — thử lại.`);
     }
     await card.click();
     await page.waitForTimeout(400);
@@ -359,7 +358,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
  * tử duy nhất, đổi src tại chỗ) LẪN lưới nhiều item ảo hoá (mục 4.33 — vị trí 0 luôn đúng là item
  * MỚI NHẤT thật sự, không bị nhiễu bởi item cũ trôi vào/ra vùng render ở các vị trí SAU vị trí 0).
  */
-async function firstVideoSrc(page: Page): Promise<string | undefined> {
+export async function firstVideoSrc(page: Page): Promise<string | undefined> {
   const first = page.locator("video[src]").first();
   if (!(await first.count())) return undefined;
   return (await first.getAttribute("src")) ?? undefined;
@@ -397,7 +396,7 @@ async function firstVideoSrc(page: Page): Promise<string | undefined> {
  * ngay sau khi rename xong, bất kể rename thực chất là modal tại chỗ hay điều hướng sang trang
  * khác — đảm bảo KHÔNG BAO GIỜ để lại trang ở trạng thái không xác định cho cảnh sau.
  */
-async function renameLatestVideo(page: Page, name: string, videoSrc: string, sceneIndex: number, projectUrl: string): Promise<void> {
+export async function renameLatestVideo(page: Page, name: string, videoSrc: string, sceneIndex: number, projectUrl: string): Promise<void> {
   const videoTag = page.locator(`video[src="${videoSrc}"]`).first();
   const card = videoTag.locator("xpath=ancestor::a[1]");
   if (!(await card.count())) {
@@ -677,15 +676,32 @@ async function processQueue(
 
     log(`tạo cảnh #${p.index} [${p.characterNames.join(", ")}]: ${p.videoPrompt.slice(0, 80)}...`);
 
+    // Cảnh needsAngleLock KHÔNG generate text-to-video bình thường — phải "Animate" đúng ảnh
+    // still đã được người dùng chọn tay (xem VeoPrompt.needsAngleLock, sceneImages.ts,
+    // animateImage.ts). Nếu chưa soi/chọn xong (thiếu chosenImageIndex), KHÔNG tính là lỗi —
+    // bỏ qua cảnh này, giữ nguyên status "waiting" để lần chạy sau tự thử lại khi đã sẵn sàng.
+    if (p.needsAngleLock && !p.chosenImageIndex) {
+      log(`cảnh #${p.index} có needsAngleLock nhưng chưa có chosenImageIndex — bỏ qua, chạy "npm run generate-images" + tự chọn ảnh trước.`);
+      generatedSinceReload++;
+      continue;
+    }
+
+    async function createClip(): Promise<"ok" | "skipped"> {
+      if (p!.needsAngleLock) {
+        return animateChosenImage(page, p!, clipName, projectUrl);
+      }
+      return generateOneClip(page, p!, clipName, projectUrl);
+    }
+
     let status: "ok" | "skipped";
     try {
-      status = await generateOneClip(page, p, clipName, projectUrl);
+      status = await createClip();
     } catch (err) {
       log(`lỗi cảnh #${p.index}, mở tab mới và thử lại: ${(err as Error).message}`);
       try {
         await reopenPage();
         generatedSinceReload = 0;
-        status = await generateOneClip(page, p, clipName, projectUrl);
+        status = await createClip();
       } catch (err2) {
         log(`cảnh #${p.index} vẫn lỗi sau khi thử lại — bỏ qua: ${(err2 as Error).message}`);
         await debugCapture(page, `worker${workerId}-final-fail-scene${p.index}`);
@@ -719,7 +735,6 @@ async function processQueue(
 export async function generateClips(
   prompts: VeoPrompt[],
   characters: CharacterProfile[],
-  settings: SettingProfile[],
   props: PropProfile[],
   outDir: string,
   onProgress?: (prompts: VeoPrompt[]) => Promise<void> | void
@@ -768,7 +783,6 @@ export async function generateClips(
       // từng project — luôn kiểm tra lại ở project MỚI tạo cho worker này (hàm tự bỏ qua nếu
       // đã tồn tại nên rẻ), thay vì giả định và có thể để lọt cảnh không @mention được.
       await ensureCharactersInFlow(page, characters, projectUrls[i]);
-      await ensureSettingsInFlow(page, settings, projectUrls[i]);
       await ensurePropsInFlow(page, props, projectUrls[i]);
       pages.push(page);
     }

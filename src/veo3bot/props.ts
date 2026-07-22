@@ -1,13 +1,18 @@
 import type { Page } from "playwright";
 import type { PropProfile } from "../props/extract.js";
 import { createImageIngredient } from "./imageAsset.js";
-import { CHARACTER_SHEET_STYLE_BLOCK } from "../styleDNA.js";
+import { PROP_SHEET_STYLE_BLOCK } from "../styleDNA.js";
 
 /**
  * XÁC NHẬN TRỰC TIẾP bằng codegen thật do người dùng cung cấp (2026-07-16): Prop asset tạo
  * qua chế độ Image trên canvas chính (số lượng 1) rồi đổi tên — xem
  * imageAsset.ts::createImageIngredient. KHÔNG dùng menu "Create Character" như suy đoán ban
  * đầu.
+ *
+ * Dùng `PROP_SHEET_STYLE_BLOCK` riêng (KHÔNG dùng chung `CHARACTER_SHEET_STYLE_BLOCK` nữa,
+ * đổi 2026-07-22) — xem docstring của nó trong styleDNA.ts vì sao: dùng chung block Character
+ * khiến model tự vẽ thêm tay người cầm vật thể (xác nhận trực tiếp qua ảnh chụp "The Brass
+ * Sextant").
  */
 
 async function propAlreadyExists(page: Page, name: string): Promise<boolean> {
@@ -54,7 +59,7 @@ export async function ensurePropsInFlow(
 
     console.log(`[props] đang tạo Prop "${prop.name}" trong Flow...`);
     try {
-      await createImageIngredient(page, prop.name, prop.description, CHARACTER_SHEET_STYLE_BLOCK, projectUrl);
+      await createImageIngredient(page, prop.name, prop.description, PROP_SHEET_STYLE_BLOCK, projectUrl);
       prop.status = "success";
       console.log(`[props] đã tạo "${prop.name}"`);
     } catch (err) {

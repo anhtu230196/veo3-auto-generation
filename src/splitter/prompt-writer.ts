@@ -1,5 +1,4 @@
 import type { CharacterProfile } from "../characters/extract.js";
-import type { SettingProfile } from "../settings/extract.js";
 import type { PropProfile } from "../props/extract.js";
 import type { AssetStatus } from "../assetStatus.js";
 import {
@@ -18,12 +17,30 @@ export interface VeoPrompt {
   /** Tên các nhân vật xuất hiện trong cảnh (khớp CharacterProfile.name) — dùng để attach Character asset trong Flow. */
   characterNames: string[];
   /**
-   * Tên bối cảnh/địa điểm cố định xuất hiện trong cảnh (khớp SettingProfile.name) — dùng để
-   * attach Setting asset trong Flow, giữ ĐÚNG cùng 1 không gian khi cắt cảnh rộng → cận trong
-   * cùng 1 địa điểm (vd toàn cảnh 1 căn phòng rồi cắt cận 1 nhân vật đang nói, vẫn đúng căn
-   * phòng đó). Rỗng nếu cảnh không dùng bối cảnh nào cần giữ nhất quán qua nhiều cảnh.
+   * ĐÁNH DẤU (viết tay, giống characterNames/propNames) khi khung hình/bố cục của ĐÚNG cảnh này
+   * quan trọng tới mức cần soi ảnh trước khi tốn công generate video (vd cảnh thiết lập không
+   * gian, hoặc 1 nửa của cặp cắt cảnh rộng→cận cần giữ đúng chi tiết phòng) — THAY THẾ cơ chế
+   * Setting Ingredient cũ (tạo sẵn 1 ảnh mù cho MỌI địa điểm, xem lịch sử ở RUNBOOK mục 4.11/
+   * 4.19). Khi `true`, `npm run generate-images` sinh 4 ảnh candidate RIÊNG cho cảnh này
+   * (`sceneImages.ts`), người dùng tự soi trong Flow rồi điền `chosenImageIndex`; `npm run
+   * generate` sau đó tạo video bằng cách "Animate" đúng ảnh đã chọn thay vì text-to-video
+   * thông thường (xem `animateImage.ts`). Cảnh không đánh dấu vẫn generate như cũ — mô tả bối
+   * cảnh/địa điểm được viết trực tiếp trong `videoPrompt` (xem QUY TẮC BỐI CẢNH trong
+   * `buildPromptWritingGuide` bên dưới), không còn @mention Setting nào cả.
    */
-  settingNames?: string[];
+  needsAngleLock?: boolean;
+  /**
+   * Trạng thái sinh 4 ảnh candidate cho cảnh có `needsAngleLock: true` (xem `sceneImages.ts`) —
+   * dùng lại `AssetStatus` (`waiting`/`failed`/`success`). `undefined`/`waiting` với cảnh không
+   * có `needsAngleLock` (không áp dụng).
+   */
+  imageStatus?: AssetStatus;
+  /**
+   * Người dùng tự điền TAY sau khi soi 4 ảnh `{index}_1`..`_4` trong Flow (không có UI review
+   * nào được xây riêng — soi trực tiếp trong Flow rồi sửa field này trong `state/prompts.json`).
+   * `npm run generate` chỉ "Animate" cảnh có `needsAngleLock` khi field này đã được điền.
+   */
+  chosenImageIndex?: 1 | 2 | 3 | 4;
   /**
    * Tên đạo cụ/vật dụng cố định xuất hiện trong cảnh (khớp PropProfile.name) — dùng để attach
    * Prop asset trong Flow, giữ ĐÚNG hình dạng vật đó qua nhiều cảnh (vd 1 con tàu, 1 bản đồ cụ
@@ -62,35 +79,28 @@ export interface VeoPrompt {
  */
 export function buildPromptWritingGuide(
   characters: CharacterProfile[],
-  settings: SettingProfile[],
   props: PropProfile[]
 ): string {
   const roster = characters.map((c) => `- ${c.name}`).join("\n");
-  const settingRoster =
-    settings.length > 0
-      ? settings.map((s) => `- ${s.name}: ${s.description}`).join("\n")
-      : "(không có bối cảnh cố định nào được khai báo trước — bỏ qua settingNames, luôn để rỗng)";
   const propRoster =
     props.length > 0
       ? props.map((p) => `- ${p.name}: ${p.description}`).join("\n")
       : "(không có đạo cụ cố định nào được khai báo trước — bỏ qua propNames, luôn để rỗng)";
   return `Bạn là đạo diễn hình ảnh chuyển thể kịch bản (lịch sử/khám phá/tài liệu) thành storyboard video
-hoạt hình (Veo3), mỗi cảnh dài 7-8 giây, phong cách ${STYLE_NAME.toUpperCase()} — KHÔNG photorealistic,
-không mô tả kết cấu da/ánh sáng như ảnh chụp thật.
+(Veo3), mỗi cảnh dài 7-8 giây, phong cách ${STYLE_NAME.toUpperCase()} — PHẢI trông như ảnh/phim thật
+(phim tài liệu lịch sử/phim truyện dàn dựng), CÓ THỂ và NÊN mô tả kết cấu da, chất liệu vải/gỗ/kim loại,
+ánh sáng tự nhiên như quay bằng máy quay/máy ảnh thật — KHÔNG mô tả bất kỳ điều gì gợi ý vẽ tay/hoạt
+hình/CGI-render (không "flat colors", không "outline", không "illustration", không "cartoon").
 Danh sách nhân vật đã có sẵn Character reference trong Flow, đã được tạo THEO ĐÚNG phong cách
 ${STYLE_NAME} (KHÔNG cần mô tả lại ngoại hình cố định — Flow tự giữ khi nhân vật được @mention đính kèm):
 ${roster}
-
-Danh sách bối cảnh/địa điểm cố định đã có sẵn Setting reference trong Flow (KHÔNG cần mô tả lại chi tiết
-nội thất/bố cục — Flow tự giữ khi bối cảnh được @mention đính kèm):
-${settingRoster}
 
 Danh sách đạo cụ/vật dụng cố định đã có sẵn Prop reference trong Flow (KHÔNG cần mô tả lại hình dạng cố
 định — Flow tự giữ khi đạo cụ được @mention đính kèm):
 ${propRoster}
 
 Mỗi cảnh viết 1 phần tử JSON dạng:
-{"videoPrompt": "...", "characterNames": ["..."], "settingNames": ["..."], "propNames": ["..."], "era": "period"}
+{"videoPrompt": "...", "characterNames": ["..."], "propNames": ["..."], "era": "period", "needsAngleLock": false}
 
 era: "period" (mặc định, thời đại của câu chuyện) hoặc "modern" — CHỈ dùng "modern" cho cảnh cố ý đặt
 trong hiện tại/thời nay (vd vệ tinh, đường phố ngày nay, tượng đài, TV/tin tức). Mọi cảnh khác PHẢI để
@@ -146,16 +156,21 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
   TUYỆT ĐỐI không tự đổi lại/ghép thêm thành tên lịch sử đầy đủ của họ dù bạn biết tên đó, vì sẽ tái diễn
   lỗi bị chặn.
 
-QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu danh sách bối cảnh ở trên không rỗng:
-- Nếu cảnh diễn ra ở ĐÚNG 1 địa điểm đã có trong danh sách bối cảnh (dù là toàn cảnh rộng hay cận cảnh 1
-  nhân vật bên trong đó), điền tên bối cảnh đó vào settingNames — kể cả khi cảnh liền trước/liền sau CŨNG
-  ở địa điểm này (vd toàn cảnh 1 căn phòng có nhiều người thảo luận, cảnh sau cắt cận 1 nhân vật đang nói
-  — CẢ HAI cảnh đều phải ghi cùng 1 tên bối cảnh đó vào settingNames, để Flow giữ đúng cùng 1 không gian
-  giữa 2 cú cắt thay vì tự vẽ lại phòng khác).
-- Nếu cảnh không diễn ra ở địa điểm nào trong danh sách (địa điểm mới/chỉ xuất hiện 1 lần/ngoài trời
-  không cố định), để settingNames RỖNG.
-- KHÔNG tự đặt tên bối cảnh mới ngoài danh sách đã cho — settingNames chỉ được chứa tên khớp CHÍNH XÁC
-  với danh sách bối cảnh ở trên.
+QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM — KHÔNG còn Setting Ingredient nào để @mention nữa (bỏ hẳn cơ chế tạo sẵn
+1 ảnh bối cảnh cho mọi địa điểm, xem lịch sử RUNBOOK mục 4.11/4.19 — ảnh Setting mù thường sai nội
+dung/khoá cứng sai ánh sáng, chỉ phát hiện được sau khi đã tốn công generate video). Thay vào đó:
+- MỌI cảnh PHẢI mô tả không gian/địa điểm bằng LỜI VĂN trực tiếp trong chính videoPrompt của cảnh đó
+  (không gian, thời điểm trong ngày, 1-2 chi tiết môi trường nổi bật) — xem thêm mục "CẢNH CHÂN DUNG
+  TRẦN" bên dưới, quy tắc đó giờ áp dụng cho TẤT CẢ mọi cảnh, không chỉ chân dung.
+- Nếu 1 địa điểm được dùng lại ở nhiều cảnh rải rác (không liền kề), chỉ cần mô tả nhất quán bằng LỜI
+  VĂN (cùng vài chi tiết đặc trưng lặp lại) — không cần và không còn cách nào giữ Y HỆT pixel giữa các
+  lần dùng, đây là đánh đổi có chủ đích (đơn giản hoá pipeline) của người dùng.
+- needsAngleLock: đặt true cho cảnh mà khung hình/bố cục CỤ THỂ của ĐÚNG cảnh đó quan trọng tới
+  mức cần soi ảnh trước khi generate video — điển hình nhất: 1 nửa của cặp cắt cảnh rộng→cận CÙNG 1
+  khoảnh khắc/căn phòng (index liền kề), nơi bố cục sai sẽ lộ rõ ngay. Khi true, "npm run
+  generate-images" sinh 4 ảnh still riêng cho cảnh đó để người dùng tự chọn trước khi tạo video. Đa
+  số cảnh KHÔNG cần đánh dấu — chỉ dùng cho trường hợp thật sự quan trọng, vì mỗi cảnh đánh dấu tốn
+  thêm 1 vòng soi ảnh thủ công.
 - KHÔNG còn dùng "${STYLE_ANCHOR_NAME}" làm điểm neo phong cách nữa (quyết định của người dùng,
   2026-07-19, xem RUNBOOK mục 4.30) — MỌI cảnh (kể cả cảnh mồ côi hoàn toàn hoặc chỉ có Prop) chỉ dựa
   vào block style text (MOTION_SUFFIX, append bằng code vào cuối mọi videoPrompt) để giữ phong cách,
@@ -163,18 +178,6 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   xác nhận trực tiếp 1 cảnh chỉ có Prop bị trôi phong cách thành ảnh thật dù đã có đủ MOTION_SUFFIX,
   và cơ chế Style Anchor từng được thêm để khắc phục — người dùng đã cân nhắc và chủ động chấp nhận đổi
   lại, ưu tiên đơn giản hoá pipeline hơn rủi ro trôi phong cách hiếm gặp ở cảnh Prop-only/mồ côi.)
-
-QUY TẮC ÁNH SÁNG/THỜI ĐIỂM CỦA BỐI CẢNH (settingNames) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19,
-Setting "Pinta Deck"): ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT, mang theo ĐÚNG 1 điều
-kiện ánh sáng cố định (ban ngày HOẶC ban đêm) — mood/tông màu viết trong videoPrompt KHÔNG đủ mạnh để
-ghi đè ánh sáng đã "khoá cứng" sẵn trong ảnh asset đó khi @mention. Vì vậy:
-- Nếu 1 bối cảnh trong danh sách trên CHỈ dùng cho cảnh ở 1 điều kiện ánh sáng xuyên suốt câu chuyện (vd
-  luôn là cảnh đêm), MỌI cảnh gán settingName đó PHẢI viết mood/tông màu khớp ĐÚNG điều kiện đó — TUYỆT
-  ĐỐI không viết "bright daylight"/"sunny" cho 1 bối cảnh mà mọi cảnh khác dùng nó đều là "night"/"moonlit".
-- Nếu câu chuyện thật sự cần dùng lại 1 địa điểm ở CẢ 2 điều kiện ánh sáng khác nhau, đó là dấu hiệu mô tả
-  Setting (ngoài phạm vi file này, xem state/settings.json) không nên khoá cứng ánh sáng cụ thể vào
-  description — nhưng bạn KHÔNG sửa được state/settings.json từ đây, chỉ cần đảm bảo videoPrompt không tự
-  mâu thuẫn với ánh sáng đã dùng cho CÙNG settingName ở các cảnh khác đã thấy trong ngữ cảnh cung cấp.
 
 QUY TẮC ĐẠO CỤ/VẬT DỤNG (propNames) — chỉ áp dụng nếu danh sách đạo cụ ở trên không rỗng:
 - Nếu cảnh có xuất hiện RÕ 1 đạo cụ đã có trong danh sách (vd 1 con tàu cụ thể, 1 bản đồ/vật biểu tượng
@@ -199,17 +202,38 @@ deck" ra hình thủy thủ áo kẻ sọc thời nay đứng cạnh container/c
   cuối videoPrompt để neo thời đại đầy đủ, chỉ cần đảm bảo mô tả không mâu thuẫn với thời đại (không tự ý
   thêm chi tiết hiện đại).
 
-CẢNH "CHÂN DUNG TRẦN" (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp qua ảnh render thật, RUNBOOK mục 4.46):
+CẢNH "CHÂN DUNG TRẦN" — GIỜ LÀ QUY TẮC CHUNG CHO MỌI CẢNH (RẤT QUAN TRỌNG — lỗi đã xác nhận trực tiếp
+qua ảnh render thật, RUNBOOK mục 4.46; mở rộng phạm vi sau khi bỏ hẳn Setting Ingredient — không còn gì
+neo bối cảnh ngoài chính lời văn nữa, nên quy tắc này áp dụng cho TẤT CẢ cảnh, không chỉ chân dung):
 KHÔNG BAO GIỜ viết 1 cảnh chỉ có nhân vật + ánh sáng/tâm trạng mà KHÔNG mô tả TÍ GÌ về không gian xung
 quanh (vd "Medium portrait shot of X standing confidently..., warm golden light." — không 1 chữ nào tả
 bối cảnh). PERIOD_ANCHOR (styleDNA.ts) liệt kê VÍ DỤ đồ vật thời đại (tàu buồm, xe trượt, đèn dầu...) để
 neo các danh từ chung ĐÃ CÓ trong câu — nhưng khi cảnh hoàn toàn không mô tả bối cảnh, Veo3 không có gì
 khác để bám ngoài chính danh sách ví dụ đó, và sẽ lấy luôn 1 món trong đó (đã xác nhận: "tàu buồm" xuất
-hiện làm phông nền thật cho 1 cảnh chân dung không hề liên quan gì đến tàu thuyền). MỌI cảnh dạng chân
-dung/cận cảnh nhân vật KHÔNG gán settingNames/propNames PHẢI thêm 1 cụm mô tả phông nền tối thiểu, dù chỉ
-là phông nền trung tính — vd "against a plain softly blurred [tông màu]-toned background with no distinct
-objects, furniture, or setting visible". Đừng để trống hoàn toàn dù chủ đích là "không cần bối cảnh cụ
-thể" cho cảnh đó.
+hiện làm phông nền thật cho 1 cảnh chân dung không hề liên quan gì đến tàu thuyền). MỌI cảnh KHÔNG gán
+propNames PHẢI thêm 1 cụm mô tả không gian/phông nền — dù chỉ là phông nền trung tính khi cảnh cố ý
+không cần bối cảnh cụ thể (vd "against a plain softly blurred [tông màu]-toned background with no
+distinct objects, furniture, or setting visible"), hoặc mô tả không gian thật nếu cảnh diễn ra ở 1 nơi
+cụ thể (phòng, boong tàu, ngoài trời...). Đừng để trống hoàn toàn.
+
+LƯU Ý KHI RÀ SOÁT LẠI (đã xác nhận trực tiếp lỗi rà soát thiếu sót, RUNBOOK mục 4.46 phần mở rộng):
+KHÔNG chỉ tìm mẫu chữ "portrait shot" — cảnh dạng "Close-up of X's face...", "Medium shot of X
+[hành động nhỏ]..., [tâm trạng] light" cũng dính CÙNG lỗi hệt vậy nếu không mô tả không gian (đã xác
+nhận thêm ở 16 cảnh khác ngoài 3 cảnh "portrait shot" ban đầu). Khi rà soát 1 kịch bản để tìm cảnh chân
+dung trần, kiểm tra TẤT CẢ cảnh có characterNames không rỗng + propNames rỗng, rồi tự hỏi "câu này có
+bất kỳ từ nào mô tả không gian/vật thể xung quanh không" — đừng chỉ lọc theo 1 cụm chữ cố định, vì cách
+diễn đạt "chân dung trần" rất đa dạng.
+
+CẢNH NHIỀU NGƯỜI, CHỈ 1 NGƯỜI CÓ CHARACTER INGREDIENT (RUNBOOK mục 4.51 — CHƯA CÓ CÁCH SỬA CHẮC CHẮN):
+đã xác nhận trực tiếp 1 cảnh (nhân vật chính đứng cùng vài người quần chúng không có Ingredient, vd gia
+đình/đám đông) render ra nhân vật chính TO HƠN HẲN người khác — nghi do ảnh Character reference (turnaround,
+chiếm gần hết khung) mang theo tỉ lệ riêng khi ghép vào cảnh mới. Đã thử thêm câu yêu cầu tỉ lệ nhất quán
+vào cuối mọi videoPrompt (append bằng code, xem SCALE_CONSISTENCY_BLOCK trong styleDNA.ts) nhưng generate
+lại KHÔNG thấy cải thiện rõ rệt — có thể là giới hạn thật của cơ chế Ingredient, không phải lỗi sửa được
+hoàn toàn bằng câu chữ. Khi viết cảnh có nhân vật chính (Character Ingredient) đứng cùng nhiều người quần
+chúng ở cự ly gần, cân nhắc: (a) chấp nhận rủi ro lệch tỉ lệ, để sửa tay ở hậu kỳ nếu nặng, hoặc (b) tránh
+bố cục "1 nhân vật có Ingredient đứng sát nhiều người không có Ingredient" nếu cảnh không bắt buộc phải vậy
+(vd đổi góc máy để nhân vật chính xuất hiện riêng, cắt sang cảnh khác cho nhóm người quần chúng).
 
 Giữ nhất quán bối cảnh/thời điểm xuyên suốt các cảnh liền kề — không lặp lại y hệt bối cảnh/khoảng cách
 của cảnh liền trước, đổi cỡ cảnh TĨNH để tránh đơn điệu (KHÔNG dùng chuyển động máy quay để tạo khác biệt
@@ -252,72 +276,7 @@ silhouette bạo lực) theo QUY TẮC NHÂN VẬT ở trên.
 VIDEOPROMPT CUỐI CÙNG PHẢI GỒM (append bằng tay theo đúng thứ tự, xem styleDNA.ts để lấy đúng text):
 1. Nội dung cảnh (theo các quy tắc ở trên).
 2. PERIOD_ANCHOR nếu era "period" (bỏ qua nếu "modern").
-3. MOTION_SUFFIX (luôn luôn, mọi cảnh) — đã gồm cả yêu cầu outline (OUTLINE_BLOCK) và là điểm neo
-   phong cách DUY NHẤT (không còn dùng Style Anchor Ingredient, xem QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM ở trên).`;
+3. MOTION_SUFFIX (luôn luôn, mọi cảnh) — đã gồm cả yêu cầu photorealistic (PHOTOREAL_BLOCK) và là điểm
+   neo phong cách DUY NHẤT (không còn dùng Style Anchor Ingredient, xem QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM ở trên).`;
 }
 
-const NIGHT_LIGHTING_KEYWORDS = [
-  "night",
-  "moonlit",
-  "moonlight",
-  "midnight",
-  "nighttime",
-  "under the stars",
-  "starry sky",
-];
-const DAY_LIGHTING_KEYWORDS = [
-  "daylight",
-  "bright sun",
-  "sunny",
-  "midday",
-  "broad daylight",
-  "daytime",
-  "bright afternoon",
-];
-
-function detectLighting(text: string): "night" | "day" | null {
-  const lower = text.toLowerCase();
-  const isNight = NIGHT_LIGHTING_KEYWORDS.some((k) => lower.includes(k));
-  const isDay = DAY_LIGHTING_KEYWORDS.some((k) => lower.includes(k));
-  if (isNight && !isDay) return "night";
-  if (isDay && !isNight) return "day";
-  return null; // mơ hồ (dawn/dusk) hoặc không nhắc ánh sáng — không đủ tin cậy để so sánh
-}
-
-/**
- * XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19, bug Setting "Pinta Deck") — ảnh Setting reference trong
- * Flow là ảnh TĨNH DUY NHẤT, neo giữ ĐÚNG 1 điều kiện ánh sáng cố định; mood/tông màu viết trong
- * videoPrompt KHÔNG đủ mạnh để ghi đè khi @mention. Quét TOÀN BỘ prompt (viết tay hay máy) — nếu
- * 1 settingName được gán cho cả cảnh "night" LẪN cảnh "day" (theo từ khoá rõ ràng, bỏ qua mood
- * mơ hồ như dawn/dusk), in CẢNH BÁO ra console (KHÔNG throw — mismatch có thể là cố ý nếu mô tả
- * Setting không khoá cứng ánh sáng cụ thể) để người viết prompt/Setting kiểm tra TRƯỚC khi
- * generate video. Gọi trong `orchestrator.ts` ngay sau khi load `state/prompts.json`.
- */
-export function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
-  const bySetting = new Map<string, { night: number[]; day: number[] }>();
-  for (const p of prompts) {
-    const lighting = detectLighting(p.videoPrompt);
-    if (!lighting) continue;
-    for (const name of p.settingNames ?? []) {
-      // Style Anchor KHÔNG phải 1 địa điểm thật — theo thiết kế, nó được gắn @mention vào MỌI
-      // cảnh mồ côi bất kể mood/ánh sáng, nên xung đột ngày/đêm với nó là chuyện BÌNH THƯỜNG,
-      // không phải dấu hiệu lỗi — bỏ qua để tránh cảnh báo giả che lấp cảnh báo thật (Setting
-      // là địa điểm thật trong truyện).
-      if (name === STYLE_ANCHOR_NAME) continue;
-      const entry = bySetting.get(name) ?? { night: [], day: [] };
-      entry[lighting].push(p.index);
-      bySetting.set(name, entry);
-    }
-  }
-  for (const [name, { night, day }] of bySetting) {
-    if (night.length > 0 && day.length > 0) {
-      console.warn(
-        `[prompt-writer] CẢNH BÁO: Setting "${name}" được gán cho cả cảnh ĐÊM (#${night.join(", #")}) ` +
-          `lẫn cảnh NGÀY (#${day.join(", #")}) — ảnh Setting reference trong Flow chỉ neo được 1 điều ` +
-          `kiện ánh sáng cố định (xem RUNBOOK mục 4.19, bug "Pinta Deck"). Nếu đây không phải cố ý, sửa ` +
-          `mood/tông màu cho khớp 1 điều kiện xuyên suốt, hoặc kiểm tra mô tả "${name}" trong ` +
-          `state/settings.json có đang khoá cứng 1 điều kiện ánh sáng cụ thể trước khi generate video.`
-      );
-    }
-  }
-}

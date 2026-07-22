@@ -10,49 +10,131 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
 
 - **Kịch bản đang dùng (từ 2026-07-20)**: cuộc đua chinh phục Bắc Cực —
   Frederick Cook vs Robert Peary (1877–1911, epilogue 1968). **264 cảnh**
-  (`state/scenes.json` đã tách bằng `scripts/split-scenes.mjs`).
-  **THAY THẾ HOÀN TOÀN project Columbus cũ**: người dùng xác nhận đã tự tải toàn
-  bộ clip + dữ liệu Columbus về folder cá nhân, đồng ý xoá không cần backup
-  trong repo — `state/` + `output/` đã dọn sạch (kể cả `projects.json`, nên
-  pipeline sẽ tạo project Flow MỚI; Ingredient Columbus cũ vẫn nằm trong Flow
-  cloud nhưng không còn được tham chiếu).
-- **Phong cách hình ảnh**: 2D flat vector illustration (không photorealistic).
-  Xem `src/styleDNA.ts` — nguồn duy nhất định nghĩa style (GIỮ NGUYÊN từ
-  Columbus, không đổi style giữa 2 project).
-- **`state/characters.json`, `state/prompts.json`, `state/settings.json`,
-  `state/props.json`** đều do **Claude viết tay trực tiếp trong hội thoại**
-  (không gọi Gemini) — xem mục 1. **HIỆN TRẠNG project Bắc Cực (2026-07-20): ĐÃ
-  VIẾT XONG CẢ 4 FILE** — 12 Character, 10 Setting, 9 Prop, và 264 cảnh
-  `prompts.json` (mọi `status: "waiting"`, `isDownloaded: false`). Đã chạy kiểm
-  tra: 12/12 char + 10/10 setting + 9/9 prop đều được dùng và khớp CHÍNH XÁC tên
-  (không tên mồ côi 2 chiều), 0 cảnh thiếu OUTLINE_BLOCK ở đuôi, không setting
-  nào bị gán cả cảnh ngày lẫn đêm (bug 4.19). **CHƯA generate/soi bằng mắt cảnh
-  nào** — nội dung hoàn toàn mới.
+  (`state/scenes.json` đã tách bằng `scripts/split-scenes.mjs`) — NỘI DUNG câu
+  chuyện không đổi.
+- **🔴 PHONG CÁCH HÌNH ẢNH ĐỔI SANG PHOTOREALISTIC (2026-07-22)** — người dùng
+  yêu cầu chuyển từ 2D flat vector sang **photorealistic cinematic** (người
+  thật, quay như phim tài liệu). Xem `src/styleDNA.ts` — nguồn duy nhất định
+  nghĩa style. `OUTLINE_BLOCK` cũ (ép outline đậm) đã đổi tên/vai trò thành
+  `PHOTOREAL_BLOCK` (ép trông như ảnh/phim thật, cấm cartoon/illustration/CGI).
+  **ERA/PERIOD_ANCHOR giữ nguyên** (vẫn bối cảnh thám hiểm Bắc Cực đầu TK 20) —
+  chỉ đổi CÁCH VẼ, không đổi THỜI ĐẠI/nội dung.
+- **Project 2D CŨ đã được BACKUP, KHÔNG xoá**: `state-2d-backup/` (12 Character +
+  10 Setting + 9 Prop `status: success`, 264 cảnh — 121 `success`/115
+  `failed`/28 `waiting`, trỏ project Flow cũ qua `project.json`) và
+  `output-2d-backup/clips/` (8 clip .mp4 1080p đã tải, cảnh #0-6 + #75). Project
+  Flow 2D cũ (31 Ingredient) VẪN CÒN trong Flow cloud, không bị xoá, chỉ không
+  còn được `state/project.json` hiện tại tham chiếu.
+- **`state/` mặc định ĐÃ RESET SANG PHOTOREALISTIC**: `state/project.json` đã
+  XOÁ (bắt buộc — để `ensureProject()` tạo 1 project Flow MỚI, tách hẳn khỏi
+  Ingredient 2D cũ thay vì lẫn vào cùng project). `state/characters.json`
+  (12) + `props.json` (7, sau khi bỏ The Newspaper/The Iron Meteorite — xem
+  đoạn Prop bên dưới): mô tả đã viết lại bỏ hết cụm "drawn in 2D flat vector
+  style"/"Solid flat color fills"/"bold black outline" → thay bằng
+  "photographed in a cinematic, photorealistic documentary style" + mô tả
+  chất liệu/da/vải thật, **status reset về "waiting"** (cần `npm run assets`
+  tạo lại 19 Ingredient trong Flow project mới). `state/prompts.json`: sinh
+  lại bằng `node scripts/build-arctic-prompts.mjs` (đã sửa MOTION_SUFFIX/
+  PHOTOREAL_BLOCK bên trong script khớp `styleDNA.ts` mới, đã gộp luôn
+  SCALE_CONSISTENCY_BLOCK vào bản build — trước đây phải patch riêng qua
+  `update-motion-suffix.mjs`) — **264/264 cảnh `status: "waiting"`,
+  `isDownloaded: false`**, giữ nguyên nội dung sáng tạo từng cảnh (kể cả các
+  fix "chân dung trần" mục 4.46 đã bake vào `arctic-scenes-part1..4.mjs`).
+  **CHƯA generate/soi bằng mắt cảnh nào ở style mới.**
+- **🔴 KIẾN TRÚC MỚI — BỎ HẲN Setting Ingredient, thêm luồng ảnh-trước-khi-video
+  (2026-07-22, cùng đợt đổi photorealistic ở trên, theo yêu cầu người dùng)**:
+  `state/settings.json` + `src/veo3bot/settings.ts` + `src/settings/extract.ts`
+  đã XOÁ HẲN — không còn tạo sẵn 1 ảnh bối cảnh mù cho mọi địa điểm nữa (lý do:
+  phần lớn Setting cũ chỉ dùng làm phông nền lặp lại chung chung — vd "Pack Ice
+  Field" dùng ở 83/264 cảnh — không phải để giữ đúng khung hình khi cắt cảnh
+  rộng→cận CÙNG khoảnh khắc, lý do gốc Setting ra đời; xem lịch sử lỗi mục
+  4.11/4.19). Mọi cảnh giờ mô tả bối cảnh TRỰC TIẾP bằng lời văn trong
+  `videoPrompt` (quy tắc "CẢNH CHÂN DUNG TRẦN" cũ giờ áp dụng cho MỌI cảnh, xem
+  `prompt-writer.ts::buildPromptWritingGuide`). `VeoPrompt` có 3 field MỚI
+  (`src/splitter/prompt-writer.ts`): `needsAngleLock` (đánh dấu tay cảnh cần
+  giữ đúng khung hình), `imageStatus`, `chosenImageIndex`. Luồng cho cảnh có
+  `needsAngleLock`: 1) `npm run generate-images` sinh 4 ảnh still riêng cho
+  cảnh đó (`{index}_1`..`_4`, xem `src/veo3bot/sceneImages.ts`) — 2) người
+  dùng tự soi trong Flow, điền tay `chosenImageIndex` vào `state/prompts.json`
+  — 3) `npm run generate` tự "Animate" đúng ảnh đã chọn thành video cho cảnh
+  đó (`src/veo3bot/animateImage.ts`, tích hợp vào `generate.ts::processQueue`)
+  thay vì text-to-video thường; cảnh chưa có `chosenImageIndex` bị bỏ qua
+  (giữ `status: "waiting"`, KHÔNG coi là lỗi). **⚠️ CƠ CHẾ "Animate" CHƯA ĐƯỢC
+  XÁC NHẬN TRỰC TIẾP** — người dùng xác nhận Flow CÓ tính năng này (right-click
+  1 ảnh → "Animate", hoặc tab "Frames to Video" cạnh tab "Video" trong bảng cài
+  đặt) nhưng UI chi tiết SAU KHI bấm (có cần gõ lại prompt/chọn duration không)
+  là SUY ĐOÁN trong `animateImage.ts` — PHẢI chạy thử tay trên 2-3 cảnh thật
+  trước khi tin tưởng chạy đại trà, sửa lại theo debug capture thực tế (xem
+  các điểm `debugCapture` trong file đó).
+- **✅ ĐÃ SOÁT XONG 146 cảnh từng có `settingNames` cũ (2026-07-22)** — đọc lại
+  toàn bộ, kết luận: MỌI cảnh đều đã có mô tả hình ảnh đầy đủ TỰ THÂN trong
+  `content` (kể cả tên địa điểm được nhắc thẳng trong câu, vd "Wide shot of the
+  Pack Ice Field..."), Setting Ingredient trước đây chỉ là lớp neo bổ sung
+  chứ không phải nguồn mô tả duy nhất — nên KHÔNG cần sửa nội dung cảnh nào.
+  Cũng không tìm thấy cặp cảnh liền kề nào đủ rõ ràng là "cắt rộng→cận CÙNG 1
+  khoảnh khắc" để cần `needsAngleLock` (đa số chỉ là các beat khác thời điểm
+  tại cùng loại địa điểm) — **0/264 cảnh có `needsAngleLock: true`** hiện tại.
+  Đã bỏ hẳn `settingNames` khỏi `scripts/arctic-scenes-part1..4.mjs` (tuple đổi
+  shape) + `build-arctic-prompts.mjs`, rebuild `state/prompts.json` sạch (264
+  cảnh, không còn field `settingNames`). **Do không có cảnh nào cần
+  `needsAngleLock`, luồng `generate-images`/"Animate" (đoạn trên) HIỆN KHÔNG
+  CẦN DÙNG cho project này** — code vẫn giữ nguyên sẵn sàng nếu sau này phát
+  sinh nhu cầu (Claude có thể đánh dấu tay khi viết thêm cảnh mới), nhưng
+  KHÔNG PHẢI việc chặn đường để generate 264 cảnh hiện tại.
+- **✅ Character đã tạo xong ĐÚNG photorealistic** — người dùng xác nhận trực
+  tiếp trong Flow project mới (`02900b7c-...`, khác project 2D cũ) rằng ảnh
+  Character là người thật, KHÔNG bị tái dùng nhầm ảnh 2D cũ dù cơ chế
+  "đã tồn tại chưa" (`characterAlreadyExists`) chỉ tra theo tên. Rủi ro đã nêu
+  trước đó (asset có thể dùng chung toàn tài khoản) không xảy ra ở lần chạy
+  này — không cần lo thêm, nhưng vẫn là điều nên soi lại bằng mắt mỗi khi đổi
+  style lớn trong tương lai (không có gì chặn Flow tái dùng theo tên nếu tên
+  trùng và style cũ vẫn còn tồn tại trong tài khoản).
+- **🔴 Prop: bỏ 2 prop không quan trọng + tách style block riêng (2026-07-22)**
+  — người dùng cung cấp ảnh chụp màn hình "The Brass Sextant" cho thấy model tự
+  vẽ THÊM TAY NGƯỜI cầm vật thể, dù mô tả không hề nhắc tới người. Nguyên nhân:
+  Prop trước đó dùng CHUNG `CHARACTER_SHEET_STYLE_BLOCK` với Character — cụm
+  "full body character reference photo, front view and 3/4 view" vốn dành cho
+  chụp NGƯỜI, khiến model cố lấp khung bằng 1 chủ thể có thân/tay khi áp cho
+  vật nhỏ cầm tay. Cùng lớp lỗi đã gặp ở mục 4.11 (Setting dùng chung block
+  Character cũng sai) — **BÀI HỌC LẶP LẠI: mỗi loại Ingredient cần style block
+  ĐÚNG NGỮ CẢNH, không tái dùng mù quáng.** Đã sửa: thêm `PROP_SHEET_STYLE_BLOCK`
+  riêng (`src/styleDNA.ts`, cấm tường minh "NO people, NO human hands, NO human
+  body parts"), `props.ts` đổi sang dùng block này. **CHƯA XÁC NHẬN TRỰC TIẾP**
+  block mới có thật sự hết dính tay người không — cần soi lại sau khi
+  `npm run assets` tạo lại. Đồng thời bỏ hẳn 2 Prop người dùng đánh giá không
+  quan trọng — "The Newspaper" (mockup không chữ, không cần giữ hình chính
+  xác) và "The Iron Meteorite" (chỉ xuất hiện 1 cụm 5 cảnh liên tiếp #89-93,
+  không tái diễn xuyên suốt phim như Robert's Ship) — xoá khỏi `state/props.json`,
+  bỏ `propNames` tương ứng ở 14 cảnh (`scripts/arctic-scenes-part1..4.mjs`),
+  rebuild `state/prompts.json`. Còn lại **7 Prop** (Robert's Ship, The Miranda,
+  The Brass Sextant, The Three Crates, The Expedition Flag, The Wooden Sledge,
+  The Folding Boat — mô tả "The Folding Boat" cũng sửa bỏ cụm "a single man
+  could carry" vì có thể là nguồn khác gây model tự vẽ người) — **status đã
+  RESET VỀ "waiting"**, cần chạy lại `npm run assets` để tạo lại với style mới.
+- **`output/clips/` đã dọn rỗng** (8 clip 2D cũ đã chuyển sang
+  `output-2d-backup/clips/`, không xoá) — sẵn sàng nhận clip photorealistic
+  mới, không lẫn 2 style trong cùng video ghép cuối.
 - **`prompts.json` được sinh bằng build script** `scripts/build-arctic-prompts.mjs`
   (+ `arctic-scenes-part1..4.mjs`) — giữ nội dung sáng tạo từng cảnh + gán asset,
-  bake PERIOD_ANCHOR + MOTION_SUFFIX bằng code. Chạy lại `node
-  scripts/build-arctic-prompts.mjs` để sinh lại nếu mất/sửa (là backup, giống vai
-  trò `rebuild-prompts.mjs` của Columbus cũ). ⚠️ Chạy lại sẽ RESET mọi `status`
-  về "waiting" — KHÔNG chạy khi đã generate được một phần (sẽ mất tiến độ resume).
-- **Chưa generate clip nào** của project Bắc Cực — `output/clips/` rỗng.
-- **ERA đã đổi trong `styleDNA.ts`**: `ERA_DESCRIPTOR`/`PERIOD_ANCHOR` giờ là bối
-  cảnh thám hiểm Bắc Cực đầu thế kỷ 20 (fur parka, chó kéo xe, tàu buồm-hơi
-  nước...) thay cho thế kỷ 15 của Columbus. `STYLE_NAME`/`MOTION_SUFFIX`/
-  `OUTLINE_BLOCK` giữ nguyên (style 2D flat vector không đổi).
-- **✅ `npm run assets` ĐÃ XONG HOÀN TOÀN (2026-07-20)** — 12/12 Character +
-  10/10 Setting + 9/9 Prop đều `status: "success"`. Người dùng đã tự dọn bản
-  trùng + rename tay trong Flow theo đúng tên `state/*.json` (xem mục 4.45) —
-  lần chạy `npm run assets` sau đó tra thấy đủ 13 asset còn thiếu BẰNG TÊN,
-  không tạo mới cái nào. Fix `imageAsset.ts` ở mục 4.45 đã được XÁC NHẬN hoạt
-  động đúng qua lần chạy này (dù chỉ gián tiếp — mọi asset đều tra thấy sẵn,
-  chưa có dịp test nhánh "tạo ảnh mới" của code đã sửa; sẽ được test tiếp khi
-  `npm run generate` tạo Style/thêm asset nếu cần).
-  **CHƯA soi bằng mắt xác nhận từng ảnh đúng nội dung/style** (mục 5) — nên
-  làm trước khi generate đại trà 264 cảnh.
+  bake PERIOD_ANCHOR + MOTION_SUFFIX (gồm PHOTOREAL_BLOCK +
+  SCALE_CONSISTENCY_BLOCK) bằng code. Chạy lại `node
+  scripts/build-arctic-prompts.mjs` để sinh lại nếu mất/sửa. ⚠️ Chạy lại sẽ
+  RESET mọi `status` về "waiting" — KHÔNG chạy khi đã generate được một phần
+  (sẽ mất tiến độ resume).
 - **Git đã init** (KHÔNG có remote) — dùng `git status`/`git diff` để xem thay
   đổi thay vì hỏi lại. `state/`, `output/`, `.env`, `.auth/`,
   `input/story.txt` đều bị `.gitignore` — không nằm trong git (rủi ro mất dữ
   liệu đã xảy ra thật, xem mục 4.23 — LUÔN cẩn trọng khi ghi vào các file này).
+  **⚠️ PHÁT HIỆN LẠI (2026-07-22)**: `.gitignore` thực tế có `# state/`/`# state-*/`/
+  `# .env` bị COMMENT OUT (tắt) — `state/` **THẬT RA ĐANG ĐƯỢC GIT TRACK** (khác
+  hẳn mô tả cũ ở trên "không nằm trong git"/"không có git backup nào" — mô tả đó
+  ĐÃ SAI, có thể đúng ở thời điểm viết nhưng `.gitignore` đã đổi sau đó mà chưa
+  cập nhật lại RUNBOOK). `output/` vẫn bị ignore qua `output-*/`. `state-2d-backup/`
+  KHÔNG bị ignore (sẽ hiện trong `git status`/`git add` như thư mục mới, chưa
+  commit) — `output-2d-backup/` CÓ bị ignore (khớp `output-*/`). Do `state/` giờ
+  thật sự có backup qua git history, rủi ro mất dữ liệu khi ghi đè `state/*.json`
+  thấp hơn mô tả cũ — nhưng vẫn nên `git commit` trước khi làm thay đổi lớn để
+  chắc chắn có mốc quay lại.
 - **LƯU Ý tên nhân vật (mục 4.24/4.28 + skill)**: kịch bản mới có RẤT NHIỀU
   nhân vật có thật nổi tiếng (Cook, Peary, Henson, Theodore Roosevelt, Bell...)
   — MỌI tên asset/prompt PHẢI dùng dạng đã khử-định-danh ngay từ đầu
@@ -74,22 +156,38 @@ máu" (mục 4) trước khi sửa code trong `veo3bot/`, để không lặp l�
   thành công sạch (không phải bị Flow chặn nội dung, chỉ là sự cố ngẫu
   nhiên). **Cả 6/6 cảnh test (#0-5) giờ đều `success` + đã tải về local,
   xác nhận đúng 1920x1080 bằng cách đọc header MP4 trực tiếp.**
+  ⚠️ **XÁC NHẬN NÀY LÀ Ở STYLE 2D CŨ** (trước khi đổi sang photorealistic
+  2026-07-22, xem mục 0 đầu file) — CƠ CHẾ pipeline (rename/download/ghép) vẫn
+  đúng nguyên vì không phụ thuộc style, nhưng chưa có xác nhận riêng cho style
+  photorealistic mới (Flow có thể phản ứng khác với prompt/Ingredient
+  photorealistic — vd chính sách nội dung "prominent people" có thể NHẠY CẢM
+  HƠN với ảnh chân dung giống người thật, xem mục 4.24/4.28 — cần theo dõi khi
+  test lại).
 
-### 🔴 Ưu tiên xử lý tiếp theo (project Bắc Cực, cập nhật 2026-07-20)
+### 🔴 Ưu tiên xử lý tiếp theo (project Bắc Cực — STYLE PHOTOREALISTIC + kiến trúc mới, cập nhật 2026-07-22)
 
-Theo đúng thứ tự nên làm:
+**✅ ĐÃ XONG**: `npm run assets` cho 12 Character trong project Flow mới `02900b7c-...`, người
+dùng đã soi bằng mắt xác nhận đúng photorealistic — KHÔNG bị lẫn ảnh 2D cũ. Soát lại 146 cảnh
+`settingNames` cũ xong — 0 cảnh cần `needsAngleLock`, `state/prompts.json` đã rebuild sạch 264
+cảnh không còn field đó. **🔴 CÒN THIẾU**: 7 Prop hiện `status: "waiting"` (reset lại sau khi đổi
+`PROP_SHEET_STYLE_BLOCK` + bỏ 2 prop, xem mục Prop bên trên) — CHƯA tạo lại trong Flow. Theo đúng
+thứ tự nên làm:
 
-1. **Chạy `npm run login:veo3` (nếu chưa) rồi `npm run assets`** — tạo 12 Character + 10 Setting
-   + 9 Prop trong Flow, xác nhận bằng mắt (đúng hình, đúng tên, Setting không lẫn người/nền xanh
-   — mục 4.10-4.12/4.19). LƯU Ý mọi tên người thật đã khử-định-danh (Frederick/Robert/Matthew/
-   The Financier...) — nếu Flow vẫn chặn "prominent people" ở tên nào, xem mục 4.24/4.28.
-2. **Test luồng generate+rename+download (mục 4.31) trên vài cảnh nhỏ TRƯỚC** —
-   `npx tsx scripts/generate-test-scenes.ts <vài index>` rồi `npm run download`, xác nhận: (a)
-   clip được đổi tên đúng "clip_NNN" trong Flow, (b) `npm run download` tìm + tải đúng file về
-   `output/clips/`, (c) file tải về THẬT SỰ là 1080p (không phải bản xem trước độ phân giải thấp).
-   Sửa lại `renameLatestVideo()`/`downloadClip()` theo debug capture thật nếu bước nào sai selector.
-   CHƯA TỪNG chạy thử thật — mọi selector đều suy đoán.
+1. **Chạy `npm run assets` lại** để tạo 7 Prop còn lại (đã reset `status: "waiting"` sau khi đổi
+   style block + bỏ 2 prop — xem đoạn trên) trong Flow, xác nhận bằng mắt KHÔNG còn tay/người
+   lẫn vào khung (đúng mục tiêu sửa `PROP_SHEET_STYLE_BLOCK`).
+2. **Test luồng generate+rename+download (mục 4.31) trên vài cảnh nhỏ TRƯỚC khi chạy đại trà** —
+   `npx tsx scripts/generate-test-scenes.ts <vài index>` rồi `npm run download` — cơ chế đã xác
+   nhận đúng ở style 2D (xem đoạn trên), nhưng NÊN test lại ít nhất 1 lần ở style/kiến trúc mới
+   (không còn @mention Setting nào nữa) để chắc chắn không có hành vi khác (vd thời gian
+   generate/kiểm duyệt lâu hơn với nội dung photorealistic, chính sách "prominent people" nhạy
+   cảm hơn — xem mục 4.24/4.28).
 3. **Generate đại trà 264 cảnh** — resume-safe, `npm run generate` tự bỏ qua cảnh đã có clip.
+4. **`npm run download`** để tải 1080p + ghép video cuối.
+
+**Luồng `generate-images`/"Animate" (needsAngleLock) KHÔNG cần dùng cho lần chạy này** (0 cảnh
+được đánh dấu) — chỉ cần tới nếu sau này thêm cảnh mới thật sự cần soi ảnh trước khi generate; khi
+đó nhớ test nhỏ trước theo mục 0 (UI "Animate" chưa xác nhận trực tiếp).
 
 Dùng `scripts/generate-test-scenes.ts` (`npx tsx scripts/generate-test-scenes.ts <index...>`) để
 test 1 tập cảnh cụ thể mà không chạy toàn bộ pipeline — xem chi tiết cách dùng trong chính file.
@@ -143,19 +241,26 @@ video hoạt hình phong cách 2D flat vector, hình ảnh AI tạo bởi Veo3 (
 Flow), nhân vật/bối cảnh/đạo cụ đều giữ hình ảnh nhất quán xuyên suốt qua cơ chế
 Ingredient (`@mention`) của Flow.
 
-**3 loại Ingredient** (khác biệt quan trọng nhất so với bản gốc dự án — xem mục
-3 để hiểu cách tạo từng loại):
+**2 loại Ingredient bền vững** (khác biệt quan trọng nhất so với bản gốc dự án
+— xem mục 3 để hiểu cách tạo từng loại; **ĐÃ BỎ loại thứ 3 "Setting" 2026-07-22**,
+xem mục 0 và đoạn "Cảnh cần giữ đúng khung hình" bên dưới):
 - **Character** (`state/characters.json`) — nhân vật có tên riêng, tạo qua menu
   Flow "Add Media → Create Character" (đã xác nhận ổn định từ đầu dự án).
-- **Setting** (`state/settings.json`) — bối cảnh/địa điểm cố định (vd "boong
-  tàu Santa María", "triều đình Tây Ban Nha"), dùng để giữ ĐÚNG cùng 1 không
-  gian khi cắt cảnh rộng → cận trong cùng 1 địa điểm.
 - **Prop** (`state/props.json`) — đạo cụ/vật thể cố định cần giữ đúng hình dạng
   qua nhiều cảnh (vd 3 con tàu Santa María/Pinta/Niña, lá cờ hoàng gia).
 
-Setting và Prop **KHÔNG** tạo qua "Create Character"/"Create Scene" như suy đoán
-ban đầu — cách ĐÚNG đã xác nhận bằng codegen thật là chế độ **Image, số lượng
-1** rồi đổi tên (xem `src/veo3bot/imageAsset.ts` và mục 4.10-4.12).
+Prop **KHÔNG** tạo qua "Create Character"/"Create Scene" như suy đoán ban đầu —
+cách ĐÚNG đã xác nhận bằng codegen thật là chế độ **Image, số lượng 1** rồi đổi
+tên (xem `src/veo3bot/imageAsset.ts` và mục 4.10-4.12).
+
+**Cảnh cần giữ đúng khung hình (thay thế Setting cũ)**: KHÔNG còn tạo sẵn 1 ảnh
+bối cảnh cho mọi địa điểm nữa — bối cảnh giờ mô tả trực tiếp bằng lời văn trong
+`videoPrompt` mỗi cảnh. Chỉ cảnh nào thật sự cần giữ đúng khung hình (đánh dấu
+`needsAngleLock: true` trong `state/prompts.json`) mới đi qua luồng RIÊNG: sinh
+4 ảnh still candidate (`npm run generate-images`, `src/veo3bot/sceneImages.ts`)
+→ người dùng tự soi + chọn (`chosenImageIndex`) → `npm run generate` "Animate"
+đúng ảnh đã chọn thành video (`src/veo3bot/animateImage.ts`). Xem mục 0 để biết
+trạng thái xác nhận UI "Animate" (CHƯA xác nhận trực tiếp).
 
 **Luồng xử lý** — ĐÃ BỎ HẲN Gemini/ElevenLabs (mục 4.20), `state/*.json` giờ
 LUÔN do Claude viết tay, không có nhánh gọi LLM/TTS nào nữa. **Từ 2026-07-19,
@@ -165,22 +270,28 @@ chung trong `src/orchestrator.ts`/`npm run run` — file đó đã bị XOÁ):
 
 **Lệnh 1 — `npm run assets`** (`src/createAssets.ts`) — chỉ tạo Ingredient,
 KHÔNG động đến video:
-1. Đọc `state/characters.json` (bắt buộc) / `settings.json` / `props.json`
-   (tuỳ chọn) — chỉ ĐỌC cache, báo lỗi rõ nếu thiếu thay vì tự sinh.
-2. Tạo Character/Setting/Prop asset trong Google Flow cho từng mục (giữ hình
-   ảnh nhất quán) — `ensureCharactersInFlow` / `ensureSettingsInFlow` /
-   `ensurePropsInFlow`.
+1. Đọc `state/characters.json` (bắt buộc) / `props.json` (tuỳ chọn) — chỉ ĐỌC
+   cache, báo lỗi rõ nếu thiếu thay vì tự sinh.
+2. Tạo Character/Prop asset trong Google Flow cho từng mục (giữ hình ảnh nhất
+   quán) — `ensureCharactersInFlow` / `ensurePropsInFlow`.
+
+**Lệnh phụ — `npm run generate-images`** (`src/generateSceneImages.ts`, MỚI
+2026-07-22) — chỉ sinh ảnh still, KHÔNG generate video: đọc `state/prompts.json`,
+lọc cảnh `needsAngleLock: true`, sinh 4 ảnh candidate/cảnh (`sceneImages.ts`).
+Chạy TRƯỚC Lệnh 2 cho các cảnh này (rồi tự tay điền `chosenImageIndex`).
 
 **Lệnh 2 — `npm run generate`** (`src/generateVideo.ts`) — chỉ generate +
 đổi tên video, KHÔNG tạo/tra lại Ingredient, KHÔNG tải video về/ghép video cuối
 (xem mục 4.31):
 3. Đọc `state/prompts.json` (đã viết đủ tay theo đúng số cảnh của
-   `input/story.txt`) — báo lỗi rõ nếu thiếu cảnh. Chạy
-   `warnInconsistentSettingLighting` ngay sau khi đọc (mục 4.19).
-4. Tự động hoá Google Flow bằng Playwright để tạo video Veo3 cho từng cảnh,
-   đính đúng Character/Setting/Prop asset qua `@mention`, rồi ĐỔI TÊN clip vừa
-   tạo trong Flow theo chỉ số cảnh (vd "clip_017", `renameLatestVideo()`) —
-   KHÔNG tải file về ở bước này.
+   `input/story.txt`) — báo lỗi rõ nếu thiếu cảnh.
+4. Tự động hoá Google Flow bằng Playwright để tạo video Veo3 cho từng cảnh.
+   Cảnh thường: đính đúng Character/Prop asset qua `@mention`, text-to-video.
+   Cảnh `needsAngleLock` (đã có `chosenImageIndex`): "Animate" đúng ảnh still
+   đã chọn thay vì text-to-video (`animateImage.ts`) — bỏ qua nếu chưa có
+   `chosenImageIndex`. Cả 2 loại đều ĐỔI TÊN clip vừa tạo trong Flow theo chỉ
+   số cảnh (vd "clip_017", `renameLatestVideo()`) — KHÔNG tải file về ở bước
+   này.
 
 **Lệnh 3 — `npm run download`** (`src/downloadVideos.ts`, MỚI, mục 4.31) —
 chỉ tải video + ghép video cuối, chạy SAU KHI `npm run generate` đã xong (toàn
@@ -192,15 +303,16 @@ bộ hoặc một phần, resume-safe):
    `output/video_final.mp4`.
 
 **Vì sao tách 2→3 lệnh**: (assets vs generate, lý do gốc) cho phép tạo xong
-toàn bộ nhân vật/bối cảnh/đạo cụ 1 lần, xác nhận bằng mắt trong Flow (đúng
-hình, đúng tên, không lẫn style — xem mục 4.10-4.12/4.19), rồi mới chạy
-generate video nhiều lần (retry cảnh bị chặn, viết lại prompt) mà không phải
-tra lại Ingredient mỗi lần. (generate vs download, lý do mục 4.31) người dùng
-muốn generate nhanh/gọn hơn (không tốn thời gian tải từng file ngay lúc
-generate) và tải về 1 lần cuối ở chất lượng cao hơn (1080p). Cả 3 lệnh đều
-resume-safe — `assets`/`generate` dựa vào field `status` (`src/assetStatus.ts`),
-`download` dựa vào file đã tồn tại trong `output/clips/` — và `assets`/
-`generate` đều dùng `atomicWriteJson()` khi ghi `state/*.json` (mục 4.23).
+toàn bộ nhân vật/đạo cụ 1 lần, xác nhận bằng mắt trong Flow (đúng hình, đúng
+tên, không lẫn style — xem mục 4.10/4.19), rồi mới chạy generate video nhiều
+lần (retry cảnh bị chặn, viết lại prompt) mà không phải tra lại Ingredient mỗi
+lần. (generate vs download, lý do mục 4.31) người dùng muốn generate nhanh/gọn
+hơn (không tốn thời gian tải từng file ngay lúc generate) và tải về 1 lần cuối
+ở chất lượng cao hơn (1080p). Cả 3 lệnh (+ `generate-images` cho cảnh
+`needsAngleLock`, mục 0) đều resume-safe — `assets`/`generate`/`generate-images`
+dựa vào field `status`/`imageStatus` (`src/assetStatus.ts`), `download` dựa
+vào file đã tồn tại trong `output/clips/` — và đều dùng `atomicWriteJson()`
+khi ghi `state/*.json` (mục 4.23).
 
 **Quy trình khi có KỊCH BẢN MỚI (viết `state/*.json` từ đầu, không dùng Gemini)**:
 đây là việc **Claude tự làm bằng tay trong hội thoại**, KHÔNG có code nào tự
@@ -218,19 +330,21 @@ resume-safe — `assets`/`generate` dựa vào field `status` (`src/assetStatus.
 4. Đọc toàn bộ kịch bản 1 lượt, xuất bảng kiểm kê tài sản (nhân vật + từng mốc
    tuổi, đạo cụ cần giữ nhất quán, bối cảnh lặp lại) — DỪNG LẠI xin người dùng
    xác nhận trước khi viết prompt đầy đủ, trừ khi họ đã nói đi thẳng luôn.
-5. Viết `state/characters.json`/`settings.json`/`props.json` theo
-   `CHARACTER_EXTRACTION_GUIDE`/`SETTING_EXTRACTION_GUIDE`/`PROP_EXTRACTION_GUIDE`
-   (`src/characters|settings|props/extract.ts`) — LƯU Ý mục 4.19: bối cảnh
-   dùng ở NHIỀU điều kiện ánh sáng → mô tả trung lập; CHỈ 1 điều kiện xuyên
-   suốt → bake thẳng điều kiện đó vào mô tả.
+5. Viết `state/characters.json`/`props.json` theo `CHARACTER_EXTRACTION_GUIDE`/
+   `PROP_EXTRACTION_GUIDE` (`src/characters|props/extract.ts`). KHÔNG còn viết
+   `settings.json` (bỏ 2026-07-22, xem mục 0) — bối cảnh mô tả trực tiếp trong
+   `videoPrompt` ở bước 6; đánh dấu `needsAngleLock: true` cho cảnh nào thật sự
+   cần giữ đúng khung hình (hiếm, xem mục 1 "Cảnh cần giữ đúng khung hình").
 6. Viết `state/prompts.json` — mỗi cảnh 1 entry khớp `state/scenes.json`, theo
    `buildPromptWritingGuide()` (`src/splitter/prompt-writer.ts`) — tự ghép
-   PERIOD_ANCHOR/STYLE_ANCHOR_MENTION_SENTENCE/MOTION_SUFFIX vào cuối
-   `videoPrompt` theo đúng thứ tự ghi trong mục "VIDEOPROMPT CUỐI CÙNG PHẢI
-   GỒM" của hàm đó, gán `status: "waiting"` cho mọi entry mới.
+   PERIOD_ANCHOR/MOTION_SUFFIX vào cuối `videoPrompt` theo đúng thứ tự ghi
+   trong mục "VIDEOPROMPT CUỐI CÙNG PHẢI GỒM" của hàm đó, gán `status:
+   "waiting"` cho mọi entry mới.
 7. Người dùng chạy `npm run login:veo3` (nếu chưa đăng nhập) rồi `npm run assets`
-   (tạo Character/Setting/Prop), xác nhận bằng mắt trong Flow, rồi
-   `npm run generate` (tạo video từng cảnh + ghép video cuối).
+   (tạo Character/Prop), xác nhận bằng mắt trong Flow. Nếu có cảnh
+   `needsAngleLock`, chạy `npm run generate-images` rồi tự chọn ảnh trước. Cuối
+   cùng `npm run generate` (tạo video từng cảnh) + `npm run download` (tải +
+   ghép video cuối).
 
 ## 2. Cài đặt & chạy (xem thêm README.md)
 
@@ -269,29 +383,31 @@ thường vô hại vì có kiểm tra idempotent, nhưng nên đọc code trư�
 - `apply-style-anchor-and-fix-glow.mjs` — cập nhật `MOTION_SUFFIX` mới (chặn
   glow/sparkle) + gắn Style Anchor cho mọi cảnh mồ côi (đã chạy xong).
 
-## 3. Kiến trúc Ingredient — Character / Setting / Prop
+## 3. Kiến trúc Ingredient — Character / Prop
 
 File tương ứng theo từng loại (đối xứng nhau):
 
 | Loại | Trích xuất (Gemini, optional) | Tạo asset trong Flow | Field trong VeoPrompt |
 |---|---|---|---|
 | Character | `characters/extract.ts` | `veo3bot/characters.ts` | `characterNames` |
-| Setting | `settings/extract.ts` | `veo3bot/settings.ts` | `settingNames` |
 | Prop | `props/extract.ts` | `veo3bot/props.ts` | `propNames` |
 
-`veo3bot/settings.ts` và `veo3bot/props.ts` đều gọi chung
-`veo3bot/imageAsset.ts::createImageIngredient(page, name, description,
-styleBlock, projectUrl)` — style block truyền vào KHÁC NHAU:
-- Character/Prop: `CHARACTER_SHEET_STYLE_BLOCK` (nền xanh chroma-key, có
-  turnaround front/3-4 view).
-- Setting: `SETTING_SHEET_STYLE_BLOCK` (ảnh nền THẬT, full-bleed, KHÔNG nền
-  xanh, KHÔNG người) — xem mục 4.11 vì sao KHÔNG được dùng chung block với
-  Character/Prop.
+`veo3bot/props.ts` gọi `veo3bot/imageAsset.ts::createImageIngredient(page,
+name, description, styleBlock, projectUrl)` với `CHARACTER_SHEET_STYLE_BLOCK`
+(nền xanh chroma-key, có turnaround front/3-4 view). (ĐÃ BỎ loại "Setting"
+2026-07-22, xem mục 0 — từng dùng `SETTING_SHEET_STYLE_BLOCK` riêng, lý do ở
+mục 4.11 vẫn còn giá trị lịch sử nếu sau này có nhu cầu tương tự.)
 
-Trong `generate.ts::fillPromptWithMentions`, cả 3 loại tên được GỘP CHUNG 1
-danh sách rồi chèn `@mention` tuần tự — dialog chọn asset trong Flow tìm theo
-tên, không lọc theo loại, nên không cần code riêng cho từng loại ở bước này.
-Điều kiện bắt buộc: **tên không được trùng giữa 3 danh sách**.
+Trong `generate.ts::fillPromptWithMentions`, 2 loại tên (characterNames +
+propNames) được GỘP CHUNG 1 danh sách rồi chèn `@mention` tuần tự — dialog
+chọn asset trong Flow tìm theo tên, không lọc theo loại, nên không cần code
+riêng cho từng loại ở bước này. Điều kiện bắt buộc: **tên không được trùng
+giữa 2 danh sách**.
+
+`sceneImages.ts::createImageIngredient` (cùng hàm, style block
+`SCENE_STILL_STYLE_BLOCK`) tạo ảnh still cho cảnh `needsAngleLock` — nhưng
+KHÔNG phải Ingredient bền vững kiểu Character/Prop (không @mention, chỉ dùng
+1 lần để "Animate" thành video cho ĐÚNG cảnh đó, xem mục 0/1).
 
 ## 4. Bài học xương máu (ĐỌC TRƯỚC KHI SỬA `veo3bot/`)
 
@@ -1809,6 +1925,147 @@ reload để lần Retry 2/2 trong cùng tab kích hoạt đúng (trước đó 
 bị bỏ lỡ). Chiến lược xử lý cảnh bị chặn CỐ ĐỊNH: chạy full generate với cơ chế Retry đã sửa (tự
 cứu block NGẪU NHIÊN), sau đó thu thập các cảnh vẫn fail (block cố định) và viết lại prompt riêng
 từng cảnh đó — data-driven, không đoán trước.
+
+### 4.51. Nhân vật có Character Ingredient bị vẽ TO HƠN HẲN nhân vật quần chúng không có Ingredient trong cùng khung hình
+**XÁC NHẬN TRỰC TIẾP (2026-07-20, cảnh #75 — "Robert standing in a doorway as a distressed family...
+plead with him")**: người dùng soi ảnh clip thấy Robert (có Character Ingredient) cao/to hơn HẲN cả
+gia đình quần chúng (không có Ingredient, Veo3 tự vẽ) đứng cạnh — gia đình trông như tí hon dù kịch
+bản không hề mô tả chênh lệch kích thước nào. Đây là bug KHÁC HẲN lớp "chân dung trần" (mục 4.46) —
+cảnh #75 CÓ mô tả bối cảnh (đứng ở cửa) và CÓ nhiều người trong khung, chỉ riêng TỈ LỆ giữa người có
+Ingredient và người không có Ingredient bị lệch.
+
+**Nghi ngờ nguyên nhân**: ảnh Character reference (turnaround, `CHARACTER_SHEET_STYLE_BLOCK`) luôn
+được tạo dưới dạng 1 người ĐỨNG CHIẾM GẦN HẾT KHUNG HÌNH (để rõ mặt/trang phục, không phải để đúng
+tỉ lệ người thật) — khi Veo3 ghép nhân vật đó vào cảnh mới có thêm người khác tự vẽ tươi, nó có vẻ
+giữ nguyên tỉ lệ "chiếm khung" từ ảnh reference gốc thay vì co lại đúng theo tỉ lệ người thật tương
+đối với nhân vật khác trong cùng cảnh.
+
+**Đã sửa** (`src/styleDNA.ts`): thêm `SCALE_CONSISTENCY_BLOCK` — câu tường minh yêu cầu MỌI nhân vật
+trong khung (có Ingredient lẫn không) phải cùng 1 tỉ lệ người thật nhất quán, cấm chênh lệch kích
+thước không có lý do (trừ khi kịch bản mô tả rõ trẻ em/khoảng cách xa). Append vào `MOTION_SUFFIX`
+(giống cách `OUTLINE_BLOCK` được thêm ở mục 4.16) — áp dụng cho MỌI cảnh bằng code, không phụ thuộc
+LLM viết prompt có nhớ nhắc hay không.
+
+**Cách áp dụng vào dữ liệu ĐÃ VIẾT (khác các fix trước — đây là suffix DÙNG CHUNG cho cả 264 cảnh,
+không phải nội dung riêng từng cảnh)**: viết `scripts/update-motion-suffix.mjs` — thay ĐÚNG đoạn
+suffix cũ bằng suffix mới trong TOÀN BỘ `state/prompts.json` bằng string replace chính xác (không
+dùng `build-arctic-prompts.mjs` vì sẽ reset status). Áp dụng cho cả 264 cảnh (kể cả cảnh đã
+"success" — suffix mới chỉ ẢNH HƯỞNG THẬT nếu regenerate lại, cảnh đã xong giữ nguyên video cũ,
+nhưng state/prompts.json luôn khớp với NỘI DUNG SẼ generate nếu chạy lại). Cảnh **THẬT SỰ có nhân
+vật chính + đám đông quần chúng ĐÃ generate xong trước khi có fix này** (như #75) cần reset tay
+`status` về "waiting" để generate lại — không phải mọi cảnh "success" đều cần, chỉ cảnh có rủi ro
+lệch tỉ lệ thật (1 Character Ingredient + mô tả người khác không có Ingredient trong cùng khung).
+
+**KẾT QUẢ TEST (2026-07-21) — FIX CHƯA XÁC NHẬN HIỆU QUẢ**: generate lại #75 với
+`SCALE_CONSISTENCY_BLOCK`, soi thumbnail trong Flow (`scripts/screenshot-clip.ts`, chụp lưới media
+sau khi search tên clip — cách soi ảnh không cần ffmpeg khi máy không cài) — Robert **VẪN cao vượt
+trội** so với người đàn ông trưởng thành đứng cạnh (đầu Robert gần chạm mép khung cửa, người kia chỉ
+tới ngang vai/ngực Robert), không thấy cải thiện rõ rệt so với bản gốc trước khi thêm câu. Đánh giá:
+đây nhiều khả năng là **giới hạn thật của cơ chế Ingredient** — ảnh Character reference mang theo
+tỉ lệ khung riêng, hướng dẫn bằng text không đủ mạnh để ghi đè khi ghép nhiều người vào 1 cảnh; không
+phải lỗi chắc chắn sửa được chỉ bằng câu chữ prompt.
+
+**QUYẾT ĐỊNH của người dùng (2026-07-21)**: GIỮ NGUYÊN `SCALE_CONSISTENCY_BLOCK` (không tốn thêm chi
+phí gì khi giữ, có thể vẫn giúp một phần ở vài cảnh khác nhẹ hơn #75) — KHÔNG đầu tư thêm thời gian
+thử prompt cụ thể hơn. Cảnh nào lệch tỉ lệ nặng sẽ xử lý ở HẬU KỲ (resize/crop tay), không cố sửa ở
+khâu generate. Tiếp tục chạy full generate cho phần còn lại.
+
+**Script phụ trợ mới**: `scripts/screenshot-clip.ts <index>` — search tên clip trong Flow rồi chụp
+lưới media, dùng để soi bằng mắt (tỉ lệ, style...) khi máy không có ffmpeg để trích khung hình từ
+mp4 đã tải. `scripts/download-one.ts <index...>` — tải riêng 1 vài clip cụ thể (không qua toàn bộ
+hàng đợi 80+ cảnh của `npm run download`), dùng khi cần verify nhanh 1-2 cảnh.
+
+### 4.52. 🔴 `TaskStop` KHÔNG kill được tiến trình Node/Playwright con trên Windows — process orphan tiếp tục chạy ngầm, va chạm với script test chạy sau đó gây "177 cảnh failed" giả
+**XÁC NHẬN TRỰC TIẾP (2026-07-20/21)**: dừng 1 lần chạy `npm run generate` nền bằng cơ chế TaskStop
+của harness (lúc đang ở cảnh #68, để đi kiểm tra việc khác) — nhưng process Node/`tsx` bên dưới
+KHÔNG bị kill thật, tiếp tục chạy NGẦM không ai theo dõi. Trong lúc đó, phiên làm việc chạy nhiều
+script test khác (`generate-test-scenes.ts`, `download-one.ts`...) VÀ chủ động `Stop-Process` mọi
+`chrome.exe` dùng chung `.auth/chrome-profile` trước mỗi lần test (để giải phóng profile lock) —
+nhưng làm vậy VÔ TÌNH giết chết browser của chính process orphan đang chạy ngầm kia. Process orphan
+đó, mất browser giữa chừng, tiếp tục vòng lặp xử lý HẾT toàn bộ cảnh còn lại (#70→#263) nhưng MỌI
+cảnh đều lỗi ngay lập tức với "Target page, context or browser has been closed" — không phải bị
+Flow từ chối/chặn nội dung thật. Kết quả: `state/prompts.json` báo **177/264 cảnh "failed"**, nhìn
+qua tưởng là thảm hoạ hàng loạt (chặn nội dung tràn lan), nhưng thực ra chỉ 2 cảnh (#58, #64) có lỗi
+"bị Flow từ chối" thật — 175 cảnh còn lại đều là "browser has been closed" (`grep -c "browser has
+been closed"` = 399 dòng log, trong khi `grep -c "bị Flow từ chối"` chỉ = 2).
+
+**Cách phát hiện + phân biệt**: đếm riêng 2 loại lỗi trong log bằng `grep -c`, KHÔNG kết luận vội "bị
+chặn hàng loạt" chỉ từ con số failed trong state — phải xem NỘI DUNG lỗi thật trong log. Nếu phần
+lớn là "browser/context/page has been closed" → process bị giết giữa chừng (orphan/cascade), KHÔNG
+phải nội dung có vấn đề → reset thẳng về `waiting`, chạy sạch lại là đủ, KHÔNG cần viết lại prompt.
+
+**Bài học quy trình (RẤT QUAN TRỌNG cho các phiên sau)**:
+1. **`TaskStop` trên task chạy `npm run generate`/`npm run assets`/`npm run download` KHÔNG đáng tin
+   cậy để dừng hẳn trên Windows** — LUÔN kill kèm mọi `chrome.exe` dùng `.auth/chrome-profile` NGAY
+   SAU KHI gọi TaskStop (không phải chỉ gọi TaskStop rồi coi là xong), để đảm bảo process con cũng
+   chết theo, KHÔNG để nó tiếp tục chạy ngầm không ai biết.
+2. **KHÔNG chạy song song 1 lệnh pipeline chính (generate/assets/download) VỚI bất kỳ script test
+   nào khác dùng chung `.auth/chrome-profile`** — Playwright chỉ cho 1 tiến trình giữ profile tại 1
+   thời điểm (`launchPersistentContext` báo lỗi "already in use" nếu vi phạm, xem mục thực tế đã
+   gặp lỗi này khi test #58 lần đầu sau khi dừng generate). Trước khi chạy BẤT KỲ script Playwright
+   nào, LUÔN kiểm tra + kill Chrome cũ trước (như đã làm quen thuộc trong phiên này), vàKHÔNG BAO
+   GIỜ giả định 1 task đã "TaskStop" là thực sự đã dừng hẳn — luôn verify bằng cách kill Chrome liền
+   ngay sau đó, không đợi tới khi cần chạy script tiếp theo.
+3. Khi thấy số lượng "failed" tăng đột biến bất thường (vd nhảy từ ~15 lên ~177), ĐỪNG vội kết luận
+   "bị chặn nội dung hàng loạt" — luôn `grep` nội dung lỗi thật trong log trước, phân biệt lỗi hạ
+   tầng (browser/network/process bị giết) với lỗi nghiệp vụ thật (Flow từ chối nội dung).
+
+**Đã sửa**: reset toàn bộ 177 cảnh "failed" (do cascade) về "waiting", xác nhận sạch Chrome + Node
+process trước khi chạy lại full generate lần nữa.
+
+### 4.53. 🔴 LẶP LẠI ĐÚNG race condition mục 4.29 — chạy patch script trong lúc `npm run generate` đang chạy nền, patch bị ghi đè mất mà KHÔNG BÁO LỖI GÌ
+**XÁC NHẬN TRỰC TIẾP (2026-07-21)**: sau khi tìm ra + sửa bug "cảnh #78 giữ nguyên phông xanh" (16
+cảnh chân dung/cận cảnh trần, mục 4.46 mở rộng), đã chạy `patch-bare-closeup-scenes.mjs` để vá +
+test lại #78/#67 — kết quả ĐÚNG lúc đó (soi screenshot xác nhận không còn phông xanh, log test hiện
+đủ chi tiết). NHƯNG người dùng báo lại "#78 vẫn phông xanh" — kiểm tra `state/prompts.json` thì fix
+đã BIẾN MẤT hoàn toàn khỏi nội dung cảnh #78 (và cả 15 cảnh còn lại trong đợt vá), dù patch script
+từng chạy thành công.
+
+**Nguyên nhân**: tại thời điểm chạy `patch-bare-closeup-scenes.mjs`, tiến trình `npm run generate`
+đầy đủ (`b850g6tzp`) **VẪN ĐANG CHẠY NỀN** (chưa hoàn tất, tôi tưởng đã ổn định nên chuyển sang xử lý
+bug #78 song song). `processQueue` trong `generate.ts` gọi `savePromptsProgress(prompts)` SAU MỖI
+CẢNH xử lý xong — ghi ĐÈ TOÀN BỘ mảng `prompts` từ bộ nhớ CỦA CHÍNH NÓ (nạp lúc khởi động, KHÔNG biết
+gì về patch vừa chạy) lên `state/prompts.json`. Patch của tôi ghi file lúc T, tiến trình generate xử
+lý xong 1 cảnh bất kỳ lúc T+vài giây và tự ghi lại NGUYÊN TRẠNG THÁI CŨ (theo góc nhìn của nó) đè lên
+— patch biến mất, KHÔNG log/exception nào báo hiệu vì đây là 2 tiến trình riêng biệt cùng ghi 1 file,
+không phải lỗi trong code, mà là VI PHẠM giả định kiến trúc "chỉ 1 tiến trình ghi `state/*.json` tại
+1 thời điểm" (RUNBOOK mục 4.29 đã cảnh báo ĐÚNG kịch bản này, nhưng ở NGỮ CẢNH KHÁC — sửa tay trực
+tiếp `state/prompts.json` — nên không liên tưởng ra cùng lỗi khi patch bằng SCRIPT thay vì sửa tay).
+
+**Vì sao khó phát hiện ngay**: lần test đầu tiên sau patch (`generate-test-scenes.ts 78 67`) chạy
+NGAY SAU patch nhưng TRƯỚC KHI `b850g6tzp` kịp ghi đè lại — nên test đó dùng ĐÚNG bản đã vá, sinh
+video đúng, và tôi (sai lầm) coi đó là bằng chứng đủ để kết luận "đã sửa xong". Việc ghi đè xảy ra
+ÂM THẦM ở lần lưu tiến độ SAU ĐÓ của `b850g6tzp` (khi nó xử lý xong 1 cảnh KHÁC bất kỳ, không liên
+quan gì đến 16 cảnh vừa vá) — không có cách nào phát hiện được nếu không kiểm tra lại state SAU MỘT
+KHOẢNG THỜI GIAN, đúng lúc người dùng báo lại bug tưởng đã sửa.
+
+**Thêm 1 lớp phức tạp**: khi phát hiện ra, task `b16hj0grl` (lần chạy full generate MỚI, khởi động
+SAU khi tưởng đã dọn sạch race trước) đang ở cảnh #77 — `TaskStop` báo "No task found" (harness mất
+theo dõi task ID, nghi do nén ngữ cảnh phiên dài) NHƯNG process Node/Chrome vẫn SỐNG THẬT ở tầng OS
+(xác nhận qua `Get-CimInstance Win32_Process`) — phải kill trực tiếp bằng PowerShell
+(`Stop-Process -Id <pid> -Force`) cho cả node.exe lẫn chrome.exe, không thể tin tưởng `TaskStop` trả
+lời "not found" đồng nghĩa "đã dừng".
+
+**Đã sửa**:
+1. Kill toàn bộ node.exe + chrome.exe (profile) bằng PowerShell trực tiếp (xác nhận 0 process còn
+   lại) trước khi đụng vào `state/prompts.json`.
+2. Chạy lại `patch-bare-closeup-scenes.mjs` + `update-motion-suffix.mjs` (an toàn vì giờ chắc chắn
+   không còn tiến trình nào khác ghi file) — xác nhận lại bằng script kiểm tra: cả 16 cảnh có ĐỦ cả
+   2 fix (nội dung phông nền + SCALE_CONSISTENCY_BLOCK), status đúng "waiting" cho cả 16 (kể cả 4
+   cảnh từng "success" với nội dung lỗi cũ).
+3. Xoá 2 file local đã tải nhầm bản lỗi cũ (`clip_067.mp4`, `clip_078.mp4`) trước khi generate lại.
+
+**BÀI HỌC QUY TRÌNH TỐI QUAN TRỌNG (khắc sâu hơn mục 4.29 — mục đó chỉ nói "sửa tay", đây là PATCH
+BẰNG SCRIPT cũng dính y hệt)**:
+- **TUYỆT ĐỐI KHÔNG chạy BẤT KỲ script nào ghi vào `state/*.json`** (patch tay, patch script, sửa
+  characters/settings/props...) **khi CÓ KHẢ NĂNG `npm run generate`/`assets`/`download` đang chạy
+  nền** — dù chỉ nghi ngờ, PHẢI kiểm tra chắc chắn (process OS, không tin lời "đã TaskStop") TRƯỚC.
+- Nếu cần vừa debug 1 bug vừa có 1 lần chạy generate đang chờ hoàn tất: DỪNG HẲN generate trước
+  (kill xác nhận ở tầng OS), sửa xong, RỒI mới chạy lại — không bao giờ làm song song, kể cả khi
+  tưởng lần chạy kia "đã ổn định, không cần để ý".
+- Sau khi sửa xong 1 bug tưởng đã xác nhận bằng 1 lần test thành công, PHẢI kiểm tra lại state THỰC
+  TẾ trên đĩa (không chỉ tin kết quả test 1 lần) nếu có BẤT KỲ tiến trình ghi file nào khác từng chạy
+  trong lúc đó — 1 lần test thành công KHÔNG đồng nghĩa fix đã được LƯU LẠI bền vững.
 
 ## 5. Cách verify (ĐỪNG chỉ tin log "0 lỗi")
 

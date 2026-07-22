@@ -2,26 +2,26 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { config } from "./config.js";
 import { splitIntoScenes } from "./splitter/scenes.js";
-import { warnInconsistentSettingLighting, type VeoPrompt } from "./splitter/prompt-writer.js";
+import type { VeoPrompt } from "./splitter/prompt-writer.js";
 import type { CharacterProfile } from "./characters/extract.js";
-import type { SettingProfile } from "./settings/extract.js";
 import type { PropProfile } from "./props/extract.js";
 import { generateClips } from "./veo3bot/generate.js";
 
 const CHARACTERS_STATE_FILE = path.join(config.stateDir, "characters.json");
-const SETTINGS_STATE_FILE = path.join(config.stateDir, "settings.json");
 const PROPS_STATE_FILE = path.join(config.stateDir, "props.json");
 const PROMPTS_STATE_FILE = path.join(config.stateDir, "prompts.json");
 const CHROME_PROFILE_DIR = path.join(config.authDir, "chrome-profile");
 
 /**
  * Lệnh RIÊNG chỉ generate video từng cảnh (tạo + đổi tên trong Flow) — KHÔNG tạo Character/
- * Setting/Prop Ingredient (chạy `npm run assets` trước), và KHÔNG tải video về/ghép video cuối
- * nữa (xem RUNBOOK mục 4.31 — 2 việc đó dồn vào lệnh riêng `npm run download`, chạy SAU khi
- * lệnh này xong). Tách khỏi `assets` để có thể chạy lại generate nhiều lần (vd retry cảnh bị
- * Flow chặn, viết lại prompt) mà không phải tra lại toàn bộ tài sản trong Flow mỗi lần —
- * `ensureCharactersInFlow`/`ensureSettingsInFlow`/`ensurePropsInFlow` chỉ chạy trong
- * `createAssets.ts`.
+ * Prop Ingredient (chạy `npm run assets` trước), và KHÔNG tải video về/ghép video cuối nữa
+ * (xem RUNBOOK mục 4.31 — 2 việc đó dồn vào lệnh riêng `npm run download`, chạy SAU khi lệnh
+ * này xong). Tách khỏi `assets` để có thể chạy lại generate nhiều lần (vd retry cảnh bị Flow
+ * chặn, viết lại prompt) mà không phải tra lại toàn bộ tài sản trong Flow mỗi lần —
+ * `ensureCharactersInFlow`/`ensurePropsInFlow` chỉ chạy trong `createAssets.ts`. Cảnh có
+ * `needsAngleLock` (xem prompt-writer.ts) tự động dùng luồng "Animate ảnh đã chọn" thay vì
+ * text-to-video thường — cần chạy `npm run generate-images` + tự chọn ảnh trước (xem
+ * `sceneImages.ts`/`animateImage.ts`).
  */
 async function readJson<T>(filePath: string, fallback: T): Promise<T> {
   const raw = await fs.readFile(filePath, "utf-8").catch(() => null);
@@ -42,8 +42,7 @@ async function savePromptsProgress(prompts: VeoPrompt[]): Promise<void> {
 
 /**
  * Đọc `state/prompts.json` (viết tay bởi Claude, xem RUNBOOK.md mục 0) — báo lỗi rõ nếu chưa
- * đủ số cảnh so với `input/story.txt`. Chạy `warnInconsistentSettingLighting` ngay sau khi load
- * để bắt sớm lỗi ánh sáng ngày/đêm (RUNBOOK mục 4.19) trước khi tốn credit generate video.
+ * đủ số cảnh so với `input/story.txt`.
  */
 async function loadPrompts(storyText: string): Promise<VeoPrompt[]> {
   let scenes = splitIntoScenes(storyText);
@@ -61,7 +60,6 @@ async function loadPrompts(storyText: string): Promise<VeoPrompt[]> {
   }
 
   console.log("[generate] dùng prompt đã viết sẵn (state/prompts.json)");
-  warnInconsistentSettingLighting(prompts);
   return prompts;
 }
 
@@ -75,7 +73,6 @@ async function main() {
   }
 
   const characters = await readJson<CharacterProfile[]>(CHARACTERS_STATE_FILE, []);
-  const settings = await readJson<SettingProfile[]>(SETTINGS_STATE_FILE, []);
   const props = await readJson<PropProfile[]>(PROPS_STATE_FILE, []);
   if (characters.some((c) => c.status !== "success")) {
     console.warn(
@@ -85,12 +82,13 @@ async function main() {
 
   const prompts = await loadPrompts(storyText);
 
-  // Generate video từng cảnh qua Veo3, đính kèm đúng Character/Setting/Prop asset theo cảnh, rồi
-  // đổi tên trong Flow theo chỉ số cảnh (xem generate.ts::renameLatestVideo) — KHÔNG tải video
-  // về/ghép video cuối ở đây nữa (xem RUNBOOK mục 4.31). Cảnh bị Flow từ chối tạo (chính sách nội
-  // dung) sẽ bị bỏ qua khỏi kết quả.
+  // Generate video từng cảnh qua Veo3, đính kèm đúng Character/Prop asset theo cảnh, rồi đổi
+  // tên trong Flow theo chỉ số cảnh (xem generate.ts::renameLatestVideo) — KHÔNG tải video về/
+  // ghép video cuối ở đây nữa (xem RUNBOOK mục 4.31). Cảnh bị Flow từ chối tạo (chính sách nội
+  // dung) sẽ bị bỏ qua khỏi kết quả. Cảnh needsAngleLock dùng luồng Animate riêng (xem
+  // generate.ts::processQueue), không @mention Character/Prop.
   const clipDir = path.join(config.outputDir, "clips");
-  const clipResults = await generateClips(prompts, characters, settings, props, clipDir, savePromptsProgress);
+  const clipResults = await generateClips(prompts, characters, props, clipDir, savePromptsProgress);
 
   if (clipResults.length < prompts.length) {
     const missingIndices = prompts.map((p) => p.index).filter((i) => !clipResults.some((r) => r.index === i));

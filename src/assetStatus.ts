@@ -1,7 +1,7 @@
 /**
- * Trạng thái tạo asset (Character/Setting/Prop) hoặc clip video trong Flow — dùng chung cho
- * CharacterProfile/SettingProfile/PropProfile (characters|settings|props/extract.ts) và
- * VeoPrompt (splitter/prompt-writer.ts).
+ * Trạng thái tạo asset (Character/Prop) hoặc clip video/ảnh trong Flow — dùng chung cho
+ * CharacterProfile/PropProfile (characters|props/extract.ts) và VeoPrompt.status/imageStatus
+ * (splitter/prompt-writer.ts).
  *
  * "success": đã xác nhận tạo xong (VÀ đổi tên xong với Character/Setting/Prop) — các lần chạy
  * sau BỎ QUA hẳn, không query lại Flow (khác cơ chế cũ luôn tra tên qua UI mỗi lần chạy).
