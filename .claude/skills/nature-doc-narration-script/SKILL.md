@@ -17,7 +17,18 @@ CẤU TRÚC, KHÔNG tham khảo giọng văn nữa)**: "Loài Vật Có Thật S
 Mất Con?" (voi chạm vòi vào xương đồng loại, quạ họp "đám tang", cá voi mẹ
 cõng xác con 17 ngày, tinh tinh ôm xác con, bằng chứng chôn cất của người
 Neanderthal/Homo naledi) — xem `used-topics.md`, chủ đề này đã dùng, không gợi
-ý lại.
+ý lại nguyên trạng.
+
+**⚠️ CẢNH BÁO BẢN QUYỀN (xác nhận 2026-07-31)**: kịch bản mẫu gốc ở trên thực
+ra không phải nội dung tự viết của user — user xác nhận đã COPY từ 1 kênh
+YouTube khác để làm ví dụ tham khảo ban đầu. Nguyên tắc áp dụng cho MỌI "kịch
+bản mẫu"/tài liệu tham khảo mà user đưa vào từ nay: chỉ được rút ra CẤU TRÚC
+(nhịp kể chuyện, thứ tự beat) và CÁC SỰ KIỆN/NGHIÊN CỨU KHOA HỌC CÓ THẬT (dữ
+kiện công khai, không có bản quyền) để viết kịch bản HOÀN TOÀN MỚI — câu chữ,
+cách dựng cảnh, ví von đều phải tự nghĩ ra. TUYỆT ĐỐI không dịch/diễn đạt sát
+theo câu chữ của bản gốc, dù đổi ngôn ngữ hay đổi giọng văn — đó vẫn là đạo
+văn/vi phạm bản quyền. Nếu nghi ngờ 1 chủ đề user đưa ra có thể lấy nguyên từ
+nội dung người khác, hỏi rõ trước khi viết.
 
 ## Quy trình bắt buộc — 5 bước, KHÔNG gộp/bỏ bước
 
@@ -90,3 +101,11 @@ dài quyết định số lượng ví dụ/độ chi tiết từng ví dụ.
 - Bản tiếng Anh: giữ đúng tinh thần hài hước/dí dỏm trên, không rập khuôn cấu
   trúc câu tiếng Việt — viết như người bản ngữ kể chuyện vui, câu vừa đủ ngắn
   để lồng tiếng tự nhiên.
+- **Bản tiếng Anh — hạn chế dấu câu gây ngắt giọng khi đọc bằng ElevenLabs
+  (phản hồi user 2026-07-31)**: TRÁNH em dash (—), dấu hai chấm mở danh sách,
+  chấm phẩy, và các mệnh đề chêm giữa câu kiểu "..., which...", "..., even
+  though...", "..., the kind of..." — những dấu câu này khiến giọng đọc TTS bị
+  khựng/ngắt khúc nghe không tự nhiên. Thay vào đó: tách thành câu ngắn hoàn
+  chỉnh nối bằng "and"/"but"/dấu chấm, hoặc viết liền mạch bằng liên từ thường
+  thay vì dấu chêm. Bản tiếng Việt không bị ảnh hưởng bởi quy tắc này (chỉ áp
+  dụng khi viết bước 4 — bản tiếng Anh để đọc TTS).

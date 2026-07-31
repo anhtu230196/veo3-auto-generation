@@ -72,28 +72,24 @@ export const MOTION_SUFFIX =
   `surfaces only, even on metal, gold, or gemstones. ${OUTLINE_BLOCK}`;
 
 /**
- * Mốc thời đại của câu chuyện — đổi hằng số này nếu dự án khác dùng bối cảnh khác.
+ * Mốc thời đại của câu chuyện — đổi hằng số này khi bắt đầu 1 project mới.
  * LÝ DO CẦN CÓ: những nhân vật/bối cảnh KHÔNG có Character asset (@mention) — vd thủy thủ
  * quần chúng, cảng, khu chợ — không có gì neo giữ hình ảnh, nên Veo3 mặc định vẽ theo nghĩa
  * HIỆN ĐẠI của các danh từ chung ("sailor", "harbor", "ship", "settler"...). Đã xác nhận
  * trực tiếp: prompt "a young unnamed sailor... merchant ship's deck" ra hình thủy thủ áo kẻ
  * sọc thời nay đứng cạnh container/cần cẩu cảng hiện đại, dù style đã là flat vector.
+ *
+ * (2026-07-31) Cả 2 project trước đó (Columbus, Bắc Cực) đã bị xoá — để trống, PHẢI điền lại
+ * đúng thời đại/trang phục/phương tiện của câu chuyện mới trước khi viết prompts.json.
  */
-export const ERA_DESCRIPTOR =
-  "turn-of-the-20th-century golden age of polar exploration (roughly 1880s–1910s)";
+export const ERA_DESCRIPTOR = "";
 
 /**
  * Append vào MỌI cảnh KHÔNG cố ý hiện đại (xem VeoPrompt.era trong prompt-writer.ts) — bằng
- * CODE, không phụ thuộc LLM tuân thủ, giống cách làm với MOTION_SUFFIX.
+ * CODE, không phụ thuộc LLM tuân thủ, giống cách làm với MOTION_SUFFIX. Để trống cho tới khi
+ * ERA_DESCRIPTOR ở trên được điền lại cho project mới (xem ghi chú 2026-07-31 ở trên).
  */
-export const PERIOD_ANCHOR =
-  `${ERA_DESCRIPTOR} setting — period-accurate heavy fur parkas and hooded anoraks, wool ` +
-  "coats, leather and sealskin boots, fur mittens; wooden dog sledges, wooden sail-and-steam " +
-  "ships with tall masts and a single smokestack, oil lamps and brass navigation instruments; " +
-  "in city scenes, early-1900s formal suits, waistcoats, high collars, long dresses, " +
-  "horse-drawn carriages and brick or stone architecture. NO modern clothing, NO snowmobiles, " +
-  "motorboats, aircraft, cars or trucks, NO plastic or synthetic materials, NO modern " +
-  "buildings or equipment of any kind.";
+export const PERIOD_ANCHOR = "";
 
 /**
  * LẦN 1 ĐÃ THỬ VÀ BỎ (2026-07-16) — "Style Anchor" tạo qua "Create Character": công cụ này
