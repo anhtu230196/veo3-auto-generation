@@ -127,20 +127,19 @@ QUY TẮC NHÂN VẬT (RẤT QUAN TRỌNG — sai quy tắc này làm nhân vậ
 - TRƯỚC KHI viết "a young unnamed X"/"an unnamed X" cho BẤT KỲ nhân vật nào trong cảnh, ĐỐI CHIẾU LẠI với
   danh sách nhân vật đã có sẵn ở trên xem có entry nào KHỚP với người đang được mô tả không (kể cả nhân
   vật ở mốc tuổi khác, tên rút gọn, hay tên dạng quan hệ sở hữu) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục
-  4.29, cảnh #11): cảnh mô tả rõ ràng Christopher Columbus đang nghiên cứu bản đồ lại bị viết thành "a
-  young unnamed mapmaker" dù Character "Christopher" ĐÃ có sẵn trong danh sách — khiến Veo3 không @mention
-  được nhân vật này, tự vẽ ra 1 người khác hoàn toàn (mất nhất quán hình ảnh). Chỉ dùng "unnamed" khi
-  THẬT SỰ là nhân vật quần chúng không có Character asset nào tương ứng, không phải vì quên đối chiếu.
+  4.29): 1 cảnh mô tả rõ ràng 1 nhân vật đã đăng ký lại bị viết thành "a young unnamed X" dù Character đó
+  ĐÃ có sẵn trong danh sách — khiến Veo3 không @mention được nhân vật này, tự vẽ ra 1 người khác hoàn toàn
+  (mất nhất quán hình ảnh). Chỉ dùng "unnamed" khi THẬT SỰ là nhân vật quần chúng không có Character asset
+  nào tương ứng, không phải vì quên đối chiếu.
 - TÊN NHÂN VẬT LỊCH SỬ/CÔNG CHÚNG CÓ THẬT (CẢ dàn nhân vật, KHÔNG chỉ nhân vật chính hay người thân của họ
-  — cập nhật 2026-07-19 sau khi xác nhận lỗi vẫn tái diễn ở nhân vật phụ khác) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP:
+  — xem RUNBOOK mục 4.40 sau khi xác nhận lỗi vẫn tái diễn ở nhân vật phụ khác) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP:
   Flow từng từ chối tạo cảnh với lỗi "might violate our policies about generating prominent people" dù đã
   @mention đúng Character, xảy ra với BẤT KỲ ai trong dàn nhân vật có tên đầy đủ trùng khớp người thật/lịch
-  sử — không chỉ nhân vật chính (vd "Christopher Columbus" → đổi tên ngắn "Christopher" hết bị chặn) hay
-  người thân của họ (vd "Bartholomew Columbus" → đổi tên quan hệ sở hữu "Columbus's Brother" hết bị chặn),
-  mà CẢ nhân vật phụ khác không liên quan họ hàng (vua/hoàng hậu, nhà tài trợ, đồng đội...) cũng có nguy cơ
-  y hệt nếu tên đăng ký là tên lịch sử thật đầy đủ. Nếu danh sách nhân vật ở trên đã dùng tên NGẮN (chỉ tên
-  riêng, vd "Christopher"), tên quan hệ sở hữu (vd "Columbus's Brother"), hoặc tên vai trò/chức danh (vd
-  "The Queen", "The Fleet Captain") thay vì tên lịch sử đầy đủ — đây là CÓ CHỦ ĐÍCH (xem quy tắc 3 cách đổi
+  sử — không chỉ nhân vật chính (đổi tên ngắn hết bị chặn) hay người thân của họ (đổi tên quan hệ sở hữu
+  hết bị chặn), mà CẢ nhân vật phụ khác không liên quan họ hàng (vua/hoàng hậu, nhà tài trợ, đồng đội...)
+  cũng có nguy cơ y hệt nếu tên đăng ký là tên lịch sử thật đầy đủ. Nếu danh sách nhân vật ở trên đã dùng
+  tên NGẮN (chỉ tên riêng), tên quan hệ sở hữu, hoặc tên vai trò/chức danh (vd "The Queen", "The Fleet
+  Captain") thay vì tên lịch sử đầy đủ — đây là CÓ CHỦ ĐÍCH (xem quy tắc 3 cách đổi
   tên trong CHARACTER_EXTRACTION_GUIDE, file characters/extract.ts), không phải lỗi đặt tên. LUÔN dùng ĐÚNG
   tên đã cho trong danh sách (kể cả dạng tên ngắn/quan hệ sở hữu/vai trò) khi nhắc trong videoPrompt —
   TUYỆT ĐỐI không tự đổi lại/ghép thêm thành tên lịch sử đầy đủ của họ dù bạn biết tên đó, vì sẽ tái diễn
@@ -164,8 +163,8 @@ QUY TẮC BỐI CẢNH/ĐỊA ĐIỂM (settingNames) — chỉ áp dụng nếu 
   và cơ chế Style Anchor từng được thêm để khắc phục — người dùng đã cân nhắc và chủ động chấp nhận đổi
   lại, ưu tiên đơn giản hoá pipeline hơn rủi ro trôi phong cách hiếm gặp ở cảnh Prop-only/mồ côi.)
 
-QUY TẮC ÁNH SÁNG/THỜI ĐIỂM CỦA BỐI CẢNH (settingNames) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19,
-Setting "Pinta Deck"): ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT, mang theo ĐÚNG 1 điều
+QUY TẮC ÁNH SÁNG/THỜI ĐIỂM CỦA BỐI CẢNH (settingNames) — LỖI ĐÃ XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19):
+ảnh Setting reference trong Flow là 1 ảnh TĨNH DUY NHẤT, mang theo ĐÚNG 1 điều
 kiện ánh sáng cố định (ban ngày HOẶC ban đêm) — mood/tông màu viết trong videoPrompt KHÔNG đủ mạnh để
 ghi đè ánh sáng đã "khoá cứng" sẵn trong ảnh asset đó khi @mention. Vì vậy:
 - Nếu 1 bối cảnh trong danh sách trên CHỈ dùng cho cảnh ở 1 điều kiện ánh sáng xuyên suốt câu chuyện (vd
@@ -285,7 +284,7 @@ function detectLighting(text: string): "night" | "day" | null {
 }
 
 /**
- * XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19, bug Setting "Pinta Deck") — ảnh Setting reference trong
+ * XÁC NHẬN TRỰC TIẾP (RUNBOOK mục 4.19) — ảnh Setting reference trong
  * Flow là ảnh TĨNH DUY NHẤT, neo giữ ĐÚNG 1 điều kiện ánh sáng cố định; mood/tông màu viết trong
  * videoPrompt KHÔNG đủ mạnh để ghi đè khi @mention. Quét TOÀN BỘ prompt (viết tay hay máy) — nếu
  * 1 settingName được gán cho cả cảnh "night" LẪN cảnh "day" (theo từ khoá rõ ràng, bỏ qua mood
@@ -314,7 +313,7 @@ export function warnInconsistentSettingLighting(prompts: VeoPrompt[]): void {
       console.warn(
         `[prompt-writer] CẢNH BÁO: Setting "${name}" được gán cho cả cảnh ĐÊM (#${night.join(", #")}) ` +
           `lẫn cảnh NGÀY (#${day.join(", #")}) — ảnh Setting reference trong Flow chỉ neo được 1 điều ` +
-          `kiện ánh sáng cố định (xem RUNBOOK mục 4.19, bug "Pinta Deck"). Nếu đây không phải cố ý, sửa ` +
+          `kiện ánh sáng cố định (xem RUNBOOK mục 4.19). Nếu đây không phải cố ý, sửa ` +
           `mood/tông màu cho khớp 1 điều kiện xuyên suốt, hoặc kiểm tra mô tả "${name}" trong ` +
           `state/settings.json có đang khoá cứng 1 điều kiện ánh sáng cụ thể trước khi generate video.`
       );

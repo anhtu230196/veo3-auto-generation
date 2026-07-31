@@ -28,8 +28,8 @@ dùng hình dung phổ biến/quen thuộc nhất được biết đến rộng 
 
 NHIỀU MỐC TUỔI CỦA CÙNG 1 NGƯỜI: nếu truyện mô tả rõ cùng 1 nhân vật ở các giai đoạn cuộc đời khác biệt rõ
 rệt (trẻ em/thiếu niên/trưởng thành/già), trả về NHIỀU entry riêng cho người đó (mỗi entry 1 mốc tuổi, tên
-phân biệt rõ mốc tuổi, vd "Young Christopher" và "Christopher" và "Older Christopher" — xem quy tắc TÊN
-NGẮN CHO NHÂN VẬT NỔI TIẾNG ngay dưới đây để biết vì sao KHÔNG dùng họ "Columbus" trong tên). Ở TẤT CẢ các
+phân biệt rõ mốc tuổi, vd "Young Elias" và "Elias" và "Older Elias" — xem quy tắc TÊN
+NGẮN CHO NHÂN VẬT NỔI TIẾNG ngay dưới đây để biết vì sao KHÔNG dùng họ đầy đủ trong tên). Ở TẤT CẢ các
 mốc tuổi, PHẢI giữ nguyên cùng 1 khuôn mặt và kiểu tóc cốt lõi (hình dáng tóc, màu tóc gốc, cấu trúc khuôn
 mặt) — chỉ được đổi: mốc trẻ em → tỉ lệ cơ thể/khuôn mặt nhỏ hơn, tròn hơn (giữ nguyên hình dáng tóc, thu
 nhỏ theo tỉ lệ); mốc già → giữ nguyên hình dáng tóc nhưng đổi màu tóc sang bạc/trắng, thêm nếp nhăn, dáng
@@ -50,17 +50,16 @@ TỪNG người một xem có phải người thật/lịch sử/công chúng c�
 đợi đến lúc bị Flow từ chối mới sửa từng trường hợp một.
 
 CÁCH 1 — nhân vật CHÍNH của câu chuyện (protagonist): đặt tên Character asset CHỈ bằng tên riêng, bỏ hẳn họ
-(vd "Christopher" — không có "Columbus"). Xác nhận trực tiếp qua render thật: đổi CÙNG 1 Character asset
+(vd "Elias" — không có họ đầy đủ). Xác nhận trực tiếp qua render thật: đổi CÙNG 1 Character asset
 (cùng mô tả ngoại hình, cùng người) từ tên đầy đủ sang tên riêng đơn lẻ là đủ để hết bị chặn. Áp dụng nhất
-quán cho MỌI mốc tuổi: "Young Christopher"/"Christopher"/"Older Christopher", không phải "Young
-Columbus"/"Christopher Columbus"/"Older Columbus" (xem mục NHIỀU MỐC TUỔI ở trên).
+quán cho MỌI mốc tuổi: "Young Elias"/"Elias"/"Older Elias", không phải tên đầy đủ kèm họ ở bất kỳ mốc nào
+(xem mục NHIỀU MỐC TUỔI ở trên).
 
 CÁCH 2 — NGƯỜI THÂN (cha/mẹ/anh/chị/em/con/vợ/chồng...) của nhân vật CHÍNH: đặt tên theo QUAN HỆ SỞ HỮU với
-nhân vật chính, vd "Columbus's Brother", "Columbus's Father" — TUYỆT ĐỐI KHÔNG dùng tên lịch sử thật của họ
-(vd KHÔNG dùng "Bartholomew Columbus", đã xác nhận trực tiếp vẫn bị chặn dù bản thân Bartholomew không nổi
-tiếng độc lập). Nếu nhân vật chính đã đổi sang tên ngắn (Cách 1), có thể dùng tên ngắn đó trong cụm quan hệ
-sở hữu thay vì họ đầy đủ (vd "Christopher's Brother") để nhất quán, dù "Columbus's Brother" một mình cũng
-đã xác nhận KHÔNG bị chặn.
+nhân vật chính, vd "Elias's Brother", "Elias's Father" — TUYỆT ĐỐI KHÔNG dùng tên lịch sử thật của họ (đã
+xác nhận trực tiếp: dùng họ đầy đủ của người thân vẫn bị chặn dù bản thân người đó không nổi tiếng độc
+lập). Nếu nhân vật chính đã đổi sang tên ngắn (Cách 1), dùng tên ngắn đó trong cụm quan hệ sở hữu để nhất
+quán (vd "Elias's Brother").
 
 CÁCH 3 — BẤT KỲ nhân vật lịch sử/công chúng có thật KHÁC trong dàn nhân vật, KHÔNG PHẢI nhân vật chính LẪN
 KHÔNG PHẢI người thân của họ (vd vua, hoàng hậu, nhà tài trợ/quan chức, đồng đội/đối thủ, nhân chứng độc

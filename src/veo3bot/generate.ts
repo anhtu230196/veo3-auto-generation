@@ -37,11 +37,11 @@ const GENERATE_TIMEOUT_MS = 3 * 60 * 1000;
 // rồi chốt luôn — không đủ nếu project đã tích luỹ nhiều media khiến trang tải lại chậm. Đổi
 // sang chờ trang sẵn sàng (Add Media hiện ra) rồi POLL thêm 1 khoảng đủ dài trước khi kết luận
 // lỗi thật (xem generateOneClip bên dưới).
-// RÚT NGẮN (2026-07-20, theo yêu cầu người dùng sau khi quan sát trực tiếp reload-recheck quá
-// lâu ở project Bắc Cực) — từ 90s xuống 20s. Đánh đổi CÓ CHỦ Ý: chấp nhận rủi ro bỏ lỡ 1 số
-// trường hợp video/Failed xuất hiện muộn hơn 20s sau khi trang sẵn sàng (rơi vào nhánh retry
-// toàn bộ ở processQueue thay vì được cứu ở đây), đổi lấy tổng thời gian generate 264 cảnh nhanh
-// hơn đáng kể. Nếu sau này thấy tỉ lệ retry-toàn-bộ quá cao, cân nhắc tăng lại.
+// RÚT NGẮN (theo yêu cầu người dùng sau khi quan sát trực tiếp reload-recheck quá lâu) — từ 90s
+// xuống 20s. Đánh đổi CÓ CHỦ Ý: chấp nhận rủi ro bỏ lỡ 1 số trường hợp video/Failed xuất hiện
+// muộn hơn 20s sau khi trang sẵn sàng (rơi vào nhánh retry toàn bộ ở processQueue thay vì được
+// cứu ở đây), đổi lấy tổng thời gian generate nhanh hơn đáng kể cho project nhiều cảnh. Nếu sau
+// này thấy tỉ lệ retry-toàn-bộ quá cao, cân nhắc tăng lại.
 const RELOAD_RECHECK_TIMEOUT_MS = 20 * 1000;
 // Thời gian chờ "Add Media" xuất hiện lại sau reload — cùng lý do rút ngắn ở trên, từ 90s xuống 30s.
 const RELOAD_READY_TIMEOUT_MS = 30 * 1000;
@@ -209,9 +209,9 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
     }
     await search.fill(name);
 
-    // XÁC NHẬN TRỰC TIẾP (2026-07-18, cảnh #7, prop "Santa María", xem RUNBOOK mục 4.25 cập
-    // nhật): search "Santa María" khớp CẢ hàng trăm clip/ảnh khác có nhắc cụm từ đó trong
-    // prompt (không chỉ đúng 1 asset tên "Santa María"), danh sách kết quả dùng react-virtuoso
+    // XÁC NHẬN TRỰC TIẾP (1 Prop có tên là cụm từ phổ biến, xem RUNBOOK mục 4.25): search
+    // 1 tên phổ biến khớp CẢ hàng trăm clip/ảnh khác có nhắc cụm từ đó trong
+    // prompt (không chỉ đúng 1 asset trùng tên), danh sách kết quả dùng react-virtuoso
     // (ảo hoá — chỉ RENDER item đang ở viewport, `padding-bottom` phản ánh ~640 item CHƯA render
     // phía dưới). Sort mặc định "Recent" đẩy asset tạo từ đầu dự án xuống tít cuối, ngoài tầm với
     // dù đợi bao lâu nếu không cuộn. Thử đổi sort sang "Name/A-Z" trước (best-effort, im lặng bỏ
@@ -294,7 +294,7 @@ async function fillPromptWithMentions(page: Page, prompt: VeoPrompt): Promise<vo
   // VÌ SAO BỎ ĐƯỢC INLINE (cơ chế inline vốn sinh ra để tránh bộ lọc "prominent people" quét tên
   // nhân vật lịch sử THẬT trong text thô): quy trình viết prompt HIỆN NAY (skill flow-historical +
   // CHARACTER_EXTRACTION_GUIDE) đã BẮT BUỘC khử-định-danh MỌI tên nhân vật thành tên riêng đơn/nhãn
-  // vai trò (Frederick, Robert, The Financier... — mục 4.28) CHÍNH XÁC để tên thô không kích hoạt bộ
+  // vai trò (xem mục 4.28/4.40) CHÍNH XÁC để tên thô không kích hoạt bộ
   // lọc. Khi thực hành này được tuân thủ (nó là BẮT BUỘC), tên thô trong text luôn an toàn → inline
   // trở nên thừa. Nếu 1 project tương lai lỡ dùng tên lịch sử ĐẦY ĐỦ, sửa ở KHÂU ĐẶT TÊN (khử định
   // danh) chứ KHÔNG quay lại inline dễ vỡ.

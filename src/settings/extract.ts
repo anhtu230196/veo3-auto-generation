@@ -25,4 +25,4 @@ Mô tả này dùng làm ảnh tham chiếu bối cảnh xuyên suốt video (Se
 và KHÔNG được đổi giữa các cảnh dùng lại bối cảnh này.
 CHỈ định rõ tông màu/ánh sáng cố định (vd "at night", "under moonlight") NẾU bối cảnh đó CHỈ xuất hiện ở
 1 điều kiện ánh sáng xuyên suốt câu chuyện — nếu bối cảnh dùng ở CẢ ngày lẫn đêm, để mô tả TRUNG LẬP ánh
-sáng, không chỉ định thời điểm cụ thể (xem RUNBOOK.md mục 4.19, bug Setting "Pinta Deck").`;
+sáng, không chỉ định thời điểm cụ thể (xem RUNBOOK.md mục 4.19).`;

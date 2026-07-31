@@ -14,7 +14,7 @@ const POLL_INTERVAL_MS = 4000;
 const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
 /**
- * XÁC NHẬN TRỰC TIẾP (2026-07-20, project "Cuộc đua Bắc Cực") — cùng lớp bug đã xác nhận cho
+ * XÁC NHẬN TRỰC TIẾP (project ~20+ asset) — cùng lớp bug đã xác nhận cho
  * video trong generate.ts::firstVideoSrc (mục 4.33 RUNBOOK): lưới media ảo hoá (`react-virtuoso`)
  * chỉ render 1 SỐ LƯỢNG CỐ ĐỊNH phần tử trong viewport (quan sát thực tế: luôn đúng 5), bất kể
  * project có bao nhiêu ảnh — thêm 1 ảnh mới ở ĐẦU danh sách thì 1 ảnh cũ bị đẩy khỏi vùng render

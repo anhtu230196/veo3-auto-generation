@@ -39,7 +39,7 @@ export const CHARACTER_SHEET_STYLE_BLOCK =
  * Dùng khi gửi prompt tạo Setting asset — KHÁC HẲN Character/Prop: xác nhận trực tiếp qua
  * ảnh render thật (2026-07-17), dùng chung CHARACTER_SHEET_STYLE_BLOCK cho Setting ra kết quả
  * SAI — nền xanh (đáng lẽ Setting phải LÀ nền thật) và tự chèn thêm người/turnaround vào ảnh
- * bối cảnh (vd "Pinta Deck" ra kèm 2 người "Front View"/"3/4 View" như đang tạo nhân vật).
+ * bối cảnh (vd 1 Setting boong tàu ra kèm 2 người "Front View"/"3/4 View" như đang tạo nhân vật).
  * Setting cần: ảnh nền THẬT (không nền xanh), KHÔNG có người/nhân vật nào trong khung.
  */
 export const SETTING_SHEET_STYLE_BLOCK =
@@ -79,8 +79,8 @@ export const MOTION_SUFFIX =
  * trực tiếp: prompt "a young unnamed sailor... merchant ship's deck" ra hình thủy thủ áo kẻ
  * sọc thời nay đứng cạnh container/cần cẩu cảng hiện đại, dù style đã là flat vector.
  *
- * (2026-07-31) Cả 2 project trước đó (Columbus, Bắc Cực) đã bị xoá — để trống, PHẢI điền lại
- * đúng thời đại/trang phục/phương tiện của câu chuyện mới trước khi viết prompts.json.
+ * (2026-07-31) Không còn project nào đang chạy — để trống, PHẢI điền lại đúng thời
+ * đại/trang phục/phương tiện của câu chuyện mới trước khi viết prompts.json.
  */
 export const ERA_DESCRIPTOR = "";
 
