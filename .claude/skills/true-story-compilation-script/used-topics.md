@@ -1,0 +1,11 @@
+# Chủ đề + case đã dùng (không gợi ý lại)
+
+Mỗi dòng: ngày | chủ đề video | danh sách TÊN từng case đã kể.
+
+Ghi đủ tên từng case, không chỉ tên chủ đề — vì 1 case đã dùng thì không được
+lôi lại ở tập sau dù tập đó khác chủ đề.
+
+2026-08-01 | Chết bởi chính phát minh của mình (killed by their own invention) | Franz Reichelt (áo-dù, tháp Eiffel 1912); Horace Lawson Hunley (tàu ngầm H.L. Hunley 1863); William Bullock (máy in cuộn 1867); Otto Lilienthal (tàu lượn 1896); Sylvester Roper (xe hai bánh hơi nước 1896); Aurel Vlaicu (máy bay Vlaicu II 1913); Valerian Abakovsky (toa tàu Aerowagon 1921); Jean-François Pilâtre de Rozier (khinh khí cầu lai 1785); Cowper Phipps Coles (tàu HMS Captain 1870); Henry Smolinski (ô tô bay AVE Mizar 1973); Max Valier (động cơ tên lửa 1930); Thomas Midgley Jr. (hệ ròng rọc bên giường 1944); Henry Winstanley (hải đăng Eddystone, Đại Bão 1703)
+
+<!-- Bản tiếng Việt đã viết & lưu ở narration-scripts/chet-boi-phat-minh-cua-minh/vi.md, ĐANG CHỜ user duyệt. Bản tiếng Anh CHƯA viết (chỉ viết sau khi duyệt, theo bước 5 skill). Case Karel Soucek (thùng lăn Niagara/Astrodome) đã CÂN NHẮC nhưng LOẠI vì thiên về thợ mạo hiểm, không đúng chất 'nhà phát minh' — có thể để dành cho tập chủ đề 'màn mạo hiểm chết người' sau. -->
+

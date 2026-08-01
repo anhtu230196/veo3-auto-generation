@@ -23,16 +23,22 @@ Kể từ 2026-07-31, thư mục này KHÔNG chỉ còn là pipeline video Veo3 
 lại của RUNBOOK này, mục 1-7) — nó còn đang host thêm **1 workflow hoàn toàn
 khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
 
-- **Viết kịch bản tường thuật YouTube về động vật/tự nhiên** (giọng hài
-  hước/dí dỏm) — quy trình: gợi ý chủ đề → viết bản tiếng Việt trong chat →
-  người dùng duyệt thủ công → viết lại (không dịch máy) bản tiếng Anh cho
-  ElevenLabs TTS.
+- **Viết kịch bản tường thuật YouTube dạng TUYỂN TẬP chuyện có thật** — mỗi
+  video gồm nhiều câu chuyện độc lập cùng 1 chủ đề (sinh tồn phi thường, cái
+  chết kỳ lạ, tai nạn thể thao...), ghép lại đủ ~10-12 phút (số lượng/độ dài
+  từng case KHÔNG cố định, tuỳ nội dung), giọng lạnh/khách quan, dữ kiện + số
+  liệu đã kiểm chứng làm phần việc cảm xúc. Quy trình: gợi ý chủ đề → tra cứu
+  kiểm chứng → viết bản tiếng Việt trong chat → người dùng duyệt thủ công →
+  viết lại (không dịch máy) bản tiếng Anh cho ElevenLabs TTS.
 - Toàn bộ quy trình + phong cách nằm trong skill
-  **`.claude/skills/nature-doc-narration-script/SKILL.md`** — đọc file đó
+  **`.claude/skills/true-story-compilation-script/SKILL.md`** — đọc file đó
   (không phải RUNBOOK này) khi làm việc này. File
-  `.claude/skills/nature-doc-narration-script/used-topics.md` ghi lại các chủ
-  đề đã làm để không gợi ý trùng — SKILL.md tự dặn đọc file này ở bước 0.
-  Kịch bản đã duyệt (VN + EN) được lưu vào `narration-scripts/<ten-tap>/`.
+  `.claude/skills/true-story-compilation-script/used-topics.md` ghi lại các
+  chủ đề + từng case đã dùng để không gợi ý trùng — SKILL.md tự dặn đọc file
+  này ở bước 0. Kịch bản đã duyệt (VN + EN) lưu vào
+  `narration-scripts/<ten-tap>/`.
+  *(3 thư mục kịch bản hiện có trong `narration-scripts/` viết theo 1 format
+  cũ đã ngừng dùng — chỉ còn giá trị lưu trữ, đừng lấy làm mẫu.)*
 - Không tạo state/output gì trong `state/`/`output/`/`input/` cho việc này —
   2 thư mục đó CHỈ dành cho pipeline video ở mục 1-7. Nếu người dùng nhắc tới
   "kịch bản", "chủ đề mới", "duyệt bản tiếng Anh"... nhiều khả năng đang nói
