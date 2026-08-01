@@ -98,6 +98,34 @@ export const CHARACTER_DESCRIPTION_CHECKLIST = [
 ] as const;
 
 /**
+ * ANIMAL — KHÁC nhân vật người: chân/đuôi dùng KHỐI PHẲNG CÓ ĐỘ DÀY thật, KHÔNG phải dạng que.
+ * XÁC NHẬN qua test tay (2026-08-01, chó/chim/ngựa/gấu): thử chân dạng que (giống người) trước,
+ * nhưng trông không tự nhiên với cấu trúc 4 chân/2 chân của động vật — người dùng quyết định
+ * đổi sang khối phẳng có độ dày (vẫn đơn giản hoá, không chi tiết móng/ngón/lông) cho MỌI động
+ * vật thay vì áp nguyên xi kiểu stick-limb của người.
+ *
+ * KHÔNG dùng ảnh `reference-character.jpeg` (người) làm reference khi tạo động vật — rủi ro
+ * model kéo theo tỉ lệ/dáng đứng giống người vào con vật (cùng bài học "ảnh thắng text" ở
+ * MASTER_REFERENCE_NOTE). Mỗi con vật MỚI dùng thẳng `ANIMAL_STYLE_BLOCK` bằng text (không kèm
+ * ảnh reference) — giống cách đã tạo ra ảnh master reference người ban đầu. CHƯA chốt 1 ảnh
+ * động vật cụ thể nào làm master reference cố định (khác với người) — vì mỗi loài có cấu trúc
+ * cơ thể khác nhau (4 chân/2 chân+cánh...), nên hiện dùng chung 1 block text tái sử dụng được
+ * cho MỌI loài, không neo theo 1 ảnh cụ thể. Nếu sau này phát hiện lệch phong cách giữa các
+ * loài, cân nhắc chốt thêm ảnh reference riêng theo TỪNG NHÓM cấu trúc cơ thể (vd 1 ảnh chuẩn
+ * cho nhóm 4 chân, 1 ảnh chuẩn cho nhóm chim/2 chân+cánh).
+ */
+export const ANIMAL_STYLE_BLOCK =
+  "Minimalist animal character design, flat 2D vector art style, bold uniform-width black " +
+  "outlines, completely flat colors, no shading, no gradients, no textures. Plain solid " +
+  "single-color background, no scenery. Simplified head built from basic geometric shapes " +
+  "(species-appropriate snout/beak shape, simple flat ear shapes if any, one or two black dot " +
+  "eyes, no other facial detail). Flat-colored simplified body shape. Legs drawn as simple " +
+  "flat-colored solid shapes (short rounded cylinders/rectangles with real width and volume — " +
+  "NOT thin stick lines), each ending in a small simple rounded flat paw/hoof shape with no " +
+  "toe or claw detail. Tail matching the same solid-shape treatment (not a thin line). " +
+  "Standing pose, side profile view, full body visible.";
+
+/**
  * BACKGROUND — quy tắc chung cho MỌI ảnh bối cảnh (Setting), áp dụng cùng với BASE_STYLE_BLOCK.
  * Đã xác nhận qua nhiều cảnh test (phố gỗ, bến tàu, nội thất cung điện, làng adobe, quảng
  * trường thị trấn, hội trường nghị viện) — 2026-08-01.
@@ -163,6 +191,11 @@ export const EYE_LEVEL_CAMERA_BLOCK =
   "upon.";
 
 /**
+ * Ví dụ dùng ANIMAL_STYLE_BLOCK (không ráp thêm gì khác, không kèm ảnh reference):
+ *
+ *   [ANIMAL_STYLE_BLOCK]
+ *   <mô tả loài + đặc điểm riêng, vd: "Simplified bear head... stockier and rounder body...">
+ *
  * Ví dụ ráp 1 prompt Background hoàn chỉnh (kiến trúc, có chỗ đặt nhân vật):
  *
  *   [BASE_STYLE_BLOCK]

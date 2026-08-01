@@ -1627,6 +1627,13 @@ lệch nhau về sau):
 - `RESERVE_CHARACTER_SPACE_BLOCK` — chừa sàn/nền trống để ghép nhân vật sau.
 - `EYE_LEVEL_CAMERA_BLOCK` — ép góc máy ngang tầm mắt, không nhìn chéo từ trên
   xuống (nếu không, sàn trước sẽ sai góc để đặt nhân vật đứng vào).
+- `ANIMAL_STYLE_BLOCK` — đã test qua chó/chim/ngựa/gấu. KHÁC nhân vật người:
+  chân/đuôi dùng khối phẳng có độ dày thật, KHÔNG dùng dạng que như người (thử
+  dạng que trước, không tự nhiên với cấu trúc 4 chân/2 chân của động vật).
+  KHÔNG dùng ảnh `reference-character.jpeg` (người) làm reference cho động
+  vật — dùng thẳng block text, không kèm ảnh, để tránh model kéo tỉ lệ giống
+  người vào con vật. Chưa chốt 1 ảnh động vật cụ thể làm master reference cố
+  định (khác người) vì mỗi loài cấu trúc cơ thể khác nhau.
 
 **Quyết định về nơi lưu quy tắc (2026-08-01)**: người dùng chọn lưu tạm trong
 code (`styleDNA.ts`) + RUNBOOK này, CHƯA tạo skill riêng cho việc viết prompt
@@ -1648,9 +1655,8 @@ nghị viện hình vòng cung) — người dùng xác nhận hài lòng với 
 lẫn background.
 
 **Việc còn chưa làm** (bước tiếp theo, theo đúng thứ tự người dùng muốn):
-1. Test thêm nhân vật động vật (chưa làm — nhân vật người đã test khá đủ:
-   thường dân, quân nhân, nhân vật lịch sử khác nhau, đều dùng chung master
-   reference + checklist ở trên).
+1. Test nhân vật vật dụng/đạo cụ (Prop) — CHƯA làm (người + động vật đã test
+   xong, xem `ANIMAL_STYLE_BLOCK` ở trên).
 2. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
    1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không.
 3. Viết automation Playwright thật để gọi Nano Banana tự động (tương tự
