@@ -22,21 +22,80 @@ export const BASE_STYLE_BLOCK =
   "Completely flat color fills, no shading, no gradients, no drop shadows.";
 
 /**
- * CHARACTER — đã xác nhận qua test tay (2026-08-01): mô tả NGẮN GỌN, cụ thể từng bộ phận hiệu
- * quả hơn hẳn mô tả dài dòng mơ hồ (vd "limbs drawn as simple lines" bị bỏ qua, còn "thin
- * stick-line arms and legs with no hands or feet detail" thì được tuân theo đúng).
- *
- * BÀI HỌC QUAN TRỌNG NHẤT: khi tạo nhân vật MỚI, ảnh tham chiếu (image-to-image) THẮNG text —
- * nếu ảnh mẫu gốc có tay chân vẽ đầy đủ, nhân vật mới dùng ảnh đó làm reference cũng ra tay
- * chân đầy đủ dù prompt chữ ghi khác đi (cùng bài học đã có ở mục 4.12 RUNBOOK cho Veo3
- * Ingredient). Vì vậy: LUÔN đính kèm 1 ảnh nhân vật mẫu đã đúng style khi tạo nhân vật mới,
- * KHÔNG chỉ dựa vào riêng đoạn text này.
+ * CHARACTER — đã dùng để tạo ra ảnh MASTER REFERENCE ban đầu (2026-08-01, mô tả NGẮN GỌN, cụ
+ * thể từng bộ phận hiệu quả hơn hẳn mô tả dài dòng mơ hồ). CHỈ CÒN GIÁ TRỊ LỊCH SỬ/tài liệu
+ * tham khảo — KHÔNG dùng lại để tạo nhân vật MỚI nữa, xem `CHARACTER_PROMPT_PREFIX` +
+ * `MASTER_REFERENCE_NOTE` bên dưới cho quy trình chuẩn hiện tại.
  */
 export const CHARACTER_STYLE_BLOCK =
   "Minimalist character design, flat 2D vector art style, bold black outlines, completely " +
   "flat colors, no shading, no gradients. Round simple head, two black dot eyes, no nose or " +
   "mouth detail, square flat-colored torso, thin stick-line arms and legs with no hands or " +
   "feet detail, simple flat hair shape on top of head. same style with reference image";
+
+/**
+ * ẢNH MASTER REFERENCE CHO NHÂN VẬT — QUYẾT ĐỊNH CUỐI CÙNG (2026-08-01): người dùng đã chốt
+ * dùng ảnh nhân vật lính gác (mũ sắt, ria mép, áo khoác xanh lá, cầm giáo) làm ẢNH THAM CHIẾU
+ * CỐ ĐỊNH cho MỌI nhân vật người sau này — CHẤP NHẬN LUÔN 2 điểm chưa hoàn hảo của chính ảnh
+ * đó thay vì tiếp tục sửa (đã thử sửa bằng text 2 lần, model vẫn tự vẽ lại y hệt — quyết định
+ * dừng lại, ưu tiên NHẤT QUÁN hơn hoàn hảo):
+ * - Tay có 1 hình cùm/bàn tay đơn giản ở đầu que (không phải chỉ 1 đường thẳng trơn).
+ * - Áo khoác có vạt loe nhẹ ở gấu (không phải hình chữ nhật phẳng tuyệt đối).
+ * MỌI nhân vật tạo SAU NÀY sẽ tự động thừa hưởng ĐÚNG 2 đặc điểm này (vì dùng ảnh làm
+ * reference) — đây là ĐÚNG Ý ĐỒ, không phải lỗi cần sửa tiếp mỗi lần.
+ *
+ * ✅ Đã lưu file thật (2026-08-01): `src/nanoBanana/reference-character.jpeg` — dùng đường dẫn
+ * này khi automation hoá bước gọi Nano Banana sau này (đính kèm file này làm ảnh reference).
+ */
+export const MASTER_REFERENCE_NOTE =
+  "Reference image: reference-character (soldier with helmet, moustache, green jacket, " +
+  "holding a spear) — the single fixed visual anchor for ALL human characters going forward. " +
+  "Its slightly-imperfect hand stump and jacket hem are INTENTIONALLY kept, not bugs to fix.";
+
+/**
+ * PREFIX CHUẨN để ghép trước mô tả nhân vật mới — dùng CHUNG cho MỌI nhân vật từ giờ trở đi,
+ * LUÔN đính kèm ảnh master reference (xem MASTER_REFERENCE_NOTE) khi gửi prompt này. Đã bỏ hẳn
+ * phần mô tả tư thế/biểu cảm/nền mặc định ("standing pose", "gentle expression", "same plain
+ * background as reference"...) khỏi phần MÔ TẢ NHÂN VẬT — để trống cho người viết prompt tự
+ * thêm tư thế/biểu cảm CỤ THỂ theo từng cảnh nếu cần, tránh lặp lại boilerplate không cần thiết.
+ *
+ * Cách dùng: `${CHARACTER_PROMPT_PREFIX} <mô tả nhân vật mới, càng ngắn gọn càng tốt>`
+ */
+export const CHARACTER_PROMPT_PREFIX =
+  "Using the exact same illustration style as the attached reference image — same bold " +
+  "uniform-width black outlines, same flat color fill with zero shading, same stick-line limb " +
+  "treatment, same simplified head/eyes, no background:";
+
+/**
+ * CHECKLIST MÔ TẢ NHÂN VẬT — xác nhận 2026-08-01 sau khi test nhân vật lịch sử (Napoleon,
+ * Thành Cát Tư Hãn, Cleopatra, Lincoln): mô tả CÀNG NGẮN, CÀNG ĐÚNG TRỌNG TÂM thì kết quả càng
+ * ổn định. CHỈ mô tả đúng các mục sau khi viết phần nối sau `CHARACTER_PROMPT_PREFIX`:
+ * - Trang phục (quần áo, phụ kiện đặc trưng cầm/đeo trên người).
+ * - Tóc (kiểu dáng, màu sắc).
+ * - Nón/mũ/khăn trùm đầu (NẾU nhân vật có đội gì đó).
+ * - Râu (NẾU nhân vật nam có râu).
+ * - Mắt (CHỈ mô tả khi nhân vật là NỮ — vd kẻ mắt, hình dáng mắt).
+ *
+ * TUYỆT ĐỐI KHÔNG mô tả:
+ * - Dáng người/tỉ lệ cơ thể (chiều cao, gầy/béo...) — ảnh MASTER REFERENCE đã cố định cấu trúc
+ *   thân hình + tay chân dạng que rồi, mô tả thêm dễ xung đột hoặc bị model tự vẽ lại thân hình
+ *   sai khác đi.
+ * - Biểu cảm khuôn mặt (vui/nghiêm nghị/tự tin...) — đây là lựa chọn RIÊNG theo từng cảnh cụ
+ *   thể sau này, không phải đặc điểm NHẬN DẠNG cố định của nhân vật, không thuộc về bước tạo
+ *   Character asset.
+ *
+ * KHÔNG dùng tên riêng người thật/nổi tiếng trong prompt (dù chỉ để mô tả, không cần đúng như
+ * bộ lọc "prominent people" của Flow) — người dùng xác nhận trực tiếp: Nano Banana/Gemini
+ * cũng chặn theo chính sách Google nếu gõ thẳng tên thật, dùng mô tả ngoại hình/trang phục để
+ * thay thế (đúng tinh thần mục 4.28/4.40 RUNBOOK, nay áp dụng luôn cho Nano Banana).
+ */
+export const CHARACTER_DESCRIPTION_CHECKLIST = [
+  "clothing (outfit + distinctive accessories worn/held)",
+  "hair (style + color)",
+  "headwear (hat/hood/headdress, only if the character wears one)",
+  "facial hair (only if male character has a beard/moustache)",
+  "eyes (only if the character is female — eyeliner, eye shape, etc.)",
+] as const;
 
 /**
  * BACKGROUND — quy tắc chung cho MỌI ảnh bối cảnh (Setting), áp dụng cùng với BASE_STYLE_BLOCK.

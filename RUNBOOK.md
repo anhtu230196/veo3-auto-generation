@@ -1603,7 +1603,22 @@ Nano Banana thật, chưa có quyết định chính thức đổi pipeline.**
 vào code tại `src/nanoBanana/styleDNA.ts`** (đọc file đó để lấy nội dung đầy
 đủ + docstring giải thích từng bài học, không lặp lại ở đây để tránh 2 nơi
 lệch nhau về sau):
-- `CHARACTER_STYLE_BLOCK` — nhân vật tay chân dạng nét đường thẳng đơn giản.
+- `CHARACTER_STYLE_BLOCK` — CHỈ còn giá trị lịch sử (dùng để tạo ra ảnh master
+  reference ban đầu), KHÔNG dùng lại để tạo nhân vật mới nữa.
+- `MASTER_REFERENCE_NOTE` — **QUYẾT ĐỊNH CUỐI CÙNG**: đã chốt 1 ảnh nhân vật cụ
+  thể (lính gác, mũ sắt, cầm giáo) làm ẢNH THAM CHIẾU CỐ ĐỊNH cho MỌI nhân vật
+  người sau này, CHẤP NHẬN LUÔN 2 điểm chưa hoàn hảo của ảnh đó (hình bàn tay ở
+  đầu que, vạt áo hơi loe) thay vì tiếp tục sửa — ưu tiên nhất quán hơn hoàn
+  hảo. File ảnh đã được lưu thật tại `src/nanoBanana/reference-character.jpeg`.
+- `CHARACTER_PROMPT_PREFIX` — câu mở đầu CHUẨN dùng cho MỌI nhân vật mới (đã bỏ
+  boilerplate tư thế/biểu cảm/nền cũ).
+- `CHARACTER_DESCRIPTION_CHECKLIST` — mô tả nhân vật mới CHỈ gồm: trang phục,
+  tóc, nón/mũ (nếu có), râu (nếu nam), mắt (CHỈ nếu nữ) — KHÔNG mô tả dáng
+  người/tỉ lệ cơ thể (ảnh reference đã cố định) hay biểu cảm (quyết định riêng
+  theo cảnh). KHÔNG dùng tên riêng người thật/nổi tiếng trong prompt — xác
+  nhận trực tiếp: Nano Banana/Gemini chặn theo chính sách Google giống bộ lọc
+  "prominent people" của Flow (mục 4.28/4.40) — dùng mô tả ngoại hình/trang
+  phục thay thế.
 - `BASE_STYLE_BLOCK`/`BACKGROUND_STYLE_BLOCK` — quy tắc chung mọi ảnh (flat
   color, outline đậm, chi tiết quy về hình khối cơ bản).
 - `NO_PERSPECTIVE_BLOCK` — chống phối cảnh hội tụ cho cảnh kiến trúc.
@@ -1612,6 +1627,12 @@ lệch nhau về sau):
 - `RESERVE_CHARACTER_SPACE_BLOCK` — chừa sàn/nền trống để ghép nhân vật sau.
 - `EYE_LEVEL_CAMERA_BLOCK` — ép góc máy ngang tầm mắt, không nhìn chéo từ trên
   xuống (nếu không, sàn trước sẽ sai góc để đặt nhân vật đứng vào).
+
+**Quyết định về nơi lưu quy tắc (2026-08-01)**: người dùng chọn lưu tạm trong
+code (`styleDNA.ts`) + RUNBOOK này, CHƯA tạo skill riêng cho việc viết prompt
+Nano Banana (khác với `flow-historical-video-prompts` là skill riêng của
+pipeline Flow) — vì hướng này vẫn đang thử nghiệm, chưa chốt chính thức. Cân
+nhắc tạo skill riêng SAU nếu quyết định chính thức theo hướng Nano Banana.
 
 **Bài học tổng quát quan trọng nhất** (áp dụng khi viết prompt tay hoặc sau
 này viết code prompt-builder): **ảnh tham chiếu (image-to-image) THẮNG mô tả
@@ -1627,13 +1648,16 @@ nghị viện hình vòng cung) — người dùng xác nhận hài lòng với 
 lẫn background.
 
 **Việc còn chưa làm** (bước tiếp theo, theo đúng thứ tự người dùng muốn):
-1. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
+1. Test thêm nhân vật động vật (chưa làm — nhân vật người đã test khá đủ:
+   thường dân, quân nhân, nhân vật lịch sử khác nhau, đều dùng chung master
+   reference + checklist ở trên).
+2. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
    1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không.
-2. Viết automation Playwright thật để gọi Nano Banana tự động (tương tự
+3. Viết automation Playwright thật để gọi Nano Banana tự động (tương tự
    `src/veo3bot/` cho Flow) — CHƯA có dòng code nào cho bước này, kể cả
    `src/nanoBanana/styleDNA.ts` mới chỉ có các constant prompt, chưa có hàm gọi
    API/automation nào.
-3. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
+4. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
    Flow bằng bước generate ảnh Nano Banana + bước image-to-video riêng), cách
    lưu trữ ảnh đã tạo (thay thế vai trò `state/characters.json` hiện tại?), và
    validate xem bước image-to-video sau đó có giữ đúng phong cách ảnh gốc hay
