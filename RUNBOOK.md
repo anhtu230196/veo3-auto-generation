@@ -1588,3 +1588,45 @@ git track/backup bình thường, khác với ghi chú cũ của file này (đã
 cho khớp thực tế — xác nhận bằng `git ls-files`/`git check-ignore -v`
 2026-07-31). Chỉ `output/`/`output-*/`/`.env`/`.auth/` là thực sự không có
 git backup — cẩn trọng khi xoá/ghi đè các thư mục đó.
+
+## 8. Ghi chú định hướng: pipeline "tạo ảnh trước, video sau" bằng Nano Banana — CHƯA triển khai
+
+(2026-07-31) Người dùng đang cân nhắc đổi cách làm video: thay vì text-to-video
+thẳng qua Veo3/Flow (cách hiện tại, mục 1-7), sẽ dùng Nano Banana (Gemini
+2.5 Flash Image) để **tạo ảnh nhân vật/bối cảnh trước**, rồi mới đưa ảnh đó vào
+bước tạo video sau (image-to-video) — nhằm kiểm soát phong cách hình ảnh tốt
+hơn trước khi tốn credit generate video. **Đây MỚI CHỈ LÀ Ý TƯỞNG/THỬ NGHIỆM
+NGOÀI REPO (test tay trên Gemini/Nano Banana, KHÔNG qua code/automation nào ở
+đây) — chưa có quyết định chính thức đổi pipeline, chưa có dòng code nào viết
+cho hướng này.**
+
+**Bài học đã xác nhận qua thử nghiệm tay (không phải qua code)**:
+- Muốn nhân vật khác nhau vẫn giữ ĐÚNG 1 phong cách vẽ, phải dùng **ảnh tham
+  chiếu (image-to-image)** khi tạo nhân vật mới, KHÔNG chỉ lặp lại mô tả style
+  bằng chữ mỗi lần — ảnh reference "thắng" text: nếu ảnh mẫu gốc có tay chân vẽ
+  đầy đủ, nhân vật mới dùng ảnh đó làm reference cũng sẽ ra tay chân đầy đủ dù
+  prompt chữ có ghi "vẽ dạng đường thẳng đơn giản" thế nào — đúng cùng bài học
+  đã có ở mục 4.12 cho Veo3 (nội dung ảnh Ingredient LÀ đúng thứ sẽ bị kéo vào,
+  không phải chỉ là gợi ý phong cách trừu tượng).
+- Mô tả style bằng câu dài dòng, mơ hồ (vd "limbs drawn as simple lines") khó
+  được tuân theo — mô tả NGẮN GỌN, cụ thể từng bộ phận lại hiệu quả hơn nhiều.
+  **Style block đã xác nhận tạo được nhân vật đúng ý (tay chân dạng nét đường
+  thẳng, không vẽ chi tiết bàn tay/bàn chân)**:
+
+  ```
+  Minimalist character design, flat 2D vector art style, bold black outlines,
+  completely flat colors, no shading, no gradients. Round simple head, two
+  black dot eyes, no nose or mouth detail, square flat-colored torso, thin
+  stick-line arms and legs with no hands or feet detail, simple flat dark
+  hair shape on top of head, slight sideburns. same style with reference image
+  ```
+
+  Dùng kèm 1 ảnh tham chiếu đã ưng ý (không chỉ dùng prompt chữ một mình) khi
+  tạo nhân vật mới.
+
+**Việc còn chưa làm/chưa biết** (nếu quyết định theo hướng này thật, cần làm
+tiếp trước khi viết code): thiết kế lại kiến trúc pipeline (thay `@mention`
+Ingredient trong Flow bằng bước generate ảnh Nano Banana + bước image-to-video
+riêng), chọn tool/API nào gọi Nano Banana, cách lưu trữ ảnh đã tạo (thay thế
+vai trò `state/characters.json` hiện tại?), và validate xem bước image-to-video
+sau đó có giữ đúng phong cách ảnh gốc hay không (chưa test).
