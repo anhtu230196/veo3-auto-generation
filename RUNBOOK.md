@@ -1591,42 +1591,50 @@ git backup — cẩn trọng khi xoá/ghi đè các thư mục đó.
 
 ## 8. Ghi chú định hướng: pipeline "tạo ảnh trước, video sau" bằng Nano Banana — CHƯA triển khai
 
-(2026-07-31) Người dùng đang cân nhắc đổi cách làm video: thay vì text-to-video
-thẳng qua Veo3/Flow (cách hiện tại, mục 1-7), sẽ dùng Nano Banana (Gemini
-2.5 Flash Image) để **tạo ảnh nhân vật/bối cảnh trước**, rồi mới đưa ảnh đó vào
-bước tạo video sau (image-to-video) — nhằm kiểm soát phong cách hình ảnh tốt
-hơn trước khi tốn credit generate video. **Đây MỚI CHỈ LÀ Ý TƯỞNG/THỬ NGHIỆM
-NGOÀI REPO (test tay trên Gemini/Nano Banana, KHÔNG qua code/automation nào ở
-đây) — chưa có quyết định chính thức đổi pipeline, chưa có dòng code nào viết
-cho hướng này.**
+Người dùng đang cân nhắc đổi cách làm video: thay vì text-to-video thẳng qua
+Veo3/Flow (cách hiện tại, mục 1-7), sẽ dùng Nano Banana (Gemini 2.5 Flash
+Image) để **tạo ảnh nhân vật/bối cảnh trước**, rồi mới đưa ảnh đó vào bước tạo
+video sau (image-to-video) — nhằm kiểm soát phong cách hình ảnh tốt hơn trước
+khi tốn credit generate video. **Đây MỚI CHỈ LÀ Ý TƯỞNG/THỬ NGHIỆM (test tay
+trên Gemini/Nano Banana ngoài repo) — CHƯA có automation Playwright nào gọi
+Nano Banana thật, chưa có quyết định chính thức đổi pipeline.**
 
-**Bài học đã xác nhận qua thử nghiệm tay (không phải qua code)**:
-- Muốn nhân vật khác nhau vẫn giữ ĐÚNG 1 phong cách vẽ, phải dùng **ảnh tham
-  chiếu (image-to-image)** khi tạo nhân vật mới, KHÔNG chỉ lặp lại mô tả style
-  bằng chữ mỗi lần — ảnh reference "thắng" text: nếu ảnh mẫu gốc có tay chân vẽ
-  đầy đủ, nhân vật mới dùng ảnh đó làm reference cũng sẽ ra tay chân đầy đủ dù
-  prompt chữ có ghi "vẽ dạng đường thẳng đơn giản" thế nào — đúng cùng bài học
-  đã có ở mục 4.12 cho Veo3 (nội dung ảnh Ingredient LÀ đúng thứ sẽ bị kéo vào,
-  không phải chỉ là gợi ý phong cách trừu tượng).
-- Mô tả style bằng câu dài dòng, mơ hồ (vd "limbs drawn as simple lines") khó
-  được tuân theo — mô tả NGẮN GỌN, cụ thể từng bộ phận lại hiệu quả hơn nhiều.
-  **Style block đã xác nhận tạo được nhân vật đúng ý (tay chân dạng nét đường
-  thẳng, không vẽ chi tiết bàn tay/bàn chân)**:
+**Các style block đã test tay + được người dùng xác nhận hài lòng, đã đúc kết
+vào code tại `src/nanoBanana/styleDNA.ts`** (đọc file đó để lấy nội dung đầy
+đủ + docstring giải thích từng bài học, không lặp lại ở đây để tránh 2 nơi
+lệch nhau về sau):
+- `CHARACTER_STYLE_BLOCK` — nhân vật tay chân dạng nét đường thẳng đơn giản.
+- `BASE_STYLE_BLOCK`/`BACKGROUND_STYLE_BLOCK` — quy tắc chung mọi ảnh (flat
+  color, outline đậm, chi tiết quy về hình khối cơ bản).
+- `NO_PERSPECTIVE_BLOCK` — chống phối cảnh hội tụ cho cảnh kiến trúc.
+- `LAYERED_DEPTH_LANDSCAPE_NOTE` — cho phép chiều sâu kiểu xếp lớp ở cảnh
+  phong cảnh thiên nhiên (không bị cấm như kiến trúc).
+- `RESERVE_CHARACTER_SPACE_BLOCK` — chừa sàn/nền trống để ghép nhân vật sau.
+- `EYE_LEVEL_CAMERA_BLOCK` — ép góc máy ngang tầm mắt, không nhìn chéo từ trên
+  xuống (nếu không, sàn trước sẽ sai góc để đặt nhân vật đứng vào).
 
-  ```
-  Minimalist character design, flat 2D vector art style, bold black outlines,
-  completely flat colors, no shading, no gradients. Round simple head, two
-  black dot eyes, no nose or mouth detail, square flat-colored torso, thin
-  stick-line arms and legs with no hands or feet detail, simple flat dark
-  hair shape on top of head, slight sideburns. same style with reference image
-  ```
+**Bài học tổng quát quan trọng nhất** (áp dụng khi viết prompt tay hoặc sau
+này viết code prompt-builder): **ảnh tham chiếu (image-to-image) THẮNG mô tả
+bằng chữ** — nếu ảnh mẫu gốc sai chi tiết gì (vd tay chân vẽ đầy đủ), ảnh mới
+dùng nó làm reference sẽ lặp lại đúng lỗi đó dù prompt chữ ghi khác đi. Cùng
+bài học đã có ở mục 4.12 cho Veo3 Ingredient (nội dung ảnh LÀ đúng thứ sẽ bị
+kéo vào, không chỉ là gợi ý phong cách trừu tượng) — nên PHẢI có 1 ảnh mẫu gốc
+đã đúng 100% trước khi dùng làm reference hàng loạt.
 
-  Dùng kèm 1 ảnh tham chiếu đã ưng ý (không chỉ dùng prompt chữ một mình) khi
-  tạo nhân vật mới.
+**Đã test qua nhiều loại cảnh** (phố gỗ thuộc địa, bến tàu/biển, nội thất cung
+điện, làng adobe, quảng trường thị trấn có toà nhà chính quyền, hội trường
+nghị viện hình vòng cung) — người dùng xác nhận hài lòng với cả style nhân vật
+lẫn background.
 
-**Việc còn chưa làm/chưa biết** (nếu quyết định theo hướng này thật, cần làm
-tiếp trước khi viết code): thiết kế lại kiến trúc pipeline (thay `@mention`
-Ingredient trong Flow bằng bước generate ảnh Nano Banana + bước image-to-video
-riêng), chọn tool/API nào gọi Nano Banana, cách lưu trữ ảnh đã tạo (thay thế
-vai trò `state/characters.json` hiện tại?), và validate xem bước image-to-video
-sau đó có giữ đúng phong cách ảnh gốc hay không (chưa test).
+**Việc còn chưa làm** (bước tiếp theo, theo đúng thứ tự người dùng muốn):
+1. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
+   1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không.
+2. Viết automation Playwright thật để gọi Nano Banana tự động (tương tự
+   `src/veo3bot/` cho Flow) — CHƯA có dòng code nào cho bước này, kể cả
+   `src/nanoBanana/styleDNA.ts` mới chỉ có các constant prompt, chưa có hàm gọi
+   API/automation nào.
+3. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
+   Flow bằng bước generate ảnh Nano Banana + bước image-to-video riêng), cách
+   lưu trữ ảnh đã tạo (thay thế vai trò `state/characters.json` hiện tại?), và
+   validate xem bước image-to-video sau đó có giữ đúng phong cách ảnh gốc hay
+   không (chưa test).
