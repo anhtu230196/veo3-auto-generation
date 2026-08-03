@@ -8,3 +8,7 @@ output-*/
 .auth/
 # input/*.txt
 *.log
+
+# Ảnh chụp màn hình do các script khảo sát/test sinh ra — chỉ để soi bằng mắt lúc chạy,
+# không phải tài sản của repo.
+scripts/*.png

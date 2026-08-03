@@ -1,5 +1,7 @@
 import type { Page } from "playwright";
+import path from "node:path";
 import { debugCapture, debugLog } from "./debug.js";
+import { dismissOnboardingDialog } from "./project.js";
 
 // XÁC NHẬN TRỰC TIẾP (2026-07-18): "Spanish Royal Banner" (Prop quốc kỳ/biểu tượng) vẫn CHƯA
 // xong sau đủ 3 phút + reload-recheck cũ (chỉ chờ thêm 3 giây cố định) — throw oan dù người
@@ -48,12 +50,125 @@ async function firstImageSrc(page: Page): Promise<string | undefined> {
  * (2026-07-17): dùng chung 1 style block cho cả Setting lẫn Prop ra kết quả SAI cho Setting
  * (nền xanh + tự chèn người vào ảnh bối cảnh).
  */
+/**
+ * Đính 1 ảnh reference vào prompt hiện tại (image-to-image) — BẮT BUỘC cho luồng Character
+ * của Nano Banana, nơi `reference-character.jpeg` là thứ neo toàn bộ phong cách nhân vật
+ * (xem `src/nanoBanana/styleDNA.ts::MASTER_REFERENCE_NOTE`).
+ *
+ * Đường đi đã khảo sát trực tiếp trên UI thật (2026-08-02, RUNBOOK 8.1):
+ *   nút `+` trong THANH PROMPT (accessible name "add_2 Create" — KHÔNG phải nút
+ *   "add Add Media" ở sidebar) → bảng chọn media → **CLICK VÀO CARD LÀ ĐÍNH XONG LUÔN**.
+ *
+ * ⚠️ BẪY ĐÃ DÍNH: bảng có nút "Add to Prompt" ở góc dưới phải, rất dễ tưởng đó là bước
+ * xác nhận bắt buộc. THỰC TẾ (xác nhận bằng scripts/inspect-picker.ts): ngay khi click vào
+ * card (`div[role="option"]`), Flow đính ảnh vào prompt và ĐÓNG LUÔN bảng — nút "Add to
+ * Prompt" BIẾN MẤT. Code bản đầu click card rồi mới đi tìm "Add to Prompt" nên timeout 15s
+ * dù thao tác đã thành công. Vẫn giữ nhánh bấm nút đó làm dự phòng, phòng biến thể UI khác.
+ *
+ * Tối ưu: TRA THEO TÊN FILE TRƯỚC khi upload. Ảnh reference dùng lại cho MỌI nhân vật, nên
+ * từ nhân vật thứ 2 trở đi nó đã nằm sẵn trong Uploads của project — upload lại mỗi lần sẽ
+ * đẻ ra hàng loạt bản trùng (đúng lớp lỗi đã gặp ở mục 4.15/4.45).
+ */
+export async function attachReferenceImage(page: Page, referenceImagePath: string): Promise<void> {
+  const fileName = path.basename(referenceImagePath);
+
+  await page.locator('button:has-text("add_2")').first().click({ timeout: 15000 });
+  await page.waitForTimeout(1500);
+
+  const card = page.locator(`text=${fileName}`).first();
+  if (await card.count()) {
+    debugLog("reference", `"${fileName}" đã có sẵn trong project — dùng lại, không upload nữa`);
+  } else {
+    debugLog("reference", `chưa có "${fileName}" trong project — đang upload`);
+    await page.locator('input[type="file"]').first().setInputFiles(referenceImagePath);
+    await card.waitFor({ state: "visible", timeout: 90000 });
+    await page.waitForTimeout(2000); // chờ Flow xử lý xong file vừa nạp
+  }
+
+  await card.click();
+  await page.waitForTimeout(1500);
+
+  // Dự phòng: nếu biến thể UI nào đó VẪN còn nút "Add to Prompt" sau khi chọn card thì bấm.
+  const addToPrompt = page.getByRole("button", { name: /add to prompt/i }).first();
+  if (await addToPrompt.count()) {
+    await addToPrompt.click({ timeout: 10000 }).catch(() => {});
+    await page.waitForTimeout(1200);
+  }
+
+  // XÁC MINH THẬT SỰ ĐÃ ĐÍNH — cùng tinh thần mục 4.1 (đếm chip @mention): nếu ảnh reference
+  // không đính được mà vẫn chạy tiếp, Nano Banana sẽ vẽ nhân vật KHÔNG theo phong cách gốc,
+  // và ta chỉ phát hiện khi soi ảnh bằng mắt (tốn credit + rất dễ lọt).
+  // Tín hiệu dùng: nút "Clear prompt" chỉ xuất hiện khi prompt CÓ nội dung. Vì hàm này LUÔN
+  // chạy TRƯỚC bước gõ chữ, lúc này prompt chưa có text — nên nút đó xuất hiện đồng nghĩa
+  // với "đã có ảnh đính vào".
+  const clearPrompt = page.getByRole("button", { name: /clear prompt/i }).first();
+  await clearPrompt.waitFor({ state: "visible", timeout: 10000 }).catch(() => {});
+  if (!(await clearPrompt.count())) {
+    await debugCapture(page, `reference-attach-failed-${fileName}`);
+    throw new Error(
+      `Đính ảnh reference "${fileName}" thất bại — không thấy dấu hiệu prompt có nội dung ` +
+        `sau khi chọn card. Kiểm tra ảnh debug.`
+    );
+  }
+  debugLog("reference", `đã đính "${fileName}" vào prompt`);
+}
+
+/**
+ * Đính 1 hoặc NHIỀU asset ĐÃ CÓ SẴN trong Flow vào prompt, tra theo TÊN (khác
+ * `attachReferenceImage` vốn upload 1 file từ đĩa lên).
+ *
+ * Dùng khi cần ghép nhiều asset đã tạo vào 1 ảnh mới — ví dụ cho nhân vật đã có mặc bộ đồ
+ * đã có: đính cả "Tailor Inventor" lẫn "Parachute Suit" rồi mô tả tư thế mong muốn.
+ *
+ * ⚠️ PHẢI MỞ LẠI BẢNG CHỌN CHO TỪNG ASSET: click vào 1 card là Flow đính xong và ĐÓNG LUÔN
+ * bảng (xem docstring `attachReferenceImage`) — không chọn được nhiều card trong 1 lần mở.
+ *
+ * ⚠️ Ô "Search assets" là BẮT BUỘC khi project đã nhiều media: lưới media dùng virtualized
+ * list (mục 4.25/4.33/4.45), asset cần tìm có thể chưa được render nếu chỉ cuộn/tìm mù.
+ */
+export async function attachExistingAssets(page: Page, names: string[]): Promise<void> {
+  for (const assetName of names) {
+    await page.locator('button:has-text("add_2")').first().click({ timeout: 15000 });
+    await page.waitForTimeout(1200);
+
+    const search = page.getByRole("textbox", { name: /search assets/i }).first();
+    if (await search.count()) {
+      await search.fill(assetName);
+      await page.waitForTimeout(1500);
+    }
+
+    const card = page.locator('div[role="option"]', { hasText: assetName }).first();
+    if (!(await card.count())) {
+      await debugCapture(page, `attach-asset-not-found-${assetName}`);
+      throw new Error(
+        `Không tìm thấy asset tên "${assetName}" trong bảng chọn media của Flow — kiểm tra ` +
+          `đã tạo và đổi tên đúng chưa.`
+      );
+    }
+    await card.click();
+    await page.waitForTimeout(1500);
+
+    // Bảng phải đóng lại = đã đính. Còn thấy card nghĩa là click không ăn.
+    if (await page.locator('div[role="option"]').first().count()) {
+      await debugCapture(page, `attach-asset-panel-still-open-${assetName}`);
+      throw new Error(`Đính asset "${assetName}" thất bại — bảng chọn media vẫn mở.`);
+    }
+    debugLog("reference", `đã đính asset "${assetName}"`);
+  }
+}
+
 export async function createImageIngredient(
   page: Page,
   name: string,
   description: string,
   styleBlock: string,
-  projectUrl: string
+  projectUrl: string,
+  /**
+   * Đường dẫn ảnh reference (image-to-image). Bỏ trống = tạo từ prompt CHỮ thuần (đúng
+   * cho Prop/Setting/động vật — xem ghi chú trong styleDNA.ts: KHÔNG đính ảnh nhân vật
+   * vào prop/động vật, rủi ro model kéo tỉ lệ người vào vật thể).
+   */
+  referenceImagePath?: string
 ): Promise<void> {
   // Pill hiển thị mode/tỷ lệ khung hình hiện tại — cùng selector đã xác nhận trong
   // generate.ts::ensureModelAndDuration (icon "crop_16_9" luôn xuất hiện, duy nhất TRƯỚC khi
@@ -67,14 +182,23 @@ export async function createImageIngredient(
     // reload xoá mất trạng thái lỗi thật trước khi kịp chụp nếu chụp SAU.
     await debugCapture(page, `pre-reload-pill-stuck-${name}`);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+    // Modal onboarding hiện lại sau reload và chặn mọi click (RUNBOOK 8.1).
+    await dismissOnboardingDialog(page);
     await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
     await pill.click({ timeout: 15000 });
   }
   await page.waitForTimeout(500);
 
-  // Chuyển sang tab Image, số lượng 1 — XÁC NHẬN TRỰC TIẾP qua codegen thật.
+  // Chuyển sang tab Image, số lượng 1.
+  // ⚠️ UI ĐÃ ĐỔI TÊN TAB SỐ LƯỢNG (xác nhận trực tiếp 2026-08-02 qua
+  // scripts/inspect-flow-image-ui.ts): danh sách tab thật hiện là
+  //   image Image · videocam Video · crop_free Frames · chrome_extension Ingredients
+  //   crop_9_16 9:16 · crop_16_9 16:9 · 4s · 6s · 8s · 10s · x1 · x2 · x3 · x4
+  // Tức là tab số lượng tên **"x1"**, KHÔNG phải "1x" như codegen cũ ghi (và như RUNBOOK
+  // 4.10 vẫn chép lại). Tên cũ làm click timeout 30s ngay lần chạy đầu.
+  // Chấp nhận CẢ HAI tên để không vỡ nếu Google đổi lại — regex khớp cả "x1" lẫn "1x".
   await page.getByRole("tab", { name: "image Image" }).click();
-  await page.getByRole("tab", { name: "1x" }).click();
+  await page.getByRole("tab", { name: /^(x1|1x)$/ }).click({ timeout: 15000 });
 
   // THIẾU SÓT ĐÃ SỬA: quên đóng bảng cài đặt (Radix popper) sau khi chọn xong — bảng còn mở
   // che mất ô nhập prompt bên dưới, khiến click bị chặn (pointer-events intercepted), giống
@@ -88,6 +212,20 @@ export async function createImageIngredient(
   await promptBox.click();
   await page.keyboard.press("ControlOrMeta+A");
   await page.keyboard.press("Backspace");
+
+  // THỨ TỰ QUAN TRỌNG — đính ảnh SAU khi đã xoá sạch ô prompt, TRƯỚC khi gõ chữ:
+  // - Đính TRƯỚC bước xoá: `Ctrl+A` + `Backspace` có nguy cơ xoá luôn ảnh vừa đính (ảnh là
+  //   một phần nội dung prompt — chính vì thế nút "Clear prompt" mới hiện ra khi đính xong).
+  // - Đính SAU khi gõ chữ: mở/đóng bảng chọn media có nguy cơ làm rớt text đã gõ, đúng lớp
+  //   bug 4.42/4.49 (chèn chip @mention sau khi gõ làm mất câu).
+  // Kẹp vào giữa là vị trí duy nhất an toàn cho cả hai phía.
+  if (referenceImagePath) {
+    await attachReferenceImage(page, referenceImagePath);
+    // Bảng chọn media lấy mất focus — phải click lại vào ô prompt trước khi gõ.
+    await promptBox.click();
+    await page.waitForTimeout(300);
+  }
+
   await page.keyboard.type(`${name}: ${description}. ${styleBlock}`);
 
   // Baseline-diff theo SRC vị trí đầu tiên (KHÔNG đếm số lượng nữa — xem docstring firstImageSrc
@@ -121,6 +259,8 @@ export async function createImageIngredient(
     // reload xoá mất trạng thái lỗi thật trước khi kịp chụp nếu chụp SAU.
     await debugCapture(page, `pre-reload-timeout-ingredient-${name}`);
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
+    // Modal onboarding hiện lại sau reload và chặn mọi click (RUNBOOK 8.1).
+    await dismissOnboardingDialog(page);
     // Chờ trang THẬT SỰ sẵn sàng (lưới media đã render) trước khi đếm lại — "Add Media" luôn
     // xuất hiện khi trang tương tác được thật sự (xem mục 4.14 RUNBOOK), đáng tin hơn 1 mốc
     // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
@@ -164,5 +304,6 @@ export async function createImageIngredient(
   // "networkidle" KHÔNG bao giờ fire ổn định khi project đã có nhiều media (xem ghi chú
   // tương tự trong characters.ts/generate.ts) — dùng "domcontentloaded" + chờ phần tử cụ thể.
   await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+  await dismissOnboardingDialog(page);
   await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
 }

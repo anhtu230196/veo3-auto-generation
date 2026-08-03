@@ -1,0 +1,103 @@
+{
+  "episode": "Chết bởi chính phát minh của mình",
+  "assets": [
+    {
+      "name": "Tailor Inventor",
+      "type": "character",
+      "case": 1,
+      "description": "a bulky dark grey-brown padded suit with a large folded fabric hood bunched up over the shoulders and upper back, wide baggy trousers gathered below the knee, glossy black leather gaiters over the shins, short black leather boots, dark brown hair parted at the side and combed back, a soft dark flat cloth cap, a very large thick handlebar moustache curling upward at both ends",
+      "status": "success"
+    },
+    {
+      "name": "Parachute Suit",
+      "type": "prop",
+      "case": 1,
+      "description": "A dark charcoal fabric parachute garment displayed spread wide open and completely empty with no wearer, two very wide cape-like fabric wings extended straight out horizontally to their full span reaching down to the bottom of the frame, a tall upright rectangular fabric hood panel held open by four straight rigid rods rising above the top edge of the garment, a dark buttoned tunic front at the centre with one horizontal chest strap and one waist belt closed by a plain square buckle, and several loose pale webbing straps hanging down",
+      "status": "success"
+    },
+    {
+      "name": "Newsreel Camera",
+      "type": "prop",
+      "case": 1,
+      "description": "An early 1900s hand-cranked motion picture camera mounted on a wooden tripod, a plain dark wooden box body, one short black cylindrical lens on the front face, a round crank handle on the side, one flat circular film magazine sitting on top, and three straight tapered wooden tripod legs splayed evenly below",
+      "status": "success"
+    },
+    {
+      "name": "Tailor Dummy",
+      "type": "prop",
+      "case": 1,
+      "description": "A headless tailor's dress form mannequin, a plain cream-coloured armless torso shape mounted on a single straight central post rising from a small round flat base",
+      "status": "success"
+    },
+    {
+      "name": "Tower Base View",
+      "type": "background",
+      "case": 1,
+      "description": "Winter morning view looking outward from underneath a giant iron lattice tower, the tower's huge curved iron arch framing the top and both sides of the frame as dark silhouetted latticework. In the far distance a pale domed palace building with two tall square bell towers, softened by mist. In the middle ground a long formal garden with two rows of small cone-shaped trimmed trees flanking a rectangular lawn and a pale gravel path. Overcast white-grey misty sky, muted cold winter palette of greys and pale beige",
+      "reserveCharacterSpace": false,
+      "status": "success"
+    },
+    {
+      "name": "Tower Winter Dawn",
+      "type": "background",
+      "case": 1,
+      "description": "Wide establishing view of a giant wrought-iron lattice tower rising against a cold winter dawn sky, seen from the open ground at its base. The tower's four curved legs and the broad arch between them fill the centre of the frame as dark charcoal latticework. Pale grey-blue pre-sunrise sky with one thin band of cold pale yellow low near the horizon. Bare leafless trees and low clipped hedges line an empty pale gravel esplanade across the foreground, with patches of white frost on the ground. Freezing early morning winter palette of blue-greys, charcoal and pale cream. Empty and still",
+      "reserveCharacterSpace": false,
+      "status": "success"
+    },
+    {
+      "name": "Tower Winter Dawn Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat side-on elevation of the base of a giant wrought-iron lattice tower standing on level ground, drawn like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: a pale grey-blue winter dawn sky band, one thin flat band of cold pale yellow low near the horizon, a row of bare leafless trees and low dark hedges running straight across the frame all at the same height, a flat pale gravel ground strip running edge to edge, and a plain frost-white ground band across the bottom. The tower's two front legs and the wide arch between them rise from that ground strip, both legs drawn at exactly the same width and the same angle as each other, and the ground line beneath them is perfectly horizontal and unbroken from the left edge to the right edge. Freezing early morning palette of blue-greys, charcoal and pale cream",
+      "composition": "flat",
+      "reserveCharacterSpace": false,
+      "status": "success"
+    },
+    {
+      "name": "Tailor Shop Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat head-on elevation of the inside wall of a small early 1900s tailoring workshop, drawn like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: a plain warm cream wall band across the top, one straight horizontal shelf running edge to edge holding a row of identical rolled fabric bolts, a band of tall narrow plain wardrobes and one shop window with small square panes all standing in a straight row at the same height, and a flat wooden floor strip across the bottom. Every piece of furniture drawn face-on at the same scale with its front face parallel to the picture plane, no receding side wall and no room corner visible, every horizontal line unbroken from the left edge to the right edge. Warm muted period palette of cream, brown and dull olive",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Apartment Facade Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat head-on elevation of a five-storey Parisian apartment building facade, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale winter sky band, a grey slate roof band with two small identical dormer windows, then five identical floor bands each with a row of tall rectangular windows and one thin straight balcony rail, and a pale pavement strip across the bottom. Every window exactly the same size and evenly spaced, every floor line perfectly horizontal and unbroken from the left edge to the right edge, the facade seen perfectly straight on with no side wall visible and no converging edges. Muted cold palette of pale stone, grey-blue and charcoal",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Police Prefecture Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat head-on elevation of a grand early 1900s municipal government building facade, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale winter sky band, one plain triangular pediment and a straight cornice line running edge to edge, a row of identical plain columns all exactly the same width standing on one continuous horizontal base, a band of tall arched doorways and windows all at the same height, and a wide flat stone step strip across the bottom. Perfectly symmetrical and seen straight on, no side wall and no receding staircase, every horizontal line unbroken from edge to edge. Muted pale stone, grey and dull gold palette",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Tower Platform Railing Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat side-on elevation of an open observation platform high up on a giant iron lattice tower, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale grey-blue winter sky band, a distant flat city skyline band of small simple rooftops far below, one straight horizontal iron guardrail running edge to edge with evenly spaced identical vertical bars, a band of dark iron lattice girders, and a flat plank floor strip across the bottom. The rail line and the floor line are both perfectly horizontal and unbroken from the left edge to the right edge, with no corner and no walkway receding into the distance. Cold winter palette of charcoal, grey-blue and pale cream",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Tower Base Esplanade Flat",
+      "type": "background",
+      "case": 1,
+      "description": "Flat side-on elevation of the open gravel esplanade at the foot of a giant iron lattice tower on a freezing winter morning, drawn like a theatre backdrop. Background bands stacked top to bottom: a pale grey-blue sky band, a row of bare leafless trees all at exactly the same height, one very simple low fence running edge to edge made of only a few widely spaced thin vertical posts joined by exactly two long horizontal rails and nothing else, and a wide flat pale gravel ground strip across the bottom with patches of white frost. Standing in front of all of those bands, the giant tower's two front legs and the wide arch between them run down through the ENTIRE height of the picture, from the very top edge all the way down, passing IN FRONT OF the row of trees and the fence, and each leg ends in a wide flat stone base block resting directly on the gravel ground strip, so the tower plainly stands on the ground and its feet are fully visible. The trees are shorter than the legs and sit behind them, never covering or cutting off the legs. Both legs are exactly the same width and the same angle. The tower is open ironwork, so EVERY gap between its girders is see-through: each opening must be filled with the exact same pale grey-blue sky colour as the sky band behind it, or show the trees behind it, and must NEVER be filled with a solid cream or sand colour. The ground line is perfectly horizontal and unbroken from the left edge to the right edge, with no path receding into the distance. Freezing palette of blue-greys, charcoal and pale cream",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    }
+  ]
+}

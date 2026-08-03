@@ -1660,15 +1660,192 @@ kéo vào, không chỉ là gợi ý phong cách trừu tượng) — nên PHẢ
 nghị viện hình vòng cung) — người dùng xác nhận hài lòng với cả style nhân vật
 lẫn background.
 
-**Việc còn chưa làm** (bước tiếp theo, theo đúng thứ tự người dùng muốn):
-1. Test nhân vật vật dụng/đạo cụ (Prop) — CHƯA làm (người + động vật đã test
-   xong, xem `ANIMAL_STYLE_BLOCK` ở trên).
+### 8.1. ✅ XÁC NHẬN TRỰC TIẾP TRÊN UI THẬT (2026-08-02) — Nano Banana CHÍNH LÀ chế độ Image của Flow
+
+Khảo sát bằng Playwright + session `.auth/chrome-profile` (script
+`scripts/inspect-flow-image-ui.ts` và `scripts/inspect-flow-attach.ts`, cả 2 chỉ ĐỌC,
+không bấm Create, không tốn credit). Kết quả lật lại giả định ban đầu của mục 8:
+
+**1. KHÔNG cần công cụ riêng ngoài repo.** Khi chuyển bảng cài đặt sang tab
+`image Image`, pill model đổi từ `Video · 8s crop_16_9 x1` thành
+**`🍌 Nano Banana 2 crop_16_9 x1`**. Tức là toàn bộ block trong
+`src/nanoBanana/styleDNA.ts` dùng thẳng được qua đúng automation Flow đã có
+(`src/veo3bot/`), không phải viết client Gemini riêng như mục 8 từng dự tính.
+
+**2. Bảng cài đặt giờ có 4 tab chế độ** (không chỉ Image/Video như code cũ giả định):
+`image Image` · `videocam Video` · `crop_free Frames` · `chrome_extension Ingredients`.
+Kèm tab tỉ lệ (`crop_9_16`, `crop_16_9`), thời lượng (`4s`/`6s`/`8s`/`10s`) và số
+lượng (`x1`…`x4`). Luồng mở bảng bằng pill `crop_16_9` + `Escape` sau khi chọn tab
+(mục 4.10/4.13) VẪN ĐÚNG.
+
+**3. ĐÍNH ẢNH REFERENCE ĐƯỢC — đây là câu trả lời cho câu hỏi chặn của mục 8.**
+Đường đi đã xác nhận:
+- Nút `+` trong thanh prompt (accessible name **`add_2 Create`**, KHÔNG phải nút
+  `add Add Media` ở sidebar) → mở bảng chọn media.
+- Bảng này có ô `Search assets`, cột lọc (All/Images/Videos/Voices/Characters/
+  Avatar/Uploads), nút `Upload media` ở góc dưới trái, và nút **`Add to Prompt`** ở
+  góc dưới phải.
+- `input[type="file"]` (accept=`image/*`, luôn tồn tại đúng 1 cái trên trang) nhận
+  `setInputFiles()` trực tiếp — đã nạp thật `reference-character.jpeg` và thấy nó hiện
+  thành card asset tên `reference-character.jpeg / Image` trong bảng chọn.
+- Sau khi upload, sidebar mọc thêm mục `Images` và `Uploads`.
+- Còn lại phải làm khi viết automation: **click card asset rồi bấm `Add to Prompt`**
+  (nút này ở trạng thái mờ/disabled cho tới khi chọn card).
+
+**3b. 🔴 SELECTOR TAB SỐ LƯỢNG ĐÃ ĐỔI: `"1x"` → `"x1"`.** Mục 4.10 (và
+`imageAsset.ts`) chép từ codegen cũ ghi tab số lượng tên `1x`. UI thật ngày 2026-08-02
+đặt tên là **`x1`/`x2`/`x3`/`x4`**. Hậu quả: `createImageIngredient` timeout 30s ngay ở
+dòng chọn số lượng, TRƯỚC khi kịp gõ prompt — không tạo được ảnh nào. Đã sửa thành
+regex `/^(x1|1x)$/` để chấp nhận cả hai tên (phòng Google đổi lại).
+
+**3c. ✅ ĐÃ TẠO ĐƯỢC ẢNH THẬT — pipeline ảnh CHẠY ĐƯỢC (2026-08-02).** Sau khi sửa
+2 lỗi trên, `createImageIngredient` tạo thành công 1 prop thật ("Newsreel Camera",
+34 giây) bằng `PROP_STYLE_BLOCK` mới. Đồng thời điều này **kiểm chứng luôn bản sửa
+mục 4.45** (`firstImageSrc` thay cho đếm số lượng) vốn ghi "CHƯA CHẠY THỬ THẬT" —
+log `[debug:baseline] baselineFirstSrc=(none)` rồi phát hiện đúng ảnh mới. LƯU Ý: mới
+test trên project TRỐNG, chưa kiểm chứng lại trên project đã tích luỹ >17 media (đúng
+ngưỡng từng làm vỡ cơ chế đếm cũ).
+
+**3d. ✅ ĐÃ CÓ bước ĐÍNH ẢNH REFERENCE — Character tạo được (2026-08-02).** Thêm
+`imageAsset.ts::attachReferenceImage()` + tham số tuỳ chọn `referenceImagePath` cho
+`createImageIngredient` (giữ nguyên toàn bộ logic detection/rename đã dày công sửa,
+không viết hàm song song). Đã tạo thật character "Tailor Inventor" của case Reichelt
+(55,8 giây) — ảnh ra đúng phong cách reference và đúng tư liệu lịch sử.
+
+⚠️ **BẪY 1 — "Add to Prompt" là nút BẪY.** Bảng chọn media có nút `Add to Prompt` ở
+góc dưới phải, rất dễ tưởng là bước xác nhận bắt buộc. THỰC TẾ: **click vào card
+(`div[role="option"]`) là ĐÍNH XONG LUÔN** và bảng tự đóng, nút `Add to Prompt` biến
+mất. Bản code đầu click card rồi mới đi tìm nút đó → timeout 15s dù thao tác đã thành
+công. Nay chỉ bấm nút đó như nhánh dự phòng.
+
+⚠️ **BẪY 2 — thứ tự đính ảnh vs gõ chữ.** Ảnh đính vào LÀ MỘT PHẦN nội dung prompt
+(bằng chứng: nút "Clear prompt" xuất hiện ngay sau khi đính, lúc chưa gõ chữ nào).
+Do đó:
+- Đính TRƯỚC bước xoá ô prompt → `Ctrl+A` + `Backspace` có thể xoá luôn ảnh.
+- Đính SAU khi gõ chữ → mở/đóng bảng chọn media có thể làm rớt text (lớp bug 4.42/4.49).
+- 👉 Vị trí ĐÚNG DUY NHẤT: **xoá ô prompt → đính ảnh → click lại ô prompt → gõ chữ.**
+  (Phải click lại vì bảng chọn media lấy mất focus.)
+
+Xác minh đã đính: chờ nút `Clear prompt` xuất hiện. Tin cậy được vì hàm luôn chạy khi
+prompt còn rỗng, nên nút đó chỉ có thể do ảnh đính vào. Không xác minh thì ảnh
+Character sẽ ra sai phong cách mà chỉ phát hiện được bằng mắt (tốn credit, dễ lọt).
+
+**3f. 🔴 GHÉP NHIỀU ASSET + ĐỔI GÓC MÁY — "ảnh thắng text" áp cả cho GÓC NHÌN, không
+chỉ hình dạng (xác nhận trực tiếp 2026-08-02).**
+Ghép "Tailor Inventor" (nhân vật) + "Parachute Suit" (bộ đồ) thành 1 ảnh nhân vật đang
+mặc bộ đồ: dùng `imageAsset.ts::attachExistingAssets(page, [tên1, tên2])` — đính asset
+ĐÃ CÓ trong Flow theo tên qua ô "Search assets" (khác `attachReferenceImage` vốn upload
+file từ đĩa). Lưu ý phải MỞ LẠI bảng chọn cho TỪNG asset, vì click 1 card là bảng đóng.
+
+Kết quả nội dung rất tốt ngay lần đầu (giữ đúng mặt/ria/mũ + đúng hình bộ đồ). NHƯNG:
+- **Lần 1 THẤT BẠI về góc máy**: prompt có câu "Three-quarter view, turned slightly to
+  one side" đặt ở GIỮA đoạn → model BỎ QUA HOÀN TOÀN, ra ảnh chính diện. Vì cả 2 ảnh
+  reference đều chính diện nên chúng khoá cứng góc nhìn (đúng bài học mục 4.12 +
+  `MASTER_REFERENCE_NOTE`, nay xác nhận áp dụng cho CẢ GÓC MÁY chứ không riêng hình dạng
+  vật thể).
+- **Lần 2 THÀNH CÔNG** nhờ 3 thay đổi, dùng lại được cho mọi lần đổi góc sau này:
+  1. Đưa yêu cầu góc lên **ĐẦU prompt**, kèm câu nói thẳng "the reference images are
+     front-facing but this new image must NOT be".
+  2. Diễn đạt bằng **ngôn ngữ HÌNH HỌC cụ thể** thay vì thuật ngữ nhiếp ảnh: "rotated
+     about 45 degrees", "one shoulder closer to the viewer", "the nose points off to one
+     side", "one wing clearly shorter and foreshortened" — thay cho "three-quarter view".
+  3. **Nhắc lại ở CUỐI prompt** ("Remember: three-quarter turned body… NOT a symmetrical
+     front view").
+
+👉 Tổng quát: khi cần ảnh mới KHÁC ảnh reference ở điểm nào, phải nói TƯỜNG MINH rằng
+reference sai ở điểm đó + mô tả điểm đó bằng hình học quan sát được, đặt ở đầu và nhắc
+lại ở cuối. Mô tả trung tính giữa đoạn sẽ thua ảnh.
+
+**3g. 🔴 BACKGROUND PHẢI LÀ BỐ CỤC PHẲNG DẢI NGANG — runner bản đầu bỏ quên
+`NO_PERSPECTIVE_BLOCK` (2026-08-02).**
+2 cảnh tháp Eiffel đầu tiên ("Tower Base View", "Tower Winter Dawn") ra **phối cảnh 1
+điểm tụ** hút sâu: lối đi thu về phía cung điện, hàng cây nhỏ dần, mặt sân nghiêng.
+Người dùng loại cả 2 — phong cách đã định hướng là **phẳng kiểu phông sân khấu, mọi thứ
+xếp thành DẢI NGANG song song**.
+
+Nguyên nhân KHÔNG phải model: `styleDNA.ts` đã có sẵn `NO_PERSPECTIVE_BLOCK` viết đúng
+cho việc này ngay từ đầu — nhưng `createImageAssets.ts::buildPrompt` chỉ ghép
+`BASE_STYLE_BLOCK + BACKGROUND_STYLE_BLOCK`, QUÊN block chống phối cảnh. Bài học: khi
+viết lớp ghép prompt, phải rà LẠI toàn bộ block có trong styleDNA và quyết định TỪNG cái
+dùng hay không dùng, đừng chỉ lấy những cái tên nghe hiển nhiên.
+
+**Đã sửa**: thêm field `composition?: "flat" | "layered"` vào `ImageAsset`, **mặc định
+"flat"** → luôn thêm `NO_PERSPECTIVE_BLOCK`. Chỉ cảnh thiên nhiên rộng mới đặt
+`"layered"` để dùng `LAYERED_DEPTH_LANDSCAPE_NOTE` thay thế.
+
+**Mẹo viết description cho cảnh phẳng** (đã xác nhận hiệu quả): liệt kê thẳng CÁC DẢI
+NGANG theo thứ tự từ trên xuống ("built from horizontal bands stacked top to bottom:
+sky band… tree row all at the same height… flat ground strip edge to edge…"), và ép
+đối xứng bằng câu hình học cụ thể ("both legs drawn at exactly the same width and the
+same angle", "ground line perfectly horizontal and unbroken from the left edge to the
+right edge"). Cùng nguyên tắc "nói bằng hình học quan sát được" đã dùng ở mục 3f.
+
+⚠️ 2 asset cũ vẫn nằm trong Flow với nội dung SAI — nên xoá tay để khỏi bị chọn nhầm khi
+`attachExistingAssets` tra theo tên.
+
+**3h. 🔴 BẪY CỦA CÁCH VIẾT "DẢI NGANG": vật thể ĐỨNG bị cắt cụt ở ranh giới dải
+(2026-08-02).**
+Công thức "liệt kê các dải ngang từ trên xuống" (mục 3g) rất hiệu quả cho bố cục phẳng,
+NHƯNG có tác dụng phụ: model hiểu mỗi dải là 1 TẦNG RIÊNG BIỆT và nhét trọn từng vật vào
+đúng dải được gán. Xác nhận trực tiếp: cảnh "Tower Base Esplanade Flat" mô tả tháp là
+"a band of dark iron lattice girders **across the upper frame**", còn cây/hàng rào/mặt đất
+là các dải dưới → ảnh ra **tháp bị cắt cụt ngang ngọn cây, không có chân, trông như lơ
+lửng**. Cảnh "Tower Winter Dawn Flat" KHÔNG dính vì description có câu "two front legs…
+**rise from that ground strip**".
+
+👉 QUY TẮC: với bất kỳ vật thể nào CAO, XUYÊN QUA nhiều dải (tháp, cột, cây lớn, cột đèn),
+phải nói TƯỜNG MINH 3 điều, không được để nó nằm trong danh sách dải:
+1. Nó chạy suốt từ đâu tới đâu ("run down through the ENTIRE height of the picture, from
+   the very top edge all the way down").
+2. Nó ở TRƯỚC hay SAU các dải kia ("passing IN FRONT OF the row of trees and the fence").
+3. Nó CHẠM ĐẤT thế nào ("each leg ends in a wide flat stone base block resting directly on
+   the gravel ground strip, so the tower plainly stands on the ground").
+Kèm câu cấm che ("The trees are shorter than the legs and sit behind them, never covering
+or cutting off the legs").
+
+**3i. ⚠️ "Page crashed" giữa vòng reload-recheck — ảnh VẪN tạo xong, chỉ chưa kịp đổi
+tên (2026-08-02).** Gặp thật khi project đã tích luỹ ~20 ảnh: `createImageIngredient`
+không phát hiện kịp trong lúc poll → vào nhánh reload-recheck (mục 4.15) → trang crash →
+runner báo `failed`. Kiểm tra tay thì ảnh ĐÃ có trong Flow, đúng nội dung, chỉ **chưa có
+tên** (crash trước bước rename).
+
+👉 ĐỪNG chạy lại runner ngay: nó sẽ tạo THÊM 1 ảnh trùng nội dung (asset lọc theo
+`status`, không tra tên — cùng bẫy mục 4.15/4.45). Cách xử lý đúng:
+1. `npx tsx scripts/rename-orphan.ts "Tên Asset"` — đổi tên ảnh mới nhất (vị trí 0 theo
+   sort "Recent") thành đúng tên cần.
+2. Sửa `status` của asset đó thành `"success"` trong `assets.json`.
+3. Chạy lại runner để xác nhận không còn gì pending.
+
+**3e. Quan sát về nhất quán phong cách (chưa xử lý).** Character ra đúng "gia đình"
+phong cách với ảnh reference, nhưng tay/chân ra KHỐI CÓ THỂ TÍCH thay vì nét que như
+reference (có thể do bộ đồ độn phồng che kín chi), và có chút đổ bóng nhẹ mà reference
+không có. Prop thì ra góc 3/4 hai tông mặt. Cả hai đều chưa đủ cơ sở kết luận là vấn đề
+hệ thống — cần thêm vài asset nữa rồi mới quyết có siết thêm điều khoản vào style block.
+
+**4. ⚠️ MODAL ONBOARDING CHẶN MỌI CLICK — bug mới, chưa từng có trong mục 4.**
+Flow hiện 1 Radix dialog (`[role="dialog"][data-state="open"]`, bên trong là iframe
+`gstatic.com/.../changelogs/...`) đè lên trang ngay sau khi tải. Mọi `click()` đều
+timeout với log `subtree intercepts pointer events` — kể cả nút `New project`. Đặc
+điểm quan trọng:
+- Dialog **hiện lại sau MỖI lần `page.goto()`**, nên `ensureProject()` (tự goto bên
+  trong) bị chặn ngay cả khi đã đóng dialog trước đó. Phải đóng SAU mỗi lần điều hướng.
+- Dialog có đúng **1 nút tên `Get started`** — bấm nút này là cách đóng SẠCH.
+- `Escape` KHÔNG đóng được.
+- Gỡ thẳng iframe/dialog khỏi DOM bằng `page.evaluate()` có đóng được, nhưng **làm
+  trang crash** ở thao tác sau đó (`Page crashed`) — ĐỪNG dùng cách này.
+- 👉 Khi sửa `project.ts`, thêm bước đóng dialog ngay sau mọi `page.goto()`.
+
+**Việc còn chưa làm** (cập nhật 2026-08-02 — xem mục 8.1 cho những gì ĐÃ xong):
+1. ✅ ~~Test Prop~~ — XONG (`PROP_STYLE_BLOCK` mới, prop "Newsreel Camera" đạt).
 2. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
-   1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không.
-3. Viết automation Playwright thật để gọi Nano Banana tự động (tương tự
-   `src/veo3bot/` cho Flow) — CHƯA có dòng code nào cho bước này, kể cả
-   `src/nanoBanana/styleDNA.ts` mới chỉ có các constant prompt, chưa có hàm gọi
-   API/automation nào.
+   1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không. CHƯA làm.
+3. ✅ ~~Viết automation Playwright~~ — XONG phần TẠO ẢNH: dùng lại
+   `src/veo3bot/imageAsset.ts::createImageIngredient` (Flow chế độ Image = Nano
+   Banana 2), có `attachReferenceImage()` cho Character. CHƯA có lớp orchestration
+   đọc danh sách asset từ file rồi tạo hàng loạt + resume-safe (tương đương
+   `createAssets.ts` của pipeline video).
+4. Kiểm chứng lại detection ảnh (mục 4.45) trên project ĐÃ CÓ >17 media — mới chỉ
+   test trên project gần như trống, đúng ngưỡng từng làm vỡ cơ chế đếm cũ.
 4. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
    Flow bằng bước generate ảnh Nano Banana + bước image-to-video riêng), cách
    lưu trữ ảnh đã tạo (thay thế vai trò `state/characters.json` hiện tại?), và

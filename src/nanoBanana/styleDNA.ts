@@ -126,6 +126,135 @@ export const ANIMAL_STYLE_BLOCK =
   "Standing pose, side profile view, full body visible.";
 
 /**
+ * GIẢM MẬT ĐỘ CHI TIẾT — ✅ ĐÃ TEST (2026-08-02, tạo lại cả 6 background của case 1).
+ *
+ * KẾT QUẢ RÕ RỆT ở đúng chỗ nhắm tới: giàn thép chân tháp từ HÀNG CHỤC thanh chéo nhỏ rút
+ * còn VÀI hình tam giác lớn; hàng rào còn mấy cọc + 2 thanh ngang; mặt đất thành dải phẳng
+ * với vài mảng tuyết đơn giản. Bố cục dải ngang và nét tay đều giữ nguyên. Ảnh giờ đồ lại
+ * bằng tay được thật.
+ *
+ * ⚠️ CHƯA TRIỆT ĐỂ ở mặt tiền kiến trúc: cảnh chung cư và sở cảnh sát vẫn còn khá nhiều ô cửa
+ * lặp (5 tầng × ~10 cửa). Block có ép "draw only a few widely spaced members" nhưng với mặt
+ * tiền nhà, model coi số tầng/số cửa là thông tin NỘI DUNG (đã ghi rõ "five-storey", "a row of
+ * tall windows") nên giữ lại. Nếu cần đơn giản hơn nữa: sửa DESCRIPTION của từng cảnh (giảm
+ * hẳn số cửa sổ mô tả), đừng siết thêm block — block đã làm đúng phần việc của nó.
+ *
+ * LÝ DO RA ĐỜI: mục tiêu thật của người dùng là ĐỒ LẠI ảnh bằng tay. Test
+ * `HAND_DRAWN_LINE_BLOCK` cho thấy nét mềm KHÔNG phải yếu tố quyết định — ảnh ra vẫn có hàng
+ * chục thanh chéo nhỏ trong giàn thép tháp, đồ lại rất mệt. `BACKGROUND_STYLE_BLOCK` đã có câu
+ * "keep all decorative detail extremely minimal" nhưng KHÔNG đủ mạnh với KẾT CẤU LẶP (giàn
+ * thép, lan can, ngói, hàng cột, ô kính) — model coi đó là "cấu trúc" chứ không phải "trang
+ * trí" nên không áp câu kia vào.
+ *
+ * Vì vậy block này nhắm thẳng vào KẾT CẤU LẶP, và neo bằng 1 tiêu chí ĐẾM ĐƯỢC (số nét cần để
+ * đồ lại) thay vì tính từ mơ hồ như "đơn giản".
+ */
+export const SIMPLIFY_DETAIL_BLOCK =
+  "Draw the scene with as few separate shapes as possible, because a person has to be able to " +
+  "trace the whole picture by hand quickly. Any repeating structural pattern — lattice " +
+  "girders, railings, balusters, roof tiles, rows of columns, window panes, brickwork — must " +
+  "be reduced to a SMALL number of large simple shapes, never dozens of small individual " +
+  "pieces. Draw only a few widely spaced members and let them stand for the whole structure. " +
+  "No fine hatching, no small repeated marks, no surface texture, no tiny ornament. If a " +
+  "detail would take more than a few strokes to trace, simplify it into one flat shape " +
+  "instead.";
+
+/**
+ * NÉT VẼ TAY "NGUỆCH NGOẠC" — ✅ ĐÃ TEST (2026-08-02, cảnh "Tower Winter Dawn Sketch", 43s).
+ * Viết theo yêu cầu người dùng: muốn nét nguệch ngoạc cho DỄ ĐỒ LẠI bằng tay.
+ *
+ * KẾT QUẢ: ĐẠT cả 2 mục tiêu. Nét ra vẽ tay thật (cành cây là nét freehand lỏng, bụi cây là
+ * mảng méo không đều, đường cong vòm không tròn máy móc, độ dày nét thay đổi dọc đường) VÀ
+ * bố cục dải ngang giữ nguyên 100% (hàng cây cùng độ cao, 2 trụ cùng độ rộng/góc, đường nền
+ * liền mép-tới-mép). Câu bảo vệ bố cục ở cuối block là thứ chặn được rủi ro chính.
+ *
+ * ⚠️ CHƯA GIẢI QUYẾT — "dễ đồ lại" còn phụ thuộc MẬT ĐỘ CHI TIẾT, không chỉ chất nét: ảnh
+ * test ra phần giàn thép của tháp rất dày chi tiết (hàng chục thanh chéo nhỏ), đồ lại bằng tay
+ * sẽ rất mệt, dù nét đã mềm. `BACKGROUND_STYLE_BLOCK` có câu "keep all decorative detail
+ * extremely minimal" nhưng rõ ràng chưa đủ mạnh với kết cấu lặp kiểu giàn thép. Nếu mục tiêu
+ * chính là đồ lại, cần thêm 1 điều khoản ép giảm số lượng chi tiết lặp (vd "represent repeating
+ * structural lattice as a few large simple shapes, not dozens of small individual braces").
+ *
+ * VẤN ĐỀ CẦN TRÁNH: `BASE_STYLE_BLOCK` hiện ghi "vector illustration" + "uniform-width
+ * outlines" — cả 2 cụm này đều đẩy model về phía nét máy sạch, thẳng tắp. Muốn nét tay thì
+ * phải nói ngược lại rõ ràng, nếu không 2 chỉ dẫn mâu thuẫn và cụm "vector" thường thắng.
+ *
+ * 🔑 ĐIỂM MẤU CHỐT: chỉ đổi CHẤT NÉT, KHÔNG đổi BỐ CỤC. Các cảnh background đã chốt bố cục
+ * dải ngang phẳng (`NO_PERSPECTIVE_BLOCK` + mô tả dải ngang, mục 3g RUNBOOK) — nếu prompt chỉ
+ * nói chung chung "hand-drawn, sketchy" thì model rất dễ hiểu là được vẽ tuỳ hứng và làm hỏng
+ * luôn layout vừa sửa xong. Vì vậy block này nói TƯỜNG MINH: đường vẫn nằm đúng chỗ hình học
+ * cũ, chỉ có bản thân nét mực là run tay.
+ */
+export const HAND_DRAWN_LINE_BLOCK =
+  "Hand-drawn look: every outline is drawn freehand with a felt-tip marker, NOT with a ruler " +
+  "and NOT as clean computer vector paths. Each stroke wobbles slightly, its thickness varies " +
+  "a little along its length, and strokes slightly overshoot and cross each other at corners. " +
+  "Flat color fills are painted a little loosely so they sometimes stop just short of the " +
+  "outline or spill a little past it. " +
+  "IMPORTANT: this changes only the QUALITY OF THE INK LINE, never the layout. The composition " +
+  "stays exactly as described: same flat head-on arrangement, same horizontal bands, same " +
+  "symmetry, no perspective. A line described as horizontal must still read as horizontal and " +
+  "span the full width, it is just drawn by a slightly unsteady hand rather than a machine.";
+
+/**
+ * PROP / VẬT DỤNG — ✅ ĐÃ TEST THẬT LẦN 1 (2026-08-02, prop "Newsreel Camera" của case
+ * Reichelt, tạo qua `createImageIngredient` trong Flow chế độ Image/Nano Banana 2, 34 giây).
+ *
+ * ĐÚNG như mong đợi: outline đen đậm đều, màu phẳng, đúng 1 vật thể ở giữa khung, nền 1 màu
+ * trơn không cảnh vật/không bóng đổ, không có người/bàn tay, và — điều khoản quan trọng nhất
+ * — chân máy ba chân ra KHỐI CÓ ĐỘ DÀY THẬT chứ không phải nét que. Điều khoản "mọi bộ phận
+ * cứng dùng khối phẳng có độ dày, KHÔNG dùng nét que" hoạt động đúng ý đồ.
+ *
+ * ✅ TEST LẦN 2 (2026-08-02, cùng ngày): thêm 2 prop cấu trúc rất khác nhau — "Parachute
+ * Suit" (đồ vải mặc được, 42s) và "Tailor Dummy" (hình nộm, 32s). CẢ HAI ĐẠT: đúng hình
+ * dạng theo mô tả, outline/màu phẳng nhất quán với prop máy móc trước đó. Bộ dù bám rất sát
+ * ảnh tư liệu thật (2 cánh vải xoè ngang, khung mũ trùm dựng trên que cứng, thắt lưng khoá
+ * vuông, dây đai buông). Kết luận: block dùng được cho cả 3 nhóm cấu trúc đã thử (máy móc có
+ * chân đế / đồ vải / hình nộm có trụ đế).
+ *
+ * 🔴 VẤN ĐỀ ĐÃ XÁC NHẬN QUA 3 PROP — NỀN MỖI ẢNH MỘT MÀU KHÁC NHAU. Thực tế nhận được:
+ * máy quay = nâu vàng, bộ dù = xám nhạt, hình nộm = xanh da trời, nhân vật = trắng. Nguyên
+ * nhân: block chỉ ghi "Plain solid single-color background" mà KHÔNG chỉ định MÀU NÀO, nên
+ * model tự chọn mỗi ảnh một kiểu. Hệ quả: muốn tách nền để ghép asset vào cảnh thì mỗi ảnh
+ * phải xử lý một kiểu, và xếp cạnh nhau trong cùng 1 video trông không cùng bộ.
+ * 👉 CÁCH SỬA ĐỀ XUẤT (chưa áp dụng, chờ người dùng quyết): chốt cứng 1 màu nền trong block
+ * — hoặc nền chroma-key như `CHARACTER_SHEET_STYLE_BLOCK` của pipeline Flow cũ
+ * (`src/styleDNA.ts`), hoặc trắng thuần. Sửa xong PHẢI tạo lại cả 3 prop đã có.
+ *
+ * ⚠️ ĐIỂM CẦN QUYẾT KHÁC (chưa xử lý): prop ra ở góc 3/4 và mỗi mặt tô 1 sắc độ khác nhau để
+ * gợi khối — trong khi ảnh master reference NHÂN VẬT phẳng tuyệt đối và chính diện. Ghép
+ * chung 1 khung có thể lệch cảm giác không gian. Chưa đủ cơ sở kết luận cần ép
+ * "front or side view only, single flat tone per object".
+ *
+ * Bối cảnh khi viết block (giữ lại để hiểu vì sao có từng điều khoản) — suy luận từ 2 bài
+ * học đã xác nhận:
+ * - Từ `ANIMAL_STYLE_BLOCK`: những gì KHÔNG phải chi/tay chân người thì dùng KHỐI PHẲNG CÓ ĐỘ
+ *   DÀY thật, không dùng dạng que — áp dụng cho mọi bộ phận cứng của đồ vật (chân bàn, chân
+ *   máy, cán, trục...).
+ * - Từ `ANIMAL_STYLE_BLOCK` + `MASTER_REFERENCE_NOTE`: KHÔNG đính ảnh `reference-character.jpeg`
+ *   (người) khi tạo đồ vật — rủi ro model kéo tỉ lệ/đặc điểm người vào vật thể (bài học "ảnh
+ *   thắng text"). Prop dùng THẲNG block text này, không kèm ảnh reference, giống cách đã tạo
+ *   ảnh master reference người ban đầu.
+ * - Từ `BACKGROUND_STYLE_BLOCK`: ép chi tiết quy về hình khối cơ bản, cấm hoa văn/khắc chạm
+ *   tinh vi — đây là điểm mọi block trong file này đều chia sẻ.
+ *
+ * CHƯA chốt ảnh master reference cố định cho Prop (giống tình trạng động vật) — vì mỗi loại đồ
+ * vật có cấu trúc rất khác nhau. Nếu sau khi test thấy lệch phong cách giữa các đồ vật, cân
+ * nhắc chốt ảnh reference riêng theo TỪNG NHÓM (đồ mặc được / máy móc có chân đế / vũ khí...).
+ */
+export const PROP_STYLE_BLOCK =
+  "Minimalist single-object prop design, flat 2D vector art style, bold uniform-width black " +
+  "outlines, completely flat colors, no shading, no gradients, no textures. Plain solid " +
+  "single-color background, no scenery, no ground line, no cast shadow. ONE object only, " +
+  "centered, entire object fully visible inside the frame. NO people, NO hands, NO characters " +
+  "of any kind. Build the whole object from basic geometric primitives only (rectangles, " +
+  "circles, simple arcs, plain tapered shapes) — no intricate ornament, no engraved detail, no " +
+  "fine linework, no realistic material texture. Every rigid part (legs, poles, handles, " +
+  "shafts, frames) drawn as a flat-colored solid shape with real width and volume, NOT as a " +
+  "thin stick line. Fabric parts drawn as simple flat-colored panels with a few plain fold " +
+  "lines only.";
+
+/**
  * BACKGROUND — quy tắc chung cho MỌI ảnh bối cảnh (Setting), áp dụng cùng với BASE_STYLE_BLOCK.
  * Đã xác nhận qua nhiều cảnh test (phố gỗ, bến tàu, nội thất cung điện, làng adobe, quảng
  * trường thị trấn, hội trường nghị viện) — 2026-08-01.

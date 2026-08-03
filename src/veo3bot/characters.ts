@@ -1,6 +1,7 @@
 import type { Page } from "playwright";
 import type { CharacterProfile } from "../characters/extract.js";
 import { CHARACTER_SHEET_STYLE_BLOCK } from "../styleDNA.js";
+import { dismissOnboardingDialog } from "./project.js";
 
 const CHARACTERS_TOOL_URL_SUFFIX = "/characters";
 const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
@@ -101,6 +102,8 @@ async function createCharacter(page: Page, character: CharacterProfile, projectU
   // "domcontentloaded" + chờ 1 phần tử cụ thể chắc chắn có (nút "Add Media") thay vì chờ
   // network im lặng hoàn toàn.
   await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+  // Modal onboarding chặn mọi click sau khi tải trang (RUNBOOK 8.1).
+  await dismissOnboardingDialog(page);
   await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
 }
 
