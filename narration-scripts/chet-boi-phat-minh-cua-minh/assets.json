@@ -6,7 +6,8 @@
       "type": "character",
       "case": 1,
       "description": "a bulky dark grey-brown padded suit with a large folded fabric hood bunched up over the shoulders and upper back, wide baggy trousers gathered below the knee, glossy black leather gaiters over the shins, short black leather boots, dark brown hair parted at the side and combed back, a soft dark flat cloth cap, a very large thick handlebar moustache curling upward at both ends",
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): tạo theo reference-character.jpeg CŨ (lính gác). Master reference đã đổi sang ảnh khác (áo blouse trắng, đầu màu da, có tai) — nhân vật này giờ lệch phong cách mới, đừng dùng làm chuẩn đối chiếu. Cần viết lại prompt + tạo lại nếu muốn tiếp tục case 1."
     },
     {
       "name": "Parachute Suit",

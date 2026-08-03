@@ -24,21 +24,37 @@ lại của RUNBOOK này, mục 1-7) — nó còn đang host thêm **1 workflow 
 khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
 
 - **Viết kịch bản tường thuật YouTube dạng TUYỂN TẬP chuyện có thật** — mỗi
-  video gồm nhiều câu chuyện độc lập cùng 1 chủ đề (sinh tồn phi thường, cái
-  chết kỳ lạ, tai nạn thể thao...), ghép lại đủ ~10-12 phút (số lượng/độ dài
-  từng case KHÔNG cố định, tuỳ nội dung), giọng lạnh/khách quan, dữ kiện + số
-  liệu đã kiểm chứng làm phần việc cảm xúc. Quy trình: gợi ý chủ đề → tra cứu
-  kiểm chứng → viết bản tiếng Việt trong chat → người dùng duyệt thủ công →
-  viết lại (không dịch máy) bản tiếng Anh cho ElevenLabs TTS.
+  video gồm nhiều vụ việc độc lập cùng 1 chủ đề (tâm linh/siêu nhiên, vụ án lạ,
+  sinh tồn, thảm hoạ...), tổng ~15-18 phút, khoảng 5-6 case kể ĐẦY ĐỦ có đầu có
+  cuối (không phải mẩu dữ kiện ngắn). **Giọng kể chuyện ấm, trò chuyện tự
+  nhiên** — dùng tính từ cảm xúc, dừng lại giải thích bối cảnh khán giả Mỹ
+  không có, kết mỗi case bằng chi tiết rợn người/chưa khép lại, KHÔNG đúc kết
+  bài học.
+  ⚠️ **Đã đổi giọng văn 2026-08-03** — bản trước đó (giọng lạnh/deadpan, câu
+  cụt, cấm giải thích, ~10-12 phút, ~9 case ngắn) đã bị THAY HẲN, không dùng
+  nữa. Nếu thấy kịch bản cũ viết giọng lạnh trong `narration-scripts/` — đó là
+  format CŨ, đừng lấy làm mẫu.
+  Quy trình: gợi ý chủ đề → tra cứu kiểm chứng → viết bản tiếng Việt trong
+  chat → người dùng duyệt thủ công → viết lại (không dịch máy) bản tiếng Anh
+  cho ElevenLabs TTS.
 - Toàn bộ quy trình + phong cách nằm trong skill
   **`.claude/skills/true-story-compilation-script/SKILL.md`** — đọc file đó
-  (không phải RUNBOOK này) khi làm việc này. File
-  `.claude/skills/true-story-compilation-script/used-topics.md` ghi lại các
-  chủ đề + từng case đã dùng để không gợi ý trùng — SKILL.md tự dặn đọc file
-  này ở bước 0. Kịch bản đã duyệt (VN + EN) lưu vào
-  `narration-scripts/<ten-tap>/`.
-  *(3 thư mục kịch bản hiện có trong `narration-scripts/` viết theo 1 format
-  cũ đã ngừng dùng — chỉ còn giá trị lưu trữ, đừng lấy làm mẫu.)*
+  (không phải RUNBOOK này) khi làm việc này, luôn đọc bản MỚI NHẤT vì đã đổi
+  hẳn 1 lần. File `.claude/skills/true-story-compilation-script/used-topics.md`
+  ghi lại các chủ đề + từng case đã dùng để không gợi ý trùng (kể cả 2 tập viết
+  theo format cũ) — SKILL.md tự dặn đọc file này ở bước 0. Kịch bản đã duyệt
+  (VN + EN) lưu vào `narration-scripts/<ten-tap>/`.
+  *(2 thư mục kịch bản đầu tiên trong `narration-scripts/` — "chet-boi-phat-
+  minh-cua-minh" và "roi-tu-tren-troi-ma-khong-chet" — viết theo format CŨ đã
+  ngừng dùng, chỉ còn giá trị lưu trữ, đừng lấy làm mẫu văn phong. Tập nào viết
+  sau ngày 2026-08-03 mới theo giọng mới.)*
+- **(2026-08-03) Tập MỚI NHẤT, theo giọng văn mới, đang ở giai đoạn tạo ảnh**:
+  `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/` (6 case: A Fei,
+  Don Decker, Carl Ledges, Greenbrier Ghost, Chu Xiu-hua, Marico Iguchi) —
+  bản tiếng Anh (`en.md`) do người dùng cung cấp thẳng, không qua bước viết
+  nháp tiếng Việt trong hội thoại (khác quy trình chuẩn ở trên, nhưng vẫn hợp
+  lệ). `assets.json` case 1 (A Fei) đã tạo xong toàn bộ Character/Background,
+  case 2-6 CHƯA làm gì. Xem mục 8.2 cho các bài học rút ra khi làm case 1.
 - Không tạo state/output gì trong `state/`/`output/`/`input/` cho việc này —
   2 thư mục đó CHỈ dành cho pipeline video ở mục 1-7. Nếu người dùng nhắc tới
   "kịch bản", "chủ đề mới", "duyệt bản tiếng Anh"... nhiều khả năng đang nói
@@ -1595,15 +1611,21 @@ cho khớp thực tế — xác nhận bằng `git ls-files`/`git check-ignore -
 2026-07-31). Chỉ `output/`/`output-*/`/`.env`/`.auth/` là thực sự không có
 git backup — cẩn trọng khi xoá/ghi đè các thư mục đó.
 
-## 8. Ghi chú định hướng: pipeline "tạo ảnh trước, video sau" bằng Nano Banana — CHƯA triển khai
+## 8. Ghi chú định hướng: pipeline "tạo ảnh trước, video sau" bằng Nano Banana
 
-Người dùng đang cân nhắc đổi cách làm video: thay vì text-to-video thẳng qua
-Veo3/Flow (cách hiện tại, mục 1-7), sẽ dùng Nano Banana (Gemini 2.5 Flash
-Image) để **tạo ảnh nhân vật/bối cảnh trước**, rồi mới đưa ảnh đó vào bước tạo
-video sau (image-to-video) — nhằm kiểm soát phong cách hình ảnh tốt hơn trước
-khi tốn credit generate video. **Đây MỚI CHỈ LÀ Ý TƯỞNG/THỬ NGHIỆM (test tay
-trên Gemini/Nano Banana ngoài repo) — CHƯA có automation Playwright nào gọi
-Nano Banana thật, chưa có quyết định chính thức đổi pipeline.**
+⚠️ **Tiêu đề cũ của mục này ghi "CHƯA triển khai" — KHÔNG còn đúng kể từ
+2026-08-02, xem mục 8.1.** Automation Playwright THẬT SỰ ĐÃ CHẠY ĐƯỢC (tạo ảnh
+Character/Prop/Background thật trong Flow), và Nano Banana hoá ra CHÍNH LÀ chế
+độ Image có sẵn của Flow, không phải công cụ ngoài cần client riêng. Phần dưới
+đây (đoạn gốc viết 2026-08-01, trước khi biết điều đó) vẫn còn giá trị cho các
+STYLE BLOCK đã chốt, nhưng đọc mục 8.1 trở đi để biết trạng thái automation
+thật + các bẫy đã gặp.
+
+Người dùng ban đầu cân nhắc đổi cách làm video: thay vì text-to-video thẳng
+qua Veo3/Flow (cách cũ, mục 1-7), dùng Nano Banana để **tạo ảnh nhân vật/bối
+cảnh trước**, rồi mới đưa ảnh đó vào bước tạo video sau (image-to-video) —
+nhằm kiểm soát phong cách hình ảnh tốt hơn trước khi tốn credit generate
+video.
 
 **Các style block đã test tay + được người dùng xác nhận hài lòng, đã đúc kết
 vào code tại `src/nanoBanana/styleDNA.ts`** (đọc file đó để lấy nội dung đầy
@@ -1611,11 +1633,14 @@ vào code tại `src/nanoBanana/styleDNA.ts`** (đọc file đó để lấy n�
 lệch nhau về sau):
 - `CHARACTER_STYLE_BLOCK` — CHỈ còn giá trị lịch sử (dùng để tạo ra ảnh master
   reference ban đầu), KHÔNG dùng lại để tạo nhân vật mới nữa.
-- `MASTER_REFERENCE_NOTE` — **QUYẾT ĐỊNH CUỐI CÙNG**: đã chốt 1 ảnh nhân vật cụ
-  thể (lính gác, mũ sắt, cầm giáo) làm ẢNH THAM CHIẾU CỐ ĐỊNH cho MỌI nhân vật
-  người sau này, CHẤP NHẬN LUÔN 2 điểm chưa hoàn hảo của ảnh đó (hình bàn tay ở
-  đầu que, vạt áo hơi loe) thay vì tiếp tục sửa — ưu tiên nhất quán hơn hoàn
-  hảo. File ảnh đã được lưu thật tại `src/nanoBanana/reference-character.jpeg`.
+- `MASTER_REFERENCE_NOTE` — ⚠️ **ĐÃ ĐỔI ẢNH LẦN 2 (2026-08-03)** — mô tả "lính
+  gác, mũ sắt, cầm giáo" ở bản RUNBOOK cũ giờ SAI, chỉ còn giá trị lịch sử.
+  Sau nhiều vòng viết prompt cực chi tiết vẫn không ra đúng góc 3/4 mong muốn
+  (xem mục 8.1.3f), người dùng **tự thay file `reference-character.jpeg`**
+  bằng ảnh khác (không do prompt sinh ra) — xem mục 8.1.3j cho chi tiết ảnh
+  mới + kết quả test. LUÔN đọc thẳng docstring `MASTER_REFERENCE_NOTE` trong
+  `styleDNA.ts` để biết ảnh HIỆN TẠI trông ra sao, đừng tin mô tả chép lại ở
+  RUNBOOK vì đã sai 1 lần.
 - `CHARACTER_PROMPT_PREFIX` — câu mở đầu CHUẨN dùng cho MỌI nhân vật mới (đã bỏ
   boilerplate tư thế/biểu cảm/nền cũ).
 - `CHARACTER_DESCRIPTION_CHECKLIST` — mô tả nhân vật mới CHỈ gồm: trang phục,
@@ -1835,19 +1860,126 @@ timeout với log `subtree intercepts pointer events` — kể cả nút `New pr
   trang crash** ở thao tác sau đó (`Page crashed`) — ĐỪNG dùng cách này.
 - 👉 Khi sửa `project.ts`, thêm bước đóng dialog ngay sau mọi `page.goto()`.
 
-**Việc còn chưa làm** (cập nhật 2026-08-02 — xem mục 8.1 cho những gì ĐÃ xong):
-1. ✅ ~~Test Prop~~ — XONG (`PROP_STYLE_BLOCK` mới, prop "Newsreel Camera" đạt).
-2. Test ghép nhân vật (đã confirm style) VÀO bối cảnh (đã confirm style) cùng
-   1 ảnh — xem 2 style có hoà hợp/nhất quán khi đứng cạnh nhau không. CHƯA làm.
-3. ✅ ~~Viết automation Playwright~~ — XONG phần TẠO ẢNH: dùng lại
-   `src/veo3bot/imageAsset.ts::createImageIngredient` (Flow chế độ Image = Nano
-   Banana 2), có `attachReferenceImage()` cho Character. CHƯA có lớp orchestration
-   đọc danh sách asset từ file rồi tạo hàng loạt + resume-safe (tương đương
+**3j. ✅ Master reference nhân vật ĐỔI LẦN 2 — người dùng tự thay ảnh, không
+qua prompt (2026-08-03).**
+Sau các thất bại lặp lại khi cố ép góc quay 3/4 bằng prompt (mục 3f: đầu tròn
+tuyệt đối + mắt/miệng dịch 1 bên không đọc được là "quay đầu"; siết tiếp bằng
+gồ quai hàm thì tạm ổn nhưng vẫn chưa ưng), người dùng dừng vòng lặp prompt,
+**tự tải 1 ảnh khác đè lên `src/nanoBanana/reference-character.jpeg`**. Đây là
+lần đầu tiên ảnh master KHÔNG do chính pipeline này sinh ra.
+
+Ảnh mới: nhân vật nam áo blouse trắng/sơ mi/cà vạt, đầu MÀU DA (khác hẳn mọi
+bản thử trước đều dùng đầu trắng phẳng), có TAI, không cổ, tóc quét lệch với 2
+lọn dài buông 2 bên tới ngực, tay/chân nét mảnh cụt không bàn tay bàn chân.
+Toàn bộ chi tiết + so sánh với ảnh cũ nằm trong docstring `MASTER_REFERENCE_NOTE`
+(`styleDNA.ts`) — KHÔNG chép lại ở đây để tránh lệch nhau lần nữa như đã xảy ra.
+
+**Đã TEST NGAY sau khi đổi** (nhân vật "Elderly Woman Test", phụ nữ lớn tuổi
+tóc búi, váy 1 lớp) để trả lời câu hỏi quan trọng nhất: **mô tả chữ có ghi đè
+được 2 đặc điểm rủi ro của ảnh mới không (tóc dài 2 bên, trang phục có lớp)?**
+KẾT QUẢ: CÓ — ghi rõ "tóc búi gọn không buông" + "váy 1 lớp không khoác
+ngoài" ra đúng yêu cầu, không bị kéo theo ảnh gốc. Tai và màu da mặc định vẫn
+kế thừa đúng qua ảnh khi không mô tả khác (đúng dự đoán).
+⚠️ Lệch mới, chưa rõ nguyên nhân: chân ra hình bàn chân/giày loe nhẹ thay vì
+nét cụt thuần — ảnh gốc (người mặc blouse) có chân là nét cụt thật, không rõ
+vì sao nhân vật test lại lệch. Cần thêm vài nhân vật nữa mới kết luận được đây
+là ngẫu nhiên hay hệ thống.
+
+`CHARACTER_DESCRIPTION_CHECKLIST` (`styleDNA.ts`) đã thêm mục "màu da" (chỉ mô
+tả khi khác mặc định) và ghi rõ khuyến nghị "phải nói tường minh nếu muốn tóc
+ngắn/trang phục 1 lớp" — đúng bài học rút ra từ vòng test trên.
+
+`assets.json` của tập "Chết bởi phát minh của mình": nhân vật `Tailor Inventor`
+(case 1, tạo theo ảnh lính gác CŨ) đã đánh dấu `notes` là lỗi thời — còn
+`status: "success"` (không xoá, không tự tạo lại) vì việc viết lại prompt cho
+nhân vật này cần người dùng quyết, không tự động hoá.
+
+**Việc còn chưa làm** (cập nhật 2026-08-03 — xem mục 8.1 cho những gì ĐÃ xong):
+1. ✅ ~~Test Prop~~ — XONG (`PROP_STYLE_BLOCK` mới, đã qua 3 nhóm cấu trúc).
+2. Test ghép nhân vật VÀO bối cảnh (không chỉ nhân vật+prop như mục 3f) cùng
+   1 ảnh, dùng `reserveCharacterSpace` đã có sẵn ở background — CHƯA làm.
+3. ✅ ~~Viết automation Playwright~~ — XONG CẢ tạo ảnh đơn lẻ lẫn lớp
+   orchestration: `src/nanoBanana/assets.ts` + `createImageAssets.ts` (đọc
+   `assets.json` theo từng tập, tạo hàng loạt, resume-safe theo `status`, ghi
+   atomic sau mỗi asset, lỗi 1 asset không giết cả mẻ — cùng triết lý
    `createAssets.ts` của pipeline video).
 4. Kiểm chứng lại detection ảnh (mục 4.45) trên project ĐÃ CÓ >17 media — mới chỉ
    test trên project gần như trống, đúng ngưỡng từng làm vỡ cơ chế đếm cũ.
-4. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
+5. Tạo lại `Tailor Inventor` (case 1) bằng ảnh master reference mới — CHƯA làm,
+   xem mục 3j.
+6. Thiết kế lại kiến trúc pipeline tổng thể (thay `@mention` Ingredient trong
    Flow bằng bước generate ảnh Nano Banana + bước image-to-video riêng), cách
    lưu trữ ảnh đã tạo (thay thế vai trò `state/characters.json` hiện tại?), và
    validate xem bước image-to-video sau đó có giữ đúng phong cách ảnh gốc hay
    không (chưa test).
+
+### 8.2. Case 1 tập "Vụ Việc Tâm Linh Không Thể Giải Thích" (A Fei) — bài học sau nhiều vòng chỉnh sửa asset thật (2026-08-03)
+
+Đây là case ĐẦU TIÊN của tập viết theo giọng văn mới (mục 0) được đưa qua hết
+vòng tạo Character + Background bằng `npm run banana` thật (không phải test
+tay như mục 8.1). Toàn bộ asset nằm trong
+`narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/assets.json`.
+
+**Thêm script tiện dùng**: `package.json` giờ có `"banana": "tsx
+src/nanoBanana/createImageAssets.ts"` — chạy `npm run banana -- <đường-dẫn-
+assets.json> [--case N]` thay vì gõ `npx tsx src/nanoBanana/createImageAssets.ts
+...` đầy đủ mỗi lần. Nhớ dấu `--` sau `banana` để npm chuyển tiếp đúng flag
+`--case N` cho script thay vì tự hiểu nhầm thành flag của `npm run`.
+
+**a. Ảnh THẬT của nhân vật có thật chỉ dùng để viết MÔ TẢ CHỮ, không đính làm
+ảnh reference thứ 2.** Khi người dùng cung cấp ảnh chụp thật của A Fei (áo phao
+đỏ, tóc ngắn, đeo khẩu trang), pipeline vẫn chỉ đính DUY NHẤT
+`reference-character.jpeg` (ảnh phong cách) làm reference — ảnh thật của nhân
+vật chỉ được soi bằng mắt để trích ra chi tiết trang phục/tóc rồi viết vào
+`description` theo đúng `CHARACTER_DESCRIPTION_CHECKLIST`. Không có cơ chế
+đính 2 ảnh reference cùng lúc (1 cho phong cách + 1 cho ngoại hình nhân vật)
+trong `createImageAssets.ts` hiện tại.
+
+**b. Nhân vật phụ dùng CHUNG 1 asset chỉ phù hợp khi họ KHÔNG xuất hiện cùng
+lúc trong 1 cảnh.** Lần đầu đoán rằng "5 người lạ trong rừng + cha mẹ + cảnh
+sát + hàng xóm" có thể dùng chung 1 nhân vật "Generic Villager" cho gọn — SAI,
+người dùng yêu cầu tách riêng ngay: nhóm 5 người xuất hiện CÙNG NHAU trong 1
+cảnh nên cần 5 ngoại hình khác nhau (không thì trông như nhân bản 1 người),
+còn cha/mẹ/cảnh sát cũng là vai có tên/có vị trí riêng trong câu chuyện nên
+mỗi người 1 asset. `Generic Villager` giờ chỉ còn dùng cho đám đông/hàng xóm
+nền không cần nhận diện. **Bài học**: đừng tự quyết gộp nhân vật phụ thành 1
+asset chung để tiết kiệm — hỏi người dùng trước, đặc biệt khi các vai đó có
+thể xuất hiện cùng khung hình.
+
+**c. Bố cục "dãy nhà" mặc định ra 1 cụm nhỏ nằm GIỮA khung hình, hở đất/trời 2
+bên — khác hẳn bài học phối cảnh ở mục 3g/3h.** Mô tả "vài căn nhà đứng cạnh
+nhau, không có nhà phía sau" (để đơn giản hoá theo yêu cầu người dùng) ra đúng
+ý về SỐ LƯỢNG nhà, nhưng dãy nhà đó không tự động tràn hết chiều ngang khung
+hình — model thu nhỏ cả cụm nhà lại và đặt giữa khung, để trống đất/trời 2 bên
+(xác nhận trực tiếp: so sánh bản Day V2 với bản Night V2 cùng mô tả kiểu này,
+Night ra tràn kín còn Day thì không — không nhất quán, không đoán trước
+được). Câu chữa: phải nói THẲNG "the row of houses must be scaled and
+positioned to completely fill the frame from the far left edge to the far
+right edge, with absolutely no gap of visible grass or open sky at either
+side" — khác với `NO_PERSPECTIVE_BLOCK` (chỉ chống phối cảnh hội tụ, không ép
+độ phủ ngang khung hình). Áp dụng cho MỌI background dạng "1 dãy vật thể đứng
+cạnh nhau" (nhà, quầy chợ, hàng cột...), không chỉ riêng village.
+
+**d. Vật thể môi trường chỉ xuất hiện ở ĐÚNG 1 cảnh — vẽ thẳng vào Background,
+đừng tách thành Prop rồi ghép sau.** Định tạo Prop "Forest Boulder" (tảng đá
+A Fei ngồi trước khi ngất) để tái sử dụng qua nhiều cảnh như các Prop khác
+(mục 3f ghép Character+Prop bằng `attachExistingAssets`), nhưng người dùng
+sửa lại: tảng đá này chỉ xuất hiện trong ĐÚNG 1 khung cảnh (bãi đất trống
+trong rừng), không cần giữ nhất quán xuyên nhiều cảnh khác nhau — nên vẽ
+THẲNG vào mô tả của Background đó (`Forest Clearing With Boulder`) đơn giản
+và chắc chắn hơn nhiều so với tạo Prop riêng rồi ghép lại bằng
+`attachExistingAssets` (vốn cần viết prompt hình học rất chặt chẽ theo mục
+3f để giữ đúng góc/vị trí, dễ sai). **Quy tắc chọn Prop hay bake-vào-Background**:
+vật thể cần XUẤT HIỆN GIỐNG HỆT Ở NHIỀU CẢNH KHÁC NHAU (nhiều bối cảnh/góc
+quay) → tạo Prop riêng; vật thể chỉ thuộc về 1 bối cảnh cụ thể → mô tả thẳng
+trong Background đó.
+
+**e. Quy ước "đặt tên `<tên> V2/V3`... khi sửa lại asset" (đã có từ mục 4.19
+cho lỗi ánh sáng) giờ là THÓI QUEN CHUNG cho MỌI vòng chỉnh sửa** trong pipeline
+nanoBanana, không chỉ riêng bug ánh sáng ngày/đêm — dùng lặp lại nhiều lần
+trong case này (`A Fei` → `A Fei V2` vì ảnh thật khác mô tả ban đầu; `Long Wang
+Village Day` → `V2` → `V3` vì phức tạp rồi vì không tràn khung; `Forest Ridge
+Overlook` → `V2` vì thiếu đường mòn). Luôn giữ entry cũ (`status: "success"` +
+`notes` giải thích lỗi thời), KHÔNG xoá, KHÔNG ghi đè cùng tên — vì asset cũ
+vẫn còn tồn tại thật trong Flow dưới tên đó, đặt tên trùng sẽ tạo 2 asset cùng
+tên gây lẫn lộn khi tra `@mention`/`attachExistingAssets` sau này.

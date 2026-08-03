@@ -50,6 +50,13 @@ export interface ImageAsset {
   status?: AssetStatus;
   /** Ghi lại lý do lần thử gần nhất thất bại, để đọc lại bằng mắt không phải mò log. */
   lastError?: string;
+  /**
+   * Ghi chú tự do — dùng để đánh dấu asset ĐÃ TẠO XONG (`status: "success"`) nhưng không còn
+   * đáng tin cậy để dùng làm reference cho asset khác, mà KHÔNG xoá lịch sử hay tự động tạo
+   * lại (tự tạo lại cần user xác nhận prompt trước). Ví dụ: master reference nhân vật đã đổi
+   * (`reference-character.jpeg` thay ảnh) nên Character cũ giờ lệch phong cách mới.
+   */
+  notes?: string;
 }
 
 export interface AssetFile {

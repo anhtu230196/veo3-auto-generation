@@ -34,23 +34,51 @@ export const CHARACTER_STYLE_BLOCK =
   "feet detail, simple flat hair shape on top of head. same style with reference image";
 
 /**
- * ẢNH MASTER REFERENCE CHO NHÂN VẬT — QUYẾT ĐỊNH CUỐI CÙNG (2026-08-01): người dùng đã chốt
- * dùng ảnh nhân vật lính gác (mũ sắt, ria mép, áo khoác xanh lá, cầm giáo) làm ẢNH THAM CHIẾU
- * CỐ ĐỊNH cho MỌI nhân vật người sau này — CHẤP NHẬN LUÔN 2 điểm chưa hoàn hảo của chính ảnh
- * đó thay vì tiếp tục sửa (đã thử sửa bằng text 2 lần, model vẫn tự vẽ lại y hệt — quyết định
- * dừng lại, ưu tiên NHẤT QUÁN hơn hoàn hảo):
- * - Tay có 1 hình cùm/bàn tay đơn giản ở đầu que (không phải chỉ 1 đường thẳng trơn).
- * - Áo khoác có vạt loe nhẹ ở gấu (không phải hình chữ nhật phẳng tuyệt đối).
- * MỌI nhân vật tạo SAU NÀY sẽ tự động thừa hưởng ĐÚNG 2 đặc điểm này (vì dùng ảnh làm
- * reference) — đây là ĐÚNG Ý ĐỒ, không phải lỗi cần sửa tiếp mỗi lần.
+ * ẢNH MASTER REFERENCE CHO NHÂN VẬT — ĐỔI LẦN 2 (2026-08-03): người dùng TỰ THAY file
+ * `src/nanoBanana/reference-character.jpeg` bằng ảnh mới (bỏ hẳn phong cách "lính gác" của
+ * quyết định 2026-08-01 ở trên — đoạn ghi chú cũ đó CHỈ CÒN GIÁ TRỊ LỊCH SỬ, không mô tả ảnh
+ * đang dùng nữa). Lý do đổi: sau nhiều vòng thử viết prompt cực chi tiết để tạo góc quay 3/4
+ * (xem lịch sử trong `scripts/make-master-reference.ts`) vẫn không ra đúng ý hoàn toàn — người
+ * dùng quyết định tự chọn ảnh thay vì tiếp tục vòng lặp prompt.
  *
- * ✅ Đã lưu file thật (2026-08-01): `src/nanoBanana/reference-character.jpeg` — dùng đường dẫn
- * này khi automation hoá bước gọi Nano Banana sau này (đính kèm file này làm ảnh reference).
+ * ẢNH MỚI (đã soi bằng mắt 2026-08-03) — nhân vật nam mặc áo blouse trắng, sơ mi xanh, cà vạt
+ * xám, nền xanh ngọc trơn:
+ * - Đầu tròn to, MÀU DA (hồng nhạt) — khác hẳn ảnh lính gác cũ và mọi bản thử trước đó đều
+ *   dùng đầu trắng phẳng. Nếu muốn nhân vật khác màu da, phải ghi RÕ trong mô tả, vì mặc định
+ *   ảnh sẽ kéo đúng tông da này (bài học "ảnh thắng text" — xem NO_PERSPECTIVE_BLOCK/mục 4.12).
+ * - Hai chấm mắt đen tròn, ĐẶT CÂN ĐỐI giữa mặt — khác các bản thử "mắt cụm về 1 bên" trước đó.
+ * - Miệng 1 nét ngang ngắn, không mũi, không lông mày.
+ * - CÓ TAI — 1 nét cong nhỏ ở chỗ tóc giáp mặt. Các bản thử trước đều cấm tai, ảnh này thì có.
+ * - Không cổ — đầu chạm thẳng vào áo, không có khoảng hở.
+ * - Tóc nâu quét lệch 1 bên, có 2 lọn tóc dài đổ xuống hai bên vai tới ngang ngực — ĐẶC ĐIỂM
+ *   RIÊNG của nhân vật này, không phải cấu trúc bắt buộc. Nếu không muốn nhân vật mới bị kéo
+ *   theo kiểu tóc dài này, phải mô tả rõ kiểu tóc khác (vd "short cropped hair, no long
+ *   strands") trong phần mô tả nhân vật.
+ * - Trang phục có LỚP (áo khoác trắng mở, lộ sơ mi + cà vạt bên trong) — khác các block cũ mô
+ *   tả thân chỉ là "1 mảng màu phẳng". Nhân vật mới không mặc áo khoác dạng này vẫn cần mô tả
+ *   rõ trang phục để không bị kéo theo.
+ * - Tay/chân vẫn là nét mảnh cụt, không bàn tay bàn chân — điểm NHẤT QUÁN với mọi bản thử
+ *   trước, không đổi.
+ *
+ * ✅ ĐÃ TEST (2026-08-03, nhân vật "Elderly Woman Test" — phụ nữ lớn tuổi, tóc búi, váy xanh
+ * lá 1 lớp, kính tròn). Xác nhận CẢ HAI điều quan trọng:
+ * - CÓ THỂ GHI ĐÈ bằng text: mô tả rõ "tóc búi gọn, không buông" + "váy 1 lớp, không khoác
+ *   ngoài" ra đúng kết quả — không bị kéo theo tóc dài 2 bên/áo có lớp của ảnh gốc. Vậy quy tắc
+ *   ghi rõ trong CHARACTER_DESCRIPTION_CHECKLIST hoạt động đúng như kỳ vọng.
+ * - Đặc điểm cấu trúc (tai, không cổ, màu da mặc định khi không mô tả khác) kế thừa đúng qua
+ *   ảnh như dự đoán.
+ * ⚠️ LỆCH MỚI PHÁT HIỆN: chân ra hình bàn chân/giày loe nhẹ ở đầu mút, KHÁC với "chỉ nét cụt
+ * không bàn chân" — trong khi ảnh reference (người mặc áo blouse) có chân là nét cụt thật. Có
+ * thể là model tự thêm khi thấy nhân vật mặc váy (liên tưởng "cần giày"), CHƯA xác nhận đây là
+ * lỗi hệ thống hay ngẫu nhiên — cần thêm 1-2 nhân vật nữa mới kết luận được.
  */
 export const MASTER_REFERENCE_NOTE =
-  "Reference image: reference-character (soldier with helmet, moustache, green jacket, " +
-  "holding a spear) — the single fixed visual anchor for ALL human characters going forward. " +
-  "Its slightly-imperfect hand stump and jacket hem are INTENTIONALLY kept, not bugs to fix.";
+  "Reference image: reference-character (man with side-swept brown hair, long strands framing " +
+  "both sides of the face down to chest level, skin-tone round head, small ear visible, white " +
+  "lab coat open over a blue shirt and grey tie) — the single fixed visual anchor for ALL human " +
+  "characters going forward. If a new character needs a clearly different hairstyle, skin " +
+  "tone, or outfit type, describe that explicitly — otherwise the reference's specific traits " +
+  "(long side hair strands, skin tone, layered coat-and-tie outfit) will carry over by default.";
 
 /**
  * PREFIX CHUẨN để ghép trước mô tả nhân vật mới — dùng CHUNG cho MỌI nhân vật từ giờ trở đi,
@@ -75,6 +103,14 @@ export const CHARACTER_PROMPT_PREFIX =
  * - Nón/mũ/khăn trùm đầu (NẾU nhân vật có đội gì đó).
  * - Râu (NẾU nhân vật nam có râu).
  * - Mắt (CHỈ mô tả khi nhân vật là NỮ — vd kẻ mắt, hình dáng mắt).
+ * - Màu da (CHỈ mô tả khi khác tông da mặc định của ảnh reference — xem MASTER_REFERENCE_NOTE,
+ *   thêm 2026-08-03 vì ảnh reference mới có màu da rõ ràng, không còn trắng phẳng như bản cũ).
+ *
+ * ⚠️ THÊM 2026-08-03 (đổi ảnh master lần 2, xem MASTER_REFERENCE_NOTE): ảnh reference mới có
+ * vài đặc điểm RIÊNG dễ bị model tự kéo theo nếu mô tả nhân vật mới không nói rõ khác đi —
+ * kiểu tóc dài buông 2 bên, trang phục có lớp (áo khoác mở lộ sơ mi/cà vạt). Nếu nhân vật mới
+ * cần tóc ngắn/trang phục 1 lớp, PHẢI ghi rõ trong phần Trang phục/Tóc, đừng để trống mà hy
+ * vọng model tự đổi khác ảnh gốc.
  *
  * TUYỆT ĐỐI KHÔNG mô tả:
  * - Dáng người/tỉ lệ cơ thể (chiều cao, gầy/béo...) — ảnh MASTER REFERENCE đã cố định cấu trúc
@@ -82,7 +118,10 @@ export const CHARACTER_PROMPT_PREFIX =
  *   sai khác đi.
  * - Biểu cảm khuôn mặt (vui/nghiêm nghị/tự tin...) — đây là lựa chọn RIÊNG theo từng cảnh cụ
  *   thể sau này, không phải đặc điểm NHẬN DẠNG cố định của nhân vật, không thuộc về bước tạo
- *   Character asset.
+ *   Character asset. Lông mày CŨNG thuộc nhóm này — ảnh reference mới KHÔNG có lông mày (chỉ
+ *   dùng khi cần biểu cảm cụ thể theo cảnh, xác nhận với người dùng 2026-08-03).
+ * - Tai — ảnh reference có 1 chi tiết tai nhỏ, đây là đặc điểm CẤU TRÚC kế thừa tự động qua
+ *   ảnh, không cần (và không nên) mô tả lại bằng chữ.
  *
  * KHÔNG dùng tên riêng người thật/nổi tiếng trong prompt (dù chỉ để mô tả, không cần đúng như
  * bộ lọc "prominent people" của Flow) — người dùng xác nhận trực tiếp: Nano Banana/Gemini
@@ -90,11 +129,14 @@ export const CHARACTER_PROMPT_PREFIX =
  * thay thế (đúng tinh thần mục 4.28/4.40 RUNBOOK, nay áp dụng luôn cho Nano Banana).
  */
 export const CHARACTER_DESCRIPTION_CHECKLIST = [
-  "clothing (outfit + distinctive accessories worn/held)",
-  "hair (style + color)",
+  "clothing (outfit + distinctive accessories worn/held — say explicitly if it's a single " +
+    "simple layer, otherwise the reference's layered coat-and-tie look may carry over)",
+  "hair (style + color — say explicitly if short/simple, otherwise the reference's long " +
+    "side-swept strands may carry over)",
   "headwear (hat/hood/headdress, only if the character wears one)",
   "facial hair (only if male character has a beard/moustache)",
   "eyes (only if the character is female — eyeliner, eye shape, etc.)",
+  "skin tone (only if different from the reference image's default light skin tone)",
 ] as const;
 
 /**
