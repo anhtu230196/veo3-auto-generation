@@ -164,11 +164,18 @@ export async function createImageIngredient(
   styleBlock: string,
   projectUrl: string,
   /**
-   * Đường dẫn ảnh reference (image-to-image). Bỏ trống = tạo từ prompt CHỮ thuần (đúng
-   * cho Prop/Setting/động vật — xem ghi chú trong styleDNA.ts: KHÔNG đính ảnh nhân vật
-   * vào prop/động vật, rủi ro model kéo tỉ lệ người vào vật thể).
+   * Reference cho image-to-image. Bỏ trống = tạo từ prompt CHỮ thuần (đúng cho Prop/Setting/
+   * động vật — xem ghi chú trong styleDNA.ts: KHÔNG đính ảnh nhân vật vào prop/động vật, rủi
+   * ro model kéo tỉ lệ người vào vật thể).
+   *
+   * - `string` = đường dẫn file trên đĩa (image-to-image, upload qua `attachReferenceImage`) —
+   *   dùng cho Character (luôn đính `reference-character.jpeg`).
+   * - `string[]` = tên các asset ĐÃ CÓ SẴN trong Flow (đính qua `attachExistingAssets`) — dùng
+   *   để ghép nhiều asset đã tạo (Character + Background, hoặc chỉ 1 cảnh đã ghép sẵn để sửa
+   *   chi tiết nhỏ) thành 1 ảnh mới, thay cho việc viết riêng 1 file .ts cho mỗi cảnh ghép (xem
+   *   `src/nanoBanana/createSceneComposites.ts` — RUNBOOK mục 8.2).
    */
-  referenceImagePath?: string
+  reference?: string | string[]
 ): Promise<void> {
   // Pill hiển thị mode/tỷ lệ khung hình hiện tại — cùng selector đã xác nhận trong
   // generate.ts::ensureModelAndDuration (icon "crop_16_9" luôn xuất hiện, duy nhất TRƯỚC khi
@@ -219,8 +226,12 @@ export async function createImageIngredient(
   // - Đính SAU khi gõ chữ: mở/đóng bảng chọn media có nguy cơ làm rớt text đã gõ, đúng lớp
   //   bug 4.42/4.49 (chèn chip @mention sau khi gõ làm mất câu).
   // Kẹp vào giữa là vị trí duy nhất an toàn cho cả hai phía.
-  if (referenceImagePath) {
-    await attachReferenceImage(page, referenceImagePath);
+  if (reference) {
+    if (Array.isArray(reference)) {
+      await attachExistingAssets(page, reference);
+    } else {
+      await attachReferenceImage(page, reference);
+    }
     // Bảng chọn media lấy mất focus — phải click lại vào ô prompt trước khi gõ.
     await promptBox.click();
     await page.waitForTimeout(300);

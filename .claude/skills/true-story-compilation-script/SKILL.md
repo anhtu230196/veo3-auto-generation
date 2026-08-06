@@ -204,7 +204,13 @@ nhau tuỳ loại case:
   sách, chấm phẩy. Câu dài thì tách bằng dấu chấm hoặc nối bằng "and"/"but".
   *(Lưu ý: format mới ưa câu dài hơn format cũ, nên quy tắc này cần chú ý hơn —
   câu dài vẫn được, chỉ là đừng nhồi dấu câu lạ vào giữa.)*
-- Số liệu viết dạng đọc lên nghe tự nhiên; đơn vị hệ Mỹ (feet/pounds/miles).
+- **Số liệu viết THẲNG bằng chữ số** (17, 39, 9:35, 1921...), KHÔNG đánh vần ra
+  chữ ("seventeen", "thirty-nine"...). *(Đổi 2026-08-06: ElevenLabs v3 không
+  còn lỗi đọc số như bản cũ, nên quy tắc "viết dạng đọc lên nghe tự nhiên" —
+  từng khiến 1 số bản nháp đánh vần tuổi/số đếm nhỏ ra chữ, vd "thirty nine
+  years old" trong `chet-boi-phat-minh-cua-minh/en.md` — không còn cần thiết.
+  Áp dụng cho MỌI bản tiếng Anh viết TỪ NGÀY NÀY trở đi; 2 tập cũ đã viết theo
+  quy tắc cũ không cần sửa lại.)* Đơn vị hệ Mỹ (feet/pounds/miles).
 - Tên riêng nước ngoài: giữ nguyên, nhưng nếu khó đọc thì cân nhắc thêm cách
   đọc gợi ý trong bản Việt để user tự quyết.
 

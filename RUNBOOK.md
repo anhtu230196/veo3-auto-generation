@@ -1896,8 +1896,18 @@ nhân vật này cần người dùng quyết, không tự động hoá.
 
 **Việc còn chưa làm** (cập nhật 2026-08-03 — xem mục 8.1 cho những gì ĐÃ xong):
 1. ✅ ~~Test Prop~~ — XONG (`PROP_STYLE_BLOCK` mới, đã qua 3 nhóm cấu trúc).
-2. Test ghép nhân vật VÀO bối cảnh (không chỉ nhân vật+prop như mục 3f) cùng
-   1 ảnh, dùng `reserveCharacterSpace` đã có sẵn ở background — CHƯA làm.
+2. ✅ ~~Test ghép nhân vật VÀO bối cảnh~~ — XONG (2026-08-03,
+   `scripts/test-character-in-background.ts`): dùng thẳng `attachExistingAssets`
+   (như mục 3f) đính Character + Background đã tạo sẵn ("A Fei V2" +
+   "Forest Clearing With Boulder"), mô tả chỉ cần "đứng trong cảnh, giữ nguyên
+   2 ảnh reference, tỉ lệ người bình thường so với đá/cây, cùng góc máy ngang
+   tầm mắt". Kết quả ĐÚNG ngay lần đầu — nhân vật đứng đúng vị trí trống của
+   `RESERVE_CHARACTER_SPACE_BLOCK`, đúng tỉ lệ, đúng góc máy đã chừa sẵn từ lúc
+   tạo Background, KHÔNG cần vòng sửa góc máy như mục 3f (có lẽ vì
+   `EYE_LEVEL_CAMERA_BLOCK` đã khoá sẵn góc máy trong ảnh Background, khác mục
+   3f là ghép 2 ảnh chính diện không có sẵn chỉ dẫn góc). Ảnh test lưu ở
+   `scripts/test-character-in-background-result.png` (chưa đổi tên/lưu vào
+   `assets.json` chính thức — chỉ là ảnh nghiệm chứng kỹ thuật).
 3. ✅ ~~Viết automation Playwright~~ — XONG CẢ tạo ảnh đơn lẻ lẫn lớp
    orchestration: `src/nanoBanana/assets.ts` + `createImageAssets.ts` (đọc
    `assets.json` theo từng tập, tạo hàng loạt, resume-safe theo `status`, ghi
@@ -1983,3 +1993,62 @@ Overlook` → `V2` vì thiếu đường mòn). Luôn giữ entry cũ (`status: 
 `notes` giải thích lỗi thời), KHÔNG xoá, KHÔNG ghi đè cùng tên — vì asset cũ
 vẫn còn tồn tại thật trong Flow dưới tên đó, đặt tên trùng sẽ tạo 2 asset cùng
 tên gây lẫn lộn khi tra `@mention`/`attachExistingAssets` sau này.
+
+**f. Ghép NHIỀU HƠN 2 ảnh reference (đã thử 7: 6 Character + 1 Background) vẫn
+ra kết quả đúng, NHƯNG cách diễn đạt cảnh dễ dính bộ lọc chính sách hơn ghép 2
+ảnh.** Prompt đầu tả "nhóm 5 người dẫn 1 phụ nữ đi sâu vào rừng, cô ấy theo sau
+họ" bị Flow chặn thẳng: **"This generation might violate our policies"** — dù
+nội dung hoàn toàn vô hại theo kịch bản (đây là hồn ma dẫn nạn nhân đi, nhưng
+ảnh chỉ vẽ người đi bộ bình thường). Nghi vấn: cụm "group leads a woman away,
+she follows behind" tự nó đọc giống tình huống dẫn dụ/cô lập nạn nhân, không
+liên quan gì tới việc có 7 ảnh reference hay 6 nhân vật. **Sửa bằng cách viết
+lại trung tính hoàn toàn** — đổi thành "sáu người bạn cùng đi bộ đường dài,
+xếp thành 1 hàng, cùng hướng" — qua ngay lần thử 2, giữ nguyên toàn bộ 7 asset
+đính kèm. Bài học: khi 1 generation bị chặn "policy violation", ưu tiên soi
+lại CÁCH DIỄN ĐẠT MỐI QUAN HỆ giữa các nhân vật (dẫn/đuổi theo/cô lập/đe doạ)
+trước khi nghi ngờ số lượng ảnh reference hay nội dung nhân vật.
+
+**g. Sửa 1 CHI TIẾT NHỎ (biểu cảm/tư thế) trên 1 ảnh ĐÃ GHÉP SẴN — đính DUY
+NHẤT chính ảnh đó làm reference, đừng ghép lại từ 2 asset gốc.** Cảnh "A Fei
+Unconscious Against Boulder" (mắt nhắm hẳn, đầu gục sâu hơn) chỉ khác đúng 1
+chi tiết so với "A Fei Sitting Against Boulder" đã có (mắt lim dim) — thay vì
+đính lại cả `A Fei V2` + `Forest Clearing With Boulder` rồi tả lại toàn bộ tư
+thế ngồi từ đầu (rủi ro pose/vị trí lệch đi so với ảnh trước, phá vỡ tính liên
+tục giữa 2 cảnh), chỉ đính CHÍNH ảnh "A Fei Sitting Against Boulder" làm
+reference DUY NHẤT, prompt nói rõ "giữ nguyên mọi thứ, CHỈ đổi mắt/tư thế đầu".
+Ra đúng kết quả ngay lần đầu, giữ nguyên 100% bối cảnh + vị trí nhân vật. Áp
+dụng được cho MỌI cặp cảnh liên tiếp chỉ khác biểu cảm/chi tiết nhỏ (chớp mắt,
+đổi hướng nhìn...) — coi ảnh đã ghép trước đó như 1 "keyframe" để biến đổi tiếp,
+không phải ghép lại từ đầu.
+
+**h. Đổi kiến trúc: CẢNH GHÉP giờ khai báo bằng `scenes.json`, KHÔNG viết 1
+file `.ts` riêng cho mỗi cảnh nữa (2026-08-03).** 5 cảnh ở mục a-g phía trên
+(`A Fei Following Group Into Forest`, `A Fei In Forest Clearing`, `A Fei
+Exhausted Bent Over`, `A Fei Sitting Against Boulder`, `A Fei Unconscious
+Against Boulder`) ban đầu mỗi cảnh 1 file `scripts/make-a-fei-*.ts` viết tay —
+cách này không mở rộng được khi 1 case cần 15-20 cảnh. Đã đổi sang:
+- `src/veo3bot/imageAsset.ts::createImageIngredient` — tham số cuối đổi từ
+  `referenceImagePath?: string` thành `reference?: string | string[]`: truyền
+  `string` = upload file (Character, như cũ); truyền `string[]` = tên các
+  asset ĐÃ CÓ SẴN trong Flow, đính qua `attachExistingAssets` (cảnh ghép).
+  Đổi tương thích ngược — mọi caller cũ vẫn chạy đúng vì chỉ truyền `string`
+  hoặc bỏ trống.
+- `src/nanoBanana/scenes.ts` — kiểu `SceneComposite`/`SceneFile` +
+  `loadSceneFile`, đối xứng với `assets.ts` nhưng cho CẢNH GHÉP (khung hình
+  cuối dùng trực tiếp cho 1 câu kịch bản, không tái sử dụng — khác Character/
+  Prop/Background là "nguyên liệu" tái dùng nhiều lần).
+- `src/nanoBanana/createSceneComposites.ts` — runner đọc `scenes.json`, dùng
+  lại nguyên `createImageIngredient` (không viết lại logic generate/poll/
+  reload-recheck/rename), cùng triết lý resume-safe/atomic-write/lỗi-1-cảnh-
+  không-giết-cả-mẻ như `createImageAssets.ts`. Chạy:
+  `npm run banana-scenes -- <đường-dẫn-scenes.json> [--case N]`.
+- Đã XOÁ 4 file `scripts/make-a-fei-*.ts` (nội dung nay nằm trong
+  `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/scenes.json`) —
+  chỉ giữ lại `scripts/test-character-in-background.ts` làm bằng chứng lịch
+  sử cho lần xác nhận kỹ thuật ĐẦU TIÊN (mục a ở trên).
+
+**LƯU Ý PHỤ THUỘC**: 1 scene trong `scenes.json` có thể tham chiếu tên 1 scene
+KHÁC trong CHÍNH file đó làm reference (kỹ thuật mục g) — scene đó phải
+`status: "success"` (đã tồn tại thật trong Flow) TRƯỚC khi chạy scene phụ
+thuộc nó. `createSceneComposites.ts` KHÔNG tự sắp xếp lại thứ tự — mảng
+`scenes` trong file JSON phải tự xếp đúng thứ tự phụ thuộc.

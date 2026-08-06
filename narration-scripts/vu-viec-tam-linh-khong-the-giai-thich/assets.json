@@ -204,7 +204,8 @@
       "case": 1,
       "description": "A dramatic misty forest overlook, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline filling the top of the frame with dark green treetops on brown trunks, midground layer of a tall eroded dirt and clay embankment face running the full width of the frame with varied earthy brown tones and shadowed crevices, foreground layer of a narrow dirt trail path running along the base of the embankment from the far left edge to the far right edge, bordered by low green bushes and drifting pale mist along the very bottom edge. Muted earthy palette of brown clay, dark green foliage and soft white mist.",
       "composition": "layered",
-      "reserveCharacterSpace": false
+      "reserveCharacterSpace": false,
+      "status": "success"
     },
     {
       "name": "Forest Waterfall Meadow",
@@ -220,6 +221,15 @@
       "type": "background",
       "case": 1,
       "description": "A small forest clearing, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame with dark green treetops, brown trunks and darker green bushes along the tree line, and a flat dirt clearing floor strip across the bottom, no sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on. The rest of the clearing floor stays open and empty. Muted palette of deep green foliage, brown dirt and grey stone.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Forest Clearing With Boulder Night",
+      "type": "background",
+      "case": 1,
+      "description": "The same small forest clearing as \"Forest Clearing With Boulder\" but at night, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame, dark navy night sky with a few small pale stars just visible through gaps between the treetops, and a flat dark dirt clearing floor strip across the bottom, no other sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on, same shape and position as the day version. The rest of the clearing floor stays open and empty. Dark cold nighttime palette of deep navy, charcoal and muted moonlit blue-grey.",
       "composition": "flat",
       "reserveCharacterSpace": true,
       "status": "success"

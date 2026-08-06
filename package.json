@@ -9,7 +9,8 @@
     "generate": "tsx src/generateVideo.ts",
     "download": "tsx src/downloadVideos.ts",
     "login:veo3": "tsx src/veo3bot/save-session.ts",
-    "banana": "tsx src/nanoBanana/createImageAssets.ts"
+    "banana": "tsx src/nanoBanana/createImageAssets.ts",
+    "banana-scenes": "tsx src/nanoBanana/createSceneComposites.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

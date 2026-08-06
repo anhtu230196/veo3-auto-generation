@@ -101,35 +101,3 @@ When the police raided the vessel, a surviving fisherman dropped to his knees, t
 All doubts were instantly cleared. People came to believe that on that fateful day, Chu's restless soul drifted ashore and hitched a ride on the back of Wu's bicycle to follow him home. The exact second Lin drew her last breath, leaving her physical body empty, Chu's soul claimed it to come back to life and bring a brutal mass murder to light.
 
 Chu ended up living inside Lin's body for the next 40 years, dedicating her life to charity work at a local temple, and passed away at the age of 97. On the day of her funeral, out of pure respect for this miraculous and mysterious event, her family engraved both names onto her ancestral tablet: Lin Wang-lu and Chu Xiu-hua.
-
----
-
-## 6. Marico Iguchi and the Killer's Haunting
-
-Kaohsiung, Taiwan. 1991. At a local taxi lot, a group of drivers stood chatting when they noticed something highly unusual. A young driver named Liu Jie-ming ran past in a massive rush, locking himself straight inside his cab.
-
-His car looked incredibly bizarre. It was plastered completely with protective spiritual talismans, and several Buddha statues were lined up right on the dashboard. Liu's face was twisted in pure panic and extreme anxiety.
-
-In the company, Liu was a complete loner who never started a conversation. Whenever someone did talk to him, he was aggressive and irritable, causing his coworkers to stay away. He also had a deep hatred for stray animals. Whenever they annoyed him, he would pull out a crossbow he kept in his car and use it on them.
-
-Liu's daily routine completely changed after that. He practically stayed barricaded inside his taxi from dawn to dusk. Although he owned a private apartment, he almost never went home. On rare occasions, he would run inside just to grab his things or use the restroom, and then he would immediately bolt back out to his car.
-
-One day, the moment Liu stepped out of his apartment building, several police cruisers suddenly surrounded him, taking him into custody. The police were investigating the mysterious disappearance of a Japanese tourist named Marico Iguchi.
-
-Marico had traveled to Taiwan alone and frequently used taxis to get around. The moment she arrived in the city of Kaohsiung, she vanished without a trace. Authorities put many local taxi drivers under surveillance, and Liu quickly became their number-one suspect. His bizarre behavior—living inside his vehicle surrounded by talismans and statues—had been secretly tracked by undercover cops for days before they decided to close in.
-
-Under interrogation, Liu broke down and confessed to taking Marico's life. That night, Marico had hailed Liu's cab. She mentioned she hadn't found a place to stay yet and asked him to drive her to a hotel. Seeing a foreign woman traveling alone, Liu faked an act of kindness. He suggested she stay over at his apartment—a fairly common lodging setup for travelers back then. Trusting his apparent generosity, Marico agreed.
-
-However, once inside the room, Liu's true intentions came to light. He demanded unwanted physical closeness, but Marico flatly rejected him. The next morning, taking advantage of the moment she was fast asleep, Liu used his crossbow to end her life. To conceal the evidence, he separated the remains into smaller parts, placed everything into large bags, loaded them into his car, and drove to a remote area to hide them away. He threw the crossbow away at the exact same location.
-
-Liu recounted a terrifying detail. On the very first night after committing the act, a horrific event occurred. While sleeping in his apartment, a strange voice jolted him awake.
-
-The moment he opened his eyes, he was paralyzed with fear. Floating right in the middle of the room was a terrifying visage of her face covered in dark crimson stains. Liu bolted in pure panic, but the floating phantom chased him ruthlessly, repeatedly demanding, "Why?"
-
-Since that fateful night, the apartment became Liu's worst nightmare. He never dared to set foot inside his home again and moved permanently into his taxi, relying on the talismans and statues in a desperate attempt to ward off Marico's spirit.
-
-Liu was later sentenced to life in prison. Law enforcement escorted him back to the disposal site to retrieve the remains of the victim. They managed to find almost every hidden part, except for her upper remains—which to this day, have never been found.
-
-The case was officially closed, but the paranormal occurrences surrounding it continue to haunt the people of Taiwan. Before Liu was caught, multiple households reported receiving mysterious phone calls where a woman's voice speaking Japanese would echo through the line before abruptly hanging up.
-
-Furthermore, a police officer who participated in inspecting the apartment crime scene firmly claimed that he felt an invisible force give him a violent shove from behind. But when he turned around, there was absolutely nobody there.
