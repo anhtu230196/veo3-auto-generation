@@ -16,12 +16,19 @@ cùng thuộc 1 chủ đề chung.
 
 ## Thời lượng & số lượng case
 
-- **Mục tiêu: tổng thời lượng đọc 15-18 phút.**
-- **Khoảng 5-6 case** là vừa khung đó, vì mỗi case giờ được kể ĐẦY ĐỦ (dài gấp
-  đôi format cũ). Đừng cố nhồi 9-10 case như trước — sẽ vượt xa 18 phút hoặc
-  buộc phải kể lướt, mất đúng thứ làm nên format này.
-- Mốc quy đổi: khoảng **170 từ tiếng Anh ≈ 1 phút đọc**. Mỗi case đầy đủ thường
-  **500-800 từ**.
+- **KHÔNG cần ép đúng khung phút.** Trước đây mục tiêu 15-18 phút được coi là
+  ràng buộc cứng, khiến có tập phải cắt bớt chi tiết đã tra cứu được chỉ để
+  khớp số từ — user đã bỏ ràng buộc này (2026-08-06): **ưu tiên viết ĐẦY ĐỦ
+  CHI TIẾT, đúng giọng người kể chuyện, hơn là cắt nội dung hay/thật chỉ vì lo
+  dài quá.** Đừng tự đếm từ rồi chủ động lược bớt case hay chi tiết.
+- **Khoảng 5-6 case** vẫn là số lượng hợp lý cho 1 tập — không phải vì giới
+  hạn thời lượng, mà vì mỗi case giờ được kể ĐẦY ĐỦ (đầu-giữa-cuối, không phải
+  mẩu dữ kiện). Nhồi quá nhiều case (9-10 như format cũ) vẫn nên tránh, vì sẽ
+  buộc phải kể lướt — mất đúng thứ làm nên format này. Nếu tư liệu 1 case nào
+  đó phong phú, thà kể ít case hơn (4-5) mà đủ chi tiết còn hơn kể nhiều case
+  mà cụt lủn.
+- Mốc quy đổi CHỈ để tham khảo, không phải mục tiêu cần đạt: khoảng **170 từ
+  tiếng Anh ≈ 1 phút đọc**.
 
 ## Quy trình bắt buộc — 5 bước, KHÔNG gộp/bỏ bước
 
@@ -88,8 +95,14 @@ dữ kiện. Cấu trúc chuẩn:
    KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
 
 **Chỉ nêu tên riêng khi nhân vật đó còn xuất hiện lại hoặc có vai trò riêng
-biệt** (kiểu "súng treo tường" của Chekhov, áp dụng cho tên người) — áp dụng
-cho CẢ nhóm đông LẪN 1 cá nhân đơn lẻ chỉ được trích dẫn thoáng qua:
+biệt** (kiểu "súng treo tường" của Chekhov) — áp dụng cho CẢ nhóm đông LẪN 1 cá
+nhân đơn lẻ chỉ được trích dẫn thoáng qua. **QUY TẮC NÀY CHỈ ÁP DỤNG CHO TÊN
+NGƯỜI.** Tên vật/tàu/địa danh/tổ chức (vd 2 con tàu chị em "USS Proteus" và
+"USS Nereus" nhắc đúng 1 lần ở case USS Cyclops) thì KHÔNG áp dụng — cứ nêu tên
+riêng thoải mái dù chỉ xuất hiện 1 lần, vì tên vật không tạo gánh nặng "phải
+nhớ ai là ai" như tên người, ngược lại còn tăng cảm giác tư liệu/uy tín cho
+câu chuyện. (Làm rõ 2026-08-06 theo yêu cầu user, sau khi ban đầu chỉ ghi
+chung chung "tên người" dễ bị hiểu nhầm áp dụng luôn cho tên vật.)
 - **Nhóm đông** (đồng nghiệp, đội cứu hộ, nhân chứng...) mà chỉ 1-2 người trong
   đó thực sự quay lại hoặc có hành động/kết quả khác biệt ở phần sau — chỉ nêu
   tên đúng 1-2 người đó, phần còn lại gọi chung ("cùng năm người thợ khác",
@@ -132,7 +145,16 @@ báo cáo lạnh.
 - **Giải thích, phân tích, nêu bối cảnh** cho khán giả hiểu (xem nhịp 6).
 - **Câu dẫn dắt trò chuyện**: *"The catch?"*, *"Here is why that is
   scientifically impossible:"*, *"Naturally, this wild story caught the
-  attention of..."*, *"Even more chillingly,"*.
+  attention of..."*, *"Even more chillingly,"*. **LƯU Ý (2026-08-06)**: đây là
+  VÍ DỤ để lấy cảm hứng, không phải công thức lặp lại nguyên văn mỗi case. Đặc
+  biệt tránh cụm *"Here's [tính từ] part/detail..."* dùng lặp lại 2-3 lần trở
+  lên trong CÙNG 1 kịch bản (vd *"Here's the stranger part"*, *"Here's some
+  context worth knowing"*, *"Here's a detail that matters"*) — bị người dùng
+  chỉ đích danh là "mùi AI" vì đọc như 1 khuôn mẫu máy móc lặp lại, dù từng câu
+  riêng lẻ không sai. Cách sửa: xoá hẳn câu dẫn, để sự kiện tự nói lên (vd thay
+  vì "Here's the stranger part. Years later, two sister ships..." → viết thẳng
+  "Cyclops wasn't even the last of it. Years later, two sister ships..."),
+  hoặc đổi cấu trúc câu dẫn mỗi lần dùng.
 - **Câu dài có mệnh đề phụ** khi cần cho mạch kể trôi chảy.
 
 **VẪN GIỮ TỪ BẢN CŨ:**
@@ -164,6 +186,16 @@ nhau tuỳ loại case:
   `[CHƯA XÁC MINH: nguồn ghi khác nhau, 5 hay 7 người]`).
 - **Ưu tiên case có nguồn truy được**. Case chỉ lan truyền trên mạng, không truy
   được gốc → bỏ.
+- **Đừng gộp chung mọi chi tiết rùng rợn thành "không giải thích được"** nếu
+  thực ra CHỈ MỘT PHẦN chưa có lời giải. (Rút ra 2026-08-06 từ case Dyatlov
+  Pass: chấn thương ngực/hộp sọ có giả thuyết khoa học khá vững — phiến tuyết
+  trượt; còn việc mất mắt/lưỡi lại có lời giải pháp y RIÊNG và được chấp nhận
+  rộng rãi — phân huỷ tự nhiên + động vật ăn xác sau 3 tháng ngâm trong suối —
+  hoàn toàn khác với phần chấn thương. Bản nháp đầu gộp cả hai thành 1 câu
+  "không giải thích được", khiến case có vẻ bí ẩn hơn thực tế và SAI về mặt
+  pháp y đã công bố.) Tra riêng từng chi tiết gây sốc, đừng mặc định cả cụm là
+  bí ẩn chỉ vì nó *nghe* rùng rợn — chỉ giữ khung "unresolved" cho đúng phần
+  THẬT SỰ chưa có lời giải (ở case này là mức phóng xạ trên quần áo).
 
 ## Bản tiếng Anh — quy tắc riêng cho ElevenLabs
 
