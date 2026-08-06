@@ -87,6 +87,27 @@ dữ kiện. Cấu trúc chuẩn:
    giọng phụ nữ nói tiếng Nhật.
    KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
 
+**Chỉ nêu tên riêng khi nhân vật đó còn xuất hiện lại hoặc có vai trò riêng
+biệt** (kiểu "súng treo tường" của Chekhov, áp dụng cho tên người) — áp dụng
+cho CẢ nhóm đông LẪN 1 cá nhân đơn lẻ chỉ được trích dẫn thoáng qua:
+- **Nhóm đông** (đồng nghiệp, đội cứu hộ, nhân chứng...) mà chỉ 1-2 người trong
+  đó thực sự quay lại hoặc có hành động/kết quả khác biệt ở phần sau — chỉ nêu
+  tên đúng 1-2 người đó, phần còn lại gọi chung ("cùng năm người thợ khác",
+  "cùng đội của anh ta").
+- **1 cá nhân được trích dẫn 1 lần rồi không quay lại** (vd 1 nhà nghiên cứu/
+  chuyên gia hoài nghi được dẫn lời 1 câu rồi thôi) — gọi chung theo vai trò
+  ("nhiều nhà nghiên cứu hoài nghi", "một chuyên gia giám định") thay vì nêu
+  tên riêng, trừ khi cái tên đó tự nó có sức nặng với khán giả phổ thông (vd
+  nhân vật đã nổi tiếng sẵn) hoặc còn được nhắc lại sau.
+Nêu tên chỉ để người nghe phải nhớ những cái tên không bao giờ dùng lại là
+lãng phí. Nếu 1 người trong nhóm/1 cá nhân sau này có chi tiết riêng (kết quả
+khác biệt, lời khai riêng, số phận khác...), giới thiệu tên NGAY TẠI ĐOẠN họ
+trở nên đáng chú ý, không cần nêu trước ở đoạn mở. (Rút ra 2026-08-05 từ case
+Travis Walton — đội khai thác gỗ 7 người, bản nháp đầu liệt kê hết 6 tên đồng
+nghiệp ngay từ đầu dù chỉ đội trưởng + 1 người có kết quả kiểm tra nói dối
+khác biệt còn được nhắc lại; và tên 1 nhà nghiên cứu hoài nghi được dẫn lời
+đúng 1 câu rồi không xuất hiện nữa.)
+
 **Tiêu đề phụ trong case**: với case dài nhiều giai đoạn (khoảng 700 từ trở
 lên), chia bằng tiêu đề phụ ngắn để dễ theo dõi — vd *"A Sudden Crisis and an
 Unnatural Ride"*, *"An Impossible Wake-Up Call"*, *"Justice From Beyond the
