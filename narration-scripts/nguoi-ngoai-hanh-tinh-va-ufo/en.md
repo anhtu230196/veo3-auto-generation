@@ -17,7 +17,6 @@ They were racing a deadline. Their forest clearing contract was already late, an
 
 Partway down the road, the whole truck saw a strange light hovering above the trees. Travis Walton got out and walked into the forest toward it.
 
-### The Truck Drives Away
 
 According to the other six men, a beam of light struck Travis and he dropped to the ground. Panicked, the crew drove off immediately, certain he was dead. Fifteen minutes later, when they worked up the nerve to go back, both Travis and the light were gone.
 
@@ -25,7 +24,6 @@ At 7:45 that evening, the crew reported it to police. A massive search of the fo
 
 Police started suspecting the six men themselves. On November 11th, all six sat for polygraph tests. According to the examiner from the Arizona Department of Public Safety, five of the six were found truthful about not having harmed Travis. One man's result came back inconclusive.
 
-### The Call From a Payphone
 
 That same day, five days after he vanished, Travis's sister got a collect call from a payphone in Heber. It was Travis. A family friend drove out to get him. The operator recognized his name and alerted the local sheriff. A deputy reached him by 2 a.m.
 
@@ -33,7 +31,6 @@ The doctor who examined Travis found a small puncture wound on the inside of his
 
 On November 22nd, on a Phoenix television station, Travis said he woke up in a room that looked like a hospital, with three short, bald creatures standing around him. He said there was another being that looked more human, wearing a helmet. After that he remembered nothing until he found himself lying on a highway.
 
-### The Reward and the Doubts
 
 At the time, the tabloid National Enquirer was offering a hundred thousand dollar prize to anyone who could prove extraterrestrial life. After Travis's story broke, the paper gave the crew its "Best Case of the Year" award, worth five thousand dollars, based on the polygraph results.
 
@@ -49,7 +46,6 @@ He said his whole squad car was engulfed in light, he heard glass breaking, and 
 
 When his colleagues found him, the squad car was sitting sideways across the road. He'd been unconscious for thirty nine minutes. The windshield was shattered, one headlight was destroyed, the red emergency light was damaged, and the radio antenna was bent.
 
-### Two Watches, Both 14 Minutes Slow
 
 Johnson had a habit of syncing his wristwatch to his squad car's dashboard clock before every shift, down to the minute. When he came to after the incident, he found both timepieces, his watch and the car clock, were exactly fourteen minutes slow.
 
@@ -67,7 +63,6 @@ Around 9 p.m. on December 29th, 1980, on a lonely two lane road through the wood
 
 They spotted a massive diamond shaped object hovering just above treetop level, flames shooting out from underneath it in the shape of a huge cone. At first they thought it was an airplane.
 
-### Twenty Three Helicopters
 
 Then they saw roughly twenty three military helicopters, identified as CH-47 Chinooks, flying in formation around the object. The whole encounter lasted about twenty minutes.
 
@@ -75,7 +70,6 @@ Within hours, all three of them were nauseated, vomiting, and weak.
 
 Betty Cash got hit the hardest. Her eyes burned like she had a bad sunburn, her skin blistered and peeled off in large patches, and her hair fell out in clumps. She was hospitalized from January 2nd to the 19th, 1981, then hospitalized again for another fifteen days after that. Vickie and Colby had milder symptoms that still lingered for weeks, weakness, skin sores, hair loss. By April of 1981, Vickie had developed a cataract.
 
-### The Lawsuit That Failed
 
 With the backing of two US senators, the three of them sued the federal government for twenty million dollars. An Army lieutenant colonel investigated the case in 1982 and found no evidence the helicopters belonged to the US military, though he noted the witnesses were credible. On August 21st, 1986, a federal court dismissed the case, since no government agency could be identified as owning either the object or the helicopters.
 
@@ -93,7 +87,6 @@ Local police were called after 4 a.m. but reported seeing nothing but the Orford
 
 After daybreak, the servicemen found three small impressions in the ground, burn marks, and broken branches.
 
-### The Second Night and the Halt Memo
 
 Two nights later, on December 28th, Lieutenant Colonel Charles Halt, the base's deputy commander, personally led a team back to the site. Using radiation detectors, they measured levels well above the normal background, with similar readings turning up at a separate spot over half a mile away.
 
@@ -113,7 +106,6 @@ Over about fifteen minutes, sixty two students between the ages of six and twelv
 
 When the kids told their teachers, most weren't believed. Parents only found out when their children came home talking about it, and showed up at the school the next morning demanding answers.
 
-### A Warning Through Telepathy
 
 On September 19th, a BBC reporter came to film interviews with the students and staff. Afterward he said he could handle a war zone, but he couldn't handle this.
 
@@ -131,7 +123,6 @@ On the night of September 19th, 1961, Barney Hill, thirty nine, a postal worker,
 
 Around 10:30 that night, on Route 3, Betty spotted a light in the sky moving in a way that didn't make sense. They pulled over at a scenic lookout near Twin Mountain. Through binoculars, Betty saw an oddly shaped object, flashing multicolored lights, crossing in front of the moon. Barney first assumed it was a commercial airliner, until it suddenly dropped altitude and came straight toward them.
 
-### Eight to Eleven Faces
 
 The object kept descending until it hovered silently just eighty to a hundred feet above their car. Barney got out with the binoculars and said he saw somewhere between eight and eleven humanoid figures looking out through the craft's windows, dressed in glossy black uniforms and caps. He felt like one of them sent him an order. Stay where you are.
 
@@ -143,7 +134,6 @@ Back home, they found their watches had stopped running for good. The binocular 
 
 On October 25th, 1961, the couple formally reported the incident to Pease Air Force Base.
 
-### The Dreams and the Hypnosis
 
 Ten days after the encounter, Betty started having vivid dreams, five nights running, of being led through the woods by two small men.
 
@@ -159,7 +149,6 @@ Betty, in her own room, described two beings, one she called a leader and one an
 
 What struck Dr. Simon and the researchers most wasn't any single detail. It was that despite being interviewed completely separately, with neither spouse knowing what the other had said, their accounts matched on most of the core facts. Being led aboard. Being separated into rooms. Even the same phrase for how the beings communicated.
 
-### The Star Map
 
 During one hypnosis session, Betty sketched the star map she said she'd seen. In 1968, an elementary school teacher and amateur astronomer named Marjorie Fish read the account and spent years building a three dimensional model of nearby sunlike stars out of thread and beads, using distances published in the 1969 Gliese Star Catalogue.
 

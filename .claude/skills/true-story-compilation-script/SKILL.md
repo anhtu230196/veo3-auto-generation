@@ -213,6 +213,25 @@ nhau tuỳ loại case:
   quy tắc cũ không cần sửa lại.)* Đơn vị hệ Mỹ (feet/pounds/miles).
 - Tên riêng nước ngoài: giữ nguyên, nhưng nếu khó đọc thì cân nhắc thêm cách
   đọc gợi ý trong bản Việt để user tự quyết.
+- **Tránh cụm pháp lý "sexual assault ... of a minor" (đặc biệt kèm "unlawful
+  imprisonment")** — xác nhận trực tiếp 2026-08-06: case "Tanya Kach"
+  (`tro-ve-sau-nhieu-nam-bien-mat/en.md`) bị ElevenLabs chặn thẳng "may
+  violate our Terms of Service" vì câu "pleaded guilty... to multiple counts
+  of **sexual assault and unlawful imprisonment of a minor**... register as a
+  sex offender". Đây là bộ lọc RIÊNG cho nội dung xâm hại trẻ em, GẮT HƠN
+  NHIỀU so với lọc bạo lực thường (cùng tập có case khác mô tả bạo lực/tra tấn
+  nặng hơn — dùi cui điện, doạ dao — vẫn qua bình thường).
+  **ĐÃ TEST LẠI VÀ XÁC NHẬN THU HẸP NGUYÊN NHÂN** (người dùng tự sửa câu, giữ
+  nguyên cụm "register as a sex offender", chỉ đổi phần đầu câu): bản
+  "pleaded guilty... to **abusing Tanya and holding her against her will**...
+  register as a **sex offender**" QUA ĐƯỢC bình thường. Vậy "sex offender"
+  đứng riêng KHÔNG phải nguyên nhân — thủ phạm chính xác là cụm
+  **"sexual assault ... of a minor"** (có thể cả "unlawful imprisonment of a
+  minor" đi kèm), không phải việc nhắc xâm hại tình dục nói chung (case khác
+  cùng tập dùng "began sexually abusing him" vẫn qua được). Cách sửa: đổi từ
+  ngữ pháp lý tường minh ("sexual assault ... of a minor") sang cách nói mô
+  tả hành động ("abusing her and holding her against her will") — các chi
+  tiết khác (bản án, ngày tháng, "sex offender") giữ nguyên không cần đổi.
 
 ## ⚠️ CẢNH BÁO BẢN QUYỀN
 

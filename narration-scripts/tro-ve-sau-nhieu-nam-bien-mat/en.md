@@ -20,7 +20,6 @@ At around two in the morning on August 4th, right as the hospital changed shifts
 
 The woman's name was Ann Pettway. She took a train roughly sixty two miles to Bridgeport, Connecticut, and raised the baby as her own under the name Nejdra Nance. Everyone at home called her Netty.
 
-### The Birth Certificate That Didn't Exist
 
 Netty grew up like any other kid, but by her teenage years something felt wrong. She looked nothing like her mother, and she could never get a Social Security card.
 
@@ -28,7 +27,6 @@ In 2005, pregnant and needing a birth certificate for health insurance, Netty go
 
 In 2010, twenty three and living in Atlanta, Netty found the National Center for Missing and Exploited Children's website and widened her search there. She found a photo of an infant kidnapped in 1987. What stopped her cold wasn't that the baby looked like her. It was that the baby looked exactly like her own daughter. That December, she called the center's hotline.
 
-### The Phone Call
 
 A few weeks later, Netty called Joy White. The two of them spoke by phone several times before any DNA results came back. In early 2011 she flew to New York to meet her biological parents for the first time in twenty three years. Just as she was boarding her flight home to Atlanta, police called to confirm the DNA was a match.
 
@@ -46,7 +44,6 @@ He drove thirty four miles to his home in Kashiwazaki, took her upstairs, and sh
 
 For the first several months he kept her tied up, forced her to record horse races on television, and used a stun gun on her when she got it wrong. He threatened her with knives, gave her men's clothes to wear, cut her hair himself, and rarely let her bathe. For most of nine years her only connection to the outside world was a radio, and she wasn't allowed a television until the final year.
 
-### The Woman Downstairs
 
 Here's the detail that sets this case apart. Sato's mother, in her seventies, lived on the floor right below them for all nine years, and cooked most of the meals carried upstairs.
 
@@ -56,7 +53,6 @@ What she actually did was call the local public health center. Not the police. S
 
 Sato flew into a rage loud enough that police were called in. In the middle of the chaos, a thin, pale young woman came down the stairs and told the officers her own name. She was nineteen.
 
-### After Nine Years
 
 She was so thin she could barely walk, dehydrated, jaundiced, her skin pale from years with almost no sunlight. Doctors noted she behaved like a child, frozen at the age she'd been taken. When her mother arrived, she didn't recognize her own daughter.
 
@@ -80,7 +76,6 @@ American and Filipino forces landed on the island on February 28th, 1945. Onoda 
 
 That makes more sense with a little context. Planes dropped leaflets saying the war was over, but to an officer trained specifically to spot enemy propaganda, a leaflet telling him to lay down his weapon looked exactly like propaganda was supposed to look. And no one with the authority to cancel his orders had ever done so.
 
-### Four Men in the Jungle
 
 They lived on bananas and coconuts and raided rice stores for food. Over the years, Onoda's small group killed around thirty people they believed were enemy soldiers.
 
@@ -88,7 +83,6 @@ The first to leave was Private Yuichi Akatsu, who split off in 1949 and surrende
 
 The Japanese government had already declared him dead back in 1959. His family had held a funeral.
 
-### The Man Looking for Three Things
 
 In 1974, a young Japanese man named Norio Suzuki dropped out of college to travel the world. He told friends he was looking for three things, in this exact order. Lieutenant Onoda, a panda, and the Abominable Snowman.
 
@@ -114,7 +108,6 @@ For the next ten years, Tanya lived a few minutes' drive from her own father's h
 
 The man holding her was Thomas Hose, thirty eight years old, the security guard at her own middle school. He'd spent months befriending her, and eventually convinced her to run away.
 
-### Four Years in One Room
 
 Hose lived with his parents and his son, and kept Tanya hidden in his second floor bedroom. For the first four years she wasn't allowed to leave that room, not once. She couldn't even use the bathroom downstairs, so she used a bucket instead. Three other people lived in that house for four straight years, and none of them ever came upstairs.
 
@@ -122,7 +115,6 @@ In 2000, Hose did something bolder. He gave her a new identity, a young woman na
 
 From then on, Tanya was allowed outside under a strict curfew. She walked around the very town where her missing person flyers had once hung, and got a job at a local deli under the name Nikki. Neighbors got to know her face. Nobody recognized the girl who'd vanished at fourteen, now in her twenties.
 
-### One Sentence
 
 The deli was owned by a man named Joe Sparico. For months, he and his wife talked with the young woman who called herself Nikki, and slowly sensed something was very wrong.
 
@@ -130,7 +122,7 @@ On March 21st, 2006, Tanya broke down crying at work and told Joe her name wasn'
 
 The Sparicos called their son, a retired police officer who remembered the case. Within hours, officers surrounded Hose's home. Tanya was twenty four years old.
 
-Thomas Hose pleaded guilty in 2007 to multiple counts of sexual assault and unlawful imprisonment of a minor, and received five to fifteen years. He served the entire fifteen, was released in 2022, and had to register as a sex offender.
+Thomas Hose pleaded guilty in 2007 to abusing Tanya and holding her against her will, and received five to fifteen years. He served the entire fifteen, was released in 2022, and had to register as a sex offender.
 
 Tanya sued the agencies that should have found her. Every lawsuit was dismissed. She later wrote a memoir, and titled it after the very thing that had once put her face in front of the whole country. A milk carton.
 
@@ -144,13 +136,11 @@ The man in that van was Wolfgang Priklopil, a telecommunications technician livi
 
 The room below measured about fifty four square feet. No windows. Completely soundproofed.
 
-### Eight Years
 
 Priklopil controlled everything, even the electricity, plunging her into total darkness whenever he wanted. He installed a two way intercom to give her orders at any hour, starved her, forced her to work, and told her the doors were rigged with explosives and that he always carried a gun, so if she ever ran, she would die.
 
 For eight years she grew up in that cellar, but barely. When she finally got out, she was only six inches taller than the day she was taken, and weighed one hundred and six pounds, barely more than an average ten year old.
 
-### 12:53 in the Afternoon
 
 On August 23rd, 2006, Priklopil told her to vacuum out his van in the garden. Partway through, his phone rang, and because the vacuum was too loud, he stepped away to take the call.
 
@@ -168,11 +158,10 @@ Years later, Natascha Kampusch became the legal owner of that very house. She st
 
 ## 6. Steven Stayner — The Boy Who Walked Another Boy to the Police Station
 
-On December 4th, 1972, a seven year old boy named Steven Stayner was walking home from school in Merced, California, when a man approached, said he was collecting donations for a church, and asked if Steven wanted a ride home. Waiting in the car was a second man, Kenneth Parnell, already convicted once of molesting a child.
+On December 4th, 1972, a seven year old boy named Steven Stayner was walking home from school in Merced, California, when a man approached, said he was collecting donations for a church, and asked if Steven wanted a ride home. Waiting in the car was a second man, Kenneth Parnell, already convicted once of abusing a child.
 
-Parnell took the boy to a cabin in Catheys Valley, just a few hundred feet from Steven's own grandfather's house. He renamed the boy Dennis Parnell, keeping his real middle name and birthdate. Thirteen days after the kidnapping he began sexually abusing him, telling Steven that a court had granted him custody because Steven's real parents were too poor to raise so many kids.
+Parnell took the boy to a cabin in Catheys Valley, just a few hundred feet from Steven's own grandfather's house. He renamed the boy Dennis Parnell, keeping his real middle name and birthdate. Thirteen days after the kidnapping he began abusing him, telling Steven that a court had granted him custody because Steven's real parents were too poor to raise so many kids.
 
-### Seven Years in Plain Sight
 
 This is what makes the case different from every other one on this list. Steven Stayner was never locked up.
 
@@ -180,7 +169,6 @@ He lived openly, moved with Parnell through Santa Rosa and Comptche, went to sch
 
 Then he got older, and Parnell lost interest in him. On February 14th, 1980, Parnell and an accomplice kidnapped a five year old boy named Timothy White in Ukiah, dragging him into a car while he screamed and struggled. Steven, now fourteen, watched it happen, and saw himself from seven years earlier.
 
-### March 1st, 1980
 
 That night, while Parnell was at his job as a security guard, Steven took Timmy and ran. The two boys hitchhiked nearly forty miles back to Ukiah. Once there, Steven couldn't find Timmy's house, so he did the only thing left to do. He walked the boy straight into the police station.
 
@@ -188,7 +176,6 @@ His handwritten statement that night began with these words. My name is Steven S
 
 By the next day, both boys were back with their families.
 
-### After
 
 Kenneth Parnell was convicted in 1981 of kidnapping both boys, got seven years, and was paroled after five. He was never prosecuted for the years of abuse, blocked by the statute of limitations, and a woman who had lived with him and taken part in it was never arrested.
 

@@ -14,8 +14,6 @@ In 1587, nearly a hundred and fifteen English men, women, and children landed on
 
 The colony was running desperately short on food. The settlers begged White to sail back to England for more supplies. He left on August 27th, 1587, promising to return quickly.
 
-### Three Years of Waiting
-
 He couldn't. The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship from leaving port. It wasn't until 1590, three full years later, that White finally got permission to sail back to Roanoke.
 
 Before he'd left, he and the colonists had agreed on a signal. If they were forced to relocate, they would carve the name of their destination into a tree or post. If they left under distress, they'd carve a cross beside it.
@@ -23,8 +21,6 @@ Before he'd left, he and the colonists had agreed on a signal. If they were forc
 On August 18th, 1590, his granddaughter's third birthday, White landed again. The colony was empty. The houses had been carefully taken apart, their belongings dug up and rifled through. Not a single boat remained on the shore. And carved into a post of the fence, one word. CROATOAN.
 
 There was no cross beside it.
-
-### The Search That Never Happened
 
 To White, that looked like good news. It meant everyone had relocated safely to nearby Croatoan Island. But just as he prepared to sail there and check, a hurricane tore through the area. His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck. The storm blew them completely off course, and by the time they spotted land again, they were near the Azores, off the coast of Spain. They had no choice but to turn back for England.
 
@@ -39,8 +35,6 @@ Centuries afterward, one explorer wrote that the native people on nearby Hattera
 The Flannan Isles are a small cluster of rocky, uninhabited islands off the coast of Scotland, with exactly one structure on them, a lighthouse, kept running by three men who lived there. In December of 1900, keepers James Ducat, who had a wife and four children back home, Thomas Marshall, and Donald McArthur were going about their routine in the middle of a brutal winter.
 
 On December 15th, a passing ship noticed in bad weather that the lighthouse wasn't lit. But it wasn't until December 26th, eleven days later, that the relief boat Hesperus finally managed to land, held back the whole time by rough seas.
-
-### No One Left to Greet Them
 
 Captain Jim Harvie and his crew came ashore to find no flag on the flagpole, no one to meet them, the gate and front door both shut. Inside, the beds were unmade, the clock had wound down and stopped, the lamps were cleaned and freshly filled with oil. But only one set of oilskins hung on the hooks. Two were missing. There was no trace of any of the three men anywhere on the island. Lighthouse board rules were strict on one point above all others. The light was never supposed to be left completely unattended, no matter what happened outside. That day, it had been.
 
@@ -60,7 +54,6 @@ On March 4th, 1918, in the middle of the First World War, the US Navy coal ship 
 
 The ship was carrying 10,800 tons of manganese ore, a mineral used in making ammunition, well over its safe maximum load of 8,000 tons. One of its two engines had a cracked cylinder and wasn't working at all before it even left port, leaving the ship to run on a single engine.
 
-### Vanished Without a Single Distress Call
 
 Cyclops never made it to Baltimore. No SOS. No wreckage. No bodies. On April 15th, 1918, over a month after contact was lost, the Navy finally announced the ship was overdue and feared lost, and it made front page news across the country. On June 1st, 1918, Assistant Secretary of the Navy Franklin D. Roosevelt formally declared the entire crew dead.
 
@@ -80,7 +73,6 @@ On May 19th, 1845, two Royal Navy ships, HMS Erebus and HMS Terror, left England
 
 In July of 1845, two whaling ships crossed paths with the expedition in Baffin Bay, waiting for the ice to break so they could push on. That was the last time any European ever saw them.
 
-### Eleven Years of Silence
 
 There was no word at all for the first two years. It wasn't until 1848 that the Royal Navy launched a full scale search. Between 1850 and 1851, eleven British ships and two American ships combed the Arctic and found the first three graves on Beechey Island, men who'd died in that very first winter.
 
@@ -102,7 +94,6 @@ In January of 1959, nine students and former students from a technical institute
 
 The group planned to be back no later than February 12th. On the night of February 1st into the 2nd, they pitched their tent on the slope of a mountain called Kholat Syakhl.
 
-### Nine Sets of Footprints in the Snow
 
 They never came back. When relatives raised the alarm, a search party went out, and on February 26th they found the tent. It had been slashed open from the inside, not the outside. Nine sets of footprints led away from it, most of the hikers in socks, some in a single shoe, some completely barefoot, in temperatures dozens of degrees below freezing.
 
@@ -126,7 +117,6 @@ On Christmas Eve, 1945, the Sodder family in the small town of Fayetteville, Wes
 
 Months before the fire, a life insurance salesman had warned George outright that his house would go up in smoke because of his anti Mussolini remarks. A separate stranger had shown up at the house, warning that the fuse box would cause a fire one day. Both warnings would matter a great deal later.
 
-### The Night No One Could Save Five Children
 
 Around midnight, a strange woman called the house asking for someone nobody knew. About an hour later, Jennie Sodder heard a loud thud on the roof, followed by something rolling off it. Half an hour after that, fire broke out in George's office, right around the phone line and the fuse box.
 
