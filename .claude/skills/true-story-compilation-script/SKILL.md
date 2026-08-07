@@ -77,12 +77,37 @@ dữ kiện. Cấu trúc chuẩn:
    format mới GIỮ LẠI ĐẦY ĐỦ.
 
 6. **Khối giải thích bối cảnh** — khi câu chuyện dựa vào kiến thức khán giả Mỹ
-   không có, DỪNG LẠI GIẢI THÍCH RÕ. Đây là điều format cũ CẤM, format mới BẮT
+   không có, phải giải thích rõ. Đây là điều format cũ CẤM, format mới BẮT
    BUỘC. Ví dụ mẫu: *"Here is why that is scientifically impossible: Back in the
    1950s, rural Taiwanese locals only spoke their native Taiwanese dialect.
    Mandarin was brought over from the mainland and was strictly used by the
    government and schools in major cities."* Không có khối này, cú twist mất
    sạch sức nặng vì khán giả không hiểu vì sao nó bất khả thi.
+
+   ⚠️ **NHƯNG: giải thích ≠ THÔNG BÁO RẰNG MÌNH SẮP GIẢI THÍCH** (bổ sung
+   2026-08-06 sau khi user chỉ đích danh đây là "mùi AI" rõ nhất còn sót lại).
+   TUYỆT ĐỐI tránh các câu bắc cầu tự-quy-chiếu kiểu:
+   *"Cần giải thích một chút để hiểu vì sao..."*, *"Ở đây cần dừng lại một chút
+   để thấy hết..."*, *"Cần hiểu ý tưởng này để thấy nó thông minh tới mức
+   nào..."*, *"Đây là chi tiết quan trọng để hiểu..."* — và mọi biến thể tiếng
+   Anh (*"Here's some context worth knowing"*, *"To understand why this
+   matters..."*, *"It's worth pausing here to explain..."*).
+   Chúng biến người kể chuyện thành giảng viên đang thuyết trình về câu
+   chuyện, thay vì đang kể câu chuyện. Người xem cần TỰ THẤY tình tiết thông
+   minh/bất khả thi qua chính diễn biến, không cần được báo trước.
+   **Cách đúng: nhét thẳng dữ kiện nền vào mạch kể như một sự kiện nữa của câu
+   chuyện.**
+   - ❌ *"Ở đây cần dừng lại một chút để thấy hết mức độ khó tin: Russell
+     Williams không phải một người vô danh. Ông ta là Chỉ huy trưởng..."*
+   - ✅ *"Người lái chiếc xe đó là Đại tá Russell Williams, Chỉ huy trưởng căn
+     cứ không quân lớn nhất Canada, phi công từng lái chuyên cơ chở Nữ hoàng
+     Elizabeth II."*
+   Dữ kiện y hệt, nhưng bản đúng để sự kiện tự gây sốc.
+   **Giữ khối giải thích NGẮN** — vài câu, không phải một đoạn giảng giải. Chỉ
+   nêu đúng phần khán giả BẮT BUỘC phải biết để hiểu cú twist, cắt hết phần
+   nền phụ trợ. Đoạn kỹ thuật dài (metadata file Word, phả hệ di truyền, phân
+   tích trạm phát sóng...) làm chùng hẳn nhịp phim — nén thành 2-3 câu "quay
+   cận cảnh" đúng chi tiết quyết định.
 
 7. **Vỡ lẽ / điều tra** — sự thật lộ ra: cảnh sát vào cuộc, khai quật, lời thú
    tội, hồ sơ toà án.
@@ -93,6 +118,20 @@ dữ kiện. Cấu trúc chuẩn:
    thể phía trên đến nay chưa tìm thấy; nhiều nhà nhận được cuộc gọi lạ có
    giọng phụ nữ nói tiếng Nhật.
    KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
+
+⚠️ **MẶT TRÁI CỦA QUY TẮC NÀY — đừng cắt nhầm người then chốt** (bổ sung
+2026-08-06): quy tắc dưới đây dùng để bỏ tên nhân vật MỜ NHẠT, KHÔNG phải để
+gộp người có vai trò quyết định thành "một người phụ nữ", "một người hàng
+xóm". Nếu một người là NGƯỜI KHỞI ĐỘNG cả bước ngoặt của vụ án — dù chỉ xuất
+hiện một đoạn — họ xứng đáng có tên VÀ có động cơ/tâm lý riêng, vì đó chính là
+phần người thật nhất của câu chuyện. (Rút ra từ case Unabomber: bản nháp viết
+"một người phụ nữ ở bang New York đọc bản thảo rồi đưa cho chồng" — người đó
+là Linda Patrik, giáo sư triết học, người ĐẦU TIÊN nghi ngờ Ted khi đang ở
+Paris giữa một đợt đánh bom năm 1995, bị chồng gạt đi, và phải dùng khái niệm
+nghiệp báo trong Phật giáo để thuyết phục chồng chịu đọc. Gộp bà thành "một
+người phụ nữ" là vứt bỏ đúng lớp kịch tính tâm lý mạnh nhất của case.)
+Kiểm tra nhanh: nếu bỏ nhân vật này ra thì vụ án có được phá không? Nếu KHÔNG
+→ nêu tên và kể động cơ của họ.
 
 **Chỉ nêu tên riêng khi nhân vật đó còn xuất hiện lại hoặc có vai trò riêng
 biệt** (kiểu "súng treo tường" của Chekhov) — áp dụng cho CẢ nhóm đông LẪN 1 cá
@@ -211,6 +250,22 @@ nhau tuỳ loại case:
   years old" trong `chet-boi-phat-minh-cua-minh/en.md` — không còn cần thiết.
   Áp dụng cho MỌI bản tiếng Anh viết TỪ NGÀY NÀY trở đi; 2 tập cũ đã viết theo
   quy tắc cũ không cần sửa lại.)* Đơn vị hệ Mỹ (feet/pounds/miles).
+  **Ngoại lệ 1 — chữ "one"**: giữ nguyên viết bằng chữ ("one"), KHÔNG đổi
+  thành "1". Lý do: "one" vừa là số đếm vừa là đại từ phiếm chỉ ("no one",
+  "someone", "one of them", "every one of...") — đổi hết thành "1" vừa sai văn
+  phạm ở nhiều chỗ, vừa khiến "1" bị đọc lẫn với các số khác trong câu. Số 2
+  trở lên thì luôn đổi hết, kể cả số nhỏ (2, 3, 4...), không riêng số 2 chữ số
+  trở lên.
+  **Ngoại lệ 2 — số thập phân**: KHÔNG viết dạng số thuần (vd `1.44`), vì
+  ElevenLabs có thể đọc sai thành "one point forty-four" thay vì "one point
+  four four". Đánh vần ra chữ có gạch nối: *"a one-point-four-four megabyte
+  floppy disk"*. (Cả 2 ngoại lệ bổ sung 2026-08-06, rút ra từ case BTK ở
+  `vu-an-pha-boi-mot-chi-tiet-nho/en.md`.)
+  **Số trong câu liệt kê 3 mục nối bằng "and"**: thêm dấu phẩy Oxford trước
+  "and" cuối cùng để ElevenLabs ngắt nhịp đúng — vd *"bind, torture, and
+  kill"* thay vì *"bind, torture, kill"*. Tương tự, khi giải thích nguồn gốc
+  1 từ viết tắt/ghép từ nhiều chữ, để từng chữ gốc trong ngoặc kép cho rõ —
+  vd *"combining "university" and "airline""* thay vì viết liền không dấu.
 - Tên riêng nước ngoài: giữ nguyên, nhưng nếu khó đọc thì cân nhắc thêm cách
   đọc gợi ý trong bản Việt để user tự quyết.
 - **Tránh cụm pháp lý "sexual assault ... of a minor" (đặc biệt kèm "unlawful
