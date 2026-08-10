@@ -48,13 +48,20 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   minh-cua-minh" và "roi-tu-tren-troi-ma-khong-chet" — viết theo format CŨ đã
   ngừng dùng, chỉ còn giá trị lưu trữ, đừng lấy làm mẫu văn phong. Tập nào viết
   sau ngày 2026-08-03 mới theo giọng mới.)*
-- **(2026-08-03) Tập MỚI NHẤT, theo giọng văn mới, đang ở giai đoạn tạo ảnh**:
+- **(2026-08-10) Tập MỚI NHẤT, theo giọng văn mới, đang ở giai đoạn tạo ảnh**:
   `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/` (6 case: A Fei,
   Don Decker, Carl Ledges, Greenbrier Ghost, Chu Xiu-hua, Marico Iguchi) —
   bản tiếng Anh (`en.md`) do người dùng cung cấp thẳng, không qua bước viết
   nháp tiếng Việt trong hội thoại (khác quy trình chuẩn ở trên, nhưng vẫn hợp
-  lệ). `assets.json` case 1 (A Fei) đã tạo xong toàn bộ Character/Background,
-  case 2-6 CHƯA làm gì. Xem mục 8.2 cho các bài học rút ra khi làm case 1.
+  lệ). **Case 1 (A Fei) đã HOÀN TẤT toàn bộ phần ảnh**: `assets.json` 29/29
+  Character/Background/Prop `success`, `scenes.json` 18/18 cảnh ghép
+  `success` (12 cảnh chạy xong 2026-08-10 qua `npm run banana-scenes -- ...
+  --case 1`, sau đó thêm 1 background + 1 cảnh nữa khi tách shot đoạn "18
+  Lakes" — xem mục 8.2i; không lỗi nào). Case 2-6 CHƯA làm gì (chưa viết
+  assets.json/scenes.json cho case nào trong 5 case còn lại). Xem mục 8.2 cho
+  các bài học rút ra khi làm case 1. **Bước KẾ TIẾP chưa làm cho case 1**: image-to-video
+  (mục 8, việc còn chưa làm #6) — pipeline hiện mới dừng ở tạo ẢNH, chưa có
+  bước biến 17 ảnh cảnh ghép thành video.
 - Không tạo state/output gì trong `state/`/`output/`/`input/` cho việc này —
   2 thư mục đó CHỈ dành cho pipeline video ở mục 1-7. Nếu người dùng nhắc tới
   "kịch bản", "chủ đề mới", "duyệt bản tiếng Anh"... nhiều khả năng đang nói
@@ -2052,3 +2059,52 @@ KHÁC trong CHÍNH file đó làm reference (kỹ thuật mục g) — scene đ�
 `status: "success"` (đã tồn tại thật trong Flow) TRƯỚC khi chạy scene phụ
 thuộc nó. `createSceneComposites.ts` KHÔNG tự sắp xếp lại thứ tự — mảng
 `scenes` trong file JSON phải tự xếp đúng thứ tự phụ thuộc.
+
+**i. 1 câu kịch bản có thể cần NHIỀU SHOT ở các VỊ TRÍ KHÔNG GIAN khác nhau —
+đừng gộp "nhìn thấy từ xa" và "lại gần nói chuyện" vào 1 ảnh (2026-08-10,
+người dùng chỉ ra).**
+
+Đoạn "18 Lakes of Long Wang" ban đầu chỉ có ĐÚNG 1 cảnh (`A Fei Meets Group At
+Lakes` — cả 6 người đứng chung 1 quả đồi) cho toàn bộ đoạn văn. Nhưng chính
+lời kịch bản mô tả 2 khoảnh khắc KHÁC NHAU VỀ VỊ TRÍ: "spotted a group of
+people standing on a **nearby hill**" (A Fei ở đồi này, nhóm ở đồi kia, còn
+cách xa) rồi mới "as she **drew closer** to strike up a conversation" (đã tới
+nơi, cùng 1 chỗ). Gộp thành 1 ảnh làm mất hẳn nhịp "phát hiện → tiếp cận".
+
+👉 **DẤU HIỆU NHẬN BIẾT phải tách shot**: câu kịch bản chứa động từ DI CHUYỂN /
+ĐỔI KHOẢNG CÁCH — *spotted… drew closer, walked up to, turned around, looked
+back, followed them in*. Gặp mấy động từ này thì tách thành nhiều entry trong
+`scenes.json`, ĐỪNG cố nhồi thành 1 prompt phức tạp hơn.
+
+**Cách làm shot/reverse-shot**: cần 2 BACKGROUND biến thể của CÙNG 1 địa điểm —
+1 cái là chỗ ĐỐI TƯỢNG đứng, 1 cái là chỗ NHÂN VẬT đứng nhìn sang. Đặt tên đối
+xứng để sau này đọc `assets.json` là hiểu ngay quan hệ:
+`Long Wang 18 Lakes Hillside` (nhóm 5 người đứng, đã có) ↔
+`Long Wang 18 Lakes Opposite Hilltop` (A Fei đứng, tạo thêm 2026-08-10). Mô tả
+background thứ 2 phải nói rõ có 1 quả đồi KHÁC ở midground, cách nhau bằng 1
+chỗ trũng thấy được, để 2 đồi đọc ra là 2 nơi riêng biệt.
+
+⚠️ **Trong shot "nhìn thấy từ xa", CỐ Ý để nhóm người NGOÀI KHUNG** (nhân vật
+nhìn off-frame), KHÔNG vẽ người tí hon ở đồi xa. Hai lý do: `BACKGROUND_STYLE_
+BLOCK` vốn cấm mọi bóng người trong background, và 5 nhân vật vẽ ở kích thước
+nhỏ thì không thể giữ đúng mặt/trang phục theo ảnh reference (cùng lớp vấn đề
+mục 4.3 của pipeline Veo3: chủ thể quá nhỏ/không rõ thì @mention hết neo được).
+Nhóm được "reveal" ở shot kế tiếp — đó mới là chỗ họ cần nhìn rõ.
+
+**Establishing shot bằng ẢNH THẬT cho địa danh CÓ THẬT — loại shot KHÔNG đi qua
+pipeline AI.** Với địa danh có thật (vd "18 Lakes of Long Wang"), có thể chèn
+thẳng 1 ảnh chụp thật, không chỉnh sửa gì, làm cảnh giới thiệu địa điểm trước
+2 shot trên. Pipeline hiện KHÔNG có cơ chế nào cho việc này — hoàn toàn thủ
+công lúc dựng video, không khai báo trong `assets.json`/`scenes.json`.
+⚠️ **Bản quyền**: ảnh lấy trên mạng gần như luôn có bản quyền; video YouTube
+bật kiếm tiền dùng ảnh không rõ giấy phép có thể bị đánh gậy bản quyền. Chỉ
+dùng nguồn có giấy phép rõ ràng (Wikimedia Commons / Creative Commons kèm ghi
+nguồn đúng yêu cầu, stock đã mua) hoặc ảnh tự chụp.
+
+**Liên tục ĐẠO CỤ giữa các shot liền kề** (phát hiện nhờ chính lần thêm shot
+này): `A Fei On Foggy Trail` có `Woven Shopping Basket` (cô đang trên đường VỀ
+từ chợ), nhưng `A Fei Meets Group At Lakes` tạo trước đó lại KHÔNG có giỏ —
+nhân vật bị "rơi mất" đồ đang cầm giữa 2 cảnh liền nhau. Shot mới đã đính giỏ
+để nối đúng. **Bài học**: khi viết `references` cho 1 chuỗi shot liên tiếp,
+luôn rà lại nhân vật đang cầm/đeo gì ở shot TRƯỚC — `scenes.json` không có cơ
+chế tự kiểm tra tính liên tục, và lỗi này chỉ lộ ra khi xem ảnh cạnh nhau.

@@ -11,8 +11,6 @@ Năm 1587, gần 115 người Anh — cả đàn ông, phụ nữ và trẻ em �
 
 Thuộc địa thiếu lương thực trầm trọng. Các thuộc địa nài nỉ White quay về Anh xin thêm tiếp tế. Ông rời đảo ngày 27 tháng 8 năm 1587, hứa sẽ quay lại thật nhanh.
 
-### Ba năm chờ đợi
-
 Ông không quay lại được. Hạm đội Tây Ban Nha Armada đe doạ nước Anh, và Nữ hoàng Elizabeth cấm mọi con tàu còn khả năng chiến đấu rời cảng. Phải tới năm 1590 — ba năm sau — White mới xin được phép quay lại Roanoke.
 
 Trước khi rời đi, ông và các thuộc địa đã thống nhất một quy ước: nếu buộc phải chuyển chỗ ở, họ sẽ khắc tên nơi đến lên một thân cây hoặc cột gỗ; nếu chuyển đi trong tình huống nguy hiểm, họ sẽ khắc thêm một hình thánh giá bên cạnh.
@@ -20,8 +18,6 @@ Trước khi rời đi, ông và các thuộc địa đã thống nhất một q
 Ngày 18 tháng 8 năm 1590 — đúng sinh nhật thứ ba của cháu gái ông — White cập bến trở lại. Cả thuộc địa trống không. Nhà cửa đã bị tháo dỡ có chủ đích, đồ đạc bị đào lên và lục soát. Không một chiếc thuyền nào còn ở bờ biển. Và trên một cột gỗ của hàng rào, khắc chữ: CROATOAN.
 
 Không có thánh giá nào bên cạnh chữ đó.
-
-### Chuyến tìm kiếm bị bỏ dở
 
 Với White, đó là tin tốt — nghĩa là mọi người đã chuyển tới đảo Croatoan gần đó một cách an toàn, không gặp nguy hiểm. Nhưng ngay khi ông định giong buồm tới đó kiểm tra, một cơn cuồng phong ập tới. Dây neo tàu đứt ngay giữa bão, con tàu chỉ còn một neo dự phòng giữa vùng biển đầy đá ngầm, và thuỷ thủ đoàn từ chối mạo hiểm đắm tàu. Cơn bão thổi dạt con tàu hoàn toàn khỏi hải trình — khi họ nhìn thấy đất liền trở lại, đó đã là quần đảo Azores, ngoài khơi Tây Ban Nha. Họ không còn lựa chọn nào khác ngoài quay thẳng về Anh.
 

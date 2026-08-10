@@ -1,0 +1,221 @@
+---
+name: nano-banana-image-prompts
+description: Write the image prompts and the assets.json / scenes.json entries that drive the illustration pipeline (Google Flow "Image" mode, a.k.a. Nano Banana) for the true-story compilation YouTube channel. Use when breaking a narration passage into shots, creating Character/Background/Prop assets for a case, composing final frames from existing assets, revising an asset that came out wrong, or recovering from a blocked/timed-out generation. Covers authoring decisions only — the English style-block text itself lives in src/nanoBanana/styleDNA.ts.
+---
+
+# Viết prompt ảnh cho pipeline Nano Banana
+
+Skill này ghi lại **cách QUYẾT ĐỊNH viết gì** khi soạn `assets.json` /
+`scenes.json` cho 1 tập trong `narration-scripts/`. Nó KHÔNG chứa nội dung các
+style block — xem mục 0.
+
+## 0. Nguồn sự thật — đọc trước khi viết
+
+| Cần gì | Đọc ở đâu |
+|---|---|
+| **Nội dung** các style block (chuỗi tiếng Anh thật) | `src/nanoBanana/styleDNA.ts` |
+| Cách runner ghép block vào prompt | `buildPrompt()` trong `src/nanoBanana/createImageAssets.ts` |
+| Schema đầy đủ từng field | `src/nanoBanana/assets.ts`, `src/nanoBanana/scenes.ts` |
+| Bug/hành vi ngầm của UI Flow | `RUNBOOK.md` mục 8.1 — **chỉ cần khi sửa `src/`**, không cần khi viết prompt |
+
+> ⚠️ **TUYỆT ĐỐI không chép nội dung block vào skill này hay vào RUNBOOK.**
+> Việc đó đã hỏng 1 lần: mô tả `MASTER_REFERENCE_NOTE` chép sang RUNBOOK bị sai
+> sau khi người dùng thay `reference-character.jpeg`, tới mức RUNBOOK 8.1.3j
+> phải ghi *"đừng tin mô tả chép lại ở RUNBOOK"*. Luôn đọc thẳng `styleDNA.ts`.
+
+Runner tự ghép block theo `type` + `composition` + `reserveCharacterSpace` —
+**không viết tay style block vào `description`**, sẽ bị lặp và mâu thuẫn.
+
+## 1. Ảnh này để LÀM GÌ — quyết định mọi ưu tiên còn lại
+
+Ảnh sinh ra **không phải sản phẩm cuối**. Người dùng **vẽ đồ lại bằng tay** rồi
+tự chỉnh (xác nhận 2026-08-10). Ảnh AI đóng vai **bản nháp bố cục**: để xem
+*nhân vật/vật thể đặt vào cảnh với kích cỡ và vị trí thế nào cho hợp lý*.
+
+Hệ quả khi viết prompt:
+
+- **Tiêu chí số 1**: đúng TỈ LỆ nhân vật so với bối cảnh, đúng VỊ TRÍ đứng,
+  đúng GÓC MÁY. Sai mấy cái này thì ảnh vô dụng.
+- **Không tối ưu cho "đẹp"**: chi tiết tinh xảo là gánh nặng, vì phải đồ lại
+  bằng tay. Đây chính là lý do `SIMPLIFY_DETAIL_BLOCK` và
+  `HAND_DRAWN_LINE_BLOCK` tồn tại.
+- Phân vân giữa "ảnh đẹp hơn" và "bố cục/tỉ lệ đọc rõ hơn" → **luôn chọn cái
+  sau**.
+
+## 2. Hai file, hai vai trò — đừng nhầm
+
+| | `assets.json` | `scenes.json` |
+|---|---|---|
+| Là gì | **Nguyên liệu** tái dùng nhiều lần | **Khung hình cuối** cho 1 câu kịch bản |
+| Loại | `character` / `prop` / `background` | cảnh ghép từ các asset đã có |
+| Style block | Runner tự ghép từ `styleDNA.ts` | **Không cần** — ảnh reference đã neo phong cách |
+| Reference | Character: tự đính `reference-character.jpeg` | Tên các asset đã `success` trong Flow |
+| Runner | `npm run banana` | `npm run banana-scenes` |
+
+Thứ tự bắt buộc: mọi asset trong `references` của 1 scene phải `status:
+"success"` **trước** khi chạy scene đó.
+
+## 3. Quy trình chuẩn cho 1 case
+
+1. Đọc trọn đoạn kịch bản của case trong `en.md`.
+2. **Phân shot** (mục 4) — ra danh sách khung hình cần vẽ.
+3. Kiểm kê asset: mỗi shot cần Character nào, Background nào, Prop nào.
+4. Viết `assets.json` → `npm run banana -- <file> --case N`.
+5. **Người dùng xem bằng mắt** trước khi đi tiếp — sai bối cảnh mà ghép cảnh
+   luôn thì hỏng hàng loạt.
+6. Viết `scenes.json` → `npm run banana-scenes -- <file> --case N`.
+
+## 4. PHÂN SHOT — luật quan trọng nhất
+
+**1 câu kịch bản ≠ 1 ảnh.** Câu văn có thể chứa nhiều khoảnh khắc khác nhau về
+VỊ TRÍ KHÔNG GIAN, gộp vào 1 ảnh là mất nhịp kể.
+
+👉 **Dấu hiệu bắt buộc tách shot** — câu chứa động từ ĐỔI KHOẢNG CÁCH / ĐỔI
+HƯỚNG: *spotted… then drew closer, walked up to, turned around, looked back,
+led her deeper, followed them in*.
+
+Ví dụ chuẩn (case A Fei, đoạn "18 Lakes"): *"spotted a group standing on a
+**nearby hill**… but as she **drew closer** to strike up a conversation"* = 2
+vị trí khác nhau → 2 shot, không phải 1.
+
+**Làm shot/reverse-shot**: cần **2 background biến thể của CÙNG 1 địa điểm** —
+1 cái là chỗ đối tượng đứng, 1 cái là chỗ nhân vật đứng nhìn sang. Đặt tên đối
+xứng để đọc `assets.json` là hiểu quan hệ:
+`Long Wang 18 Lakes Hillside` (nhóm đứng) ↔ `Long Wang 18 Lakes Opposite
+Hilltop` (A Fei đứng). Background thứ 2 phải mô tả rõ có 1 quả đồi KHÁC ở
+midground, cách nhau bằng chỗ trũng thấy được.
+
+⚠️ Ở shot "nhìn thấy từ xa", **cố ý để đối tượng NGOÀI KHUNG** (nhân vật nhìn
+off-frame), KHÔNG vẽ người tí hon ở xa: `BACKGROUND_STYLE_BLOCK` cấm mọi bóng
+người trong background, và nhân vật vẽ nhỏ thì không giữ được mặt/trang phục
+theo reference. Đối tượng được reveal ở shot kế tiếp — đó mới là chỗ cần nhìn
+rõ.
+
+## 5. Character
+
+- Mô tả **chỉ gồm** những mục trong `CHARACTER_DESCRIPTION_CHECKLIST`
+  (`styleDNA.ts`). Không mô tả dáng người/tỉ lệ (ảnh master đã khoá), không mô
+  tả biểu cảm (quyết định theo từng cảnh).
+- **Không dùng tên người thật/nổi tiếng** trong prompt — bị bộ lọc "prominent
+  people" chặn. Dùng mô tả ngoại hình thay thế.
+- **Ảnh chụp thật của nhân vật có thật**: chỉ dùng để **soi bằng mắt rồi viết
+  ra mô tả chữ**. KHÔNG đính làm reference thứ 2 — pipeline chỉ đính duy nhất
+  `reference-character.jpeg` (ảnh phong cách).
+- Ảnh master khoá cứng vài đặc điểm (tóc dài 2 bên, trang phục nhiều lớp…).
+  Muốn khác thì **phải nói tường minh** ("tóc búi gọn không buông", "váy 1 lớp
+  không khoác ngoài") — đã xác nhận là ghi đè được.
+- **Nhân vật phụ**: KHÔNG gộp nhiều vai vào 1 asset chung nếu họ có thể xuất
+  hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
+  chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
+
+## 6. Background
+
+- `composition`: `"flat"` (mặc định) cho kiến trúc/phố/dãy nhà →
+  `NO_PERSPECTIVE_BLOCK`. `"layered"` **chỉ** cho phong cảnh thiên nhiên rộng.
+- `reserveCharacterSpace: true` khi sẽ ghép người vào — chừa sàn trống + khoá
+  góc máy ngang tầm mắt. Cảnh toàn cảnh không ghép người thì để `false`.
+- **Ánh sáng ngày/đêm phải bake thẳng vào mô tả** nếu bối cảnh chỉ dùng ở 1
+  thời điểm. Ảnh reference là ảnh TĨNH — mood viết trong prompt cảnh **không
+  ghi đè được** ánh sáng đã khoá trong ảnh. Cần cả ngày lẫn đêm → tạo 2 asset
+  riêng.
+- **"Dãy vật thể đứng cạnh nhau" (nhà, quầy chợ, hàng cột) không tự tràn khung**
+  — model thu nhỏ cả cụm rồi đặt giữa, hở đất/trời 2 bên. Phải nói thẳng: dãy
+  phải phủ kín từ mép trái tới mép phải, không hở khoảng cỏ/trời nào ở 2 bên.
+- **Vật thể CAO xuyên qua nhiều dải** (tháp, cột, cây lớn): đừng liệt kê nó
+  trong danh sách dải ngang, sẽ bị cắt cụt. Phải nói rõ 3 điều: chạy suốt từ
+  mép trên xuống đâu, nằm TRƯỚC hay SAU các dải kia, và chạm đất thế nào.
+
+## 7. Prop — và khi nào KHÔNG tạo Prop
+
+**Quy tắc chọn**:
+- Vật thể xuất hiện **giống hệt ở NHIỀU cảnh/bối cảnh khác nhau** → tạo Prop
+  riêng.
+- Vật thể chỉ thuộc **ĐÚNG 1 bối cảnh** → **vẽ thẳng vào mô tả Background đó**,
+  đơn giản và chắc hơn nhiều so với tạo Prop rồi ghép lại (ghép cần prompt hình
+  học rất chặt, dễ sai vị trí/góc).
+
+## 8. Cảnh ghép (`scenes.json`)
+
+Công thức prompt đã chạy ổn định, gồm 4 phần theo đúng thứ tự:
+
+1. **Mở**: "Draw a scene combining all N reference images."
+2. **Khoá từng reference**: nêu rõ giữ nguyên cái gì từ ảnh nào ("keep the
+   woman's exact face, hair, jacket from the first reference image,
+   unchanged"; "keep the background exactly as shown… unchanged"). Nhiều nhân
+   vật thì thêm: **không trộn đặc điểm của họ vào nhau**.
+3. **Hành động**: tư thế/hướng nhìn/đang cầm gì.
+4. **Tỉ lệ + góc máy + style**: scale người bình thường so với bối cảnh, cùng
+   góc máy ngang tầm mắt như ảnh background, rồi nhắc lại flat 2D vector.
+   Cảnh `layered` thì viết "no single-point converging perspective" thay vì
+   "no perspective" (tránh mâu thuẫn với chiều sâu xếp lớp).
+
+**Liên tục đạo cụ**: trước khi viết `references`, rà lại nhân vật đang cầm/đeo
+gì ở shot TRƯỚC. Không có cơ chế tự kiểm tra — lỗi chỉ lộ khi xem 2 ảnh cạnh
+nhau. (Đã dính thật: giỏ đi chợ biến mất giữa 2 cảnh liền kề.)
+
+**Sửa 1 chi tiết nhỏ trên cảnh ĐÃ GHÉP** (đổi biểu cảm, nhắm mắt, đổi hướng
+nhìn): đính **duy nhất chính ảnh cảnh đó** làm reference, prompt nói "giữ
+nguyên mọi thứ, CHỈ đổi X". ĐỪNG ghép lại từ các asset gốc — sẽ lệch pose/vị
+trí và phá liên tục giữa 2 cảnh. Coi ảnh trước như 1 keyframe để biến đổi tiếp.
+
+**Thứ tự phụ thuộc**: scene tham chiếu scene khác thì phải xếp SAU nó trong
+mảng `scenes`. Runner không tự sắp xếp.
+
+## 9. Khi cần ảnh mới KHÁC ảnh reference (đổi góc, đổi tư thế)
+
+Ảnh **thắng** chữ — kể cả về GÓC NHÌN, không riêng hình dạng. Mô tả trung tính
+đặt giữa đoạn sẽ bị bỏ qua hoàn toàn. Phải làm đủ 3 việc:
+
+1. Đưa yêu cầu lên **ĐẦU prompt**, nói thẳng reference sai ở điểm đó ("the
+   reference images are front-facing but this new image must NOT be").
+2. Diễn đạt bằng **ngôn ngữ HÌNH HỌC quan sát được**, không dùng thuật ngữ
+   nhiếp ảnh: "rotated about 45 degrees", "one shoulder closer to the viewer",
+   "the nose points off to one side" — thay cho "three-quarter view".
+3. **Nhắc lại ở CUỐI prompt**.
+
+Cùng nguyên tắc này áp cho mọi lúc cần ép hình học: đối xứng, đường chân trời
+thẳng, chiều cao bằng nhau.
+
+## 10. Đặt tên & sửa asset đã tạo sai
+
+Asset đã `success` là **đã tồn tại thật trong Flow dưới tên đó**. Sửa mô tả rồi
+giữ nguyên tên → runner tra tên thấy "đã có" và bỏ qua, không bao giờ tạo lại.
+
+👉 **Luôn tạo tên MỚI**: `<tên> V2`, `V3`… Giữ nguyên entry cũ (`status:
+"success"` + `notes` ghi rõ lỗi thời và vì sao). **Không xoá, không ghi đè cùng
+tên** — trùng tên gây lẫn lộn khi tra reference sau này.
+
+## 11. Sự cố thường gặp
+
+**Bị chặn "This generation might violate our policies"** → soi lại **cách diễn
+đạt MỐI QUAN HỆ giữa các nhân vật** trước tiên (dẫn đi / đuổi theo / cô lập /
+đe doạ), không phải số lượng ảnh reference. Viết lại trung tính là qua: "nhóm
+dẫn 1 phụ nữ đi sâu vào rừng, cô theo sau" bị chặn → "sáu người bạn cùng đi bộ
+đường dài, xếp thành 1 hàng, cùng hướng" qua ngay.
+
+**Runner báo timeout/failed nhưng ảnh ĐÃ có trong Flow (chưa kịp đổi tên)** →
+**ĐỪNG chạy lại runner ngay**, nó sẽ tạo thêm 1 ảnh trùng. Làm đúng thứ tự:
+1. `npx tsx scripts/rename-orphan.ts "Tên Asset"` (đổi tên ảnh mới nhất).
+2. Sửa `status` thành `"success"` trong JSON.
+3. Chạy lại runner để xác nhận không còn gì pending.
+
+## 12. Lệnh
+
+```bash
+npm run banana -- narration-scripts/<tập>/assets.json --case 1
+```
+
+```bash
+npm run banana-scenes -- narration-scripts/<tập>/scenes.json --case 1
+```
+
+Nhớ dấu `--` sau tên script để npm chuyển tiếp đúng flag `--case`. Cả 2 lệnh
+resume-safe: bỏ qua `status: "success"`, ghi atomic sau mỗi mục, lỗi 1 mục
+không giết cả mẻ.
+
+## 13. Shot dùng ẢNH THẬT (ngoài pipeline)
+
+Với **địa danh có thật**, có thể chèn thẳng 1 ảnh chụp thật làm establishing
+shot giới thiệu địa điểm, không qua AI. Pipeline **không có cơ chế nào** cho
+việc này — thủ công hoàn toàn lúc dựng, không khai báo trong `assets.json`/
+`scenes.json`. Lưu ảnh vào `narration-scripts/<tập>/refs/`.

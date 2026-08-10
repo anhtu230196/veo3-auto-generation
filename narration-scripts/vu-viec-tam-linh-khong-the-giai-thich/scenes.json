@@ -5,22 +5,49 @@
       "name": "A Fei Leaving House",
       "case": 1,
       "narrationRef": "she left her house to perform a familiar chore: walking down a long trail to the market to pick up some supplies.",
-      "references": ["A Fei V2", "Long Wang Village Day V3"],
-      "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now walking along the village street from the second reference image. Keep the houses, the path and the ground exactly as shown in the second reference image, unchanged. She is walking on the dirt path in front of the houses, mid-stride, facing toward one side as if heading out of frame on a walk. She must be scaled to a normal human size relative to the houses behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "Long Wang Village Day V3"
+      ],
+      "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now walking along the village street from the second reference image. Keep the houses, the path and the ground exactly as shown in the second reference image, unchanged. She is walking on the dirt path in front of the houses, mid-stride, facing toward one side as if heading out of frame on a walk. She must be scaled to a normal human size relative to the houses behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "A Fei Shopping At Market",
       "case": 1,
       "narrationRef": "walking down a long trail to the market to pick up some supplies. After finishing her shopping, she began her trek back home.",
-      "references": ["A Fei V2", "Village Market", "Woven Shopping Basket"],
-      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, hair, red puffer jacket and mask from the first reference image, unchanged. Keep the market stalls and ground exactly as shown in the second reference image, unchanged. Keep the woven basket exactly as shown in the third reference image, unchanged. She is standing in front of one of the market stalls, holding the woven basket by its handles in front of her with both hands, as if she has just finished shopping. She must be scaled to a normal human size relative to the stalls behind her, viewed at the same straight-ahead eye-level camera angle as the market reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "Village Market",
+        "Woven Shopping Basket"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, hair, red puffer jacket and mask from the first reference image, unchanged. Keep the market stalls and ground exactly as shown in the second reference image, unchanged. Keep the woven basket exactly as shown in the third reference image, unchanged. She is standing in front of one of the market stalls, holding the woven basket by its handles in front of her with both hands, as if she has just finished shopping. She must be scaled to a normal human size relative to the stalls behind her, viewed at the same straight-ahead eye-level camera angle as the market reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "A Fei On Foggy Trail",
       "case": 1,
       "narrationRef": "while on the road, she noticed something unusual—the fog was becoming significantly denser than she had ever seen before.",
-      "references": ["A Fei V2", "Foggy Mountain Trail", "Woven Shopping Basket"],
-      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, hair, red puffer jacket and mask from the first reference image, unchanged. Keep the misty trail, trees and fog exactly as shown in the second reference image, unchanged. Keep the woven basket exactly as shown in the third reference image, unchanged. She is walking along the trail carrying the basket in one hand, her head turned slightly to one side as if looking around at the unusually thick fog surrounding her. She must be scaled to a normal human size relative to the trees behind her, viewed at the same straight-ahead eye-level camera angle as the trail reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "Foggy Mountain Trail",
+        "Woven Shopping Basket"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, hair, red puffer jacket and mask from the first reference image, unchanged. Keep the misty trail, trees and fog exactly as shown in the second reference image, unchanged. Keep the woven basket exactly as shown in the third reference image, unchanged. She is walking along the trail carrying the basket in one hand, her head turned slightly to one side as if looking around at the unusually thick fog surrounding her. She must be scaled to a normal human size relative to the trees behind her, viewed at the same straight-ahead eye-level camera angle as the trail reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "A Fei Spots Group From Opposite Hilltop",
+      "case": 1,
+      "narrationRef": "After walking for a while, near an area known as the \"18 Lakes of Long Wang\"—a spot popular with tourists—A Fei spotted a group of people standing on a nearby hill.",
+      "references": [
+        "A Fei V2",
+        "Long Wang 18 Lakes Opposite Hilltop",
+        "Woven Shopping Basket"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, short black hair, red puffer jacket and white face mask from the first reference image, unchanged. Keep the near hilltop, the far hill, the lakes and the misty hills exactly as shown in the second reference image, unchanged — do not add any extra hills and do not move them. Keep the woven basket exactly as shown in the third reference image, unchanged. She is standing still on the empty grassy hilltop in the foreground, carrying the basket in one hand, her body turned toward one side and her head turned the same way, looking off across the dip toward the far hill as if she has just noticed something over there. Her whole body stays inside the frame, standing on the near foreground hilltop only — she must NOT be standing on the far hill. She must be scaled to a normal human size relative to the hilltop she stands on, and the far hill must stay clearly smaller and further away behind her. Viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no single-point converging perspective.",
+      "status": "success",
+      "notes": "Shot 2/3 của đoạn '18 Lakes' — A Fei đứng ở đồi ĐỐI DIỆN nhìn sang, nhóm 5 người CỐ Ý nằm ngoài khung (reveal ở cảnh sau 'A Fei Meets Group At Lakes'). Có cầm giỏ để nối tiếp 'A Fei On Foggy Trail' (cô đang trên đường về từ chợ)."
     },
     {
       "name": "A Fei Meets Group At Lakes",
@@ -35,7 +62,8 @@
         "Forest Elder 5",
         "Long Wang 18 Lakes Hillside"
       ],
-      "prompt": "Draw a scene combining ALL of the reference images together. Keep every character's exact face, hair, clothing and headwear as shown in their own reference image, unchanged — do not mix their features together. Keep the hillside and lakes background exactly as shown in its reference image, unchanged. A group of six friendly hikers are greeting each other warmly on the grassy hilltop, standing in a loose relaxed cluster facing one another, as if they just met and are having a pleasant conversation. The woman in the red puffer jacket with the face mask stands a little toward the front of the group, closer to the viewer. Every character must be scaled to a normal, consistent human size relative to each other and to the hillside behind them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "prompt": "Draw a scene combining ALL of the reference images together. Keep every character's exact face, hair, clothing and headwear as shown in their own reference image, unchanged — do not mix their features together. Keep the hillside and lakes background exactly as shown in its reference image, unchanged. A group of six friendly hikers are greeting each other warmly on the grassy hilltop, standing in a loose relaxed cluster facing one another, as if they just met and are having a pleasant conversation. The woman in the red puffer jacket with the face mask stands a little toward the front of the group, closer to the viewer. Every character must be scaled to a normal, consistent human size relative to each other and to the hillside behind them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "A Fei Following Group Into Forest",
@@ -58,7 +86,10 @@
       "name": "A Fei In Forest Clearing",
       "case": 1,
       "narrationRef": "(chuyển cảnh: nhóm vừa tới bãi đất trống có tảng đá, trước khoảnh khắc khuỵu người mệt)",
-      "references": ["A Fei V2", "Forest Clearing With Boulder"],
+      "references": [
+        "A Fei V2",
+        "Forest Clearing With Boulder"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now standing inside the forest clearing scene from the second reference image. Keep the clearing, the boulders, the trees and the ground exactly as shown in the second reference image, unchanged. Place her standing upright on the open dirt clearing floor, both feet planted on the ground, facing toward the viewer, positioned in the empty open area of the clearing away from the boulders. She must be scaled to a normal human size relative to the boulders and trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success"
     },
@@ -66,7 +97,10 @@
       "name": "A Fei Exhausted Bent Over",
       "case": 1,
       "narrationRef": "They walked on and on until her body was completely exhausted.",
-      "references": ["A Fei V2", "Forest Clearing With Boulder"],
+      "references": [
+        "A Fei V2",
+        "Forest Clearing With Boulder"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now standing inside the forest clearing scene from the second reference image, near the boulders but not yet sitting down. Keep the clearing, the boulders, the trees and the ground exactly as shown in the second reference image, unchanged. She is bent forward at the waist, completely exhausted, both hands resting on top of her own knees for support, head hanging down, still on her feet, not sitting or kneeling. She must be scaled to a normal human size relative to the boulders and trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success"
     },
@@ -74,7 +108,10 @@
       "name": "A Fei Sitting Against Boulder",
       "case": 1,
       "narrationRef": "She barely had the strength to sit down on a large rock;",
-      "references": ["A Fei V2", "Forest Clearing With Boulder"],
+      "references": [
+        "A Fei V2",
+        "Forest Clearing With Boulder"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now sitting on the ground inside the forest clearing scene from the second reference image, with her back leaning against one of the large mossy boulders on the left side of the clearing. Keep the clearing, the boulders, the trees and the ground exactly as shown in the second reference image, unchanged. She is sitting on the dirt ground with her legs stretched out in front of her, her head drooping slightly forward and to one side as if completely exhausted and about to lose consciousness, both arms resting loosely at her sides, eyes drowsy and half closed. She must be scaled to a normal human size relative to the boulders and trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success"
     },
@@ -82,7 +119,9 @@
       "name": "A Fei Unconscious Against Boulder",
       "case": 1,
       "narrationRef": "before she could utter a single word, she lost consciousness right there.",
-      "references": ["A Fei Sitting Against Boulder"],
+      "references": [
+        "A Fei Sitting Against Boulder"
+      ],
       "prompt": "Draw the exact same image as the reference image, unchanged in every way: same woman, same red puffer jacket, same face mask, same sitting pose leaning against the boulder, same forest clearing background, same flat 2D vector style. The ONLY change: her eyes are now fully closed and her head has slumped further down and to one side, completely unconscious, as if she has fainted. Everything else in the image stays exactly as shown in the reference.",
       "status": "success",
       "notes": "Kỹ thuật đính DUY NHẤT 1 ảnh đã ghép sẵn làm reference (không ghép lại từ Character+Background gốc) — xem RUNBOOK mục 8.2.g."
@@ -91,24 +130,36 @@
       "name": "A Fei Waking Up At Night",
       "case": 1,
       "narrationRef": "A long period of time passed before A Fei finally came to. By then, it was pitch black. Although her mind was still hazy about the morning's events, her instincts told her she needed to get home immediately.",
-      "references": ["A Fei V2", "Forest Clearing With Boulder Night"],
+      "references": [
+        "A Fei V2",
+        "Forest Clearing With Boulder Night"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now sitting up on the ground inside the dark forest clearing scene from the second reference image, near the boulder. Keep the clearing, the boulders, the trees and the night sky exactly as shown in the second reference image, unchanged. She has just woken up, sitting upright with one hand pressed to her own forehead, eyes open but drowsy and disoriented, head turned slightly as if trying to figure out where she is in the dark. She must be scaled to a normal human size relative to the boulders and trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
-      "notes": "PHỤ THUỘC: cần \"Forest Clearing With Boulder Night\" đã tạo xong trong assets.json (chạy npm run banana trước) rồi mới chạy scene này."
+      "notes": "PHỤ THUỘC: cần \"Forest Clearing With Boulder Night\" đã tạo xong trong assets.json (chạy npm run banana trước) rồi mới chạy scene này.",
+      "status": "success"
     },
     {
       "name": "A Fei Fumbling Through Dark Forest",
       "case": 1,
       "narrationRef": "In the silent darkness, she fumbled her way through the brush to find an exit.",
-      "references": ["A Fei V2", "Forest Clearing With Boulder Night"],
+      "references": [
+        "A Fei V2",
+        "Forest Clearing With Boulder Night"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now walking through the dark forest clearing scene from the second reference image, moving away from the boulders toward the treeline. Keep the clearing, the boulders, the trees and the night sky exactly as shown in the second reference image, unchanged. She is walking hunched slightly forward, one arm stretched out ahead of her with an open hand feeling through the air, as if carefully making her way through darkness she cannot see well in. She must be scaled to a normal human size relative to the boulders and trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
-      "notes": "PHỤ THUỘC: cần \"Forest Clearing With Boulder Night\" đã tạo xong."
+      "notes": "PHỤ THUỘC: cần \"Forest Clearing With Boulder Night\" đã tạo xong.",
+      "status": "success"
     },
     {
       "name": "A Fei Crying For Help At Village",
       "case": 1,
       "narrationRef": "As soon as she reached the village, she cried out for help.",
-      "references": ["A Fei V2", "Long Wang Village Night V2"],
-      "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now standing on the village street from the second reference image at night. Keep the houses, the path and the night sky exactly as shown in the second reference image, unchanged. She is standing with both arms raised and cupped near her mouth as if calling out loudly for help, body leaning slightly forward, an urgent posture. She must be scaled to a normal human size relative to the houses behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "Long Wang Village Night V2"
+      ],
+      "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now standing on the village street from the second reference image at night. Keep the houses, the path and the night sky exactly as shown in the second reference image, unchanged. She is standing with both arms raised and cupped near her mouth as if calling out loudly for help, body leaning slightly forward, an urgent posture. She must be scaled to a normal human size relative to the houses behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as both references: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "Family Reunion At Village Night",
@@ -122,36 +173,60 @@
         "Generic Villager",
         "Long Wang Village Night V2"
       ],
-      "prompt": "Draw a scene combining ALL of the reference images together. Keep every character's exact face, hair, clothing and headwear as shown in their own reference image, unchanged — do not mix their features together. Keep the village street and night sky exactly as shown in the background reference image, unchanged. This is a joyful, relieved reunion: the man and woman from the parent reference images stand closest to the woman in the red puffer jacket, both reaching toward her with open arms and happy relieved expressions, as if overjoyed she has returned safely. The police officer and the villager stand a little further back, also with warm relieved expressions, gathered around to welcome her home. Every character must be scaled to a normal, consistent human size relative to each other and to the houses behind them, all standing on the same street, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "prompt": "Draw a scene combining ALL of the reference images together. Keep every character's exact face, hair, clothing and headwear as shown in their own reference image, unchanged — do not mix their features together. Keep the village street and night sky exactly as shown in the background reference image, unchanged. This is a joyful, relieved reunion: the man and woman from the parent reference images stand closest to the woman in the red puffer jacket, both reaching toward her with open arms and happy relieved expressions, as if overjoyed she has returned safely. The police officer and the villager stand a little further back, also with warm relieved expressions, gathered around to welcome her home. Every character must be scaled to a normal, consistent human size relative to each other and to the houses behind them, all standing on the same street, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "A Fei Explains One Night",
       "case": 1,
       "narrationRef": "When her parents asked where she had been for the past several days, A Fei innocently replied that she had only been gone for one night and had accidentally fallen asleep in the forest.",
-      "references": ["A Fei V2", "A Fei's Father", "A Fei's Mother", "A Fei's House Interior"],
-      "prompt": "Draw a scene combining all four reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands in the middle of the room, gesturing calmly with one open hand as if casually explaining something, a relaxed and untroubled expression. The man and woman from the parent reference images stand facing her a short distance away, listening with confused, puzzled expressions, heads tilted slightly. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "A Fei's Father",
+        "A Fei's Mother",
+        "A Fei's House Interior"
+      ],
+      "prompt": "Draw a scene combining all four reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands in the middle of the room, gesturing calmly with one open hand as if casually explaining something, a relaxed and untroubled expression. The man and woman from the parent reference images stand facing her a short distance away, listening with confused, puzzled expressions, heads tilted slightly. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "Parents Reveal 17 Days",
       "case": 1,
       "narrationRef": "It was then that her parents and the police told her the horrifying truth: She had been missing for exactly 17 days, not just one night.",
-      "references": ["A Fei V2", "A Fei's Father", "A Fei's Mother", "Police Officer", "A Fei's House Interior"],
-      "prompt": "Draw a scene combining all five reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands with a shocked, confused expression, one hand raised partway to her own face. The man, woman and police officer from the other reference images stand facing her, with grave, serious expressions, as if they have just told her something upsetting. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "A Fei's Father",
+        "A Fei's Mother",
+        "Police Officer",
+        "A Fei's House Interior"
+      ],
+      "prompt": "Draw a scene combining all five reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands with a shocked, confused expression, one hand raised partway to her own face. The man, woman and police officer from the other reference images stand facing her, with grave, serious expressions, as if they have just told her something upsetting. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "Villagers Realize Names Are Dead",
       "case": 1,
       "narrationRef": "A Fei began to describe the group of five people... When the people present heard those names, their blood ran cold.",
-      "references": ["A Fei V2", "Police Officer", "Generic Villager", "A Fei's House Interior"],
-      "prompt": "Draw a scene combining all four reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands calmly speaking, one hand raised as if counting off names on her fingers. The police officer and the villager from the other reference images stand facing her, both with wide startled eyes and stiff, frozen postures, as if they have just heard something deeply unsettling. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective."
+      "references": [
+        "A Fei V2",
+        "Police Officer",
+        "Generic Villager",
+        "A Fei's House Interior"
+      ],
+      "prompt": "Draw a scene combining all four reference images together. Keep every character's exact face, hair and clothing as shown in their own reference image, unchanged. Keep the living room exactly as shown in the interior reference image, unchanged. The woman in the red puffer jacket stands calmly speaking, one hand raised as if counting off names on her fingers. The police officer and the villager from the other reference images stand facing her, both with wide startled eyes and stiff, frozen postures, as if they have just heard something deeply unsettling. Every character must be scaled to a normal, consistent human size relative to the furniture behind them, all standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the interior reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success"
     },
     {
       "name": "A Fei Walking Alone On Trail CCTV Reveal",
       "case": 1,
       "narrationRef": "when police reviewed the security camera footage from the day she vanished, the video showed A Fei walking entirely alone that morning. She was seen walking, smiling, and talking to the empty air, with absolutely no one by her side.",
-      "references": ["A Fei V2", "Foggy Mountain Trail"],
+      "references": [
+        "A Fei V2",
+        "Foggy Mountain Trail"
+      ],
       "prompt": "Draw the exact same woman from the first reference image (same face, short black hair, red puffer jacket with fur-trimmed hood down, white face mask, same flat 2D vector illustration style), now walking alone along the misty trail from the second reference image. Keep the trail, trees and fog exactly as shown in the second reference image, unchanged. She is walking with a relaxed, cheerful posture, head turned slightly to one side as if smiling and chatting with someone, one hand gesturing lightly as if mid-conversation — but there is nobody else anywhere in the frame, she is completely alone on the trail. Restyle the whole image to look like grainy black-and-white security camera footage: desaturate all colors to greyscale, add a subtle scanline texture and soft film grain across the whole frame, keep the flat 2D vector linework and shapes otherwise unchanged. She must be scaled to a normal human size relative to the trees behind her, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below.",
-      "notes": "Cảnh twist cuối case 1 — dùng phong cách 'security camera footage' (đen trắng, hạt nhiễu) để nhấn mạnh yếu tố kỳ bí, KHÔNG mô tả bất kỳ ai/hình dạng nào khác ngoài A Fei trong khung — đúng nội dung kịch bản."
+      "notes": "Cảnh twist cuối case 1 — dùng phong cách 'security camera footage' (đen trắng, hạt nhiễu) để nhấn mạnh yếu tố kỳ bí, KHÔNG mô tả bất kỳ ai/hình dạng nào khác ngoài A Fei trong khung — đúng nội dung kịch bản.",
+      "status": "success"
     }
   ]
 }

@@ -156,6 +156,16 @@
       "status": "success"
     },
     {
+      "name": "Long Wang 18 Lakes Opposite Hilltop",
+      "type": "background",
+      "case": 1,
+      "description": "A second scenic hilltop at the same lake district, the viewpoint looking across toward a neighbouring hill. Layered flat-depth composition: background layer of the same chain of pale blue-grey lakes nestled between low misty hills, midground layer of one distinct rounded grassy hill standing clearly apart across a shallow empty dip of lower ground, its bare grassy crown plainly visible, foreground layer of a flat grassy hilltop clearing spanning the bottom of the frame. Same soft overcast palette of pale blue, muted green and grey mist as the other hillside background, with the same simple scattered rock and grass shapes. The far hill must be clearly separated from the near foreground hilltop by the visible dip of lower ground between them, so the two hilltops plainly read as two separate places a short distance apart.",
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "Bối cảnh ĐỐI DIỆN của 'Long Wang 18 Lakes Hillside' — cùng địa điểm nhưng là ngọn đồi A Fei ĐỨNG, nhìn sang đồi bên kia (nơi nhóm 5 người đứng). Tạo ra để tách câu kịch bản 'spotted a group ... then drew closer' thành 2 shot có vị trí không gian khác nhau (shot/reverse-shot) thay vì gộp làm 1 ảnh — xem RUNBOOK mục 8.2i."
+    },
+    {
       "name": "Misty Forest Interior",
       "type": "background",
       "case": 1,
