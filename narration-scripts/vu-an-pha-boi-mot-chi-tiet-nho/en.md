@@ -125,53 +125,6 @@ On October 18th, 2010, Williams pleaded guilty to everything. 4 days later he re
 
 The Canadian military stripped him of his rank and burned the uniform he had worn.
 
----
-
-## 4. The Unabomber — The Woman Who Recognized Her Brother-in-Law's Voice
-
-From 1978 to 1995, for 17 years, someone mailed bombs to universities, airlines, and technology companies across the United States. 16 devices in total. 3 people killed, 23 injured.
-
-The FBI named the case UNABOM, combining "university" and "airline", the first two categories of target. The press called him the Unabomber.
-
-The investigation ran nearly two decades and cost over $50 million, making it the most expensive FBI investigation up to that point. They had bomb fragments. They had a signature level of craftsmanship. They even had a sketch of a hooded suspect in sunglasses that the entire country could recognize on sight.
-
-What they didn't have was a name.
-
-In 1995, the bomber sent newspapers a manuscript running about 35,000 words, titled Industrial Society and Its Future, a long indictment of modern technology. It came with a condition. If a major newspaper printed it in full, he would stop bombing.
-
-Printing it meant giving a terrorist exactly what he wanted. Not printing it might mean more people dead.
-
-The Justice Department and the FBI decided to print it, not because they trusted his promise, but because of a different calculation. 35,000 words is a lot of words. If the whole country read it, maybe somebody would recognize how the man wrote.
-
-On September 19th, 1995, the Washington Post published the entire manuscript.
-
-The person who recognized it wasn't an investigator at all.
-
-Linda Patrik was a philosophy professor living in New York State. Her husband, David Kaczynski, had an older brother named Ted, a strange man who had walked away from everything to live alone in the woods, and with whom the family had almost no contact.
-
-Linda's suspicion actually started before the manuscript ever ran. In 1995, while she and David were in Paris during a wave of bombings in that city, she had a strong intuition about her brother-in-law. She said so out loud to her husband. David dismissed it.
-
-Then the manuscript appeared in the Washington Post, and Linda read arguments that felt sickeningly familiar. They matched what she had read in letters Ted had sent David through the 1970s, including a 23 page essay attacking the modern world in the exact same voice.
-
-She handed the manuscript to her husband and told him to read it.
-
-David didn't want to. Because if she was right, it meant his own brother had killed 3 people, and he would be the one who had to turn him in.
-
-Linda argued him around using an idea from Buddhism. If Ted really was the man, then stopping him was good for the victims and good for Ted himself, because it ended the harm still being done. She took David to the library, and the two of them sat and read the manuscript together.
-
-David read it, and he heard his brother. Not any single sentence, but the shape of the reasoning, the word choices, the particular phrases. He dug through old family papers and found essays Ted had written years earlier using the same phrases and the same arguments.
-
-Ted Kaczynski had been a mathematical prodigy. An IQ of 167. Accepted to Harvard at 16. A doctorate in mathematics from the University of Michigan, with a dissertation that won the prize for the best math dissertation that year. At 25 he became the youngest assistant professor in the history of the University of California at Berkeley. 2 years later he abruptly resigned with no explanation and moved into a remote wooden cabin in Montana with no electricity and no running water.
-
-David didn't go straight to the FBI. He hired a private investigator in Chicago, then a lawyer in Washington. The lawyer brought in a criminal profiler to compare the writings, and the answer came back at better than 60 percent odds of the same author. In February of 1996, the lawyer finally handed the FBI an essay Ted had written back in 1971 for comparison.
-
-On April 3rd, 1996, agents moved in on the cabin in Montana. Inside they found bomb components, one fully assembled bomb ready to mail, homemade firearms, the original manuscript of the manifesto, and roughly 40,000 handwritten journal pages meticulously documenting every experiment and every bombing.
-
-Ted Kaczynski pleaded guilty in 1998 and received multiple life sentences without parole. He was not executed.
-
-David Kaczynski spent years afterward campaigning against the death penalty. The brother he turned in never forgave him. Ted Kaczynski killed himself in prison on June 10th, 2023, after a cancer diagnosis and after stopping treatment.
-
----
 
 ## 5. The Golden State Killer — A Family Tree of Strangers
 
