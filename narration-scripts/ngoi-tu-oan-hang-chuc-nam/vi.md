@@ -114,7 +114,7 @@ Sally lại đang ở nhà một mình với con.
 Chưa đầy một tháng sau đám tang đứa con thứ hai, Sally Clark bị bắt vì tội giết
 cả hai đứa con của chính mình.
 
-Để hiểu chuyện này, cần biết về một hiện tượng y học gọi là đột tử sơ sinh, người Anh gọi là cot death: một em bé khoẻ mạnh đang ngủ bỗng ngừng thở và chết, không rõ nguyên nhân. Đến nay y học vẫn chưa giải thích trọn vẹn được. Ở Anh lúc đó có một bác sĩ nhi khoa cực kỳ có ảnh hưởng tên Roy Meadow, từng được phong tước hiệp sĩ vì đóng góp cho ngành nhi. Ông đưa ra một nguyên tắc mà cả ngành nhắc lại như chân lý: một cái chết là bi kịch, hai cái chết là đáng ngờ, ba cái chết là án mạng cho tới khi chứng minh được điều ngược lại.
+Ở Anh lúc đó, một hiện tượng y học gọi là đột tử sơ sinh — người Anh gọi là cot death — vẫn còn là một bí ẩn: một em bé khoẻ mạnh đang ngủ bỗng ngừng thở và chết, không rõ nguyên nhân, và đến nay y học vẫn chưa giải thích trọn vẹn được. Một bác sĩ nhi khoa cực kỳ có ảnh hưởng tên Roy Meadow, từng được phong tước hiệp sĩ vì đóng góp cho ngành nhi, đưa ra một nguyên tắc mà cả ngành nhắc lại như chân lý: một cái chết là bi kịch, hai cái chết là đáng ngờ, ba cái chết là án mạng cho tới khi chứng minh được điều ngược lại.
 
 Chính Roy Meadow ra toà làm nhân chứng chuyên gia trong phiên xử Sally Clark.
 
@@ -135,7 +135,7 @@ tử, thì đứa thứ hai chết không hề độc lập với đứa thứ n
 hơn hẳn.
 
 Kể cả nếu con số đó đúng đi nữa, nó cũng không phải là xác suất Sally Clark vô tội. Nó chỉ là xác suất hai đứa trẻ cùng
-chết tự nhiên. Bồi thẩm đoàn không được ai giải thích cho điều này.
+chết tự nhiên.
 
 Ngày 9 tháng 11 năm 1999, Sally Clark bị kết tội giết hai con và lãnh án tù
 chung thân.
@@ -197,12 +197,10 @@ Trong nhà mẹ anh, cảnh sát tìm thấy một khẩu súng lục cũ. Bên 
 viên đạn ở cả ba hiện trường đều bắn ra từ khẩu súng ấy. Đó là bằng chứng vật
 chất duy nhất trong toàn bộ vụ án.
 
-Đến đây cần giải thích một điều về hệ thống tư pháp Mỹ thời điểm đó, bởi nếu
-không biết thì phần tiếp theo nghe rất khó tin. Ở Mỹ, khi bị cáo quá nghèo
-không thuê nổi luật sư, toà chỉ định luật sư và cấp một khoản ngân sách để thuê
-chuyên gia phản biện. Ở Alabama khi ấy, khoản đó bị hiểu là chỉ có một nghìn đô
-la. Với một nghìn đô, không một chuyên gia đạn đạo tử tế nào ở Mỹ chịu nhận
-việc.
+Tại bang Alabama thời điểm đó, khi bị cáo quá nghèo không thể thuê luật sư
+riêng, toà chỉ định luật sư và cấp một khoản ngân sách để thuê chuyên gia phản
+biện — nhưng khoản đó bị hiểu là chỉ đúng một nghìn đô la. Với một nghìn đô,
+không một chuyên gia đạn đạo tử tế nào ở Mỹ chịu nhận việc.
 
 Luật sư của Hinton tìm được một người chịu làm với giá đó. Người này là kỹ sư
 xây dựng, chưa từng được đào tạo về giám định đạn đạo, và chỉ còn nhìn được
@@ -223,19 +221,6 @@ chờ chết cho một chuyện anh không làm.
 Phòng giam của anh cách buồng hành quyết khoảng mười mét. Suốt những năm ở đó,
 anh nghe tiếng bước chân của năm mươi tư người đàn ông đi ngang qua song sắt
 xà lim mình để tới chiếc ghế điện. Anh viết rằng anh ngửi được mùi.
-
-Một trong năm mươi tư người đó là bạn của anh.
-
-Người đàn ông ở xà lim gần đó tên Henry Hays, bị kết án tử vì tham gia một vụ
-hành hình treo cổ một thiếu niên da đen năm 1981, một trong những vụ án chấn
-động nhất lịch sử phân biệt chủng tộc ở Alabama. Cha của Hays là một thủ lĩnh
-cấp cao của Ku Klux Klan.
-
-Anthony Ray Hinton, một người thợ mỏ da đen bị kết án oan, và Henry Hays, con
-trai của một thủ lĩnh Klan, trở thành bạn của nhau trong khu tử tù. Hinton kể
-rằng anh đã dạy Hays cách nhìn con người khác đi so với tất cả những gì Hays
-được cha mình dạy. Năm 1997, Hays bị hành quyết. Hinton nói đó là ngày anh khóc
-cho một người từng thuộc về tổ chức muốn giết những người như anh.
 
 Năm 2002, tổ chức pháp lý đại diện cho Hinton mời được ba chuyên gia đạn đạo
 hàng đầu nước Mỹ, trong đó có cả người từng làm cho FBI, xem lại các viên đạn.
@@ -466,12 +451,9 @@ lo lắng vì chiếc xe hơi đậu gần ngôi nhà đang cháy.
 Điều tra viên hiện trường vào cuộc và kết luận đây là vụ phóng hoả. Cơ quan
 phòng cháy chữa cháy bang Texas đồng ý. Chỉ có một nghi phạm duy nhất.
 
-Đây là chỗ cần dừng lại để giải thích, vì nếu không thì phần sau không có ý
-nghĩa gì cả.
-
-Điều tra cháy nổ thời đó chưa phải là một ngành khoa học đúng nghĩa. Nó là một
-tập hợp kinh nghiệm truyền miệng giữa các điều tra viên, được coi như chân lý
-suốt nhiều thập kỷ mà chưa từng ai đem đi kiểm chứng bằng thí nghiệm. Người ta
+Vào năm 1991, điều tra cháy nổ chưa phải là một ngành khoa học đúng nghĩa. Nó
+là một tập hợp kinh nghiệm truyền miệng giữa các điều tra viên, được coi như
+chân lý suốt nhiều thập kỷ mà chưa từng ai đem đi kiểm chứng bằng thí nghiệm. Người ta
 tin rằng nếu kính cửa sổ rạn thành mạng nhện thì tức là có chất tăng tốc cháy.
 Nếu trên sàn có những vệt cháy loang lổ thì đó là dấu vết đổ xăng. Nếu sàn cháy
 sâu xuống dưới thì tức là lửa được đốt từ chính chỗ đó. Nếu vết cháy trên tường
@@ -534,10 +516,7 @@ Năm 2014, người tù nhân từng khai rằng Willingham thú tội đã rút
 lời khai. Ông ta nói mình đã nói dối, và nói mình bị chính công tố viên gây sức
 ép để khai như vậy.
 
-Nhưng ở đây phải nói cho công bằng, vì câu chuyện này không sạch sẽ như người
-ta muốn.
-
-Cameron Todd Willingham không phải một người tử tế. Anh ta có tiền sử bạo hành
+Nhưng Cameron Todd Willingham không phải một người tử tế. Anh ta có tiền sử bạo hành
 vợ. Anh ta có tiền án trộm cắp. Chính vợ cũ của anh, người biết anh rõ hơn bất
 kỳ ai, tới nay vẫn công khai nói rằng bà tin anh có tội và xứng đáng bị tử
 hình. Câu nói cuối cùng của anh trong phòng hành quyết, phần không được báo chí

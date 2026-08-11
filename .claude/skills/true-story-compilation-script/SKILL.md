@@ -89,9 +89,15 @@ dữ kiện. Cấu trúc chuẩn:
    TUYỆT ĐỐI tránh các câu bắc cầu tự-quy-chiếu kiểu:
    *"Cần giải thích một chút để hiểu vì sao..."*, *"Ở đây cần dừng lại một chút
    để thấy hết..."*, *"Cần hiểu ý tưởng này để thấy nó thông minh tới mức
-   nào..."*, *"Đây là chi tiết quan trọng để hiểu..."* — và mọi biến thể tiếng
-   Anh (*"Here's some context worth knowing"*, *"To understand why this
-   matters..."*, *"It's worth pausing here to explain..."*).
+   nào..."*, *"Đây là chi tiết quan trọng để hiểu..."*, *"Đến đây cần giải
+   thích một điều về..."*, *"Đây là chỗ cần dừng lại để giải thích..."*, *"Để
+   hiểu chuyện này, cần biết về..."*, *"Nhưng ở đây phải nói cho công bằng..."*
+   — và mọi biến thể tiếng Anh (*"Here's some context worth knowing"*, *"To
+   understand why this matters..."*, *"It's worth pausing here to
+   explain..."*). Đây là lỗi TÁI PHÁT nhiều lần nhất trong skill này — rà lại
+   TOÀN BỘ case trước khi gửi duyệt, không chỉ case đầu/cuối, vì lỗi này có xu
+   hướng lặp lại ở nhiều case trong cùng 1 tập (case Ngồi Tù Oan Hàng Chục Năm
+   dính lỗi này ở 4/6 case cùng lúc).
    Chúng biến người kể chuyện thành giảng viên đang thuyết trình về câu
    chuyện, thay vì đang kể câu chuyện. Người xem cần TỰ THẤY tình tiết thông
    minh/bất khả thi qua chính diễn biến, không cần được báo trước.
@@ -287,6 +293,28 @@ nhau tuỳ loại case:
   ngữ pháp lý tường minh ("sexual assault ... of a minor") sang cách nói mô
   tả hành động ("abusing her and holding her against her will") — các chi
   tiết khác (bản án, ngày tháng, "sex offender") giữ nguyên không cần đổi.
+- **BỘ TỪ VỰNG AN TOÀN — dùng PHÒNG NGỪA cho mọi case án tình dục / án chết
+  trẻ em** (user chỉ đạo 2026-08-06). Khác với mục trên (là lỗi ĐÃ BỊ CHẶN
+  thật), đây là biện pháp phòng ngừa chủ động: cứ viết theo cột phải ngay từ
+  đầu, đừng chờ bị chặn rồi mới sửa. Nguyên tắc chung là **thay danh từ pháp
+  lý tường minh bằng động từ mô tả hành động**.
+
+  | Nên né | Thay bằng |
+  | --- | --- |
+  | `sexual assault`, `rape`, `rapist` | `forced his way into her room and attacked her`, `assaulted her`, `the attacker` |
+  | `child murder`, `murdered his kids/children` | `an arson fire that took the lives of his three young daughters`, `killing his three children` |
+
+  Lưu ý cách dùng: danh từ chỉ TỘI DANH là thứ dễ kích hoạt bộ lọc nhất; cùng
+  một sự việc nhưng kể bằng động từ hành động ("attacked her in her apartment")
+  thì qua được. Giữ nguyên mọi số liệu, ngày tháng, bản án — chỉ đổi cách gọi
+  tên hành vi.
+
+  ⚠️ **Chưa xác minh ngưỡng chính xác**: hiện có kịch bản đã viết dùng thẳng
+  `at least 51 rapes` (Golden State Killer) và `multiple sexual assaults`
+  (Russell Williams) trong `vu-an-pha-boi-mot-chi-tiet-nho/en.md` mà CHƯA
+  được test qua ElevenLabs. Nếu 2 câu đó qua được thì ngưỡng lọc chỉ gắt với
+  nội dung liên quan TRẺ EM; nếu bị chặn thì phải áp bộ từ vựng trên cho toàn
+  bộ case người lớn nữa. Cập nhật lại mục này sau khi có kết quả test thật.
 
 ## ⚠️ CẢNH BÁO BẢN QUYỀN
 
