@@ -234,6 +234,49 @@ dẫn 1 phụ nữ đi sâu vào rừng, cô theo sau" bị chặn → "sáu ng�
 2. Sửa `status` thành `"success"` trong JSON.
 3. Chạy lại runner để xác nhận không còn gì pending.
 
+⚠️ `rename-orphan.ts` chỉ đổi tên ảnh **mới nhất**. Nếu đã tạo thêm thứ khác sau
+đó thì ảnh mồ côi không còn ở vị trí 0 nữa — lúc đó đơn giản nhất là đặt lại
+`status: "waiting"` cho tạo lại; ảnh mồ côi cũ vô hại vì không ai tra tới nó.
+
+### 11b. Trước khi chạy lại 1 mục lỗi, TRA THẲNG trong Flow xem nó có thật không
+
+```bash
+npx tsx scripts/check-asset-in-picker.ts "Tên cần tra"
+```
+
+Script chỉ-đọc: mở bảng chọn media, gõ vào ô "Search assets", in ra **tên thật**
+của mọi card hiện lên. Không tốn credit. Dùng để phân biệt 3 tình huống mà log
+runner KHÔNG phân biệt được: (a) chưa tạo thật → chạy lại; (b) tạo rồi nhưng
+mang tên khác/vô danh → xử lý như ảnh mồ côi; (c) có đủ rồi → chỉ cần sửa
+`status`.
+
+### 11c. `status: "success"` KHÔNG chứng minh asset tra được theo tên
+
+Sự cố thật 2026-08-11: `Don Decker Prison` báo `✅ 44.8s` và ghi `status:
+"success"`, nhưng trong Flow **không tồn tại dưới tên đó** — bước rename im lặng
+không ăn. Lỗi nằm im, tới khi 5 cảnh ghép phụ thuộc nó chạy thì gãy giữa mẻ.
+
+Đã vá bằng `assertAssetNamed()` trong `imageAsset.ts`: sau khi đổi tên, tra lại
+đúng bằng cơ chế mà cảnh ghép sẽ dùng, không thấy thì ném lỗi ngay (asset bị
+đánh `failed`, lần sau tự tạo lại). Bước này khiến mỗi asset lâu thêm ~25 giây —
+đó là giá phải trả, đừng gỡ ra để chạy nhanh hơn.
+
+### 11d. Chrome mồ côi khoá profile sau khi 1 mẻ bị gãy
+
+Mẻ gãy giữa chừng (đóng trình duyệt, kill tiến trình) có thể để lại **tiến trình
+Chrome còn sống** giữ `.auth/chrome-profile`. Lần chạy sau Playwright báo
+`Opening in existing browser session` rồi chết ngay. Dọn:
+
+```bash
+powershell -Command "Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine -like '*\.auth\chrome-profile*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+```
+
+⚠️ Lọc theo `.auth\chrome-profile` là BẮT BUỘC — người dùng thường có hàng chục
+tab Chrome cá nhân đang mở, giết nhầm là mất hết.
+
+**Đừng mở/đóng cửa sổ Flow của pipeline khi đang chạy** — dùng chung profile,
+đóng cửa sổ là giết luôn mẻ đang chạy.
+
 ## 12. Lệnh
 
 ```bash

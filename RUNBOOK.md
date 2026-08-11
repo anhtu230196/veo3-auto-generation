@@ -57,9 +57,22 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   Character/Background/Prop `success`, `scenes.json` 18/18 cảnh ghép
   `success` (12 cảnh chạy xong 2026-08-10 qua `npm run banana-scenes -- ...
   --case 1`, sau đó thêm 1 background + 1 cảnh nữa khi tách shot đoạn "18
-  Lakes" — xem mục 8.2i; không lỗi nào). Case 2-6 CHƯA làm gì (chưa viết
-  assets.json/scenes.json cho case nào trong 5 case còn lại). Xem mục 8.2 cho
-  các bài học rút ra khi làm case 1. **Bước KẾ TIẾP chưa làm cho case 1**: image-to-video
+  Lakes" — xem mục 8.2i; không lỗi nào). Xem mục 8.2 cho các bài học rút ra
+  khi làm case 1.
+- **(2026-08-11) Case 2 (Don Decker) đã HOÀN TẤT phần ảnh**: 24 asset + 24 cảnh
+  ghép, tất cả `success`. Don có 3 bản trang phục (`Don Decker` đồ thường /
+  `Don Decker Prison` / `Don Decker Funeral`). Case 3-6 chưa viết gì.
+  Toàn tập hiện: **53 asset + 42 cảnh, không còn mục nào chưa success.**
+  🔧 **Đã sửa code trong lúc làm case 2**: thêm `assertAssetNamed()` vào
+  `src/veo3bot/imageAsset.ts` — xem mục 8.1.3k.
+  ⚠️ **Người dùng có bộ thiết kế nhân vật RIÊNG cho case 2** (ảnh dán trong
+  hội thoại 2026-08-11, không lưu trong repo) khác với asset đã tạo ở vài
+  điểm: Don mặc áo vàng mustard (asset ghi xám nhạt), Bob tóc đen không ria
+  (asset ghi tóc xoăn có ria dày), Priest áo choàng trắng cổ xanh (asset ghi
+  cassock đen). **Người dùng đã quyết GIỮ NGUYÊN asset đã tạo** và tự chỉnh
+  màu áo/tóc lúc vẽ đồ lại bằng tay — ĐỪNG tự tạo lại V2 cho khớp ảnh đó nếu
+  không được yêu cầu. Nhắc lại nguyên tắc mục 8/8.2: ảnh pipeline chỉ là bản
+  nháp BỐ CỤC/TỈ LỆ, không phải chốt tạo hình cuối. **Bước KẾ TIẾP chưa làm cho case 1**: image-to-video
   (mục 8, việc còn chưa làm #6) — pipeline hiện mới dừng ở tạo ẢNH, chưa có
   bước biến 17 ảnh cảnh ghép thành video.
 - Không tạo state/output gì trong `state/`/`output/`/`input/` cho việc này —
@@ -1847,6 +1860,34 @@ tên** (crash trước bước rename).
    sort "Recent") thành đúng tên cần.
 2. Sửa `status` của asset đó thành `"success"` trong `assets.json`.
 3. Chạy lại runner để xác nhận không còn gì pending.
+
+**3k. 🔴 RENAME IM LẶNG KHÔNG ĂN — `status: "success"` từng được ghi cho asset
+KHÔNG tồn tại trong Flow (2026-08-11, đã vá).**
+Xác nhận trực tiếp: `Don Decker Prison` chạy `✅ 44.8s`, `assets.json` ghi
+`status: "success"`, nhưng tra ô "Search assets" trong Flow chỉ thấy
+`Don Decker` và `Don Decker Funeral` — bản Prison không tồn tại dưới BẤT KỲ tên
+nào (đã tra cả "Don Decker" lẫn "Prison"). Ảnh đã tạo thật nhưng nằm đó vô danh.
+
+Nguyên nhân: đoạn cuối `createImageIngredient` làm right-click → menuitem
+"Rename" → `fill(name)` → bấm "Done" → `page.goto(projectUrl)` — **không có bước
+kiểm chứng nào**. Thao tác nào trong chuỗi đó im lặng không ăn thì hàm vẫn
+`return` bình thường và runner ghi "success".
+
+Vì sao NGUY HIỂM hơn 1 lỗi thường: dữ liệu sai nằm im, chỉ phát nổ RẤT MUỘN —
+ở đây là lúc 5 cảnh ghép phụ thuộc `Don Decker Prison` chạy giữa mẻ và gãy,
+kèm hiệu ứng dây chuyền (`attachExistingAssets` throw lúc bảng chọn media đang
+MỞ, cảnh kế tiếp click bị bảng đó chặn → timeout 30s, tốn thêm 1 cảnh nữa mới
+tự phục hồi).
+
+**Đã vá**: thêm `assertAssetNamed(page, name)` chạy ngay sau bước rename — tra
+lại tên bằng ĐÚNG cơ chế mà `attachExistingAssets` sẽ dùng sau này (ô "Search
+assets"), không thấy thì throw để runner đánh `failed` và lần sau tự tạo lại.
+Chi phí: mỗi asset lâu thêm ~25 giây (đo thật: 44.8s → 71.5s). **Đừng gỡ bước
+này để chạy nhanh hơn** — nó đổi 25 giây lấy việc không mất cả 1 mẻ cảnh ghép.
+
+Tiện ích kèm theo: `scripts/check-asset-in-picker.ts "<tên>"` — script CHỈ ĐỌC,
+mở bảng chọn media và in ra tên thật của mọi card khớp, không tốn credit. Dùng
+để phân biệt "chưa tạo" vs "tạo rồi nhưng sai tên" trước khi quyết định chạy lại.
 
 **3e. Quan sát về nhất quán phong cách (chưa xử lý).** Character ra đúng "gia đình"
 phong cách với ảnh reference, nhưng tay/chân ra KHỐI CÓ THỂ TÍCH thay vì nét que như

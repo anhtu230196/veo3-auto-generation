@@ -396,7 +396,7 @@
       "case": 2,
       "description": "a young man in his late twenties wearing a plain dark grey-blue prison shirt with a plain collar buttoned to the neck, worn as one single layer with no jacket over it, and plain matching dark grey-blue prison trousers with plain canvas shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
       "status": "success",
-      "notes": "Bản ĐỒNG PHỤC TÙ của Don — dùng cho mọi cảnh trong tù. Cùng mặt/tóc với 'Don Decker' và 'Don Decker Funeral', chỉ khác trang phục."
+      "notes": "Bản ĐỒNG PHỤC TÙ của Don — dùng cho mọi cảnh trong tù. Cùng mặt/tóc với 'Don Decker' và 'Don Decker Funeral', chỉ khác trang phục. SỰ CỐ 2026-08-11: lần tạo đầu báo success nhưng đổi tên KHÔNG ăn — trong Flow còn 1 ảnh vô danh đúng nội dung này (vô hại, xoá tay được). Đã thêm bước assertAssetNamed vào imageAsset.ts để không tái diễn."
     },
     {
       "name": "Don Decker Funeral",
@@ -413,6 +413,36 @@
       "description": "an old man wearing a plain dark navy single-breasted suit jacket over a plain white shirt with a plain dark grey necktie, no hat, short neatly combed white hair, a short trimmed white beard and a white moustache",
       "status": "success",
       "notes": "Ông nội lúc còn sống — CHỈ dùng làm ảnh tưởng niệm đặt bên mộ trong cảnh đám tang. Để râu trắng ngắn cho đọc ra cùng một người với 'Crowned Old Man' (bản hồn ma đội vương miện, râu dài) mà vẫn gọn gàng đúng kiểu ảnh thờ."
+    },
+    {
+      "name": "Funeral Home Interior",
+      "description": "The viewing room of a small American funeral home from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain warm beige wall filling the middle with two plain tall arched windows, a plain closed dark wooden coffin resting on a plain pale grey draped stand standing across one side with one plain flat green wreath shape lying on its lid, a plain wooden easel standing beside the coffin holding one plain rectangular picture frame, and a plain flat grey carpet strip running edge to edge across the bottom. The picture frame must be drawn as one plain EMPTY rectangle with a flat pale surface and absolutely nothing inside it. The coffin stand and the easel both rest ON the carpet strip and must touch it, not float. Muted palette of beige, dark brown and grey, plain flat indoor lighting.",
+      "notes": "Thay cho 'Cemetery Funeral Ground' (nghĩa trang ngoài trời) — người dùng cung cấp ảnh tham khảo cho thấy đám tang diễn ra TRONG NHÀ TANG LỄ. Khung ảnh trên giá vẽ CỐ Ý để trống để cảnh ghép đặt 'Grandfather In Suit' vào.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Prison Cell Block Corridor",
+      "description": "A prison cell block from 1983 seen straight on from the corridor OUTSIDE the cells. Built from horizontal bands stacked top to bottom: a plain dark grey ceiling band across the top, a plain grey concrete wall filling the middle with one wide flat panel of plain vertical steel bars running across the centre and one plain barred sliding door set into the middle of that panel, one plain small barred window in the wall at one side, and a plain flat grey concrete corridor floor strip running edge to edge across the bottom. The barred panel must fill the frame from the far left edge to the far right edge with no gap of bare wall at either side. Draw only a SMALL number of widely spaced vertical bars standing for the whole grille, never dozens of thin ones. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Góc nhìn TỪ HÀNH LANG vào song sắt — theo ảnh tham khảo người dùng cung cấp. Khác 'Prison Cell 1983' (nội thất buồng giam nhìn từ bên trong), giữ cả hai: cảnh đối thoại qua song sắt dùng cái này, cảnh riêng tư trong buồng dùng cái kia.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Basement Pipes",
+      "description": "A small basement utility space under an American house from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain dark ceiling band across the top with one plain run of thick dark grey horizontal pipes crossing it, a plain pale brown concrete wall filling the middle with a few plain brown damp stain shapes spreading across it, one plain low grey concrete ledge along one side, and a plain flat dark brown concrete floor strip running edge to edge across the bottom. Two plain thick dark grey vertical pipes run down through the ENTIRE height of the wall band, passing IN FRONT OF the wall and the damp stains, and end where they meet the floor strip so they plainly reach the ground. Plain flat indoor lighting, muted brown and grey palette.",
+      "notes": "Bối cảnh mới cho shot ông chủ nhà kiểm tra đường ống. Ống dọc mô tả theo quy tắc 'vật cao xuyên nhiều dải' (chạy suốt + nằm TRƯỚC + chạm đất) để không bị cắt cụt.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
     }
   ]
 }

@@ -157,6 +157,52 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
   }
 }
 
+/**
+ * XÁC MINH asset đã thật sự mang tên `name` — tra đúng bằng cơ chế mà `attachExistingAssets`
+ * sẽ dùng sau này (ô "Search assets" trong bảng chọn media), nên "tra được ở đây" đồng nghĩa
+ * "đính được ở cảnh ghép sau".
+ *
+ * VÌ SAO CẦN (sự cố thật 2026-08-11): bước rename KHÔNG có kiểm chứng nào — right-click →
+ * Rename → gõ tên → Done → chuyển trang. Nếu 1 thao tác im lặng không ăn (Done bấm trước khi
+ * ô nhập commit, menu mở nhầm...), hàm vẫn trả về BÌNH THƯỜNG, runner ghi `status: "success"`
+ * cho 1 asset không tồn tại dưới tên đó. Đã xảy ra với "Don Decker Prison": ảnh tạo xong,
+ * status "success", nhưng trong Flow là ảnh vô danh — và chỉ lộ ra rất muộn, khi 5 cảnh ghép
+ * phụ thuộc nó đồng loạt fail giữa mẻ.
+ *
+ * Ném lỗi ở ĐÂY thì runner đánh dấu asset đó `failed` và lần chạy sau tự tạo lại — thay vì
+ * để dữ liệu sai nằm im chờ phá 1 mẻ cảnh ghép về sau.
+ */
+async function assertAssetNamed(page: Page, name: string): Promise<void> {
+  await page.locator('button:has-text("add_2")').first().click({ timeout: 20000 });
+  await page.waitForTimeout(1500);
+
+  const search = page.getByRole("textbox", { name: /search assets/i }).first();
+  if (await search.count()) {
+    await search.fill(name);
+    await page.waitForTimeout(2000);
+  }
+
+  const found = await page.locator('div[role="option"]', { hasText: name }).first().count();
+
+  // Về lại project để đóng bảng chọn — Escape không đáng tin với dialog của Flow (mục 8.1.4).
+  await page.goto(projectUrlOf(page), { waitUntil: "domcontentloaded", timeout: 45000 });
+  await dismissOnboardingDialog(page);
+  await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
+
+  if (!found) {
+    throw new Error(
+      `Đã tạo ảnh cho "${name}" nhưng ĐỔI TÊN KHÔNG ĂN — tra lại trong bảng chọn media không ` +
+        `thấy. Trong Flow hiện có 1 ảnh vô danh đúng nội dung này; lần chạy sau sẽ tạo lại 1 ` +
+        `bản mới (ảnh vô danh cũ vô hại, có thể xoá tay).`
+    );
+  }
+}
+
+/** URL project hiện tại — dùng để quay lại sau khi mở bảng chọn media. */
+function projectUrlOf(page: Page): string {
+  return page.url().split("?")[0];
+}
+
 export async function createImageIngredient(
   page: Page,
   name: string,
@@ -317,4 +363,7 @@ export async function createImageIngredient(
   await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
   await dismissOnboardingDialog(page);
   await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
+
+  // Chốt lại: tên phải TRA ĐƯỢC thật, không chỉ "đã bấm Done" (xem docstring assertAssetNamed).
+  await assertAssetNamed(page, name);
 }
