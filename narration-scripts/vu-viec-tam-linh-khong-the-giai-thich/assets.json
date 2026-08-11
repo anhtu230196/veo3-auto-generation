@@ -243,6 +243,176 @@
       "composition": "flat",
       "reserveCharacterSpace": true,
       "status": "success"
+    },
+    {
+      "name": "Don Decker",
+      "description": "a young man in his late twenties wearing a plain light grey short-sleeve button-front shirt with a plain collar, worn as one single layer with no jacket over it, and plain dark navy trousers with plain dark shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "notes": "Bản ĐỒ THƯỜNG của Don — dùng cho mọi cảnh BÊN TRONG nhà Bob (đã thay đồ để ở lại qua đêm) và cảnh bước ra khỏi nhà. Cảnh trong tù dùng 'Don Decker Prison', cảnh đám tang + lúc tới cửa nhà Bob dùng 'Don Decker Funeral'.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Bob",
+      "description": "a man in his thirties wearing a plain rust-brown long-sleeve shirt with the sleeves rolled up to the elbow, worn as one single layer with no jacket over it, and plain blue denim trousers with plain dark shoes, short dark curly hair, a thick full moustache and no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Crowned Old Man",
+      "description": "an old man wearing a plain dark red floor-length robe with long wide sleeves and a plain flat gold crown with simple triangular points resting on his head, long straight white hair falling to the shoulders, a long straight white beard reaching the chest",
+      "notes": "Hồn ma ông nội hiện trong gương. Đặt tên trung tính (không gọi là 'grandfather's ghost') để mô tả gọn và tránh chữ dễ dính bộ lọc.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Landlord",
+      "description": "a heavy-set older man wearing a plain beige zip-up work jacket over a plain white shirt and plain grey trousers with plain dark boots, thinning grey hair combed straight back, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Patrol Officer",
+      "description": "a police officer wearing a plain dark navy uniform shirt with a plain silver badge on the chest and plain dark navy uniform trousers with a plain black belt, a plain dark navy peaked cap on the head, short black hair, clean-shaven with no beard",
+      "notes": "Tên KHÔNG dùng 'Police Officer' vì case 1 đã chiếm tên đó — tên asset phải duy nhất toàn tập.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Prison Guard",
+      "description": "a uniformed guard wearing a plain light tan long-sleeve uniform shirt with plain shoulder epaulettes and plain dark brown uniform trousers with a plain black belt, no hat, short blond hair combed to one side, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Chief Warden",
+      "description": "an older official wearing a plain charcoal grey suit jacket over a plain white shirt with a plain dark red necktie, and plain charcoal grey trousers with plain black shoes, no hat, short grey hair combed straight back, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Cellmate",
+      "description": "a young man wearing a plain faded blue prison shirt buttoned to the neck as one single layer and plain faded blue prison trousers with plain canvas shoes, short black hair shaved close at the sides, a thin moustache and no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Priest",
+      "description": "a priest wearing a plain long black cassock buttoned down the front and reaching the ankles as one single layer, with a plain white clerical collar at the neck, plain black shoes, no hat, short dark hair, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Bob's Wife",
+      "description": "a woman in her thirties wearing a plain mustard-yellow long-sleeve blouse and a plain brown knee-length skirt as one single layer with no jacket or apron over it, plain flat shoes, brown hair tied back in a neat low bun with no loose strands falling at the sides, simple round eyes with no eyeliner",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Prison Cell 1983",
+      "composition": "flat",
+      "description": "A narrow prison cell interior from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top, a plain pale grey concrete back wall filling the middle with one small square barred window set high in it, a plain metal bunk bed with two flat mattress slabs standing against the left side and a plain steel washbasin block against the right side, and a plain flat grey concrete floor strip running edge to edge across the bottom. The bunk bed and the washbasin stand ON the floor strip and must touch it, not float. Cold palette of pale grey and washed blue, plain flat institutional daylight.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Cemetery Funeral Ground",
+      "composition": "layered",
+      "description": "A quiet flat cemetery on open ground. Layered flat-depth composition: background layer of a low row of dark green trees all at the same height along the far edge under a plain overcast pale grey sky, midground layer of a row of plain simple rectangular headstones all at the same height standing side by side, foreground layer of a plain flat green grass strip spanning the bottom of the frame with one plain rectangular open grave pit and one plain low mound of brown earth beside it. Muted overcast palette of grey, dark green and brown, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob House Exterior",
+      "composition": "flat",
+      "description": "The front of a small two-storey American suburban house from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey overcast sky band across the top, a plain pitched dark grey roof band, a plain pale yellow clapboard front wall filling the middle with one plain white front door at the centre and one plain square window on each side, a plain low wooden porch step, and a plain flat concrete path with a plain green lawn strip running edge to edge across the bottom. The house wall must be scaled and positioned to completely fill the frame from the far left edge to the far right edge, with absolutely no gap of open lawn or empty sky at either side edge beside the house. Plain flat daylight, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Bathroom",
+      "composition": "flat",
+      "description": "A small American bathroom from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green tiled wall filling the middle with one large plain rectangular mirror mounted at the centre and a plain white sink basin directly below the mirror, a plain white bathtub standing along the right side, and a plain flat white tiled floor strip running edge to edge across the bottom. The mirror must be drawn as one plain empty rectangle with a flat pale silver surface and absolutely nothing reflected in it. The sink and the bathtub stand ON the floor strip and must touch it. Plain flat indoor lighting, daytime.",
+      "notes": "Gương CỐ Ý để trống hoàn toàn — để cảnh ghép sau đặt 'Crowned Old Man' vào đúng khung gương đó.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Living Room",
+      "composition": "flat",
+      "description": "A modest American living room from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain warm beige wall filling the middle with one plain rectangular framed picture hung at the centre and one plain square window to one side, a plain brown two-seat sofa and one plain brown armchair standing side by side along the wall, and a plain flat olive-green carpet strip running edge to edge across the bottom. The sofa and the armchair stand ON the carpet strip and must touch it. Warm muted palette of beige, brown and olive, plain flat indoor lighting, daytime, everything completely dry.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Living Room Night",
+      "composition": "flat",
+      "description": "The same modest American living room from 1983 seen straight on, at night. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top with one plain round warm-yellow ceiling lamp at the centre, a plain warm beige wall filling the middle with one plain rectangular framed picture hung at the centre and one plain square window to one side drawn as a flat dark navy rectangle, a plain brown two-seat sofa and one plain brown armchair standing side by side along the wall, and a plain flat olive-green carpet strip running edge to edge across the bottom. Night palette: everything darker and cooler than a daytime version, lit only by the plain warm yellow lamp. Plain flat indoor lighting, no gradients.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Kitchen",
+      "composition": "flat",
+      "description": "A small American kitchen from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale blue wall filling the middle with a plain row of simple flat wooden upper cabinets, a plain white countertop with one plain steel sink set into it running across, a plain white refrigerator standing at one side, and a plain flat chequered vinyl floor strip running edge to edge across the bottom. The row of cabinets and the countertop must fill the frame from the far left edge to the far right edge with no gap of bare wall at either side edge. The refrigerator stands ON the floor strip and must touch it. Plain flat indoor lighting, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Warden Office",
+      "composition": "flat",
+      "description": "A prison chief warden's office from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale olive wall filling the middle with one plain rectangular framed certificate and one plain round wall clock hung on it, a plain heavy dark wooden desk standing across the centre with one plain wooden chair behind it, a plain grey filing cabinet standing at one side, and a plain flat dark brown wooden floor strip running edge to edge across the bottom. The desk and the filing cabinet stand ON the floor strip and must touch it. Plain flat indoor lighting, daytime, everything completely dry.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Don Decker Prison",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain dark grey-blue prison shirt with a plain collar buttoned to the neck, worn as one single layer with no jacket over it, and plain matching dark grey-blue prison trousers with plain canvas shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản ĐỒNG PHỤC TÙ của Don — dùng cho mọi cảnh trong tù. Cùng mặt/tóc với 'Don Decker' và 'Don Decker Funeral', chỉ khác trang phục."
+    },
+    {
+      "name": "Don Decker Funeral",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain black single-breasted suit jacket over a plain white shirt with a plain black necktie, and plain black suit trousers with plain black shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản MẶC VEST của Don — dùng cho cảnh đám tang và cảnh tới nhà Bob (đi thẳng từ đám tang sang, chưa kịp thay đồ)."
+    },
+    {
+      "name": "Grandfather In Suit",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark navy single-breasted suit jacket over a plain white shirt with a plain dark grey necktie, no hat, short neatly combed white hair, a short trimmed white beard and a white moustache",
+      "status": "success",
+      "notes": "Ông nội lúc còn sống — CHỈ dùng làm ảnh tưởng niệm đặt bên mộ trong cảnh đám tang. Để râu trắng ngắn cho đọc ra cùng một người với 'Crowned Old Man' (bản hồn ma đội vương miện, râu dài) mà vẫn gọn gàng đúng kiểu ảnh thờ."
     }
   ]
 }

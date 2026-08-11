@@ -108,6 +108,23 @@ rõ.
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
 
+### 5b. Nhân vật đổi TRANG PHỤC trong truyện → mỗi bộ đồ 1 asset riêng
+
+Câu chuyện có thể đưa nhân vật qua nhiều bối cảnh đòi trang phục khác hẳn nhau
+(đồng phục tù → vest đám tang → đồ thường ở nhà bạn). **Đừng dùng 1 asset chung
+cho tất cả** — mặc áo tù đi dự đám tang thì ảnh vô dụng cho việc dựng.
+
+Cách làm:
+- Mỗi bộ đồ 1 asset: `Don Decker` (đồ thường), `Don Decker Prison`,
+  `Don Decker Funeral`. **Giữ NGUYÊN VĂN phần mặt/tóc/râu** ở cả 3 mô tả, chỉ
+  đổi đúng phần trang phục — để 3 asset đọc ra cùng một người.
+- Sau khi viết xong, **in bảng "nhân vật mặc gì ở cảnh nào"** rà lại một lượt.
+  Đây là chỗ cực dễ sót vì trang phục nằm trong `references` chứ không nằm ở
+  chỗ nào dễ nhìn.
+- Chỗ **chuyển trang phục** phải quyết rõ và ghi vào `notes`: ví dụ Don đi
+  thẳng từ đám tang sang nhà Bob nên cảnh *tới cửa* vẫn mặc vest, từ cảnh
+  *trong nhà* trở đi mới là đồ thường (đã thay để ở lại qua đêm).
+
 ## 6. Background
 
 - `composition`: `"flat"` (mặc định) cho kiến trúc/phố/dãy nhà →
@@ -160,6 +177,24 @@ trí và phá liên tục giữa 2 cảnh. Coi ảnh trước như 1 keyframe đ
 
 **Thứ tự phụ thuộc**: scene tham chiếu scene khác thì phải xếp SAU nó trong
 mảng `scenes`. Runner không tự sắp xếp.
+
+### 8b. Nhân vật nằm TRONG một khung (gương, ảnh thờ, màn hình, tranh treo)
+
+Khi 1 nhân vật chỉ được thấy **bên trong 1 hình chữ nhật** trong cảnh, model
+rất hay vẽ luôn người đó đứng ngoài phòng. Phải nói tường minh **cả hai vế**:
+
+1. Nằm gọn trong khung: *"filling the frame and contained entirely inside its
+   border"*.
+2. Cấm đứng ngoài: *"appears ONLY inside the picture frame and must NOT be
+   standing on the grass"*.
+
+Kèm 2 việc ở background: mô tả khung đó là **hình chữ nhật RỖNG hoàn toàn**
+(*"nothing reflected in it"*), và nếu cảnh chỉ có 1 người thật thì chốt thêm
+*"He is the only person actually standing in the room"*.
+
+⚠️ **Nếu định ghép nhân vật vào khung ở khâu HẬU KỲ** (không nhờ AI), prompt
+còn phải cấm cả **phản chiếu của chính nhân vật đang đứng đó** — mặc định model
+sẽ vẽ mặt anh ta trong gương, thế là mất chỗ ghép.
 
 ## 9. Khi cần ảnh mới KHÁC ảnh reference (đổi góc, đổi tư thế)
 
