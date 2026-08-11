@@ -302,7 +302,20 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green tiled wall, the mirror, the sink basin, the bathtub and the tiled floor exactly as shown in the second reference image, unchanged. He is standing at the sink basin facing the viewer, both hands raised near his face as if he has just washed it, his head tilted slightly down. The mirror behind him stays a plain empty rectangle with a flat pale silver surface and nothing reflected in it. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): dùng 'Bob Bathroom' cũ (gương bị che / không đọc ra là gương). Thay bằng 'Don Washing Face At Sink V2'."
+    },
+    {
+      "name": "Don Washing Face At Sink V2",
+      "case": 2,
+      "narrationRef": "The strange events began in the bathroom. While washing his face…",
+      "references": [
+        "Don Decker",
+        "Bob Bathroom V2"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green wall, the framed mirror, the pedestal sink, the bathtub and the tiled floor exactly as shown in the last reference image, unchanged — do not move the mirror or the sink to the middle. He is standing on the tiled floor just to the RIGHT of the pedestal sink, his body turned to face left toward the sink and the mirror, both hands raised near his face as if he has just washed it, his head tilted slightly down. His whole body must stay clear of the mirror — he must NOT stand in front of it and must NOT overlap it at any point, so the entire mirror rectangle stays fully visible. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room around them, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thay bản cũ — nhân vật dạt sang phải để không che gương."
     },
     {
       "name": "Don Staring Into Empty Mirror",
@@ -312,9 +325,21 @@
         "Bob Bathroom"
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green tiled wall, the mirror, the sink basin, the bathtub and the tiled floor exactly as shown in the second reference image, unchanged. He is standing at the sink basin with his back partly to the viewer, both hands gripping the front edge of the sink, his head turned up toward the mirror and his shoulders raised as if he has just frozen in place. The mirror must stay a plain EMPTY rectangle with a flat pale silver surface and absolutely nothing reflected in it — no face, no figure, no reflection of the young man, no reflection of the room. Keep him scaled to normal human size relative to the sink and the room, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
-      "notes": "GƯƠNG CỐ Ý ĐỂ TRỐNG — người dùng sẽ tự ghép 'Crowned Old Man' vào khung gương ở khâu hậu kì (quyết định 2026-08-10). Vì vậy scene này KHÔNG đính Crowned Old Man làm reference. Prompt phải cấm cả phản chiếu của chính Don, nếu không gương sẽ có mặt anh ta và không còn chỗ ghép.",
+      "notes": "GƯƠNG CỐ Ý ĐỂ TRỐNG — người dùng sẽ tự ghép 'Crowned Old Man' vào khung gương ở khâu hậu kì (quyết định 2026-08-10). Vì vậy scene này KHÔNG đính Crowned Old Man làm reference. Prompt phải cấm cả phản chiếu của chính Don, nếu không gương sẽ có mặt anh ta và không còn chỗ ghép. LỖI THỜI (2026-08-11): dùng 'Bob Bathroom' cũ (gương bị che / không đọc ra là gương). Thay bằng 'Don Staring Into Empty Mirror V2'.",
       "case": 2,
       "status": "success"
+    },
+    {
+      "name": "Don Staring Into Empty Mirror V2",
+      "case": 2,
+      "narrationRef": "Don looked into the mirror and saw the image of an old man wearing a crown.",
+      "references": [
+        "Don Decker",
+        "Bob Bathroom V2"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green wall, the framed mirror, the pedestal sink, the bathtub and the tiled floor exactly as shown in the last reference image, unchanged — do not move the mirror or the sink to the middle. He is standing on the tiled floor to the RIGHT of the pedestal sink, his body turned to face left toward the mirror, both hands frozen halfway up in front of his chest, his eyes drawn wide open and round and his mouth drawn open as if he has just been startled by something in the mirror. His whole body must stay clear of the mirror — he must NOT stand in front of it and must NOT overlap it at any point, so the entire mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room around them, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thay bản cũ. Cảnh QUAN TRỌNG NHẤT của loạt phòng tắm — người dùng ghép 'Crowned Old Man' vào gương ở hậu kỳ, nên gương phải trống hoàn toàn VÀ không bị nhân vật che một góc nào."
     },
     {
       "name": "Don On Bathroom Floor",
@@ -325,7 +350,20 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green tiled wall, the mirror, the sink basin, the bathtub and the tiled floor exactly as shown in the second reference image, unchanged. He is sitting down on the tiled floor with his back against the wall below the sink, both legs bent in front of him and one hand flat on the floor beside him, his head turned up toward the mirror. The mirror is a plain empty rectangle with a flat pale silver surface and nothing reflected in it. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): dùng 'Bob Bathroom' cũ (gương bị che / không đọc ra là gương). Thay bằng 'Don On Bathroom Floor V2'."
+    },
+    {
+      "name": "Don On Bathroom Floor V2",
+      "case": 2,
+      "narrationRef": "Terrified, he collapsed to the floor, but when he looked back, the image was gone.",
+      "references": [
+        "Don Decker",
+        "Bob Bathroom V2"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the mint-green wall, the framed mirror, the pedestal sink, the bathtub and the tiled floor exactly as shown in the last reference image, unchanged — do not move the mirror or the sink to the middle. He is sitting down on the tiled floor in the open middle of the room, both legs bent in front of him and one hand flat on the floor beside him, his body low and his head turned up and to the left toward the mirror. He is sitting clear of the mirror and the sink, not touching or overlapping either, so the entire mirror rectangle stays fully visible. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room around them, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thay bản cũ — ngồi ở khoảng trống giữa phòng, vẫn không che gương."
     },
     {
       "name": "Don Tells Bob In Living Room",
@@ -388,7 +426,20 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the mint-green tiled wall, the mirror, the sink basin, the bathtub and the tiled floor exactly as shown in the third reference image, unchanged. Draw one plain wooden step ladder standing open on the tiled floor to one side. The older man is standing on the ladder near the top with one arm raised toward the ceiling holding a plain simple metal wrench, and the first man is standing on the tiled floor beside the ladder with his head tilted back looking up at him. The mirror stays a plain empty rectangle with a flat pale silver surface and nothing reflected in it. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Shot 3/3 — trèo thang trong phòng tắm tầng trên. Vẫn giữ gương trống."
+      "notes": "Shot 3/3 — trèo thang trong phòng tắm tầng trên. Vẫn giữ gương trống. LỖI THỜI (2026-08-11): dùng 'Bob Bathroom' cũ (gương bị che / không đọc ra là gương). Thay bằng 'Landlord On Ladder In Bathroom V2'."
+    },
+    {
+      "name": "Landlord On Ladder In Bathroom V2",
+      "case": 2,
+      "narrationRef": "They searched everywhere—from the kitchen to the upstairs bathroom—but the plumbing was perfectly fine.",
+      "references": [
+        "Bob",
+        "Landlord",
+        "Bob Bathroom V2"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the mint-green wall, the framed mirror, the pedestal sink, the bathtub and the tiled floor exactly as shown in the last reference image, unchanged — do not move the mirror or the sink to the middle. Draw one plain wooden step ladder standing open on the tiled floor in the open middle of the room. The older man is standing on the ladder near the top with one arm raised toward the ceiling holding a plain simple metal wrench, and the first man is standing on the tiled floor beside the ladder with his head tilted back looking up at him. The ladder and both men stay clear of the mirror and the sink on the left, so the entire mirror rectangle stays fully visible. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room around them, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thay bản cũ — làm lại theo 'Bob Bathroom V2' để phòng tắm khớp với 3 cảnh kia (liên tục bối cảnh)."
     },
     {
       "name": "Don Blank Stare In Armchair",

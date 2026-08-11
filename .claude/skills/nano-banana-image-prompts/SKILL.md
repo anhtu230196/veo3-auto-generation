@@ -196,6 +196,29 @@ Kèm 2 việc ở background: mô tả khung đó là **hình chữ nhật RỖN
 còn phải cấm cả **phản chiếu của chính nhân vật đang đứng đó** — mặc định model
 sẽ vẽ mặt anh ta trong gương, thế là mất chỗ ghép.
 
+**Hai lỗi nữa lộ ra khi xem ảnh thật (2026-08-11), đều phải chặn từ BACKGROUND:**
+
+**(a) Đặt khung ở GIỮA thì nhân vật đứng chắn mất.** Bồn rửa + gương ở giữa
+khung → người đứng rửa mặt che đúng chỗ cần ghép. Không sửa được bằng prompt
+cảnh, vì vị trí gương đã khoá cứng trong ảnh background.
+👉 Trong mô tả background, **dạt gương/khung hẳn sang MỘT BÊN** và nói rõ *"the
+whole MIDDLE of the room is left completely clear and empty"*. Rồi ở prompt
+cảnh, đặt nhân vật sang phía đối diện kèm câu cấm: *"he must NOT stand in front
+of it and must NOT overlap it at any point, so the entire mirror rectangle stays
+fully visible"*.
+
+**(b) Gương ra màu phẳng lì, không đọc ra là gương.** Tả "plain rectangle with a
+flat pale silver surface" ra đúng nghĩa đen: một tấm xám phẳng, nhìn như bảng
+treo tường.
+👉 Phải cho **tín hiệu hình học của mặt kính**: *"crossed by exactly two thin
+pale white diagonal streak shapes running corner to corner"*. Nói **số lượng cụ
+thể** ("exactly two") — để mở thì model vẽ loang lổ hoặc thêm gradient, hỏng
+phong cách phẳng. Cùng cách này dùng được cho cửa sổ, màn hình, mặt nước.
+
+👉 Khi sửa background loại này, **làm lại TẤT CẢ cảnh dùng nó**, kể cả cảnh
+không liên quan tới cái khung (vd cảnh thợ trèo thang trong phòng tắm) — nếu
+không, cùng một căn phòng sẽ đổi bố cục giữa các cảnh liền nhau.
+
 ## 9. Khi cần ảnh mới KHÁC ảnh reference (đổi góc, đổi tư thế)
 
 Ảnh **thắng** chữ — kể cả về GÓC NHÌN, không riêng hình dạng. Mô tả trung tính
@@ -210,6 +233,27 @@ sẽ vẽ mặt anh ta trong gương, thế là mất chỗ ghép.
 
 Cùng nguyên tắc này áp cho mọi lúc cần ép hình học: đối xứng, đường chân trời
 thẳng, chiều cao bằng nhau.
+
+## 9b. ĐẶT TÊN: đừng để tên này là tiền tố của tên kia
+
+`Bob` / `Bob Kitchen` / `Bob Bathroom` / `Bob's Wife` — cách đặt tên này từng
+gây lỗi ĐÍNH SAI ASSET âm thầm suốt nhiều mẻ (RUNBOOK 8.1.3l): code cũ tra card
+bằng khớp chuỗi con nên tìm `"Bob"` lại lấy `Bob Bathroom V2`, cảnh vẫn tạo ra
+bình thường nhưng sai ảnh, không hề báo lỗi.
+
+Code đã sửa sang khớp tên chính xác nên không còn sai nữa. Nhưng vẫn nên đặt
+tên **phân biệt rõ ngay từ đầu** — dễ đọc `references`, dễ debug, và không phụ
+thuộc vào việc code luôn khớp đúng:
+
+- Nhân vật thêm tiền tố vai: `Homeowner Bob` thay vì `Bob`.
+- Hoặc bối cảnh thêm hậu tố: `Bob House Kitchen` — miễn không có tên nào là
+  tiền tố trọn vẹn của tên khác.
+
+Rà nhanh trước khi chạy:
+
+```bash
+node -e "const a=require('./narration-scripts/<tập>/assets.json').assets.map(x=>x.name);console.log(a.filter(n=>a.some(m=>m!==n&&m.toLowerCase().includes(n.toLowerCase()))))"
+```
 
 ## 10. Đặt tên & sửa asset đã tạo sai
 

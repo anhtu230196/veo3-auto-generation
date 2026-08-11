@@ -348,11 +348,21 @@
       "name": "Bob Bathroom",
       "composition": "flat",
       "description": "A small American bathroom from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green tiled wall filling the middle with one large plain rectangular mirror mounted at the centre and a plain white sink basin directly below the mirror, a plain white bathtub standing along the right side, and a plain flat white tiled floor strip running edge to edge across the bottom. The mirror must be drawn as one plain empty rectangle with a flat pale silver surface and absolutely nothing reflected in it. The sink and the bathtub stand ON the floor strip and must touch it. Plain flat indoor lighting, daytime.",
-      "notes": "Gương CỐ Ý để trống hoàn toàn — để cảnh ghép sau đặt 'Crowned Old Man' vào đúng khung gương đó.",
+      "notes": "Gương CỐ Ý để trống hoàn toàn — để cảnh ghép sau đặt 'Crowned Old Man' vào đúng khung gương đó. LỖI THỜI (2026-08-11): gương nằm giữa khung nên bị nhân vật đứng chắn, và mặt gương phẳng không đọc ra là kính. Thay bằng 'Bob Bathroom V2'.",
       "type": "background",
       "case": 2,
       "reserveCharacterSpace": true,
       "status": "success"
+    },
+    {
+      "name": "Bob Bathroom V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small American bathroom from 1983 seen straight on, with every fixture pushed to the SIDES so the middle of the room stays open. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green wall filling the middle, and a plain flat white tiled floor strip running edge to edge across the bottom. On the LEFT side of the frame: one LARGE plain rectangular mirror mounted on the wall in a plain dark grey frame, tall enough to hold a person's head and shoulders, with a plain white pedestal sink standing on the floor directly below it. The mirror is drawn as a plain EMPTY rectangle with a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes running corner to corner, so it plainly reads as a glass mirror — and absolutely nothing else inside it, no face, no figure, no reflection of the room. On the RIGHT edge of the frame: one plain white bathtub standing on the floor. The whole MIDDLE of the room, both the wall and the floor, is left completely clear and empty. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "Thay 'Bob Bathroom'. Sửa 2 lỗi người dùng chỉ ra trên ảnh thật (2026-08-11): (1) gương+bồn rửa ở GIỮA khung nên nhân vật đứng chắn mất gương, không còn chỗ ghép mặt ông nội ở hậu kỳ → dạt hẳn sang TRÁI, chừa giữa trống; (2) gương ra màu xám phẳng không đọc ra là gương → thêm ĐÚNG 2 vệt sáng chéo làm tín hiệu mặt kính. (Lần tạo đầu bị assertAssetNamed báo nhầm là hỏng tên; tra tay xác nhận có thật nên đặt success, KHÔNG tạo lại.)"
     },
     {
       "name": "Bob Living Room",

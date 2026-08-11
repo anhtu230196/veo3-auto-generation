@@ -1889,6 +1889,40 @@ Tiện ích kèm theo: `scripts/check-asset-in-picker.ts "<tên>"` — script CH
 mở bảng chọn media và in ra tên thật của mọi card khớp, không tốn credit. Dùng
 để phân biệt "chưa tạo" vs "tạo rồi nhưng sai tên" trước khi quyết định chạy lại.
 
+**3l. 🔴🔴 LỖI NẶNG NHẤT ĐÃ TÌM RA: `attachExistingAssets` ĐÍNH SAI ASSET vì khớp
+CHUỖI CON (2026-08-11, đã sửa).**
+Bản cũ tra card bằng `page.locator('div[role="option"]', { hasText: assetName }).first()`.
+`hasText` khớp **chuỗi con**, nên tìm `"Bob"` khớp luôn `Bob Bathroom V2`,
+`Bob Kitchen`, `Bob Living Room`, `Bob House Exterior`, `Bob's Wife`… rồi
+`.first()` lấy card ĐẦU danh sách — mà Flow sắp theo **"Recent" (mới nhất
+trước)**, nên nó gần như luôn lấy asset TẠO SAU, tức là SAI.
+
+**Vì sao cực khó phát hiện**: cảnh vẫn tạo ra bình thường, không lỗi, không
+cảnh báo — chỉ ĐÍNH NHẦM ẢNH. Chỉ lộ khi soi từng ảnh bằng mắt, hoặc khi tình
+cờ gặp hệ quả phụ như dưới đây.
+
+**Cách lộ ra**: cảnh `Landlord On Ladder In Bathroom V2` (refs: Bob, Landlord,
+Bob Bathroom V2) báo `"No results found"` cho `Bob Bathroom V2`. Ảnh debug cho
+thấy thanh prompt đã có 2 thumbnail, và thumbnail thứ nhất chính là **ảnh phòng
+tắm** — tức lượt đính `"Bob"` đã lấy nhầm `Bob Bathroom V2`. Tới lượt asset đó
+thật thì Flow loại nó khỏi danh sách (đã đính rồi) → báo không tìm thấy. Nghĩa
+là lỗi "không tìm thấy" chỉ là TRIỆU CHỨNG, gốc là đính sai từ lượt trước.
+
+**Đã sửa**: duyệt mọi `div[role="option"]`, đọc `innerText`, bỏ hậu tố loại
+media (`" Image"`/`" Video"`…) rồi **so khớp CHÍNH XÁC** (không phân biệt hoa
+thường). Thông báo lỗi giờ liệt kê luôn các card đang hiện để chẩn đoán nhanh.
+
+**Sửa kèm 2 chỗ chờ cứng cùng lớp lỗi** (đều gây báo hỏng oan khi project nhiều
+media): (1) sau khi gõ ô "Search assets" → poll 12 giây thay vì chờ 1500ms;
+(2) sau khi click card → poll 8 giây chờ bảng đóng, kèm nhánh dự phòng bấm
+"Add to Prompt", thay vì chốt sau 1500ms.
+
+⚠️ **DI CHỨNG**: mọi cảnh tạo TRƯỚC 2026-08-11 mà có tham chiếu là chuỗi con
+của tên asset/scene khác đều CÓ THỂ đã đính sai. Rà bằng đoạn script trong mục
+này rồi soi mắt trước khi dùng. **Bài học đặt tên**: tránh đặt tên asset là
+tiền tố của tên asset khác (`Bob` vs `Bob Kitchen`) — dù code đã khớp chính
+xác, tên phân biệt rõ vẫn dễ đọc và dễ debug hơn.
+
 **3e. Quan sát về nhất quán phong cách (chưa xử lý).** Character ra đúng "gia đình"
 phong cách với ảnh reference, nhưng tay/chân ra KHỐI CÓ THỂ TÍCH thay vì nét que như
 reference (có thể do bộ đồ độn phồng che kín chi), và có chút đổ bóng nhẹ mà reference

@@ -128,30 +128,96 @@ export async function attachReferenceImage(page: Page, referenceImagePath: strin
  */
 export async function attachExistingAssets(page: Page, names: string[]): Promise<void> {
   for (const assetName of names) {
-    await page.locator('button:has-text("add_2")').first().click({ timeout: 15000 });
-    await page.waitForTimeout(1200);
-
-    const search = page.getByRole("textbox", { name: /search assets/i }).first();
-    if (await search.count()) {
-      await search.fill(assetName);
-      await page.waitForTimeout(1500);
+    // Mở bảng chọn media. ⚠️ Bản cũ chỉ mở 1 lần rồi `if (await search.count())` — nếu bảng
+    // KHÔNG mở được thì nó lặng lẽ bỏ qua bước gõ tìm, rồi đi tìm card trong 1 bảng đang
+    // ĐÓNG và báo "không tìm thấy asset". Chẩn đoán sai hoàn toàn: asset vẫn nằm đó, chỉ là
+    // bảng chưa mở. Xác nhận 2026-08-11 với "Bob Bathroom V2" ở lần đính THỨ BA của 1 cảnh
+    // (2 lần đính trước cùng mẻ đều ổn), trong khi tra tay thấy asset hiện ra ngay lập tức.
+    let panelOpened = false;
+    for (let attempt = 1; attempt <= 3 && !panelOpened; attempt++) {
+      await page
+        .locator('button:has-text("add_2")')
+        .first()
+        .click({ timeout: 15000 })
+        .catch(() => {});
+      await page.waitForTimeout(1200);
+      panelOpened = (await page.getByRole("textbox", { name: /search assets/i }).first().count()) > 0;
+      if (!panelOpened) {
+        debugLog("reference", `bảng chọn media chưa mở (lượt ${attempt}) — thử lại`);
+        await page.waitForTimeout(1500);
+      }
     }
-
-    const card = page.locator('div[role="option"]', { hasText: assetName }).first();
-    if (!(await card.count())) {
-      await debugCapture(page, `attach-asset-not-found-${assetName}`);
+    if (!panelOpened) {
+      await debugCapture(page, `attach-panel-never-opened-${assetName}`);
       throw new Error(
-        `Không tìm thấy asset tên "${assetName}" trong bảng chọn media của Flow — kiểm tra ` +
-          `đã tạo và đổi tên đúng chưa.`
+        `Không MỞ được bảng chọn media để đính "${assetName}" (thử 3 lượt) — đây là lỗi UI, ` +
+          `KHÔNG phải asset thiếu. Đừng tạo lại asset, chạy lại lệnh là được.`
       );
     }
-    await card.click();
-    await page.waitForTimeout(1500);
 
-    // Bảng phải đóng lại = đã đính. Còn thấy card nghĩa là click không ăn.
-    if (await page.locator('div[role="option"]').first().count()) {
+    const search = page.getByRole("textbox", { name: /search assets/i }).first();
+    await search.fill(assetName);
+
+    // 🔴 PHẢI KHỚP TÊN CHÍNH XÁC, KHÔNG dùng `hasText` (bug nặng, sửa 2026-08-11).
+    // `hasText` khớp CHUỖI CON, nên tìm "Bob" khớp luôn "Bob Bathroom V2" / "Bob Kitchen" /
+    // "Bob Living Room" / "Bob's Wife"..., rồi `.first()` lấy card ĐẦU DANH SÁCH — mà Flow sắp
+    // theo "Recent" nên đó thường là asset MỚI NHẤT, không phải cái mình muốn.
+    // Hậu quả ÂM THẦM: cảnh vẫn tạo ra bình thường nhưng ĐÍNH SAI ẢNH, chỉ lộ khi soi bằng mắt.
+    // Phát hiện được nhờ ảnh debug: đính "Bob" xong thì thanh prompt hiện thumbnail phòng tắm,
+    // và tới lượt "Bob Bathroom V2" thật thì Flow báo "No results found" vì nó đã bị đính rồi.
+    const cards = page.locator('div[role="option"]');
+    const want = assetName.trim().toLowerCase();
+    let target: ReturnType<typeof cards.nth> | null = null;
+    let seen: string[] = [];
+
+    for (let i = 0; i < 12 && !target; i++) {
+      await page.waitForTimeout(800);
+      const n = await cards.count();
+      seen = [];
+      for (let k = 0; k < n; k++) {
+        const raw = (await cards.nth(k).innerText().catch(() => "")).replace(/\s+/g, " ").trim();
+        // Card hiển thị dạng "<Tên> Image" / "<Tên> Video" — bỏ hậu tố loại media rồi so khớp.
+        const label = raw.replace(/\s+(Image|Video|Voice|Character|Avatar)$/i, "").trim();
+        seen.push(label);
+        if (label.toLowerCase() === want) {
+          target = cards.nth(k);
+          break;
+        }
+      }
+    }
+
+    if (!target) {
+      await debugCapture(page, `attach-asset-not-found-${assetName}`);
+      throw new Error(
+        `Không tìm thấy asset tên CHÍNH XÁC "${assetName}" trong bảng chọn media sau 12 giây. ` +
+          `Các card đang hiện: ${seen.length ? seen.map((s) => `"${s}"`).join(", ") : "(không có)"}. ` +
+          `Nếu asset có thật, tra tay bằng: npx tsx scripts/check-asset-in-picker.ts "${assetName}".`
+      );
+    }
+    await target.click();
+
+    // Bảng ĐÓNG LẠI = đã đính (RUNBOOK 8.1.3d BẪY 1: click card là xong, "Add to Prompt" chỉ
+    // là nút dự phòng). Phải POLL chứ không chờ cứng 1500ms — cùng lớp lỗi với ô search: bảng
+    // càng nhiều media càng đóng chậm, chốt sớm sẽ báo "click không ăn" cho thao tác đã thành công.
+    let closed = false;
+    for (let i = 0; i < 10 && !closed; i++) {
+      await page.waitForTimeout(800);
+      closed = (await page.locator('div[role="option"]').first().count()) === 0;
+    }
+    if (!closed) {
+      // Nhánh dự phòng: một số lần click card không tự đóng, phải bấm nút xác nhận.
+      const addBtn = page.getByRole("button", { name: /add to prompt/i }).first();
+      if (await addBtn.count()) {
+        await addBtn.click().catch(() => {});
+        for (let i = 0; i < 6 && !closed; i++) {
+          await page.waitForTimeout(800);
+          closed = (await page.locator('div[role="option"]').first().count()) === 0;
+        }
+      }
+    }
+    if (!closed) {
       await debugCapture(page, `attach-asset-panel-still-open-${assetName}`);
-      throw new Error(`Đính asset "${assetName}" thất bại — bảng chọn media vẫn mở.`);
+      throw new Error(`Đính asset "${assetName}" thất bại — bảng chọn media vẫn mở sau 8 giây.`);
     }
     debugLog("reference", `đã đính asset "${assetName}"`);
   }
@@ -173,29 +239,54 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
  * để dữ liệu sai nằm im chờ phá 1 mẻ cảnh ghép về sau.
  */
 async function assertAssetNamed(page: Page, name: string): Promise<void> {
-  await page.locator('button:has-text("add_2")').first().click({ timeout: 20000 });
-  await page.waitForTimeout(1500);
+  const projectUrl = projectUrlOf(page);
 
-  const search = page.getByRole("textbox", { name: /search assets/i }).first();
-  if (await search.count()) {
-    await search.fill(name);
-    await page.waitForTimeout(2000);
+  // ⚠️ PHẢI POLL, KHÔNG tra 1 phát rồi kết luận. Bản đầu của hàm này chỉ chờ cố định 2 giây
+  // sau khi gõ vào ô search rồi chốt — và đã BÁO NHẦM cho "Bob Bathroom V2" (asset tồn tại
+  // thật, rename ăn bình thường, nhưng lưới asset nạp bất đồng bộ nên chưa kịp hiện). Báo
+  // nhầm còn tai hại hơn im lặng: runner đánh `failed`, lần sau tạo lại → sinh ảnh TRÙNG.
+  const ATTEMPTS = 2;
+  let sawSearchBox = false;
+
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+    await page
+      .locator('button:has-text("add_2")')
+      .first()
+      .click({ timeout: 20000 })
+      .catch(() => {});
+    await page.waitForTimeout(1500);
+
+    const search = page.getByRole("textbox", { name: /search assets/i }).first();
+    if (await search.count()) {
+      sawSearchBox = true;
+      await search.fill(name);
+      for (let i = 0; i < 8; i++) {
+        await page.waitForTimeout(1000);
+        if (await page.locator('div[role="option"]', { hasText: name }).first().count()) {
+          // Về lại project để đóng bảng chọn — Escape không đáng tin với dialog Flow (mục 8.1.4).
+          await backToProject(page, projectUrl);
+          return;
+        }
+      }
+    }
+    await backToProject(page, projectUrl);
   }
 
-  const found = await page.locator('div[role="option"]', { hasText: name }).first().count();
+  throw new Error(
+    sawSearchBox
+      ? `Đã tạo ảnh cho "${name}" nhưng ĐỔI TÊN KHÔNG ĂN — tra bảng chọn media ${ATTEMPTS} lượt ` +
+        `vẫn không thấy. Trong Flow đang có 1 ảnh vô danh đúng nội dung này (vô hại, xoá tay ` +
+        `được); đặt lại status "waiting" để tạo bản mới.`
+      : `Không mở được bảng chọn media để xác minh tên "${name}" — KHÔNG kết luận được là ` +
+        `rename hỏng hay chỉ là trang lỗi. Tra tay bằng: npx tsx scripts/check-asset-in-picker.ts "${name}" ` +
+        `rồi sửa status cho đúng, ĐỪNG chạy lại mù (sẽ tạo ảnh trùng).`
+  );
+}
 
-  // Về lại project để đóng bảng chọn — Escape không đáng tin với dialog của Flow (mục 8.1.4).
-  await page.goto(projectUrlOf(page), { waitUntil: "domcontentloaded", timeout: 45000 });
+async function backToProject(page: Page, projectUrl: string): Promise<void> {
+  await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
   await dismissOnboardingDialog(page);
   await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
-
-  if (!found) {
-    throw new Error(
-      `Đã tạo ảnh cho "${name}" nhưng ĐỔI TÊN KHÔNG ĂN — tra lại trong bảng chọn media không ` +
-        `thấy. Trong Flow hiện có 1 ảnh vô danh đúng nội dung này; lần chạy sau sẽ tạo lại 1 ` +
-        `bản mới (ảnh vô danh cũ vô hại, có thể xoá tay).`
-    );
-  }
 }
 
 /** URL project hiện tại — dùng để quay lại sau khi mở bảng chọn media. */
