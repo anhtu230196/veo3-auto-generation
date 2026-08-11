@@ -62,9 +62,31 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
 - **(2026-08-11) Case 2 (Don Decker) đã HOÀN TẤT phần ảnh**: 24 asset + 24 cảnh
   ghép, tất cả `success`. Don có 3 bản trang phục (`Don Decker` đồ thường /
   `Don Decker Prison` / `Don Decker Funeral`). Case 3-6 chưa viết gì.
-  Toàn tập hiện: **53 asset + 42 cảnh, không còn mục nào chưa success.**
-  🔧 **Đã sửa code trong lúc làm case 2**: thêm `assertAssetNamed()` vào
-  `src/veo3bot/imageAsset.ts` — xem mục 8.1.3k.
+  Toàn tập hiện: **54 asset + 46 cảnh, không còn mục nào chưa success.**
+  🔧 **Đã sửa code trong lúc làm case 2**: `assertAssetNamed()` (mục 8.1.3k) và
+  **sửa lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — lỗi nặng nhất)**.
+
+### ⏳ VIỆC ĐANG TREO (2026-08-11) — đọc trước khi chạy tiếp
+
+1. **Cần TẠO LẠI ~19 cảnh case 2 nghi đính sai asset.** Lỗi 8.1.3l tồn tại từ
+   đầu tới 2026-08-11, nên mọi cảnh tạo TRƯỚC bản vá mà tham chiếu tên là chuỗi
+   con của tên khác đều có thể đã ghép nhầm ảnh — **cảnh vẫn trông bình thường,
+   không có lỗi nào báo ra**. Nhóm gần như chắc sai: mọi cảnh dùng `Bob`
+   (7 cảnh), `Don Decker` (9 cảnh), `Landlord` (3 cảnh) — vì các asset tên dài
+   hơn (`Bob Kitchen`, `Don Decker Prison`…) đều tạo SAU nên Flow sắp "Recent"
+   đưa chúng lên đầu. Case 1 có 3 cảnh dùng `Forest Clearing With Boulder`
+   (nghi bị kéo bản `Night` vào) nhưng người dùng đã duyệt mắt và thấy ổn.
+   Rà lại danh sách bằng:
+   ```bash
+   node -e "const a=require('./narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/assets.json').assets.map(x=>x.name),s=require('./narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/scenes.json').scenes,all=[...a,...s.map(x=>x.name)],r=new Set(all.filter(n=>all.some(m=>m!==n&&m.toLowerCase().includes(n.toLowerCase()))));console.log(s.filter(x=>x.references.some(v=>r.has(v))).map(x=>x.name))"
+   ```
+   Cách tạo lại: đặt `status: "waiting"` cho các cảnh đó rồi chạy
+   `npm run banana-scenes`. **Ảnh cũ vẫn nằm trong Flow dưới cùng tên** → phải
+   đổi tên mới (thêm hậu tố) hoặc xoá tay ảnh cũ, nếu không sẽ có 2 ảnh trùng tên.
+
+2. **TẠM DỪNG mọi lệnh Playwright (2026-08-11)**: Flow đang báo *"currently
+   experiencing high demand, affecting video generation"*. Người dùng yêu cầu
+   hoãn chạy tới khi Flow ổn định lại.
   ⚠️ **Người dùng có bộ thiết kế nhân vật RIÊNG cho case 2** (ảnh dán trong
   hội thoại 2026-08-11, không lưu trong repo) khác với asset đã tạo ở vài
   điểm: Don mặc áo vàng mustard (asset ghi xám nhạt), Bob tóc đen không ria
