@@ -219,6 +219,28 @@ phong cách phẳng. Cùng cách này dùng được cho cửa sổ, màn hình,
 không liên quan tới cái khung (vd cảnh thợ trèo thang trong phòng tắm) — nếu
 không, cùng một căn phòng sẽ đổi bố cục giữa các cảnh liền nhau.
 
+**(c) "Dạt sang trái" KHÔNG giống "treo trên tường bên trái".** Vòng sửa thứ
+hai của phòng tắm vẫn trượt vì lý do này: mô tả *"on the LEFT side of the
+frame"* chỉ dời cái gương sang **mép trái của cùng một mặt tường sau**, trong
+khi ý muốn là có hẳn **một bức tường BÊN** để treo lên. Hai chuyện khác nhau,
+và câu chữ "bên trái" không phân biệt được.
+
+👉 Muốn có góc phòng mà vẫn giữ phong cách phẳng, tả bằng **số mảng và số
+đường**, đừng dùng từ phối cảnh:
+
+> built from exactly TWO flat wall panels meeting along ONE single vertical
+> line. The LEFT panel fills roughly the left third and is the SIDE WALL, in a
+> slightly DARKER shade… The RIGHT panel is the BACK WALL… Exactly one straight
+> diagonal line runs from the foot of the vertical corner line down toward the
+> bottom-left corner, so the floor reads as turning at the corner. There are no
+> other diagonal lines, no vanishing point, and no rows of tiles shrinking
+> toward a distance.
+
+Ba chốt chặn quan trọng: **mảng bên tô đậm hơn** (cho mắt đọc ra là mặt khác),
+**đúng 1 đường chéo dưới sàn** (để mở là model vẽ cả lưới gạch hút xa), và câu
+gán vật thể tường minh *"the mirror belongs to the LEFT side wall only and must
+NOT be drawn anywhere on the other panel"*.
+
 ## 9. Khi cần ảnh mới KHÁC ảnh reference (đổi góc, đổi tư thế)
 
 Ảnh **thắng** chữ — kể cả về GÓC NHÌN, không riêng hình dạng. Mô tả trung tính
