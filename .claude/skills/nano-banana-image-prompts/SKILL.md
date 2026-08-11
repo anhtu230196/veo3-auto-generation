@@ -127,8 +127,24 @@ Cách làm:
 
 ## 6. Background
 
-- `composition`: `"flat"` (mặc định) cho kiến trúc/phố/dãy nhà →
-  `NO_PERSPECTIVE_BLOCK`. `"layered"` **chỉ** cho phong cảnh thiên nhiên rộng.
+- `composition` — chọn theo LOẠI CẢNH, đọc `styleDNA.ts` để biết block tương ứng:
+
+  | Giá trị | Dùng cho |
+  |---|---|
+  | `"flat"` (mặc định) | Kiến trúc, phố xá, dãy nhà, mặt tiền — phông phẳng kiểu sân khấu |
+  | `"layered"` | Phong cảnh thiên nhiên rộng (núi xa → làng giữa → ruộng gần) |
+  | `"corner"` | **Phòng TRONG NHÀ sẽ ghép nhân vật vào** — xem ngay dưới |
+
+  🔑 **Vì sao có `"corner"` (người dùng chốt 2026-08-11)**: nhân vật do pipeline
+  sinh ra đều ở **góc 3/4**. Đặt người 3/4 lên nền phẳng tuyệt đối thì người có
+  chiều mà nền thì không — nhìn như **dán đè lên**. Một góc phòng nhẹ (2 mảng
+  tường gặp nhau ở 1 đường dọc, mảng bên foreshorten nhẹ) cho nhân vật chỗ đứng
+  hợp lý. Vẫn cấm cảnh hút sâu thật.
+
+  ⚠️ Đừng cố đạt hiệu ứng này bằng cách viết mô tả góc phòng trong khi để
+  `composition: "flat"` — runner sẽ nhét `NO_PERSPECTIVE_BLOCK` vào và bạn đang
+  đánh nhau với chính prompt của mình. Lần đầu ăn may thắng được, lần sau chưa
+  chắc. Đặt đúng `"corner"`.
 - `reserveCharacterSpace: true` khi sẽ ghép người vào — chừa sàn trống + khoá
   góc máy ngang tầm mắt. Cảnh toàn cảnh không ghép người thì để `false`.
 - **Ánh sáng ngày/đêm phải bake thẳng vào mô tả** nếu bối cảnh chỉ dùng ở 1

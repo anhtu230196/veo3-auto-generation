@@ -45,8 +45,14 @@ export interface ImageAsset {
    * `"layered"` → dùng `LAYERED_DEPTH_LANDSCAPE_NOTE` thay thế: chỉ cho cảnh THIÊN NHIÊN
    * RỘNG (núi xa → làng giữa → ruộng gần), nơi chiều sâu kiểu xếp lớp vẫn giữ được cảm giác
    * phẳng và ép "zero depth" là bó vô ích. KHÔNG dùng cho kiến trúc.
+   *
+   * `"corner"` → dùng `INTERIOR_CORNER_NOTE`: phòng TRONG NHÀ sẽ được ghép nhân vật vào.
+   * Cho phép đúng 1 góc (2 mảng tường) + foreshorten nhẹ ở mảng bên, vì nhân vật do pipeline
+   * sinh ra đều ở góc 3/4 — đặt lên nền phẳng tuyệt đối sẽ nhìn như dán đè lên (người dùng
+   * chốt 2026-08-11). Vẫn cấm cảnh hút sâu thật. Dùng cho phòng tắm/phòng khách/văn phòng…,
+   * KHÔNG dùng cho phố xá hay mặt tiền nhà (những cái đó vẫn "flat").
    */
-  composition?: "flat" | "layered";
+  composition?: "flat" | "layered" | "corner";
   status?: AssetStatus;
   /** Ghi lại lý do lần thử gần nhất thất bại, để đọc lại bằng mắt không phải mò log. */
   lastError?: string;

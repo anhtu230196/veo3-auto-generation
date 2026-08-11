@@ -331,6 +331,29 @@ export const NO_PERSPECTIVE_BLOCK =
  * thật (không có "đường ray" hội tụ về 1 điểm). Khi viết prompt cho cảnh loại này, mô tả trực
  * tiếp từng lớp (background/midground/foreground) thay vì dùng NO_PERSPECTIVE_BLOCK.
  */
+/**
+ * GÓC PHÒNG NỘI THẤT — cho background trong nhà sẽ được GHÉP NHÂN VẬT vào.
+ *
+ * VÌ SAO TỒN TẠI (2026-08-11, người dùng chốt): ảnh master reference sinh ra nhân vật ở góc
+ * **3/4 view**. Đặt nhân vật 3/4 lên nền phẳng tuyệt đối (`NO_PERSPECTIVE_BLOCK`, kiểu phông
+ * sân khấu) thì người và nền đá nhau — người có chiều, nền thì không, nhìn như dán đè lên.
+ * Một góc phòng nhẹ cho nhân vật chỗ đứng hợp lý.
+ *
+ * KHÁC `NO_PERSPECTIVE_BLOCK`: cho phép ĐÚNG 1 góc (2 mảng tường gặp nhau) và foreshorten nhẹ
+ * ở mảng bên. VẪN CẤM cảnh hút sâu thật (hành lang dài, dãy vật thể nhỏ dần về xa) — đó là thứ
+ * đã làm hỏng 2 cảnh tháp Eiffel đầu tiên và bị người dùng loại (RUNBOOK 8.1.3g).
+ *
+ * KHÔNG dùng cho: phố xá/dãy nhà/mặt tiền (dùng "flat"), phong cảnh thiên nhiên rộng
+ * (dùng "layered"), hay background toàn cảnh không ghép người.
+ */
+export const INTERIOR_CORNER_NOTE =
+  "Interior corner composition: the room is built from exactly TWO flat wall planes meeting " +
+  "along ONE single vertical corner line, with mild foreshortening allowed on the side wall " +
+  "only so a character standing in the room reads as being inside a real space. This is NOT a " +
+  "deep perspective scene: no long receding corridor, no second vanishing point, no rows of " +
+  "objects or floor tiles shrinking away into the distance. Every surface stays a plain flat " +
+  "color fill with bold uniform-width black outlines, no shading and no gradients.";
+
 export const LAYERED_DEPTH_LANDSCAPE_NOTE =
   "Layered flat-depth landscape composition (background/midground/foreground layers stacked " +
   "by simple scale and position — NOT single-point converging perspective, no receding " +

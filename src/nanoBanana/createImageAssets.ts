@@ -30,6 +30,7 @@ import {
   EYE_LEVEL_CAMERA_BLOCK,
   NO_PERSPECTIVE_BLOCK,
   LAYERED_DEPTH_LANDSCAPE_NOTE,
+  INTERIOR_CORNER_NOTE,
   SIMPLIFY_DETAIL_BLOCK,
   HAND_DRAWN_LINE_BLOCK,
 } from "./styleDNA.js";
@@ -62,7 +63,11 @@ function buildPrompt(asset: ImageAsset): { description: string; styleBlock: stri
       // định hướng (dải ngang phẳng kiểu phông sân khấu) và bị loại. `styleDNA.ts` đã có sẵn
       // block chống việc này từ đầu, chỉ là runner không dùng.
       const perspective =
-        asset.composition === "layered" ? LAYERED_DEPTH_LANDSCAPE_NOTE : NO_PERSPECTIVE_BLOCK;
+        asset.composition === "layered"
+          ? LAYERED_DEPTH_LANDSCAPE_NOTE
+          : asset.composition === "corner"
+            ? INTERIOR_CORNER_NOTE
+            : NO_PERSPECTIVE_BLOCK;
       // 2 block dưới CHỈ thêm khi cảnh sẽ ghép nhân vật vào (xem ImageAsset.reserveCharacterSpace).
       const forCharacters = asset.reserveCharacterSpace
         ? ` ${RESERVE_CHARACTER_SPACE_BLOCK} ${EYE_LEVEL_CAMERA_BLOCK}`
