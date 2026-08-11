@@ -332,6 +332,38 @@ export const NO_PERSPECTIVE_BLOCK =
  * tiếp từng lớp (background/midground/foreground) thay vì dùng NO_PERSPECTIVE_BLOCK.
  */
 /**
+ * PHỐI CẢNH ĐƠN GIẢN — hướng phong cách MỚI (2026-08-11, người dùng chốt sau khi xem 1 kênh
+ * khác làm cùng thể loại).
+ *
+ * BÀI HỌC CỐT LÕI: **"có phối cảnh" KHÔNG mâu thuẫn với "dễ đồ lại bằng tay"**. Thứ khiến ảnh
+ * dễ đồ không phải là phẳng trực giao, mà là MỌI MẶT ĐỀU TÔ 1 MÀU ĐẶC — không đổ bóng, không
+ * chuyển sắc, không vân bề mặt. Chiều sâu đến từ GÓC ĐẶT và KÍCH THƯỚC của các mảng phẳng, chứ
+ * không từ việc tô vẽ. Trước đây ta ép trực giao (`NO_PERSPECTIVE_BLOCK`) vì tưởng đó là cách
+ * duy nhất giữ đơn giản — hoá ra không phải.
+ *
+ * Lợi ích kèm theo: nhân vật do pipeline sinh ra đều ở góc 3/4, nền có phối cảnh mới cho họ
+ * chỗ đứng tự nhiên (xem thêm `INTERIOR_CORNER_NOTE` bên dưới — nay chỉ còn là bản NHẸ hơn của
+ * block này, dùng khi chỉ cần đúng 1 góc phòng).
+ *
+ * KHÔNG nhắc tới đám đông trong block này (dù ảnh tham khảo dùng bóng người xám rất hiệu quả) —
+ * `BACKGROUND_STYLE_BLOCK` cấm mọi bóng người trong background, thêm vào là 2 câu đá nhau.
+ * Kỹ thuật đám đông thuộc về prompt CẢNH GHÉP, ghi trong skill.
+ */
+export const SIMPLE_PERSPECTIVE_BLOCK =
+  "Draw the scene in ordinary three-dimensional cartoon perspective: walls, buildings and " +
+  "furniture are seen at an angle, the ground plane recedes toward a single vanishing point, " +
+  "and rectangular objects are drawn as parallelograms. This is a normal perspective view, NOT " +
+  "a flat orthographic elevation and NOT a theater backdrop. " +
+  "BUT it must stay extremely simple to trace by hand: every single surface is filled with ONE " +
+  "flat solid color — absolutely no gradients, no shading, no cast shadows, no texture, no " +
+  "hatching, no highlights, no reflections. Depth comes ONLY from the angle and the size of " +
+  "flat shapes, never from rendering or lighting. Every shape carries a bold uniform-width " +
+  "black outline. " +
+  "Use a narrow palette for the whole picture: one dominant hue rendered in a few flat tints, " +
+  "so the mood comes from colour choice rather than from light and shadow. If sky is visible it " +
+  "is ONE flat colour band with a simple skyline of plain flat rectangles in a lighter tint.";
+
+/**
  * GÓC PHÒNG NỘI THẤT — cho background trong nhà sẽ được GHÉP NHÂN VẬT vào.
  *
  * VÌ SAO TỒN TẠI (2026-08-11, người dùng chốt): ảnh master reference sinh ra nhân vật ở góc

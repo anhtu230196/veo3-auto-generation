@@ -31,6 +31,7 @@ import {
   NO_PERSPECTIVE_BLOCK,
   LAYERED_DEPTH_LANDSCAPE_NOTE,
   INTERIOR_CORNER_NOTE,
+  SIMPLE_PERSPECTIVE_BLOCK,
   SIMPLIFY_DETAIL_BLOCK,
   HAND_DRAWN_LINE_BLOCK,
 } from "./styleDNA.js";
@@ -44,7 +45,18 @@ const REFERENCE_CHARACTER = path.resolve("src/nanoBanana/reference-character.jpe
  * background KHÔNG đính — ảnh người làm reference sẽ kéo tỉ lệ/dáng người vào vật thể
  * (cùng bài học "ảnh thắng text" ở MASTER_REFERENCE_NOTE / ANIMAL_STYLE_BLOCK).
  */
-function buildPrompt(asset: ImageAsset): { description: string; styleBlock: string; reference?: string } {
+function buildPrompt(asset: ImageAsset): {
+  description: string;
+  styleBlock: string;
+  reference?: string | string[];
+} {
+  // SỬA ẢNH từ 1 asset đã có (xem ImageAsset.editFrom) — đính ảnh gốc làm reference DUY NHẤT
+  // và KHÔNG ghép style block: ảnh gốc đã neo phong cách + bố cục, thêm chữ style vào chỉ khiến
+  // model vẽ lại từ đầu và lệch mất bố cục vốn là thứ ta đang muốn giữ.
+  if (asset.editFrom) {
+    return { description: asset.description, styleBlock: "", reference: [asset.editFrom] };
+  }
+
   switch (asset.type) {
     case "character":
       // CHARACTER_PROMPT_PREFIX đã mang toàn bộ chỉ dẫn phong cách, và ảnh reference mới là
@@ -67,7 +79,9 @@ function buildPrompt(asset: ImageAsset): { description: string; styleBlock: stri
           ? LAYERED_DEPTH_LANDSCAPE_NOTE
           : asset.composition === "corner"
             ? INTERIOR_CORNER_NOTE
-            : NO_PERSPECTIVE_BLOCK;
+            : asset.composition === "perspective"
+              ? SIMPLE_PERSPECTIVE_BLOCK
+              : NO_PERSPECTIVE_BLOCK;
       // 2 block dưới CHỈ thêm khi cảnh sẽ ghép nhân vật vào (xem ImageAsset.reserveCharacterSpace).
       const forCharacters = asset.reserveCharacterSpace
         ? ` ${RESERVE_CHARACTER_SPACE_BLOCK} ${EYE_LEVEL_CAMERA_BLOCK}`

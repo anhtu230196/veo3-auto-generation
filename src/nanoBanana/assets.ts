@@ -51,8 +51,27 @@ export interface ImageAsset {
    * sinh ra đều ở góc 3/4 — đặt lên nền phẳng tuyệt đối sẽ nhìn như dán đè lên (người dùng
    * chốt 2026-08-11). Vẫn cấm cảnh hút sâu thật. Dùng cho phòng tắm/phòng khách/văn phòng…,
    * KHÔNG dùng cho phố xá hay mặt tiền nhà (những cái đó vẫn "flat").
+   *
+   * `"perspective"` → dùng `SIMPLE_PERSPECTIVE_BLOCK`: phối cảnh 3D bình thường (nhà/tường
+   * đặt chéo, mặt đất lùi xa) nhưng mọi mặt vẫn tô 1 màu đặc, không đổ bóng. Hướng phong cách
+   * MỚI chốt 2026-08-11 — xem docstring block đó để biết vì sao bỏ ràng buộc trực giao.
    */
-  composition?: "flat" | "layered" | "corner";
+  composition?: "flat" | "layered" | "corner" | "perspective";
+  /**
+   * SỬA ẢNH: tạo asset này bằng cách lấy 1 asset ĐÃ CÓ làm ảnh gốc rồi đổi đúng vài chi tiết,
+   * thay vì sinh mới từ chữ. Giá trị là TÊN asset gốc (phải đứng TRƯỚC trong mảng `assets` và
+   * đã `status: "success"`).
+   *
+   * DÙNG KHI cần biến thể của cùng một bối cảnh: cửa mở/đóng, đèn bật/tắt, phòng khô/ướt,
+   * ngày/đêm cùng góc máy. Sinh mới từ chữ sẽ ra bố cục lệch đi, không khớp với ảnh gốc khi
+   * cắt qua lại giữa 2 cảnh — đây đúng là bài học "retouch 1 reference" đã dùng cho cảnh ghép
+   * (skill mục 8), nay áp cho cả asset.
+   *
+   * Khi có `editFrom`, runner KHÔNG ghép style block nào — ảnh gốc đã neo phong cách, nhồi
+   * thêm chữ chỉ làm model vẽ lại từ đầu. `description` lúc này chỉ nên nói ĐÚNG thứ cần đổi,
+   * kèm câu giữ nguyên mọi thứ còn lại.
+   */
+  editFrom?: string;
   status?: AssetStatus;
   /** Ghi lại lý do lần thử gần nhất thất bại, để đọc lại bằng mắt không phải mò log. */
   lastError?: string;
@@ -97,6 +116,16 @@ export async function loadAssetFile(filePath: string): Promise<AssetFile> {
     const key = a.name.trim().toLowerCase();
     if (seen.has(key)) throw new Error(`Tên asset bị trùng trong ${filePath}: "${a.name}"`);
     seen.add(key);
+
+    // `editFrom` phải trỏ tới asset ĐÃ ĐỨNG TRƯỚC — runner chạy tuần tự theo mảng, trỏ ra sau
+    // thì lúc tạo ảnh gốc chưa tồn tại trong Flow. Chặn ngay khi đọc file, đừng để phát hiện
+    // giữa mẻ (cùng lý do scenes.ts bắt xếp đúng thứ tự phụ thuộc).
+    if (a.editFrom && !seen.has(a.editFrom.trim().toLowerCase())) {
+      throw new Error(
+        `Asset "${a.name}" có editFrom: "${a.editFrom}" nhưng asset đó không tồn tại hoặc ` +
+          `đứng SAU nó trong mảng — xếp asset gốc lên trước.`
+      );
+    }
   }
   return parsed;
 }

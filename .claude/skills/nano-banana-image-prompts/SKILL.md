@@ -158,6 +158,28 @@ Cách làm:
   trong danh sách dải ngang, sẽ bị cắt cụt. Phải nói rõ 3 điều: chạy suốt từ
   mép trên xuống đâu, nằm TRƯỚC hay SAU các dải kia, và chạm đất thế nào.
 
+### 6b. Biến thể của cùng 1 bối cảnh → dùng `editFrom`, ĐỪNG sinh mới từ chữ
+
+Cần cửa mở/đóng, đèn bật/tắt, phòng khô/ướt của **cùng một căn phòng**? Khai báo
+asset mới với `editFrom: "<tên asset gốc>"` — runner đính ảnh gốc làm reference
+duy nhất và **không ghép style block nào**, nên bố cục giữ nguyên tuyệt đối.
+
+Sinh mới từ chữ sẽ ra căn phòng "na ná" nhưng lệch vị trí đồ đạc — cắt qua lại
+giữa 2 cảnh là lộ ngay. Asset gốc phải đứng **TRƯỚC** trong mảng `assets` và đã
+`success` (`loadAssetFile` kiểm tra và báo lỗi nếu xếp sai).
+
+`description` lúc này chỉ nói **đúng thứ cần đổi** + câu giữ nguyên phần còn lại:
+
+> Use the single reference image and keep absolutely everything unchanged — same
+> wall, same bars, same floor, same colours, same flat 2D style. Change ONLY …
+> Everything else stays exactly as it already is.
+
+⚠️ **Tả chuyển động của vật thể phải nói rõ KIỂU chuyển động.** *"slid fully
+open"* ra **cửa trượt**; muốn cửa bản lề phải nói đủ **HINGED** + **SWUNG
+OUTWARD** + **NOT slid sideways**, kèm hình học quan sát được (*"a slanted
+rectangle of bars sticking out at about forty-five degrees, its free edge drawn
+slightly larger than its hinge edge"*). Cùng nguyên tắc mục 9.
+
 ## 7. Prop — và khi nào KHÔNG tạo Prop
 
 **Quy tắc chọn**:

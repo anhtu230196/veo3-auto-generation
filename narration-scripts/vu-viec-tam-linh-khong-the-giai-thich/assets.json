@@ -455,6 +455,24 @@
       "status": "success"
     },
     {
+      "name": "Prison Cell Block Corridor Door Open",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell Block Corridor",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same grey concrete wall, the same wide panel of vertical steel bars, the same small barred window, the same corridor floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the barred sliding door in the middle of the bar panel: draw it slid fully OPEN to one side, leaving a clear empty gap in the row of bars wide enough for a person to walk through, with the slid door panel drawn stacked against the bars beside the gap. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bản CỬA MỞ của \"Prison Cell Block Corridor\", tạo bằng editFrom (sửa ảnh) thay vì sinh mới từ chữ — để cắt qua lại giữa cảnh cửa đóng và cửa mở không bị lệch bố cục. Người dùng yêu cầu 2026-08-11. LỖI THỜI (2026-08-11): ra kiểu CỬA TRƯỢT (khoảng hở giữa dãy song). Người dùng muốn cửa BẢN LỀ mở cánh ra ngoài — xem bản thay thế \"Door Swung Open\"."
+    },
+    {
+      "name": "Prison Cell Block Corridor Door Swung Open",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell Block Corridor",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same grey concrete wall, the same wide panel of vertical steel bars, the same small barred window, the same corridor floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the barred door in the middle of the bar panel: it is HINGED along one vertical edge and has SWUNG OUTWARD toward the viewer, like an ordinary door on hinges — NOT slid sideways. Draw the door as a slanted rectangle of vertical bars sticking out into the corridor at about forty-five degrees, still joined to the bar panel along its hinge edge, with its free edge closer to the viewer and drawn slightly larger than its hinge edge. Behind it, where the door used to sit, leave a plain empty doorway opening in the bar panel with no bars across it. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bản CỬA BẢN LỀ MỞ CÁNH của \"Prison Cell Block Corridor\". Lần đầu tả \"slid fully open\" ra cửa trượt — phải nói tường minh HINGED + SWUNG OUTWARD + NOT slid sideways, kèm mô tả hình học (hình chữ nhật nghiêng ~45 độ, cạnh tự do to hơn cạnh bản lề) mới ra đúng."
+    },
+    {
       "name": "Bob Basement Pipes",
       "description": "A small basement utility space under an American house from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain dark ceiling band across the top with one plain run of thick dark grey horizontal pipes crossing it, a plain pale brown concrete wall filling the middle with a few plain brown damp stain shapes spreading across it, one plain low grey concrete ledge along one side, and a plain flat dark brown concrete floor strip running edge to edge across the bottom. Two plain thick dark grey vertical pipes run down through the ENTIRE height of the wall band, passing IN FRONT OF the wall and the damp stains, and end where they meet the floor strip so they plainly reach the ground. Plain flat indoor lighting, muted brown and grey palette.",
       "notes": "Bối cảnh mới cho shot ông chủ nhà kiểm tra đường ống. Ống dọc mô tả theo quy tắc 'vật cao xuyên nhiều dải' (chạy suốt + nằm TRƯỚC + chạm đất) để không bị cắt cụt.",
@@ -463,6 +481,26 @@
       "composition": "flat",
       "reserveCharacterSpace": true,
       "status": "success"
+    },
+    {
+      "name": "Bob Living Room V2",
+      "type": "background",
+      "case": 2,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "A modest American living room from 1983 seen in ordinary cartoon perspective from one corner of the room. Two walls meet at a vertical corner line: the left wall runs away from the viewer at an angle, the right wall faces the viewer more directly. A plain brown two-seat sofa stands against the right wall, drawn at a slight angle so its seat and back read as parallelograms. A plain brown armchair stands nearer the viewer, turned to face the sofa. One plain rectangular framed picture hangs on the right wall and one plain square window sits in the left wall. The floor is a plain olive-green carpet plane receding from the bottom edge of the frame toward the corner. Warm muted palette of beige, brown and olive rendered in a few flat tints. Daytime, everything completely dry.",
+      "notes": "THỬ phong cách phối cảnh mới (2026-08-11). Thay cho bản dải-ngang-phẳng cùng tên gốc \"Bob Living Room\"."
+    },
+    {
+      "name": "Bob House Exterior V2",
+      "type": "background",
+      "case": 2,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The front of a small two-storey American suburban house from 1983, seen in ordinary cartoon perspective from the street at a slight angle so both the front wall and one side wall are visible. Plain pale yellow clapboard walls, one plain white front door with a low wooden porch step, two plain square windows, and a plain pitched dark grey roof drawn as simple angled planes. A plain concrete path runs from the bottom edge of the frame toward the front door, with a plain green lawn to one side. The sky is ONE flat pale blue band with a simple skyline of plain flat rectangles in a lighter tint along the horizon. Plain flat daylight, daytime.",
+      "notes": "THỬ phong cách phối cảnh mới (2026-08-11). Thay cho bản dải-ngang-phẳng \"Bob House Exterior\"."
     }
   ]
 }
