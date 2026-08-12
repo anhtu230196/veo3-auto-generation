@@ -24,6 +24,7 @@ import { atomicWriteJson, loadAssetFile, type ImageAsset } from "./assets.js";
 import {
   CHARACTER_PROMPT_PREFIX,
   CHARACTER_THREE_QUARTER_BLOCK,
+  CHARACTER_BODY_BLOCK,
   CHARACTER_VIEW_REMINDER,
   PROP_STYLE_BLOCK,
   BASE_STYLE_BLOCK,
@@ -69,7 +70,7 @@ function buildPrompt(asset: ImageAsset): {
       // thì ảnh reference chính diện sẽ thắng.
       return {
         description:
-          `${CHARACTER_THREE_QUARTER_BLOCK} ${CHARACTER_PROMPT_PREFIX} ` +
+          `${CHARACTER_THREE_QUARTER_BLOCK} ${CHARACTER_BODY_BLOCK} ${CHARACTER_PROMPT_PREFIX} ` +
           `${asset.description} ${CHARACTER_VIEW_REMINDER}`,
         styleBlock: "",
         reference: REFERENCE_CHARACTER,

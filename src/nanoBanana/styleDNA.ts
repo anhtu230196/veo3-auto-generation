@@ -118,6 +118,26 @@ export const CHARACTER_THREE_QUARTER_BLOCK =
   "the other.";
 
 /**
+ * KHOÁ CẤU TẠO THÂN NGƯỜI — chống trôi khỏi ảnh master (2026-08-11, người dùng chỉ ra).
+ *
+ * Ảnh master (`MASTER_REFERENCE_NOTE`) vẽ tay/chân là NÉT MẢNH CỤT, không bàn tay bàn chân, và
+ * trang phục là MỘT mảng áo duy nhất. Nhưng qua nhiều cảnh, model tự thêm vào: quần dài riêng,
+ * giày, tay áo có nếp, bàn tay có ngón — nhân vật dần biến thành người vẽ đầy đủ, lệch hẳn dàn
+ * gốc và nặng công đồ lại.
+ *
+ * Bốn điều cấm ở đây đều là thứ model TỰ THÊM chứ không ai yêu cầu, nên phải cấm theo TÊN từng
+ * cái. Cấm chung chung kiểu "giữ đúng phong cách reference" không ăn — cùng lớp bài học với
+ * "ra số cụ thể" ở SIMPLIFY_DETAIL_BLOCK.
+ */
+export const CHARACTER_BODY_BLOCK =
+  "Build the body exactly the minimal way the reference image does: arms and legs are plain " +
+  "THIN TAPERED LINES that simply STOP at their ends — draw NO hands, NO fingers, NO feet and " +
+  "NO shoes at all. Draw NO sleeves: each arm line attaches directly to the edge of the torso " +
+  "shape. Draw NO trousers and no separate leg clothing of any kind — below the garment the " +
+  "legs continue as bare thin lines. The clothing is ONE single flat garment shape covering " +
+  "the torso only, with no folds, no creases and no shading.";
+
+/**
  * KHOÁ GÓC 3/4 KHI GHÉP CẢNH — `createSceneComposites` tự nối vào MỌI cảnh ghép.
  *
  * VÌ SAO CẦN RIÊNG, không chỉ dựa vào Character asset: ảnh Character đã 3/4 rồi vẫn có thể bị
@@ -137,7 +157,10 @@ export const SCENE_CHARACTER_VIEW_BLOCK =
   "shoulder plainly nearer the viewer than the other. Do NOT straighten anyone into a flat " +
   "symmetrical front view. Both eyes stay clearly visible on every face, drawn only as two " +
   "plain round black dots, or as two simple downward curves when the eyes are closed, or as " +
-  "two large white circles with small black pupils for shock — with no nose and no eyebrows.";
+  "two large white circles with small black pupils for shock — with no nose and no eyebrows. " +
+  "Every person also keeps the minimal body build of their reference image: arms and legs as " +
+  "plain thin tapered lines that simply stop, with NO hands, NO feet and NO shoes; NO sleeves; " +
+  "NO trousers or separate leg clothing — bare thin lines below one single flat garment shape.";
 
 /** Nhắc lại ở CUỐI prompt cảnh ghép — truyền qua tham số `styleBlock` của createImageIngredient. */
 export const SCENE_CHARACTER_VIEW_REMINDER =

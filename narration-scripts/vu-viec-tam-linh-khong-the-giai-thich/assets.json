@@ -586,6 +586,110 @@
       "status": "success",
       "description": "The front of a small two-storey American suburban house from 1983, seen in ordinary cartoon perspective from the street at a slight angle so both the front wall and one side wall are visible. Plain pale yellow clapboard walls, one plain white front door with a low wooden porch step, two plain square windows, and a plain pitched dark grey roof drawn as simple angled planes. A plain concrete path runs from the bottom edge of the frame toward the front door, with a plain green lawn to one side. The sky is ONE flat pale blue band with a simple skyline of plain flat rectangles in a lighter tint along the horizon. Plain flat daylight, daytime.",
       "notes": "THỬ phong cách phối cảnh mới (2026-08-11). Thay cho bản dải-ngang-phẳng \"Bob House Exterior\"."
+    },
+    {
+      "name": "Don Decker 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain light grey button-front shirt with a plain collar as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Bob 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a man in his thirties wearing a plain rust-brown button-front shirt with a plain collar as his one and only garment, short dark curly hair, a thick full moustache and no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Crowned Old Man 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark red robe as his one and only garment, with a plain flat gold crown with simple triangular points resting on his head, long straight white hair falling to the shoulders, a long straight white beard reaching the chest",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Landlord 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a heavy-set older man wearing a plain beige zip-up work jacket as his one and only garment, thinning grey hair combed straight back, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Patrol Officer 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a police officer wearing a plain dark navy uniform shirt with a plain silver badge on the chest as his one and only garment, a plain dark navy peaked cap on the head, short black hair, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Prison Guard 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a uniformed guard wearing a plain light tan uniform shirt with plain shoulder epaulettes as his one and only garment, no hat, short blond hair combed to one side, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Chief Warden 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an older official wearing a plain charcoal grey suit jacket over a plain white shirt with a plain dark red necktie as his one and only garment, no hat, short grey hair combed straight back, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Cellmate 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man wearing a plain faded blue prison shirt buttoned to the neck as his one and only garment, short black hair shaved close at the sides, a thin moustache and no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Priest 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a priest wearing a plain long black cassock reaching the ankles as his one and only garment, with a plain white clerical collar at the neck, no hat, short dark hair, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Bob's Wife 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a woman in her thirties wearing a plain mustard-yellow blouse as her one and only garment, brown hair tied back in a neat low bun with no loose strands falling at the sides, simple round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Don Decker Prison 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain dark grey-blue prison shirt with a plain collar buttoned to the neck as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Don Decker Funeral 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain black suit jacket over a plain white shirt with a plain black necktie as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Grandfather In Suit 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark navy suit jacket over a plain white shirt with a plain dark grey necktie as his one and only garment, no hat, short neatly combed white hair, a short trimmed white beard and a white moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
     }
   ]
 }

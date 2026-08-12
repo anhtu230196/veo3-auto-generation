@@ -252,7 +252,7 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the guard's exact face, hair and tan uniform from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The guard is standing in the corridor in front of the bars facing the barred door, one arm lowered at his side. The young man is standing behind the panel of steel bars on the far side, facing the guard, both hands gripping two bars in front of him. The bars pass IN FRONT OF the young man so he plainly reads as being inside the cell. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Thay 'Guard Tells Don About Furlough' — đổi sang góc nhìn từ hành lang theo ảnh tham khảo."
+      "notes": "Thay 'Guard Tells Don About Furlough' — đổi sang góc nhìn từ hành lang theo ảnh tham khảo. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Guard Tells Don About Furlough 3Q."
     },
     {
       "name": "Don At Funeral Graveside",
@@ -291,7 +291,7 @@
       ],
       "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the old man's exact face, white hair, white beard and dark navy suit from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel, grey floor AND the whole group of mourners on the right exactly as shown in the third reference image, unchanged — do not move them and do not add more people. Inside the rectangular picture frame on the easel, instead of the empty pale surface, draw the old man from the head down to the chest as a plain memorial portrait, filling the frame and contained entirely inside its border — the old man appears ONLY inside the picture frame and must NOT be standing on the floor. The young man stands alone on the clear empty floor in the middle of the room, in front of the coffin and well apart from the group of mourners, his body turned toward the coffin and his head tilted slightly down. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
       "status": "success",
-      "notes": "Dùng nền có người viếng V3 + ép góc 3/4. Ảnh thờ vẫn ghép vào khung trên giá."
+      "notes": "Dùng nền có người viếng V3 + ép góc 3/4. Ảnh thờ vẫn ghép vào khung trên giá. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don At Funeral Home 3Q."
     },
     {
       "name": "Don Arrives At Bob House",
@@ -304,7 +304,7 @@
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the house wall, roof, front door, windows, porch step and lawn exactly as shown in the third reference image, unchanged. The young man is standing on the concrete path just in front of the porch step facing the house, and the other man is standing in the open front doorway facing him, one hand resting on the door edge. Every person must be scaled to a normal, consistent human size relative to each other and to the scene around them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no single-point converging perspective.",
       "case": 2,
       "status": "success",
-      "notes": "Don vẫn mặc vest vì đi thẳng từ đám tang sang. Từ cảnh phòng tắm trở đi mới dùng 'Don Decker' (đồ thường, đã thay để ở lại qua đêm)."
+      "notes": "Don vẫn mặc vest vì đi thẳng từ đám tang sang. Từ cảnh phòng tắm trở đi mới dùng 'Don Decker' (đồ thường, đã thay để ở lại qua đêm). LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Arrives At Bob House 3Q."
     },
     {
       "name": "Don Washing Face At Sink",
@@ -339,7 +339,8 @@
         "Bob Bathroom V3"
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is standing on the tiled floor near the corner, his body turned to face LEFT toward the sink and the mirror on the side wall, both hands raised near his face as if he has just washed it, his head tilted slightly down. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Washing Face At Sink 3Q."
     },
     {
       "name": "Don Staring Into Empty Mirror",
@@ -387,7 +388,7 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is standing on the tiled floor near the corner, his body turned to face LEFT toward the mirror on the side wall, both hands frozen halfway up in front of his chest, his eyes drawn wide open and round and his mouth drawn open as if something in the mirror has just startled him. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
       "status": "success",
-      "notes": "PHÉP THỬ: cùng prompt và cùng bối cảnh như V3, chỉ đổi ĐÚNG 1 biến — dùng Don Decker V2 (bản 3/4) thay bản chính diện — cộng style block khoá góc 3/4 mà createSceneComposites vừa tự nối vào. So V4 với V3 là biết block có ăn không."
+      "notes": "PHÉP THỬ: cùng prompt và cùng bối cảnh như V3, chỉ đổi ĐÚNG 1 biến — dùng Don Decker V2 (bản 3/4) thay bản chính diện — cộng style block khoá góc 3/4 mà createSceneComposites vừa tự nối vào. So V4 với V3 là biết block có ăn không. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Staring Into Empty Mirror 3Q."
     },
     {
       "name": "Don On Bathroom Floor",
@@ -422,7 +423,8 @@
         "Bob Bathroom V3"
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is sitting down on the tiled floor in the open middle of the room, both legs bent in front of him and one hand flat on the floor beside him, his head turned up and to the LEFT toward the mirror on the side wall. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don On Bathroom Floor 3Q."
     },
     {
       "name": "Don Tells Bob In Living Room",
@@ -434,7 +436,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting in the armchair leaning slightly forward with both hands resting on his knees, talking, and the other man is sitting on the sofa turned toward him, listening. The room is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Tells Bob In Living Room 3Q."
     },
     {
       "name": "Water Falling From Living Room Ceiling",
@@ -446,7 +449,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting in the armchair looking straight ahead, and the other man is standing up beside the sofa with his head tilted back looking up at the ceiling, one arm raised and pointing upward. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Water Falling From Living Room Ceiling 3Q."
     },
     {
       "name": "Bob And Landlord Check Kitchen",
@@ -472,7 +476,7 @@
       ],
       "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the pale blue wall, the cabinet doors, the countertop, the steel sink, the refrigerator and the plain floor exactly as shown in the third reference image, unchanged — do NOT add any extra cabinet doors, handles, knobs or floor tiles. Both men stand on the clear floor in front of the counter, turned toward each other and toward the sink. The older man leans slightly forward with one hand resting on the counter edge as if inspecting the sink; the first man stands beside him watching. The kitchen is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the counter, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
       "status": "success",
-      "notes": "Dùng Bob Kitchen V2 (đã gọn) + ép nhân vật góc 3/4 theo công thức RUNBOOK 8.1.3f."
+      "notes": "Dùng Bob Kitchen V2 (đã gọn) + ép nhân vật góc 3/4 theo công thức RUNBOOK 8.1.3f. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Bob And Landlord Check Kitchen 3Q."
     },
     {
       "name": "Landlord Checks Basement Pipes",
@@ -485,7 +489,7 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the concrete wall, damp stains, horizontal pipes, vertical pipes, ledge and floor exactly as shown in the third reference image, unchanged. The older man is standing beside the vertical pipes with one arm raised above his head holding a plain simple metal wrench against a pipe joint, and the first man is standing beside him looking up at the same pipe, both arms hanging at his sides. Both men stand on the floor strip. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Shot 2/3 — đường ống dưới tầng hầm, có mỏ lết."
+      "notes": "Shot 2/3 — đường ống dưới tầng hầm, có mỏ lết. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Landlord Checks Basement Pipes 3Q."
     },
     {
       "name": "Landlord On Ladder In Bathroom",
@@ -523,7 +527,8 @@
         "Bob Bathroom V3"
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. Draw one plain wooden step ladder standing open on the tiled floor in the open middle of the room, in front of the back wall. The older man is standing on the ladder near the top with one arm raised toward the ceiling holding a plain simple metal wrench, and the first man is standing on the tiled floor beside the ladder with his head tilted back looking up at him. The ladder and both men stay entirely clear of the left side wall, so the whole mirror rectangle stays fully visible. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Landlord On Ladder In Bathroom 3Q."
     },
     {
       "name": "Don Blank Stare In Armchair",
@@ -535,7 +540,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting upright and completely still in the armchair, both arms flat on the armrests, facing straight at the viewer with his eyes drawn wide open and round. The other man is standing a step away turned toward him, both arms held slightly out from his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Blank Stare In Armchair 3Q."
     },
     {
       "name": "Officer In Soaked Living Room",
@@ -548,7 +554,8 @@
       ],
       "prompt": "Draw a scene combining all four reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the officer's exact face, navy uniform, badge and peaked cap from the second reference image, unchanged. Keep the third man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the third reference image, unchanged — do not mix any of the three men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the fourth reference image, unchanged. The young man is sitting still in the armchair facing straight ahead. The officer is standing in the middle of the room with his head tilted back looking up at the ceiling, one hand raised near his cap. The third man is standing beside the officer facing him, both arms held slightly out from his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Officer In Soaked Living Room 3Q."
     },
     {
       "name": "Family Mopping At Night",
@@ -561,7 +568,8 @@
       ],
       "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the woman's exact face, hair bun and mustard-yellow blouse with brown skirt from the second reference image, unchanged. Keep the young man's exact face, hair, light grey shirt and dark trousers from the third reference image, unchanged — do not mix any of their features together. Keep the beige wall, ceiling lamp, framed picture, dark window, sofa, armchair and olive carpet exactly as shown in the fourth reference image, unchanged, including its night lighting. The man is bent forward holding a plain long-handled mop against the carpet, the woman is crouching beside him holding a plain rectangular bucket with both hands, and the young man is sitting upright and completely still in the armchair facing straight ahead, taking no part in the cleaning. A few flat pale blue puddle shapes lie flat on the carpet around them, drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Family Mopping At Night 3Q."
     },
     {
       "name": "Don Walks Out Front Door",
@@ -572,7 +580,8 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the house wall, roof, front door, windows, porch step and lawn exactly as shown in the second reference image, unchanged, except that the front door is drawn standing open. He is walking on the concrete path away from the porch step, mid-stride with one leg forward, his body turned to one side as if heading out of frame, both arms hanging at his sides. Every person must be scaled to a normal, consistent human size relative to each other and to the scene around them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no single-point converging perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Walks Out Front Door 3Q."
     },
     {
       "name": "Cellmate Backs Away From Don",
@@ -584,7 +593,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The first young man is standing still in the corridor in front of the bars facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round. The other young man is standing standing behind the panel of steel bars with both palms raised in front of his chest, his head turned toward the first man. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Cellmate Backs Away From Don 3Q."
     },
     {
       "name": "Cellmate Calls Guards Through Bars",
@@ -610,7 +620,7 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the ceiling, the eight vertical bars, the single horizontal rail, the barred door, the corridor wall beyond and the cell floor exactly as shown in the third reference image, unchanged — do NOT add any extra bars anywhere. Both men stand on the clear near strip of cell floor IN FRONT OF the bars, closer to the viewer than the bars, so that NO bar passes in front of any part of their bodies or their faces and neither man is seen through the bars. The other young man stands near the barred door with one arm raised and reaching forward toward it, his head turned to look out along the corridor and his mouth drawn open as if shouting for help. The first young man stands further to one side on the same near floor strip, facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round and his face blank. Every person must be scaled to a normal, consistent human size relative to each other and to the barred wall, standing on the same cell floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Chốt chặn mới: cấm tường minh song sắt đè lên người (\"NO bar passes in front of any part of their bodies or their faces\") + cấm thêm song. Bản trước thiếu 2 câu này nên Don bị xếp ra sau song, mặt bị cắt ngang."
+      "notes": "Chốt chặn mới: cấm tường minh song sắt đè lên người (\"NO bar passes in front of any part of their bodies or their faces\") + cấm thêm song. Bản trước thiếu 2 câu này nên Don bị xếp ra sau song, mặt bị cắt ngang. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Cellmate Calls Guards Through Bars 3Q."
     },
     {
       "name": "Don Tells Guard He Can Make Rain",
@@ -622,7 +632,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the guard's exact face, blond hair and tan uniform from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The young man is standing in the corridor in front of the bars facing the guard, one arm raised with the index finger pointing straight up toward the ceiling, his mouth drawn slightly open as if speaking. The guard is standing a step away facing him with both arms folded across his chest. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Tells Guard He Can Make Rain 3Q."
     },
     {
       "name": "Water Falling In Warden Office",
@@ -635,7 +646,8 @@
       ],
       "prompt": "Draw a scene combining all four reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the older official's exact face, grey hair, charcoal suit jacket, white shirt and dark red necktie from the second reference image, unchanged. Keep the guard's exact face, blond hair and tan uniform from the third reference image, unchanged — do not mix any of the three men's features together. Keep the olive wall, framed certificate, wall clock, wooden desk, chair, filing cabinet and wooden floor exactly as shown in the fourth reference image, unchanged. The older official is standing behind the desk with both arms held out from his sides and his head tilted back looking up at the ceiling. The young man is standing on the near side of the desk facing him, both arms hanging at his sides. The guard is standing to one side against the wall, one arm raised toward the ceiling. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Water Falling In Warden Office 3Q."
     },
     {
       "name": "Priest Holds Up Cross To Don",
@@ -647,7 +659,8 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the priest's exact face, hair, long black cassock and white clerical collar from the second reference image, unchanged — do not mix the two men's features together. Keep the olive wall, framed certificate, wall clock, wooden desk, chair, filing cabinet and wooden floor exactly as shown in the third reference image, unchanged. The two men are standing facing each other in the open floor space in front of the desk, about two steps apart. The priest is holding up one plain small brown wooden cross in his raised hand at chest height, drawn as two simple crossed rectangles. The young man is standing straight facing him, both arms hanging at his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Priest Holds Up Cross To Don 3Q."
     },
     {
       "name": "Don Arms Raised Head Back",
@@ -656,7 +669,7 @@
         "Priest Holds Up Cross To Don"
       ],
       "prompt": "Use the single reference image and keep absolutely everything in it unchanged — the same room, the same wall, certificate, clock, desk, chair, filing cabinet and floor, the same two men with the same faces, hair and clothing, standing in the same two positions, the same falling water lines and floor puddles, and the same flat 2D vector style with bold uniform-width black outlines and flat color fills. Change ONLY the young man's pose: both of his arms are now raised out and up away from his body, his head is tilted back, and his mouth is drawn wide open as if calling out loudly. Everything else in the picture stays exactly as it already is, including the priest, who keeps holding up the small wooden cross in exactly the same position.",
-      "notes": "Kỹ thuật retouch 1-reference (mục 8 skill): chỉ đính CHÍNH ảnh cảnh trước, không ghép lại từ Don+Priest+Office — giữ nguyên 100% vị trí/bối cảnh để 2 cảnh liền nhau khớp. PHỤ THUỘC: 'Priest Holds Up Cross To Don' phải success trước.",
+      "notes": "Kỹ thuật retouch 1-reference (mục 8 skill): chỉ đính CHÍNH ảnh cảnh trước, không ghép lại từ Don+Priest+Office — giữ nguyên 100% vị trí/bối cảnh để 2 cảnh liền nhau khớp. PHỤ THUỘC: 'Priest Holds Up Cross To Don' phải success trước. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Arms Raised Head Back 3Q.",
       "case": 2,
       "status": "success"
     },
@@ -682,7 +695,7 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the cell walls, the barred window, the bunk bed with its two plain flat mattress slabs, the washbasin and the floor exactly as shown in the second reference image, unchanged — do NOT add any slats, rails or extra bars to the bed. He is sitting squarely on the middle of the lower mattress, well away from its ends, facing straight at the viewer with both feet flat on the floor and both hands resting loosely on his knees, his head level and his eyes drawn as ordinary relaxed curves. Both of his arms and both hands stay fully visible in front of his body and must NOT be hidden behind the bed frame. He must be scaled to a normal human size relative to the bunk bed, sitting on the same floor level, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Sửa thêm 2 lỗi của bản cũ: Don ngồi sát mép phải giường (giờ ngồi giữa) và tay bị khung giường che (giờ ép tay hiện rõ trước thân)."
+      "notes": "Sửa thêm 2 lỗi của bản cũ: Don ngồi sát mép phải giường (giờ ngồi giữa) và tay bị khung giường che (giờ ép tay hiện rõ trước thân). LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Don Awake And Calm In Cell 3Q."
     },
     {
       "name": "Crowned Old Man In Funeral Home",
@@ -692,9 +705,303 @@
         "Funeral Home Interior"
       ],
       "prompt": "Draw a scene combining both reference images. Keep the old man's exact face, white hair, white beard, dark red robe and gold crown from the first reference image, unchanged. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel and grey carpet exactly as shown in the second reference image, unchanged. He is standing alone on the carpet beside the coffin, facing straight at the viewer, both arms hanging at his sides, his head level. He is the only figure in the picture. The picture frame on the easel stays a plain EMPTY rectangle with nothing inside it. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
-      "notes": "Cảnh minh hoạ đoạn giải thích. CỐ Ý không vẽ cảnh ông nội ngược đãi Don lúc nhỏ — vừa dễ dính bộ lọc chính sách, vừa không cần thiết cho mạch kể.",
+      "notes": "Cảnh minh hoạ đoạn giải thích. CỐ Ý không vẽ cảnh ông nội ngược đãi Don lúc nhỏ — vừa dễ dính bộ lọc chính sách, vừa không cần thiết cho mạch kể. LỖI THỜI (2026-08-11): nhân vật chính diện. Thay bằng Crowned Old Man In Funeral Home 3Q.",
       "case": 2,
       "status": "success"
+    },
+    {
+      "name": "Guard Tells Don About Furlough 3Q",
+      "case": 2,
+      "narrationRef": "the warden opened his cell and informed Don that he was being granted a furlough to attend his grandfather's funeral.",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Prison Guard 3Q",
+        "Prison Cell Block Corridor"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the guard's exact face, hair and tan uniform from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The guard is standing in the corridor in front of the bars facing the barred door, one arm lowered at his side. The young man is standing behind the panel of steel bars on the far side, facing the guard, both hands gripping two bars in front of him. The bars pass IN FRONT OF the young man so he plainly reads as being inside the cell. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don At Funeral Home 3Q",
+      "case": 2,
+      "narrationRef": "he was being granted a furlough to attend his grandfather's funeral. After the service…",
+      "references": [
+        "Don Decker Funeral 3Q",
+        "Grandfather In Suit 3Q",
+        "Funeral Home Interior With Mourners V3"
+      ],
+      "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the old man's exact face, white hair, white beard and dark navy suit from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel, grey floor AND the whole group of mourners on the right exactly as shown in the third reference image, unchanged — do not move them and do not add more people. Inside the rectangular picture frame on the easel, instead of the empty pale surface, draw the old man from the head down to the chest as a plain memorial portrait, filling the frame and contained entirely inside its border — the old man appears ONLY inside the picture frame and must NOT be standing on the floor. The young man stands alone on the clear empty floor in the middle of the room, in front of the coffin and well apart from the group of mourners, his body turned toward the coffin and his head tilted slightly down. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Arrives At Bob House 3Q",
+      "case": 2,
+      "narrationRef": "he stopped by his friend Bob's house to ask if he could stay the night.",
+      "references": [
+        "Don Decker Funeral 3Q",
+        "Bob 3Q",
+        "Bob House Exterior"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the house wall, roof, front door, windows, porch step and lawn exactly as shown in the third reference image, unchanged. The young man is standing on the concrete path just in front of the porch step facing the house, and the other man is standing in the open front doorway facing him, one hand resting on the door edge. Every person must be scaled to a normal, consistent human size relative to each other and to the scene around them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no single-point converging perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Washing Face At Sink 3Q",
+      "case": 2,
+      "narrationRef": "The strange events began in the bathroom. While washing his face…",
+      "references": [
+        "Don Decker 3Q",
+        "Bob Bathroom V3"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is standing on the tiled floor near the corner, his body turned to face LEFT toward the sink and the mirror on the side wall, both hands raised near his face as if he has just washed it, his head tilted slightly down. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Staring Into Empty Mirror 3Q",
+      "case": 2,
+      "narrationRef": "Don looked into the mirror and saw the image of an old man wearing a crown.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob Bathroom V3"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is standing on the tiled floor near the corner, his body turned to face LEFT toward the mirror on the side wall, both hands frozen halfway up in front of his chest, his eyes drawn wide open and round and his mouth drawn open as if something in the mirror has just startled him. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don On Bathroom Floor 3Q",
+      "case": 2,
+      "narrationRef": "Terrified, he collapsed to the floor, but when he looked back, the image was gone.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob Bathroom V3"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. He is sitting down on the tiled floor in the open middle of the room, both legs bent in front of him and one hand flat on the floor beside him, his head turned up and to the LEFT toward the mirror on the side wall. He must stay entirely on the tiled floor in front of the BACK wall, clear of the left side wall — his body must NOT overlap the mirror or the sink at any point, so the whole mirror rectangle stays fully visible and completely free for later editing. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Tells Bob In Living Room 3Q",
+      "case": 2,
+      "narrationRef": "he hurried downstairs, sat in a chair, and told Bob what happened to try and calm down.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob 3Q",
+        "Bob Living Room"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting in the armchair leaning slightly forward with both hands resting on his knees, talking, and the other man is sitting on the sofa turned toward him, listening. The room is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Water Falling From Living Room Ceiling 3Q",
+      "case": 2,
+      "narrationRef": "Right then, water began to leak from the ceiling. In just a few moments, the entire house was soaked.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob 3Q",
+        "Bob Living Room"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting in the armchair looking straight ahead, and the other man is standing up beside the sofa with his head tilted back looking up at the ceiling, one arm raised and pointing upward. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Bob And Landlord Check Kitchen 3Q",
+      "case": 2,
+      "narrationRef": "A panicked Bob called the landlord to investigate. They searched everywhere—from the kitchen to the upstairs bathroom—but the plumbing was perfectly fine.",
+      "references": [
+        "Bob 3Q",
+        "Landlord 3Q",
+        "Bob Kitchen V2"
+      ],
+      "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the pale blue wall, the cabinet doors, the countertop, the steel sink, the refrigerator and the plain floor exactly as shown in the third reference image, unchanged — do NOT add any extra cabinet doors, handles, knobs or floor tiles. Both men stand on the clear floor in front of the counter, turned toward each other and toward the sink. The older man leans slightly forward with one hand resting on the counter edge as if inspecting the sink; the first man stands beside him watching. The kitchen is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the counter, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Landlord Checks Basement Pipes 3Q",
+      "case": 2,
+      "narrationRef": "They searched everywhere—from the kitchen to the upstairs bathroom—but the plumbing was perfectly fine.",
+      "references": [
+        "Bob 3Q",
+        "Landlord 3Q",
+        "Bob Basement Pipes"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the concrete wall, damp stains, horizontal pipes, vertical pipes, ledge and floor exactly as shown in the third reference image, unchanged. The older man is standing beside the vertical pipes with one arm raised above his head holding a plain simple metal wrench against a pipe joint, and the first man is standing beside him looking up at the same pipe, both arms hanging at his sides. Both men stand on the floor strip. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Landlord On Ladder In Bathroom 3Q",
+      "case": 2,
+      "narrationRef": "They searched everywhere—from the kitchen to the upstairs bathroom—but the plumbing was perfectly fine.",
+      "references": [
+        "Bob 3Q",
+        "Landlord 3Q",
+        "Bob Bathroom V3"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the corner of the room exactly as shown in the last reference image, unchanged: the darker left SIDE wall carrying the mirror and the pedestal sink, the lighter back wall with the bathtub, the single vertical corner line, and the tiled floor with its one diagonal line. Do not move the mirror or the sink onto the back wall. Draw one plain wooden step ladder standing open on the tiled floor in the open middle of the room, in front of the back wall. The older man is standing on the ladder near the top with one arm raised toward the ceiling holding a plain simple metal wrench, and the first man is standing on the tiled floor beside the ladder with his head tilted back looking up at him. The ladder and both men stay entirely clear of the left side wall, so the whole mirror rectangle stays fully visible. The mirror must stay a plain EMPTY rectangle: a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, and absolutely nothing else inside it — no face, no figure, no reflection of the man, no reflection of the room. Every person must be scaled to a normal, consistent human size relative to the sink, the bathtub and the room, standing or sitting on the same tiled floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Blank Stare In Armchair 3Q",
+      "case": 2,
+      "narrationRef": "Bob was stunned to see Don in a catatonic state, his eyes wide and staring blankly, completely unresponsive.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob 3Q",
+        "Bob Living Room"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the other man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the third reference image, unchanged. The young man is sitting upright and completely still in the armchair, both arms flat on the armrests, facing straight at the viewer with his eyes drawn wide open and round. The other man is standing a step away turned toward him, both arms held slightly out from his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Officer In Soaked Living Room 3Q",
+      "case": 2,
+      "narrationRef": "Bob decided to call the police. When the officers arrived, they were equally baffled, unable to explain where the water was coming from.",
+      "references": [
+        "Don Decker 3Q",
+        "Patrol Officer 3Q",
+        "Bob 3Q",
+        "Bob Living Room"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the officer's exact face, navy uniform, badge and peaked cap from the second reference image, unchanged. Keep the third man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the third reference image, unchanged — do not mix any of the three men's features together. Keep the beige wall, framed picture, window, sofa, armchair and olive carpet exactly as shown in the fourth reference image, unchanged. The young man is sitting still in the armchair facing straight ahead. The officer is standing in the middle of the room with his head tilted back looking up at the ceiling, one hand raised near his cap. The third man is standing beside the officer facing him, both arms held slightly out from his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Family Mopping At Night 3Q",
+      "case": 2,
+      "narrationRef": "That night, Bob's family stayed up all night cleaning, while Don remained seated in the same spot.",
+      "references": [
+        "Bob 3Q",
+        "Bob's Wife 3Q",
+        "Don Decker 3Q",
+        "Bob Living Room Night"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the woman's exact face, hair bun and mustard-yellow blouse with brown skirt from the second reference image, unchanged. Keep the young man's exact face, hair, light grey shirt and dark trousers from the third reference image, unchanged — do not mix any of their features together. Keep the beige wall, ceiling lamp, framed picture, dark window, sofa, armchair and olive carpet exactly as shown in the fourth reference image, unchanged, including its night lighting. The man is bent forward holding a plain long-handled mop against the carpet, the woman is crouching beside him holding a plain rectangular bucket with both hands, and the young man is sitting upright and completely still in the armchair facing straight ahead, taking no part in the cleaning. A few flat pale blue puddle shapes lie flat on the carpet around them, drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Walks Out Front Door 3Q",
+      "case": 2,
+      "narrationRef": "Don suddenly stood up, said nothing to anyone, silently opened the door, and walked out to head home.",
+      "references": [
+        "Don Decker 3Q",
+        "Bob House Exterior"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, light grey shirt and dark trousers from the first reference image, unchanged. Keep the house wall, roof, front door, windows, porch step and lawn exactly as shown in the second reference image, unchanged, except that the front door is drawn standing open. He is walking on the concrete path away from the porch step, mid-stride with one leg forward, his body turned to one side as if heading out of frame, both arms hanging at his sides. Every person must be scaled to a normal, consistent human size relative to each other and to the scene around them, all standing on the same ground, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no single-point converging perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Cellmate Backs Away From Don 3Q",
+      "case": 2,
+      "narrationRef": "When Don returned to prison, his cellmate was terrified by Don's hollow expression and rushed to call the guards.",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Cellmate 3Q",
+        "Prison Cell Block Corridor"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The first young man is standing still in the corridor in front of the bars facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round. The other young man is standing standing behind the panel of steel bars with both palms raised in front of his chest, his head turned toward the first man. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Cellmate Calls Guards Through Bars 3Q",
+      "case": 2,
+      "narrationRef": "his cellmate was terrified by Don's hollow expression and rushed to call the guards.",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Cellmate 3Q",
+        "Prison Cell Interior Facing Bars V2"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the ceiling, the eight vertical bars, the single horizontal rail, the barred door, the corridor wall beyond and the cell floor exactly as shown in the third reference image, unchanged — do NOT add any extra bars anywhere. Both men stand on the clear near strip of cell floor IN FRONT OF the bars, closer to the viewer than the bars, so that NO bar passes in front of any part of their bodies or their faces and neither man is seen through the bars. The other young man stands near the barred door with one arm raised and reaching forward toward it, his head turned to look out along the corridor and his mouth drawn open as if shouting for help. The first young man stands further to one side on the same near floor strip, facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round and his face blank. Every person must be scaled to a normal, consistent human size relative to each other and to the barred wall, standing on the same cell floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Tells Guard He Can Make Rain 3Q",
+      "case": 2,
+      "narrationRef": "Don then uttered a bizarre sentence: \"I can make it rain.\"",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Prison Guard 3Q",
+        "Prison Cell Block Corridor"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the guard's exact face, blond hair and tan uniform from the second reference image, unchanged — do not mix the two men's features together. Keep the corridor wall, the panel of steel bars, the barred door, the small window and the corridor floor exactly as shown in the third reference image, unchanged. The young man is standing in the corridor in front of the bars facing the guard, one arm raised with the index finger pointing straight up toward the ceiling, his mouth drawn slightly open as if speaking. The guard is standing a step away facing him with both arms folded across his chest. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Water Falling In Warden Office 3Q",
+      "case": 2,
+      "narrationRef": "Incredibly, inside that closed office, water began to manifest, soaking the chief's clothes from the inside out.",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Chief Warden 3Q",
+        "Prison Guard 3Q",
+        "Warden Office"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the older official's exact face, grey hair, charcoal suit jacket, white shirt and dark red necktie from the second reference image, unchanged. Keep the guard's exact face, blond hair and tan uniform from the third reference image, unchanged — do not mix any of the three men's features together. Keep the olive wall, framed certificate, wall clock, wooden desk, chair, filing cabinet and wooden floor exactly as shown in the fourth reference image, unchanged. The older official is standing behind the desk with both arms held out from his sides and his head tilted back looking up at the ceiling. The young man is standing on the near side of the desk facing him, both arms hanging at his sides. The guard is standing to one side against the wall, one arm raised toward the ceiling. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Priest Holds Up Cross To Don 3Q",
+      "case": 2,
+      "narrationRef": "a priest was called in. Seeing the soaked room, he looked directly at Don, pulled out a crucifix…",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Priest 3Q",
+        "Warden Office"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the priest's exact face, hair, long black cassock and white clerical collar from the second reference image, unchanged — do not mix the two men's features together. Keep the olive wall, framed certificate, wall clock, wooden desk, chair, filing cabinet and wooden floor exactly as shown in the third reference image, unchanged. The two men are standing facing each other in the open floor space in front of the desk, about two steps apart. The priest is holding up one plain small brown wooden cross in his raised hand at chest height, drawn as two simple crossed rectangles. The young man is standing straight facing him, both arms hanging at his sides. Water is falling from the ceiling: draw several straight vertical pale blue lines running from the ceiling band straight down to the floor, plus a few flat pale blue puddle shapes lying flat on the floor. The water is drawn with the same bold black outlines and flat fills as everything else — no glow, no sparkle, no transparency, no highlights. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Arms Raised Head Back 3Q",
+      "case": 2,
+      "narrationRef": "Don immediately began screaming violently, appearing to be in extreme pain before losing consciousness.",
+      "references": [
+        "Priest Holds Up Cross To Don 3Q"
+      ],
+      "prompt": "Use the single reference image and keep absolutely everything in it unchanged — the same room, the same wall, certificate, clock, desk, chair, filing cabinet and floor, the same two men with the same faces, hair and clothing, standing in the same two positions, the same falling water lines and floor puddles, and the same flat 2D vector style with bold uniform-width black outlines and flat color fills. Change ONLY the young man's pose: both of his arms are now raised out and up away from his body, his head is tilted back, and his mouth is drawn wide open as if calling out loudly. Everything else in the picture stays exactly as it already is, including the priest, who keeps holding up the small wooden cross in exactly the same position.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Don Awake And Calm In Cell 3Q",
+      "case": 2,
+      "narrationRef": "When he woke up, he felt completely relieved.",
+      "references": [
+        "Don Decker Prison 3Q",
+        "Prison Cell 1983 V2"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the cell walls, the barred window, the bunk bed with its two plain flat mattress slabs, the washbasin and the floor exactly as shown in the second reference image, unchanged — do NOT add any slats, rails or extra bars to the bed. He is sitting squarely on the middle of the lower mattress, well away from its ends, facing straight at the viewer with both feet flat on the floor and both hands resting loosely on his knees, his head level and his eyes drawn as ordinary relaxed curves. Both of his arms and both hands stay fully visible in front of his body and must NOT be hidden behind the bed frame. He must be scaled to a normal human size relative to the bunk bed, sitting on the same floor level, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
+    },
+    {
+      "name": "Crowned Old Man In Funeral Home 3Q",
+      "case": 2,
+      "narrationRef": "on the day of the funeral, his grandfather's spirit had latched onto him. This grandfather had been a very cruel man in life.",
+      "references": [
+        "Crowned Old Man 3Q",
+        "Funeral Home Interior"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the old man's exact face, white hair, white beard, dark red robe and gold crown from the first reference image, unchanged. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel and grey carpet exactly as shown in the second reference image, unchanged. He is standing alone on the carpet beside the coffin, facing straight at the viewer, both arms hanging at his sides, his head level. He is the only figure in the picture. The picture frame on the easel stays a plain EMPTY rectangle with nothing inside it. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thế hệ 3Q: trỏ sang nhân vật 3/4, giữ nguyên background đã tinh chỉnh. Block khoá góc 3/4 do createSceneComposites tự nối, không viết trong prompt."
     }
   ]
 }
