@@ -399,7 +399,18 @@
       "type": "background",
       "case": 2,
       "reserveCharacterSpace": true,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): ra hơn 30 cánh tủ + sàn caro mấy chục ô, đồ lại bằng tay quá mệt. Thay bằng V2 có RA SỐ CỤ THỂ."
+    },
+    {
+      "name": "Bob Kitchen V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "A small American kitchen from 1983 seen straight on, drawn with as few separate shapes as possible so a person can trace the whole picture quickly by hand. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top; a plain pale blue wall band; ONE row of upper cabinets containing EXACTLY FOUR cabinet doors and no more, each door drawn as one single very wide plain flat wooden rectangle with NO knobs, NO handles, NO glass panes, NO moulding and NO inner frame lines; a plain white countertop carrying ONE plain steel sink basin and ONE plain simple tap; ONE row of lower cabinets containing EXACTLY FOUR doors drawn exactly the same way as the upper ones; ONE plain white refrigerator standing at the left end as a single plain rectangle with one straight dividing line and no handles; and a plain floor strip running edge to edge across the bottom in ONE single flat colour with absolutely NO tiles, NO chequered pattern, NO grid and NO lines of any kind on it. Do not subdivide any surface into extra panels beyond the counts given above. Plain flat indoor lighting, daytime.",
+      "notes": "Sửa lỗi quá nhiều chi tiết. Bài học: SIMPLIFY_DETAIL_BLOCK nói \"một số ít hình lớn\" là ĐỊNH TÍNH, model hiểu thoáng. Phải RA SỐ CỤ THỂ (\"EXACTLY FOUR doors and no more\") + cấm từng loại chi tiết nhỏ theo tên (knobs/handles/glass/moulding) + cấm tường minh hoa văn sàn."
     },
     {
       "name": "Warden Office",
@@ -489,6 +500,26 @@
       "editFrom": "Prison Cell Block Corridor",
       "description": "Use the single reference image and keep absolutely everything in it unchanged — the same grey concrete wall, the same wide panel of vertical steel bars, the same small barred window, the same corridor floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the barred sliding door in the middle of the bar panel: draw it slid fully OPEN to one side, leaving a clear empty gap in the row of bars wide enough for a person to walk through, with the slid door panel drawn stacked against the bars beside the gap. Everything else in the picture stays exactly as it already is.",
       "notes": "Bản CỬA MỞ của \"Prison Cell Block Corridor\", tạo bằng editFrom (sửa ảnh) thay vì sinh mới từ chữ — để cắt qua lại giữa cảnh cửa đóng và cửa mở không bị lệch bố cục. Người dùng yêu cầu 2026-08-11. LỖI THỜI (2026-08-11): ra kiểu CỬA TRƯỢT (khoảng hở giữa dãy song). Người dùng muốn cửa BẢN LỀ mở cánh ra ngoài — xem bản thay thế \"Door Swung Open\"."
+    },
+    {
+      "name": "Prison Cell Interior Facing Bars",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The inside of a prison cell from 1983 seen straight on FROM WITHIN THE CELL, facing the barred wall that separates the cell from the corridor outside. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top; the barred wall filling the middle, drawn as one wide panel of plain vertical steel bars running edge to edge with one plain barred door set into the middle of it; visible BEYOND the bars, a plain flat darker grey corridor wall with nothing on it; the end of one plain metal bunk bed standing against the left edge inside the cell; and a plain flat grey concrete cell floor strip running edge to edge across the bottom. Draw only a SMALL number of widely spaced vertical bars standing for the whole grille, never dozens of thin ones. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Góc NGƯỢC của \"Prison Cell Block Corridor\" (hành lang nhìn vào) — cùng địa điểm, nhìn từ trong buồng ra. Cần cho câu bạn tù lao tới song sắt gọi quản giáo. Đúng kỹ thuật shot/reverse-shot ở skill mục 4. LỖI THỜI (2026-08-11): song sắt sinh sôi phủ kín khung vì tả ĐỊNH TÍNH \"a SMALL number of bars\". Thay bằng V2 ra SỐ CỤ THỂ."
+    },
+    {
+      "name": "Prison Cell Interior Facing Bars V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The inside of a prison cell from 1983 seen straight on FROM WITHIN THE CELL, facing the barred wall that separates the cell from the corridor. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top with NO bars in it at all; then the barred wall across the middle of the frame, drawn as EXACTLY EIGHT plain vertical steel bars evenly spaced from the left edge to the right edge and NOTHING MORE — no extra bars, no lattice, no criss-cross, and only ONE single plain horizontal rail crossing them at mid height; one plain barred door outlined as a simple rectangle in the middle of that panel; visible in the gaps between the bars, a plain flat darker grey corridor wall with nothing on it; and at the bottom a plain flat grey concrete cell floor. The eight bars run down and STOP where they meet the floor. In front of them the near part of the cell floor is left completely clear and empty right across the width of the frame, with absolutely no bars crossing it. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Ra SỐ CỤ THỂ (đúng 8 song, 1 thanh ngang) — cùng bài học đã dùng cho Bob Kitchen V2. Thêm dải sàn trống hẳn phía trước để đặt nhân vật KHÔNG bị song đè lên."
     },
     {
       "name": "Prison Cell Block Corridor Door Swung Open",

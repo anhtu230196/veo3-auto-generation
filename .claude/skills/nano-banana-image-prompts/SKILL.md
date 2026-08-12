@@ -186,6 +186,50 @@ Cách làm:
   trong danh sách dải ngang, sẽ bị cắt cụt. Phải nói rõ 3 điều: chạy suốt từ
   mép trên xuống đâu, nằm TRƯỚC hay SAU các dải kia, và chạm đất thế nào.
 
+### 6c. 🔢 RA SỐ CỤ THỂ cho mọi thứ LẶP LẠI — "một số ít" là vô nghĩa
+
+`SIMPLIFY_DETAIL_BLOCK` có câu *"reduced to a SMALL number of large simple
+shapes"*, nhưng "số ít" là **định tính** và model hiểu rất thoáng. Hai lần dính
+liên tiếp (2026-08-11):
+
+- Nhà bếp tả *"a plain row of simple flat wooden upper cabinets"* → ra **hơn 30
+  cánh tủ** cộng sàn caro mấy chục ô.
+- Buồng giam tả *"only a SMALL number of widely spaced vertical bars"* → song
+  sắt **phủ kín khung**, cắt ngang cả mặt nhân vật.
+
+👉 Với BẤT KỲ thứ gì lặp (cánh tủ, song sắt, cột, ô cửa sổ, gạch sàn, hàng ghế),
+viết **con số** vào mô tả:
+
+> *"EXACTLY FOUR cabinet doors and no more, each door drawn as one single very
+> wide plain flat rectangle"*
+> *"EXACTLY EIGHT plain vertical steel bars evenly spaced… and NOTHING MORE — no
+> extra bars, no lattice, only ONE single horizontal rail"*
+
+Kèm 2 việc nữa:
+- **Cấm từng loại chi tiết nhỏ theo TÊN**: *"no knobs, no handles, no glass
+  panes, no moulding, no inner frame lines"*. Cấm chung chung không ăn.
+- **Cấm hoa văn sàn tường minh**: *"ONE single flat colour with absolutely NO
+  tiles, NO chequered pattern, NO grid"* — chữ "chequered/tiled" trong mô tả là
+  đủ để model vẽ ra hàng chục ô.
+
+⚠️ Ra số giúp rất nhiều nhưng **không tuyệt đối**: yêu cầu "đúng 4 cánh" ra 6
+cánh (vẫn tốt hơn 30). Cần chính xác hơn nữa thì neo bằng tỉ lệ khung
+(*"each door is one quarter of the cabinet run"*).
+
+### 6d. Vật che trước mặt nhân vật (song sắt, lan can, cây) — phải cấm ĐÈ LÊN người
+
+Background có thứ chắn ngang (song sắt, hàng rào, cột) thì lúc ghép, model rất
+hay xếp nhân vật RA SAU nó — mặt bị cắt ngang, hỏng cảnh. Câu *"đứng phía trong
+song"* KHÔNG đủ, vì "phía trong" không nói gì về thứ tự lớp.
+
+👉 Ở background: chừa hẳn **dải sàn trống phía trước** vật chắn
+(*"the bars STOP where they meet the floor; in front of them the near floor is
+left completely clear across the width"*).
+👉 Ở prompt cảnh: nói thứ tự lớp tường minh —
+*"stand IN FRONT OF the bars, closer to the viewer than the bars, so that NO bar
+passes in front of any part of their bodies or their faces"* — kèm
+*"do NOT add any extra bars anywhere"*.
+
 ### 6b. Biến thể của cùng 1 bối cảnh → dùng `editFrom`, ĐỪNG sinh mới từ chữ
 
 Cần cửa mở/đóng, đèn bật/tắt, phòng khô/ướt của **cùng một căn phòng**? Khai báo

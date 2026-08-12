@@ -549,6 +549,32 @@
       "status": "success"
     },
     {
+      "name": "Cellmate Calls Guards Through Bars",
+      "case": 2,
+      "narrationRef": "his cellmate was terrified by Don's hollow expression and rushed to call the guards.",
+      "references": [
+        "Don Decker Prison",
+        "Cellmate",
+        "Prison Cell Interior Facing Bars"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the cell ceiling, the panel of steel bars, the barred door, the corridor beyond the bars, the bunk bed and the cell floor exactly as shown in the third reference image, unchanged. The other young man is standing right up against the bars with both hands gripping two bars in front of him and his head turned to look out along the corridor, his mouth drawn wide open as if shouting for help. The first young man is standing further back inside the cell, facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round and his face blank. Both men stay INSIDE the cell on the near side of the bars — neither of them is out in the corridor. Every person must be scaled to a normal, consistent human size relative to each other and to the bunk bed, standing on the same cell floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Shot ngược của \"Cellmate Backs Away From Don\": cảnh kia nhìn từ hành lang, cảnh này nhìn từ trong buồng ra lúc bạn tù gọi quản giáo. LỖI THỜI (2026-08-11): song sắt đè lên mặt nhân vật. Thay bằng V2."
+    },
+    {
+      "name": "Cellmate Calls Guards Through Bars V2",
+      "case": 2,
+      "narrationRef": "his cellmate was terrified by Don's hollow expression and rushed to call the guards.",
+      "references": [
+        "Don Decker Prison",
+        "Cellmate",
+        "Prison Cell Interior Facing Bars V2"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the first young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the other young man's exact face, short black hair, thin moustache and faded blue prison shirt and trousers from the second reference image, unchanged — do not mix the two men's features together. Keep the ceiling, the eight vertical bars, the single horizontal rail, the barred door, the corridor wall beyond and the cell floor exactly as shown in the third reference image, unchanged — do NOT add any extra bars anywhere. Both men stand on the clear near strip of cell floor IN FRONT OF the bars, closer to the viewer than the bars, so that NO bar passes in front of any part of their bodies or their faces and neither man is seen through the bars. The other young man stands near the barred door with one arm raised and reaching forward toward it, his head turned to look out along the corridor and his mouth drawn open as if shouting for help. The first young man stands further to one side on the same near floor strip, facing straight at the viewer, both arms hanging at his sides, his eyes drawn wide open and round and his face blank. Every person must be scaled to a normal, consistent human size relative to each other and to the barred wall, standing on the same cell floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Chốt chặn mới: cấm tường minh song sắt đè lên người (\"NO bar passes in front of any part of their bodies or their faces\") + cấm thêm song. Bản trước thiếu 2 câu này nên Don bị xếp ra sau song, mặt bị cắt ngang."
+    },
+    {
       "name": "Don Tells Guard He Can Make Rain",
       "narrationRef": "Don then uttered a bizarre sentence: \"I can make it rain.\"",
       "references": [
