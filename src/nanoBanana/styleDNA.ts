@@ -114,6 +114,8 @@ export const CHARACTER_THREE_QUARTER_BLOCK =
   "the far side of the face and no ear at all on the near side, the mass of the hair sits " +
   "mostly toward that far side, and both eyes stay clearly visible but sit closer together and " +
   "shifted toward the side the face is turned to, leaving a wider empty area of cheek on the " +
+  "other side. EXACTLY TWO EYES must be visible — three-quarter means BETWEEN front and profile, " +
+  "so a full side profile or a back view is just as wrong as a flat front view. " +
   "other side. The body turns the same way, so one shoulder is plainly nearer the viewer than " +
   "the other.";
 
@@ -154,23 +156,28 @@ export const SCENE_CHARACTER_VIEW_BLOCK =
   "IMPORTANT — every person in this picture keeps the THREE-QUARTER VIEW they already have in " +
   "their own character reference image: head and body turned about forty-five degrees to one " +
   "side, only ONE ear visible, the mass of the hair sitting toward the far side, and one " +
-  "shoulder plainly nearer the viewer than the other. Do NOT straighten anyone into a flat " +
-  "symmetrical front view. Both eyes stay clearly visible on every face, drawn only as two " +
-  "plain round black dots, or as two simple downward curves when the eyes are closed, or as " +
-  "two large white circles with small black pupils for shock — with no nose and no eyebrows. " +
+  "shoulder plainly nearer the viewer than the other. THREE-QUARTER means BETWEEN the two " +
+  "extremes, and BOTH extremes are forbidden: do NOT straighten anyone into a flat symmetrical " +
+  "front view, and equally do NOT turn anyone into a full side profile or show anyone from " +
+  "behind. EXACTLY TWO EYES must be visible on every single face in the picture — never one " +
+  "eye, never none, never the back of a head. If a pose would hide one eye, rotate that person " +
+  "back toward the viewer until both eyes show again. The eyes are drawn only as two plain " +
+  "round black dots, or as two simple downward curves when the eyes are closed, or as two " +
+  "large white circles with small black pupils for shock — with no nose and no eyebrows. " +
   "Every person also keeps the minimal body build of their reference image: arms and legs as " +
   "plain thin tapered lines that simply stop, with NO hands, NO feet and NO shoes; NO sleeves; " +
   "NO trousers or separate leg clothing — bare thin lines below one single flat garment shape.";
 
 /** Nhắc lại ở CUỐI prompt cảnh ghép — truyền qua tham số `styleBlock` của createImageIngredient. */
 export const SCENE_CHARACTER_VIEW_REMINDER =
-  "Remember: every person stays three-quarter turned with only one ear visible, never " +
-  "straightened into a front view, and both eyes remain visible on every face.";
+  "Remember: every person stays three-quarter turned — never flattened into a front view and " +
+  "never turned into a side profile or seen from behind — and EXACTLY TWO EYES are visible on " +
+  "every single face, never one.";
 
 /** Nhắc lại ở CUỐI prompt — nửa sau của công thức chống "ảnh thắng chữ" (mục 8.1.3f). */
 export const CHARACTER_VIEW_REMINDER =
-  "Remember: three-quarter turned head and body with only one ear visible, never a flat " +
-  "symmetrical front view — but both eyes stay visible on the face.";
+  "Remember: three-quarter turned head and body — never a flat front view and never a side " +
+  "profile or back view — with EXACTLY TWO EYES visible on the face, never one.";
 
 export const CHARACTER_PROMPT_PREFIX =
   "Using the exact same illustration style as the attached reference image — same bold " +
