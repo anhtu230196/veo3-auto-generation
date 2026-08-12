@@ -23,6 +23,8 @@ import { createImageIngredient } from "../veo3bot/imageAsset.js";
 import { atomicWriteJson, loadAssetFile, type ImageAsset } from "./assets.js";
 import {
   CHARACTER_PROMPT_PREFIX,
+  CHARACTER_THREE_QUARTER_BLOCK,
+  CHARACTER_VIEW_REMINDER,
   PROP_STYLE_BLOCK,
   BASE_STYLE_BLOCK,
   BACKGROUND_STYLE_BLOCK,
@@ -61,8 +63,14 @@ function buildPrompt(asset: ImageAsset): {
     case "character":
       // CHARACTER_PROMPT_PREFIX đã mang toàn bộ chỉ dẫn phong cách, và ảnh reference mới là
       // thứ neo chính — nên styleBlock để rỗng, tránh nhồi thêm chữ mâu thuẫn với ảnh.
+      //
+      // THỨ TỰ CÓ CHỦ ĐÍCH (công thức chống "ảnh thắng chữ", mục 8.1.3f): yêu cầu góc 3/4 đặt
+      // ĐẦU TIÊN, rồi mới tới style + mô tả trang phục, và NHẮC LẠI ở cuối. Nói nhẹ giữa đoạn
+      // thì ảnh reference chính diện sẽ thắng.
       return {
-        description: `${CHARACTER_PROMPT_PREFIX} ${asset.description}`,
+        description:
+          `${CHARACTER_THREE_QUARTER_BLOCK} ${CHARACTER_PROMPT_PREFIX} ` +
+          `${asset.description} ${CHARACTER_VIEW_REMINDER}`,
         styleBlock: "",
         reference: REFERENCE_CHARACTER,
       };

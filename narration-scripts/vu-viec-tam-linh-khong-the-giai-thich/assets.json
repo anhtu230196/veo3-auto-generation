@@ -253,6 +253,23 @@
       "status": "success"
     },
     {
+      "name": "Don Decker V2",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain light grey short-sleeve button-front shirt with a plain collar, worn as one single layer with no jacket over it, and plain dark navy trousers with plain dark shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "THỬ ép góc 3/4 từ gốc (2026-08-11). Mô tả trang phục giữ NGUYÊN VĂN bản cũ để phép thử chỉ khác đúng 1 biến: CHARACTER_THREE_QUARTER_BLOCK mới thêm vào prefix."
+    },
+    {
+      "name": "Master Reference Candidate 3Q",
+      "type": "character",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Don Decker V2",
+      "description": "Use the single reference image and keep the character exactly the same person in exactly the same flat 2D style — same bold uniform-width black outlines, same flat colour fills with zero shading, same thin stick-line arms and legs, same light grey short-sleeve shirt and dark navy trousers, same brown hair colour, same plain background. Change ONLY how far the head and body are turned, so the character clearly reads as being seen from THREE-QUARTERS rather than from the front. Apply these exact geometric changes: BOTH eyes must sit entirely inside the LEFT HALF of the face, so that the empty gap between the right eye and the right edge of the face is about TWICE as wide as the gap between the left eye and the left edge; move the mouth the same distance to the left so it lines up under the eyes and is NOT centred; keep only the LEFT ear visible and draw no ear at all on the right side; push the mass of the hair further over toward the RIGHT side of the head; and turn the shoulders so the left shoulder is clearly nearer the viewer and the right shoulder is further away and slightly higher. The face must still be a simple rounded shape with two plain round black dot eyes and one short straight mouth line — no nose, no eyebrows, no shading. Everything else stays exactly as it already is.",
+      "notes": "ỨNG VIÊN thay ảnh master reference-character.jpeg. Sửa từ Don Decker V2 (đã 3/4 một nửa: 1 tai, tóc lệch) bằng ràng buộc ĐO ĐƯỢC về vị trí mắt — vì bài học 8.1.3j nói dịch mắt/miệng chung chung không đọc ra quay đầu, phải neo bằng tỉ lệ khoảng trống hai bên mặt. CHƯA thay file, chờ người dùng duyệt."
+    },
+    {
       "name": "Bob",
       "description": "a man in his thirties wearing a plain rust-brown long-sleeve shirt with the sleeves rolled up to the elbow, worn as one single layer with no jacket over it, and plain blue denim trousers with plain dark shoes, short dark curly hair, a thick full moustache and no beard",
       "type": "character",
@@ -324,7 +341,17 @@
       "type": "background",
       "case": 2,
       "reserveCharacterSpace": true,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): giường tầng có ~10 thanh ngang mỗi tầng, rườm rà và nhân vật ngồi lên nhìn lộn xộn. Thay bằng V2 bỏ hẳn nan."
+    },
+    {
+      "name": "Prison Cell 1983 V2",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell 1983",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same pale grey concrete walls, the same small barred window high on the back wall, the same steel washbasin on the right, the same floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the bunk bed on the left: REMOVE ALL of its horizontal slats and rails. Redraw each of the two bunks as ONE single plain flat mattress slab — one plain rectangle with a flat colour fill and nothing at all drawn on top of it — resting on a plain simple frame made of only four straight vertical corner posts plus one straight horizontal edge line under each mattress. No slats, no springs, no ladder, no side railings, no criss-cross and no repeated bars of any kind anywhere on the bed. The lower mattress must be one clean flat unbroken surface with a clear straight front edge that a person can sit on. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bỏ nan giường theo yêu cầu người dùng (2026-08-11) — cùng bệnh chi tiết lặp như Bob Kitchen và song sắt. Dùng editFrom vì chỉ đổi 1 vật, giữ nguyên bố cục phòng để các cảnh khác vẫn khớp."
     },
     {
       "name": "Cemetery Funeral Ground",

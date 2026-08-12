@@ -278,7 +278,20 @@
       ],
       "prompt": "Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the old man's exact face, white hair, white beard and dark navy suit with white shirt and grey necktie from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel and grey carpet exactly as shown in the third reference image, unchanged. Inside the rectangular picture frame on the easel, instead of the empty pale surface, draw the old man from the head down to the chest as a plain memorial portrait, filling the frame and contained entirely inside its border — the old man appears ONLY inside the picture frame and must NOT be standing on the carpet. The young man is standing on the carpet in the open space in front of the coffin, facing the viewer, both arms hanging at his sides, his head tilted slightly down. He is the only person actually standing in the room. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "status": "success",
-      "notes": "Thay 'Don At Funeral Graveside' — chuyển từ nghĩa trang ngoài trời vào nhà tang lễ theo ảnh tham khảo. Đặt TÊN MỚI có nghĩa thay vì hậu tố V2 vì ĐỔI HẲN ĐỊA ĐIỂM, gọi 'Graveside V2' mà lại trong nhà thì đọc lại sẽ nhầm."
+      "notes": "Thay 'Don At Funeral Graveside' — chuyển từ nghĩa trang ngoài trời vào nhà tang lễ theo ảnh tham khảo. Đặt TÊN MỚI có nghĩa thay vì hậu tố V2 vì ĐỔI HẲN ĐỊA ĐIỂM, gọi 'Graveside V2' mà lại trong nhà thì đọc lại sẽ nhầm. LỖI THỜI (2026-08-11): dùng nền cũ và nhân vật chính diện. Thay bằng Don At Funeral Home V2."
+    },
+    {
+      "name": "Don At Funeral Home V2",
+      "case": 2,
+      "narrationRef": "he was being granted a furlough to attend his grandfather's funeral. After the service…",
+      "references": [
+        "Don Decker Funeral",
+        "Grandfather In Suit",
+        "Funeral Home Interior With Mourners V3"
+      ],
+      "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the young man's exact face, hair, black suit jacket, white shirt, black necktie and black suit trousers from the first reference image, unchanged. Keep the old man's exact face, white hair, white beard and dark navy suit from the second reference image, unchanged — do not mix the two men's features together. Keep the beige wall, arched windows, coffin on its draped stand, wooden easel, grey floor AND the whole group of mourners on the right exactly as shown in the third reference image, unchanged — do not move them and do not add more people. Inside the rectangular picture frame on the easel, instead of the empty pale surface, draw the old man from the head down to the chest as a plain memorial portrait, filling the frame and contained entirely inside its border — the old man appears ONLY inside the picture frame and must NOT be standing on the floor. The young man stands alone on the clear empty floor in the middle of the room, in front of the coffin and well apart from the group of mourners, his body turned toward the coffin and his head tilted slightly down. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
+      "status": "success",
+      "notes": "Dùng nền có người viếng V3 + ép góc 3/4. Ảnh thờ vẫn ghép vào khung trên giá."
     },
     {
       "name": "Don Arrives At Bob House",
@@ -434,7 +447,20 @@
       "prompt": "Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the pale blue wall, cabinets, countertop, steel sink, refrigerator and chequered floor exactly as shown in the third reference image, unchanged. Both men are standing side by side in front of the countertop facing the sink, the older man leaning slightly forward with one hand resting on the counter edge as if inspecting the sink, the first man standing beside him watching. The kitchen is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
       "status": "success",
-      "notes": "Shot 1/3 của đoạn 'they searched everywhere' — bồn rửa bếp."
+      "notes": "Shot 1/3 của đoạn 'they searched everywhere' — bồn rửa bếp. LỖI THỜI (2026-08-11): dùng nền cũ và nhân vật chính diện. Thay bằng Bob And Landlord Check Kitchen V2."
+    },
+    {
+      "name": "Bob And Landlord Check Kitchen V2",
+      "case": 2,
+      "narrationRef": "A panicked Bob called the landlord to investigate. They searched everywhere—from the kitchen to the upstairs bathroom—but the plumbing was perfectly fine.",
+      "references": [
+        "Bob",
+        "Landlord",
+        "Bob Kitchen V2"
+      ],
+      "prompt": "IMPORTANT — every person in this picture must be drawn in THREE-QUARTER VIEW, never facing the viewer straight on. Each body is rotated about forty-five degrees so that one shoulder is clearly closer to the viewer than the other, and each head is turned the same way so the face points off to one side. The character reference images are drawn front-facing, but this new picture must NOT be. Both eyes stay clearly visible on every face. Draw eyes in one of these three ways only: two plain round black dots for a neutral look, two simple downward curves for closed eyes, or two large white circles with small black pupils for shock — with no nose and no eyebrows. Draw a scene combining all three reference images. Keep the first man's exact face, curly hair, moustache and rust-brown rolled-sleeve shirt from the first reference image, unchanged. Keep the older man's exact face, grey hair and beige work jacket from the second reference image, unchanged — do not mix the two men's features together. Keep the pale blue wall, the cabinet doors, the countertop, the steel sink, the refrigerator and the plain floor exactly as shown in the third reference image, unchanged — do NOT add any extra cabinet doors, handles, knobs or floor tiles. Both men stand on the clear floor in front of the counter, turned toward each other and toward the sink. The older man leans slightly forward with one hand resting on the counter edge as if inspecting the sink; the first man stands beside him watching. The kitchen is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the counter, standing on the same floor, viewed at the same straight-ahead eye-level camera angle as the third reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective. Remember: every person is turned three-quarters with one shoulder nearer the viewer, never a flat symmetrical front view, and both eyes stay visible on every face.",
+      "status": "success",
+      "notes": "Dùng Bob Kitchen V2 (đã gọn) + ép nhân vật góc 3/4 theo công thức RUNBOOK 8.1.3f."
     },
     {
       "name": "Landlord Checks Basement Pipes",
@@ -631,7 +657,20 @@
       ],
       "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the cell walls, bunk bed, washbasin, barred window and floor exactly as shown in the second reference image, unchanged. He is sitting on the edge of the lower bunk facing the viewer, both feet flat on the floor and both hands resting loosely on his knees, his head level and his eyes drawn as ordinary relaxed curves. The cell is completely dry. Every person must be scaled to a normal, consistent human size relative to each other and to the room around them, all standing or sitting on the same floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
       "case": 2,
-      "status": "success"
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): dùng nền có nan giường. Thay bằng V2."
+    },
+    {
+      "name": "Don Awake And Calm In Cell V2",
+      "case": 2,
+      "narrationRef": "When he woke up, he felt completely relieved.",
+      "references": [
+        "Don Decker Prison",
+        "Prison Cell 1983 V2"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young man's exact face, hair, grey-blue prison shirt and matching prison trousers from the first reference image, unchanged. Keep the cell walls, the barred window, the bunk bed with its two plain flat mattress slabs, the washbasin and the floor exactly as shown in the second reference image, unchanged — do NOT add any slats, rails or extra bars to the bed. He is sitting squarely on the middle of the lower mattress, well away from its ends, facing straight at the viewer with both feet flat on the floor and both hands resting loosely on his knees, his head level and his eyes drawn as ordinary relaxed curves. Both of his arms and both hands stay fully visible in front of his body and must NOT be hidden behind the bed frame. He must be scaled to a normal human size relative to the bunk bed, sitting on the same floor level, viewed at the same straight-ahead eye-level camera angle as the second reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat color fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Sửa thêm 2 lỗi của bản cũ: Don ngồi sát mép phải giường (giờ ngồi giữa) và tay bị khung giường che (giờ ép tay hiện rõ trước thân)."
     },
     {
       "name": "Crowned Old Man In Funeral Home",

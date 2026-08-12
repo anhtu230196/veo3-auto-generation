@@ -1945,6 +1945,31 @@ này rồi soi mắt trước khi dùng. **Bài học đặt tên**: tránh đ�
 tiền tố của tên asset khác (`Bob` vs `Bob Kitchen`) — dù code đã khớp chính
 xác, tên phân biệt rõ vẫn dễ đọc và dễ debug hơn.
 
+**3m. ⛔ CHỐT: KHÔNG ép được góc 3/4 bằng CHỮ — đã thử cạn cách (2026-08-11).**
+Người dùng yêu cầu mọi nhân vật ở góc 3/4. Đã thử **3 vòng, thất bại cả 3**:
+
+1. **Ép trong prompt CẢNH GHÉP**, dùng đúng công thức mạnh nhất đã biết (mục
+   3f: đưa lên đầu + ngôn ngữ hình học + nhắc lại cuối) → cả 4 nhân vật trong
+   2 cảnh test vẫn ra chính diện.
+2. **Ép từ GỐC, thêm `CHARACTER_THREE_QUARTER_BLOCK` + `CHARACTER_VIEW_REMINDER`
+   vào đầu/cuối prompt Character** (đã vào code, giữ lại vì vô hại và có tác
+   dụng một phần) → chỉ được NỬA VỜI: hiện đúng 1 tai, khối tóc lệch, thân hơi
+   xoay — nhưng mặt vẫn đọc ra chính diện, hai mắt cách đều, miệng ở giữa.
+3. **`editFrom` sửa thẳng trên ảnh đã lệch nửa vời**, với ràng buộc ĐO ĐƯỢC
+   ("cả hai mắt nằm trong nửa TRÁI khuôn mặt", "khoảng trống bên phải rộng gấp
+   đôi bên trái", "miệng dịch theo") → ảnh ra **gần như không đổi** so với đầu
+   vào. Ràng buộc tỉ lệ bị bỏ qua hoàn toàn.
+
+**Nguyên nhân**: đúng như mục 3j đã ghi — phong cách này KHÔNG CÓ MŨI, đầu là
+hình tròn, nên không có mốc hình học nào để mắt "bám" lệch; model luôn kéo mắt
+về cân đối. Cộng thêm luật "ảnh thắng chữ": ảnh master chính diện thắng mọi
+diễn đạt bằng chữ, kể cả khi sửa trực tiếp bằng `editFrom`.
+
+👉 **ĐỪNG THỬ VÒNG THỨ TƯ BẰNG CHỮ.** Lối thoát duy nhất đã từng hiệu quả trong
+chính dự án này (mục 3j) là **thay `reference-character.jpeg` bằng 1 ảnh 3/4 có
+sẵn từ NGOÀI** — pipeline không tự sinh ra được ảnh đó. Có ảnh mới rồi thì tạo
+lại toàn bộ Character, cảnh ghép sẽ tự thừa hưởng.
+
 **3e. Quan sát về nhất quán phong cách (chưa xử lý).** Character ra đúng "gia đình"
 phong cách với ảnh reference, nhưng tay/chân ra KHỐI CÓ THỂ TÍCH thay vì nét que như
 reference (có thể do bộ đồ độn phồng che kín chi), và có chút đổ bóng nhẹ mà reference

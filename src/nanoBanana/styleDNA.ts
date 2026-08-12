@@ -89,6 +89,39 @@ export const MASTER_REFERENCE_NOTE =
  *
  * Cách dùng: `${CHARACTER_PROMPT_PREFIX} <mô tả nhân vật mới, càng ngắn gọn càng tốt>`
  */
+/**
+ * ÉP GÓC 3/4 CHO MỌI NHÂN VẬT (2026-08-11, người dùng chốt).
+ *
+ * VÌ SAO Ở ĐÂY chứ không ở prompt cảnh ghép: đã thử ép 3/4 ngay trong prompt cảnh — dùng đúng
+ * công thức mạnh nhất đã biết (đưa lên đầu + ngôn ngữ hình học + nhắc lại cuối, mục 8.1.3f) —
+ * và VẪN THUA: cả 4 nhân vật trong 2 cảnh test ra chính diện. Nguyên nhân: ảnh Character asset
+ * là chính diện, mà "ảnh thắng chữ" nên mỗi lần ghép lại bị kéo về chính diện. Phải sửa từ
+ * GỐC: chính ảnh Character phải là 3/4, rồi cảnh ghép tự thừa hưởng.
+ *
+ * ⚠️ Lịch sử: mục 8.1.3j ghi lại rằng ép 3/4 từng thất bại nhiều vòng với ảnh master CŨ (đầu
+ * tròn tuyệt đối, dịch mắt/miệng sang bên không đọc ra là quay đầu). Ảnh master đã đổi từ đó,
+ * và các cảnh gần đây đôi lúc ra đầu quay đúng — nên thử lại là hợp lý. Nếu vẫn thua, đừng lặp
+ * vô hạn vòng sửa chữ: cân nhắc thay ảnh master bằng 1 ảnh 3/4 sẵn (đúng cách đã giải quyết
+ * lần trước).
+ *
+ * Điểm mấu chốt là tả bằng thứ QUAN SÁT ĐƯỢC trong phong cách này — không có mũi để làm mốc,
+ * nên phải neo vào TAI (chỉ hiện 1 bên), KHỐI TÓC (dồn về phía xa) và KHOẢNG MÁ TRỐNG.
+ */
+export const CHARACTER_THREE_QUARTER_BLOCK =
+  "IMPORTANT — the attached reference image shows its character facing straight forward, but " +
+  "this new character must NOT be drawn that way. Draw the character in THREE-QUARTER VIEW, " +
+  "turned about forty-five degrees to one side: the head is turned so that ONE ear shows on " +
+  "the far side of the face and no ear at all on the near side, the mass of the hair sits " +
+  "mostly toward that far side, and both eyes stay clearly visible but sit closer together and " +
+  "shifted toward the side the face is turned to, leaving a wider empty area of cheek on the " +
+  "other side. The body turns the same way, so one shoulder is plainly nearer the viewer than " +
+  "the other.";
+
+/** Nhắc lại ở CUỐI prompt — nửa sau của công thức chống "ảnh thắng chữ" (mục 8.1.3f). */
+export const CHARACTER_VIEW_REMINDER =
+  "Remember: three-quarter turned head and body with only one ear visible, never a flat " +
+  "symmetrical front view — but both eyes stay visible on the face.";
+
 export const CHARACTER_PROMPT_PREFIX =
   "Using the exact same illustration style as the attached reference image — same bold " +
   "uniform-width black outlines, same flat color fill with zero shading, same stick-line limb " +
