@@ -108,6 +108,34 @@ rõ.
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
 
+### 5c. ĐÁM ĐÔNG NỀN: vẽ thẳng vào background bằng `editFrom`, không tạo asset riêng
+
+Cảnh cần vài người vô danh (khách viếng đám tang, quản giáo đứng nền, hàng xóm
+tụ tập)? **Đừng tạo Character asset cho từng người** rồi ghép — vừa tốn, vừa
+phải viết prompt hình học chặt để xếp vị trí.
+
+👉 Tạo 1 background biến thể bằng `editFrom` (mục 6b) và **mô tả thẳng nhóm
+người vào đó**. Mẹo: `editFrom` **bỏ qua mọi style block**, nên không vướng điều
+khoản *"NO people"* của `BACKGROUND_STYLE_BLOCK` vốn chặn việc này ở background
+thường.
+
+⚠️ **Vai phụ phải dùng ĐÚNG ngôn ngữ tạo hình của nhân vật chính** (người dùng
+chốt 2026-08-11). Không thì người nền và người chính nhìn như hai bộ phim khác
+nhau. Phải tả tường minh, vì `editFrom` không có style block nào đỡ cho:
+
+- **Góc 3/4, thấy ĐỦ HAI MẮT** — không dùng bóng lưng cho tiện. Bản thử vẽ
+  quay lưng tuy né được chuyện nhân bản nhưng bị loại vì lệch dàn chính.
+- **Mặt tối giản**: *"exactly TWO small round black dots for the eyes and ONE
+  short straight line for the mouth, no nose, no eyebrows"*.
+- **Thân dạng que**: *"arms and legs as THIN PLAIN STRAIGHT LINES with no
+  thickness"*, trang phục là *"ONE plain flat dark shape… no folds, no creases,
+  no buttons"*. Không nói rõ thì model vẽ thân đầy đặn, vest có nếp gấp.
+- **Chống nhân bản**: *"vary their heights and hair colours slightly so they do
+  not look like copies of one figure"*.
+- **Chừa chỗ**: dồn nhóm vào 1/3 khung và nói rõ phần còn lại *"must be left
+  clear and completely empty"* — nếu không họ tràn kín, hết chỗ đặt nhân vật
+  chính.
+
 ### 5b. Nhân vật đổi TRANG PHỤC trong truyện → mỗi bộ đồ 1 asset riêng
 
 Câu chuyện có thể đưa nhân vật qua nhiều bối cảnh đòi trang phục khác hẳn nhau
