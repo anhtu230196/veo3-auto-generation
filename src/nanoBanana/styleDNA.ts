@@ -117,6 +117,33 @@ export const CHARACTER_THREE_QUARTER_BLOCK =
   "other side. The body turns the same way, so one shoulder is plainly nearer the viewer than " +
   "the other.";
 
+/**
+ * KHOÁ GÓC 3/4 KHI GHÉP CẢNH — `createSceneComposites` tự nối vào MỌI cảnh ghép.
+ *
+ * VÌ SAO CẦN RIÊNG, không chỉ dựa vào Character asset: ảnh Character đã 3/4 rồi vẫn có thể bị
+ * cảnh ghép "nắn thẳng" về chính diện, vì prompt cảnh mô tả tư thế/hành động và model tự chọn
+ * hướng mặt cho tiện. Đây là block CỐ ĐỊNH lại, không phải block tạo ra góc 3/4.
+ *
+ * Diễn đạt theo hướng GIỮ NGUYÊN ("exactly as in their character reference image") chứ không
+ * phải TẠO MỚI — vì lúc này ảnh reference đã đúng, chỉ cần cấm model đổi đi.
+ *
+ * Câu mở đầu bằng "every person" nên cảnh KHÔNG có người thì mệnh đề tự vô hiệu, không sợ
+ * model tự thêm người vào.
+ */
+export const SCENE_CHARACTER_VIEW_BLOCK =
+  "IMPORTANT — every person in this picture keeps the THREE-QUARTER VIEW they already have in " +
+  "their own character reference image: head and body turned about forty-five degrees to one " +
+  "side, only ONE ear visible, the mass of the hair sitting toward the far side, and one " +
+  "shoulder plainly nearer the viewer than the other. Do NOT straighten anyone into a flat " +
+  "symmetrical front view. Both eyes stay clearly visible on every face, drawn only as two " +
+  "plain round black dots, or as two simple downward curves when the eyes are closed, or as " +
+  "two large white circles with small black pupils for shock — with no nose and no eyebrows.";
+
+/** Nhắc lại ở CUỐI prompt cảnh ghép — truyền qua tham số `styleBlock` của createImageIngredient. */
+export const SCENE_CHARACTER_VIEW_REMINDER =
+  "Remember: every person stays three-quarter turned with only one ear visible, never " +
+  "straightened into a front view, and both eyes remain visible on every face.";
+
 /** Nhắc lại ở CUỐI prompt — nửa sau của công thức chống "ảnh thắng chữ" (mục 8.1.3f). */
 export const CHARACTER_VIEW_REMINDER =
   "Remember: three-quarter turned head and body with only one ear visible, never a flat " +

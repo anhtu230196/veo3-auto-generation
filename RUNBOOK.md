@@ -1945,8 +1945,35 @@ này rồi soi mắt trước khi dùng. **Bài học đặt tên**: tránh đ�
 tiền tố của tên asset khác (`Bob` vs `Bob Kitchen`) — dù code đã khớp chính
 xác, tên phân biệt rõ vẫn dễ đọc và dễ debug hơn.
 
-**3m. ⛔ CHỐT: KHÔNG ép được góc 3/4 bằng CHỮ — đã thử cạn cách (2026-08-11).**
-Người dùng yêu cầu mọi nhân vật ở góc 3/4. Đã thử **3 vòng, thất bại cả 3**:
+**3m. ✅ GÓC 3/4 — GIẢI QUYẾT XONG bằng 2 block, ở 2 chỗ khác nhau (2026-08-11).**
+
+> ⚠️ Đoạn dưới ban đầu ghi "KHÔNG ép được bằng chữ, phải thay ảnh master từ
+> ngoài" — **KẾT LUẬN ĐÓ SAI**, giữ lại vì quá trình chẩn đoán vẫn có ích. Cái
+> sai: 2 cảnh test dùng để kết luận lại tham chiếu `Don Decker Funeral` / `Bob` /
+> `Landlord` — **toàn asset CŨ chính diện, chưa hề tạo lại**. Chúng ra chính
+> diện là đương nhiên, không chứng minh được gì. Bài học chẩn đoán: khi test 1
+> thay đổi, phải kiểm tra cảnh test có THẬT SỰ dùng asset mới hay không.
+
+**Lời giải đúng — cần CẢ HAI, ở 2 tầng:**
+1. **Tầng Character**: `CHARACTER_THREE_QUARTER_BLOCK` + `CHARACTER_VIEW_REMINDER`
+   (đầu/cuối prompt Character) → tạo ra ảnh nhân vật 3/4. Kết quả "1 tai, tóc
+   lệch, thân hơi xoay" — người dùng xác nhận **đã đạt yêu cầu**.
+2. **Tầng Cảnh ghép**: `SCENE_CHARACTER_VIEW_BLOCK` +
+   `SCENE_CHARACTER_VIEW_REMINDER`, do `createSceneComposites` **tự nối vào mọi
+   cảnh** (đầu prompt + qua tham số `styleBlock` vốn đang bỏ trống, nối ở cuối).
+   Không có tầng này thì cảnh ghép **nắn nhân vật thẳng về chính diện** dù ảnh
+   Character đã 3/4 — đây mới là chỗ hỏng thật.
+
+Điểm mấu chốt về cách diễn đạt: block tầng 2 nói theo hướng **GIỮ NGUYÊN**
+(*"keeps the THREE-QUARTER VIEW they already have in their own character
+reference image"*), không phải TẠO MỚI — vì lúc đó ảnh reference đã đúng, chỉ
+cần cấm model đổi đi. Xác nhận bằng phép thử đổi đúng 1 biến: cùng prompt, cùng
+background, chỉ đổi `Don Decker` → `Don Decker V2` + có block → ra 3/4 rõ ràng.
+
+---
+
+*Quá trình chẩn đoán ban đầu (kết luận sai, giữ lại để tham khảo):*
+Đã thử **3 vòng**:
 
 1. **Ép trong prompt CẢNH GHÉP**, dùng đúng công thức mạnh nhất đã biết (mục
    3f: đưa lên đầu + ngôn ngữ hình học + nhắc lại cuối) → cả 4 nhân vật trong
@@ -1965,10 +1992,9 @@ hình tròn, nên không có mốc hình học nào để mắt "bám" lệch; m
 về cân đối. Cộng thêm luật "ảnh thắng chữ": ảnh master chính diện thắng mọi
 diễn đạt bằng chữ, kể cả khi sửa trực tiếp bằng `editFrom`.
 
-👉 **ĐỪNG THỬ VÒNG THỨ TƯ BẰNG CHỮ.** Lối thoát duy nhất đã từng hiệu quả trong
-chính dự án này (mục 3j) là **thay `reference-character.jpeg` bằng 1 ảnh 3/4 có
-sẵn từ NGOÀI** — pipeline không tự sinh ra được ảnh đó. Có ảnh mới rồi thì tạo
-lại toàn bộ Character, cảnh ghép sẽ tự thừa hưởng.
+*(Kết luận rút ra lúc đó — "phải thay ảnh master từ ngoài" — về sau chứng minh
+là SAI. Vòng 3 thất bại thật, nhưng vòng 1 và 2 thất bại vì lý do khác hẳn: cảnh
+test dùng asset cũ. Xem lời giải đúng ở đầu mục này.)*
 
 **3e. Quan sát về nhất quán phong cách (chưa xử lý).** Character ra đúng "gia đình"
 phong cách với ảnh reference, nhưng tay/chân ra KHỐI CÓ THỂ TÍCH thay vì nét que như

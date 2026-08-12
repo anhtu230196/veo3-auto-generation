@@ -19,6 +19,10 @@ import { launchVeo3Browser } from "../veo3bot/browser.js";
 import { ensureProject } from "../veo3bot/project.js";
 import { createImageIngredient } from "../veo3bot/imageAsset.js";
 import { atomicWriteJson, loadSceneFile } from "./scenes.js";
+import {
+  SCENE_CHARACTER_VIEW_BLOCK,
+  SCENE_CHARACTER_VIEW_REMINDER,
+} from "./styleDNA.js";
 
 async function main() {
   const [sceneFilePath, ...rest] = process.argv.slice(2);
@@ -54,7 +58,18 @@ async function main() {
     console.log(`→ "${scene.name}" (case ${scene.case}) — refs: ${scene.references.join(", ")}`);
     const t0 = Date.now();
     try {
-      await createImageIngredient(page, scene.name, scene.prompt, "", projectUrl, scene.references);
+      // KHOÁ góc 3/4 ở CẢ ĐẦU LẪN CUỐI prompt (công thức chống "ảnh thắng chữ", RUNBOOK
+      // 8.1.3f). `styleBlock` được createImageIngredient nối vào cuối, nên đó đúng là chỗ
+      // "nhắc lại". Không để scene tự viết tay 2 đoạn này — dễ quên, mà quên thì nhân vật bị
+      // nắn thẳng về chính diện và chỉ phát hiện được bằng mắt.
+      await createImageIngredient(
+        page,
+        scene.name,
+        `${SCENE_CHARACTER_VIEW_BLOCK} ${scene.prompt}`,
+        SCENE_CHARACTER_VIEW_REMINDER,
+        projectUrl,
+        scene.references
+      );
       scene.status = "success";
       delete scene.lastError;
       ok++;
