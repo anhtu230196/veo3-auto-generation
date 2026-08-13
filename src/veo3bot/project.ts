@@ -95,9 +95,27 @@ export async function waitForProjectReady(page: Page): Promise<void> {
  * và ô prompt tạo video chỉ tồn tại BÊN TRONG 1 project. Hàm này đảm bảo luôn có
  * 1 project để làm việc, và cache lại project đã tạo để các lần chạy (characters
  * step + generate step, hoặc resume) đều dùng chung 1 project thay vì tạo mới liên tục.
+ *
+ * `projectKey` (2026-08-11) — cache RIÊNG 1 project cho mỗi khoá, file
+ * `state/project-<khoá>.json`. Bỏ trống = dùng project chung như cũ (tương thích ngược).
+ *
+ * VÌ SAO CÓ: đã XÁC MINH TRỰC TIẾP bằng `scripts/check-asset-scope.ts` rằng **asset trong Flow
+ * thuộc RIÊNG TỪNG PROJECT** — mở 1 project trống rồi tra tên asset của project cũ thì không
+ * thấy gì. (Điều này BÁC BỎ giả định ghi ở mục 4.18 rằng asset dùng chung cả tài khoản.)
+ *
+ * Hệ quả tốt: mỗi case 1 project → ô "Search assets" chỉ chứa asset của case đó, triệt tiêu
+ * tận gốc lớp lỗi trùng tên/khớp nhầm (mục 8.1.3l) vốn nảy sinh khi 1 project ôm cả trăm ảnh.
+ * Đổi lại: KHÔNG dùng lại được asset giữa các case — chấp nhận được vì các case độc lập.
+ *
+ * ⚠️ Khoá phải lấy từ CHÍNH file JSON của case (`flowProject`), đừng truyền qua cờ dòng lệnh:
+ * lệnh tạo asset và lệnh tạo cảnh chạy riêng, gõ lệch khoá là asset nằm project này còn cảnh
+ * đi tìm ở project kia — hỏng âm thầm, rất khó lần ra.
  */
-export async function ensureProject(page: Page): Promise<string> {
-  const cached = await fs.readFile(PROJECT_STATE_FILE, "utf-8").catch(() => null);
+export async function ensureProject(page: Page, projectKey?: string): Promise<string> {
+  const stateFile = projectKey
+    ? path.join(config.stateDir, `project-${projectKey.replace(/[^\w.-]+/g, "-")}.json`)
+    : PROJECT_STATE_FILE;
+  const cached = await fs.readFile(stateFile, "utf-8").catch(() => null);
   // waitUntil "domcontentloaded" thay vì mặc định "load" — project nhiều media (audio/
   // video đã tạo) khiến sự kiện "load" không bao giờ fire ổn định, gây goto() timeout
   // dù trang thực chất đã tương tác được (xác nhận trực tiếp qua debug).
@@ -135,8 +153,8 @@ export async function ensureProject(page: Page): Promise<string> {
   await waitForProjectReady(page);
 
   await fs.mkdir(config.stateDir, { recursive: true });
-  await fs.writeFile(PROJECT_STATE_FILE, JSON.stringify({ projectUrl }, null, 2));
-  console.log(`[project] dùng project: ${projectUrl}`);
+  await fs.writeFile(stateFile, JSON.stringify({ projectUrl }, null, 2));
+  console.log(`[project] dùng project${projectKey ? ` "${projectKey}"` : ""}: ${projectUrl}`);
   return projectUrl;
 }
 

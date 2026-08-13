@@ -133,7 +133,7 @@ async function main() {
 
   const context = await launchVeo3Browser();
   const page = context.pages()[0] ?? (await context.newPage());
-  const projectUrl = await ensureProject(page);
+  const projectUrl = await ensureProject(page, file.flowProject);
   console.log(`Project: ${projectUrl}\n`);
 
   let ok = 0;

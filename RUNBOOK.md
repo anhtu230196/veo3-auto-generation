@@ -68,6 +68,22 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   **lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — nặng nhất)**, và bộ block
   ép góc 3/4 + thân tối giản (mục 8.1.3m).
 
+### 📁 BỐ CỤC MỚI (2026-08-11): mỗi case 1 thư mục + 1 project Flow
+
+`narration-scripts/<tập>/case-N/{assets,scenes}.json`, mỗi cặp khai báo
+`flowProject` ở cấp cao nhất để chạy trong project Flow riêng.
+
+**Căn cứ**: `scripts/check-asset-scope.ts` đo trực tiếp — **asset trong Flow
+thuộc RIÊNG từng project** (project trống không tra được asset của project cũ).
+Điều này BÁC BỎ giả định cũ ở mục 4.18 và làm việc tách project trở nên đáng
+giá: ô "Search assets" mỗi case chỉ chứa asset của chính nó, hết lớp lỗi trùng
+tên/khớp nhầm (mục 8.1.3l).
+
+- `ensureProject(page, projectKey?)` cache riêng theo khoá: `state/project-<khoá>.json`.
+- **Case 1 và 2 để TRỐNG `flowProject`** — chúng tạo trước quy ước này, nằm chung
+  project cũ; thêm khoá vào sẽ trỏ sang project rỗng. Case 3 trở đi mới có khoá riêng.
+- File gộp cũ giữ làm bản lưu: `assets.legacy-merged.json`, `scenes.legacy-merged.json`.
+
 ### ✅ BA QUYẾT ĐỊNH CHỐT CUỐI PHIÊN 2026-08-11
 
 1. **Case 1 (A Fei) GIỮ NGUYÊN** — người dùng xác nhận tạo hình nhân vật case 1
@@ -541,12 +557,20 @@ field `status?: "waiting" | "failed" | "success"` (xem `src/assetStatus.ts`):
   nhận tham số này) được gọi NGAY sau mỗi lần đổi status — ghi lại `state/*.json` tức thì,
   không đợi xử lý xong cả danh sách, để không mất tiến độ nếu pipeline crash ở phần tử sau.
 
-**GIẢ ĐỊNH CHƯA XÁC NHẬN**: cơ chế status giả định Character/Setting/Prop asset dùng CHUNG cho
-mọi project trong tài khoản (không phải tài nguyên riêng theo từng project Flow) — với
-`PARALLEL_WORKERS=1` (mặc định), giả định này không ảnh hưởng vì `ensureCharactersInFlow` chỉ
-chạy đúng 1 lần trên project chính. Nếu tăng `PARALLEL_WORKERS` và giả định sai (asset hoá ra
-riêng theo từng project), `status: "success"` ghi từ project đầu sẽ khiến các project song
-song sau bị bỏ qua việc tạo asset — CHƯA kiểm chứng trực tiếp trường hợp này.
+**🔴 GIẢ ĐỊNH NÀY ĐÃ ĐƯỢC KIỂM CHỨNG LÀ SAI (2026-08-11).** Cơ chế status từng giả định
+Character/Setting/Prop asset dùng CHUNG cho mọi project trong tài khoản. Đo trực tiếp bằng
+`scripts/check-asset-scope.ts` (mở 1 project TRỐNG mới rồi tra tên asset của project cũ):
+**không thấy gì → asset thuộc RIÊNG TỪNG PROJECT.**
+
+Hệ quả phải nhớ:
+- **Rủi ro với `PARALLEL_WORKERS > 1` là CÓ THẬT**, không còn là giả thuyết: mỗi worker dùng 1
+  project riêng, `status: "success"` ghi từ project đầu sẽ khiến các project sau BỎ QUA việc
+  tạo asset mà chúng thực sự không có. Đây là thêm 1 lý do giữ mặc định `PARALLEL_WORKERS=1`.
+- **Mặt tốt**: tách mỗi case 1 project thì ô "Search assets" của case đó chỉ chứa asset của
+  chính nó — triệt tiêu tận gốc lớp lỗi trùng tên/khớp nhầm ở mục 8.1.3l. Pipeline nanoBanana
+  đã dùng cách này qua trường `flowProject` trong `assets.json`/`scenes.json` (xem mục 0).
+- Đổi lại: KHÔNG dùng lại được asset giữa các project. Cần dùng chung thì phải tạo lại ở từng
+  project.
 
 ### 4.19. Setting neo SAI ánh sáng ngày/đêm — ảnh reference khoá cứng 1 điều kiện, mood text không ghi đè được
 **XÁC NHẬN TRỰC TIẾP**: 1 Setting (bối cảnh chòi quan sát trên tàu) có `description` trong

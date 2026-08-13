@@ -86,6 +86,17 @@ export interface ImageAsset {
 
 export interface AssetFile {
   episode: string;
+  /**
+   * Khoá project Flow cho file này — mỗi case NÊN có khoá riêng, vì asset trong Flow thuộc
+   * RIÊNG từng project (đã xác minh bằng scripts/check-asset-scope.ts, 2026-08-11). Tách ra
+   * thì ô "Search assets" của mỗi case chỉ chứa asset của case đó, hết hẳn lớp lỗi trùng
+   * tên/khớp nhầm ở mục 8.1.3l. Bỏ trống = dùng project chung như trước.
+   *
+   * PHẢI đặt GIỐNG NHAU giữa assets.json và scenes.json của cùng 1 case — lệch khoá thì asset
+   * nằm project này mà cảnh đi tìm ở project kia.
+   */
+  flowProject?: string;
+
   assets: ImageAsset[];
 }
 

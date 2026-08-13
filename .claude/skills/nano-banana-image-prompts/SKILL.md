@@ -42,6 +42,41 @@ Hệ quả khi viết prompt:
 - Phân vân giữa "ảnh đẹp hơn" và "bố cục/tỉ lệ đọc rõ hơn" → **luôn chọn cái
   sau**.
 
+## 1b. Bố cục thư mục: MỖI CASE MỘT THƯ MỤC, MỘT PROJECT FLOW
+
+```
+narration-scripts/<tập>/
+  en.md                  ← kịch bản cả tập
+  refs/                  ← ảnh tham khảo (gitignore, xem README trong đó)
+  case-1/assets.json  scenes.json
+  case-2/assets.json  scenes.json
+  ...
+```
+
+Mỗi cặp file khai báo thêm **`flowProject`** ở cấp cao nhất — khoá project Flow
+riêng cho case đó:
+
+```json
+{ "episode": "...", "flowProject": "ten-tap-case-3", "assets": [ ... ] }
+```
+
+🔑 **Vì sao tách project**: đã đo trực tiếp (`scripts/check-asset-scope.ts`) —
+**asset trong Flow thuộc RIÊNG từng project**, mở project trống thì không tra
+được asset của project cũ. Nên mỗi case 1 project = ô "Search assets" chỉ chứa
+asset của case đó, **triệt tiêu tận gốc lớp lỗi trùng tên/khớp nhầm ở mục 11c**
+vốn nảy sinh khi một project ôm cả trăm ảnh.
+
+⚠️ **`flowProject` phải GIỐNG NHAU giữa `assets.json` và `scenes.json` của cùng
+case.** Lệch khoá thì asset nằm project này mà cảnh đi tìm ở project kia — hỏng
+âm thầm, cực khó lần ra. Đó cũng là lý do khoá nằm TRONG file chứ không phải cờ
+dòng lệnh.
+
+⚠️ **Không dùng lại được asset giữa các case.** Cần nhân vật/bối cảnh giống nhau
+ở 2 case thì phải tạo lại trong từng project.
+
+*(Case 1 và 2 của tập "vu-viec-tam-linh" tạo trước quy ước này nên nằm chung 1
+project và để trống `flowProject` — đừng thêm khoá vào, sẽ trỏ sang project rỗng.)*
+
 ## 2. Hai file, hai vai trò — đừng nhầm
 
 | | `assets.json` | `scenes.json` |

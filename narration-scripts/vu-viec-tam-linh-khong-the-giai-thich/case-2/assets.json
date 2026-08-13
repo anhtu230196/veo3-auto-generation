@@ -1,0 +1,452 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích — case 2",
+  "assets": [
+    {
+      "name": "Don Decker",
+      "description": "a young man in his late twenties wearing a plain light grey short-sleeve button-front shirt with a plain collar, worn as one single layer with no jacket over it, and plain dark navy trousers with plain dark shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "notes": "Bản ĐỒ THƯỜNG của Don — dùng cho mọi cảnh BÊN TRONG nhà Bob (đã thay đồ để ở lại qua đêm) và cảnh bước ra khỏi nhà. Cảnh trong tù dùng 'Don Decker Prison', cảnh đám tang + lúc tới cửa nhà Bob dùng 'Don Decker Funeral'.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Don Decker V2",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain light grey short-sleeve button-front shirt with a plain collar, worn as one single layer with no jacket over it, and plain dark navy trousers with plain dark shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "THỬ ép góc 3/4 từ gốc (2026-08-11). Mô tả trang phục giữ NGUYÊN VĂN bản cũ để phép thử chỉ khác đúng 1 biến: CHARACTER_THREE_QUARTER_BLOCK mới thêm vào prefix."
+    },
+    {
+      "name": "Master Reference Candidate 3Q",
+      "type": "character",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Don Decker V2",
+      "description": "Use the single reference image and keep the character exactly the same person in exactly the same flat 2D style — same bold uniform-width black outlines, same flat colour fills with zero shading, same thin stick-line arms and legs, same light grey short-sleeve shirt and dark navy trousers, same brown hair colour, same plain background. Change ONLY how far the head and body are turned, so the character clearly reads as being seen from THREE-QUARTERS rather than from the front. Apply these exact geometric changes: BOTH eyes must sit entirely inside the LEFT HALF of the face, so that the empty gap between the right eye and the right edge of the face is about TWICE as wide as the gap between the left eye and the left edge; move the mouth the same distance to the left so it lines up under the eyes and is NOT centred; keep only the LEFT ear visible and draw no ear at all on the right side; push the mass of the hair further over toward the RIGHT side of the head; and turn the shoulders so the left shoulder is clearly nearer the viewer and the right shoulder is further away and slightly higher. The face must still be a simple rounded shape with two plain round black dot eyes and one short straight mouth line — no nose, no eyebrows, no shading. Everything else stays exactly as it already is.",
+      "notes": "ỨNG VIÊN thay ảnh master reference-character.jpeg. Sửa từ Don Decker V2 (đã 3/4 một nửa: 1 tai, tóc lệch) bằng ràng buộc ĐO ĐƯỢC về vị trí mắt — vì bài học 8.1.3j nói dịch mắt/miệng chung chung không đọc ra quay đầu, phải neo bằng tỉ lệ khoảng trống hai bên mặt. CHƯA thay file, chờ người dùng duyệt."
+    },
+    {
+      "name": "Bob",
+      "description": "a man in his thirties wearing a plain rust-brown long-sleeve shirt with the sleeves rolled up to the elbow, worn as one single layer with no jacket over it, and plain blue denim trousers with plain dark shoes, short dark curly hair, a thick full moustache and no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Crowned Old Man",
+      "description": "an old man wearing a plain dark red floor-length robe with long wide sleeves and a plain flat gold crown with simple triangular points resting on his head, long straight white hair falling to the shoulders, a long straight white beard reaching the chest",
+      "notes": "Hồn ma ông nội hiện trong gương. Đặt tên trung tính (không gọi là 'grandfather's ghost') để mô tả gọn và tránh chữ dễ dính bộ lọc.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Landlord",
+      "description": "a heavy-set older man wearing a plain beige zip-up work jacket over a plain white shirt and plain grey trousers with plain dark boots, thinning grey hair combed straight back, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Patrol Officer",
+      "description": "a police officer wearing a plain dark navy uniform shirt with a plain silver badge on the chest and plain dark navy uniform trousers with a plain black belt, a plain dark navy peaked cap on the head, short black hair, clean-shaven with no beard",
+      "notes": "Tên KHÔNG dùng 'Police Officer' vì case 1 đã chiếm tên đó — tên asset phải duy nhất toàn tập.",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Prison Guard",
+      "description": "a uniformed guard wearing a plain light tan long-sleeve uniform shirt with plain shoulder epaulettes and plain dark brown uniform trousers with a plain black belt, no hat, short blond hair combed to one side, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Chief Warden",
+      "description": "an older official wearing a plain charcoal grey suit jacket over a plain white shirt with a plain dark red necktie, and plain charcoal grey trousers with plain black shoes, no hat, short grey hair combed straight back, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Cellmate",
+      "description": "a young man wearing a plain faded blue prison shirt buttoned to the neck as one single layer and plain faded blue prison trousers with plain canvas shoes, short black hair shaved close at the sides, a thin moustache and no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Priest",
+      "description": "a priest wearing a plain long black cassock buttoned down the front and reaching the ankles as one single layer, with a plain white clerical collar at the neck, plain black shoes, no hat, short dark hair, clean-shaven with no beard",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Bob's Wife",
+      "description": "a woman in her thirties wearing a plain mustard-yellow long-sleeve blouse and a plain brown knee-length skirt as one single layer with no jacket or apron over it, plain flat shoes, brown hair tied back in a neat low bun with no loose strands falling at the sides, simple round eyes with no eyeliner",
+      "type": "character",
+      "case": 2,
+      "status": "success"
+    },
+    {
+      "name": "Prison Cell 1983",
+      "composition": "flat",
+      "description": "A narrow prison cell interior from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top, a plain pale grey concrete back wall filling the middle with one small square barred window set high in it, a plain metal bunk bed with two flat mattress slabs standing against the left side and a plain steel washbasin block against the right side, and a plain flat grey concrete floor strip running edge to edge across the bottom. The bunk bed and the washbasin stand ON the floor strip and must touch it, not float. Cold palette of pale grey and washed blue, plain flat institutional daylight.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): giường tầng có ~10 thanh ngang mỗi tầng, rườm rà và nhân vật ngồi lên nhìn lộn xộn. Thay bằng V2 bỏ hẳn nan."
+    },
+    {
+      "name": "Prison Cell 1983 V2",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell 1983",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same pale grey concrete walls, the same small barred window high on the back wall, the same steel washbasin on the right, the same floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the bunk bed on the left: REMOVE ALL of its horizontal slats and rails. Redraw each of the two bunks as ONE single plain flat mattress slab — one plain rectangle with a flat colour fill and nothing at all drawn on top of it — resting on a plain simple frame made of only four straight vertical corner posts plus one straight horizontal edge line under each mattress. No slats, no springs, no ladder, no side railings, no criss-cross and no repeated bars of any kind anywhere on the bed. The lower mattress must be one clean flat unbroken surface with a clear straight front edge that a person can sit on. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bỏ nan giường theo yêu cầu người dùng (2026-08-11) — cùng bệnh chi tiết lặp như Bob Kitchen và song sắt. Dùng editFrom vì chỉ đổi 1 vật, giữ nguyên bố cục phòng để các cảnh khác vẫn khớp."
+    },
+    {
+      "name": "Cemetery Funeral Ground",
+      "composition": "layered",
+      "description": "A quiet flat cemetery on open ground. Layered flat-depth composition: background layer of a low row of dark green trees all at the same height along the far edge under a plain overcast pale grey sky, midground layer of a row of plain simple rectangular headstones all at the same height standing side by side, foreground layer of a plain flat green grass strip spanning the bottom of the frame with one plain rectangular open grave pit and one plain low mound of brown earth beside it. Muted overcast palette of grey, dark green and brown, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob House Exterior",
+      "composition": "flat",
+      "description": "The front of a small two-storey American suburban house from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey overcast sky band across the top, a plain pitched dark grey roof band, a plain pale yellow clapboard front wall filling the middle with one plain white front door at the centre and one plain square window on each side, a plain low wooden porch step, and a plain flat concrete path with a plain green lawn strip running edge to edge across the bottom. The house wall must be scaled and positioned to completely fill the frame from the far left edge to the far right edge, with absolutely no gap of open lawn or empty sky at either side edge beside the house. Plain flat daylight, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Bathroom",
+      "composition": "flat",
+      "description": "A small American bathroom from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green tiled wall filling the middle with one large plain rectangular mirror mounted at the centre and a plain white sink basin directly below the mirror, a plain white bathtub standing along the right side, and a plain flat white tiled floor strip running edge to edge across the bottom. The mirror must be drawn as one plain empty rectangle with a flat pale silver surface and absolutely nothing reflected in it. The sink and the bathtub stand ON the floor strip and must touch it. Plain flat indoor lighting, daytime.",
+      "notes": "Gương CỐ Ý để trống hoàn toàn — để cảnh ghép sau đặt 'Crowned Old Man' vào đúng khung gương đó. LỖI THỜI (2026-08-11): gương nằm giữa khung nên bị nhân vật đứng chắn, và mặt gương phẳng không đọc ra là kính. Thay bằng 'Bob Bathroom V2'.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Bathroom V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small American bathroom from 1983 seen straight on, with every fixture pushed to the SIDES so the middle of the room stays open. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green wall filling the middle, and a plain flat white tiled floor strip running edge to edge across the bottom. On the LEFT side of the frame: one LARGE plain rectangular mirror mounted on the wall in a plain dark grey frame, tall enough to hold a person's head and shoulders, with a plain white pedestal sink standing on the floor directly below it. The mirror is drawn as a plain EMPTY rectangle with a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes running corner to corner, so it plainly reads as a glass mirror — and absolutely nothing else inside it, no face, no figure, no reflection of the room. On the RIGHT edge of the frame: one plain white bathtub standing on the floor. The whole MIDDLE of the room, both the wall and the floor, is left completely clear and empty. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "Thay 'Bob Bathroom'. Sửa 2 lỗi người dùng chỉ ra trên ảnh thật (2026-08-11): (1) gương+bồn rửa ở GIỮA khung nên nhân vật đứng chắn mất gương, không còn chỗ ghép mặt ông nội ở hậu kỳ → dạt hẳn sang TRÁI, chừa giữa trống; (2) gương ra màu xám phẳng không đọc ra là gương → thêm ĐÚNG 2 vệt sáng chéo làm tín hiệu mặt kính. (Lần tạo đầu bị assertAssetNamed báo nhầm là hỏng tên; tra tay xác nhận có thật nên đặt success, KHÔNG tạo lại.) LỖI THỜI (2026-08-11): vẫn là 1 mặt tường phẳng, gương treo ở mép trái của tường sau chứ không phải trên tường bên. Thay bằng 'Bob Bathroom V3'."
+    },
+    {
+      "name": "Bob Bathroom V3",
+      "type": "background",
+      "case": 2,
+      "composition": "corner",
+      "reserveCharacterSpace": true,
+      "description": "A small American bathroom from 1983, drawn as a CORNER of the room built from exactly TWO flat wall panels meeting along ONE single vertical line. The LEFT panel fills roughly the left third of the frame and is the SIDE WALL of the room: one plain flat panel in a slightly DARKER shade of pale mint green. One LARGE plain rectangular mirror in a plain dark grey frame hangs ON THIS LEFT SIDE WALL, tall enough to hold a person's head and shoulders, with one plain white pedestal sink standing on the floor directly below it. The mirror and the sink belong to the LEFT side wall only and must NOT be drawn anywhere on the other panel. The RIGHT panel fills the remaining two thirds and is the BACK WALL: one plain flat panel in the lighter pale mint green, completely bare except for one plain white bathtub standing against it at the far right edge. Below both panels, a plain flat white tiled floor runs edge to edge across the bottom of the frame. Exactly one straight diagonal line runs from the foot of the vertical corner line down toward the bottom-left corner of the frame, so the floor plainly reads as turning at the corner. There are no other diagonal lines anywhere in the picture, no vanishing point, and no rows of tiles shrinking toward a distance. The mirror is drawn as a plain EMPTY rectangle with a flat pale blue-white surface crossed by exactly two thin pale white diagonal streak shapes, so it plainly reads as a glass mirror — and absolutely nothing else inside it, no face, no figure, no reflection of the room. The whole middle and right of the tiled floor is left completely clear and empty. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "Thay 'Bob Bathroom V2'. Người dùng xem ảnh V2 và chỉ ra vẫn SAI Ý: V2 chỉ là MỘT mặt tường phẳng, gương dời sang mép trái của chính bức tường đó. Ý muốn là GÓC PHÒNG — có bức tường BÊN TRÁI riêng, gương treo trên bức tường bên ấy (đúng như ảnh tham khảo người dùng gửi). Mô tả bằng hình học (2 mảng phẳng + 1 đường dọc + đúng 1 đường chéo dưới sàn) để có góc mà vẫn không rơi vào phối cảnh hút sâu bị cấm. Người dùng DUYỆT bản có phối cảnh nhẹ này (2026-08-11) vì nhân vật đều là 3/4 view nên nền có chiều sâu mới đặt người vào tự nhiên. Đã chuyển composition sang \"corner\" — ảnh hiện tại tạo lúc còn là \"flat\" (mô tả tự thắng được NO_PERSPECTIVE_BLOCK), nếu tạo lại thì \"corner\" mới đúng và ổn định."
+    },
+    {
+      "name": "Bob Living Room",
+      "composition": "flat",
+      "description": "A modest American living room from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain warm beige wall filling the middle with one plain rectangular framed picture hung at the centre and one plain square window to one side, a plain brown two-seat sofa and one plain brown armchair standing side by side along the wall, and a plain flat olive-green carpet strip running edge to edge across the bottom. The sofa and the armchair stand ON the carpet strip and must touch it. Warm muted palette of beige, brown and olive, plain flat indoor lighting, daytime, everything completely dry.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Living Room Night",
+      "composition": "flat",
+      "description": "The same modest American living room from 1983 seen straight on, at night. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top with one plain round warm-yellow ceiling lamp at the centre, a plain warm beige wall filling the middle with one plain rectangular framed picture hung at the centre and one plain square window to one side drawn as a flat dark navy rectangle, a plain brown two-seat sofa and one plain brown armchair standing side by side along the wall, and a plain flat olive-green carpet strip running edge to edge across the bottom. Night palette: everything darker and cooler than a daytime version, lit only by the plain warm yellow lamp. Plain flat indoor lighting, no gradients.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Kitchen",
+      "composition": "flat",
+      "description": "A small American kitchen from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale blue wall filling the middle with a plain row of simple flat wooden upper cabinets, a plain white countertop with one plain steel sink set into it running across, a plain white refrigerator standing at one side, and a plain flat chequered vinyl floor strip running edge to edge across the bottom. The row of cabinets and the countertop must fill the frame from the far left edge to the far right edge with no gap of bare wall at either side edge. The refrigerator stands ON the floor strip and must touch it. Plain flat indoor lighting, daytime.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-11): ra hơn 30 cánh tủ + sàn caro mấy chục ô, đồ lại bằng tay quá mệt. Thay bằng V2 có RA SỐ CỤ THỂ."
+    },
+    {
+      "name": "Bob Kitchen V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "A small American kitchen from 1983 seen straight on, drawn with as few separate shapes as possible so a person can trace the whole picture quickly by hand. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top; a plain pale blue wall band; ONE row of upper cabinets containing EXACTLY FOUR cabinet doors and no more, each door drawn as one single very wide plain flat wooden rectangle with NO knobs, NO handles, NO glass panes, NO moulding and NO inner frame lines; a plain white countertop carrying ONE plain steel sink basin and ONE plain simple tap; ONE row of lower cabinets containing EXACTLY FOUR doors drawn exactly the same way as the upper ones; ONE plain white refrigerator standing at the left end as a single plain rectangle with one straight dividing line and no handles; and a plain floor strip running edge to edge across the bottom in ONE single flat colour with absolutely NO tiles, NO chequered pattern, NO grid and NO lines of any kind on it. Do not subdivide any surface into extra panels beyond the counts given above. Plain flat indoor lighting, daytime.",
+      "notes": "Sửa lỗi quá nhiều chi tiết. Bài học: SIMPLIFY_DETAIL_BLOCK nói \"một số ít hình lớn\" là ĐỊNH TÍNH, model hiểu thoáng. Phải RA SỐ CỤ THỂ (\"EXACTLY FOUR doors and no more\") + cấm từng loại chi tiết nhỏ theo tên (knobs/handles/glass/moulding) + cấm tường minh hoa văn sàn."
+    },
+    {
+      "name": "Warden Office",
+      "composition": "flat",
+      "description": "A prison chief warden's office from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale olive wall filling the middle with one plain rectangular framed certificate and one plain round wall clock hung on it, a plain heavy dark wooden desk standing across the centre with one plain wooden chair behind it, a plain grey filing cabinet standing at one side, and a plain flat dark brown wooden floor strip running edge to edge across the bottom. The desk and the filing cabinet stand ON the floor strip and must touch it. Plain flat indoor lighting, daytime, everything completely dry.",
+      "type": "background",
+      "case": 2,
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Don Decker Prison",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain dark grey-blue prison shirt with a plain collar buttoned to the neck, worn as one single layer with no jacket over it, and plain matching dark grey-blue prison trousers with plain canvas shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản ĐỒNG PHỤC TÙ của Don — dùng cho mọi cảnh trong tù. Cùng mặt/tóc với 'Don Decker' và 'Don Decker Funeral', chỉ khác trang phục. SỰ CỐ 2026-08-11: lần tạo đầu báo success nhưng đổi tên KHÔNG ăn — trong Flow còn 1 ảnh vô danh đúng nội dung này (vô hại, xoá tay được). Đã thêm bước assertAssetNamed vào imageAsset.ts để không tái diễn."
+    },
+    {
+      "name": "Don Decker Funeral",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain black single-breasted suit jacket over a plain white shirt with a plain black necktie, and plain black suit trousers with plain black shoes, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản MẶC VEST của Don — dùng cho cảnh đám tang và cảnh tới nhà Bob (đi thẳng từ đám tang sang, chưa kịp thay đồ)."
+    },
+    {
+      "name": "Grandfather In Suit",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark navy single-breasted suit jacket over a plain white shirt with a plain dark grey necktie, no hat, short neatly combed white hair, a short trimmed white beard and a white moustache",
+      "status": "success",
+      "notes": "Ông nội lúc còn sống — CHỈ dùng làm ảnh tưởng niệm đặt bên mộ trong cảnh đám tang. Để râu trắng ngắn cho đọc ra cùng một người với 'Crowned Old Man' (bản hồn ma đội vương miện, râu dài) mà vẫn gọn gàng đúng kiểu ảnh thờ."
+    },
+    {
+      "name": "Funeral Home Interior",
+      "description": "The viewing room of a small American funeral home from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain warm beige wall filling the middle with two plain tall arched windows, a plain closed dark wooden coffin resting on a plain pale grey draped stand standing across one side with one plain flat green wreath shape lying on its lid, a plain wooden easel standing beside the coffin holding one plain rectangular picture frame, and a plain flat grey carpet strip running edge to edge across the bottom. The picture frame must be drawn as one plain EMPTY rectangle with a flat pale surface and absolutely nothing inside it. The coffin stand and the easel both rest ON the carpet strip and must touch it, not float. Muted palette of beige, dark brown and grey, plain flat indoor lighting.",
+      "notes": "Thay cho 'Cemetery Funeral Ground' (nghĩa trang ngoài trời) — người dùng cung cấp ảnh tham khảo cho thấy đám tang diễn ra TRONG NHÀ TANG LỄ. Khung ảnh trên giá vẽ CỐ Ý để trống để cảnh ghép đặt 'Grandfather In Suit' vào.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Funeral Home Interior With Mourners",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Funeral Home Interior",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same beige wall, the same two arched windows, the same dark wooden coffin on its draped stand, the same green wreath on the lid, the same wooden easel, the same grey floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. The picture frame on the easel must stay a plain EMPTY rectangle with absolutely nothing inside it. ADD to the right-hand half of the room a loose group of about six anonymous mourners standing on the floor, ALL seen FROM BEHIND with their backs turned to the viewer and facing toward the coffin, so that no face is visible on any of them. Draw each one in the same simple style as the rest of the picture: a plain round head filled with one flat hair colour, a plain dark grey or black suit drawn as one flat shape, and thin simple arms and legs. Vary their heights and hair colours slightly so they do not look like copies of a single figure. They must NOT overlap the coffin, the draped stand, the easel or the picture frame, and they must leave a clear empty patch of floor in the middle of the room. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bản CÓ NGƯỜI VIẾNG của \"Funeral Home Interior\". Tạo bằng editFrom vì cách đó bỏ qua style block — nếu tạo như background thường sẽ vướng điều khoản \"NO people\" trong BACKGROUND_STYLE_BLOCK. Cho tất cả quay lưng về phía người xem: hợp lý ở đám tang, và né được chuyện mặt mũi nhân bản giống hệt nhau. LỖI THỜI (2026-08-11): người viếng vẽ thân đầy đặn, vest có nếp — lệch phong cách que của nhân vật chính; và nhóm đứng lấn vào giữa khung, ít chỗ đặt Don. Thay bằng bản V2."
+    },
+    {
+      "name": "Funeral Home Interior With Mourners V2",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Funeral Home Interior",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same beige wall, the same two arched windows, the same dark wooden coffin on its draped stand, the same green wreath on the lid, the same wooden easel, the same grey floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. The picture frame on the easel must stay a plain EMPTY rectangle with absolutely nothing inside it. ADD a small loose group of about five anonymous mourners standing on the floor, ALL seen FROM BEHIND with their backs turned to the viewer and facing toward the coffin, so no face is visible on any of them. Draw every mourner in a MINIMAL STICK-FIGURE style to match the rest of the picture: one plain round head filled with a single flat hair colour, arms and legs drawn as THIN PLAIN STRAIGHT LINES with no thickness and no hands or feet detail, and the suit drawn as ONE plain flat dark shape for the torso with no folds, no creases, no buttons and no shading. Do NOT give them rounded volumetric bodies or tailored suits with wrinkles. Vary their heights and hair colours slightly so they do not look like copies of one figure. The whole group must stand within the RIGHT THIRD of the frame only, close to the right edge, and must NOT overlap the coffin, the draped stand, the easel or the picture frame. The entire middle of the floor and the whole area in front of the coffin must be left clear and completely empty. Everything else in the picture stays exactly as it already is.",
+      "notes": "Sửa 2 lỗi của bản trước: (1) người viếng vẽ dạng QUE (tay chân nét mảnh, vest 1 mảng phẳng không nếp) cho khớp nhân vật chính; (2) dồn hẳn vào 1/3 phải khung, chừa trống giữa và trước quan tài để đặt Don. editFrom trỏ về bản GỐC sạch chứ không phải bản có người — sửa từ bản có người sẽ kế thừa đúng cách vẽ đang muốn bỏ. LỖI THỜI (2026-08-11): người viếng quay lưng, không thấy mặt. Người dùng muốn vai phụ cũng góc 3/4 và đủ 2 mắt như nhân vật chính — xem V3."
+    },
+    {
+      "name": "Funeral Home Interior With Mourners V3",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Funeral Home Interior",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same beige wall, the same two arched windows, the same dark wooden coffin on its draped stand, the same green wreath on the lid, the same wooden easel, the same grey floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. The picture frame on the easel must stay a plain EMPTY rectangle with absolutely nothing inside it. ADD a small loose group of about five mourners standing on the floor. Every mourner is turned roughly forty-five degrees toward the coffin on the left and is drawn in THREE-QUARTER VIEW, with the face angled toward the coffin but still turned enough toward the viewer that BOTH EYES are clearly visible on every single one of them. None of them is seen from behind and none has their back to the viewer. Draw every face in the same minimal way as the main characters: a plain round head, exactly TWO small round black dots for the eyes and ONE short straight line for the mouth, with no nose, no eyebrows and no other facial detail. Draw every body in the same minimal stick-figure style: arms and legs as THIN PLAIN STRAIGHT LINES with no thickness and no hand or foot detail, and the suit as ONE plain flat dark shape for the torso with no folds, no creases, no buttons and no shading — never rounded volumetric bodies or tailored suits with wrinkles. Vary their heights and hair colours slightly so they do not look like copies of one figure. The whole group must stand within the RIGHT THIRD of the frame only, close to the right edge, and must NOT overlap the coffin, the draped stand, the easel or the picture frame. The entire middle of the floor and the whole area in front of the coffin must be left clear and completely empty. Everything else in the picture stays exactly as it already is.",
+      "notes": "Vai phụ dùng CÙNG ngôn ngữ tạo hình với nhân vật chính: góc 3/4, đủ 2 mắt (2 chấm tròn + 1 nét miệng), tay chân nét mảnh, vest 1 mảng phẳng. Người dùng chốt 2026-08-11 — bóng lưng vô danh tuy né được chuyện nhân bản nhưng lệch hẳn với dàn nhân vật chính."
+    },
+    {
+      "name": "Prison Cell Block Corridor",
+      "description": "A prison cell block from 1983 seen straight on from the corridor OUTSIDE the cells. Built from horizontal bands stacked top to bottom: a plain dark grey ceiling band across the top, a plain grey concrete wall filling the middle with one wide flat panel of plain vertical steel bars running across the centre and one plain barred sliding door set into the middle of that panel, one plain small barred window in the wall at one side, and a plain flat grey concrete corridor floor strip running edge to edge across the bottom. The barred panel must fill the frame from the far left edge to the far right edge with no gap of bare wall at either side. Draw only a SMALL number of widely spaced vertical bars standing for the whole grille, never dozens of thin ones. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Góc nhìn TỪ HÀNH LANG vào song sắt — theo ảnh tham khảo người dùng cung cấp. Khác 'Prison Cell 1983' (nội thất buồng giam nhìn từ bên trong), giữ cả hai: cảnh đối thoại qua song sắt dùng cái này, cảnh riêng tư trong buồng dùng cái kia.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Prison Cell Block Corridor Door Open",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell Block Corridor",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same grey concrete wall, the same wide panel of vertical steel bars, the same small barred window, the same corridor floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the barred sliding door in the middle of the bar panel: draw it slid fully OPEN to one side, leaving a clear empty gap in the row of bars wide enough for a person to walk through, with the slid door panel drawn stacked against the bars beside the gap. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bản CỬA MỞ của \"Prison Cell Block Corridor\", tạo bằng editFrom (sửa ảnh) thay vì sinh mới từ chữ — để cắt qua lại giữa cảnh cửa đóng và cửa mở không bị lệch bố cục. Người dùng yêu cầu 2026-08-11. LỖI THỜI (2026-08-11): ra kiểu CỬA TRƯỢT (khoảng hở giữa dãy song). Người dùng muốn cửa BẢN LỀ mở cánh ra ngoài — xem bản thay thế \"Door Swung Open\"."
+    },
+    {
+      "name": "Prison Cell Interior Facing Bars",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The inside of a prison cell from 1983 seen straight on FROM WITHIN THE CELL, facing the barred wall that separates the cell from the corridor outside. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top; the barred wall filling the middle, drawn as one wide panel of plain vertical steel bars running edge to edge with one plain barred door set into the middle of it; visible BEYOND the bars, a plain flat darker grey corridor wall with nothing on it; the end of one plain metal bunk bed standing against the left edge inside the cell; and a plain flat grey concrete cell floor strip running edge to edge across the bottom. Draw only a SMALL number of widely spaced vertical bars standing for the whole grille, never dozens of thin ones. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Góc NGƯỢC của \"Prison Cell Block Corridor\" (hành lang nhìn vào) — cùng địa điểm, nhìn từ trong buồng ra. Cần cho câu bạn tù lao tới song sắt gọi quản giáo. Đúng kỹ thuật shot/reverse-shot ở skill mục 4. LỖI THỜI (2026-08-11): song sắt sinh sôi phủ kín khung vì tả ĐỊNH TÍNH \"a SMALL number of bars\". Thay bằng V2 ra SỐ CỤ THỂ."
+    },
+    {
+      "name": "Prison Cell Interior Facing Bars V2",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The inside of a prison cell from 1983 seen straight on FROM WITHIN THE CELL, facing the barred wall that separates the cell from the corridor. Built from horizontal bands stacked top to bottom: a plain pale grey concrete ceiling band across the top with NO bars in it at all; then the barred wall across the middle of the frame, drawn as EXACTLY EIGHT plain vertical steel bars evenly spaced from the left edge to the right edge and NOTHING MORE — no extra bars, no lattice, no criss-cross, and only ONE single plain horizontal rail crossing them at mid height; one plain barred door outlined as a simple rectangle in the middle of that panel; visible in the gaps between the bars, a plain flat darker grey corridor wall with nothing on it; and at the bottom a plain flat grey concrete cell floor. The eight bars run down and STOP where they meet the floor. In front of them the near part of the cell floor is left completely clear and empty right across the width of the frame, with absolutely no bars crossing it. Cold palette of grey and washed blue, plain flat institutional lighting.",
+      "notes": "Ra SỐ CỤ THỂ (đúng 8 song, 1 thanh ngang) — cùng bài học đã dùng cho Bob Kitchen V2. Thêm dải sàn trống hẳn phía trước để đặt nhân vật KHÔNG bị song đè lên."
+    },
+    {
+      "name": "Prison Cell Block Corridor Door Swung Open",
+      "type": "background",
+      "case": 2,
+      "status": "success",
+      "editFrom": "Prison Cell Block Corridor",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same grey concrete wall, the same wide panel of vertical steel bars, the same small barred window, the same corridor floor, the same colours, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the barred door in the middle of the bar panel: it is HINGED along one vertical edge and has SWUNG OUTWARD toward the viewer, like an ordinary door on hinges — NOT slid sideways. Draw the door as a slanted rectangle of vertical bars sticking out into the corridor at about forty-five degrees, still joined to the bar panel along its hinge edge, with its free edge closer to the viewer and drawn slightly larger than its hinge edge. Behind it, where the door used to sit, leave a plain empty doorway opening in the bar panel with no bars across it. Everything else in the picture stays exactly as it already is.",
+      "notes": "Bản CỬA BẢN LỀ MỞ CÁNH của \"Prison Cell Block Corridor\". Lần đầu tả \"slid fully open\" ra cửa trượt — phải nói tường minh HINGED + SWUNG OUTWARD + NOT slid sideways, kèm mô tả hình học (hình chữ nhật nghiêng ~45 độ, cạnh tự do to hơn cạnh bản lề) mới ra đúng."
+    },
+    {
+      "name": "Bob Basement Pipes",
+      "description": "A small basement utility space under an American house from 1983 seen straight on. Built from horizontal bands stacked top to bottom: a plain dark ceiling band across the top with one plain run of thick dark grey horizontal pipes crossing it, a plain pale brown concrete wall filling the middle with a few plain brown damp stain shapes spreading across it, one plain low grey concrete ledge along one side, and a plain flat dark brown concrete floor strip running edge to edge across the bottom. Two plain thick dark grey vertical pipes run down through the ENTIRE height of the wall band, passing IN FRONT OF the wall and the damp stains, and end where they meet the floor strip so they plainly reach the ground. Plain flat indoor lighting, muted brown and grey palette.",
+      "notes": "Bối cảnh mới cho shot ông chủ nhà kiểm tra đường ống. Ống dọc mô tả theo quy tắc 'vật cao xuyên nhiều dải' (chạy suốt + nằm TRƯỚC + chạm đất) để không bị cắt cụt.",
+      "type": "background",
+      "case": 2,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Bob Living Room V2",
+      "type": "background",
+      "case": 2,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "A modest American living room from 1983 seen in ordinary cartoon perspective from one corner of the room. Two walls meet at a vertical corner line: the left wall runs away from the viewer at an angle, the right wall faces the viewer more directly. A plain brown two-seat sofa stands against the right wall, drawn at a slight angle so its seat and back read as parallelograms. A plain brown armchair stands nearer the viewer, turned to face the sofa. One plain rectangular framed picture hangs on the right wall and one plain square window sits in the left wall. The floor is a plain olive-green carpet plane receding from the bottom edge of the frame toward the corner. Warm muted palette of beige, brown and olive rendered in a few flat tints. Daytime, everything completely dry.",
+      "notes": "THỬ phong cách phối cảnh mới (2026-08-11). Thay cho bản dải-ngang-phẳng cùng tên gốc \"Bob Living Room\"."
+    },
+    {
+      "name": "Bob House Exterior V2",
+      "type": "background",
+      "case": 2,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "description": "The front of a small two-storey American suburban house from 1983, seen in ordinary cartoon perspective from the street at a slight angle so both the front wall and one side wall are visible. Plain pale yellow clapboard walls, one plain white front door with a low wooden porch step, two plain square windows, and a plain pitched dark grey roof drawn as simple angled planes. A plain concrete path runs from the bottom edge of the frame toward the front door, with a plain green lawn to one side. The sky is ONE flat pale blue band with a simple skyline of plain flat rectangles in a lighter tint along the horizon. Plain flat daylight, daytime.",
+      "notes": "THỬ phong cách phối cảnh mới (2026-08-11). Thay cho bản dải-ngang-phẳng \"Bob House Exterior\"."
+    },
+    {
+      "name": "Don Decker 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain light grey button-front shirt with a plain collar as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Bob 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a man in his thirties wearing a plain rust-brown button-front shirt with a plain collar as his one and only garment, short dark curly hair, a thick full moustache and no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Crowned Old Man 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark red robe as his one and only garment, with a plain flat gold crown with simple triangular points resting on his head, long straight white hair falling to the shoulders, a long straight white beard reaching the chest",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Landlord 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a heavy-set older man wearing a plain beige zip-up work jacket as his one and only garment, thinning grey hair combed straight back, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Patrol Officer 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a police officer wearing a plain dark navy uniform shirt with a plain silver badge on the chest as his one and only garment, a plain dark navy peaked cap on the head, short black hair, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Prison Guard 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a uniformed guard wearing a plain light tan uniform shirt with plain shoulder epaulettes as his one and only garment, no hat, short blond hair combed to one side, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Chief Warden 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an older official wearing a plain charcoal grey suit jacket over a plain white shirt with a plain dark red necktie as his one and only garment, no hat, short grey hair combed straight back, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Cellmate 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man wearing a plain faded blue prison shirt buttoned to the neck as his one and only garment, short black hair shaved close at the sides, a thin moustache and no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Priest 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a priest wearing a plain long black cassock reaching the ankles as his one and only garment, with a plain white clerical collar at the neck, no hat, short dark hair, clean-shaven with no beard",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Bob's Wife 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a woman in her thirties wearing a plain mustard-yellow blouse as her one and only garment, brown hair tied back in a neat low bun with no loose strands falling at the sides, simple round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Don Decker Prison 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain dark grey-blue prison shirt with a plain collar buttoned to the neck as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Don Decker Funeral 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "a young man in his late twenties wearing a plain black suit jacket over a plain white shirt with a plain black necktie as his one and only garment, short dark brown hair combed flat with no parting and no loose strands, clean-shaven with no beard and no moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    },
+    {
+      "name": "Grandfather In Suit 3Q",
+      "type": "character",
+      "case": 2,
+      "description": "an old man wearing a plain dark navy suit jacket over a plain white shirt with a plain dark grey necktie as his one and only garment, no hat, short neatly combed white hair, a short trimmed white beard and a white moustache",
+      "status": "success",
+      "notes": "Bản 3/4 + thân tối giản (thế hệ 3Q, 2026-08-11). Mô tả CỐ Ý bỏ hết quần/giày/tay áo — CHARACTER_BODY_BLOCK cấm mấy thứ đó, để trong mô tả sẽ đá nhau."
+    }
+  ]
+}

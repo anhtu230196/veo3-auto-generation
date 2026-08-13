@@ -1,0 +1,248 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích — case 1",
+  "assets": [
+    {
+      "name": "A Fei",
+      "type": "character",
+      "case": 1,
+      "description": "a middle-aged rural Chinese woman wearing a plain single-layer faded blue button-front blouse with long sleeves and plain loose dark trousers, no jacket or coat over it, plain flat cloth shoes, black hair tied back in a simple low ponytail with no loose strands framing the face, simple round eyes with no eyeliner",
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): người dùng cung cấp ảnh thật của A Fei — mặc áo phao đỏ, tóc ngắn, đeo khẩu trang — không khớp mô tả áo sơ mi xanh/tóc buộc thấp ở trên. Đã tạo lại đúng ngoại hình dưới tên \"A Fei V2\", đừng dùng entry này làm nhân vật chính thức nữa."
+    },
+    {
+      "name": "A Fei V2",
+      "type": "character",
+      "case": 1,
+      "description": "a middle-aged rural Chinese woman wearing a quilted bright red winter puffer jacket zipped up to the neck with a fur-trimmed hood folded down around the shoulders (hood down, not pulled up over the head), short black chin-length hair with a straight fringe and no loose long strands, wearing a plain white disposable face mask covering the nose and mouth, simple round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Generic Villager",
+      "type": "character",
+      "case": 1,
+      "description": "a plain ordinary person wearing a simple solid dark green short-sleeved shirt, short plain dark brown hair combed to one side, no distinguishing accessories, no headwear",
+      "notes": "Chỉ dùng cho đám đông/hàng xóm nền không cần nhận diện (KHÔNG dùng cho cha mẹ/cảnh sát/5 người rừng nữa — đã tách riêng thành asset dưới đây theo yêu cầu người dùng).",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder 1",
+      "type": "character",
+      "case": 1,
+      "description": "an elderly man with a completely bald head and a long flowing white beard reaching his chest, wearing a plain single-layer grey buttoned Mao-collar jacket, no headwear",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder 2",
+      "type": "character",
+      "case": 1,
+      "description": "an elderly man with short white hair and a thin grey moustache, wearing a plain single-layer dark blue traditional buttoned tunic and a small round black skullcap",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder 3",
+      "type": "character",
+      "case": 1,
+      "description": "an elderly man with grey hair combed straight back, no facial hair, wearing a plain single-layer brown buttoned jacket, no headwear",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder 4",
+      "type": "character",
+      "case": 1,
+      "description": "an elderly woman with grey hair tied in a low bun, wearing a plain single-layer navy blue tunic with a round collar, simple round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder 5",
+      "type": "character",
+      "case": 1,
+      "description": "an elderly woman with short white hair, wearing a plain single-layer maroon tunic with a round collar, simple round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "A Fei's Father",
+      "type": "character",
+      "case": 1,
+      "description": "a middle-aged man with short black hair combed neatly to one side, no facial hair, wearing a plain single-layer white button-front shirt",
+      "status": "success"
+    },
+    {
+      "name": "A Fei's Mother",
+      "type": "character",
+      "case": 1,
+      "description": "a middle-aged woman with grey-streaked black hair tied in a low bun, wearing a plain single-layer grey tunic with a round collar, simple round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Police Officer",
+      "type": "character",
+      "case": 1,
+      "description": "a police officer wearing a plain dark navy buttoned police uniform shirt and a dark navy flat-topped peaked cap with a small round badge on the front, short black hair, no facial hair",
+      "status": "success"
+    },
+    {
+      "name": "Long Wang Village Day",
+      "type": "background",
+      "case": 1,
+      "description": "A quiet rural Chinese village street on an overcast day, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale grey-white overcast sky band, a row of small single-storey stone and timber village houses with sloped tile roofs standing shoulder to shoulder all at the same height, a narrow flat dirt path running edge to edge across the middle, and a flat grassy ground strip across the bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge, no receding side wall visible. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): người dùng thấy ảnh quá phức tạp (nhiều nhà, có lớp nhà phía sau). Đã tạo lại đơn giản hơn dưới tên \"Long Wang Village Day V2\" — chỉ vài căn nhà nằm ngang mặt đường, không có nhà phía sau. Đừng dùng entry này nữa."
+    },
+    {
+      "name": "Long Wang Village Night",
+      "type": "background",
+      "case": 1,
+      "description": "The same quiet rural Chinese village street at night, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dark navy night sky band with a few small pale stars, a row of small single-storey stone and timber village houses with sloped tile roofs standing shoulder to shoulder all at the same height, one or two windows glowing with warm dim lantern light, a narrow flat dirt path running edge to edge across the middle, and a flat dark ground strip across the bottom. Every roofline perfectly horizontal and unbroken edge to edge. Dark cold nighttime palette of deep navy, charcoal and warm dim yellow window light.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): cùng lý do với \"Long Wang Village Day\" — đã tạo lại đơn giản hơn dưới tên \"Long Wang Village Night V2\". Đừng dùng entry này nữa."
+    },
+    {
+      "name": "Long Wang Village Day V2",
+      "type": "background",
+      "case": 1,
+      "description": "A quiet rural Chinese village street on an overcast day, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, their front walls facing directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty pale grey-white overcast sky directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat grassy ground strip along the very bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): người dùng so sánh với bản Night V2 và thấy dãy nhà KHÔNG tràn hết chiều ngang khung hình (còn hở đất/trời 2 bên), khác hẳn bản Night V2 tràn kín. Đã tạo lại dưới tên \"Long Wang Village Day V3\" ép rõ tràn hết cạnh-tới-cạnh. Đừng dùng entry này nữa."
+    },
+    {
+      "name": "Long Wang Village Day V3",
+      "type": "background",
+      "case": 1,
+      "description": "A quiet rural Chinese village street on an overcast day, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, scaled up so the row of houses completely fills the frame from the far left edge to the far right edge with absolutely no gap of visible grass or open sky at either side — the same edge-to-edge width as a theatre backdrop flat, not a small cluster floating in the middle of the frame. Their front walls face directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty pale grey-white overcast sky directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat grassy ground strip along the very bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Long Wang Village Night V2",
+      "type": "background",
+      "case": 1,
+      "description": "The same quiet rural Chinese village street at night, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, their front walls facing directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height, one or two windows glowing with warm dim lantern light. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty dark navy night sky with a few small pale stars directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat dark ground strip along the very bottom. Every roofline perfectly horizontal and unbroken from the left edge to the right edge. Dark cold nighttime palette of deep navy, charcoal and warm dim yellow window light.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Village Market",
+      "type": "background",
+      "case": 1,
+      "description": "A small outdoor rural market street, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale overcast sky band, a row of simple wooden market stalls with striped fabric awnings all standing at the same height along one side, each stall holding a few simple woven baskets of produce, a flat dirt path strip running edge to edge, and a flat ground strip across the bottom. Every stall front perfectly horizontal and unbroken edge to edge, no receding side wall. Muted daytime palette of warm brown wood, faded red and cream awning stripes, pale earth tones.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Foggy Mountain Trail",
+      "type": "background",
+      "case": 1,
+      "description": "A narrow dirt trail winding through a misty mountainside. Layered flat-depth composition: background layer of pale grey-white fog completely swallowing the distant hills, midground layer of tall bare tree trunks fading into the fog, foreground layer of a narrow dirt trail bordered by low scrubby bushes running across the bottom of the frame. Dense heavy fog rolling low across the whole scene, muted cold palette of pale grey, muted green and soft white mist.",
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Long Wang 18 Lakes Hillside",
+      "type": "background",
+      "case": 1,
+      "description": "A scenic hillside overlook above a chain of small lakes, a popular tourist spot. Layered flat-depth composition: background layer of a series of pale blue-grey lakes nestled between low misty hills, midground layer of a grassy hillside slope with a few scattered rocks, foreground layer of a flat grassy hilltop clearing spanning the bottom of the frame. Soft overcast palette of pale blue, muted green and grey mist.",
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Long Wang 18 Lakes Opposite Hilltop",
+      "type": "background",
+      "case": 1,
+      "description": "A second scenic hilltop at the same lake district, the viewpoint looking across toward a neighbouring hill. Layered flat-depth composition: background layer of the same chain of pale blue-grey lakes nestled between low misty hills, midground layer of one distinct rounded grassy hill standing clearly apart across a shallow empty dip of lower ground, its bare grassy crown plainly visible, foreground layer of a flat grassy hilltop clearing spanning the bottom of the frame. Same soft overcast palette of pale blue, muted green and grey mist as the other hillside background, with the same simple scattered rock and grass shapes. The far hill must be clearly separated from the near foreground hilltop by the visible dip of lower ground between them, so the two hilltops plainly read as two separate places a short distance apart.",
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "status": "success",
+      "notes": "Bối cảnh ĐỐI DIỆN của 'Long Wang 18 Lakes Hillside' — cùng địa điểm nhưng là ngọn đồi A Fei ĐỨNG, nhìn sang đồi bên kia (nơi nhóm 5 người đứng). Tạo ra để tách câu kịch bản 'spotted a group ... then drew closer' thành 2 shot có vị trí không gian khác nhau (shot/reverse-shot) thay vì gộp làm 1 ảnh — xem RUNBOOK mục 8.2i."
+    },
+    {
+      "name": "Misty Forest Interior",
+      "type": "background",
+      "case": 1,
+      "description": "Deep inside a dense misty forest. Layered flat-depth composition: background layer of tall tree trunks fading into thick pale fog, midground layer of a dense cluster of bare and leafy tree trunks of varying width, foreground layer of a flat forest floor covered in fallen leaves and low undergrowth spanning the bottom of the frame. Heavy fog drifting between the trees, muted cold palette of deep green, grey-brown bark and pale mist.",
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "A Fei's House Interior",
+      "type": "background",
+      "case": 1,
+      "description": "Flat head-on elevation of the inside of a small rural Chinese living room, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a plain cream wall band, one straight wooden shelf running edge to edge holding a few simple household items, a band with one plain wooden table and a couple of simple wooden chairs standing at the same height, and a flat wooden floor strip across the bottom. Every piece of furniture drawn face-on at the same scale, no receding side wall visible, every horizontal line unbroken from the left edge to the right edge. Warm muted palette of cream and brown wood tones.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Woven Shopping Basket",
+      "type": "prop",
+      "case": 1,
+      "description": "A round woven wicker shopping basket with two curved carrying handles arching over the top, holding a few simple wrapped cloth bundles and a couple of vegetables poking out from inside.",
+      "status": "success"
+    },
+    {
+      "name": "Forest Boulder",
+      "type": "prop",
+      "case": 1,
+      "description": "A single large rounded grey boulder half-covered in patches of moss, resting alone on bare ground, flat mottled grey stone surface, roughly the size a person could sit down on.",
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): người dùng quyết định cảnh \"ngồi xuống tảng đá lớn\" nên vẽ thẳng tảng đá VÀO trong 1 Background hoàn chỉnh (xem \"Forest Clearing With Boulder\" bên dưới) thay vì tách riêng thành Prop rồi ghép sau. Đừng dùng entry Prop này nữa."
+    },
+    {
+      "name": "Forest Ridge Overlook",
+      "type": "background",
+      "case": 1,
+      "description": "A dramatic misty forest overlook, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline filling the top of the frame with dark green treetops on brown trunks, midground layer of a tall eroded dirt and clay embankment face running the full width of the frame with varied earthy brown tones and shadowed crevices, foreground layer of low green bushes and drifting pale mist along the very bottom edge. Muted earthy palette of brown clay, dark green foliage and soft white mist.",
+      "composition": "layered",
+      "reserveCharacterSpace": false,
+      "status": "success",
+      "notes": "LỖI THỜI (2026-08-03): người dùng thấy ảnh thiếu đường đi. Đã tạo lại có thêm đường mòn dưới tên \"Forest Ridge Overlook V2\". Đừng dùng entry này nữa."
+    },
+    {
+      "name": "Forest Ridge Overlook V2",
+      "type": "background",
+      "case": 1,
+      "description": "A dramatic misty forest overlook, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline filling the top of the frame with dark green treetops on brown trunks, midground layer of a tall eroded dirt and clay embankment face running the full width of the frame with varied earthy brown tones and shadowed crevices, foreground layer of a narrow dirt trail path running along the base of the embankment from the far left edge to the far right edge, bordered by low green bushes and drifting pale mist along the very bottom edge. Muted earthy palette of brown clay, dark green foliage and soft white mist.",
+      "composition": "layered",
+      "reserveCharacterSpace": false,
+      "status": "success"
+    },
+    {
+      "name": "Forest Waterfall Meadow",
+      "type": "background",
+      "case": 1,
+      "description": "A hidden waterfall in a misty mountain valley, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline along the top of the frame with a faint pale mountain silhouette peeking between the trees, midground layer of two tall grey rock cliff faces flanking a narrow waterfall dropping straight down between them, foreground layer of a flat green grassy meadow spanning the full width of the frame with a couple of smooth grey rocks at the base of the waterfall. Cool palette of grey stone, pale blue water and soft green grass.",
+      "composition": "layered",
+      "reserveCharacterSpace": false,
+      "status": "success"
+    },
+    {
+      "name": "Forest Clearing With Boulder",
+      "type": "background",
+      "case": 1,
+      "description": "A small forest clearing, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame with dark green treetops, brown trunks and darker green bushes along the tree line, and a flat dirt clearing floor strip across the bottom, no sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on. The rest of the clearing floor stays open and empty. Muted palette of deep green foliage, brown dirt and grey stone.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    },
+    {
+      "name": "Forest Clearing With Boulder Night",
+      "type": "background",
+      "case": 1,
+      "description": "The same small forest clearing as \"Forest Clearing With Boulder\" but at night, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame, dark navy night sky with a few small pale stars just visible through gaps between the treetops, and a flat dark dirt clearing floor strip across the bottom, no other sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on, same shape and position as the day version. The rest of the clearing floor stays open and empty. Dark cold nighttime palette of deep navy, charcoal and muted moonlit blue-grey.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "status": "success"
+    }
+  ]
+}
