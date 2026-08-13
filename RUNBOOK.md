@@ -59,12 +59,14 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   --case 1`, sau đó thêm 1 background + 1 cảnh nữa khi tách shot đoạn "18
   Lakes" — xem mục 8.2i; không lỗi nào). Xem mục 8.2 cho các bài học rút ra
   khi làm case 1.
-- **(2026-08-11) Case 2 (Don Decker) đã HOÀN TẤT phần ảnh**: 24 asset + 24 cảnh
-  ghép, tất cả `success`. Don có 3 bản trang phục (`Don Decker` đồ thường /
-  `Don Decker Prison` / `Don Decker Funeral`). Case 3-6 chưa viết gì.
-  Toàn tập hiện: **54 asset + 46 cảnh, không còn mục nào chưa success.**
-  🔧 **Đã sửa code trong lúc làm case 2**: `assertAssetNamed()` (mục 8.1.3k) và
-  **sửa lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — lỗi nặng nhất)**.
+- **(2026-08-11) Case 2 (Don Decker) đã HOÀN TẤT phần ảnh** — bộ dùng chính thức
+  là **thế hệ `3Q`**: 13 nhân vật + 23 cảnh mang hậu tố ` 3Q`, góc 3/4 + thân
+  tối giản. Các entry KHÔNG có hậu tố đó là bản cũ, đã đánh dấu lỗi thời trong
+  `notes`, giữ lại làm lịch sử — **đừng dùng làm reference**.
+  Toàn tập hiện: **81 asset + 79 cảnh, không còn mục nào chưa `success`.**
+  🔧 **Đã sửa code trong lúc làm case 2**: `assertAssetNamed()` (mục 8.1.3k),
+  **lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — nặng nhất)**, và bộ block
+  ép góc 3/4 + thân tối giản (mục 8.1.3m).
 
 ### ✅ BA QUYẾT ĐỊNH CHỐT CUỐI PHIÊN 2026-08-11
 
@@ -87,12 +89,16 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
 ### ⏳ VIỆC ĐANG TREO (2026-08-11) — đọc trước khi chạy tiếp
 
 1. ~~Tạo lại ~19 cảnh case 2 nghi đính sai asset~~ — **XONG 2026-08-11**, gộp
-   vào đợt tạo lại thế hệ  (13 nhân vật + 23 cảnh, tạo bằng code đã vá khớp
+   vào đợt tạo lại thế hệ `3Q` (13 nhân vật + 23 cảnh, tạo bằng code đã vá khớp
    tên chính xác nên không còn nguy cơ đính nhầm).
+2. ~~Tạm dừng Playwright vì Flow quá tải~~ — **HẾT**, Flow chạy bình thường trở
+   lại từ chiều 2026-08-11.
+3. **Ảnh trùng tên còn sót trong Flow**: vài asset `3Q` bị tạo 2 lần (mẻ đầu bị
+   dừng giữa chừng để sửa prompt). Code khớp tên chính xác + Flow sắp "Recent"
+   nên bản MỚI luôn thắng, không sai chức năng — nhưng nên xoá tay bản cũ cho
+   gọn khi tiện.
 
-2. ~~Tạm dừng Playwright vì Flow quá tải~~ — **HẾT**, Flow đã chạy bình thường
-   trở lại từ chiều 2026-08-11.
-  ⚠️ **Người dùng có bộ thiết kế nhân vật RIÊNG cho case 2** (ảnh dán trong
+⚠️ **Người dùng có bộ thiết kế nhân vật RIÊNG cho case 2** (ảnh dán trong
   hội thoại 2026-08-11, không lưu trong repo) khác với asset đã tạo ở vài
   điểm: Don mặc áo vàng mustard (asset ghi xám nhạt), Bob tóc đen không ria
   (asset ghi tóc xoăn có ria dày), Priest áo choàng trắng cổ xanh (asset ghi
