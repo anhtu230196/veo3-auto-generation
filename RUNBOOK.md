@@ -66,27 +66,32 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   🔧 **Đã sửa code trong lúc làm case 2**: `assertAssetNamed()` (mục 8.1.3k) và
   **sửa lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — lỗi nặng nhất)**.
 
+### ✅ BA QUYẾT ĐỊNH CHỐT CUỐI PHIÊN 2026-08-11
+
+1. **Case 1 (A Fei) GIỮ NGUYÊN** — người dùng xác nhận tạo hình nhân vật case 1
+   đã đúng, KHÔNG tạo lại theo thế hệ `3Q` như case 2. Đừng tự đề xuất làm lại
+   để "đồng bộ" nữa.
+2. **Case 3-6: làm từ từ**, không gấp.
+3. **CHỐT dùng phong cách PHỐI CẢNH cho background** (`composition:
+   "perspective"` → `SIMPLE_PERSPECTIVE_BLOCK`). Nền phẳng trực giao chỉ còn
+   dùng khi có lý do riêng. Case 1 và 2 giữ nguyên nền phẳng đã có — chỉ áp
+   phối cảnh cho background MỚI từ case 3 trở đi.
+   ⚠️ Block này đã được vá 2 lỗi lộ ra ở bản thử (ngoại cảnh nhà Bob): vân gỗ
+   ốp tường chi li, và đổ bóng nhẹ để phân biệt các mặt. Cách vá: cấm texture
+   theo TÊN (wood grain / siding lines / brick courses / roof tiles /
+   floorboards / panel seams) và chỉ ra cách phân biệt mặt KHÔNG cần bóng —
+   *"give each surface a DIFFERENT FLAT TINT of the same colour, never shade"*.
+   **CHƯA chạy thử lại sau khi vá** — background phối cảnh đầu tiên của case 3
+   nên soi kỹ 2 điểm này.
+
 ### ⏳ VIỆC ĐANG TREO (2026-08-11) — đọc trước khi chạy tiếp
 
-1. **Cần TẠO LẠI ~19 cảnh case 2 nghi đính sai asset.** Lỗi 8.1.3l tồn tại từ
-   đầu tới 2026-08-11, nên mọi cảnh tạo TRƯỚC bản vá mà tham chiếu tên là chuỗi
-   con của tên khác đều có thể đã ghép nhầm ảnh — **cảnh vẫn trông bình thường,
-   không có lỗi nào báo ra**. Nhóm gần như chắc sai: mọi cảnh dùng `Bob`
-   (7 cảnh), `Don Decker` (9 cảnh), `Landlord` (3 cảnh) — vì các asset tên dài
-   hơn (`Bob Kitchen`, `Don Decker Prison`…) đều tạo SAU nên Flow sắp "Recent"
-   đưa chúng lên đầu. Case 1 có 3 cảnh dùng `Forest Clearing With Boulder`
-   (nghi bị kéo bản `Night` vào) nhưng người dùng đã duyệt mắt và thấy ổn.
-   Rà lại danh sách bằng:
-   ```bash
-   node -e "const a=require('./narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/assets.json').assets.map(x=>x.name),s=require('./narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/scenes.json').scenes,all=[...a,...s.map(x=>x.name)],r=new Set(all.filter(n=>all.some(m=>m!==n&&m.toLowerCase().includes(n.toLowerCase()))));console.log(s.filter(x=>x.references.some(v=>r.has(v))).map(x=>x.name))"
-   ```
-   Cách tạo lại: đặt `status: "waiting"` cho các cảnh đó rồi chạy
-   `npm run banana-scenes`. **Ảnh cũ vẫn nằm trong Flow dưới cùng tên** → phải
-   đổi tên mới (thêm hậu tố) hoặc xoá tay ảnh cũ, nếu không sẽ có 2 ảnh trùng tên.
+1. ~~Tạo lại ~19 cảnh case 2 nghi đính sai asset~~ — **XONG 2026-08-11**, gộp
+   vào đợt tạo lại thế hệ  (13 nhân vật + 23 cảnh, tạo bằng code đã vá khớp
+   tên chính xác nên không còn nguy cơ đính nhầm).
 
-2. **TẠM DỪNG mọi lệnh Playwright (2026-08-11)**: Flow đang báo *"currently
-   experiencing high demand, affecting video generation"*. Người dùng yêu cầu
-   hoãn chạy tới khi Flow ổn định lại.
+2. ~~Tạm dừng Playwright vì Flow quá tải~~ — **HẾT**, Flow đã chạy bình thường
+   trở lại từ chiều 2026-08-11.
   ⚠️ **Người dùng có bộ thiết kế nhân vật RIÊNG cho case 2** (ảnh dán trong
   hội thoại 2026-08-11, không lưu trong repo) khác với asset đã tạo ở vài
   điểm: Don mặc áo vàng mustard (asset ghi xám nhạt), Bob tóc đen không ria

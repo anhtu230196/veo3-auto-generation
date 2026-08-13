@@ -451,7 +451,12 @@ export const SIMPLE_PERSPECTIVE_BLOCK =
   "black outline. " +
   "Use a narrow palette for the whole picture: one dominant hue rendered in a few flat tints, " +
   "so the mood comes from colour choice rather than from light and shadow. If sky is visible it " +
-  "is ONE flat colour band with a simple skyline of plain flat rectangles in a lighter tint.";
+  "is ONE flat colour band with a simple skyline of plain flat rectangles in a lighter tint. " +
+  "To tell two surfaces apart, give each one a DIFFERENT FLAT TINT of the same colour — never " +
+  "use shading, never darken an edge, never blend. " +
+  "Draw NO surface texture of any kind: no wood grain, no clapboard or siding lines, no brick " +
+  "courses, no roof tiles or shingles, no floorboards, no panel seams. Every wall, roof and " +
+  "floor is ONE single empty flat shape with nothing drawn inside it.";
 
 /**
  * GÓC PHÒNG NỘI THẤT — cho background trong nhà sẽ được GHÉP NHÂN VẬT vào.
