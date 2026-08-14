@@ -143,6 +143,34 @@ rõ.
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
 
+### 5a. TÓC + RÂU: mô tả cho MỌI nhân vật có tên, và phải KHÁC NHAU
+
+Người dùng chốt 2026-08-13: **mỗi nhân vật có tên đều phải được tả tóc, và tả
+râu nếu là nam** — kể cả vai chỉ xuất hiện 1-2 cảnh. Lý do: phong cách này đã
+lược hết mũi/lông mày, mặt chỉ còn 2 chấm mắt + 1 nét miệng, nên **tóc và râu
+gần như là thứ DUY NHẤT phân biệt người này với người kia**. Bỏ trống thì cả
+dàn nhân vật ra na ná nhau và ảnh mất tác dụng làm bản nháp dựng.
+
+Ngoại lệ DUY NHẤT: **người nền/đám đông** (khách viếng, quản giáo đứng nền,
+hàng xóm) — nhóm này vẽ thẳng vào background bằng `editFrom` (mục 5c) và chỉ
+cần *"vary their heights and hair colours slightly"*, không tả kỹ.
+
+Hai điểm dễ sai:
+- **"Clean-shaven" là một lựa chọn, không phải mặc định để trống.** Vẫn phải
+  viết ra (*"clean-shaven with no beard and no moustache"*) — nhưng nếu cả case
+  ai cũng clean-shaven thì đã hỏng mục đích. Rải cho khác nhau: ria không râu /
+  râu quai nón đầy có ria / râu cằm không ria / chỉ tóc mai / cạo nhẵn.
+- **Tóc phải khác nhau ở CẢ 3 trục**: độ dài–kiểu (cắt cua, xoăn, rẽ ngôi giữa,
+  hói đỉnh còn tóc 2 bên), MÀU, và có/không đội mũ che tóc. Đội mũ thì vẫn nói
+  phần tóc lộ ra dưới vành (*"showing below the hat brim"*), không thì model tự
+  cho hói.
+
+Rà nhanh sau khi viết xong: đọc dọc cột tóc + râu của cả case một lượt — có 2
+nhân vật nào trùng cả hai không? Trùng thì đổi, đừng để tới lúc soi ảnh.
+
+*(Case 3 "Carl Ledges" là case đầu áp quy tắc này: 8 nhân vật ra 8 kiểu râu/tóc
+khác nhau — xem `case-3/assets.json` làm mẫu.)*
+
 ### 5c. ĐÁM ĐÔNG NỀN: vẽ thẳng vào background bằng `editFrom`, không tạo asset riêng
 
 Cảnh cần vài người vô danh (khách viếng đám tang, quản giáo đứng nền, hàng xóm
