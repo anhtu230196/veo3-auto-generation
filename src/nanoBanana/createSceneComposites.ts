@@ -91,6 +91,9 @@ async function main() {
   }
   await context.close();
   if (failed.length) process.exit(1);
+  // Xem chú thích cùng chỗ trong createImageAssets.ts — chế độ CDP giữ websocket mở nên
+  // không exit tường minh thì node treo sau khi chạy xong.
+  process.exit(0);
 }
 
 main().catch((e) => {

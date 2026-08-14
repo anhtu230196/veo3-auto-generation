@@ -165,6 +165,11 @@ async function main() {
   }
   await context.close();
   if (failed.length) process.exit(1);
+  // PHẢI exit tường minh: ở chế độ CDP (CHROME_CDP_URL, xem browser.ts) `context.close()` bị
+  // vô hiệu hoá có chủ đích, nên websocket tới Chrome còn mở và giữ event loop sống — node
+  // treo vô hạn SAU KHI đã tạo xong hết. Nhánh lỗi vốn đã exit(1) nên không lộ ra; nhánh
+  // thành công thì treo, để lại tiến trình mồ côi và làm mọi thứ chờ "lệnh chạy xong" bị kẹt.
+  process.exit(0);
 }
 
 main().catch((e) => {
