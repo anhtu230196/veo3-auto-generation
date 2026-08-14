@@ -1,0 +1,196 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích",
+  "flowProject": "vu-viec-tam-linh-case-3",
+  "assets": [
+    {
+      "name": "Rancher Carl",
+      "type": "character",
+      "case": 3,
+      "description": "a man in his forties wearing a plain dark brown open waistcoat over a plain faded blue work shirt with a plain collar as his one and only garment, a plain wide-brimmed tan felt hat on his head, thick dark brown hair cut short at the sides and showing below the hat brim, a thick full dark brown moustache covering the upper lip and no beard",
+      "status": "success",
+      "notes": "Nhân vật chính, dùng cho CẢ cảnh ngày lẫn đêm — không đổi trang phục trong suốt case nên chỉ 1 asset (khác Don Decker case 2 phải tách 3 bộ đồ)."
+    },
+    {
+      "name": "Previous Land Owner",
+      "type": "character",
+      "case": 3,
+      "description": "an old man wearing a plain dark green wool waistcoat over a plain collarless cream shirt as his one and only garment, a plain grey flat cap on his head, grey hair showing below the cap at the temples, a short neatly trimmed grey beard along the jaw together with a grey moustache",
+      "status": "success",
+      "notes": "Người bán đất cho Carl năm 1921, nói câu cảnh báo. KHÁC 'Ranch Owner Frank' (chủ đất 7 năm trước, 1914) — kịch bản tả 2 vai riêng, giữa 1914 và 1921 đã qua nhiều đời chủ ('many people have failed here')."
+    },
+    {
+      "name": "Farmhand Henry Alive",
+      "type": "character",
+      "case": 3,
+      "description": "a man in his thirties wearing a plain brown work shirt with a plain red neckerchief knotted at the throat as his one and only garment, no hat, wavy sandy-blond hair parted in the middle and falling just over the ears, a long drooping fair moustache and no beard",
+      "status": "success",
+      "notes": "Henry lúc còn sống (hồi tưởng 1914). Phần tóc + ria PHẢI trùng NGUYÊN VĂN với 'Ghost In White Suit' để khán giả đọc ra 2 asset là cùng 1 người — đúng quy tắc skill mục 5b."
+    },
+    {
+      "name": "Ghost In White Suit",
+      "type": "character",
+      "case": 3,
+      "description": "a man in his thirties wearing a plain all-white long work coat buttoned to the throat as his one and only garment, no hat, wavy sandy-blond hair parted in the middle and falling just over the ears, a long drooping fair moustache and no beard, the face drawn in a pale bloodless grey-white skin tone instead of the reference image's pink skin tone",
+      "status": "success",
+      "notes": "Bóng ma áo trắng. Tóc + ria chép NGUYÊN VĂN từ 'Farmhand Henry Alive', chỉ đổi trang phục + tông da. Nếu ảnh ra trắng-trên-trắng khó đọc, tạo V2 đổi tông da sang xám nhạt hơn (outline đen vẫn giữ hình)."
+    },
+    {
+      "name": "Ranch Owner Frank",
+      "type": "character",
+      "case": 3,
+      "description": "a heavy-set man in his fifties wearing a plain black waistcoat over a plain dark grey shirt as his one and only garment, no hat, bald on top with dark hair remaining only at the sides above the ears, a thick full black beard covering the jaw and chin together with a black moustache",
+      "status": "success"
+    },
+    {
+      "name": "Ranch Stable Hand",
+      "type": "character",
+      "case": 3,
+      "description": "a young man in his twenties wearing plain faded blue bib overalls over a plain light grey shirt as his one and only garment, no hat, curly ginger hair, no beard and no moustache but with wide ginger sideburns running down in front of the ears",
+      "status": "success"
+    },
+    {
+      "name": "Well Cleaner Worker",
+      "type": "character",
+      "case": 3,
+      "description": "a wiry man in his forties wearing plain dark brown canvas coveralls as his one and only garment, a plain flat dark grey cloth cap on his head, black hair cropped very short at the sides, a thick black moustache with both ends turned down and no beard",
+      "status": "success"
+    },
+    {
+      "name": "County Sheriff",
+      "type": "character",
+      "case": 3,
+      "description": "a police officer wearing a plain dark navy uniform coat with a plain five-pointed silver star badge on the chest as his one and only garment, a plain dark navy peaked cap on the head, short auburn hair showing below the cap, a neatly trimmed reddish-brown beard along the jaw and chin with no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Ranch Horse",
+      "type": "prop",
+      "case": 3,
+      "description": "A single simplified brown horse standing still, seen in full side profile with the whole body inside the frame. One plain rounded rectangular body, one thick curved neck, one plain wedge-shaped head with a short blunt muzzle, and ONE plain round black dot eye — the far eye is hidden because the horse is seen from the side. Two plain flat ear shapes on top of the head. All four legs drawn as flat-coloured solid shapes with real width and volume, NOT as thin stick lines, each ending in one small plain rounded dark hoof shape with no toe detail. The mane is ONE single flat darker brown shape along the neck and the tail is ONE single flat darker brown shape — neither is drawn as strands or thin lines. No saddle, no bridle, no reins, no harness, no rope. No muscle lines, no hair texture, no spots, no markings.",
+      "status": "success",
+      "notes": "Ngựa khai báo type 'prop' vì runner chưa có type 'animal' — PROP_STYLE_BLOCK đã ép đúng điều quan trọng nhất của ANIMAL_STYLE_BLOCK (chân là khối phẳng có độ dày, không phải nét que) nên dùng được. Tạo Prop thay vì vẽ thẳng vào background vì ngựa xuất hiện ở 2 bối cảnh khác nhau (dựng trại + máng nước)."
+    },
+    {
+      "name": "Oil Lantern",
+      "type": "prop",
+      "case": 3,
+      "description": "A single old farm oil lantern. One plain rounded rectangular glass body crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass, one plain dark metal cap on top with one plain half-circle carrying handle above it, and one plain dark metal base block below. Inside the glass, ONE single small plain orange teardrop shape for the flame and nothing else. Absolutely NO glow, NO light rays, NO sparkle, NO halo and NO cast light of any kind anywhere in the picture — flat matte shapes only.",
+      "status": "success"
+    },
+    {
+      "name": "Hand Water Pump",
+      "type": "prop",
+      "case": 3,
+      "description": "A single old cast-iron hand water pump. One plain vertical cylindrical column standing on one plain square base block, one plain curved spout near the top pointing off to one side, one long plain straight lever handle sticking up at an angle from the top of the column, and one plain thick hose drawn as a single simple curved tube running from the base off to one side and ending at the edge of the frame. No bolts, no rivets, no lettering, no gauge, no water, no drips.",
+      "status": "success"
+    },
+    {
+      "name": "Muddy Leather Shoe",
+      "type": "prop",
+      "case": 3,
+      "description": "A single old leather work shoe seen from the side. One plain rounded shoe shape in flat dark brown with one plain flat darker sole shape underneath, and EXACTLY THREE short plain straight lace lines across the top and nothing more. A few plain irregular flat patches of dark grey mud sit on the shoe. No stitching lines, no eyelets, no tread pattern, no hanging laces, no texture of any kind.",
+      "status": "success"
+    },
+    {
+      "name": "Stopped Pocket Watch",
+      "type": "prop",
+      "case": 3,
+      "description": "A single old round pocket watch seen face-on. One plain circle for the outer metal case, one plain slightly smaller circle inside it for the flat pale cream dial, one plain small ring at the top of the case with one short chain of EXACTLY FOUR plain oval links attached to it. On the dial draw EXACTLY TWELVE plain short straight tick marks evenly spaced around the rim and NOTHING MORE — no numerals, no numbers, no small second dial, no maker's name, no decoration. Exactly TWO hands and no more: one SHORT thick hand pointing to the left and very slightly downward, just past the tick mark at the nine o'clock position, and one LONG thin hand pointing down and to the left toward the tick mark at the seven o'clock position. One tiny plain round dot where the two hands meet at the centre. No glass reflection, no glow, no shine.",
+      "status": "success",
+      "notes": "Kim đồng hồ tả bằng HÌNH HỌC (vị trí 9h và 7h) thay vì viết '9:35' — model không đọc được giờ bằng chữ. Đây là chi tiết chốt của case, soi kỹ khi nhận ảnh; sai thì tạo 'Stopped Pocket Watch V2' chứ đừng sửa cùng tên."
+    },
+    {
+      "name": "Ohio Farmland Plot Daytime",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "An empty stretch of open Ohio farmland in 1921, seen in ordinary cartoon perspective from the edge of a dirt track. A plain tan dirt track runs from the bottom edge of the frame away toward the horizon. Along one side of it stands a plain post-and-rail fence with EXACTLY SIX plain fence posts and no more, joined by exactly TWO straight horizontal rails and nothing else. Beyond the fence, plain flat fields of dry yellow-green grass reach back to one low row of plain dark green trees along the horizon, all drawn at the same height. The sky is ONE flat pale blue band with no clouds. The near ground across the bottom third of the frame is one plain empty flat strip of tan dirt, left completely clear and empty. Warm dry palette of yellow-green, tan and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "BACKGROUND PHỐI CẢNH ĐẦU TIÊN sau khi vá SIMPLE_PERSPECTIVE_BLOCK (RUNBOOK mục 0, quyết định 3). SOI KỸ 2 điểm bản vá nhắm tới: (1) có vân bề mặt (vân gỗ hàng rào, sọc ốp) hay không; (2) có đổ bóng/tối cạnh để phân biệt mặt hay không — đúng thì mỗi mặt chỉ là 1 sắc độ phẳng khác nhau."
+    },
+    {
+      "name": "Old Farmstead Yard Daytime",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The yard of an old worn-out Ohio farmstead in 1921, seen in ordinary cartoon perspective from the middle of the yard. On the LEFT stands a small single-storey farmhouse set at an angle so both its front wall and one side wall are visible: each wall is ONE single flat shape of pale grey, the side wall in a slightly different flat tint of the same grey, under a plain dark grey pitched roof drawn as two simple angled planes. The farmhouse has EXACTLY ONE plain door and EXACTLY TWO plain square windows in total and no more. On the RIGHT and further back stands a plain dark red barn drawn as one simple angled box with EXACTLY ONE large plain square doorway and no windows at all. Between them, standing clearly in the middle distance, is a round stone well: one plain low circular wall of flat grey drawn as ONE single shape with no individual stones and no courses drawn on it, with exactly two plain wooden uprights and one plain crossbeam above it. Along the far edge of the yard behind the well runs one plain low wooden fence made of EXACTLY FIVE plain posts joined by exactly TWO straight horizontal rails. The ground is one plain flat tan dirt yard, and the near ground across the bottom third of the frame is left completely clear and empty. Draw NO wood grain, NO plank lines, NO clapboard lines, NO brick courses and NO roof shingles anywhere. Muted palette of grey, dark red and tan in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Dùng cho CẢ mốc 1921 (mua đất) LẪN hồi tưởng 1914 (Frank & Henry) — cùng một trang trại cũ trước khi Carl xây lại, nên dùng chung là ĐÚNG chứ không phải tiết kiệm. Cái giếng đá ở đây là cùng cái giếng của 'Stone Well Close View Daytime'."
+    },
+    {
+      "name": "Old Farmstead Yard With Neighbours",
+      "type": "background",
+      "case": 3,
+      "editFrom": "Old Farmstead Yard Daytime",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same farmhouse, the same barn, the same stone well, the same low wooden fence, the same tan dirt yard, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY TWO plain standing people behind the low wooden fence at the far edge of the yard, both leaning on the top rail and both looking toward the middle of the yard. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Make one of them clearly taller than the other and give them different flat hair colours so they do not look like copies of one figure. They must stay small and far away, entirely behind the fence and entirely within the far third of the picture — the whole middle and near part of the yard stays clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Hàng xóm nghe tiếng cãi nhau = ĐÁM ĐÔNG NỀN, vẽ thẳng vào background bằng editFrom theo skill mục 5c — không tạo Character asset riêng. Vì editFrom bỏ qua mọi style block nên phải tự tả tay 3/4 + 2 mắt + thân dạng que, và cũng nhờ vậy mới lách được điều khoản 'NO people' của BACKGROUND_STYLE_BLOCK."
+    },
+    {
+      "name": "Carl Horse Ranch Yard Daytime",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The yard of a newly built horse ranch in 1921, seen in ordinary cartoon perspective from the middle of the yard. On the RIGHT stands a long new stable building set at an angle so both its front wall and one end wall are visible: each wall is ONE single flat shape of pale timber yellow, the end wall in a slightly different flat tint of the same yellow, under a plain dark green pitched roof drawn as two simple angled planes. The stable front has EXACTLY THREE plain square stall doorways evenly spaced and no more, and no windows at all. On the LEFT, a plain paddock fence runs away from the viewer with EXACTLY FIVE plain posts joined by exactly TWO straight horizontal rails and nothing else. Standing on the open ground in the near middle of the yard is one plain long wooden water trough, drawn as one simple flat-sided box shape with a plain flat blue-grey water surface inside it. Behind everything, one low row of plain dark green trees at the same height along the horizon under ONE flat pale blue sky band. The ground is one plain flat tan dirt yard, and the near ground across the bottom third of the frame is left completely clear and empty. Draw NO wood grain, NO plank lines, NO clapboard lines and NO roof shingles anywhere. Fresh palette of pale timber yellow, dark green and tan in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success"
+    },
+    {
+      "name": "Carl Horse Ranch Yard Night",
+      "type": "background",
+      "case": 3,
+      "editFrom": "Carl Horse Ranch Yard Daytime",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same stable at the same angle with the same three stall doorways, the same paddock fence, the same water trough, the same row of trees, the same ground, the same layout and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY the time of day to night: the sky becomes ONE flat very dark blue band carrying EXACTLY FIVE plain small white dots for stars and nothing more, and every other surface keeps its own shape but is filled with a much darker flat tint of the colour it already has. Do NOT add any lamp, any lit window, any glow, any light beam, any moon, any cloud, any shadow and any texture. Add no people and no animals. Everything else stays exactly as it already is.",
+      "status": "success"
+    },
+    {
+      "name": "Stone Well Close View Daytime",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "One round stone well standing alone in a bare farm yard, seen close and in ordinary cartoon perspective slightly from one side. The low circular well wall is drawn as ONE single flat grey shape with its top opening as one plain dark ellipse — no individual stones, no courses, no cracks and no texture drawn on it anywhere. Above the well stand exactly two plain wooden uprights carrying one plain horizontal crossbeam, with one plain small roller across the middle of the beam and ONE single straight rope line hanging from the roller down into the dark opening. Behind the well, plain flat fields of dry yellow-green grass reach back to one low row of plain dark green trees at the same height along the horizon, under ONE flat pale blue sky band. The near ground across the bottom third of the frame is one plain empty flat strip of tan dirt, left completely clear and empty, and the well itself stands back from it in the middle of the picture so the whole near ground stays free. Draw NO wood grain and NO plank lines on the timbers. Warm dry palette of grey, yellow-green and tan in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Cận cảnh CÙNG cái giếng đã thấy ở giữa sân trong 'Old Farmstead Yard Daytime' — giữ đúng mô tả (tường tròn xám 1 mảng, 2 trụ + 1 xà ngang) để 2 background đọc ra là một nơi."
+    },
+    {
+      "name": "Stone Well Close View Night",
+      "type": "background",
+      "case": 3,
+      "editFrom": "Stone Well Close View Daytime",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same well in the same position at the same angle, the same two uprights and crossbeam, the same roller and hanging rope, the same fields and row of trees, the same empty near ground, the same layout and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY the time of day to night: the sky becomes ONE flat very dark blue band carrying EXACTLY FIVE plain small white dots for stars and nothing more, and every other surface keeps its own shape but is filled with a much darker flat tint of the colour it already has. Do NOT add any lamp, any glow, any light beam, any moon, any mist, any shadow and any texture. Add no people. Everything else stays exactly as it already is.",
+      "status": "success"
+    },
+    {
+      "name": "Well Bottom Mud Interior",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The bottom of a deep stone well seen from inside, in ordinary cartoon perspective. The curved shaft wall fills the whole picture behind and is drawn as ONE single flat dark grey-brown shape with NO individual stones, NO courses, NO cracks and NO texture of any kind inside it — only EXACTLY THREE plain long curved lines running across it to show that the wall is round, and nothing more. High up at the top centre of the frame is one plain small pale circle of daylight, the open mouth of the well far above, with ONE single straight rope line hanging from it straight down the wall. The bottom third of the frame is a plain flat area of dark brown mud drawn as ONE single flat shape, completely clear and empty, with one plain slightly darker flat puddle shape at one side. Dim palette of dark grey-brown and deep green in a few flat tints. No glow around the circle of daylight, no light beam, no shaft of light, no reflection.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Well Bottom Mud Interior V2'. Người dùng xem ảnh và chỉ ra: ra như 1 CÁI HANG RỘNG chứ không phải đáy giếng. Nguyên nhân: mô tả chỉ nói 'curved shaft wall fills the whole picture' — 'cong' và 'lấp đầy khung' không hề ép độ HẸP, nên model trải bức tường ra kín khung 16:9 nằm ngang. Bài học: muốn không gian chật phải tả bằng SỐ MẢNG + VỊ TRÍ TRONG KHUNG (tường trái chiếm 1/3, tường phải chiếm 1/3), không tả bằng tính từ."
+    },
+    {
+      "name": "Well Bottom Mud Interior V2",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The bottom of a NARROW vertical well shaft seen from inside, drawn as a cut-away so the shaft reads as a TALL VERTICAL RECTANGLE standing in the middle of a wide frame. Draw EXACTLY TWO flat dark brown earth side walls: one fills the whole LEFT THIRD of the frame and one fills the whole RIGHT THIRD, and each runs unbroken from the very top edge of the frame straight down to the very bottom edge. Each side wall is ONE single flat shape, and the two are given slightly DIFFERENT flat tints of the same dark brown so they read as two separate surfaces — never use shading, never darken an edge. Draw NO soil texture, NO stones, NO roots, NO cracks and NO speckles inside them. Between the two side walls, the middle third of the frame is the inside of the shaft: one tall vertical band, plainly much taller than it is wide, filled with ONE flat slightly lighter grey-brown back wall running from the top edge of the frame down to the mud. Across that back wall draw EXACTLY TWO plain long gentle curved lines and NOTHING MORE, so the shaft reads as round. At the very top of that vertical band sits one plain small pale rectangle of daylight, the far-off mouth of the well, with ONE single straight rope line hanging from it straight down the middle of the band and ending just above the mud. Across the bottom third of the frame, and ONLY inside the width of the shaft between the two side walls, lies a plain flat patch of dark brown mud drawn as ONE single flat shape, left completely clear and empty except for one plain slightly darker flat puddle shape at one side. The two side walls come all the way down to that mud, so the space is plainly cramped: at the mud line the gap between them is only a little wider than a crouching man. Dim palette of dark brown and grey-brown in a few flat tints. No glow around the daylight, no light beam, no shaft of light, no reflection.",
+      "status": "success",
+      "notes": "Thay bản đầu (ra như hang rộng). Cách ép độ hẹp: nói thẳng tường trái chiếm 1/3 khung + tường phải chiếm 1/3 khung + khoảng giữa 'cao hơn hẳn chiều rộng', đúng nguyên tắc 'nói bằng hình học quan sát được' của skill mục 9. Bùn chỉ nằm TRONG lòng giếng chứ không trải hết mép khung — đây là chỗ ghép nhân vật ngồi xổm, kiểm tra người có lọt khung không khi soi ảnh."
+    },
+    {
+      "name": "Country Cemetery Daytime",
+      "type": "background",
+      "case": 3,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A small quiet country cemetery in 1921, seen in ordinary cartoon perspective from the end of a grass path. EXACTLY SIX plain rectangular headstones and no more stand in one row running away from the viewer, each one a plain flat pale grey slab with a plain rounded top and absolutely no writing, no carving and no ornament on it. Nearer the viewer stands one plain fresh grave mound of flat brown earth with one plain new pale grey headstone at its head, also completely blank. Behind the row, one plain low black iron fence made of EXACTLY EIGHT plain vertical bars joined by one single horizontal rail marks the far edge, and beyond it one low row of plain dark green trees at the same height stands along the horizon under ONE flat pale grey sky band. The ground is one plain flat green grass plane, and the near ground across the bottom third of the frame is left completely clear and empty. Draw NO grass blades, NO stone texture and NO shadows. Muted palette of pale grey, dark green and brown in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success"
+    }
+  ]
+}

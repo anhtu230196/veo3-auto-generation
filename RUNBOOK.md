@@ -64,6 +64,28 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   tối giản. Các entry KHÔNG có hậu tố đó là bản cũ, đã đánh dấu lỗi thời trong
   `notes`, giữ lại làm lịch sử — **đừng dùng làm reference**.
   Toàn tập hiện: **81 asset + 79 cảnh, không còn mục nào chưa `success`.**
+- **(2026-08-13) Case 3 (Carl Ledges) đã HOÀN TẤT phần ảnh**.
+  `case-3/{assets,scenes}.json` — **23/23 asset `success`** (8 Character +
+  5 Prop + 10 Background; 22 cái chạy 1 mẻ liền không lỗi cái nào, ~29 phút, sau
+  đó thêm `Well Bottom Mud Interior V2`) + **23/23 cảnh ghép `success`** (1 mẻ
+  liền, ~36 phút, không lỗi cái nào). Đây là case đầu tiên KHÔNG có vòng tạo lại
+  nào ở tầng cảnh ghép — nhờ project Flow riêng (hết lớp lỗi khớp nhầm tên) +
+  asset đã soi mắt trước khi ghép.
+  ⚠️ 2 cảnh từng đánh dấu rủi ro chính sách (`Carl Walks Toward The Well At
+  Night` có súng, `Worker Finds Bones In The Mud` có hài cốt) đều QUA NGAY lần
+  đầu — cách viết trung tính trong `notes` của chúng dùng lại được cho case sau. `flowProject: "vu-viec-tam-linh-case-3"` — case
+  ĐẦU TIÊN có project Flow riêng:
+  `https://labs.google/fx/tools/flow/project/5eccdbf6-1fc6-42b6-8134-eccecd8175b2`
+  Background dùng `composition: "perspective"` theo quyết định 3 dưới đây —
+  `Ohio Farmland Plot Daytime` là ảnh phối cảnh ĐẦU TIÊN sau khi vá block, PHẢI
+  soi 2 điểm bản vá nhắm tới (vân bề mặt + đổ bóng) trước khi chạy `npm run
+  banana-scenes`, vì sửa block bây giờ rẻ hơn nhiều so với tạo lại 23 cảnh sau.
+  **Quy ước tóc/râu mới**: mỗi nhân vật có tên phải được tả tóc + râu và phải
+  khác nhau — người dùng chốt 2026-08-13, đã ghi thành mục 5a của skill
+  `nano-banana-image-prompts`, case 3 là case đầu áp dụng.
+  ⚠️ 2 cảnh có rủi ro bị chặn chính sách, đã ghi cách xử lý trong `notes` của
+  chính entry đó: `Carl Walks Toward The Well At Night` (có súng) và
+  `Worker Finds Bones In The Mud` (hài cốt).
   🔧 **Đã sửa code trong lúc làm case 2**: `assertAssetNamed()` (mục 8.1.3k),
   **lỗi đính sai asset do khớp chuỗi con (mục 8.1.3l — nặng nhất)**, và bộ block
   ép góc 3/4 + thân tối giản (mục 8.1.3m).
@@ -277,6 +299,45 @@ Biến môi trường quan trọng: `PARALLEL_WORKERS` — **mặc định đã 
 trong `config.ts` (khác bản gốc dự án mặc định 3), để tránh lặp lại bug mục 4.4
 (nhiều project Flow song song làm 1 nhân vật/bối cảnh có nhiều bản mặt khác
 nhau). Chỉ tăng lên khi thật sự cần tốc độ VÀ đã chấp nhận rủi ro đó.
+
+### Chạy qua CDP (máy công ty chặn Playwright tự mở Chrome)
+
+`browser.ts` trỏ tới mục này. Trên máy công ty, Playwright KHÔNG spawn được
+`chrome.exe` (EDR chặn process con của node); Chrome do người dùng tự mở thì
+chạy bình thường. `headless` KHÔNG cứu được — vẫn spawn đúng chrome.exe.
+
+Cách chạy: đặt `CHROME_CDP_URL=http://127.0.0.1:9222` trong `.env` (đã đặt sẵn),
+rồi mở Chrome BẰNG TAY trước khi chạy bất kỳ lệnh nào:
+
+```bash
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir=C:\Users\AnhTu\Desktop\claude\.auth\chrome-profile --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --disable-background-timer-throttling
+```
+
+- `--user-data-dir` PHẢI khác profile Chrome cá nhân đang chạy — trùng thì Chrome
+  chỉ mở thêm tab và cổng debug KHÔNG BAO GIỜ mở. Dùng `.auth/chrome-profile`
+  (chính profile Playwright cũ) là tiện nhất vì nó giữ sẵn session Google.
+- 3 cờ `--disable-*` là BẮT BUỘC khi cửa sổ bị che: Chrome bóp timer/rAF của cửa
+  sổ nền, mà pipeline toàn chờ UI của 1 SPA nặng.
+- **Kiểm tra trước khi chạy**: `curl http://127.0.0.1:9222/json/version`. Cổng mở
+  KHÔNG có nghĩa là đã đăng nhập — 2026-08-13 gặp đúng ca này: cổng OK, Playwright
+  attach OK, nhưng `.auth/chrome-profile` đã hết session nên Flow đá sang trang
+  chọn tài khoản. Mở `https://labs.google/fx/tools/flow` trong chính cửa sổ đó
+  xem có vào thẳng không; phải đăng nhập thì người dùng TỰ làm.
+- **Ngôn ngữ**: Google phục vụ UI theo ngôn ngữ TÀI KHOẢN, không theo URL. Tài
+  khoản để tiếng Việt thì nút là "Dự án mới" và mọi selector tiếng Anh trượt hết
+  (`ensureProject()` throw ở nhánh landing page). `/fx/en/`, `?hl=en`, `?gl=us`
+  đều bị redirect — phải đổi ngôn ngữ trong cài đặt tài khoản Google.
+- Ở chế độ CDP, `context.close()` bị vô hiệu hoá có chủ đích (Chrome là của người
+  dùng) — **đừng đóng cửa sổ đó trong lúc mẻ đang chạy**, dùng chung profile nên
+  đóng là giết cả mẻ.
+- 🔴 **Runner PHẢI `process.exit()` tường minh ở nhánh THÀNH CÔNG** (đã vá
+  2026-08-13). Vì `context.close()` là no-op ở chế độ CDP, websocket tới Chrome
+  còn mở và giữ event loop sống → node TREO VÔ HẠN sau khi đã tạo xong hết. Nhánh
+  lỗi vốn có `process.exit(1)` nên không lộ ra; nhánh thành công thì treo, để lại
+  tiến trình mồ côi và mọi thứ chờ "lệnh chạy xong" bị kẹt (gặp thật với cả 2
+  runner `createImageAssets.ts` / `createSceneComposites.ts`). Commit
+  `a806c85` ghi "mọi script đều tự process.exit()" — **câu đó SAI cho nhánh
+  thành công**, đừng tin.
 
 **Kiểm tra thay đổi code**: dùng `git status`/`git diff`/`git log` (xem mục 7
 cho thông tin remote) — không cần hỏi lại xem file nào vừa sửa.
