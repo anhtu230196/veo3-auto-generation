@@ -438,12 +438,38 @@ export const NO_PERSPECTIVE_BLOCK =
  * KHÔNG nhắc tới đám đông trong block này (dù ảnh tham khảo dùng bóng người xám rất hiệu quả) —
  * `BACKGROUND_STYLE_BLOCK` cấm mọi bóng người trong background, thêm vào là 2 câu đá nhau.
  * Kỹ thuật đám đông thuộc về prompt CẢNH GHÉP, ghi trong skill.
+ *
+ * 🔴 SỬA LỚN 2026-08-14 — ÉP MỘT ĐIỂM TỤ, MẶT CHÍNH SONG SONG VỚI KHUNG HÌNH.
+ * Người dùng xem loạt background case 4 và loại: "mọi thứ đang bị chéo, nhìn không đúng". Bản
+ * block cũ là THỦ PHẠM TRỰC TIẾP — nó viết thẳng "walls, buildings and furniture are seen at an
+ * angle... rectangular objects are drawn as parallelograms", tức là chủ động YÊU CẦU phối cảnh
+ * 2 điểm tụ (vật xoay chéo, không cạnh nào song song với khung hình).
+ *
+ * Phân biệt cần nhớ, vì 2 thứ này rất dễ gộp làm một:
+ * - "Có chiều sâu" (thứ người dùng MUỐN, quyết định 2026-08-11) — vẫn giữ.
+ * - "Vật xoay chéo góc" (thứ người dùng KHÔNG muốn) — bỏ.
+ * Phối cảnh MỘT điểm tụ cho cả hai: mặt chính vẫn là hình chữ nhật thật song song với khung,
+ * chiều sâu chỉ nằm ở các cạnh chạy lùi về điểm tụ. Đây cũng là kiểu phối cảnh dễ đồ lại bằng
+ * tay nhất — phần lớn đường nét vẫn là ngang/dọc thuần.
+ *
+ * ⚠️ HỆ QUẢ: mọi background viết TRƯỚC ngày này đều mang chữ "drawn at an angle so its top reads
+ * as a parallelogram" / "at a slight angle so both walls are visible" ngay trong `description` —
+ * sửa block thôi KHÔNG đủ, phải sửa cả câu chữ trong từng asset, nếu không mô tả riêng của asset
+ * sẽ đánh nhau với block (và mô tả cụ thể thường thắng).
  */
 export const SIMPLE_PERSPECTIVE_BLOCK =
-  "Draw the scene in ordinary three-dimensional cartoon perspective: walls, buildings and " +
-  "furniture are seen at an angle, the ground plane recedes toward a single vanishing point, " +
-  "and rectangular objects are drawn as parallelograms. This is a normal perspective view, NOT " +
-  "a flat orthographic elevation and NOT a theater backdrop. " +
+  "Draw the scene in ordinary three-dimensional cartoon perspective, but strictly as ONE-POINT " +
+  "perspective seen HEAD-ON. The camera faces the main surfaces square-on, so every main face — " +
+  "the front wall of a building, the back wall of a room, the front of a desk, the side of a " +
+  "bed, the front of a bench — is drawn as a TRUE RECTANGLE whose top and bottom edges are " +
+  "perfectly HORIZONTAL and whose left and right edges are perfectly VERTICAL, exactly parallel " +
+  "to the edges of the picture. Depth appears ONLY on the faces that turn away from the viewer: " +
+  "the edges running back into the distance are the ONLY slanted lines in the whole picture, and " +
+  "they all converge on a single vanishing point near the centre of the frame. " +
+  "NEVER rotate an object so that both of its faces are slanted and none of its edges stay " +
+  "parallel to the frame — that skewed corner-on look is wrong here. If an object shows only one " +
+  "face, that face is a plain upright rectangle facing the viewer, not a parallelogram. This is " +
+  "still a real perspective view with depth, NOT a flat theater backdrop. " +
   "BUT it must stay extremely simple to trace by hand: every single surface is filled with ONE " +
   "flat solid color — absolutely no gradients, no shading, no cast shadows, no texture, no " +
   "hatching, no highlights, no reflections. Depth comes ONLY from the angle and the size of " +
