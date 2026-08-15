@@ -1,0 +1,350 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích",
+  "flowProject": "vu-viec-tam-linh-case-4",
+  "assets": [
+    {
+      "name": "Zona The Wife",
+      "type": "character",
+      "case": 4,
+      "description": "a young woman in her twenties wearing a plain high-collared long dark blue dress with a plain white collar as her one and only garment, no hat, dark brown hair pinned up in a high bun with two short loose strands at the temples, large round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Zona lúc còn sống. Phần TÓC phải trùng NGUYÊN VĂN với 'Zona Ghost In Black' để 2 asset đọc ra cùng 1 người (quy tắc skill mục 5b)."
+    },
+    {
+      "name": "Zona Ghost In Black",
+      "type": "character",
+      "case": 4,
+      "description": "a young woman in her twenties wearing a plain high-collared long black mourning dress as her one and only garment, no hat, dark brown hair pinned up in a high bun with two short loose strands at the temples, large round eyes with no eyeliner, the face and hands drawn in a pale bloodless grey-white skin tone instead of the reference image's pink skin tone",
+      "status": "success",
+      "notes": "Hồn ma mặc váy đen. Tóc + mắt chép NGUYÊN VĂN từ 'Zona The Wife', chỉ đổi trang phục + tông da."
+    },
+    {
+      "name": "Edward In Leather Apron",
+      "type": "character",
+      "case": 4,
+      "description": "a man in his thirties wearing a plain dark grey work shirt with a plain heavy brown leather apron over it as his one and only garment, no hat, black hair parted low on one side and combed flat, a thick black handlebar moustache with both ends curling upward and no beard",
+      "status": "success",
+      "notes": "Edward lúc đang làm lò rèn + lúc vừa từ lò rèn về nhà. Mặt/tóc/ria chép NGUYÊN VĂN sang 'Edward In Dark Suit'."
+    },
+    {
+      "name": "Edward In Dark Suit",
+      "type": "character",
+      "case": 4,
+      "description": "a man in his thirties wearing a plain dark brown suit jacket over a plain cream shirt with a plain dark red necktie as his one and only garment, no hat, black hair parted low on one side and combed flat, a thick black handlebar moustache with both ends curling upward and no beard",
+      "status": "success",
+      "notes": "Dùng cho cảnh chụp đôi trước nhà, cảnh quàng khăn (trước lễ tang), lễ tang và phiên toà. Chỗ CHUYỂN trang phục: mọi cảnh trong ngày Zona mất vẫn là tạp dề da (anh ta chạy thẳng từ lò rèn về), từ cảnh quàng khăn trở đi mới là vest."
+    },
+    {
+      "name": "Mary Jane The Mother",
+      "type": "character",
+      "case": 4,
+      "description": "a woman in her fifties wearing a plain long dark brown dress with a plain grey shawl over the shoulders as her one and only garment, no hat, grey hair parted in the middle and pulled back into a low bun with no loose strands at all, small narrow eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Blacksmith Boy Helper",
+      "type": "character",
+      "case": 4,
+      "description": "a boy of about eleven wearing a plain patched brown jacket over a plain cream shirt as his one and only garment, a plain grey flat cap on his head, straight straw-blond hair cut in a blunt fringe across the forehead and showing below the cap, with no beard and no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Country Doctor",
+      "type": "character",
+      "case": 4,
+      "description": "a man in his sixties wearing a plain dark green frock coat over a plain white shirt with a plain black bow tie as his one and only garment, no hat, short silver-grey hair with a bare receding hairline at the front, a neat pointed grey goatee beard on the chin only together with a grey moustache",
+      "status": "success"
+    },
+    {
+      "name": "County Prosecutor",
+      "type": "character",
+      "case": 4,
+      "description": "a man in his forties wearing a plain charcoal grey frock coat over a plain white shirt with a plain dark blue necktie as his one and only garment, no hat, black hair slicked flat with a sharp side parting, clean-shaven with no beard and no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Trial Judge",
+      "type": "character",
+      "case": 4,
+      "description": "an old man wearing a plain black judicial robe over a plain white shirt as his one and only garment, no hat, long wavy white hair reaching the collar, thick white side-whiskers running down both cheeks with no chin beard and no moustache",
+      "status": "success"
+    },
+    {
+      "name": "Zona Favourite Scarf",
+      "type": "prop",
+      "case": 4,
+      "description": "A single long folded cloth scarf lying flat and seen from above. One plain long rectangular band of flat deep red cloth with EXACTLY TWO plain straight fold lines across it and nothing more, and each of its two short ends finished with EXACTLY THREE short plain straight fringe lines and no more. No pattern, no embroidery, no stitching lines, no creases, no texture of any kind.",
+      "status": "success"
+    },
+    {
+      "name": "Plain Wooden Coffin",
+      "type": "prop",
+      "case": 4,
+      "description": "A single plain closed wooden coffin seen from the side. One plain long six-sided box shape in flat mid-brown, with one plain darker flat lid band running along its whole top edge and EXACTLY THREE plain small dark metal handle shapes spaced along its side and no more. No wood grain, no plank lines, no nails, no engraving, no cloth, no flowers, no lettering.",
+      "status": "success"
+    },
+    {
+      "name": "Shue House Exterior Winter",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The front of a small wooden farmhouse in West Virginia in January 1896, seen in ordinary cartoon perspective from the front path at a slight angle so both the front wall and one side wall are visible. Each wall is ONE single flat shape of pale grey-blue, the side wall in a slightly DIFFERENT flat tint of the same colour, under a plain dark grey pitched roof drawn as two simple angled planes. The house has EXACTLY ONE plain front door with two plain steps below it and EXACTLY TWO plain square windows in total and no more, each window drawn as one flat pale blue shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. To one side stands EXACTLY ONE plain bare winter tree, drawn as one simple trunk with FIVE plain branch lines and no more — no leaves and no twigs. The ground is one plain flat shape of pale snow white, and the near ground across the bottom third of the frame is left completely clear and empty. The sky is ONE flat pale grey band. Draw NO wood grain, NO clapboard lines, NO plank lines, NO brick courses and NO roof shingles anywhere. Cold winter palette of pale grey-blue, white and dark grey in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Shue House Staircase Room",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The main room of a small wooden farmhouse in 1896, seen in ordinary cartoon perspective from one corner of the room. Two plain wall planes meet along one vertical corner line: the LEFT wall is ONE flat shape of pale cream and the RIGHT wall is the same colour in a slightly DIFFERENT flat tint. Against the right wall stands one plain straight wooden staircase running up and away toward the top right of the frame, built from ONE plain flat side panel plus EXACTLY SEVEN plain step shapes and no more, with one plain straight handrail line along it and absolutely NO balusters, NO spindles and NO posts. The floor at the foot of the staircase is completely clear and empty. On the left wall hangs EXACTLY ONE plain rectangular framed picture, completely blank inside, and nothing else at all on either wall. The floor is ONE single flat mid-brown shape with absolutely NO floorboards, NO planks, NO rug and NO grid, and the near floor across the bottom third of the frame is left completely clear and empty. Draw NO wood grain and NO panel seams anywhere. Muted palette of cream, mid-brown and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: Chân cầu thang PHẢI để trống hẳn — đây là chỗ đặt nhân vật nằm ở cảnh cậu bé phát hiện, và cũng là chỗ khung hình trống ở cảnh 'cầu thang không người'.)"
+    },
+    {
+      "name": "Shue House Bedroom",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A small plain bedroom in a wooden farmhouse in 1896, seen in ordinary cartoon perspective from one corner of the room. Two plain wall planes meet along one vertical corner line: the LEFT wall is ONE flat shape of pale grey-green and the RIGHT wall is the same colour in a slightly DIFFERENT flat tint. Against the right wall stands one plain iron bed drawn at an angle so its mattress reads as a parallelogram, its head end built from EXACTLY FOUR plain vertical bars and no more, its mattress and blanket each ONE single flat shape with no folds and no pattern. Beside the bed stands one plain small square bedside table with EXACTLY ONE plain drawer front and nothing on top of it. In the left wall sits EXACTLY ONE plain square window, drawn as one flat pale blue shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. The floor is ONE single flat mid-brown shape with absolutely NO floorboards, NO planks and NO rug, and the near floor across the bottom third of the frame is left completely clear and empty so a person can stand there beside the bed. Draw NO wood grain and NO panel seams anywhere. Muted palette of pale grey-green, mid-brown and white in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Blacksmith Forge Interior",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The inside of a small village blacksmith's forge in 1896, seen in ordinary cartoon perspective from one corner. Two plain dark stone wall planes meet along one vertical corner line, each ONE flat shape of dark grey-brown in a slightly DIFFERENT tint. Against the back wall stands one plain stone forge hearth block with ONE single flat orange shape inside its arched opening for the fire — draw NO flames outside the opening, NO sparks, NO smoke, NO glow, NO halo and NO light rays anywhere in the picture. Standing clear on the floor in the middle of the room is one plain black anvil on one plain wooden block. On the left wall hang EXACTLY THREE plain hammer shapes evenly spaced and no more, and nothing else at all on either wall. The floor is ONE single flat dark grey shape with absolutely NO flagstones, NO tiles and NO grid, and the near floor across the bottom third of the frame is left completely clear and empty. Draw NO stone texture, NO brick courses and NO wood grain anywhere. Dark warm palette of grey-brown, black and one small patch of orange in a few flat tints. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Greenbrier Cemetery Winter",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A small country cemetery in winter in 1896, seen in ordinary cartoon perspective from the end of a path. EXACTLY FIVE plain rectangular headstones and no more stand in one row running away from the viewer, each one a plain flat pale grey slab with a plain rounded top and absolutely no writing, no carving and no ornament on it. Nearer the viewer lies one plain rectangular open grave pit drawn as one simple dark parallelogram, with one plain low mound of dark brown earth beside it. Along the far edge stands one low row of plain bare winter trees at the same height, each one drawn as a single trunk with FIVE plain branch lines and no more, with no leaves and no twigs, under ONE flat pale grey sky band. The ground is one plain flat shape of pale snow white, and the near ground across the bottom third of the frame is left completely clear and empty. Draw NO grass blades, NO stone texture and NO shadows. Cold winter palette of pale grey, white and dark brown in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Greenbrier Cemetery With Mourners",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Greenbrier Cemetery Winter",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same five headstones, the same open grave pit, the same mound of earth, the same bare trees, the same snow ground, the same sky, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY FOUR plain standing people in dark clothes on the far side of the open grave, standing in one loose line and all facing toward the grave. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights slightly and give them different flat hair colours so they do not look like copies of one figure. They must stay small, stay entirely on the FAR side of the grave and entirely within the far third of the picture — the whole near side of the grave and the near ground stay clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: Người đưa tang = đám đông nền, vẽ thẳng vào background bằng editFrom theo skill mục 5c. Phải chừa hẳn phía GẦN của huyệt để còn chỗ đặt Edward + Mary Jane ở cảnh ghép.)"
+    },
+    {
+      "name": "Greenbrier Cemetery With Plaque",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Greenbrier Cemetery Winter",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same five headstones in the same positions, the same row of trees, the same sky, the same layout, the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change only these three things, so the picture reads as the same place years later. FIRST: fill in the open grave pit completely — remove the dark pit shape and the mound of loose earth, and in their place draw one plain low flat grave mound with one plain new pale grey headstone standing at its head, blank with no writing at all. SECOND: change the white snow ground into ONE single flat green grass shape, and give the bare trees plain flat dark green leaf shapes, one simple rounded mass on each tree and nothing more. THIRD: beside that new headstone add EXACTLY ONE plain upright rectangular metal sign board standing on two plain straight posts, drawn as one flat pale grey rectangle that is completely BLANK — absolutely no writing, no letters, no words and no engraving on it anywhere. The near ground across the bottom third of the frame stays clear and completely empty. Add no people. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: Cảnh kết (tấm bảng tưởng niệm, nhiều năm sau). Đổi luôn tuyết thành cỏ + cây có lá để đọc ra là đã qua nhiều năm. Bảng phải TRỐNG TRƠN — để model tự viết chữ là ra chữ vô nghĩa, chữ thật sẽ do người dùng thêm lúc dựng.)"
+    },
+    {
+      "name": "Mary Jane Bedroom Candlelit",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A very small plain bedroom at night in 1896, seen in ordinary cartoon perspective from one corner of the room. Two plain wall planes meet along one vertical corner line, each ONE flat shape of deep blue-grey in a slightly DIFFERENT tint. Against the right wall stands one plain narrow wooden bed drawn at an angle, its mattress and blanket each ONE single flat shape with no folds and no pattern. Beside it stands one plain small square table carrying EXACTLY ONE plain brass candlestick with ONE single upright candle and one small plain orange teardrop flame on top of it, and nothing else on the table. The candle must NOT cast any glow, any halo, any light beam, any pool of light or any brightened area — every surface in the room stays one flat colour exactly as dark as it is drawn. In the left wall sits EXACTLY ONE plain square window, drawn as ONE flat very dark blue shape with nothing inside it. The floor is ONE single flat dark brown shape with absolutely NO floorboards and NO rug, and the near floor across the bottom third of the frame is left completely clear and empty so a person can kneel there. Draw NO wood grain and NO panel seams anywhere. Dark night palette of deep blue-grey, dark brown and one small patch of orange in a few flat tints.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Mary Jane Bedroom Dark",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Mary Jane Bedroom Candlelit",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same two walls meeting at the same corner line, the same bed at the same angle, the same small table, the same candlestick in the same place, the same window, the same floor, the same layout, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY these two things. FIRST: remove the small orange flame shape from the top of the candle completely, so the candle plainly reads as unlit — leave the candlestick and the candle themselves exactly where they are. SECOND: fill every surface in the room with a much darker flat tint of the colour it already has, and add EXACTLY TWO plain small white dots inside the dark window for stars and nothing more. Do NOT add any glow, any halo, any light beam, any moonlight patch, any shadow and any texture. Add no people. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Prosecutor Office Interior",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A small county prosecutor's office in 1896, seen in ordinary cartoon perspective from one corner of the room. Two plain wall planes meet along one vertical corner line, each ONE flat shape of warm beige in a slightly DIFFERENT tint. Against the right wall stands one plain heavy wooden desk drawn at an angle so its top reads as a parallelogram, with EXACTLY TWO plain drawer fronts and no more, and nothing on top of it except EXACTLY ONE plain closed folder shape. Behind the desk stands one plain wooden chair. Against the back wall stands one plain bookshelf holding EXACTLY THREE shelves, and each shelf of books is drawn as ONE single long flat block shape in a plain colour — absolutely no individual book spines, no lines between books and no lettering. In the left wall sits EXACTLY ONE plain tall rectangular window, drawn as one flat pale blue shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. The floor is ONE single flat mid-brown shape with absolutely NO floorboards, NO planks and NO rug, and the near floor across the bottom third of the frame is left completely clear and empty. Draw NO wood grain and NO panel seams anywhere. Muted palette of warm beige, mid-brown and pale blue in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference."
+    },
+    {
+      "name": "Greenbrier Courtroom Interior",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "A small country courtroom in 1897, seen in ordinary cartoon perspective from the middle of the room. Against the back wall stands one plain raised wooden judge's bench drawn at an angle so its front reads as a parallelogram, built as ONE plain flat panel with one plain flat top edge and no carving and no moulding, with one plain tall wooden chair behind it. On the wall behind the bench hangs EXACTLY ONE plain blank rectangular panel and nothing else at all. To one side stand EXACTLY THREE plain public benches and no more, each drawn as ONE single long flat seat shape with one straight back rail — no individual slats, no legs drawn separately, no cushions. Running across the middle of the room is one plain low wooden rail, drawn as ONE plain horizontal band carried on EXACTLY FOUR plain vertical posts and no more; the rail STOPS where it meets the floor, and in front of it the near floor is left completely clear and empty across the whole width of the frame. The walls are plain flat panels of pale ochre in two slightly different tints, and the floor is ONE single flat mid-brown shape with absolutely NO floorboards, NO planks and NO grid. Draw NO wood grain, NO panel seams and NO carving anywhere. Muted palette of pale ochre, mid-brown and dark grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: Có thanh chắn ngang phòng → áp sẵn cách chống che mặt của skill mục 6d ngay từ background (thanh chắn DỪNG ở sàn, dải sàn phía trước để trống). Prompt cảnh còn phải nói rõ nhân vật đứng TRƯỚC thanh chắn.)"
+    },
+    {
+      "name": "Shue House Staircase Room V2",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The main room of a small wooden farmhouse in 1896, seen STRAIGHT ON in one-point perspective. The BACK WALL faces the viewer square-on and is drawn as one plain flat rectangle of pale cream, its top and bottom edges perfectly horizontal and its left and right edges perfectly vertical, exactly parallel to the edges of the picture. On the LEFT, one side wall runs back from the viewer to meet it, drawn as one plain flat shape in a slightly DIFFERENT tint of the same cream — the receding edges of that side wall and of the floor beside it are the ONLY slanted lines in the whole picture, and they run back toward a single vanishing point near the centre of the frame. Against the back wall stands one plain straight wooden staircase seen from the side, rising toward the right: its long side panel is one plain flat shape facing the viewer, and its EXACTLY SEVEN plain steps are drawn as plain rectangles whose treads are perfectly horizontal and whose risers are perfectly vertical, stepping up in a straight line, with one plain straight handrail line above them and absolutely NO balusters, NO spindles and NO posts. The floor at the foot of the staircase is completely clear and empty. On the back wall hangs EXACTLY ONE plain rectangular framed picture, drawn as a true upright rectangle with its edges parallel to the frame, completely blank inside, and nothing else at all on either wall. The floor is ONE single flat mid-brown shape with absolutely NO floorboards, NO planks, NO rug and NO grid, and the near floor across the bottom third of the frame is left completely clear and empty. Draw NO wood grain and NO panel seams anywhere. Muted palette of cream, mid-brown and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: THỬ bản vá SIMPLE_PERSPECTIVE_BLOCK 2026-08-14 (ép 1 điểm tụ, mặt chính song song khung hình) — thay bản gốc bị người dùng loại vì mọi vật xoay chéo. Đây là 1 trong 2 ảnh thử; chưa đánh dấu bản cũ lỗi thời cho tới khi người dùng duyệt.)"
+    },
+    {
+      "name": "Shue House Exterior Winter V2",
+      "type": "background",
+      "case": 4,
+      "composition": "perspective",
+      "reserveCharacterSpace": true,
+      "description": "The front of a small wooden farmhouse in West Virginia in January 1896, seen STRAIGHT ON in one-point perspective from the front path. The FRONT WALL of the house faces the viewer square-on and is drawn as one plain flat rectangle of pale grey-blue, its top and bottom edges perfectly horizontal and its left and right edges perfectly vertical, exactly parallel to the edges of the picture. Only ONE side wall is visible, running back from the right-hand edge of the front wall in a slightly DIFFERENT tint of the same colour — its receding edges are the ONLY slanted lines on the house, and they run back toward a single vanishing point near the centre of the frame. The roof is plain dark grey with its ridge line running perfectly horizontal across the top of the front wall, drawn as one flat band, plus one plain flat sloping panel above the side wall in a slightly darker tint. Centred in the front wall is EXACTLY ONE plain front door, a true upright rectangle with two plain horizontal steps below it, and there are EXACTLY TWO plain square windows in the front wall in total and no more, each one a true upright rectangle filled with one flat pale blue shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. To one side stands EXACTLY ONE plain bare winter tree with one straight vertical trunk and FIVE plain branch lines and no more — no leaves and no twigs. The ground is one plain flat shape of pale snow white and the near ground across the bottom third of the frame is left completely clear and empty. The sky is ONE flat pale grey band with its lower edge perfectly horizontal. Draw NO wood grain, NO clapboard lines, NO plank lines, NO brick courses and NO roof shingles anywhere. Cold winter palette of pale grey-blue, white and dark grey in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng bản có hậu tố ' Flat'. Người dùng xem ảnh và loại phong cách phối cảnh: bản gốc (2 điểm tụ) ra mọi vật xoay chéo, bản sửa 1 điểm tụ vẫn còn lệch. Chốt 2026-08-14: quay lại phẳng trực giao (composition 'flat'), đúng kiểu case 1 và case 2 đã duyệt. Giữ entry này làm lịch sử, KHÔNG dùng làm reference. (Ghi chú cũ: Ảnh thử thứ 2 của bản vá 1 điểm tụ — chọn 1 nội thất + 1 ngoại cảnh vì 2 loại này hỏng theo cách khác nhau (nội thất lệch ở mặt bàn/tường, ngoại cảnh lệch ở mặt tiền nhà).)"
+    },
+    {
+      "name": "Shue House Exterior Winter Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The front of a small wooden farmhouse in West Virginia in January 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey overcast sky band across the top, a plain dark grey pitched roof band below it, a plain pale grey-blue front wall filling the middle with EXACTLY ONE plain front door at the centre and EXACTLY ONE plain square window on each side of the door and no more, one plain low wooden step under the door, and a plain flat pale snow-white ground strip running edge to edge across the bottom. Each window is one flat pale blue rectangle crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. The house wall must be scaled and positioned to completely fill the frame from the far left edge to the far right edge, with absolutely no gap of open ground or empty sky at either side edge beside the house. EXACTLY ONE plain bare winter tree stands at one side: draw it as one straight vertical trunk running from the snow ground strip up past the top of the wall, passing IN FRONT OF the wall, carrying FIVE plain branch lines and no more, with no leaves and no twigs — its trunk plainly rests on the ground strip and does not float. The ground strip across the bottom third of the frame stays clear and completely empty. Draw NO wood grain, NO clapboard lines, NO plank lines, NO brick courses and NO roof shingles anywhere. Cold winter palette of pale grey-blue, white and dark grey in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Shue House Staircase Room Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The main room of a small wooden farmhouse in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale cream ceiling band across the top, a plain pale cream back wall filling the middle, and a plain flat mid-brown floor strip running edge to edge across the bottom. Standing against the back wall in the RIGHT half of the frame is one plain straight wooden staircase seen from the side, rising toward the upper right: draw it as EXACTLY SEVEN plain steps and no more, every tread perfectly horizontal and every riser perfectly vertical, stepping up in one straight line, with one plain straight handrail line above them and absolutely NO balusters, NO spindles and NO posts. The bottom step rests directly ON the floor strip and must touch it, not float. On the LEFT half of the back wall hangs EXACTLY ONE plain rectangular framed picture, completely blank inside, and nothing else at all on the wall. The floor strip is ONE single flat shape with absolutely NO floorboards, NO planks, NO rug and NO grid, and the whole left half of it together with the area at the foot of the staircase stays clear and completely empty. Draw NO wood grain and NO panel seams anywhere. Muted palette of cream, mid-brown and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Shue House Downstairs Stairs Flat'. Người dùng chốt 2026-08-14: đổi bảng màu tầng dưới theo tầng trên (tường nâu ấm + sàn xám) để 2 cảnh cắt liền nhau trong đoạn thú tội đọc ra cùng 1 căn nhà. Bản này (tường kem + sàn nâu) giữ làm lịch sử. Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Shue House Bedroom Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small plain bedroom in a wooden farmhouse in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale grey-green back wall filling the middle, and a plain flat mid-brown floor strip running edge to edge across the bottom. Standing against the back wall in the RIGHT half of the frame is one plain iron bed seen from the side, drawn as ONE plain flat mattress slab with ONE plain flat blanket shape over it and a head end built from EXACTLY FOUR plain vertical bars and no more — no springs, no slats, no folds and no pattern on the blanket. Beside it stands one plain small square bedside table with EXACTLY ONE plain drawer front and nothing on top of it. The bed and the table rest directly ON the floor strip and must touch it, not float. Set in the back wall in the LEFT half is EXACTLY ONE plain square window, one flat pale blue rectangle crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass, and nothing else at all on the wall. The floor strip is ONE single flat shape with absolutely NO floorboards, NO planks and NO rug, and the whole left half of it stays clear and completely empty so a person can stand there. Draw NO wood grain and NO panel seams anywhere. Muted palette of pale grey-green, mid-brown and white in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Blacksmith Forge Interior Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The inside of a small village blacksmith's forge in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain dark grey-brown ceiling band across the top, a plain dark grey-brown stone back wall filling the middle, and a plain flat dark grey floor strip running edge to edge across the bottom. Standing against the back wall on the RIGHT is one plain stone forge hearth block with ONE single flat orange shape inside its plain arched opening — draw NO flames outside the opening, NO sparks, NO smoke, NO glow, NO halo and NO light rays anywhere in the picture. On the LEFT half of the back wall hang EXACTLY THREE plain hammer shapes evenly spaced and no more, and nothing else at all on the wall. Standing on the floor strip in the middle of the frame is one plain black anvil on one plain wooden block, resting directly ON the floor strip and touching it. The floor strip is ONE single flat shape with absolutely NO flagstones, NO tiles and NO grid, and the area in front of the anvil stays clear and completely empty. Draw NO stone texture, NO brick courses and NO wood grain anywhere. Dark warm palette of grey-brown, black and one small patch of orange in a few flat tints. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Greenbrier Cemetery Winter Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small country cemetery in winter in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey sky band across the top; a row of plain bare winter trees standing side by side across the whole width, ALL AT EXACTLY THE SAME HEIGHT, each drawn as one straight vertical trunk carrying FIVE plain branch lines and no more, with no leaves and no twigs; a row of EXACTLY FIVE plain rectangular headstones and no more, ALL AT EXACTLY THE SAME HEIGHT, standing side by side and evenly spaced across the frame, each one a plain flat pale grey slab with a plain rounded top and absolutely no writing, no carving and no ornament on it; and a plain flat pale snow-white ground strip running edge to edge across the bottom. The headstones rest directly ON the ground strip and must touch it, not float. Lying in the ground strip in the LEFT half of the frame is one plain rectangular open grave pit drawn as one simple dark rectangle, with one plain low mound of dark brown earth beside it. The RIGHT half of the ground strip stays clear and completely empty. Draw NO grass blades, NO stone texture and NO shadows. Cold winter palette of pale grey, white and dark brown in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Greenbrier Cemetery With Mourners Flat",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Greenbrier Cemetery Winter Flat",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same row of bare trees, the same five headstones in the same places, the same open grave pit, the same mound of earth, the same snow ground strip, the same sky band, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY FOUR plain standing people in dark clothes in a single line BEHIND the row of headstones, all facing the viewer. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights slightly and give them different flat hair colours so they do not look like copies of one figure. They must stay small, stay entirely BEHIND the headstones and entirely in the RIGHT half of the picture — the open grave pit, the mound of earth and the whole snow ground strip in front stay clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Greenbrier Cemetery With Plaque Flat",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Greenbrier Cemetery Winter Flat",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same row of trees, the same five headstones in exactly the same places and at the same height, the same sky band, the same horizontal band layout, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change only these three things, so the picture reads as the same place years later. FIRST: fill in the open grave pit completely — remove the dark pit rectangle and the mound of loose earth, and in their place draw one plain low flat grave mound with one plain new pale grey headstone standing at its head, blank with no writing at all. SECOND: change the white snow ground strip into ONE single flat green grass strip running edge to edge, and give each bare tree ONE plain flat dark green rounded leaf mass and nothing more. THIRD: standing on the ground strip beside that new headstone, add EXACTLY ONE plain upright rectangular metal sign board on two plain straight posts, drawn as one flat pale grey rectangle that is completely BLANK — absolutely no writing, no letters, no words and no engraving on it anywhere. The ground strip across the bottom third of the frame stays clear and completely empty. Add no people. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Mary Jane Bedroom Candlelit Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A very small plain bedroom at night in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain deep blue-grey ceiling band across the top, a plain deep blue-grey back wall filling the middle, and a plain flat dark brown floor strip running edge to edge across the bottom. Standing against the back wall on the RIGHT is one plain narrow wooden bed seen from the side, drawn as ONE plain flat mattress slab with ONE plain flat blanket shape over it and nothing on top of it. Beside it stands one plain small square table carrying EXACTLY ONE plain brass candlestick with ONE single upright candle and one small plain orange teardrop flame on top of it, and nothing else on the table. The candle must NOT cast any glow, any halo, any light beam, any pool of light or any brightened area — every surface in the room stays one flat colour exactly as dark as it is drawn. Set in the back wall on the LEFT is EXACTLY ONE plain square window, drawn as ONE flat very dark blue rectangle with nothing inside it. The bed and the table rest directly ON the floor strip and must touch it. The floor strip is ONE single flat shape with absolutely NO floorboards and NO rug, and the whole left half of it stays clear and completely empty so a person can kneel there. Draw NO wood grain and NO panel seams anywhere. Dark night palette of deep blue-grey, dark brown and one small patch of orange in a few flat tints.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Mary Jane Bedroom Dark Flat",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Mary Jane Bedroom Candlelit Flat",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same ceiling band, the same back wall, the same floor strip, the same bed in the same place, the same small table, the same candlestick in the same place, the same window, the same layout, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY these two things. FIRST: remove the small orange flame shape from the top of the candle completely, so the candle plainly reads as unlit — leave the candlestick and the candle themselves exactly where they are. SECOND: fill every surface in the room with a much darker flat tint of the colour it already has, and add EXACTLY TWO plain small white dots inside the dark window for stars and nothing more. Do NOT add any glow, any halo, any light beam, any moonlight patch, any shadow and any texture. Add no people. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Prosecutor Office Interior Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small county prosecutor's office in 1896 seen straight on. Built from horizontal bands stacked top to bottom: a plain warm beige ceiling band across the top, a plain warm beige back wall filling the middle, and a plain flat mid-brown floor strip running edge to edge across the bottom. Standing against the back wall on the LEFT is one plain bookshelf holding EXACTLY THREE shelves, and each shelf of books is drawn as ONE single long flat block shape in a plain colour — absolutely no individual book spines, no lines between books and no lettering. Standing on the floor strip in the RIGHT half of the frame is one plain heavy wooden desk seen from the side, drawn as ONE plain flat rectangular front panel with EXACTLY TWO plain drawer fronts and no more, one plain flat desk top line across it, and nothing on top of it except EXACTLY ONE plain closed folder shape; one plain wooden chair stands behind the desk. Set in the back wall between the bookshelf and the desk is EXACTLY ONE plain tall rectangular window, one flat pale blue rectangle crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. The bookshelf, the desk and the chair rest directly ON the floor strip and must touch it. The floor strip is ONE single flat shape with absolutely NO floorboards, NO planks and NO rug, and the area in front of the desk stays clear and completely empty. Draw NO wood grain and NO panel seams anywhere. Muted palette of warm beige, mid-brown and pale blue in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Greenbrier Courtroom Interior Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small country courtroom in 1897 seen straight on. Built from horizontal bands stacked top to bottom: a plain pale ochre ceiling band across the top; a plain pale ochre back wall filling the middle, carrying EXACTLY ONE plain blank rectangular panel at its centre and nothing else at all; one plain raised wooden judge's bench standing against that back wall, drawn as ONE plain flat rectangular front panel with one plain flat top edge, no carving and no moulding, with one plain tall chair back showing above it; and a plain flat mid-brown floor strip running edge to edge across the bottom. Standing on the floor strip on the LEFT are EXACTLY THREE plain public benches and no more, each drawn as ONE single long flat seat shape with one straight back rail — no individual slats, no separate legs and no cushions. Running across the frame in front of the judge's bench is one plain low wooden rail, drawn as ONE plain horizontal band carried on EXACTLY FOUR plain vertical posts and no more; the rail STOPS where it meets the floor strip, and the whole strip of floor IN FRONT of the rail, across the full width of the frame, is left completely clear and empty. Everything rests directly on the floor strip and must touch it. The floor strip is ONE single flat shape with absolutely NO floorboards, NO planks and NO grid. Draw NO wood grain, NO panel seams and NO carving anywhere. Muted palette of pale ochre, mid-brown and dark grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Thế hệ PHẲNG (2026-08-14). Viết lại theo công thức dải ngang xếp từ trên xuống của RUNBOOK 8.1.3g, kèm 2 điều khoản chống lỗi đã biết: vật đứng phải CHẠM dải sàn (mục 3h), và dãy vật phải phủ kín từ mép trái tới mép phải (mục 8.2c)."
+    },
+    {
+      "name": "Shue House Upstairs Landing Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The upstairs landing of a small wooden farmhouse in 1896 seen straight on from the side, so that the top of the staircase and the steps going down are both visible. Built from horizontal bands stacked top to bottom: a plain pale cream ceiling band across the top; a plain pale cream back wall filling the middle, carrying EXACTLY ONE plain closed wooden door on the far LEFT and nothing else at all — no window, no picture, no lamp; and along the bottom, the floor. The floor is NOT one straight strip: the LEFT two thirds of the frame is one plain flat mid-brown landing floor running level from the left edge, and at its right-hand end the staircase steps DOWN toward the bottom right corner of the frame, drawn as EXACTLY FIVE plain steps and no more, every tread perfectly horizontal and every riser perfectly vertical, stepping down in one straight line and running off the bottom right edge of the picture. One plain straight handrail line runs above the steps at a constant height, and there are absolutely NO balusters, NO spindles and NO posts. Where the landing floor ends and the first step begins, draw ONE single plain straight edge line so the drop plainly reads as the top of a staircase. The landing floor is ONE single flat shape with absolutely NO floorboards, NO planks, NO rug and NO grid, and the whole left half of it is left clear and completely empty so people can stand there. Draw NO wood grain and NO panel seams anywhere. Muted palette of cream, mid-brown and grey in a few flat tints, matching an ordinary farmhouse interior. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Shue House Upstairs Stairwell Flat'. Người dùng gửi ảnh tham khảo từ một video khác và chỉ ra bố cục đúng: cầu thang phải là MỘT LỖ KHOÉT TRONG MẶT SÀN nhìn từ trên gác xuống (có trụ cầu thang đứng + tay vịn chạy chéo), chứ không phải hình chiếu cạnh với bậc thang chạy ra khỏi mép khung như bản này. Thêm 2026-08-14 theo yêu cầu người dùng: cần khung hình ở TẦNG TRÊN, đầu cầu thang — chỗ Edward và Zona cãi nhau. Cùng bảng màu/chất liệu với 'Shue House Staircase Room Flat' (nhìn từ tầng dưới) để 2 ảnh đọc ra là cùng một căn nhà. Khác biệt cố ý: bậc thang ở đây đi XUỐNG và chạy khỏi mép dưới bên phải, còn ảnh tầng dưới thì đi LÊN."
+    },
+    {
+      "name": "Shue House Upstairs Stairwell Flat",
+      "type": "background",
+      "case": 4,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The upstairs landing of a small wooden house in 1896, seen completely straight on and perfectly flat, built from just two large bands. The UPPER band, filling roughly the top three fifths of the frame, is ONE single flat warm brown wall running unbroken from the far left edge to the far right edge, completely bare except for EXACTLY ONE plain closed wooden door standing in the LEFT third: the door is one plain upright rectangle in a slightly darker brown with EXACTLY ONE small round doorknob near its right edge and nothing else at all — no window, no picture, no skirting board, no panel lines, no hinges. The wall meets the floor along ONE single perfectly straight horizontal line running unbroken from the left edge to the right edge. The LOWER band, filling the remaining bottom two fifths, is ONE single flat grey landing floor running edge to edge, with absolutely NO floorboards, NO planks, NO rug and NO grid drawn on it. Cut into the RIGHT THIRD of that grey floor is the stairwell opening, drawn as a plain four-sided hole in the floor: its top edge lies along the wall line, its left edge is ONE single straight diagonal line running down toward the right, and its bottom edge runs off the right side of the picture. Through that hole the staircase is seen going DOWN and away: draw EXACTLY FIVE plain pale grey step bands and no more, each one a thin flat horizontal bar, stacked in one straight diagonal line descending toward the lower right, each one a little deeper into the hole than the one before. Behind and below the steps the inside of the stairwell is filled with the same flat warm brown as the wall. Standing on the floor at the near LEFT corner of the opening is EXACTLY ONE plain dark brown newel post, drawn as one plain narrow upright rectangle rising from the floor to about the height of the doorknob. From the top of that post, ONE single plain straight dark brown handrail bar runs diagonally down toward the right, parallel to the line of the steps, and off the right edge of the picture. There are absolutely NO balusters, NO spindles, NO second post and NO extra rails. The whole LEFT two thirds of the grey floor is left clear and completely empty so people can stand there. Draw NO wood grain, NO panel seams, NO texture, NO shadows and NO text or lettering anywhere. Muted palette of warm brown and plain grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Viết theo ảnh tham khảo người dùng gửi 2026-08-14 (ảnh chụp từ 1 video khác, chỉ dùng để soi bố cục rồi tả lại bằng chữ — không đính làm reference). Điểm mấu chốt khác bản trước: cầu thang là LỖ KHOÉT TRONG SÀN nhìn từ trên xuống, không phải hình chiếu cạnh. ⚠️ Bảng màu (tường nâu ấm + sàn xám) lấy theo đúng ảnh tham khảo, KHÁC 'Shue House Staircase Room Flat' ở tầng dưới (tường kem + sàn nâu) — nếu muốn 2 tầng đọc ra cùng 1 căn nhà thì phải thống nhất lại, hỏi người dùng trước khi tự đổi."
+    },
+    {
+      "name": "Shue House Downstairs Stairs Flat",
+      "type": "background",
+      "case": 4,
+      "editFrom": "Shue House Staircase Room Flat",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same ceiling band, the same wall, the same staircase in exactly the same place with exactly the same seven steps and the same single straight handrail and no balusters, the same blank framed picture in the same place on the wall, the same floor, the same shapes, the same proportions, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY the colours, and nothing else at all. FIRST: change the wall and the ceiling band from pale cream to a plain flat WARM BROWN, one single flat tint with nothing drawn inside it. SECOND: change the floor from mid-brown to a plain flat GREY, one single flat shape with absolutely no floorboards, no planks and no grid. THIRD: keep the staircase and the handrail a plain darker brown so they still read clearly against the brown wall, and keep the framed picture a plain darker rectangle. Do not move anything, do not resize anything, do not add anything and do not remove anything. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Đổi màu tầng dưới cho khớp 'Shue House Upstairs Stairwell Flat' (tường nâu ấm + sàn xám). Dùng editFrom thay vì sinh mới từ chữ vì chỉ cần ĐỔI MÀU — sinh mới sẽ ra cầu thang lệch vị trí, cắt qua lại giữa 2 cảnh là lộ ngay (skill mục 6b)."
+    }
+  ]
+}

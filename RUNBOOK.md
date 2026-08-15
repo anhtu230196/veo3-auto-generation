@@ -73,7 +73,27 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   asset đã soi mắt trước khi ghép.
   ⚠️ 2 cảnh từng đánh dấu rủi ro chính sách (`Carl Walks Toward The Well At
   Night` có súng, `Worker Finds Bones In The Mud` có hài cốt) đều QUA NGAY lần
-  đầu — cách viết trung tính trong `notes` của chúng dùng lại được cho case sau. `flowProject: "vu-viec-tam-linh-case-3"` — case
+  đầu — cách viết trung tính trong `notes` của chúng dùng lại được cho case sau.
+- **(2026-08-15) Case 4 (Greenbrier Ghost) đã HOÀN TẤT phần ảnh**.
+  `case-4/{assets,scenes}.json` — **38/38 asset `success`** + **23/23 cảnh ghép
+  `success`**, không lỗi cảnh nào. `flowProject: "vu-viec-tam-linh-case-4"`:
+  `https://labs.google/fx/tools/flow/project/d0ee708a-f000-4921-8f4e-48fe22fdf08d`
+  **Bộ dùng chính thức là 11 background mang hậu tố ` Flat`** (tạo lại
+  2026-08-14 sau khi bỏ phối cảnh — xem khối quyết định phía trên) + 9 Character
+  + 2 Prop. **13 background KHÔNG có hậu tố đó là bản phối cảnh cũ, đã đánh dấu
+  lỗi thời trong `notes` — đừng dùng làm reference.** Cả 22 cảnh đã trỏ sang bản
+  ` Flat` và viết lại phần khoá background theo dải ngang.
+  Người dùng duyệt asset bằng mắt rồi mới chạy `npm run banana-scenes`.
+  ⚠️ Case NHẠY CẢM NHẤT tập này (án mạng, thi thể, quật mộ, siết cổ). Nguyên tắc
+  đã áp: **nội dung rùng rợn nằm ở LỜI KỂ, không nằm trong ảnh** — không vẽ hành
+  vi bạo lực (đoạn thú tội dùng cảnh cầu thang TRỐNG), không vẽ thi thể trong
+  quan tài (quan tài luôn đóng), không vẽ vết trên cổ (chuyển thành cảnh bác sĩ
+  giơ chiếc khăn), cảnh cản trở khám nghiệm viết thành "giơ tay ra hiệu dừng +
+  lùi lại" chứ không xô đẩy. 4 cảnh rủi ro cao đã ghi sẵn phương án lùi trong
+  `notes` của chính chúng.
+  ⚠️ Cảnh `The Ghost Turns Her Head Around` có XUNG ĐỘT ĐÃ LƯỜNG TRƯỚC với
+  `SCENE_CHARACTER_VIEW_BLOCK` (block cấm vẽ lưng + bắt luôn thấy đủ 2 mắt, nên
+  không vẽ được quay đầu 180° theo nghĩa đen) — cách né ghi trong `notes` cảnh đó. `flowProject: "vu-viec-tam-linh-case-3"` — case
   ĐẦU TIÊN có project Flow riêng:
   `https://labs.google/fx/tools/flow/project/5eccdbf6-1fc6-42b6-8134-eccecd8175b2`
   Background dùng `composition: "perspective"` theo quyết định 3 dưới đây —
@@ -112,10 +132,12 @@ tên/khớp nhầm (mục 8.1.3l).
    đã đúng, KHÔNG tạo lại theo thế hệ `3Q` như case 2. Đừng tự đề xuất làm lại
    để "đồng bộ" nữa.
 2. **Case 3-6: làm từ từ**, không gấp.
-3. **CHỐT dùng phong cách PHỐI CẢNH cho background** (`composition:
-   "perspective"` → `SIMPLE_PERSPECTIVE_BLOCK`). Nền phẳng trực giao chỉ còn
-   dùng khi có lý do riêng. Case 1 và 2 giữ nguyên nền phẳng đã có — chỉ áp
-   phối cảnh cho background MỚI từ case 3 trở đi.
+3. ~~**CHỐT dùng phong cách PHỐI CẢNH cho background**~~ — ❌ **ĐÃ ĐẢO NGƯỢC
+   2026-08-14, xem mục "Quyết định 2026-08-14" ngay dưới khối này.** Quyết định
+   gốc (giữ lại để hiểu bối cảnh): dùng `composition: "perspective"` →
+   `SIMPLE_PERSPECTIVE_BLOCK`; nền phẳng trực giao chỉ còn dùng khi có lý do
+   riêng; case 1 và 2 giữ nguyên nền phẳng đã có, chỉ áp phối cảnh cho
+   background MỚI từ case 3 trở đi.
    ⚠️ Block này đã được vá 2 lỗi lộ ra ở bản thử (ngoại cảnh nhà Bob): vân gỗ
    ốp tường chi li, và đổ bóng nhẹ để phân biệt các mặt. Cách vá: cấm texture
    theo TÊN (wood grain / siding lines / brick courses / roof tiles /
@@ -123,6 +145,47 @@ tên/khớp nhầm (mục 8.1.3l).
    *"give each surface a DIFFERENT FLAT TINT of the same colour, never shade"*.
    **CHƯA chạy thử lại sau khi vá** — background phối cảnh đầu tiên của case 3
    nên soi kỹ 2 điểm này.
+
+### 🔴 QUYẾT ĐỊNH 2026-08-14 — BỎ PHỐI CẢNH, QUAY LẠI NỀN PHẲNG TRỰC GIAO
+
+Người dùng xem loạt background case 4 và **loại phong cách phối cảnh**. Đã thử
+đủ 2 nấc rồi mới chốt, ghi lại để đừng ai đi lại đường này lần thứ ba:
+
+1. **Phối cảnh 2 điểm tụ** (bản `SIMPLE_PERSPECTIVE_BLOCK` gốc, quyết định
+   2026-08-11) — *"mọi thứ đang bị chéo, nhìn không đúng lắm"*. Thủ phạm nằm
+   ngay trong block: nó viết thẳng *"walls, buildings and furniture are seen at
+   an angle… rectangular objects are drawn as parallelograms"*.
+2. **Phối cảnh 1 điểm tụ** (vá 2026-08-14: mặt chính là hình chữ nhật thật song
+   song khung hình, chỉ cạnh lùi xa mới xiên) — tạo thử 2 ảnh
+   (`Shue House Staircase Room V2`, `Shue House Exterior Winter V2`), người dùng
+   vẫn thấy **lệch**.
+3. 👉 **CHỐT: quay lại `composition: "flat"`** (`NO_PERSPECTIVE_BLOCK`, bố cục
+   dải ngang kiểu phông sân khấu) — đúng phong cách case 1 và case 2 vốn đã được
+   duyệt. Áp cho case 4 trở đi.
+
+**BỔ SUNG 2026-08-15 — `"corner"` được dùng lại, ĐIỀU KIỆN HẸP.** Người dùng gửi
+ảnh mẫu (phụ nữ bị dựa vào tường trước tiểu đội lính) và chốt: dựng góc **khi
+nhân vật TÁC ĐỘNG LÊN / ÁP VÀO / ĐỐI DIỆN một VẬT của bối cảnh** — và góc dựng là
+dựng cho **chính vật đó** (tường để dựa, gương để soi), không phải cho cả căn
+phòng. Nền phẳng không diễn được quan hệ *chạm vào/áp vào*: nhân vật chỉ đọc ra là
+đứng TRƯỚC cái vật.
+⚠️ **Nhiều người nói chuyện/tranh cãi với nhau mà không chạm vật gì thì KHÔNG cần
+góc** — người dùng đã xem toàn bộ case 4 loại cảnh này trên nền phẳng và xác nhận
+đạt. (Bản ghi đầu tiên của luật này viết rộng thành "2+ người tác động lên nhau" —
+SAI, đã sửa.) Luật đầy đủ + hình học của góc ở **mục 6h của skill
+`nano-banana-image-prompts`**. Thứ bị loại vẫn là PHỐI CẢNH TOÀN CẢNH, không phải
+mọi thứ có chiều sâu.
+
+**Hệ quả cần nhớ**:
+- `SIMPLE_PERSPECTIVE_BLOCK` **vẫn còn trong code** nhưng KHÔNG dùng nữa;
+  docstring đã ghi rõ. Đừng tự đề xuất dùng lại. `INTERIOR_CORNER_NOTE`
+  (`composition: "corner"`) thì DÙNG LẠI — xem bổ sung 2026-08-15 ở trên.
+- **Case 3 (Carl Ledges) đang mang toàn bộ background phối cảnh** — 23 asset +
+  23 cảnh đã tạo xong theo phong cách nay bị loại. **CHƯA quyết** làm lại hay
+  giữ; hỏi người dùng trước, đừng tự tạo lại (tốn cả 23 cảnh ghép).
+- Sửa block thôi KHÔNG đủ: mô tả từng background còn tự viết *"drawn at an
+  angle"* / *"two walls meeting at one vertical corner line"* — mô tả cụ thể
+  thường thắng block, phải sửa cả câu chữ trong `description`.
 
 ### ⏳ VIỆC ĐANG TREO (2026-08-11) — đọc trước khi chạy tiếp
 
@@ -330,6 +393,16 @@ rồi mở Chrome BẰNG TAY trước khi chạy bất kỳ lệnh nào:
 - Ở chế độ CDP, `context.close()` bị vô hiệu hoá có chủ đích (Chrome là của người
   dùng) — **đừng đóng cửa sổ đó trong lúc mẻ đang chạy**, dùng chung profile nên
   đóng là giết cả mẻ.
+- ⚠️ **Chrome tự rớt giữa các mẻ** — gặp 2 lần ngày 2026-08-14, cả 2 lần đều
+  giữa 2 lệnh chứ không phải giữa mẻ, không còn tiến trình nào giữ profile. Triệu
+  chứng: `browserType.connectOverCDP: connect ECONNREFUSED 127.0.0.1:9222` ngay
+  dòng đầu, không tạo được gì. Xử lý: mở lại Chrome (session Google vẫn còn, KHÔNG
+  phải đăng nhập lại) rồi chạy lại — runner resume-safe nên chỉ làm tiếp phần
+  thiếu. **Luôn `curl http://127.0.0.1:9222/json/version` trước mỗi mẻ dài.**
+- ⚠️ **ĐỪNG chạy runner qua `| tee`** — exit code nhận được là của `tee`, nên một
+  lần chạy THẤT BẠI HOÀN TOÀN (Chrome chết) vẫn báo về `exit 0` và trông y hệt
+  chạy xong. Ghi thẳng ra file rồi in exit code: `npm run banana -- … > log 2>&1;
+  echo "EXIT=$?"`.
 - 🔴 **Runner PHẢI `process.exit()` tường minh ở nhánh THÀNH CÔNG** (đã vá
   2026-08-13). Vì `context.close()` là no-op ở chế độ CDP, websocket tới Chrome
   còn mở và giữ event loop sống → node TREO VÔ HẠN sau khi đã tạo xong hết. Nhánh

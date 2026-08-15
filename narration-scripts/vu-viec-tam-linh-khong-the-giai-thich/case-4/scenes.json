@@ -1,0 +1,291 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích",
+  "flowProject": "vu-viec-tam-linh-case-4",
+  "scenes": [
+    {
+      "name": "Zona And Edward Outside Their House",
+      "case": 4,
+      "narrationRef": "In 1896, in the Greenbrier area, there was a young couple named Zona and Edward Shue. They lived in a small house…",
+      "references": [
+        "Zona The Wife",
+        "Edward In Dark Suit",
+        "Shue House Exterior Winter Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young woman's exact face, dark brown hair in its high bun, large round eyes and high-collared dark blue dress from the first reference image, unchanged. Keep the man's exact face, black side-parted hair, black handlebar moustache and dark brown suit from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same roof band, the same house wall with its one door and its two windows, the same bare tree and the same snow ground strip — do not add any more windows and do not add any more trees. The two of them are standing side by side on the clear empty snow strip in front of the door, both turned about forty-five degrees toward the viewer, standing still with all arms lowered at their sides, each mouth drawn as one short straight line. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the front door behind them, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Edward Working At The Forge",
+      "case": 4,
+      "narrationRef": "…Edward worked as a blacksmith and Zona stayed home as a housewife.",
+      "references": [
+        "Edward In Leather Apron",
+        "Blacksmith Forge Interior Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the man's exact face, black side-parted hair, black handlebar moustache, dark grey work shirt and brown leather apron from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same ceiling band, the same dark stone back wall, the same forge hearth with its single flat orange shape, the same three hammers on the wall, the same anvil on its block and the same dark floor strip — do not add any more hammers. He is standing on the clear empty floor strip beside the anvil, his body turned about forty-five degrees toward it and his head turned the same way looking down at it, one arm raised above the anvil holding one plain hammer with a plain wooden handle, and his other arm lowered at his side. The hammer is one simple flat shape about the length of his forearm. He is the only person in the picture. Draw NO sparks, NO flames outside the hearth opening, NO smoke, NO glow, NO halo and NO light rays anywhere. He must be scaled to a normal human size relative to the anvil and the hearth, standing on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Zona Alone In The House",
+      "case": 4,
+      "narrationRef": "…Zona stayed home as a housewife.",
+      "references": [
+        "Zona The Wife",
+        "Shue House Downstairs Stairs Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the young woman's exact face, dark brown hair in its high bun, large round eyes and high-collared dark blue dress from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same ceiling band, the same warm brown back wall, the same wooden staircase with its seven steps and its single handrail, the same blank framed picture and the same grey floor strip — do not add any balusters to the staircase and do not add anything else to the wall. She is standing on the clear empty left half of the floor strip, a little way from the foot of the staircase, her body turned about forty-five degrees toward the viewer, one arm raised in front of her holding one plain folded cloth and her other arm lowered, her head turned toward the staircase, her mouth drawn as one short straight line. She is the only person in the picture. She must be scaled to a normal human size relative to the staircase, standing on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Edward Sends The Boy To The House",
+      "case": 4,
+      "narrationRef": "On January 23, an 11-year-old boy—Edward's assistant—was sent by Edward to the house to ask if Zona needed anything from the store.",
+      "references": [
+        "Edward In Leather Apron",
+        "Blacksmith Boy Helper",
+        "Blacksmith Forge Interior Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black side-parted hair, black handlebar moustache, dark grey shirt and brown leather apron from the first reference image, unchanged. Keep the boy's exact face, grey flat cap, straw-blond fringe and patched brown jacket from the second reference image, unchanged — do not mix the man's and the boy's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same stone back wall, the same forge hearth with its single flat orange shape, the same three hammers, the same anvil and the same floor strip. The two of them stand facing each other on the clear empty floor strip in front of the anvil. The man stands nearer the viewer with one arm raised and extended to point off toward one side of the room, his mouth drawn as one small open oval as if speaking. The boy stands opposite him with both arms lowered at his sides, his head turned up toward the man. The boy must be plainly SHORTER than the man, about up to the man's chest, so he clearly reads as a child, while every other proportion stays normal. There are only these two people in the picture and nobody else anywhere. Both stand on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Cậu bé 11 tuổi: ảnh master reference là người lớn nên PHẢI ép chiều cao bằng chữ ở TỪNG cảnh ('cao tới ngực người lớn'), vì CHARACTER_DESCRIPTION_CHECKLIST cấm mô tả dáng người/tỉ lệ trong asset Character."
+    },
+    {
+      "name": "Boy Arrives At The Front Door",
+      "case": 4,
+      "narrationRef": "…was sent by Edward to the house…",
+      "references": [
+        "Blacksmith Boy Helper",
+        "Shue House Exterior Winter Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the boy's exact face, grey flat cap, straw-blond fringe and patched brown jacket from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same sky band, the same roof band, the same house wall with its one door and its two windows, the same bare tree and the same snow ground strip. He is standing on the clear empty snow strip just in front of the step below the door, his body turned about forty-five degrees toward the door and his head turned the same way, one arm raised toward the door and his other arm lowered at his side. He must be plainly small, only about as tall as the middle of the door, so he clearly reads as a child beside a full-size house door. He is the only person in the picture; there is nobody else anywhere. He stands on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Boy Finds Zona At The Stairs",
+      "case": 4,
+      "narrationRef": "When the boy entered, he found Zona lying motionless at the base of the stairs.",
+      "references": [
+        "Blacksmith Boy Helper",
+        "Zona The Wife",
+        "Shue House Downstairs Stairs Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the boy's exact face, grey flat cap, straw-blond fringe and patched brown jacket from the first reference image, unchanged. Keep the young woman's exact face, dark brown hair in its high bun and high-collared dark blue dress from the second reference image, unchanged — do not mix the boy's and the woman's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same warm brown back wall, the same staircase with its seven steps and single handrail, the same blank framed picture and the same grey floor strip. The young woman is lying still on her side on the clear floor strip at the foot of the staircase, her head toward the left, her body turned about forty-five degrees toward the viewer, both arms resting straight along her sides and her long dress lying smooth and undisturbed. Her eyes are drawn as two simple downward curves because they are closed, and her mouth as one short straight line. Draw absolutely NO blood, NO wound, NO injury, NO bruise and NO mark of any kind anywhere on her or on the floor. The boy is standing well over on the left half of the floor strip, his body turned toward her and both arms raised in front of his chest, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. He must be plainly shorter than a grown person, about up to an adult's chest. There are only these two people in the picture and nobody else anywhere. Both are scaled to normal, consistent human size relative to the staircase and to each other, on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "RỦI RO CHÍNH SÁCH: người nằm bất động. Đã viết trung tính hết mức — mắt nhắm (2 nét cong xuống, đúng 1 trong 3 kiểu mắt mà SCENE_CHARACTER_VIEW_BLOCK cho phép), tay xuôi, váy phẳng phiu, cấm tường minh máu/vết thương/vết bầm. Nếu vẫn bị chặn: đổi thành cậu bé đứng nhìn xuống ngoài khung, không vẽ người nằm."
+    },
+    {
+      "name": "Boy Runs Back To The Forge",
+      "case": 4,
+      "narrationRef": "Terrified, he ran home to tell Edward.",
+      "references": [
+        "Blacksmith Boy Helper",
+        "Edward In Leather Apron",
+        "Blacksmith Forge Interior Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the boy's exact face, grey flat cap, straw-blond fringe and patched brown jacket from the first reference image, unchanged. Keep the man's exact face, black side-parted hair, black handlebar moustache, dark grey shirt and brown leather apron from the second reference image, unchanged — do not mix the boy's and the man's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same stone back wall, the same forge hearth with its single flat orange shape, the same three hammers, the same anvil and the same floor strip. The boy is on the clear floor strip on the left in mid-stride, one leg line forward and one back and both arms swung out from his sides, his body turned about forty-five degrees toward the man and his head turned the same way, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. He must be plainly shorter than the man, about up to the man's chest. The man stands beside the anvil turning toward him, one arm lowered and one arm raised a little, his mouth drawn as one short straight line. There are only these two people in the picture and nobody else anywhere. Draw NO sparks, NO glow and NO light rays anywhere. Both are scaled to normal, consistent human size relative to the anvil and to each other, on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Doctor Arrives In The Bedroom",
+      "case": 4,
+      "narrationRef": "A doctor arrived and found that Edward had already moved Zona to the bed. He was sitting beside her, weeping uncontrollably.",
+      "references": [
+        "Edward In Leather Apron",
+        "Country Doctor",
+        "Zona The Wife",
+        "Shue House Bedroom Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the first man's exact face, black side-parted hair, black handlebar moustache, dark grey shirt and brown leather apron from the first reference image, unchanged. Keep the older man's exact face, receding silver-grey hair, pointed grey goatee, grey moustache and dark green frock coat from the second reference image, unchanged. Keep the young woman's exact face, dark brown hair in its high bun and high-collared dark blue dress from the third reference image, unchanged — do not mix any of the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same ceiling band, the same pale grey-green back wall, the same window, the same iron bed with its four head bars, the same bedside table and the same brown floor strip. The young woman is lying flat on her back on the bed with the plain blanket drawn up to her waist as ONE flat shape, both arms resting straight at her sides, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. Draw absolutely NO blood, NO wound, NO injury and NO mark of any kind on her. The man in the leather apron is sitting on one plain simple stool beside the bed, his body turned about forty-five degrees toward her and his head bowed a little, both arms lowered, his eyes drawn as two simple downward curves. The older man in the frock coat stands on the clear empty left half of the floor strip, turned toward the bed, one arm lowered holding one plain small rectangular leather bag and his other arm lowered at his side. There are only these three people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Edward Blocks The Examination",
+      "case": 4,
+      "narrationRef": "When the doctor tried to examine the body, Edward became extremely agitated and obstructive.",
+      "references": [
+        "Edward In Leather Apron",
+        "Country Doctor",
+        "Zona The Wife",
+        "Shue House Bedroom Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the first man's exact face, black side-parted hair, black handlebar moustache, dark grey shirt and brown leather apron from the first reference image, unchanged. Keep the older man's exact face, receding silver-grey hair, pointed grey goatee, grey moustache and dark green frock coat from the second reference image, unchanged. Keep the young woman's exact face, dark brown hair in its high bun and high-collared dark blue dress from the third reference image, unchanged — do not mix any of the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same ceiling band, the same back wall, the same window, the same iron bed with its four head bars, the same bedside table and the same floor strip. The young woman is lying flat on her back on the bed exactly as before, the plain blanket drawn up to her waist as ONE flat shape, both arms straight at her sides, her eyes drawn as two simple downward curves because they are closed. Draw absolutely NO blood, NO wound and NO mark of any kind on her. The man in the leather apron is standing on the floor strip between the bed and the older man, turned about forty-five degrees toward the older man, one arm raised straight out at shoulder height as a plain stop gesture, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. The older man in the frock coat stands a full step further away on the clear left half of the floor strip, his body turned toward the bed but leaning slightly away, both arms lowered, one of them holding a plain small rectangular leather bag. The two men are well apart and do NOT touch each other at any point. There are only these three people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Cản trở khám nghiệm — viết thành 'giơ tay ra hiệu dừng + lùi lại', TUYỆT ĐỐI không mô tả xô đẩy/chạm vào nhau, vì mô tả quan hệ đối đầu là thứ hay dính bộ lọc nhất (skill mục 11)."
+    },
+    {
+      "name": "Edward Lays The Scarf On Zona",
+      "case": 4,
+      "narrationRef": "Before the burial, Edward took out a scarf—Zona's favorite—and wrapped it tightly around her neck…",
+      "references": [
+        "Edward In Dark Suit",
+        "Zona The Wife",
+        "Zona Favourite Scarf",
+        "Shue House Bedroom Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, black side-parted hair, black handlebar moustache and dark brown suit from the first reference image, unchanged. Keep the young woman's exact face, dark brown hair in its high bun and high-collared dark blue dress from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same ceiling band, the same back wall, the same window, the same iron bed with its four head bars, the same bedside table and the same floor strip. The young woman is lying flat on her back on the bed, both arms resting straight at her sides, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. Draw absolutely NO blood, NO wound, NO bruise and NO mark of any kind anywhere on her. Draw EXACTLY ONE scarf, matching the third reference image exactly in shape and colour, laid flat across the white collar of her dress just below her chin and following the line of her shoulders — the scarf lies loosely ON TOP of the dress collar and is not pulled, not knotted and not tightened. The man in the suit is standing on the clear empty floor strip beside the bed, his body turned about forty-five degrees toward her, both arms raised in front of him toward the scarf as if arranging it, his head tilted slightly down and his mouth drawn as one short straight line. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "RỦI RO CHÍNH SÁCH cao nhất case này. Cố ý viết 'đặt khăn nằm trên cổ áo, không siết, không thắt nút' thay vì 'quấn chặt quanh cổ'. Nếu vẫn bị chặn: bỏ hẳn người nằm, chỉ vẽ Edward cầm khăn đứng cạnh giường trống."
+    },
+    {
+      "name": "The Funeral At The Graveside",
+      "case": 4,
+      "narrationRef": "During the funeral, Mary Jane—Zona's mother—though deeply grieved, watched her son-in-law…",
+      "references": [
+        "Edward In Dark Suit",
+        "Mary Jane The Mother",
+        "Plain Wooden Coffin",
+        "Greenbrier Cemetery With Mourners Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, black side-parted hair, black handlebar moustache and dark brown suit from the first reference image, unchanged. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the second reference image, unchanged — do not mix the two people's features together. Draw EXACTLY ONE coffin, matching the third reference image exactly in shape and colour, closed, resting on the snow ground strip beside the open grave pit in the left half of the frame. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same row of bare trees, the same five headstones, the same open grave pit, the same mound of earth, the same snow ground strip AND the same four small mourners standing behind the headstones — do not move them, do not enlarge them and do not add any more people. The man and the older woman are standing on the clear empty snow strip between the coffin and the right edge of the frame, a little apart from each other, both turned about forty-five degrees toward the coffin with their heads tilted slightly down and all arms lowered, each pair of eyes drawn as two simple downward curves as if closed and each mouth as one short straight line. Nothing is drawn inside the coffin and its lid stays closed. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Mary Jane Watches Her Son In Law",
+      "case": 4,
+      "narrationRef": "…watched her son-in-law with growing suspicion.",
+      "references": [
+        "Mary Jane The Mother",
+        "Edward In Dark Suit",
+        "Greenbrier Cemetery With Mourners Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the first reference image, unchanged. Keep the man's exact face, black side-parted hair, black handlebar moustache and dark brown suit from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same row of bare trees, the same five headstones, the same open grave pit, the same mound of earth, the same snow ground strip AND the same four small mourners standing behind the headstones — do not move them and do not add any more people. The two of them are standing on the clear empty snow strip, well apart from each other. The man stands nearer the grave pit turned away toward it, his head tilted down and both arms lowered. The older woman stands further to the right, her body turned about forty-five degrees toward the viewer but her head turned to look sideways at the man, her eyes drawn as two plain round black dots and her mouth as one short straight line, both arms lowered and the shawl held closed at her chest. The two of them do not touch each other. Every person must be scaled to a normal, consistent human size relative to each other and to the headstones, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Mary Jane Prays By Candlelight",
+      "case": 4,
+      "narrationRef": "After the funeral, Mary Jane prayed constantly to see her daughter and find out what had really happened.",
+      "references": [
+        "Mary Jane The Mother",
+        "Mary Jane Bedroom Candlelit Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same dark ceiling band, the same deep blue-grey back wall, the same dark window, the same narrow bed, the same small table with its brass candlestick and single lit candle, and the same dark floor strip — do not move the candle and do not add a second candle. She is kneeling on the clear empty left half of the floor strip, both knee lines bent under her long dress, her body turned about forty-five degrees toward the viewer, both arms raised and brought together in front of her chest so the two arm lines meet at a single point, her head tilted slightly down, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. She is the only person in the picture. The candle flame stays one small plain orange teardrop shape and must cast NO glow, NO halo, NO light beam and NO pool of light — every surface in the room stays exactly as dark and as flat as it is in the background reference image. She is scaled to a normal human size relative to the bed, on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "The Candle Goes Out",
+      "case": 4,
+      "narrationRef": "Many days passed until one night, the candles in her room suddenly went out.",
+      "references": [
+        "Mary Jane The Mother",
+        "Mary Jane Bedroom Dark Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the first reference image, unchanged. Keep the darkened room exactly as shown in the second reference image, unchanged: the same ceiling band, the same back wall, the same bed, the same table, the same candlestick with its UNLIT candle, the same dark window with its two stars, the same floor strip and the same very dark flat colours. She is still kneeling on the clear empty left half of the floor strip, her body turned about forty-five degrees toward the viewer, but her head is now lifted and turned toward the candle, her eyes drawn as two large white circles with small black pupils and her mouth as one small open oval. One arm is lowered and the other is raised a little in front of her. She is the only person in the picture. The candle must stay plainly unlit with no flame at all, and there must be NO glow, NO halo, NO light beam, NO smoke wisp and NO brightened area anywhere in the picture. She is scaled to a normal human size relative to the bed, on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Zona Ghost Appears In The Dark Room",
+      "case": 4,
+      "narrationRef": "A light appeared, and Zona's spirit manifested in a black dress. When her mother asked why she had died, Zona replied simply: \"It was Edward.\"",
+      "references": [
+        "Zona Ghost In Black",
+        "Mary Jane The Mother",
+        "Mary Jane Bedroom Dark Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young woman's exact face, pale grey-white skin tone, dark brown hair in its high bun, large round eyes and long black dress from the first reference image, unchanged. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the second reference image, unchanged — do not mix the two women's features together. Keep the darkened room exactly as shown in the third reference image, unchanged: the same ceiling band, the same back wall, the same bed, the same table with its unlit candle, the same dark window with its two stars and the same floor strip. The young woman in the black dress is standing on the clear empty floor strip on the left of the frame, her body turned about forty-five degrees toward the older woman and her head turned the same way, both arms hanging straight down at her sides, completely still, her mouth drawn as one short straight line. She must NOT glow, must NOT be transparent, must NOT fade out at the edges and must NOT have any halo, any aura, any mist or any light around her — she is drawn with exactly the same solid bold black outline and completely flat colour fill as everything else in the picture. The older woman is kneeling on the floor strip nearer the bed, facing her, both arms raised in front of her chest, her eyes drawn as two large white circles with small black pupils and her mouth as one small open oval. There are only these two people in the picture and nobody else anywhere. Both are scaled to normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Kịch bản có 'a light appeared' nhưng phong cách CẤM mọi quầng sáng — cố ý không vẽ ánh sáng, để hồn ma hiện lên bằng chính tương phản áo đen/da xám trên nền phòng tối."
+    },
+    {
+      "name": "The Ghost Turns Her Head Around",
+      "case": 4,
+      "narrationRef": "Then, the ghost opened her mouth as if struggling for air, turned her head a full 180 degrees, and vanished.",
+      "references": [
+        "Zona Ghost In Black",
+        "Mary Jane The Mother",
+        "Mary Jane Bedroom Dark Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the young woman's exact face, pale grey-white skin tone, dark brown hair in its high bun, large round eyes and long black dress from the first reference image, unchanged. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the second reference image, unchanged — do not mix the two women's features together. Keep the darkened room exactly as shown in the third reference image, unchanged: the same ceiling band, the same back wall, the same bed, the same table with its unlit candle, the same dark window with its two stars and the same floor strip. The young woman in the black dress stands in the same place on the clear floor strip, and her body is turned toward the LEFT edge of the frame with her left shoulder nearer the viewer — but her head is twisted far around to the RIGHT, much further than a living person could ever turn it, so that her face still shows BOTH eyes clearly to the viewer while her shoulders plainly point the other way. Her chin sits directly above the shoulder that is furthest from the viewer. Her mouth is drawn as one large open oval as if she cannot breathe, and her eyes as two large white circles with small black pupils. Her arms hang straight down at her sides. She must NOT glow, must NOT be transparent and must NOT have any halo, any aura or any mist. The older woman is kneeling nearer the bed, leaning away with both arms raised in front of her chest, her eyes drawn as two large white circles with small black pupils and her mouth as one small open oval. There are only these two people in the picture and nobody else anywhere. Both are scaled to normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "XUNG ĐỘT ĐÃ LƯỜNG TRƯỚC: SCENE_CHARACTER_VIEW_BLOCK (runner tự nối) cấm vẽ lưng và bắt LUÔN thấy đủ 2 mắt — nên KHÔNG thể vẽ quay đầu 180 độ theo nghĩa đen. Cách né: giữ đủ 2 mắt nhưng vặn đầu lệch hẳn khỏi vai, neo bằng chi tiết đo được ('cằm nằm thẳng trên bên vai xa nhất'). Nếu ảnh ra vẫn trông bình thường, đừng sửa prompt cảnh — làm keyframe từ chính ảnh 'Zona Ghost Appears In The Dark Room' rồi chỉ đổi mỗi hướng đầu (skill mục 8)."
+    },
+    {
+      "name": "Mary Jane Tells The Prosecutor",
+      "case": 4,
+      "narrationRef": "Mary Jane immediately went to the prosecutor and told the whole story.",
+      "references": [
+        "Mary Jane The Mother",
+        "County Prosecutor",
+        "Prosecutor Office Interior Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the first reference image, unchanged. Keep the man's exact face, black slicked side-parted hair, clean-shaven chin and charcoal grey frock coat from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same beige back wall, the same window, the same bookshelf with its three plain block shelves, the same desk with its single closed folder, the same chair and the same floor strip — do not draw individual book spines and do not add anything to the desk. The older woman is standing on the clear empty floor strip in front of the desk, her body turned about forty-five degrees toward the man, both arms raised a little in front of her, her mouth drawn as one small open oval as if speaking and her eyes as two plain round black dots. The man is sitting on the chair behind the desk, his body turned toward her and his head turned the same way, one arm resting on the desk top and the other lowered, his mouth drawn as one short straight line. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the desk, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "The Grave Is Reopened",
+      "case": 4,
+      "narrationRef": "…her sincerity convinced the prosecutor to order an exhumation.",
+      "references": [
+        "County Prosecutor",
+        "Country Doctor",
+        "Plain Wooden Coffin",
+        "Greenbrier Cemetery Winter Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the first man's exact face, black slicked side-parted hair, clean-shaven chin and charcoal grey frock coat from the first reference image, unchanged. Keep the older man's exact face, receding silver-grey hair, pointed grey goatee, grey moustache and dark green frock coat from the second reference image, unchanged — do not mix the two men's features together. Draw EXACTLY ONE coffin, matching the third reference image exactly in shape and colour, CLOSED, resting on the snow ground strip beside the open grave pit in the left half of the frame with its lid plainly shut — nothing at all is drawn inside it or beside it. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same row of bare trees, the same five headstones, the same open grave pit, the same mound of dark earth and the same snow ground strip. The two men are standing on the clear empty snow strip in the right half of the frame, both turned about forty-five degrees toward the coffin and both looking down at it, all arms lowered at their sides, each mouth drawn as one short straight line. One plain long-handled shovel leans against the mound of earth, drawn as one plain straight handle with one plain flat blade shape and nothing more. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Quật mộ — cố ý để quan tài ĐÓNG và không vẽ gì bên trong. Nội dung khám nghiệm chuyển hẳn sang cảnh sau (bác sĩ giơ khăn), không vẽ thi thể hay vết trên cổ ở bất kỳ cảnh nào."
+    },
+    {
+      "name": "Doctor Holds Up The Scarf",
+      "case": 4,
+      "narrationRef": "Only then did the doctor perform a thorough examination, discovering that beneath the scarf were clear ligature marks…",
+      "references": [
+        "Country Doctor",
+        "County Prosecutor",
+        "Zona Favourite Scarf",
+        "Greenbrier Cemetery Winter Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the older man's exact face, receding silver-grey hair, pointed grey goatee, grey moustache and dark green frock coat from the first reference image, unchanged. Keep the other man's exact face, black slicked side-parted hair, clean-shaven chin and charcoal grey frock coat from the second reference image, unchanged — do not mix the two men's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same row of bare trees, the same five headstones, the same open grave pit, the same mound of earth and the same snow ground strip. The two men stand facing each other on the clear empty snow strip in the right half of the frame. The older man has one arm raised and extended in front of him, and hanging from the end of that arm line is the red scarf, matching the third reference image exactly in shape and colour, held up at chest height between them so its whole length is clearly visible against the snow. His other arm is lowered and his mouth is drawn as one small open oval as if speaking. The other man stands opposite him looking at the scarf, both arms lowered, his eyes drawn as two large white circles with small black pupils. There are only these two people in the picture and nobody else anywhere, and there is nothing else on the snow — no coffin, no body, no cloth and no marks of any kind. Every person must be scaled to a normal, consistent human size relative to each other and to the headstones, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Edward And Zona At The Top Of The Stairs",
+      "case": 4,
+      "narrationRef": "Edward eventually confessed that he had murdered his wife in a fit of rage and then pushed her down the stairs to stage an accident.",
+      "references": [
+        "Edward In Leather Apron",
+        "Zona The Wife",
+        "Shue House Upstairs Stairwell Flat"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black side-parted hair, black handlebar moustache, dark grey work shirt and brown leather apron from the first reference image, unchanged. Keep the young woman's exact face, dark brown hair in its high bun, large round eyes and high-collared dark blue dress from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same flat brown wall with its one closed door on the left, the same straight horizontal wall line, the same grey landing floor, the same stairwell opening cut into the floor on the right with its five pale step bands going down, and the same single newel post and handrail — do not add any balusters, do not add more steps and do not change the shape of the opening. The two of them are standing on the grey landing floor, plainly in the middle of a loud argument: each mouth is drawn as one small open oval. The man stands on the clear empty left part of the floor turned about forty-five degrees toward her, one arm raised straight out in front of him at shoulder height reaching toward her and his other arm lowered, his eyes drawn as two plain round black dots. The young woman stands at the very edge of the stairwell opening, right beside the newel post, her body turned about forty-five degrees toward the viewer, leaning backward out over the opening and off balance with both arms swung out wide from her sides, her feet still on the floor edge, her eyes drawn as two large white circles with small black pupils. Neither of them may cover the newel post or the step bands, so the stairwell opening stays clearly visible. The man's reaching arm line STOPS SHORT of her and does not touch her at any point, and the two of them do not overlap. Draw absolutely NO blood, NO wound, NO injury, NO bruise, NO weapon and NO impact mark of any kind anywhere, and do not draw anyone falling or lying on the steps. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the door and the steps, standing on the same landing floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thêm 2026-08-14 theo yêu cầu người dùng. RỦI RO CHÍNH SÁCH CAO NHẤT cả tập — đây là cảnh duy nhất vẽ chính hành vi gây án. Cách viết đã chọn: vẽ ĐÚNG KHOẢNH KHẮC TRƯỚC cú ngã, KHÔNG vẽ va chạm (tay Edward dừng lại trước khi chạm), không vẽ người ngã, không máu/vết thương/vũ khí. Zona mất thăng bằng ở mép bậc + tay dang rộng là đủ để đọc ra chuyện gì đang xảy ra. Nếu Flow chặn: hạ xuống thành cãi nhau thuần (cả hai đứng vững trên sàn phẳng, tay giơ ngang, không ai ở mép bậc) — vẫn dùng được cho đoạn 'in a fit of rage', rồi để cảnh 'The Empty Staircase' ngay sau gánh phần còn lại."
+    },
+    {
+      "name": "The Empty Staircase",
+      "case": 4,
+      "narrationRef": "…then pushed her down the stairs to stage an accident. (cảnh tiếp ngay sau, nhìn từ tầng dưới)",
+      "references": [
+        "Shue House Downstairs Stairs Flat"
+      ],
+      "prompt": "Use the single reference image and keep absolutely everything in it unchanged — the same ceiling band, the same warm brown back wall, the same wooden staircase with its seven steps and its single handrail and no balusters, the same blank framed picture on the wall, the same grey floor strip, the same layout, and the same flat 2D vector style with bold uniform-width black outlines and completely flat colour fills, no shading, no gradients and no perspective. Change ONLY the light: make every surface in the room a slightly duller, colder flat tint of the colour it already has, as if the room has been left empty for a long time. There are absolutely NO people in this picture, no figures, no silhouettes and no shadows of anyone — the room is completely empty, and the floor at the foot of the staircase is bare and clear. Add nothing else at all.",
+      "status": "success",
+      "notes": "Cảnh ngụ ý cho đoạn thú tội — CỐ Ý không vẽ hành vi bạo lực, chỉ vẽ cầu thang trống. Prompt viết theo kiểu 'giữ nguyên, chỉ đổi X' vì chỉ đính DUY NHẤT 1 ảnh background."
+    },
+    {
+      "name": "Edward Stands Trial",
+      "case": 4,
+      "narrationRef": "Edward was sentenced to life in prison and later died there of an unknown illness.",
+      "references": [
+        "Edward In Dark Suit",
+        "Trial Judge",
+        "County Prosecutor",
+        "Greenbrier Courtroom Interior Flat"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the first man's exact face, black side-parted hair, black handlebar moustache and dark brown suit from the first reference image, unchanged. Keep the old man's exact face, long wavy white hair, thick white side-whiskers and black judicial robe from the second reference image, unchanged. Keep the third man's exact face, black slicked side-parted hair, clean-shaven chin and charcoal grey frock coat from the third reference image, unchanged — do not mix any of the three men's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same ceiling band, the same ochre back wall with its single blank panel, the same raised judge's bench, the same three public benches, the same low wooden rail with its four posts and the same floor strip — do NOT add any extra rails or posts anywhere. The old man in the robe is standing behind the raised bench, turned about forty-five degrees toward the other two, one arm resting on the bench top. The man in the dark brown suit is standing on the clear empty strip of floor IN FRONT OF the low rail, closer to the viewer than the rail, so that NO part of the rail passes in front of his body or his face; he is turned toward the bench with his head tilted down, both arms lowered at his sides, his eyes drawn as two plain round black dots. The man in the charcoal frock coat stands to one side, also IN FRONT OF the rail and clear of it, turned toward the bench with one arm raised in front of him. No rail, post or bench may cross any person's face at any point. There are only these three people in the picture and nobody else anywhere — the public benches are empty. Every person must be scaled to a normal, consistent human size relative to each other and to the bench, standing on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "The Memorial Plaque Years Later",
+      "case": 4,
+      "narrationRef": "At the cemetery where Zona was laid to rest, a plaque was erected telling the story of the \"Greenbrier Ghost\"…",
+      "references": [
+        "Mary Jane The Mother",
+        "Greenbrier Cemetery With Plaque Flat"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the older woman's exact face, grey middle-parted hair in its low bun, small narrow eyes, dark brown dress and grey shawl from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same sky band, the same leafy trees, the same five headstones, the same filled grave mound with its new blank headstone, the same blank metal sign board on its two posts and the same green grass strip. She is standing on the clear empty grass strip beside the sign board, her body turned about forty-five degrees toward it and her head turned the same way to look at it, both arms lowered at her sides with the shawl held closed at her chest, her eyes drawn as two plain round black dots and her mouth as one short straight line. She must stand clear of the sign board and must NOT overlap it at any point, so the whole blank rectangle stays fully visible. The sign board stays completely BLANK — no writing, no letters, no words and no engraving on it anywhere, and no writing on any headstone either. She is the only person in the picture; there is nobody else anywhere. She is scaled to a normal human size relative to the headstones and the sign board, standing on the same ground strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Bảng để TRỐNG có chủ đích, và cấm nhân vật đè lên bảng — chữ thật sẽ do người dùng thêm lúc dựng (model viết chữ ra ký tự vô nghĩa). Cùng kỹ thuật 'chừa khung trống' của skill mục 8b."
+    }
+  ]
+}
