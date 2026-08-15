@@ -32,10 +32,23 @@ async function main() {
   }
   const caseFlagIndex = rest.indexOf("--case");
   const onlyCase = caseFlagIndex >= 0 ? Number(rest[caseFlagIndex + 1]) : undefined;
+  // `--only "<tên cảnh>"`: chạy ĐÚNG 1 cảnh. Dùng để (a) thử trước 1 cảnh rủi ro chính sách
+  // thay vì phát hiện nó bị chặn ở giữa mẻ 20+ cảnh, (b) tạo lại đúng 1 cảnh hỏng mà không
+  // phải sửa status của các cảnh khác. Khớp tên CHÍNH XÁC, không phân biệt hoa thường —
+  // khớp chuỗi con đã từng gây lỗi đính sai asset (RUNBOOK 8.1.3l), đừng lặp lại ở đây.
+  const onlyFlagIndex = rest.indexOf("--only");
+  const onlyName = onlyFlagIndex >= 0 ? rest[onlyFlagIndex + 1]?.trim().toLowerCase() : undefined;
 
   const file = await loadSceneFile(sceneFilePath);
+  if (onlyName && !file.scenes.some((s) => s.name.trim().toLowerCase() === onlyName)) {
+    console.error(`Không có cảnh nào tên đúng "${rest[onlyFlagIndex + 1]}" trong ${sceneFilePath}`);
+    process.exit(1);
+  }
   const todo = file.scenes.filter(
-    (s) => s.status !== "success" && (onlyCase === undefined || s.case === onlyCase)
+    (s) =>
+      s.status !== "success" &&
+      (onlyCase === undefined || s.case === onlyCase) &&
+      (onlyName === undefined || s.name.trim().toLowerCase() === onlyName)
   );
 
   const skipped = file.scenes.filter((s) => s.status === "success").length;
