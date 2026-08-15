@@ -136,6 +136,12 @@ rõ.
 - **Ảnh chụp thật của nhân vật có thật**: chỉ dùng để **soi bằng mắt rồi viết
   ra mô tả chữ**. KHÔNG đính làm reference thứ 2 — pipeline chỉ đính duy nhất
   `reference-character.jpeg` (ảnh phong cách).
+- **Ảnh người dùng gửi trong hội thoại làm "mẫu bố cục"** (vd screenshot từ 1
+  video kênh khác): xử lý y hệt — **soi bằng mắt, tả lại bằng chữ trong
+  `description`**, không đính vào prompt và không lưu vào repo. Tả bằng thứ đo
+  được: mảng nào chiếm bao nhiêu phần khung, có bao nhiêu vật, đường nào ngang
+  đường nào chéo. Ghi vào `notes` là mô tả này bắt nguồn từ ảnh mẫu nào, để lần
+  sau sửa còn biết gốc.
 - Ảnh master khoá cứng vài đặc điểm (tóc dài 2 bên, trang phục nhiều lớp…).
   Muốn khác thì **phải nói tường minh** ("tóc búi gọn không buông", "váy 1 lớp
   không khoác ngoài") — đã xác nhận là ghi đè được.
@@ -222,20 +228,136 @@ Cách làm:
 
   | Giá trị | Dùng cho |
   |---|---|
-  | `"flat"` (mặc định) | Kiến trúc, phố xá, dãy nhà, mặt tiền — phông phẳng kiểu sân khấu |
+  | `"flat"` (mặc định) | Cảnh KHÔNG có tương tác: toàn cảnh, nhân vật đứng một mình, cảnh trống |
+  | `"corner"` | **Cảnh có 2+ người TÁC ĐỘNG LÊN NHAU** — xem mục 6h, đây là luật quan trọng |
   | `"layered"` | Phong cảnh thiên nhiên rộng (núi xa → làng giữa → ruộng gần) |
-  | `"corner"` | **Phòng TRONG NHÀ sẽ ghép nhân vật vào** — xem ngay dưới |
+  | ~~`"perspective"`~~ | ❌ **KHÔNG dùng nữa** — xem ngay dưới |
 
-  🔑 **Vì sao có `"corner"` (người dùng chốt 2026-08-11)**: nhân vật do pipeline
-  sinh ra đều ở **góc 3/4**. Đặt người 3/4 lên nền phẳng tuyệt đối thì người có
-  chiều mà nền thì không — nhìn như **dán đè lên**. Một góc phòng nhẹ (2 mảng
-  tường gặp nhau ở 1 đường dọc, mảng bên foreshorten nhẹ) cho nhân vật chỗ đứng
-  hợp lý. Vẫn cấm cảnh hút sâu thật.
+  🔴 **PHỐI CẢNH ĐÃ BỊ LOẠI (người dùng chốt 2026-08-14).** `assets.ts` và
+  `styleDNA.ts` vẫn còn định nghĩa `"corner"` và `"perspective"` — **đừng tưởng
+  còn dùng được**. Lịch sử đầy đủ, để không ai đi lại đường này lần thứ ba:
 
-  ⚠️ Đừng cố đạt hiệu ứng này bằng cách viết mô tả góc phòng trong khi để
-  `composition: "flat"` — runner sẽ nhét `NO_PERSPECTIVE_BLOCK` vào và bạn đang
-  đánh nhau với chính prompt của mình. Lần đầu ăn may thắng được, lần sau chưa
-  chắc. Đặt đúng `"corner"`.
+  1. 2026-08-11 chốt dùng `"perspective"` (phối cảnh 2 điểm tụ) cho background mới.
+  2. 2026-08-14 người dùng xem loạt background case 4 → loại: *"mọi thứ đang bị
+     chéo, nhìn không đúng lắm"*. Thủ phạm nằm ngay trong block, nó viết thẳng
+     *"rectangular objects are drawn as parallelograms"*.
+  3. Vá thành phối cảnh **1 điểm tụ** (mặt chính là hình chữ nhật thật song song
+     khung hình, chỉ cạnh lùi xa mới xiên), tạo thử 2 ảnh → **vẫn bị loại**.
+  4. 👉 Quay lại `"flat"` — đúng phong cách case 1 và case 2 vốn đã duyệt.
+
+  ⚠️ Thứ bị loại là **PHỐI CẢNH TOÀN CẢNH** (mọi đồ vật xoay chéo, không cạnh
+  nào song song khung hình), KHÔNG phải là mọi thứ có chiều sâu. `"corner"` vẫn
+  dùng, và có luật riêng ở mục 6h ngay dưới.
+
+### 6h. 🔑 NHÂN VẬT TÁC ĐỘNG LÊN MỘT VẬT → dựng GÓC CHO CHÍNH VẬT ĐÓ
+
+**Luật (người dùng chốt 2026-08-15, kèm ảnh mẫu từ 1 video cùng thể loại).**
+Điều kiện KHÔNG phải là "có nhiều người trong khung", cũng không phải "hai người
+đối thoại" — đối thoại thường nền phẳng vẫn đọc tốt. Điều kiện là:
+
+> Nhân vật **tác động lên / áp vào / đối diện một VẬT hoặc MẶT** của bối cảnh.
+
+Lúc đó phải đặt **chính cái vật ấy** lên một mảng nghiêng (tường bên, mặt đặt
+chéo), vì nền phẳng chiếu thẳng không diễn được quan hệ *chạm vào / đứng dựa /
+soi vào*: nhân vật chỉ đọc ra là **đứng TRƯỚC** cái vật, không phải **áp vào** nó.
+
+Hai ví dụ người dùng đưa:
+- **Người phụ nữ bị dựa vào tường trước tiểu đội lính** — bức tường phải đặt
+  nghiêng, cô ấy áp lưng vào mảng tường đó, lính đứng chếch phía đối diện. Tường
+  vẽ chiếu thẳng thì không ai đọc ra là cô bị dồn vào tường.
+- **Nhân vật soi gương thấy mặt người khác** (case 2, Don Decker) — gương phải
+  treo trên **tường BÊN**, nhân vật quay vào nó. Đây đúng bài học đã trả giá 3
+  vòng ở mục 8b(c): *"dạt gương sang trái" KHÔNG giống "treo gương trên tường
+  bên"*, và vòng sửa thứ hai trượt đúng vì lẫn hai thứ đó.
+
+**KHÔNG cần góc** (nền phẳng là đủ, đừng vẽ vẽ thêm cho phức tạp): nhân vật đứng
+một mình; toàn cảnh giới thiệu; cảnh trống; **và cả cảnh 2-3 người đang nói
+chuyện/tranh cãi với nhau mà không ai chạm vào vật gì** — người dùng đã xem toàn
+bộ case 4 (Greenbrier) với loại cảnh này trên nền phẳng và xác nhận **đạt**.
+
+⚠️ **Ngoài trời cũng áp dụng** — luật theo VẬT BỊ TÁC ĐỘNG, không theo trong
+nhà/ngoài trời. Ảnh mẫu chính là cảnh ngoài trời (tường + bụi cây + trời).
+
+**Hình học của góc** (giữ tinh thần phẳng, không rơi vào phối cảnh hút sâu): tả
+bằng **số mảng và số đường** theo công thức đã chạy đúng ở mục 8b(c) — đúng HAI
+mảng tường gặp nhau ở MỘT đường dọc, mảng bên tô **sắc độ đậm hơn** để mắt đọc ra
+là mặt khác, và **đúng MỘT đường chéo** dưới sàn để sàn đọc ra là quẹo ở góc.
+Không điểm tụ, không hàng gạch nhỏ dần về xa.
+
+👉 Ở prompt cảnh phải **gán vật cho mảng** và **gán người cho mảng**, nếu không
+model vẫn xếp mọi thứ dàn hàng quay ra ngoài: *"the mirror belongs to the LEFT
+side wall only"*, *"she stands with her back against that LEFT side wall, they
+stand on the floor in front of the BACK wall facing her"*.
+
+### 6e. Đổi phong cách nền: sửa BLOCK thôi KHÔNG đủ, phải sửa cả `description`
+
+Bài học đắt nhất của vòng bỏ phối cảnh. Mô tả từng background tự nó mang câu chữ
+theo phong cách cũ — *"drawn at an angle so its top reads as a parallelogram"*,
+*"two flat wall planes meeting along one vertical corner line"*. **Mô tả cụ thể
+của asset thường THẮNG style block**, nên sửa block xong mà để nguyên
+`description` thì ảnh vẫn ra kiểu cũ.
+
+Đổi phong cách nền = 3 việc, thiếu việc nào cũng hỏng:
+1. Sửa block trong `styleDNA.ts` (và ghi lý do vào docstring).
+2. Viết lại `description` của TỪNG background theo ngôn ngữ phong cách mới.
+3. Sửa câu khoá background trong TỪNG cảnh ghép (*"the same corner line"* →
+   *"the same ceiling band… the same floor strip"*), và chỉnh lại câu style cuối
+   prompt (`"no perspective"` phải có mặt khi nền là phẳng).
+
+⚠️ Khi thay chuỗi hàng loạt trong `scenes.json`, **lọc theo `references` trước** —
+chỉ sửa cảnh thật sự dùng background đó. Thay toàn cục kiểu *"brown floor strip"
+→ "grey floor strip"* sẽ phá luôn các cảnh phòng khác cũng có đúng cụm chữ ấy.
+
+### 6f. Bảng màu phải thống nhất giữa các background của CÙNG một nơi
+
+Hai background của cùng một công trình (tầng trên ↔ tầng dưới, trong nhà ↔ ngoài
+hiên) mà khác tông là lộ ngay khi cắt qua lại. Đã dính thật: tầng trên tường nâu
++ sàn xám, tầng dưới tường kem + sàn nâu — hai cảnh liền nhau trong cùng một đoạn.
+
+👉 Sửa bằng `editFrom` **chỉ đổi màu**, đừng sinh mới từ chữ:
+
+> Keep absolutely everything about the layout unchanged … Change ONLY the
+> colours, and nothing else at all. FIRST: change the wall from pale cream to a
+> plain flat WARM BROWN … Do not move anything, do not resize anything.
+
+Sinh mới sẽ ra cầu thang/đồ đạc "na ná" nhưng lệch vị trí — đúng thứ mà cặp cảnh
+cắt qua lại sẽ phơi ra.
+
+### 6g. CHÊNH CAO trong bố cục phẳng (cầu thang, giếng trời, cửa hầm)
+
+Bố cục phẳng không có chiều sâu, nên **"nhìn xuống tầng dưới" không tả được bằng
+lối thường**. Chọn cách theo chỗ nhân vật ĐỨNG:
+
+| Nhân vật đứng ở | Vẽ cầu thang thành |
+|---|---|
+| Tầng **dưới**, nhìn lên | **Hình chiếu cạnh**: các bậc xếp chéo đi LÊN, tread ngang tuyệt đối / riser dọc tuyệt đối, một tay vịn thẳng, không con tiện |
+| Tầng **trên**, nhìn xuống | **LỖ KHOÉT trong dải sàn** — công thức ngay dưới |
+
+Công thức lỗ khoét (viết ra số, đừng tả "cầu thang đi xuống"):
+
+> Cut into the RIGHT THIRD of the floor is the stairwell opening, drawn as a
+> plain four-sided hole: its top edge lies along the wall line, its left edge is
+> ONE single straight diagonal line running down toward the right… Through that
+> hole draw EXACTLY FIVE plain pale step bands and no more, each a thin flat
+> horizontal bar, stacked in one straight diagonal line descending toward the
+> lower right… Behind and below the steps the inside of the stairwell is filled
+> with the same flat colour as the wall.
+
+🔑 **Thứ khiến nó ĐỌC RA là cầu thang, không phải vũng tối trên sàn**: phải có
+một vật ĐỨNG ở mép lỗ làm mốc chiều cao — *"EXACTLY ONE plain newel post, one
+plain narrow upright rectangle rising from the floor to about the height of the
+doorknob"* — cộng *ONE* tay vịn chạy chéo song song với các bậc rồi ra khỏi mép
+khung. Cấm con tiện, cấm trụ thứ hai.
+
+Kèm 2 việc bắt buộc:
+- Chừa **hai phần ba sàn còn lại trống hẳn** làm chỗ đứng cho nhân vật.
+- Ở prompt cảnh, cấm nhân vật che mất mốc: *"neither of them may cover the newel
+  post or the step bands, so the stairwell opening stays clearly visible"* —
+  che mất trụ là mất luôn thông tin "đây là chỗ hụt xuống".
+
+✅ **ĐÃ XÁC NHẬN** (2026-08-15): công thức viết theo ảnh mẫu người dùng gửi, tạo
+ra `Shue House Upstairs Stairwell Flat` của case 4 và **người dùng đã duyệt ảnh
+đó**. Dùng lại thẳng cho mọi cảnh chênh cao về sau.
 - `reserveCharacterSpace: true` khi sẽ ghép người vào — chừa sàn trống + khoá
   góc máy ngang tầm mắt. Cảnh toàn cảnh không ghép người thì để `false`.
 - **Ánh sáng ngày/đêm phải bake thẳng vào mô tả** nếu bối cảnh chỉ dùng ở 1
@@ -350,6 +472,32 @@ trí và phá liên tục giữa 2 cảnh. Coi ảnh trước như 1 keyframe đ
 
 **Thứ tự phụ thuộc**: scene tham chiếu scene khác thì phải xếp SAU nó trong
 mảng `scenes`. Runner không tự sắp xếp.
+
+### 8c. TRẺ EM: phải ép chiều cao ở TỪNG cảnh, không ép được ở asset
+
+`CHARACTER_DESCRIPTION_CHECKLIST` **cấm mô tả dáng người/tỉ lệ** trong asset
+Character (ảnh master đã khoá cấu trúc thân), mà ảnh master lại là người lớn —
+nên asset "cậu bé 11 tuổi" vẫn ra cao bằng người lớn. Không có chỗ nào sửa được
+việc đó ở tầng asset.
+
+👉 Ép ở **prompt cảnh**, và neo vào vật trong khung chứ đừng nói "nhỏ hơn":
+*"plainly SHORTER than the man, about up to the man's chest"*, hoặc khi đứng một
+mình: *"only about as tall as the middle of the door"*. Phải nhắc lại ở MỌI cảnh
+có nhân vật đó — không có cơ chế nào nhớ hộ.
+
+### 8d. Cảnh cần tư thế mà `SCENE_CHARACTER_VIEW_BLOCK` cấm
+
+Block do `createSceneComposites` tự nối vào mọi cảnh **cấm vẽ lưng, cấm profile,
+bắt LUÔN thấy đủ 2 mắt**. Nó nằm ở đầu prompt VÀ nhắc lại ở cuối — tức 2 vị trí
+mạnh nhất, còn prompt cảnh nằm ở giữa. Đừng viết cảnh đánh nhau với nó, sẽ thua.
+
+Gặp cảnh mà kịch bản đòi đúng thứ bị cấm (quay đầu 180°, nhìn từ sau lưng, chỉ
+thấy 1 bên mặt) thì **đi vòng**, đừng ép:
+- Quay đầu 180° → giữ đủ 2 mắt nhưng **vặn đầu lệch hẳn khỏi vai**, neo bằng chi
+  tiết đo được: *"her chin sits directly above the shoulder that is furthest from
+  the viewer"*.
+- Nếu vẫn ra bình thường: **đừng sửa prompt cảnh** — làm keyframe từ chính ảnh
+  cảnh trước rồi chỉ đổi mỗi hướng đầu (kỹ thuật đầu mục 8).
 
 ### 8b. Nhân vật nằm TRONG một khung (gương, ảnh thờ, màn hình, tranh treo)
 
@@ -466,6 +614,29 @@ tên** — trùng tên gây lẫn lộn khi tra reference sau này.
 đe doạ), không phải số lượng ảnh reference. Viết lại trung tính là qua: "nhóm
 dẫn 1 phụ nữ đi sâu vào rừng, cô theo sau" bị chặn → "sáu người bạn cùng đi bộ
 đường dài, xếp thành 1 hàng, cùng hướng" qua ngay.
+
+### 11e. Case có án mạng/thi thể: cái rùng rợn nằm ở LỜI KỂ, không nằm trong ảnh
+
+Kênh này kể chuyện có thật nên sẽ gặp án mạng, thi thể, quật mộ. Nguyên tắc đã
+chạy qua cả case 3 (hài cốt dưới giếng) và case 4 (Greenbrier) **không lỗi cảnh
+nào**: ảnh chỉ cần đủ để người xem HIỂU, phần ghê rợn để giọng đọc gánh.
+
+Công thức đã qua bộ lọc, dùng lại được:
+- **Không vẽ chính hành vi** → vẽ khoảnh khắc NGAY TRƯỚC (tay với tới nhưng
+  *"stops short of her and does not touch her"*, nạn nhân mất thăng bằng ở mép
+  bậc) hoặc NGAY SAU (cầu thang trống, không người).
+- **Thi thể** → nằm nghiêng, tay xuôi, váy áo phẳng phiu, mắt nhắm (2 nét cong
+  xuống — đúng 1 trong 3 kiểu mắt block cho phép), kèm cấm tường minh:
+  *"absolutely NO blood, NO wound, NO injury, NO bruise and NO mark of any kind"*.
+- **Quật mộ** → quan tài ĐÓNG, *"nothing at all is drawn inside it"*.
+- **Vết thương/vết siết** → đừng vẽ lên người, chuyển thành cảnh **cầm vật
+  chứng** (bác sĩ giơ chiếc khăn).
+- **Xô xát** → *"neither man touches the other"*, đổi thành giơ tay ra hiệu dừng
+  + người kia lùi một bước.
+
+👉 Cảnh nào rủi ro thì **viết sẵn phương án lùi vào `notes` của chính cảnh đó**
+lúc soạn prompt, đừng đợi bị chặn rồi mới nghĩ — lúc đó đang giữa mẻ, dễ sửa vội
+rồi hỏng cả nhịp kể.
 
 **Runner báo timeout/failed nhưng ảnh ĐÃ có trong Flow (chưa kịp đổi tên)** →
 **ĐỪNG chạy lại runner ngay**, nó sẽ tạo thêm 1 ảnh trùng. Làm đúng thứ tự:
