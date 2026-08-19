@@ -49,8 +49,11 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   ngừng dùng, chỉ còn giá trị lưu trữ, đừng lấy làm mẫu văn phong. Tập nào viết
   sau ngày 2026-08-03 mới theo giọng mới.)*
 - **(2026-08-10) Tập MỚI NHẤT, theo giọng văn mới, đang ở giai đoạn tạo ảnh**:
-  `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/` (6 case: A Fei,
-  Don Decker, Carl Ledges, Greenbrier Ghost, Chu Xiu-hua, Marico Iguchi) —
+  `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/` (**5 case**: A Fei,
+  Don Decker, Carl Ledges, Greenbrier Ghost, Chu Xiu-hua) —
+  ⚠️ **Case 6 (Marico Iguchi) đã bị người dùng LOẠI BỎ (xác nhận 2026-08-16)** —
+  `en.md` chỉ có 5 mục `##`, không có case 6 và sẽ không có. Đừng đi tìm kịch bản
+  cho nó, đừng tạo `case-6/`. —
   bản tiếng Anh (`en.md`) do người dùng cung cấp thẳng, không qua bước viết
   nháp tiếng Việt trong hội thoại (khác quy trình chuẩn ở trên, nhưng vẫn hợp
   lệ). **Case 1 (A Fei) đã HOÀN TẤT toàn bộ phần ảnh**: `assets.json` 29/29
@@ -74,6 +77,83 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   ⚠️ 2 cảnh từng đánh dấu rủi ro chính sách (`Carl Walks Toward The Well At
   Night` có súng, `Worker Finds Bones In The Mud` có hài cốt) đều QUA NGAY lần
   đầu — cách viết trung tính trong `notes` của chúng dùng lại được cho case sau.
+- **(2026-08-15, cập nhật 2026-08-16) Case 5 (Chu Xiu-hua) — phần ảnh XONG, ĐANG
+  TRONG VÒNG RÀ SOÁT THEO TỪNG CÂU KỊCH BẢN**. `case-5/{assets,scenes}.json` —
+  **57/57 asset `success` + 37/37 cảnh `success`**.
+  `flowProject: "vu-viec-tam-linh-case-5"`:
+  `https://labs.google/fx/tools/flow/project/c30b2786-6456-4ddf-85cf-b99e1ef270f3`
+
+  🔴 **CÁCH LÀM VIỆC HIỆN TẠI (phiên sau đọc kỹ đoạn này)**: người dùng KHÔNG duyệt
+  cả mẻ một lần nữa. Họ đi **từng câu kịch bản một**, gửi ảnh đang có + nói cần
+  thêm/sửa hình nào, rồi ta viết thêm asset/cảnh cho đúng câu đó và chạy lại ngay.
+  Mỗi vòng chỉ 1-3 ảnh, không phải cả mẻ. Đã đi qua các câu: đoạn xe đạp nặng
+  (thêm 2 cảnh + background bờ biển hoang), đoạn chính quyền/bệnh viện quân y
+  (thêm 2 cảnh + 5 asset), đoạn cướp trên thuyền (thêm 2 cảnh + background boong
+  tàu), **đoạn dẫn điều tra viên ra biển + ngư dân thú tội (2026-08-16: thêm 4
+  cảnh + 3 asset)**. **Còn lại phần lớn kịch bản chưa rà.**
+
+  **Vòng 2026-08-16 (đoạn "led government investigators to the exact stretch of
+  sea… a surviving fisherman dropped to his knees")** — 4 shot người dùng đặt
+  hàng: (1) cô + cảnh sát trên boong tàu cảnh sát, (2) cô chỉ tay về phía thuyền
+  cá, (3) hai thuyền áp sát nhau, (4) ngư dân quỳ thú tội trên boong thuyền cá.
+  Asset mới: Character `Police Constable` (cảnh sát THỨ HAI — kịch bản nói số
+  nhiều mà case chỉ có 1 asset cảnh sát; theo skill mục 5d vì có mặt ở 3 cảnh),
+  Prop `Police Patrol Boat`, Background `Police Boat Deck`. Ảnh tư liệu mới:
+  `refs/case-5/35-police-boat-*` (4 ảnh).
+  ⚠️ **2 cảnh CŨ đã đánh dấu LỖI THỜI trong `notes`, đừng dùng**:
+  `She Points Out The Spot` (đặt nhầm cô lên chính thuyền cá) và
+  `Police Raid The Fishing Boat` (thiếu nhân vật chính, chỉ 1 cảnh sát).
+  ⚠️ Lỗi gặp: `Police Constable` lần đầu **Failed — "We noticed some unusual
+  activity"** (Google bóp tốc độ, KHÔNG phải chặn nội dung — 2 asset ngay sau đó
+  vẫn qua). Chạy lại chính lệnh cũ là xong. Card "Failed" nằm lại trong project,
+  vô hại.
+  ⚠️ `scripts/check-asset-in-picker.ts` **treo vô hạn** trong ca này (>5 phút,
+  phải kill tay 3 tiến trình node). Khi đã có ảnh chụp debug của runner cho thấy
+  card "Failed" thì KHÔNG cần chạy script đó nữa — ảnh chụp đã trả lời đúng câu
+  hỏi mà script định trả lời.
+
+  **Vòng 2026-08-16 (tiếp) — 3 cảnh nữa, KHÔNG cần asset mới**, người dùng chỉ
+  nói "tiếp tục" nên đi tiếp theo đúng thứ tự kịch bản:
+  `The Girl Pleads On The Deck` (hồi tưởng trong lời thú tội),
+  `The Spirit Comes Ashore` (**mắt xích còn thiếu**: hồn dạt vào bờ, nối đoạn
+  ngoài biển với đoạn xe đạp — dùng lại `Coast Road Deserted Shore`), và
+  `The Spirit At The Bedside` (dựng ĐỐI XỨNG với cảnh mở màn `Lin Lying Ill In
+  Bed`: y hệt từng chi tiết, chỉ thêm hồn cô gái đứng ở nửa trái sàn).
+  Cảnh rủi ro nhất tập này (`The Girl Pleads On The Deck` — van xin trước khi bị
+  hại) **QUA NGAY lần đầu** nhờ công thức mục 11e; cách viết trung tính trong
+  `notes` của nó dùng lại được.
+  ℹ️ **11 Prop `Explainer *` KHÔNG có cảnh ghép nào là CỐ Ý** — chúng là biểu
+  tượng rời để bày dần lúc dựng (xem `notes` của chính chúng). Đừng tưởng là còn
+  sót việc rồi đi viết cảnh cho chúng.
+
+  🔧 **Chrome rớt giữa 2 mẻ (đúng triệu chứng mục 2) — TỰ MỞ LẠI ĐƯỢC bằng
+  PowerShell, không phải nhờ người dùng.** Đã làm thật 2026-08-16:
+  `Start-Process -FilePath "C:\Program Files\Google\Chrome\Application\chrome.exe"
+  -ArgumentList '--remote-debugging-port=9222','--user-data-dir=...\.auth\chrome-profile',
+  <3 cờ --disable-*>` rồi chờ ~6s và kiểm `http://127.0.0.1:9222/json/version`.
+  Session Google vẫn còn, chạy lại runner là tiếp tục bình thường. Điều này KHÁC
+  với ghi chú ở mục 2 (*"Playwright không spawn được chrome.exe"*): cấm là cấm
+  **Playwright** spawn, còn `Start-Process` từ PowerShell thì chạy được. Kiểm
+  trước bằng `Get-CimInstance Win32_Process` xem còn tiến trình nào giữ profile
+  không (mục 11d của skill) rồi mới mở lại.
+
+  Case đầu tiên đi qua **bước gom ảnh tư liệu** (skill `case-reference-images`):
+  **205 ảnh** trong `refs/case-5/`, gồm nhóm `19-real-people` là ảnh tư liệu vụ
+  án THẬT (vụ 朱秀華借屍還魂, Mạch Liêu/Vân Lâm **1959** — kịch bản ghi "thập niên
+  1950" là chưa chính xác). Có ảnh chân dung thật hai vợ chồng + ảnh bà lúc còn
+  sống, đã dùng viết mô tả tóc/trang phục cho Character.
+
+  ⚠️ **Trùng tên card trong Flow — ĐÃ BIẾT, người dùng CHẤP NHẬN, đừng đi sửa.**
+  Nhiều cảnh được tạo lại bằng cách đặt `status: "waiting"` rồi chạy lại nên
+  project có vài card trùng tên (vd 2 card "Wu Approaches The Coffin"). Người dùng
+  đã nói rõ "chấp nhận để tên trùng, không sao đâu". Xem skill mục 10b.
+
+  ⚠️ **Đừng dùng lại các asset đã đánh dấu LỖI THỜI trong `notes`** — case này có
+  nhiều thế hệ V2/V3 (`Old Bicycle V2`, `Main Hall With Coffin V3`,
+  `Small Refugee Boat V3`, `Kinmen Shore Daytime V2`...). Luôn đọc `notes`
+  trước khi trỏ reference.
+  ⚠️ `Main Hall With Coffin` là background DUY NHẤT dùng `composition: "corner"`,
+  theo luật mục 6h — Lâm ngồi bật dậy TỪ TRONG quan tài là tương tác với vật.
 - **(2026-08-15) Case 4 (Greenbrier Ghost) đã HOÀN TẤT phần ảnh**.
   `case-4/{assets,scenes}.json` — **38/38 asset `success`** + **23/23 cảnh ghép
   `success`**, không lỗi cảnh nào. `flowProject: "vu-viec-tam-linh-case-4"`:
@@ -131,7 +211,8 @@ tên/khớp nhầm (mục 8.1.3l).
 1. **Case 1 (A Fei) GIỮ NGUYÊN** — người dùng xác nhận tạo hình nhân vật case 1
    đã đúng, KHÔNG tạo lại theo thế hệ `3Q` như case 2. Đừng tự đề xuất làm lại
    để "đồng bộ" nữa.
-2. **Case 3-6: làm từ từ**, không gấp.
+2. **Case 3-6: làm từ từ**, không gấp. *(Cập nhật 2026-08-16: case 6 đã bị loại,
+   tập chỉ còn 5 case và cả 5 đều xong phần ảnh — xem mục 0.)*
 3. ~~**CHỐT dùng phong cách PHỐI CẢNH cho background**~~ — ❌ **ĐÃ ĐẢO NGƯỢC
    2026-08-14, xem mục "Quyết định 2026-08-14" ngay dưới khối này.** Quyết định
    gốc (giữ lại để hiểu bối cảnh): dùng `composition: "perspective"` →
@@ -186,6 +267,40 @@ mọi thứ có chiều sâu.
 - Sửa block thôi KHÔNG đủ: mô tả từng background còn tự viết *"drawn at an
   angle"* / *"two walls meeting at one vertical corner line"* — mô tả cụ thể
   thường thắng block, phải sửa cả câu chữ trong `description`.
+
+### 📍 SKILL CỦA KÊNH NÀY NẰM TRONG REPO, KHÔNG ĐỂ TOÀN CỤC
+
+Người dùng chốt 2026-08-15: mọi skill phục vụ kênh này phải nằm ở
+`.claude/skills/` **trong chính repo**, KHÔNG đặt ở
+`~/.claude/skills/` — để sau này làm kênh YouTube khác thì skill
+hai bên không lẫn vào nhau.
+
+Hiện có 3 skill, tất cả đều trong repo (`~/.claude/skills/` đang rỗng):
+
+| Skill | Việc |
+|---|---|
+| `nano-banana-image-prompts` | Viết prompt ảnh — `assets.json` / `scenes.json` |
+| `case-reference-images` | Gom ảnh tư liệu cho 1 case (bước BẮT BUỘC trước khi viết prompt) |
+| `true-story-compilation-script` | Viết kịch bản thuyết minh cho tập |
+
+⚠️ Tạo skill mới cho kênh này thì đặt vào `.claude/skills/` và **commit vào
+git** — không commit thì máy khác clone về sẽ thiếu. Tính tới cuối phiên này,
+`case-reference-images` vẫn CHƯA được track.
+
+### ✅ ĐÃ COMMIT (2026-08-16)
+
+Cụm dưới đây từng treo trong working tree suốt nhiều phiên, **nay đã commit +
+push lên `master`**:
+- `narration-scripts/vu-viec-tam-linh-khong-the-giai-thich/case-5/` (assets +
+  scenes) và `state/project-vu-viec-tam-linh-case-5.json`
+- `refs/` tái cấu trúc thành `refs/case-N/` + các file README (ảnh bị gitignore,
+  chỉ commit README)
+- Skill MỚI `.claude/skills/case-reference-images/`
+- Sửa lớn `.claude/skills/nano-banana-image-prompts/SKILL.md`
+- `.gitignore` (pattern `refs/**`), `RUNBOOK.md`
+- `scripts/check-asset-in-picker.ts` (thêm cờ `--project`)
+
+Commit trực tiếp lên `master` theo nếp repo (mọi commit trước đều vậy).
 
 ### ⏳ VIỆC ĐANG TREO (2026-08-11) — đọc trước khi chạy tiếp
 

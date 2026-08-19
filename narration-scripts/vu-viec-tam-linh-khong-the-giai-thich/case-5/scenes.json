@@ -1,0 +1,498 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích",
+  "flowProject": "vu-viec-tam-linh-case-5",
+  "scenes": [
+    {
+      "name": "Lin Lying Ill In Bed",
+      "case": 5,
+      "narrationRef": "In a remote countryside village, a woman named Lin Wang-lu suddenly fell critically ill. She had always been physically frail.",
+      "references": [
+        "Lin The Wife",
+        "Neighbour Woman",
+        "Village Bedroom"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the younger woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old woman's exact face, grey low bun, narrow eyes and faded grey side-buttoned tunic from the second reference image, unchanged — do not mix the two women's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same pale cream back wall, the same barred window, the same low bed with its flat mattress and blanket, the same stool and the same grey floor strip. The younger woman is lying flat on her back on the bed with the plain blanket drawn up to her chest as ONE flat shape, both arms resting straight at her sides, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. Draw absolutely NO blood, NO wound and NO mark of any kind on her. The old woman is sitting on the small stool beside the bed, her body turned about forty-five degrees toward the bed and her head turned the same way, both arms lowered, her eyes drawn as two plain round black dots. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Neighbour Brings The News",
+      "case": 5,
+      "narrationRef": "Miles away, her husband, Wu Xiong-ming, received the terrifying news.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Neighbour Man",
+        "Old Bicycle V2",
+        "Country Road Rice Fields"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the first man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Keep the older man's exact face, conical straw hat, grey chin beard and white sleeveless undershirt from the second reference image, unchanged — do not mix the two men's features together. Draw EXACTLY ONE bicycle, matching the third reference image exactly in shape and colour, standing upright on the dirt road beside the first man. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same row of hills, the same green paddy band with its three water lines, the same four utility poles and the same tan road strip — do not add any more poles. The two men stand facing each other on the clear empty road strip. The younger man in the work shirt stands with one arm lowered resting on the bicycle saddle, his head turned toward the older man, his eyes drawn as two large white circles with small black pupils. The older man stands opposite him with one arm raised and extended to point off toward the far side of the frame, his mouth drawn as one small open oval as if speaking. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the bicycle, standing on the same road strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Wu Pedals Along The Road",
+      "case": 5,
+      "narrationRef": "Panicked, he jumped on his bicycle and started pedaling as fast as he could.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Old Bicycle V2",
+        "Country Road Rice Fields"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Draw EXACTLY ONE bicycle, matching the second reference image exactly in shape and colour, seen from the side and rolling along the road. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same hills, the same paddy band, the same four utility poles and the same tan road strip. He is riding the bicycle across the middle of the road strip, seen from the side but with his body turned about forty-five degrees toward the viewer and his head turned the same way, both arms reaching forward to the handlebar and both leg lines bent at the pedals, leaning forward as he pushes hard. His eyes are drawn as two plain round black dots and his mouth as one short straight line. Both bicycle wheels stay perfectly round and both rest on the road strip. He is the only person in the picture; the luggage rack behind his saddle is empty and nobody is sitting on it. Draw NO speed lines, NO motion blur, NO dust cloud and NO shadows. He must be scaled to a normal human size relative to the bicycle and the utility poles, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "The Bicycle Grows Heavy",
+      "case": 5,
+      "narrationRef": "Wu suddenly felt his bike grow unnaturally heavy. The tires flattened out, acting like a full-grown adult had just hopped onto the back seat.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Old Bicycle V2",
+        "Country Road Rice Fields"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Draw EXACTLY ONE bicycle, matching the second reference image exactly in shape and colour, seen from the side. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same hills, the same paddy band, the same four utility poles and the same tan road strip. He is still riding across the road strip, his body turned about forty-five degrees toward the viewer, both arms gripping the handlebar and both leg lines bent at the pedals, but he is now straining: his body leans much further forward over the handlebar and his head is turned back over his shoulder to look at the empty luggage rack behind him, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. The BACK wheel is drawn plainly squashed — a flattened oval, clearly wider than it is tall — while the FRONT wheel stays a perfect circle, so the weight on the back plainly reads. The luggage rack is EMPTY: draw absolutely NO second person, NO figure, NO silhouette and NO shape sitting on it or anywhere else in the picture. Draw NO speed lines, NO motion blur and NO shadows. He must be scaled to a normal human size relative to the bicycle, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'The Bicycle Grows Heavy V2'. Người dùng chốt 2026-08-15: khoảnh khắc xe nặng phải xảy ra ở đoạn đường dọc BỜ BIỂN HOANG, để nối với chi tiết hồn dạt vào bờ ở đoạn sau. Bản này dùng nền đồng ruộng. (Ghi chú cũ: Cảnh chữ ký của case. Hồn CỐ Ý để trống — người xem chưa được biết ai đang ngồi sau, mãi tới cảnh 'The Spirit On The Bicycle' ở cuối mới reveal. Sức nặng diễn bằng HÌNH HỌC đo được: bánh sau bẹp thành hình bầu dục rộng hơn cao, bánh trước vẫn tròn.)"
+    },
+    {
+      "name": "The Bicycle Grows Heavy V2",
+      "case": 5,
+      "narrationRef": "On his way home… Wu suddenly felt his bike grow unnaturally heavy. The tires flattened out, acting like a full-grown adult had just hopped onto the back seat.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Old Bicycle V2",
+        "Coast Road Deserted Shore"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Draw EXACTLY ONE bicycle, matching the second reference image exactly in shape and colour, seen from the side and rolling along the road, with its pedals and crank clearly visible. Keep the background exactly as shown in the last reference image, unchanged and in the SAME band order: the same pale blue sky band, the same flat dark sea band with its straight horizon line, the same pale sand strip with its three rocks and two pieces of driftwood, and the same tan dirt road strip filling the bottom third nearest the viewer. Do not add any people, any boats, any houses or any poles. He is riding across the middle of the dirt road strip, his body turned about forty-five degrees toward the viewer, both arms still gripping the handlebar and both leg lines bent at the pedals — but he has TWISTED AROUND at the waist and his head is turned back over his shoulder to stare at the empty luggage rack behind him. His eyes are drawn as two large white circles with small black pupils and his mouth as one small open oval. The BACK wheel is drawn plainly squashed under the weight: an oval clearly WIDER than it is TALL, about one fifth shorter from top to bottom than the front wheel — while the FRONT wheel stays a perfect circle. The difference between the two wheels must be obvious at a glance. The luggage rack is EMPTY: draw absolutely NO second person, NO figure, NO silhouette and NO shape sitting on it or anywhere else in the picture. He must be scaled to a normal human size relative to the bicycle, riding on the dirt road strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Draw NO speed lines, NO motion blur, NO dust cloud and NO shadows. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Ảnh 1 của đoạn 3 cảnh (người dùng phân shot 2026-08-15). Đổi nền sang bờ biển hoang để nối với chi tiết hồn dạt vào bờ. Yên sau CỐ Ý để trống — đây là cảnh GÀI, người xem chưa được biết ai ngồi đó. Bánh sau bẹp lần này neo bằng TỈ LỆ ĐO ĐƯỢC (thấp hơn bánh trước khoảng 1/5) vì bản đầu ra hai bánh tròn như nhau, chỉ dặn 'squashed' là không ăn."
+    },
+    {
+      "name": "Wu Strains To Pedal",
+      "case": 5,
+      "narrationRef": "Even so, he gritted his teeth and poured every ounce of his energy into pedaling, his heart racing with anxiety.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Old Bicycle V2",
+        "Coast Road Deserted Shore"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Draw EXACTLY ONE bicycle, matching the second reference image exactly in shape and colour, seen from the side and rolling along the road, with its pedals and crank clearly visible. Keep the background exactly as shown in the last reference image, unchanged and in the SAME band order: the same pale blue sky band, the same flat dark sea band with its straight horizon line, the same pale sand strip with its three rocks and two pieces of driftwood, and the same tan dirt road strip filling the bottom third nearest the viewer. Do not add any people, any boats, any houses or any poles. He has RISEN OFF THE SADDLE and is standing on the pedals: his body is lifted clearly above the saddle so a plain gap shows between him and it, both arms straight and locked down onto the handlebar, his back low and level and his head pushed forward over the handlebar, one leg line pressed all the way down onto the lower pedal and the other bent high over the upper pedal. His face shows effort: his eyes are drawn as two simple downward curves because they are squeezed shut, and his mouth as one wide flat rectangle crossed by EXACTLY THREE short vertical lines, standing for gritted teeth. The BACK wheel is drawn plainly squashed under the weight: an oval clearly WIDER than it is TALL, about one fifth shorter from top to bottom than the front wheel — while the FRONT wheel stays a perfect circle. The difference between the two wheels must be obvious at a glance. The luggage rack is EMPTY: draw absolutely NO second person, NO figure, NO silhouette and NO shape sitting on it or anywhere else in the picture. He must be scaled to a normal human size relative to the bicycle, riding on the dirt road strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Draw NO speed lines, NO motion blur, NO dust cloud and NO shadows. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Ảnh 2 của đoạn 3 cảnh — CẢNH MỚI, trước đây đoạn 'gritted his teeth and poured every ounce of energy' không có hình nào. Tư thế nhổm khỏi yên tả bằng hình học đo được (có khe hở giữa người và yên, một chân đạp hết xuống, chân kia gập cao). Miệng nghiến răng dùng kiểu mới: hình chữ nhật ngang có 3 vạch dọc."
+    },
+    {
+      "name": "Wu Arrives At The House",
+      "case": 5,
+      "narrationRef": "But it was too late. By the time he walked through the door, his wife had already taken her last breath.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Old Bicycle V2",
+        "Village Sanheyuan Exterior"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Draw EXACTLY ONE bicycle, matching the second reference image exactly in shape and colour, lying tipped over on the ground beside him with both wheels still perfectly round. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same tiled roof band, the same red-brown brick wall with its one central doorway and its two windows, the same clay water jar and the same grey courtyard strip. He is standing on the clear empty courtyard strip just in front of the open central doorway, his body turned about forty-five degrees toward the doorway and his head turned the same way, both arms lowered at his sides, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. He is the only person in the picture; there is nobody else anywhere and nothing is drawn inside the dark doorway. He must be scaled to a normal human size relative to the doorway, standing on the same courtyard strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "The Wake In The Main Hall",
+      "case": 5,
+      "narrationRef": "The house immediately filled with the heavy sounds of grief.",
+      "references": [
+        "Lin The Wife",
+        "Neighbour Woman",
+        "Main Hall With Mourners V3"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the younger woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old woman's exact face, grey low bun, narrow eyes and grey side-buttoned tunic from the second reference image, unchanged — do not mix the two women's features together. Keep the room exactly as shown in the third reference image, unchanged: the same darker LEFT side wall and lighter BACK wall meeting at the single vertical corner line, the same single diagonal floor line, the same altar shelf with its two candles, the same open coffin lying square across the picture on its two trestles, the same floor AND the same three small mourners standing along the back wall — do not move them, do not enlarge them and do not add any more people. The younger woman is lying still inside the open coffin, only her head, shoulders and folded arms visible above its rim, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. Draw absolutely NO blood, NO wound and NO mark of any kind on her. The old woman stands on the clear empty floor on the NEAR side of the coffin, her body turned about forty-five degrees toward it and her head tilted down, both arms raised in front of her chest, her eyes drawn as two simple downward curves. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients.",
+      "status": "success"
+    },
+    {
+      "name": "Wu Approaches The Coffin",
+      "case": 5,
+      "narrationRef": "But as Wu approached the coffin to look at his wife one final time…",
+      "references": [
+        "Husband Wu Qiu De",
+        "Lin The Wife",
+        "Main Hall With Mourners V3"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Keep the woman's exact face, short wavy black hair and pale pink white-collared blouse from the second reference image, unchanged — do not mix the two people's features together. Keep the room exactly as shown in the third reference image, unchanged: the same two wall panels meeting at the single vertical corner line, the same single diagonal floor line, the same altar shelf, the same open coffin lying square across the picture on its trestles, the same floor AND the same three small mourners along the back wall — do not move them and do not add any more people. The woman is lying still inside the open coffin exactly as before, only her head, shoulders and folded arms visible above its rim, her eyes drawn as two simple downward curves because they are closed. The man is standing on the clear empty floor at the NEAR long side of the coffin, his body turned about forty-five degrees toward it, leaning forward from the waist and looking down into it, one arm lowered and resting on the coffin rim and the other lowered at his side, his eyes drawn as two simple downward curves and his mouth as one short straight line. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients.",
+      "status": "success"
+    },
+    {
+      "name": "Lin Sits Up In The Coffin",
+      "case": 5,
+      "narrationRef": "Lin suddenly moved, slowly sat up, and started looking around the room. People screamed in pure terror.",
+      "references": [
+        "Lin The Wife",
+        "Husband Wu Qiu De",
+        "Neighbour Woman",
+        "Main Hall With Mourners V3"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the younger woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the man's exact face, black hair combed straight back and faded indigo work shirt from the second reference image, unchanged. Keep the old woman's exact face, grey low bun and grey side-buttoned tunic from the third reference image, unchanged — do not mix any of the three people's features together. Keep the room exactly as shown in the fourth reference image, unchanged: the same two wall panels meeting at the single vertical corner line, the same single diagonal floor line, the same altar shelf, the same open coffin lying square across the picture on its trestles, the same floor AND the same three small mourners along the back wall. The younger woman is now SITTING UP inside the open coffin, her upper body upright and clearly rising above its rim from the waist up, her body turned about forty-five degrees toward the viewer and her head turned to look across the room, both arms resting on the coffin rim on either side of her. Her eyes are drawn as two large white circles with small black pupils and her mouth as one short straight line. Draw absolutely NO blood, NO wound and NO mark of any kind on her. The man has staggered back a full step onto the clear near floor, his body turned toward her, both arms raised in front of his chest, his eyes drawn as two large white circles with small black pupils and his mouth as one small open oval. The old woman is further back at the edge of the frame, turned away toward the doorway side with her head still turned toward the coffin, both arms raised, her eyes drawn the same shocked way. Nobody touches anybody. Every person must be scaled to a normal, consistent human size relative to each other and to the coffin, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients.",
+      "status": "success",
+      "notes": "Cảnh cao trào. Đây là lý do background này dùng composition 'corner' (skill mục 6h): quan tài đặt chéo thì 'ngồi bật dậy TỪ TRONG quan tài' mới đọc được; nền phẳng chiếu thẳng thì quan tài chỉ như cái hộp đứng trước mặt."
+    },
+    {
+      "name": "Lin Rests And Recovers",
+      "case": 5,
+      "narrationRef": "After resting and recovering, Lin was actually back to life in the flesh.",
+      "references": [
+        "Lin The Wife",
+        "Neighbour Woman",
+        "Village Bedroom"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the younger woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old woman's exact face, grey low bun, narrow eyes and grey side-buttoned tunic from the second reference image, unchanged — do not mix the two women's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same pale cream back wall, the same barred window, the same low bed, the same stool and the same grey floor strip. The younger woman is sitting up on the bed with her back straight and both leg lines stretched out along the mattress under the flat blanket, her body turned about forty-five degrees toward the viewer, one arm lowered onto the blanket and the other raised a little, her head turned to look around the room. Her eyes are drawn as two plain round black dots and her mouth as one short straight line. The old woman stands on the clear empty left half of the floor strip holding one plain small bowl in one lowered arm, her body turned toward the bed, her eyes drawn as two large white circles with small black pupils. Every person must be scaled to a normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Lin Reads A Newspaper",
+      "case": 5,
+      "narrationRef": "This previously illiterate country woman suddenly loved reading books and newspapers.",
+      "references": [
+        "Lin The Wife",
+        "Folded Newspaper",
+        "Village Bedroom"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Draw EXACTLY ONE newspaper, matching the second reference image exactly in shape and colour, scaled to about the width of her shoulders. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same pale cream back wall, the same barred window, the same low bed, the same stool and the same grey floor strip. She is sitting on the edge of the bed with both feet toward the floor strip, her body turned about forty-five degrees toward the viewer, both arms raised in front of her chest holding the open newspaper up so its whole face is clearly visible, her head tilted slightly down toward it. Her eyes are drawn as two plain round black dots and her mouth as one short straight line. The newspaper must stay completely free of readable text: only the four plain thin horizontal lines from the reference image, with absolutely no letters, no characters, no headlines and no photographs on it. She is the only person in the picture. She must be scaled to a normal human size relative to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Neighbours Hear Her Speak",
+      "case": 5,
+      "narrationRef": "the detail that completely shell-shocked her family and neighbors was that she suddenly started speaking fluent Mandarin.",
+      "references": [
+        "Lin The Wife",
+        "Neighbour Woman",
+        "Neighbour Man",
+        "Village Sanheyuan Exterior"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the younger woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old woman's exact face, grey low bun and grey side-buttoned tunic from the second reference image, unchanged. Keep the old man's exact face, conical straw hat, grey chin beard and white sleeveless undershirt from the third reference image, unchanged — do not mix any of the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same tiled roof band, the same brick wall with its central doorway and two windows, the same clay water jar and the same grey courtyard strip. The younger woman stands on the clear empty courtyard strip in front of the doorway, her body turned about forty-five degrees toward the other two and one arm raised a little in front of her, her mouth drawn as one small open oval as if speaking and her eyes as two plain round black dots. The old woman and the old man stand together a little apart from her, both turned toward her, all their arms lowered, both their pairs of eyes drawn as two large white circles with small black pupils and both mouths as small open ovals. Nobody touches anybody. There are only these three people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the doorway, standing on the same courtyard strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Government Officials Discuss The Case",
+      "case": 5,
+      "narrationRef": "Naturally, this wild story caught the attention of the Taiwanese government.",
+      "references": [
+        "Military Officer",
+        "Government Meeting Room With Officers"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the man's exact face, khaki peaked cap, short greying black hair, black moustache and khaki military tunic with its shoulder straps from the first reference image, unchanged. Keep the room exactly as shown in the second reference image, unchanged: the same ceiling band, the same pale olive-green wall with its one blank framed picture, the same long meeting table with its two folders, the same plain red flag on its pole, the same grey floor strip AND the same four seated officers behind the table — do not move them, do not enlarge them and do not add any more people. He is standing on the clear empty floor strip in FRONT of the table, closer to the viewer than the table, his body turned about forty-five degrees toward the seated officers and his head turned the same way, one arm raised and extended to point down at the folders on the table and his other arm lowered, his mouth drawn as one small open oval as if speaking and his eyes as two plain round black dots. No part of the table may cross his face. Every person must be scaled to a normal, consistent human size relative to each other and to the table, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Ảnh 1 của đoạn (người dùng phân shot 2026-08-15) — cảnh MỚI, trước đây đoạn 'chính quyền để mắt tới' không có hình nào. Đặt TRƯỚC 'Officials Come To Collect Her' vì chính quyền họp rồi mới cử người đi đón."
+    },
+    {
+      "name": "Officials Come To Collect Her",
+      "case": 5,
+      "narrationRef": "Naturally, this wild story caught the attention of the Taiwanese government. They took her to a military hospital…",
+      "references": [
+        "Lin The Wife",
+        "Police Investigator",
+        "Village Sanheyuan Exterior"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the man's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same sky band, the same tiled roof band, the same brick wall with its central doorway and two windows, the same clay water jar and the same grey courtyard strip. The two of them stand on the clear empty courtyard strip. The man in uniform stands nearer the viewer, his body turned about forty-five degrees toward the woman and one arm raised and extended to point off toward the far side of the frame, his mouth drawn as one short straight line. The woman stands beside him facing the same way with both arms lowered at her sides, her head turned back toward the doorway of the house, her eyes drawn as two plain round black dots. The two of them do not touch each other. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the doorway, standing on the same courtyard strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Arriving At The Military Hospital",
+      "case": 5,
+      "narrationRef": "They took her to a military hospital for a full psychiatric and physical evaluation.",
+      "references": [
+        "Lin The Wife",
+        "Chief Military Doctor",
+        "Junior Military Doctor",
+        "Military Hospital Gate"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the older doctor's exact face, grey side-combed hair, trimmed grey moustache and white coat over a khaki collar from the second reference image, unchanged. Keep the younger doctor's exact face, round glasses, side-parted black hair and white coat over a khaki collar from the third reference image, unchanged — do not mix any of the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same roof band, the same two-storey hospital building with its four upper windows and its four ground-floor pillars, the same two gate posts with their beam, the same white panel with its red cross, and the same paved forecourt strip. The three of them are standing together on the clear empty forecourt strip in the open gateway between the two gate posts, all turned about forty-five degrees toward the viewer. The two doctors in white coats stand side by side on one side, both with their arms lowered, each mouth drawn as one short straight line. The woman stands a little apart on the other side, her head turned up toward the building behind them, both arms lowered at her sides, her eyes drawn as two plain round black dots. Nobody touches anybody, and no gate post or pillar may cross any person's face. There are only these three people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the gate posts, standing on the same forecourt strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Ảnh 2 của đoạn — cảnh MỚI. Áp sẵn luật chống che mặt của skill mục 6d: cột cổng và cột hiên là vật chắn dọc, phải cấm tường minh chúng cắt ngang mặt nhân vật."
+    },
+    {
+      "name": "She Recognises The Doctor",
+      "case": 5,
+      "narrationRef": "The moment she walked into the clinic and saw the chief military doctor, she burst into tears, rushed over to grab his hands, and called out, \"Shūshu!\"",
+      "references": [
+        "Lin The Wife",
+        "Chief Military Doctor",
+        "Military Hospital Clinic Room"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old man's exact face, grey side-combed hair, trimmed grey moustache, white doctor's coat and khaki collar from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same pale mint-green wall, the same window, the same desk with its single folder, the same chair, the same examination bed and the same pale grey floor strip. The two of them are standing facing each other on the clear empty middle of the floor strip, and both of their near arms reach out toward each other so that the two arm lines meet at a single point midway between them. The woman leans slightly toward him, her mouth drawn as one small open oval as if calling out and her eyes drawn as two simple downward curves as if crying. The old man stands upright facing her, his free arm lowered at his side, his eyes drawn as two large white circles with small black pupils and his mouth as one short straight line. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the desk, standing on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "She Tells The Doctor Her Name",
+      "case": 5,
+      "narrationRef": "She claimed her real name was Chu Xiu-hua, a 17-year-old girl from Kinmen Island… his long-lost niece.",
+      "references": [
+        "Lin The Wife",
+        "Chief Military Doctor",
+        "Military Hospital Clinic Room"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the old man's exact face, grey side-combed hair, trimmed grey moustache and white doctor's coat from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same ceiling band, the same pale mint-green wall, the same window, the same desk with its single folder, the same chair, the same examination bed and the same pale grey floor strip. The old man is sitting on the chair beside the desk, his body turned about forty-five degrees toward the woman and his head turned the same way, one arm resting on the desk top and the other lowered, his mouth drawn as one short straight line. The woman is sitting on the edge of the examination bed opposite him, her body turned about forty-five degrees toward him, both arms lowered and resting on her knees, her head lifted toward him, her mouth drawn as one small open oval as if speaking and her eyes as two plain round black dots. The two of them do not touch each other. There are only these two people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the desk, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Leaving Kinmen By Boat",
+      "case": 5,
+      "narrationRef": "In 1958, war broke out on Kinmen Island, so she and a group of locals boarded a refugee boat to escape.",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Refugee Elder Man",
+        "Refugee Middle Aged Man",
+        "Refugee Young Woman",
+        "Small Refugee Boat V3",
+        "Kinmen Shore Daytime V2"
+      ],
+      "prompt": "Draw a scene combining all six reference images. Keep the girl's exact face, middle-parted black hair tied back, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the old man's exact face, white combed-back hair, white moustache and faded brown tunic from the second reference image, unchanged. Keep the middle-aged man's exact face, black forward-combed hair, clean-shaven chin and dark grey tunic from the third reference image, unchanged. Keep the young woman's exact face, black braided hair and faded green tunic from the fourth reference image, unchanged — do not mix any of these four people's features together. Draw the boat, matching the fifth reference image exactly in shape and colour — the long low hull with its single flat rim and no visible interior — floating on the sea band across the bottom of the frame, in front of the sand strip and clear of the houses, scaled wide enough for the four people to stand side by side along it. Keep the background exactly as shown in the sixth reference image, unchanged and in the SAME band order: the same pale grey sky band at the top, the same row of low stone houses filling the frame edge to edge, the same pale sand strip that those houses stand on, and the same flat dark sea band filling the bottom third nearest the viewer. Do not move the sea between the houses and the sand, and do not let any band edge cut across the houses. All four people stand or sit side by side directly behind the boat's rim, evenly spaced along its length. The near side of the boat's hull passes IN FRONT OF every one of them, hiding their body from the waist down — their heads, shoulders and upper chest stay fully visible above the rim, and NO part of the hull may cross anyone's face at any point. The girl stands roughly in the middle, her body turned about forty-five degrees toward the viewer and her head turned back toward the houses on the shore, one arm resting on the rim and the other lowered, her eyes drawn as two plain round black dots and her mouth as one short straight line. The old man, the middle-aged man and the young woman stand at other points along the rim, each turned about forty-five degrees to one side, plain neutral expressions, arms resting on the rim or lowered. Do NOT draw any soldiers, any smoke, any fire and any damage to the houses, and do NOT add any other people beyond these four. Every person must be scaled to a normal, consistent human size relative to each other and to the boat, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thiết kế lại 2026-08-15 theo hướng người dùng chốt: thuyền chỉ còn thành phẳng, người đứng sau che thân dưới — không còn cố mô tả chiều sâu khoang thuyền."
+    },
+    {
+      "name": "Adrift At Sea",
+      "case": 5,
+      "narrationRef": "After drifting at sea for days…",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Refugee Elder Man",
+        "Refugee Middle Aged Man",
+        "Refugee Young Woman",
+        "Small Refugee Boat V3",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all six reference images. Keep the girl's exact face, middle-parted black hair tied back, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the old man's exact face, white combed-back hair, white moustache and faded brown tunic from the second reference image, unchanged. Keep the middle-aged man's exact face, black forward-combed hair, clean-shaven chin and dark grey tunic from the third reference image, unchanged. Keep the young woman's exact face, black braided hair and faded green tunic from the fourth reference image, unchanged — do not mix any of these four people's features together. Draw the boat, matching the fifth reference image exactly in shape and colour — the long low hull with its single flat rim and no visible interior — floating level on the sea in the middle of the frame, scaled wide enough for the four people to stand side by side along it. Keep the background exactly as shown in the sixth reference image, unchanged: the same pale blue sky band with its two clouds, the same straight horizon line running edge to edge, and the same flat deep blue-green sea with its three thin darker lines — do not add waves, foam or reflections. All four people stand or sit side by side directly behind the boat's rim, evenly spaced along its length. The near side of the boat's hull passes IN FRONT OF every one of them, hiding their body from the waist down — their heads, shoulders and upper chest stay fully visible above the rim, and NO part of the hull may cross anyone's face at any point. EVERY ONE of the four is exhausted: each one leans forward with both arms folded on top of the rim and their head resting down on their own folded arms — nobody stands upright or alert. EVERY ONE of them has EYES CLOSED, drawn ONLY as two simple downward curves, never open. Vary the tilt of each person's head slightly — some leaning left, some right, some straight down — so they do not look like copies of one figure. The girl stands second from the left, the old man at the far left end, the young woman third from the left, and the middle-aged man at the far right end. There is no land anywhere. Every person must be scaled to a normal, consistent human size relative to the boat, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thiết kế lại 2026-08-15 theo yêu cầu người dùng: 'người mệt mỏi ôm thành thuyền'. Tư thế đồng loạt (tay khoanh lên mép, đầu gục xuống tay) — chỉ khác góc nghiêng đầu để tránh nhân bản, đơn giản hơn hẳn 3 vòng sửa trước (mỗi người một tư thế phức tạp riêng)."
+    },
+    {
+      "name": "The Fishing Boat Approaches",
+      "case": 5,
+      "narrationRef": "a group of Taiwanese fishermen found them. But instead of saving them…",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Refugee Elder Man",
+        "Refugee Middle Aged Man",
+        "Refugee Young Woman",
+        "Small Refugee Boat V3",
+        "Wooden Fishing Boat",
+        "Confessing Fisherman",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all eight reference images. Keep the girl's exact face, middle-parted black hair tied back, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the old man's exact face, white combed-back hair, white moustache and faded brown tunic from the second reference image, unchanged. Keep the middle-aged man's exact face, black forward-combed hair, clean-shaven chin and dark grey tunic from the third reference image, unchanged. Keep the young woman's exact face, black braided hair and faded green tunic from the fourth reference image, unchanged. Keep the fisherman's exact face, conical straw hat, thin moustache, sun-darkened skin and dark blue collarless tunic from the seventh reference image, unchanged — do not mix any of these five people's features together. On the LEFT of the frame, draw the small boat matching the fifth reference image — the long low hull with its single flat rim and no visible interior — small and distant, scaled wide enough for the four people to stand side by side along it. On the RIGHT of the frame, draw the fishing boat matching the sixth reference image in shape and colour but ENLARGED and CROPPED BY THE FRAME: only the near portion of its hull and deck is shown, filling most of the right half of the picture and running off the right edge and the bottom edge of the frame — its bow and stern are NOT both visible, only the section of deck where the men stand — so the fishing boat reads as much larger and much closer to the viewer than the small boat on the left. A clear stretch of open water separates the two boats. Keep the background exactly as shown in the eighth reference image, unchanged: the same sky band with its two clouds, the same straight horizon line and the same flat sea with its three thin darker lines. All four people stand or sit side by side directly behind the boat's rim, evenly spaced along its length. The near side of the boat's hull passes IN FRONT OF every one of them, hiding their body from the waist down — their heads, shoulders and upper chest stay fully visible above the rim, and NO part of the hull may cross anyone's face at any point. The girl stands roughly in the middle, her body turned about forty-five degrees toward the fishing boat and her head turned the same way, one arm raised toward it, resting up off the rim, her eyes drawn as two plain round black dots. The old man, the middle-aged man and the young woman stand at other points along the rim, each turned about forty-five degrees to one side, arms resting on the rim, plain neutral expressions. The fisherman stands on the visible deck of the fishing boat on the right, his body turned about forty-five degrees toward the small boat, both arms lowered at his sides, his mouth drawn as one short straight line. Standing beside him on the SAME deck are EXACTLY TWO other plain fishermen, turned about forty-five degrees to one side, EXACTLY TWO small round black dots for the eyes, ONE short straight line for the mouth, no nose and no eyebrows, arms and legs as THIN PLAIN STRAIGHT LINES with no hands, no fingers, no feet and no shoes, clothing as ONE plain flat dark shape with no folds or buttons, varied heights and hair colours so they do not look like copies of one figure, each wearing a plain wide conical straw hat like the reference fisherman so they read as the same crew. The two boats do not touch, and no person from one boat touches a person from the other. Draw absolutely NO weapon, NO rope, NO struggle and nobody in the water. Every person must be scaled to a normal, consistent human size relative to their own boat, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Thiết kế lại 2026-08-15 — cùng thuyền dải-thành-phẳng V3. Phần thuyền cá bên phải (crop khung, 2 ngư dân phụ) GIỮ NGUYÊN không đổi vì không có vấn đề gì được báo."
+    },
+    {
+      "name": "Fishermen Rob The Refugees",
+      "case": 5,
+      "narrationRef": "But instead of saving them, these greedy men robbed the families of all their gold and valuables…",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Refugee Elder Man",
+        "Refugee Middle Aged Man",
+        "Refugee Young Woman",
+        "Confessing Fisherman",
+        "Fishing Boat Deck"
+      ],
+      "prompt": "Draw a scene combining all six reference images. Keep the girl's exact face, middle-parted black hair tied back, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the old man's exact face, white combed-back hair, white moustache and faded brown tunic from the second reference image, unchanged. Keep the middle-aged man's exact face, black forward-combed hair, clean-shaven chin and dark grey tunic from the third reference image, unchanged. Keep the young woman's exact face, black braided hair and faded green tunic from the fourth reference image, unchanged. Keep the fisherman's exact face, conical straw hat, thin moustache, sun-darkened skin and dark blue collarless tunic from the fifth reference image, unchanged — do not mix any of these five people's features together. Keep the background exactly as shown in the sixth reference image, unchanged: the same sky band, the same wheelhouse, the same deck floor, the same coiled rope and crate, and the same low rail with the sea band beyond it. The girl, the old man, the middle-aged man and the young woman stand together in a close group on one side of the deck. Each of them already has their own wrists tied together in front of them with ONE plain simple rope loop — a calm, already-finished state, not a struggle: arms simply held together, no pulling, no straining. Each is turned about forty-five degrees toward the viewer, eyes drawn as two large white circles with small black pupils, mouth drawn as one short straight line — a plain frightened expression, nothing more extreme, no tears, no open screaming mouths. The fisherman stands facing them from the other side of the deck, a clear gap of empty deck between the two groups. One of his arms is raised, holding EXACTLY ONE plain small drawstring pouch drawn as a flat golden-yellow shape, with EXACTLY THREE plain small circular flat golden shapes visible spilling from its open top, standing for coins and jewellery — no sparkle, no shine, no gem facets. His other arm is lowered at his side, his mouth drawn as one short straight line. Standing beside him are EXACTLY TWO other plain fishermen, each turned about forty-five degrees to one side, EXACTLY TWO small round black dots for the eyes, ONE short straight line for the mouth, no nose and no eyebrows, arms and legs as THIN PLAIN STRAIGHT LINES with no hands, no fingers, no feet and no shoes, clothing as ONE plain flat dark shape with no folds or buttons, varied heights and hair colours so they do not look like copies of one figure, each wearing a plain wide conical straw hat like the reference fisherman so they read as the same crew. The two groups stand clearly apart and do not touch each other at any point. Draw absolutely NO weapon, NO knife, NO rope beyond the two tied wrist-loops already described, NO pushing, NO struggle and NO other physical contact between the two groups. Every person must be scaled to a normal, consistent human size relative to each other and to the deck, standing on it, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "RỦI RO CHÍNH SÁCH CAO — cướp của + trói người. Cách né: (1) trói tả như TRẠNG THÁI ĐÃ XONG ('already has... a calm already-finished state, not a struggle'), không mô tả HÀNH VI trói đang diễn ra; (2) 2 nhóm đứng CÁCH NHAU, không ai chạm ai — cấm tường minh xô đẩy/giằng co; (3) vàng đã ở TRONG TAY ngư dân (không vẽ cảnh giật lấy từ ai); (4) biểu cảm sợ hãi mức vừa phải, cấm khóc/hét. Nếu vẫn bị chặn: bỏ hẳn chi tiết trói tay, chỉ giữ nhóm tị nạn đứng túm tụm mắt mở to + ngư dân cầm túi vàng đối diện — đủ kể chuyện mà an toàn hơn nhiều."
+    },
+    {
+      "name": "Cast Into The Open Sea",
+      "case": 5,
+      "narrationRef": "…then callously threw everyone into the deep ocean to erase the evidence.",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Refugee Elder Man",
+        "Refugee Middle Aged Man",
+        "Refugee Young Woman",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all five reference images. Keep the girl's exact face, middle-parted black hair tied back, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the old man's exact face, white combed-back hair, white moustache and faded brown tunic from the second reference image, unchanged. Keep the middle-aged man's exact face, black forward-combed hair, clean-shaven chin and dark grey tunic from the third reference image, unchanged. Keep the young woman's exact face, black braided hair and faded green tunic from the fourth reference image, unchanged — do not mix any of these four people's features together. Keep the background exactly as shown in the fifth reference image, unchanged: the same pale blue sky band with its two clouds, the same straight horizon line running edge to edge, and the same flat deep blue-green sea with its three thin darker lines. All four people float apart from each other across the open sea, spaced across the width of the frame so no two overlap. For each of them, the flat surface line of the sea passes IN FRONT OF their body, hiding them from the chest down — exactly like standing behind a low wall — so only their head, shoulders and one raised arm show above the water. No part of the sea surface may cross anyone's face. Each of them is turned about forty-five degrees toward the viewer, one arm raised above the water, eyes drawn as two large white circles with small black pupils, mouth drawn as one small open oval. There is no boat, no land and no other object anywhere in the picture. Draw NO splashes, NO extra ripples beyond the sea's three flat lines, and NO blood. Every person must be scaled to a normal, consistent human size relative to each other, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "RỦI RO CHÍNH SÁCH CAO — cảnh gần ranh giới 'người sắp chết đuối'. Áp dụng kỹ thuật skill mục 6e-2 (dải phẳng che thân dưới, vừa chốt cho cảnh thuyền): mặt biển đóng vai trò như mép thuyền, không cần vẽ 'chìm dần' hay biểu cảm tuyệt vọng cùng cực — chỉ đầu/vai/1 tay nhô lên, cấm tường minh máu/splash mạnh. Nếu vẫn bị chặn: lùi về đúng cảnh cũ 'The Empty Sea' (thuyền trống, không người) đứng ngay sau — cảnh đó đã qua bộ lọc, giữ nguyên không xoá."
+    },
+    {
+      "name": "The Empty Sea",
+      "case": 5,
+      "narrationRef": "…then callously threw everyone into the deep ocean to erase the evidence.",
+      "references": [
+        "Small Refugee Boat",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the background exactly as shown in the second reference image, unchanged: the same pale blue sky band with its two clouds, the same single straight horizon line running unbroken from the far left edge to the far right edge, and the same flat deep blue-green sea crossed by its three thin darker horizontal lines — no waves, no foam, no ripples and no reflections. Draw EXACTLY ONE boat, matching the first reference image exactly in shape and colour — the shallow open boat with its three bench planks — floating alone and EMPTY in the middle of the sea, tilted very slightly to one side, with absolutely nothing and nobody inside it. There are NO people at all in this picture: no figures, no silhouettes, no hands, no bodies and nothing floating in the water anywhere. Draw NO blood, NO wreckage, NO debris and NO other boat. The whole picture is still and empty. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Cảnh ngụ ý cho đoạn giết người — theo đúng nguyên tắc skill mục 11e: cái rùng rợn nằm ở lời kể, không nằm trong ảnh. Chiếc thuyền trống nghiêng nhẹ giữa biển lặng nói đủ, và an toàn tuyệt đối với bộ lọc."
+    },
+    {
+      "name": "She Points Out The Spot",
+      "case": 5,
+      "narrationRef": "Chu Xiu-hua—acting through Lin's body—personally led government investigators to the exact stretch of sea where she was attacked.",
+      "references": [
+        "Lin The Wife",
+        "Police Investigator",
+        "Wooden Fishing Boat",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the man's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the second reference image, unchanged — do not mix the two people's features together. Draw EXACTLY ONE boat, matching the third reference image exactly in shape and colour, floating level across the middle of the frame with its deck facing the viewer. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band with its two clouds, the same straight horizon line and the same flat sea with its three thin darker lines. The two of them are standing side by side on the deck of that boat. The woman stands nearer the front, her body turned about forty-five degrees toward the viewer and one arm raised straight out to point away across the open water toward the far side of the frame, her eyes drawn as two plain round black dots and her mouth as one short straight line. The man stands beside her looking the same way, both arms lowered at his sides. They do not touch each other. There are only these two people in the picture and no other boat anywhere. Every person must be scaled to a normal, consistent human size relative to the boat, standing on its deck and not floating above it, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "⚠️ LỖI THỜI 2026-08-16 — ĐỪNG DÙNG. Cảnh này đặt cô và điều tra viên đứng trên chính THUYỀN CÁ (prop 'Wooden Fishing Boat'), trong khi kịch bản là họ đi tàu của chính quyền RA CHỖ đó rồi mới chỉ ra thuyền cá. Thay bằng cặp 'Lin On The Police Boat' + 'She Points Toward The Fishing Boat' (boong tàu cảnh sát, 2 cảnh sát) + 'The Two Boats Meet At Sea'."
+    },
+    {
+      "name": "Police Raid The Fishing Boat",
+      "case": 5,
+      "narrationRef": "When the police raided the vessel, a surviving fisherman dropped to his knees, trembling, and confessed to everything.",
+      "references": [
+        "Police Investigator",
+        "Confessing Fisherman",
+        "Wooden Fishing Boat",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the officer's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the first reference image, unchanged. Keep the fisherman's exact face, conical straw hat, thin moustache, sun-darkened skin and dark blue collarless tunic from the second reference image, unchanged — do not mix the two men's features together. Draw EXACTLY ONE boat, matching the third reference image exactly in shape and colour, floating level across the middle of the frame with its deck facing the viewer. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band with its two clouds, the same straight horizon line and the same flat sea with its three thin darker lines. The fisherman is kneeling on the deck with both knee lines bent under him, his body turned about forty-five degrees toward the viewer, both arms raised in front of his chest, his head tilted down, his eyes drawn as two simple downward curves and his mouth as one small open oval. The officer stands on the deck a clear step away from him, turned toward him, both arms lowered at his sides, his mouth drawn as one short straight line. The two men do NOT touch each other. Draw absolutely NO weapon, NO handcuffs, NO rope and NO other person anywhere. Every person must be scaled to a normal, consistent human size relative to the boat and to each other, on the same deck, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "⚠️ LỖI THỜI 2026-08-16 — ĐỪNG DÙNG. Thiếu nhân vật chính (kịch bản: ngư dân quỳ trước cảnh sát VÀ cô), chỉ có 1 cảnh sát, và người đứng trên prop thuyền nhìn từ ngoài thay vì trên boong. Thay bằng 'The Fisherman Confesses On Deck' (background 'Fishing Boat Deck', 2 cảnh sát + nhân vật chính)."
+    },
+    {
+      "name": "The Spirit On The Bicycle",
+      "case": 5,
+      "narrationRef": "Chu's restless soul drifted ashore and hitched a ride on the back of Wu's bicycle to follow him home.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Chu Xiu Hua Spirit",
+        "Old Bicycle V2",
+        "Country Road Rice Fields"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Keep the girl's exact face, pale grey-white skin tone, middle-parted black hair tied back, white pointed-collar blouse and dark navy pinafore dress from the second reference image, unchanged — do not mix the two people's features together. Draw EXACTLY ONE bicycle, matching the third reference image exactly in shape and colour, seen from the side and rolling along the road. Keep the background exactly as shown in the fourth reference image, unchanged: the same sky band, the same hills, the same paddy band, the same four utility poles and the same tan road strip. The man is riding the bicycle exactly as before, leaning far forward over the handlebar with both leg lines bent at the pedals, his body turned about forty-five degrees toward the viewer and his head facing forward along the road, his eyes drawn as two plain round black dots — he does NOT look behind him and he does not react at all. The girl is sitting side-saddle on the flat luggage rack behind his saddle, her body turned about forty-five degrees toward the viewer, both arms lowered in her lap, sitting completely still and looking straight ahead past him, her eyes drawn as two plain round black dots and her mouth as one short straight line. The BACK wheel is drawn plainly squashed into a flattened oval, clearly wider than it is tall, while the FRONT wheel stays a perfect circle. She must NOT glow, must NOT be transparent, must NOT fade out at the edges and must NOT have any halo, any aura or any mist — she is drawn with exactly the same solid bold black outline and completely flat colour fill as everything else. Every person must be scaled to a normal, consistent human size relative to the bicycle, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'The Spirit On The Bicycle V2'. Phải đổi nền theo cảnh gài ('The Bicycle Grows Heavy V2'), nếu không cặp gài–mở gãy: hai cảnh phải trông giống hệt nhau trừ đúng cô gái ngồi sau. (Ghi chú cũ: Cảnh reveal, cố ý dựng ĐỐI XỨNG với 'The Bicycle Grows Heavy' ở đầu case: cùng background, cùng tư thế đạp, cùng bánh sau bẹp — chỉ khác là giờ người xem THẤY ai đang ngồi sau. Ngô KHÔNG phản ứng, không quay đầu: anh ta không hề biết.)"
+    },
+    {
+      "name": "The Spirit On The Bicycle V2",
+      "case": 5,
+      "narrationRef": "Chu's restless soul drifted ashore and hitched a ride on the back of Wu's bicycle to follow him home.",
+      "references": [
+        "Husband Wu Qiu De",
+        "Chu Xiu Hua Spirit",
+        "Old Bicycle V2",
+        "Coast Road Deserted Shore"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the man's exact face, black hair combed straight back, clean-shaven chin and faded indigo work shirt from the first reference image, unchanged. Keep the girl's exact face, pale grey-white skin tone, middle-parted black hair tied back, white pointed-collar blouse and dark navy pinafore dress from the second reference image, unchanged — do not mix the two people's features together. Draw EXACTLY ONE bicycle, matching the third reference image exactly in shape and colour, seen from the side and rolling along the road, with its pedals and crank clearly visible. Keep the background exactly as shown in the fourth reference image, unchanged and in the SAME band order: the same pale blue sky band, the same flat dark sea band with its straight horizon line, the same pale sand strip with its three rocks and two pieces of driftwood, and the same tan dirt road strip filling the bottom third nearest the viewer. He is riding across the middle of the dirt road strip in exactly the same place and the same posture as before, his body turned about forty-five degrees toward the viewer, both arms gripping the handlebar and both leg lines bent at the pedals, leaning forward — but this time his head faces FORWARD along the road and he does NOT look behind him and does not react at all, his eyes drawn as two plain round black dots. The girl is sitting side-saddle on the flat luggage rack behind his saddle, her body turned about forty-five degrees toward the viewer, both arms lowered in her lap, sitting completely still and looking straight ahead past him, her eyes drawn as two plain round black dots and her mouth as one short straight line. She must NOT glow, must NOT be transparent, must NOT fade out at the edges and must NOT have any halo, any aura or any mist — she is drawn with exactly the same solid bold black outline and completely flat colour fill as everything else. The BACK wheel is drawn plainly squashed under the weight: an oval clearly WIDER than it is TALL, about one fifth shorter from top to bottom than the front wheel — while the FRONT wheel stays a perfect circle. The difference between the two wheels must be obvious at a glance. Every person must be scaled to a normal, consistent human size relative to the bicycle, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Draw NO speed lines, NO motion blur and NO shadows. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Cảnh MỞ, dựng đối xứng với 'The Bicycle Grows Heavy V2': cùng bờ biển hoang, cùng tư thế đạp, cùng bánh sau bẹp — chỉ khác là giờ thấy cô gái ngồi sau, và Ngô KHÔNG ngoái lại vì anh ta không hề biết. Đổi nền theo cảnh gài, nếu để nền đồng ruộng cũ thì cặp gài–mở gãy."
+    },
+    {
+      "name": "Charity Work At The Temple",
+      "case": 5,
+      "narrationRef": "Chu ended up living inside Lin's body for the next 40 years, dedicating her life to charity work at a local temple.",
+      "references": [
+        "Lin In Old Age",
+        "Temple Interior"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the old woman's exact face, thin white hair in its small low bun, round eyes and plain dark grey buttoned tunic from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged: the same dark red beam band with its two round lanterns, the same deep red back wall, the same long altar table with its single incense pot and two candles, and the same grey stone floor strip — do not add any carving, any inscription and any lettering. She is standing on the clear empty floor strip in front of the altar table, her body turned about forty-five degrees toward it and her head tilted slightly down, both arms raised and brought together in front of her chest so the two arm lines meet at a single point, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. She is the only person in the picture; there is nobody else anywhere. Draw NO smoke from the incense, NO glow around the candles and NO light rays. She must be scaled to a normal human size relative to the altar table, standing on the same floor strip, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success"
+    },
+    {
+      "name": "Two Names On The Tablets",
+      "case": 5,
+      "narrationRef": "her family engraved both names onto her ancestral tablet: Lin Wang-lu and Chu Xiu-hua.",
+      "references": [
+        "Pair Of Ancestral Tablets",
+        "Funeral Hall With Altar"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the background exactly as shown in the second reference image, unchanged: the same white ceiling band, the same pale yellow cloth back wall with its blank white banner, the same long white-draped table, the same two white flower stands and the same grey floor strip. Draw EXACTLY ONE pair of ancestral tablets, matching the first reference image exactly in shape and colour — the two plain upright dark red-brown tablets side by side on their low wooden stand with the small brass incense bowl and its two incense sticks in front — standing at the centre of the white-draped table and enlarged so the pair fills about one third of the width of the picture, with both tablets fully visible and completely unobstructed. Both tablet panels must stay completely BLANK: absolutely no writing, no letters, no characters, no carving and no marks of any kind on either of them, and the white banner behind stays blank too. There are NO people at all in this picture: no figures, no silhouettes and no hands anywhere. Draw NO smoke from the incense, NO glow and NO shadows. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Cảnh kết. Hai tấm bài vị để TRỐNG có chủ đích — chi tiết chốt của case là CẢ HAI TÊN được khắc, nhưng model viết chữ Hán ra ký tự vô nghĩa nên chữ thật do người dùng thêm lúc dựng. Tham khảo refs/case-5/19-real-people-02/03.jpg (bài vị thật trong tang lễ 2018)."
+    },
+    {
+      "name": "Lin On The Police Boat",
+      "case": 5,
+      "narrationRef": "To prove she was telling the truth, Chu Xiu-hua—acting through Lin's body—personally led government investigators to the exact stretch of sea where she was attacked.",
+      "references": [
+        "Lin The Wife",
+        "Police Investigator",
+        "Police Constable",
+        "Police Boat Deck"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the capped officer's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the second reference image, unchanged. Keep the bare-headed officer's exact face, low side-parted flat black hair, long sideburns and khaki uniform shirt from the third reference image, unchanged, and do NOT put a cap or a hat on him — do not mix the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same pale blue sky band, the same long low white cabin with its three square windows and its one doorway, the same pale grey deck floor, the same low rail along the bottom with the narrow strip of sea beyond it, and the same round life ring on the cabin. The three of them stand together on the clear empty middle of the deck floor. The woman stands in the middle of the group, her body turned about forty-five degrees toward the viewer, both arms lowered at her sides, her eyes drawn as two plain round black dots and her mouth as one short straight line. One officer stands on each side of her, a clear step away, each turned about forty-five degrees toward the viewer with both of their eyes visible, both arms lowered at their sides, mouths drawn as one short straight line. None of the three touch each other. There are only these three people in the picture, and no boat other than the one they are standing on. NO rail bar and NO rail post may pass in front of any of their faces. Every person must be scaled to a normal, consistent human size relative to the cabin and the rail, standing on the deck floor and not floating above it, with their heads clearly below the top edge of the cabin, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Shot 1/4 của đoạn 'dẫn điều tra viên ra biển' (người dùng yêu cầu 2026-08-16). Cảnh giới thiệu: cô đứng trên boong tàu CẢNH SÁT, không phải thuyền cá — đây chính là chỗ cảnh cũ 'She Points Out The Spot' làm sai. Cặp với shot 2 'She Points Toward The Fishing Boat': CÙNG background, CÙNG 3 người, chỉ khác hướng người và cánh tay chỉ — cắt liền nhau đọc ra là 'đứng đó rồi chỉ'."
+    },
+    {
+      "name": "She Points Toward The Fishing Boat",
+      "case": 5,
+      "narrationRef": "She pointed out the exact fishing boat and the men who did it.",
+      "references": [
+        "Lin The Wife",
+        "Police Investigator",
+        "Police Constable",
+        "Police Boat Deck"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the capped officer's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the second reference image, unchanged. Keep the bare-headed officer's exact face, low side-parted flat black hair, long sideburns and khaki uniform shirt from the third reference image, unchanged, and do NOT put a cap or a hat on him — do not mix the three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same pale blue sky band, the same long low white cabin with its three square windows and its one doorway, the same pale grey deck floor, the same low rail along the bottom with the narrow strip of sea beyond it, and the same round life ring on the cabin. The three of them stand together on the clear empty middle of the deck floor, and ALL THREE are turned about forty-five degrees toward the RIGHT side of the frame and are looking that way, while both eyes of every one of them stay visible to the viewer. The woman stands nearest the right, one arm raised straight out level with her shoulder and pointing off past the RIGHT edge of the picture, her other arm lowered at her side, her eyes drawn as two plain round black dots and her mouth as one short straight line. The two officers stand behind her to the left, close together, both arms lowered at their sides, their heads turned the same way she is pointing, mouths drawn as one short straight line. None of the three touch each other. The thing she is pointing at is NOT in this picture: draw absolutely NO second boat, NO ship, NO sail, NO land and NO other object anywhere out on the water, and no other people besides these three. NO rail bar and NO rail post may pass in front of any of their faces. Every person must be scaled to a normal, consistent human size relative to the cabin and the rail, standing on the deck floor and not floating above it, with their heads clearly below the top edge of the cabin, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Shot 2/4. Thuyền cá CỐ Ý để NGOÀI KHUNG theo skill mục 4b (shot 'nhìn thấy từ xa' thì đối tượng nằm ngoài khung, không vẽ vật tí hon ở xa) — nó được reveal ngay ở shot 3 'The Two Boats Meet At Sea'. Cấm tường minh mọi thuyền/vật trên mặt nước, vì model rất hay tự lấp chỗ cô đang chỉ tới."
+    },
+    {
+      "name": "The Two Boats Meet At Sea",
+      "case": 5,
+      "narrationRef": "She pointed out the exact fishing boat and the men who did it. When the police raided the vessel…",
+      "references": [
+        "Police Patrol Boat",
+        "Wooden Fishing Boat",
+        "Open Sea Daytime"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Draw EXACTLY TWO boats and no more, both of them ENLARGED and CROPPED BY THE FRAME so they read as close to the viewer. On the LEFT of the frame draw the police launch matching the first reference image exactly in shape and colour — the plain pale grey hull with the dark navy band along its top edge and the long low white cabin with its three square windows — cropped so that its BOW and its cabin are shown while its stern end runs off the LEFT edge of the picture, its bow pointing to the RIGHT toward the middle of the frame. On the RIGHT of the frame draw the wooden fishing boat matching the second reference image exactly in shape and colour — the plain mid-brown hull with its darker top band, the small square wheelhouse with its one square window, and the plain straight bare mast pole — cropped so that its BOW, its wheelhouse and its mast are shown while its stern end runs off the RIGHT edge of the picture, its bow pointing to the LEFT toward the middle of the frame. The two bows face each other across one narrow strip of open water in the middle of the picture, very close together but clearly NOT touching and NOT overlapping. Both boats are drawn at the same scale as each other and float level at the same height, the bottoms of both hulls resting along one and the same horizontal line. Keep the background exactly as shown in the third reference image, unchanged: the same pale blue sky band with its two flat cloud shapes, the same single straight horizon line running edge to edge and the same flat deep blue-green sea with its three thin darker lines. Both boats sit in the lower part of the picture with the horizon line passing behind them. Draw NO people at all anywhere in this picture: no figures, no silhouettes, no heads and no hands on either boat. Draw NO third boat, NO rope or plank between the boats, NO wake, NO foam, NO splash and NO lettering or numbers anywhere. Viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Shot 3/4 — reveal của shot 2. Người dùng chốt: '2 thuyền quá to thì chỉ hiện mũi tàu là được' → dùng lại đúng kỹ thuật crop khung đã chạy đúng ở cảnh 'The Fishing Boat Approaches'. CỐ Ý không có người: vẽ người ở cỡ này thì mất mặt/trang phục theo reference (skill mục 4b), và beat này chỉ cần đọc ra 'hai thuyền áp sát nhau'. Nói rõ đáy 2 thân thuyền nằm trên CÙNG một đường ngang — không thì model đặt một chiếc cao hơn chiếc kia như đang trôi trên 2 mực nước."
+    },
+    {
+      "name": "The Fisherman Confesses On Deck",
+      "case": 5,
+      "narrationRef": "a surviving fisherman dropped to his knees, trembling, and confessed to everything. His confession matched her story 100%.",
+      "references": [
+        "Lin The Wife",
+        "Police Investigator",
+        "Police Constable",
+        "Confessing Fisherman",
+        "Fishing Boat Deck"
+      ],
+      "prompt": "Draw a scene combining all five reference images. Keep the woman's exact face, short wavy black hair, round eyes and pale pink white-collared blouse from the first reference image, unchanged. Keep the capped officer's exact face, khaki peaked cap, clean-shaven chin and khaki uniform shirt from the second reference image, unchanged. Keep the bare-headed officer's exact face, low side-parted flat black hair, long sideburns and khaki uniform shirt from the third reference image, unchanged, and do NOT put a cap or a hat on him. Keep the fisherman's exact face, wide conical straw hat, thin moustache, sun-darkened skin and dark blue collarless tunic from the fourth reference image, unchanged — do not mix any of these four people's features together. Keep the background exactly as shown in the fifth reference image, unchanged: the same pale blue sky band, the same square wheelhouse with its one square window, the same flat wooden deck floor, the same coiled rope and wooden crate at one side, and the same low rail along the bottom with the strip of sea beyond it. The fisherman is kneeling on the deck floor on the LEFT of the picture with both knee lines bent under him, so that he is plainly LOWER than the others and the top of his straw hat reaches only to about the chest of the standing people. His body is turned about forty-five degrees toward the viewer, both of his arms are raised together in front of his own chest with the palms pressed flat against each other, his head is tilted down, his eyes are drawn as two simple downward curves and his mouth as one small open oval. The two officers and the woman stand together in a row on the RIGHT of the picture, facing him across a clear gap of empty deck floor. The capped officer stands nearest to him, the bare-headed officer beside him, and the woman on the far right, each turned about forty-five degrees toward the kneeling man with both of their eyes visible, arms lowered at their sides, mouths drawn as one short straight line. NONE of the three standing people touch the kneeling man, none of them reach toward him, and they do not touch each other. Draw absolutely NO weapon, NO gun, NO stick, NO handcuffs, NO rope on or around any person, and NO other person anywhere — the coiled rope stays lying on the deck exactly as it is in the background reference image. NO rail bar and NO rail post may pass in front of any of their faces. Every person must be scaled to a normal, consistent human size relative to the deck and to each other, on that same deck floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Shot 4/4 — thay cảnh cũ 'Police Raid The Fishing Boat' (cảnh đó thiếu nhân vật chính và chỉ có 1 cảnh sát). RỦI RO CHÍNH SÁCH VỪA: người quỳ trước cảnh sát. Đã áp công thức mục 11e: quỳ tả như TRẠNG THÁI (chắp tay, cúi đầu), không tả hành vi ép buộc; hai nhóm CÁCH NHAU một khoảng sàn trống, cấm mọi tiếp xúc và mọi động tác với tay; cấm tường minh súng/gậy/còng/dây trói. Cấm luôn 'rope on any person' vì background có sẵn cuộn thừng — không cấm thì model dễ đem nó quấn vào người. Nếu vẫn bị chặn: bỏ 2 cảnh sát, chỉ giữ ngư dân quỳ + nhân vật chính đứng đối diện, và đổi tư thế quỳ thành ngồi bệt trên sàn."
+    },
+    {
+      "name": "The Girl Pleads On The Deck",
+      "case": 5,
+      "narrationRef": "He even accurately described a young girl named Chu Xiu-hua who had begged for her life before being thrown into the freezing water.",
+      "references": [
+        "Chu Xiu Hua Girl",
+        "Confessing Fisherman",
+        "Fishing Boat Deck"
+      ],
+      "prompt": "Draw a scene combining all three reference images. Keep the girl's exact face, middle-parted black hair tied back low, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the fisherman's exact face, wide conical straw hat, thin moustache, sun-darkened skin and dark blue collarless tunic from the second reference image, unchanged — do not mix the two people's features together. Keep the background exactly as shown in the third reference image, unchanged: the same pale blue sky band, the same square wheelhouse with its one square window, the same flat wooden deck floor, the same coiled rope and wooden crate at one side, and the same low rail along the bottom with the strip of sea beyond it. The girl is kneeling on the deck floor on the RIGHT of the picture with both knee lines bent under her, so that she is plainly LOWER than the standing man and her head reaches only to about the height of his chest. Her body is turned about forty-five degrees toward the viewer, both of her arms are raised together in front of her own chest with the palms pressed flat against each other, her head tilted slightly up, her eyes drawn as two large white circles with small black pupils and her mouth as one small open oval. The fisherman stands on the LEFT of the picture, facing her across a clear wide gap of empty deck floor, his body turned about forty-five degrees toward her with both of his eyes visible, BOTH of his arms lowered straight at his sides, his mouth drawn as one short straight line. He does NOT touch her, does NOT reach toward her and does NOT lean toward her; there is plain empty deck between them the whole way across. There are only these two people in the picture and nobody else anywhere. Draw absolutely NO weapon, NO knife, NO stick, NO rope on or around either person, NO water on the deck and NO blood or mark of any kind — the coiled rope stays lying on the deck exactly as it is in the background reference image. NO rail bar and NO rail post may pass in front of either of their faces. Every person must be scaled to a normal, consistent human size relative to the deck and to each other, on that same deck floor, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Hồi tưởng chèn vào lời thú tội — chính là hình ảnh tên ngư dân đang KỂ LẠI ở cảnh 'The Fisherman Confesses On Deck' (cùng background, cùng người, khác thời điểm: ở đây hắn đứng, ở kia hắn quỳ). RỦI RO CHÍNH SÁCH CAO (van xin trước khi bị hại). Áp công thức mục 11e: chỉ vẽ khoảnh khắc NGAY TRƯỚC, không vẽ hành vi; hai người cách nhau cả một khoảng boong trống, cấm mọi tiếp xúc VÀ cấm cả động tác 'với tay/chồm tới'; hai tay hắn ép xuống hai bên hông tường minh; cấm vũ khí/dây/nước trên sàn. Nếu bị chặn: bỏ hẳn ngư dân, chỉ còn cô gái quỳ chắp tay một mình trên boong trống — đúng kỹ thuật 'cầu thang trống' của case 4, lời kể gánh phần còn lại."
+    },
+    {
+      "name": "The Spirit Comes Ashore",
+      "case": 5,
+      "narrationRef": "People came to believe that on that fateful day, Chu's restless soul drifted ashore…",
+      "references": [
+        "Chu Xiu Hua Spirit",
+        "Coast Road Deserted Shore"
+      ],
+      "prompt": "Draw a scene combining both reference images. Keep the girl's exact face, pale bloodless grey-white skin tone, middle-parted black hair tied back low, round eyes, white pointed-collar blouse and dark navy pinafore dress from the first reference image, unchanged. Keep the background exactly as shown in the second reference image, unchanged and in the SAME band order: the same pale blue sky band at the top, the same flat dark blue-green sea band with its one straight horizon line, the same pale sand strip with its three grey rocks and two pieces of driftwood, and the same tan dirt road strip filling the bottom third nearest the viewer. She is standing ON the pale sand strip, in the middle of the width of the frame, and her feet must touch that sand strip and not float above it. She is drawn at a normal human size: the top of her head reaches up into the dark sea band well below the horizon line. Her body is turned about forty-five degrees toward the viewer with both of her eyes visible, both arms hanging straight down at her sides, standing perfectly still, her eyes drawn as two plain round black dots and her mouth as one short straight line. She must NOT glow, must NOT be transparent, must NOT fade out at the edges and must NOT have any halo, any aura or any mist — she is drawn with exactly the same solid bold black outline and completely flat colour fill as everything else in the picture. She must NOT stand on the dirt road: the whole tan road strip across the bottom third stays completely clear and empty in front of her. She is the ONLY person in the picture — no other figures, no silhouettes anywhere. Draw NO boat, NO wreck, NO houses, NO birds, NO footprints in the sand, NO water dripping, NO splash and NO shadow. Viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Mắt xích còn THIẾU giữa đoạn ngoài biển và đoạn xe đạp: hồn dạt vào bờ. Cố ý dùng ĐÚNG background 'Coast Road Deserted Shore' của cặp cảnh xe đạp, để cắt 3 cảnh liền nhau (dạt vào bờ → xe nặng bất thường → thấy cô ngồi sau yên) là khán giả tự nối được, không cần lời giải thích. Cô đứng trên DẢI CÁT chứ không phải dải đường — dải đường phải để trống vì đó là chỗ chiếc xe đạp chạy qua ở 2 cảnh kia. Neo chiều cao bằng vật đo được ('đỉnh đầu chạm vào dải biển, dưới đường chân trời') vì đứng ở dải giữa thì model rất dễ vẽ tí hon. Cấm phát sáng/trong suốt y như 'The Spirit On The Bicycle V2' để hai cảnh cùng một tạo hình."
+    },
+    {
+      "name": "The Spirit At The Bedside",
+      "case": 5,
+      "narrationRef": "The exact second Lin drew her last breath, leaving her physical body empty, Chu's soul claimed it to come back to life.",
+      "references": [
+        "Lin The Wife",
+        "Neighbour Woman",
+        "Chu Xiu Hua Spirit",
+        "Village Bedroom"
+      ],
+      "prompt": "Draw a scene combining all four reference images. Keep the younger woman's exact face, short wavy black hair and pale pink white-collared blouse from the first reference image, unchanged. Keep the old woman's exact face, grey low bun, narrow eyes and faded grey side-buttoned tunic from the second reference image, unchanged. Keep the girl's exact face, pale bloodless grey-white skin tone, middle-parted black hair tied back low, white pointed-collar blouse and dark navy pinafore dress from the third reference image, unchanged — do not mix any of these three people's features together. Keep the background exactly as shown in the fourth reference image, unchanged: the same pale cream ceiling band, the same pale cream back wall, the same barred window in the left half, the same low bed with its flat mattress and blanket in the right half, the same small stool and the same grey floor strip. The younger woman is lying flat on her back on the bed in exactly the same place and the same posture as before, the plain blanket drawn up to her chest as ONE flat shape, both arms resting straight at her sides, her eyes drawn as two simple downward curves because they are closed and her mouth as one short straight line. Draw absolutely NO blood, NO wound and NO mark of any kind on her. The old woman is sitting on the small stool beside the bed exactly as before, her body and head turned about forty-five degrees toward the bed, both arms lowered, her eyes drawn as two plain round black dots — she does NOT look at the girl and does NOT react to her in any way. The girl in the pinafore dress is standing on the clear empty LEFT half of the floor strip, in front of the barred window, her feet touching the floor and not floating, her body turned about forty-five degrees toward the viewer with both of her eyes visible, her head turned toward the bed, both arms hanging straight down at her sides, standing perfectly still, her eyes drawn as two plain round black dots and her mouth as one short straight line. She must NOT glow, must NOT be transparent, must NOT fade out at the edges and must NOT have any halo, any aura or any mist — she is drawn with exactly the same solid bold black outline and completely flat colour fill as everything else. Nobody touches anybody, nobody reaches toward anybody, and there are only these three people in the picture and nobody else anywhere. Every person must be scaled to a normal, consistent human size relative to each other and to the bed, viewed at the same straight-ahead eye-level camera angle as the background reference image, not from above and not from below. Keep the exact same flat 2D vector style as every reference image: bold uniform-width black outlines, completely flat colour fills, no shading, no gradients, no perspective.",
+      "status": "success",
+      "notes": "Dựng ĐỐI XỨNG với cảnh mở màn 'Lin Lying Ill In Bed' theo skill mục 4b: giữ nguyên từng chi tiết (cùng phòng, cùng tư thế nằm, bà hàng xóm ngồi y hệt trên ghế đẩu) — thứ DUY NHẤT thêm vào là hồn cô gái đứng ở nửa trái sàn. Cắt hai ảnh cạnh nhau là khán giả tự đọc ra 'đúng giây phút đó'. Bà hàng xóm CỐ Ý không phản ứng: không ai nhìn thấy cô. Không vẽ cảnh 'nhập xác' (bay vào người, ánh sáng, khói) — vừa lệch phong cách phẳng vừa dễ bị chặn; đứng cạnh giường là đủ kể."
+    }
+  ]
+}

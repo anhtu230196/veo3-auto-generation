@@ -1,0 +1,486 @@
+{
+  "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích",
+  "flowProject": "vu-viec-tam-linh-case-5",
+  "assets": [
+    {
+      "name": "Lin The Wife",
+      "type": "character",
+      "case": 5,
+      "description": "a woman in her thirties wearing a plain pale pink blouse with a wide plain white collar as her one and only garment, no hat, black hair cut short and slightly wavy, falling to the jaw and parted to one side, round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Tóc + khuôn mặt trích từ ảnh chân dung THẬT của hai vợ chồng (refs/case-5/19-real-people-04.jpg), theo quy trình mục 5: soi ảnh thật rồi tả bằng chữ, KHÔNG đính ảnh vào prompt. Dùng cho cả cảnh nằm ốm lẫn cảnh hồi sinh — biểu cảm quyết định theo từng cảnh nên không tách asset."
+    },
+    {
+      "name": "Lin In Old Age",
+      "type": "character",
+      "case": 5,
+      "description": "an old woman in her nineties wearing a plain dark grey buttoned tunic as her one and only garment, no hat, thin white hair pulled back into a small neat bun with no loose strands, round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Cùng người với 'Lin The Wife', 40 năm sau (cảnh làm việc thiện ở miếu). Giữ 'round eyes' nguyên văn để đọc ra cùng một người."
+    },
+    {
+      "name": "Husband Wu Qiu De",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his forties wearing a plain faded indigo blue buttoned work shirt as his one and only garment, no hat, black hair cut short and combed straight back off a high forehead with no parting, clean-shaven with no beard and no moustache at all",
+      "status": "success",
+      "notes": "Kiểu tóc chải ngược ra sau trích từ ảnh chân dung thật (19-real-people-04.jpg). Trong ảnh thật anh ta mặc vest chụp ảnh cưới; ở đây dùng áo lao động vì mọi cảnh đều là ngày thường ở nông thôn."
+    },
+    {
+      "name": "Chu Xiu Hua Girl",
+      "type": "character",
+      "case": 5,
+      "description": "a girl of about seventeen wearing a plain dark navy pinafore dress with two plain shoulder straps over a plain white short-sleeved blouse with a pointed collar as her one and only garment, no hat, straight black hair parted in the middle and tied back low behind the neck, round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Trang phục trích từ ảnh tư liệu thiếu nữ Đài Loan thập niên 1950 (refs/case-5/16-clothing-01.jpg): áo cộc tay cổ nhọn + váy yếm có dây vai. Đây là Chu Tú Hoa lúc còn sống (hồi tưởng Kim Môn)."
+    },
+    {
+      "name": "Chu Xiu Hua Spirit",
+      "type": "character",
+      "case": 5,
+      "description": "a girl of about seventeen wearing a plain dark navy pinafore dress with two plain shoulder straps over a plain white short-sleeved blouse with a pointed collar as her one and only garment, no hat, straight black hair parted in the middle and tied back low behind the neck, round eyes with no eyeliner, the face and hands drawn in a pale bloodless grey-white skin tone instead of the reference image's pink skin tone",
+      "status": "success",
+      "notes": "Hồn Chu Tú Hoa (cảnh ngồi sau yên xe đạp). Trang phục + tóc chép NGUYÊN VĂN từ 'Chu Xiu Hua Girl', chỉ đổi tông da — cùng cách đã dùng cho hồn ma case 4."
+    },
+    {
+      "name": "Chief Military Doctor",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his sixties wearing a plain white doctor's coat buttoned over a plain khaki military shirt with a plain collar as his one and only garment, no hat, short grey hair combed to one side, a neat trimmed grey moustache and no beard",
+      "status": "success"
+    },
+    {
+      "name": "Confessing Fisherman",
+      "type": "character",
+      "case": 5,
+      "description": "a weathered man in his fifties wearing a plain dark blue collarless fisherman's tunic as his one and only garment, a plain wide conical straw hat on his head, black hair cut very short showing below the hat, a thin sparse black moustache and no beard, deeply sun-darkened brown skin instead of the reference image's light skin tone",
+      "status": "success"
+    },
+    {
+      "name": "Police Investigator",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his forties wearing a plain khaki police uniform shirt with two plain chest pockets as his one and only garment, a plain khaki peaked cap on the head, short black hair showing below the cap, clean-shaven with no beard and no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Neighbour Woman",
+      "type": "character",
+      "case": 5,
+      "description": "an old village woman in her sixties wearing a plain faded grey side-buttoned tunic as her one and only garment, no hat, grey hair pulled back tightly into a small low bun with no loose strands, narrow eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Neighbour Man",
+      "type": "character",
+      "case": 5,
+      "description": "a village man in his fifties wearing a plain white sleeveless undershirt as his one and only garment, a plain wide conical straw hat on his head, short black hair greying at the temples showing below the hat, a short grey chin beard with no moustache",
+      "status": "success"
+    },
+    {
+      "name": "Old Bicycle",
+      "type": "prop",
+      "case": 5,
+      "description": "A single old black bicycle from the 1950s seen from the side, whole bicycle inside the frame. Two plain black circles for the wheels with EXACTLY EIGHT plain straight spokes each and no more, one plain black diamond-shaped frame, one plain straight handlebar bar across the front, one plain flat saddle, and behind the saddle ONE plain flat rectangular luggage rack over the back wheel, drawn large enough for a person to sit on. No chain links, no gears, no cables, no brand lettering, no reflectors, no basket, no bell.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Old Bicycle V2'. Mô tả gốc QUÊN HẲN BÀN ĐẠP: liệt kê khung/bánh/ghi-đông/yên/yên sau nhưng không có pedal, nên ảnh ra xe không có bàn đạp — trong khi cả 5 cảnh đều viết 'hai chân đạp bàn đạp'. (Ghi chú cũ: Yên sau (luggage rack) là chi tiết BẮT BUỘC — cảnh chốt của case là hồn Chu Tú Hoa ngồi trên đó. Dáng xe theo refs/case-5/13-bicycle-*.jpg (Flying Pigeon, đúng dòng xe phổ biến thời đó).)"
+    },
+    {
+      "name": "Wooden Fishing Boat",
+      "type": "prop",
+      "case": 5,
+      "description": "A single old wooden fishing boat seen from the side, floating level, whole boat inside the frame. One plain curved hull shape in flat mid-brown with a plain darker band along its top edge, one plain small square wheelhouse box near the middle with EXACTLY ONE plain square window, and one plain straight mast pole rising from the deck with no sail and no rigging. No planking lines, no wood grain, no ropes, no nets, no lettering, no water drawn around it.",
+      "status": "success"
+    },
+    {
+      "name": "Small Refugee Boat",
+      "type": "prop",
+      "case": 5,
+      "description": "A single small open wooden boat seen from the side, floating level, with no cabin and no mast at all. One plain shallow curved hull shape in flat pale brown with a plain darker band along its top edge, and EXACTLY THREE plain flat bench planks laid across it and no more. No planking lines, no wood grain, no oars, no ropes, no lettering, no water drawn around it.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Small Refugee Boat V2'. Người dùng xem 2 vòng sửa cảnh 'Adrift At Sea' và chỉ ra vấn đề gốc không phải tư thế mà là THÂN THUYỀN QUÁ NÔNG ('shallow curved hull') — mạn thuyền thấp hơn hẳn vai người ngồi, nên ai cũng như ngồi ĐÈ LÊN TRÊN thuyền chứ không lọt vào TRONG. Thuyền tị nạn rời Kim Môn. Cố ý KHÁC hẳn 'Wooden Fishing Boat' (không cabin, không cột buồm, thân nông) để 2 thuyền đứng cạnh nhau trong 1 khung là phân biệt được ngay."
+    },
+    {
+      "name": "Pair Of Ancestral Tablets",
+      "type": "prop",
+      "case": 5,
+      "description": "Two plain upright wooden ancestral tablets standing side by side on one plain low wooden stand. Each tablet is one plain tall rounded-top rectangle in flat dark red-brown with one plain narrow gold border line inside its edge, and the flat panel inside that border is completely BLANK — absolutely no writing, no letters, no characters and no carving on either tablet anywhere. One plain small brass incense bowl sits in front of them on the same stand, holding EXACTLY TWO plain thin straight incense sticks and no more, with no smoke drawn.",
+      "status": "success",
+      "notes": "Cảnh chốt của case (khắc CẢ HAI tên). Bài vị để TRỐNG TRƠN có chủ đích — model viết chữ Hán ra ký tự vô nghĩa; chữ thật người dùng thêm lúc dựng. Tham khảo refs/case-5/19-real-people-02/03.jpg và 12-ancestral-tablet-*.jpg."
+    },
+    {
+      "name": "Folded Newspaper",
+      "type": "prop",
+      "case": 5,
+      "description": "A single folded newspaper lying flat, seen from above. One plain pale grey rectangle folded once across the middle, with EXACTLY FOUR plain thin horizontal grey lines on the upper half standing for columns of text and nothing more — absolutely no readable letters, no characters, no headlines, no photographs and no images inside it.",
+      "status": "success"
+    },
+    {
+      "name": "Village Sanheyuan Exterior",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The front of a traditional Taiwanese single-storey courtyard farmhouse in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom: a plain pale blue sky band across the top; a plain dark grey tiled roof band with its ridge line perfectly horizontal; a plain red-brown brick front wall filling the middle, carrying EXACTLY ONE tall plain open central doorway at the centre and EXACTLY ONE plain square window on each side of it and no more; and a plain flat pale grey packed-earth courtyard strip running edge to edge across the bottom. Each window is one flat dark shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass. The house wall must be scaled and positioned to completely fill the frame from the far left edge to the far right edge, with absolutely no gap of open ground or empty sky at either side edge. Standing against the wall at one side is EXACTLY ONE plain large clay water jar and nothing else. The courtyard strip across the bottom third stays clear and completely empty. Draw NO individual bricks, NO brick courses, NO roof tiles, NO wood grain and NO ornament of any kind. Muted palette of red-brown, dark grey and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Nhà tam hợp viện, tham khảo refs/case-5/06-sanheyuan-*.jpg. Cố ý CẤM vẽ từng viên gạch và từng viên ngói — đó là hai thứ mái ngói kiểu Hoa dễ ra hàng trăm chi tiết nhất."
+    },
+    {
+      "name": "Village Bedroom",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small plain bedroom in a Taiwanese village house in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom: a plain pale cream ceiling band across the top, a plain pale cream plaster back wall filling the middle, and a plain flat grey packed-earth floor strip running edge to edge across the bottom. Standing against the back wall in the RIGHT half of the frame is one plain low wooden bed seen from the side, drawn as ONE plain flat mattress slab with ONE plain flat thin blanket shape over it and nothing else on it — no springs, no slats, no pattern, no pillow detail. Beside it stands one plain small square wooden stool with nothing on it. The bed and the stool rest directly ON the floor strip and must touch it, not float. Set in the back wall in the LEFT half is EXACTLY ONE plain square window with EXACTLY FOUR plain straight wooden bars across it and no more, filled with one flat pale blue shape. The floor strip is ONE single flat shape with absolutely NO floorboards, NO tiles and NO grid, and the whole left half of it stays clear and completely empty so a person can stand there. Draw NO wood grain and NO plaster texture anywhere. Muted palette of pale cream, grey and dark brown in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success"
+    },
+    {
+      "name": "Main Hall With Coffin",
+      "type": "background",
+      "case": 5,
+      "composition": "corner",
+      "reserveCharacterSpace": true,
+      "description": "The main hall of a Taiwanese village house in the 1950s, laid out for a funeral. The room is built from exactly TWO flat wall planes meeting along ONE single vertical corner line: the LEFT panel fills roughly the left third and is the SIDE WALL, drawn in a slightly DARKER flat tint of the same pale cream; the RIGHT panel is the BACK WALL in the lighter tint. Exactly one straight diagonal line runs from the foot of the vertical corner line down toward the bottom-left corner, so the floor reads as turning at the corner. There are no other diagonal lines, no vanishing point and no rows of tiles shrinking toward a distance. On the BACK WALL hangs EXACTLY ONE plain dark wooden altar shelf carrying EXACTLY TWO plain unlit candle shapes and one plain small incense bowl, and nothing else at all on either wall. Standing on the floor in the middle of the room, set at a slight angle so both its long side and one end are visible, is ONE plain heavy wooden coffin: a plain long six-sided box in flat dark red-brown with one plain darker flat lid band along its whole top edge, its lid OPEN and leaning against the near side, and no carving, no cloth, no flowers and no lettering on it. The coffin rests on two plain low wooden trestles and must touch them. The floor is ONE single flat grey shape with absolutely NO floorboards, NO tiles and NO grid, and the near floor across the bottom third of the frame is left clear and completely empty. Draw NO wood grain, NO plaster texture and NO ornament anywhere. Sombre palette of pale cream, dark red-brown and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Main Hall With Coffin V2'. Người dùng xem ảnh và yêu cầu đặt quan tài NẰM NGANG thay vì chéo. (Ghi chú cũ: Background DUY NHẤT của case dùng composition 'corner', theo luật skill mục 6h: có nhân vật TÁC ĐỘNG LÊN VẬT — Lâm ngồi bật dậy TỪ TRONG quan tài, Ngô cúi xuống bên quan tài. Nền phẳng chiếu thẳng thì quan tài chỉ đọc ra là cái hộp đứng trước mặt, không đọc ra người đang ở trong. Quan tài vẽ THẲNG vào background (không tách Prop) vì chỉ xuất hiện ở đúng bối cảnh này — skill mục 7.)"
+    },
+    {
+      "name": "Main Hall With Mourners",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Main Hall With Coffin",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same two wall panels meeting at the same vertical corner line, the same single diagonal floor line, the same altar shelf with its two candles and incense bowl, the same open coffin at the same angle on its two trestles, the same floor, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY THREE plain standing people in plain dark clothes along the BACK WALL behind the coffin, all facing toward the coffin. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights slightly and give them different flat hair colours so they do not look like copies of one figure. They must stay small, stay entirely BEHIND the coffin against the back wall — the near floor in front of the coffin stays clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Main Hall With Mourners V2' (dựng lại từ bản quan tài nằm ngang)."
+    },
+    {
+      "name": "Country Road Rice Fields",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "An open stretch of Taiwanese farmland in the 1950s seen straight on from the edge of a dirt road. Built from horizontal bands stacked top to bottom: a plain pale blue sky band across the top; a low row of plain dark green hills all at the same height along the horizon; a wide band of plain flat green rice paddy running edge to edge, divided by EXACTLY THREE plain straight horizontal water lines and no more — no individual rice plants, no stalks, no reflections; and a plain flat tan dirt road strip running edge to edge across the bottom. Standing where the paddy band meets the road are EXACTLY FOUR plain thin utility poles evenly spaced across the frame and no more, each drawn as one straight vertical line with ONE short crossbar near the top, each one rising from the road strip and plainly touching it, passing IN FRONT OF the paddy band. The road strip across the bottom third stays clear and completely empty. Draw NO grass blades, NO furrows, NO gravel texture and NO shadows. Bright palette of green, tan and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Tham khảo refs/case-5/08-rice-field-*.jpg. Cột điện áp quy tắc 'vật cao xuyên nhiều dải' của skill mục 6 — phải nói rõ mọc từ dải đường và nằm TRƯỚC dải ruộng, nếu không sẽ bị cắt cụt ở ranh giới dải."
+    },
+    {
+      "name": "Military Hospital Clinic Room",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A plain military hospital consulting room in Taiwan in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top, a plain pale mint-green painted wall filling the middle, and a plain flat pale grey floor strip running edge to edge across the bottom. Standing against the wall in the RIGHT half of the frame is one plain wooden desk seen from the side, drawn as ONE plain flat rectangular front panel with EXACTLY ONE plain drawer front and no more, with nothing on top of it except EXACTLY ONE plain closed folder shape; one plain wooden chair stands beside it. Against the wall in the LEFT half stands one plain narrow examination bed drawn as ONE plain flat slab on four plain straight legs, with nothing on it. Everything rests directly ON the floor strip and must touch it. Set in the wall between them is EXACTLY ONE plain tall rectangular window filled with one flat pale blue shape crossed by exactly two thin pale white diagonal streak shapes so it plainly reads as glass, and nothing else at all on the wall — no posters, no charts, no clock. The floor strip is ONE single flat shape with absolutely NO tiles, NO grid and NO pattern, and the middle of it stays clear and completely empty. Clean palette of pale mint-green, white and pale grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success"
+    },
+    {
+      "name": "Kinmen Shore Daytime",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A bare stretch of shoreline on a small island off the Chinese coast in 1958, seen straight on. Built from horizontal bands stacked top to bottom: a plain pale grey overcast sky band across the top; a low row of plain single-storey stone houses with plain dark grey pitched roofs standing side by side along the far edge, all at exactly the same height and scaled to completely fill the frame from the far left edge to the far right edge with no gap of sky or ground at either side; a plain flat dark blue-green sea band; and a plain flat pale sand strip running edge to edge across the bottom. The houses rest directly ON the sea band's far edge and must touch it, not float. Draw NO individual stones, NO brick courses, NO roof tiles, NO waves, NO foam and NO reflections — the sea is ONE single flat shape. The sand strip across the bottom third stays clear and completely empty. Muted palette of pale grey, dark blue-green and pale sand in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Kinmen Shore Daytime V2'. SAI THỨ TỰ DẢI: mô tả xếp dải biển ở GIỮA, giữa dãy nhà và bãi cát, nên nhà nằm phía sau mặt nước và chân nhà bị mép dải biển cắt ngang — đúng lỗi 'vật đứng bị cắt cụt ở ranh giới dải' của RUNBOOK 8.1.3h. Câu 'nhà tựa lên mép xa của dải biển' càng làm model đặt nhà đứng trên mặt nước."
+    },
+    {
+      "name": "Open Sea Daytime",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The open sea far from land, seen straight on with no shore anywhere. Built from horizontal bands stacked top to bottom: a plain pale blue sky band filling the upper half, with EXACTLY TWO plain flat white cloud shapes and no more; one single perfectly straight horizontal horizon line running unbroken from the far left edge to the far right edge; and a plain flat deep blue-green sea filling the lower half, drawn as ONE single flat shape crossed by EXACTLY THREE plain thin darker horizontal lines evenly spaced and NOTHING MORE — no waves, no foam, no crests, no ripples, no sparkle and no reflections. There is no land, no boat, no bird and no object of any kind anywhere in the picture. Calm palette of pale blue and deep blue-green in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Dùng cho cả đoạn trôi dạt, đoạn thuyền dân chài tới, và cảnh BIỂN TRỐNG ngụ ý (thay cho việc vẽ hành vi giết người — skill mục 11e)."
+    },
+    {
+      "name": "Temple Interior",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The inside of a small local Taiwanese temple, seen straight on. Built from horizontal bands stacked top to bottom: a plain dark red beam band across the top carrying EXACTLY TWO plain round red lanterns hanging from it and no more; a plain deep red back wall filling the middle; one plain long dark wooden altar table standing against that wall, drawn as ONE plain flat rectangular front panel with one plain flat top edge, carrying EXACTLY ONE plain brass incense pot at its centre and EXACTLY TWO plain candle shapes, one at each end, and nothing else; and a plain flat grey stone floor strip running edge to edge across the bottom. The altar table rests directly ON the floor strip and must touch it. Draw NO carved dragons, NO gold ornament, NO painted figures, NO inscriptions, NO characters and NO lettering anywhere — every surface is one plain flat shape. The floor strip across the bottom third stays clear and completely empty. Warm palette of deep red, dark brown and grey in a few flat tints, with no glow around the candles and no smoke. Plain flat indoor lighting, daytime.",
+      "status": "success",
+      "notes": "Tham khảo refs/case-5/10-temple-*.jpg — nhưng miếu thật CỰC nhiều hoa văn chạm khắc, nên mô tả cấm tường minh rồng chạm/hoành phi/câu đối. Đây đúng lớp lỗi 'kết cấu lặp' của SIMPLIFY_DETAIL_BLOCK, phải cấm theo TÊN mới ăn."
+    },
+    {
+      "name": "Funeral Hall With Altar",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A plain memorial hall laid out for a village funeral, seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top; a plain pale yellow cloth back wall filling the middle, hung with EXACTLY ONE plain wide white cloth banner across its upper part, completely BLANK with absolutely no writing, no letters, no characters and no pattern on it; one plain long low table standing against that wall, covered by ONE plain flat white cloth shape reaching the floor, with nothing on top of it at all; and a plain flat grey floor strip running edge to edge across the bottom. On each side of the table stands EXACTLY ONE plain tall white funeral flower stand, drawn as one plain straight pole with ONE plain round white flower mass on top and no petals, no leaves and no detail. Everything rests directly ON the floor strip and must touch it. The floor strip across the bottom third stays clear and completely empty. Draw NO cloth folds, NO drapery, NO pattern and NO lettering anywhere. Restrained palette of white, pale yellow and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Mặt bàn để TRỐNG có chủ đích — cặp bài vị là Prop, ghép vào ở cảnh cuối. Băng vải và mọi bề mặt đều cấm chữ (tham khảo refs/case-5/19-real-people-01.jpg: hội trường thật có biển ghi cả 2 tên, nhưng chữ thật sẽ do người dùng thêm lúc dựng)."
+    },
+    {
+      "name": "Old Bicycle V2",
+      "type": "prop",
+      "case": 5,
+      "editFrom": "Old Bicycle",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same two wheels with the same eight spokes each, the same black diamond frame, the same handlebar, the same saddle, the same flat luggage rack behind the saddle, the same colours, the same plain background, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add the missing pedals. At the point where the two lower frame tubes meet, low down between the wheels, draw ONE plain small black circle for the crank hub, ONE plain straight crank arm sticking out from it downward and forward, and at the end of that arm ONE plain small flat rectangle for the pedal, drawn clearly larger than the crank arm is thick so it plainly reads as a pedal to stand on. Add ONE second crank arm pointing the opposite way from the same hub with ONE second plain rectangular pedal at its end. Add NOTHING else — no chain, no chainring teeth, no gears, no cables. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Thêm bàn đạp bằng editFrom để giữ nguyên dáng xe đã đúng. Bàn đạp là chi tiết BẮT BUỘC: 5 cảnh mô tả tư thế đạp, và cặp cảnh gài–mở của case đều là cảnh đạp xe."
+    },
+    {
+      "name": "Main Hall With Coffin V2",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Main Hall With Coffin",
+      "description": "Use the single reference image and keep absolutely everything about the room unchanged — the same two wall panels meeting along the same single vertical corner line with the same darker side wall and lighter back wall, the same altar shelf with its two candles and incense bowl in the same place, the same grey floor, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY how the coffin is placed. Turn the coffin so it lies SQUARE ACROSS the picture, seen straight from its long side: its top edge and its bottom edge must both run PERFECTLY HORIZONTAL, exactly parallel to the top and bottom edges of the picture, and its two short ends must be exactly the same height as each other, so that no edge of the coffin runs at a slant. Keep the coffin the same dark red-brown colour and the same six-sided shape, still resting on its two wooden trestles and touching them, and keep its open lid still leaning upright against the near end. Do not move it to a different part of the room, do not resize it and do not add anything. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Main Hall With Coffin V3'. Người dùng xem ảnh và chỉ ra: cái nắp mở DỰNG ĐỨNG cạnh quan tài trông y hệt MỘT QUAN TÀI THỨ HAI, nhất là sau khi đổi quan tài chính sang nằm ngang. Câu 'leaning upright against the near end' kế thừa từ bản đặt chéo, không đổi lại khi đổi bố cục. (Ghi chú cũ: Người dùng chốt 2026-08-15: quan tài đặt NẰM NGANG, không đặt chéo. Phòng vẫn giữ composition 'corner' (2 mảng tường + 1 đường chéo sàn) — thứ bị loại chỉ là góc đặt của bản thân cỗ quan tài. Ép bằng hình học đo được: mép trên và mép dưới đều nằm ngang tuyệt đối, hai đầu bằng nhau. Nếu editFrom không xoay được thì viết mới từ chữ, giữ nguyên phần mô tả phòng.)"
+    },
+    {
+      "name": "Main Hall With Mourners V2",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Main Hall With Coffin V2",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same two wall panels meeting at the same vertical corner line, the same altar shelf with its two candles and incense bowl, the same coffin lying square across the picture with its top and bottom edges perfectly horizontal, the same two trestles, the same leaning lid, the same floor, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY THREE plain standing people in plain dark clothes along the BACK WALL behind the coffin, all facing toward the coffin. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights slightly and give them different flat hair colours so they do not look like copies of one figure. They must stay small, stay entirely BEHIND the coffin against the back wall — the near floor in front of the coffin stays clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Main Hall With Mourners V3' (dựng lại từ Coffin V3, bỏ nắp dựng)."
+    },
+    {
+      "name": "Explainer Taiwan Island",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain map silhouette of one island, drawn as ONE solid flat shape in a plain colour with a bold black outline: a tall narrow island shaped like a sweet potato, its long axis running from the upper left down to the lower right, clearly wider across the top half and tapering to a rounded point at the bottom, with a smooth slightly uneven coastline. ONE island only — no other land, no small islands, no sea, no compass, no grid lines, no place markers. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Mainland Coast",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain map silhouette of a large mainland coastline, drawn as ONE solid flat shape in a plain colour with a bold black outline, filling the LEFT part of the picture and running off the left, top and bottom edges, so it plainly reads as the edge of a much larger landmass. Its right-hand edge is one smooth slightly uneven coastline curving gently. No island, no sea colour, no compass, no grid lines, no place markers. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Crossing Arrow",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain curved arrow, drawn as ONE solid flat shape in a plain colour with a bold black outline: a smooth wide arc bending upward, of even thickness along its whole length, starting with a plain flat cut end on the left and finishing on the right in ONE plain solid triangular arrowhead clearly wider than the arc is thick. ONE arrow only — no second arrow, no dashes, no motion lines, no tail feathers. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Local Speech Bubble",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain speech bubble, drawn as ONE solid flat shape with a bold black outline: a wide ROUNDED oval bubble with one short pointed tail at its bottom left. Inside the bubble draw EXACTLY THREE plain WAVY horizontal lines, evenly stacked, standing for spoken words — and nothing else at all inside it. ONE bubble only. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Formal Speech Bubble",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain speech bubble, drawn as ONE solid flat shape with a bold black outline: a wide RECTANGULAR bubble with sharp square corners and one short pointed tail at its bottom right. Inside the bubble draw EXACTLY THREE plain PERFECTLY STRAIGHT horizontal lines, evenly stacked, standing for spoken words — and nothing else at all inside it. ONE bubble only. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Government Building",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain government building seen straight from the front, drawn from flat shapes with bold black outlines: one wide symmetrical main block, and rising from the exact centre of it ONE tall narrow tower reaching well above the roofline. The main block has EXACTLY ONE plain arched central doorway at ground level and EXACTLY FOUR plain square windows in total, two on each side of the doorway, and NO MORE — no extra storeys of windows, no columns, no carving, no ornament. The tower has EXACTLY TWO plain square windows stacked one above the other and a plain flat top. ONE building only, no fence, no trees, no people, no flag. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Village Schoolhouse",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain small schoolhouse seen straight from the front, drawn from flat shapes with bold black outlines: one plain single-storey rectangular building under a plain pitched roof drawn as one simple triangle, with EXACTLY ONE plain door at the centre and EXACTLY ONE plain square window on each side of it and no more. On the roof ridge sits ONE small plain open bell frame holding ONE plain bell shape. ONE building only — no fence, no path, no trees, no people, no roof tiles and no wood grain. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Classroom Blackboard",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain classroom blackboard standing on its own frame, drawn from flat shapes with bold black outlines: one large plain dark green rectangle in a plain wooden surround, standing on two plain straight legs joined by one plain horizontal crossbar. Across the dark green surface draw EXACTLY TWO short plain white horizontal chalk strokes, one above the other, standing for writing — and nothing else on it. Below the board one plain narrow ledge holds ONE plain short white chalk stick. ONE blackboard only, no easel, no people. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer City Skyline",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain group of city tower blocks standing side by side in one row, drawn from flat shapes with bold black outlines: EXACTLY FIVE plain rectangular towers and no more, all standing on one common flat base line, each a different height so the tops make an uneven skyline. Each tower carries EXACTLY THREE plain small square windows arranged in one single vertical line and NO MORE — no grids of windows, no dozens of windows, no doors, no signs, no aerials. Nothing else in the picture — no road, no cars, no trees, no people. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Closed Book",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain closed book lying flat, seen from slightly above, drawn from flat shapes with bold black outlines: one plain rectangular cover in a plain colour, with ONE plain narrow darker spine band down its left edge and ONE plain stack of pale page edges showing along the right side, drawn as one single flat shape with no individual page lines. The cover is completely BLANK — no title, no emblem, no pattern, no decoration. ONE book only. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Explainer Cross Out Mark",
+      "type": "prop",
+      "case": 5,
+      "description": "A single plain cross-out mark, drawn as TWO thick straight bars of even width crossing each other at their middles to form one bold X, filling most of the picture, in one plain solid colour with a bold black outline. EXACTLY TWO bars and nothing more — no circle around it, no third bar, no shadow, no glow. The background is plain pure WHITE, one single flat white field with nothing on it — no scenery, no ground line, no shadow, no frame and no border. Draw absolutely NO letters, NO words, NO numbers and NO characters of any kind anywhere in the picture.",
+      "status": "success",
+      "notes": "Biểu tượng cho đoạn GIẢI THÍCH (dạng whiteboard) — người dùng chốt 2026-08-15: giữ nguyên phong cách hiện tại, mỗi biểu tượng một ảnh riêng để bày và cho hiện dần lúc dựng. Mọi nghĩa mang bằng HÌNH DÁNG THUẦN vì model không viết được chữ; nhãn chữ thêm lúc dựng. Nền ép TRẮNG tường minh (PROP_STYLE_BLOCK chỉ ghi 'plain single-color' nên mỗi ảnh ra một màu nền khác nhau — RUNBOOK 8.1 mục 3f). Dùng lại được cho case khác."
+    },
+    {
+      "name": "Kinmen Shore Daytime V2",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A bare stretch of shoreline on a small island off the Chinese coast in 1958, seen straight on FROM THE WATER looking back at the land. Built from horizontal bands stacked top to bottom, in this exact order and no other: FIRST a plain pale grey overcast sky band across the top; SECOND a row of plain single-storey stone houses standing side by side, all at exactly the same height, under plain dark grey pitched roofs; THIRD a plain flat pale sand strip that the houses STAND ON; and FOURTH, filling the whole bottom third of the frame nearest the viewer, a plain flat dark blue-green sea band running edge to edge. The sea is the band CLOSEST to the viewer and the houses are the furthest away — never place the sea between the houses and the sand. Each house must be drawn COMPLETE from its roof ridge all the way down to its footing, and its walls must rest directly on the pale sand strip and plainly touch it: no band edge may cut across any house, and no house may stand in the water or float. The row of houses must be scaled and positioned to completely fill the frame from the far left edge to the far right edge, with no gap of open sky or bare sand at either side edge. The sea band across the bottom third is left completely clear and empty, with NO waves, NO foam, NO ripples and NO reflections — one single flat shape, ready for a small boat to be placed on it. Draw NO individual stones, NO brick courses and NO roof tiles. Muted palette of pale grey, pale sand and dark blue-green in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Sửa thứ tự dải: trời → nhà → BÃI CÁT (nhà đứng trên đó) → BIỂN ở dải dưới cùng, gần người xem nhất, là chỗ đặt chiếc thuyền. Bài học: thứ tự dải mã hoá KHOẢNG CÁCH (trên = xa nhất), nên dải mà nhân vật đứng/nổi trên phải là dải DƯỚI CÙNG. Thêm câu cấm mọi mép dải cắt ngang thân nhà (RUNBOOK 8.1.3h)."
+    },
+    {
+      "name": "Coast Road Deserted Shore",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A lonely dirt road running along a deserted stretch of Taiwanese coast in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom, in this exact order: FIRST a plain pale blue sky band across the top; SECOND a plain flat dark blue-green sea band running edge to edge, with ONE single perfectly straight horizon line along its top and NO waves, NO foam, NO ripples and NO reflections; THIRD a plain flat pale sand strip running edge to edge; and FOURTH, filling the whole bottom third of the frame nearest the viewer, a plain flat tan dirt road strip running edge to edge. The road is the band CLOSEST to the viewer and the sea is furthest away. Lying on the pale sand strip are EXACTLY THREE plain dark grey rock shapes of different sizes and no more, and EXACTLY TWO plain pale grey pieces of driftwood drawn as simple straight bars — nothing else at all on the sand. The place is plainly deserted: draw NO people, NO boats, NO houses, NO fences, NO poles, NO birds and NO footprints anywhere. The dirt road strip across the bottom third is left completely clear and empty. Draw NO grass blades, NO pebble texture, NO sand ripples and NO shadows. Muted palette of pale blue, dark blue-green, pale sand and tan in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Thêm 2026-08-15 theo yêu cầu người dùng: đoạn xe đạp bỗng nặng phải xảy ra ở đoạn đường chạy dọc BỜ BIỂN HOANG, để nối với chi tiết về sau (hồn Chu Tú Hoa dạt vào bờ rồi leo lên yên sau). Thứ tự dải theo bài học vừa rút: trời → biển → cát → ĐƯỜNG ở dải dưới cùng, vì nhân vật đi xe trên đường. Cố ý cấm mọi dấu hiệu có người (thuyền, nhà, cột điện) để đọc ra là nơi hoang vắng — khác hẳn Country Road Rice Fields vốn có 4 cột điện."
+    },
+    {
+      "name": "Military Officer",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his fifties wearing a plain khaki military tunic buttoned to the neck with one plain flat shoulder strap on each shoulder as his one and only garment, a plain khaki peaked cap on the head, black hair cropped very short and greying at the temples showing below the cap, a short black moustache and no beard",
+      "status": "success",
+      "notes": "Sĩ quan chủ trì cuộc họp chính quyền. Cố ý KHÁC 'Police Investigator' (áo sơ mi cảnh sát 2 túi ngực, cạo nhẵn) bằng áo tunic có ngù vai + ria đen + tóc hoa râm."
+    },
+    {
+      "name": "Junior Military Doctor",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his thirties wearing a plain white doctor's coat buttoned over a plain khaki military shirt as his one and only garment, no hat, plain round black-rimmed glasses, black hair parted low on one side, clean-shaven with no beard and no moustache at all",
+      "status": "success",
+      "notes": "Bác sĩ quân y thứ hai (kịch bản nói 'những bác sĩ'). Phân biệt với 'Chief Military Doctor' bằng: trẻ hơn, đeo kính tròn, tóc đen rẽ ngôi, cạo nhẵn — bác sĩ trưởng thì tóc bạc chải lệch và có ria bạc."
+    },
+    {
+      "name": "Government Meeting Room",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A plain government meeting room in Taiwan in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom: a plain white ceiling band across the top; a plain pale olive-green painted wall filling the middle, carrying EXACTLY ONE plain rectangular framed picture at its centre — completely BLANK inside with absolutely no writing, no letters, no portrait and no pattern — and nothing else at all on the wall; one plain long dark wooden meeting table standing across the room, drawn as ONE plain flat rectangular front panel with one plain flat top edge running edge to edge, with nothing on top of it except EXACTLY TWO plain closed folder shapes; and a plain flat grey floor strip running edge to edge across the bottom. Standing on the floor at one end of the table is EXACTLY ONE plain flag on a plain straight pole: the flag is ONE single flat rectangle of plain dark red cloth hanging still, with absolutely NO emblem, NO star, NO sun, NO stripe and NO marking of any kind on it. The table and the flag pole rest directly ON the floor strip and must touch it. The floor strip across the bottom third is left completely clear and empty. Draw NO wood grain, NO panel seams, NO carving and NO lettering anywhere. Muted palette of pale olive-green, dark brown and grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success"
+    },
+    {
+      "name": "Government Meeting Room With Officers",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Government Meeting Room",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same ceiling band, the same pale olive-green wall with its one blank framed picture, the same long meeting table with its two folders, the same plain red flag on its pole, the same grey floor strip, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY FOUR plain seated people in plain khaki uniforms BEHIND the table, evenly spaced along it, each one visible only from the chest up above the table top, all facing toward the viewer's side of the table. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms as THIN PLAIN STRAIGHT LINES with no thickness at all and no hands and no fingers, and draw the uniform of each one as ONE plain flat khaki shape with no folds, no creases, no buttons and no badges. Give each of them a plain khaki peaked cap, and vary their heights slightly so they do not look like copies of one figure. They must stay entirely BEHIND the table — the floor strip in front of the table stays clear and completely empty. Add nothing else at all. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Người dự họp = đám đông nền, vẽ thẳng vào background bằng editFrom (skill mục 5c) — không ai trong số họ cần nhận diện. Chừa hẳn dải sàn trước bàn để đặt sĩ quan chủ trì ở cảnh ghép."
+    },
+    {
+      "name": "Military Hospital Gate",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The front gate of a military hospital in Taiwan in the 1950s, seen straight on. Built from horizontal bands stacked top to bottom: a plain pale blue sky band across the top; a plain dark grey flat roof band; a long two-storey pale cream hospital building filling the middle and running edge to edge, with EXACTLY FOUR plain square windows in one single row along its upper floor and no more, and at ground level EXACTLY FOUR plain square pillars standing in one row forming an open covered walkway, with one plain dark central doorway behind them; and a plain flat pale grey paved forecourt strip running edge to edge across the bottom. Standing IN FRONT OF the building on the forecourt are EXACTLY TWO plain square gate posts, one on the left and one on the right, each rising from the forecourt strip and plainly touching it, joined at the top by ONE plain horizontal beam that passes in front of the building — the posts and beam must be drawn complete and must not be cut off by any band edge. On the left-hand gate post hangs EXACTLY ONE plain white square panel carrying ONE plain red cross and nothing else — no writing, no letters, no characters and no emblem anywhere in the picture. The wide gateway between the two posts stands open and empty, and the forecourt strip across the bottom third is left completely clear and empty. Draw NO balusters, NO parapet ornament, NO window mullions, NO roof tiles, NO brick courses and NO surface texture. Muted palette of pale cream, dark grey and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Tham khảo refs/case-5/18-hospital-*.jpg (bệnh viện Đài Loan thời Nhật thuộc): đặc trưng là HÀNG CỘT HIÊN ở tầng trệt. Nhưng công trình thật có parapet chạm trổ + lan can + ô kính chia nhiều ô — cấm tường minh cả ba, nếu không ra hàng trăm chi tiết lặp. Chữ Hán trên biển hiệu thay bằng CHỮ THẬP ĐỎ để đọc ra bệnh viện mà không cần chữ (skill mục 6i)."
+    },
+    {
+      "name": "Main Hall With Coffin V3",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Main Hall With Coffin V2",
+      "description": "Use the single reference image and keep absolutely everything about the room and the coffin unchanged — the same two wall panels meeting along the same single vertical corner line, the same altar shelf with its two candles and incense bowl, the same coffin lying square across the picture with its top and bottom edges perfectly horizontal, the same dark red-brown colour and six-sided shape, the same two wooden trestles, the same grey floor, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: REMOVE the leaning lid shape completely from the picture — it must not be propped up anywhere, must not lean against anything and must not appear as a second box-like shape of any kind. There is now ONLY ONE coffin-like shape anywhere in the picture: the single coffin lying across the middle of the room, open at the top so its inside is visible, with nothing else resembling a box, a crate or a second coffin standing anywhere in the room. Do not move the coffin, do not resize it and do not add anything else. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Sửa lỗi 'nhìn như 2 quan tài' — bỏ hẳn nắp khỏi khung thay vì tìm cách đặt nó chỗ khác, vì bất kỳ khối gỗ sẫm màu nào đứng gần quan tài chính đều có nguy cơ bị đọc nhầm thành quan tài thứ hai. Câu 'ONLY ONE coffin-like shape' nói tường minh số lượng, đúng bài học RA SỐ CỤ THỂ."
+    },
+    {
+      "name": "Main Hall With Mourners V3",
+      "type": "background",
+      "case": 5,
+      "editFrom": "Main Hall With Coffin V3",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same two wall panels meeting at the same vertical corner line, the same altar shelf with its two candles and incense bowl, the same single coffin lying square across the picture with its top and bottom edges perfectly horizontal and open at the top, the same two trestles, the same floor, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Change ONLY this: add EXACTLY THREE plain standing people in plain dark clothes along the BACK WALL behind the coffin, all facing toward the coffin. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights slightly and give them different flat hair colours so they do not look like copies of one figure. They must stay small, stay entirely BEHIND the coffin against the back wall — the near floor in front of the coffin stays clear and completely empty. Add nothing else at all, and do not add any second coffin-like shape anywhere. Everything else stays exactly as it already is.",
+      "status": "success"
+    },
+    {
+      "name": "Refugee Elder Man",
+      "type": "character",
+      "case": 5,
+      "description": "an old man in his sixties wearing a plain faded brown collarless tunic as his one and only garment, no hat, thin white hair combed straight back with a receding hairline, a short trimmed white moustache and no beard",
+      "status": "success",
+      "notes": "Một trong 3 người đồng hành đi cùng Chu Tú Hoa xuyên suốt hành trình rời Kim Môn (3 cảnh: Leaving Kinmen By Boat, Adrift At Sea, The Fishing Boat Approaches). Người dùng chỉ ra bản trước mô tả 'vary heights/hair' ngẫu nhiên trong TỪNG cảnh riêng khiến 3 người phụ đổi hẳn ngoại hình qua từng ảnh — sửa bằng cách tạo Character asset riêng + đính reference xuyên suốt, đúng kỹ thuật đã dùng cho nhân vật chính."
+    },
+    {
+      "name": "Refugee Middle Aged Man",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his forties wearing a plain dark grey collarless tunic as his one and only garment, no hat, black hair cut short and combed forward, clean-shaven with no beard and no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Refugee Young Woman",
+      "type": "character",
+      "case": 5,
+      "description": "a woman in her twenties wearing a plain faded green collarless tunic as her one and only garment, no hat, black hair pulled back into a low braid with no loose strands, round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Small Refugee Boat V2",
+      "type": "prop",
+      "case": 5,
+      "description": "A single small open wooden boat seen from the side, floating level, with no cabin and no mast at all, whole boat inside the frame. The hull is DEEP, not shallow: its sides rise high from the waterline — deep enough that a seated adult person placed inside the boat would be hidden from the waist down by the hull walls, with only their head, shoulders and upper chest showing above the top edge of the boat. The hull is ONE plain curved shape in flat pale brown with a plain darker band along its top edge, and EXACTLY THREE plain flat bench planks laid across it low down inside the hull, well below the top edge, and no more. No planking lines, no wood grain, no oars, no ropes, no lettering, no water drawn around it.",
+      "status": "success",
+      "notes": "LỖI THỜI — thay bằng 'Small Refugee Boat V3'. Người dùng đề xuất hướng khác hẳn sau 3 vòng sửa không dứt điểm (chồm mép mũi, thân quá nông): bỏ hẳn việc vẽ CHIỀU SÂU khoang thuyền — chỉ vẽ THÀNH THUYỀN như một dải phẳng, người đứng ngay sau dải đó với thân dưới bị chính dải che theo kiểu lớp phẳng (Z-order 2D), không cần model tính đúng tỉ lệ 3D nào cả. Viết MỚI HOÀN TOÀN bằng chữ, KHÔNG dùng editFrom — đổi độ sâu thân thuyền là đổi hình dạng cơ bản, và editFrom neo vào ảnh cũ (thành nông) rất dễ bị 'ảnh thắng chữ' kéo ngược lại, đúng bài học RUNBOOK mục 4.12. Chốt bằng tỉ lệ đo được: 'người ngồi bị che từ thắt lưng trở xuống, chỉ thấy đầu/vai/phần trên ngực' — không nói chung chung 'sâu hơn'."
+    },
+    {
+      "name": "Small Refugee Boat V3",
+      "type": "prop",
+      "case": 5,
+      "description": "A single small wooden boat seen from the side, drawn LONGER than usual — about twice the length of an ordinary rowing boat — so several people can stand side by side along it. Draw ONLY the boat's outer hull as ONE single flat curved shape in pale brown: a gently curved bottom edge, and ONE single straight top edge running almost the full length of the hull — this top edge is the boat's rim, drawn at roughly waist height on a standing adult figure. The boat's INTERIOR IS NOT SHOWN AT ALL: no floor, no benches, no seats, no ribs and nothing visible above the rim — the hull reads as ONE simple flat shape, like a long low wall or a counter, not as a container with visible depth inside it. One plain darker band runs along the top rim to give it a little thickness. No cabin, no mast, no oars, no ropes, no lettering, no planking lines, no wood grain.",
+      "status": "success",
+      "notes": "Thiết kế lại hoàn toàn bằng chữ (không editFrom — đây là đổi Ý TƯỞNG hình dạng, không phải sửa chi tiết). Thuyền chỉ còn 1 dải cong = thành thuyền, không vẽ nội thất. Kéo dài gấp đôi bình thường để đủ chỗ 4 người xếp hàng dọc theo mép. Cách ghép người vào xem ở 3 cảnh dùng nó."
+    },
+    {
+      "name": "Fishing Boat Deck",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The open wooden deck of a fishing boat in 1958, seen straight on from on board. Built from horizontal bands stacked top to bottom: a plain pale blue sky band across the top; a plain small square wheelhouse box standing at the back of the deck with EXACTLY ONE plain square window in it and no more; a plain flat wooden deck floor filling the middle and running edge to edge; and along the very bottom edge, one plain low wooden rail running edge to edge at roughly waist height, with a narrow strip of flat dark blue-green sea just visible beyond it. Standing at one side of the deck are EXACTLY ONE coiled rope shape, drawn as one plain flat spiral, and EXACTLY ONE plain wooden crate, and nothing else — no nets, no barrels, no other fishing gear. The middle of the deck floor stays clear and empty, reserved for people to stand on. Draw NO planking lines, NO wood grain and NO texture of any kind. Muted palette of pale wood tan, dark grey and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Background MỚI theo yêu cầu người dùng — CỐ Ý không dùng Prop 'Wooden Fishing Boat' làm reference (nó chỉ vẽ toàn bộ thân thuyền nhìn từ xa, không đủ không gian sàn để đặt nhiều nhân vật). Đây là cảnh DUY NHẤT nhìn từ TRÊN boong tàu, khác hẳn góc nhìn 'từ ngoài nhìn vào' của mọi cảnh thuyền khác trong case — nên tách hẳn thành Background riêng, không editFrom."
+    },
+    {
+      "name": "Police Constable",
+      "type": "character",
+      "case": 5,
+      "description": "a man in his thirties wearing a plain khaki police uniform shirt with two plain chest pockets as his one and only garment, no cap and no hat at all, thick black hair parted low on one side and combed flat across the forehead, clean-shaven with no beard and no moustache but with long thick black sideburns running down to the earlobes",
+      "status": "success",
+      "notes": "Cảnh sát THỨ HAI, thêm 2026-08-16 cho đoạn ra khơi chỉ chỗ + bắt thuyền: kịch bản nói 'investigators'/'police' số nhiều, mà cả case mới có 1 asset cảnh sát. Theo skill mục 5d (vai phụ xuất hiện từ 2 cảnh trở lên PHẢI có Character asset) — anh này có mặt ở 3 cảnh nên tả-trong-prompt sẽ ra 3 người khác nhau. Cùng áo khaki 2 túi ngực với 'Police Investigator' để đọc ra cùng lực lượng; phân biệt theo mục 5a bằng ĐẦU TRẦN + tóc rẽ ngôi thấp chải bẹt + tóc mai dài (Police Investigator: đội mũ kê-pi, tóc ngắn, cạo nhẵn; Military Officer: mũ kê-pi, tóc hoa râm, ria đen)."
+    },
+    {
+      "name": "Police Patrol Boat",
+      "type": "prop",
+      "case": 5,
+      "description": "A single small police patrol launch seen from the side, floating level, whole boat inside the frame. One plain long low hull shape in flat pale grey with a plain dark navy band along its top edge, the bow end drawn a little higher than the stern end. Standing on the deck is ONE plain long low cabin box in flat white, about half the length of the boat and set slightly toward the bow, with EXACTLY THREE plain square windows in a row along its side and no more. At the stern end stands EXACTLY ONE plain thin short flagpole carrying ONE small plain flat dark navy rectangular flag, and that flag is completely BLANK — absolutely no emblem, no star, no sun, no symbol, no letters and no writing on it anywhere. The boat has NO mast, NO sail, NO rigging, NO net, NO rope, NO life ring, NO railing and NO portholes. No planking lines, no wood grain, no lettering or numbers anywhere on the hull, and no water drawn around it.",
+      "status": "success",
+      "notes": "Prop MỚI 2026-08-16 — thuyền của chính quyền chở nhân vật ra biển. Cố ý ĐỐI LẬP từng điểm với Prop 'Wooden Fishing Boat' để cắt cảnh là phân biệt được ngay: thân xám nhạt + viền navy (thuyền cá: nâu gỗ + viền nâu đậm), cabin dài thấp 3 cửa sổ (thuyền cá: hộp vuông nhỏ 1 cửa sổ), KHÔNG cột buồm (thuyền cá: 1 cột buồm cao). Cờ để TRỐNG theo skill mục 6i — cờ Trung Hoa Dân Quốc có mặt trời 12 tia, model vẽ ra sẽ thành hoa văn bậy. Tham khảo refs/case-5/35-police-boat-01.jpg (tàu tuần tra cảnh sát bằng gỗ, 1964) và -04.jpg (tàu cảnh sát cảng Cơ Long)."
+    },
+    {
+      "name": "Police Boat Deck",
+      "type": "background",
+      "case": 5,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The open deck of a small police patrol launch out at sea in 1959, seen straight on from on board. Built from horizontal bands stacked top to bottom: a plain pale blue sky band across the top; a plain long low white cabin box standing at the back of the deck and running most of the width, with EXACTLY THREE plain square windows in a row in it and no more, and EXACTLY ONE plain doorway rectangle at one end of it; a plain flat pale grey deck floor filling the middle and running edge to edge; and along the very bottom edge, one plain low metal rail running edge to edge at roughly waist height, drawn as ONE plain horizontal top bar carried on EXACTLY FOUR plain thin vertical posts and NOTHING MORE — no extra bars, no netting, no chain — with a narrow strip of flat deep blue-green sea just visible beyond it. The rail STOPS at the deck floor; in front of it the near deck is left completely clear across the whole width. Hanging on the front of the cabin at one side is EXACTLY ONE plain round life ring, drawn as one flat white circle with one flat orange ring inside it, and nothing else at all — no nets, no crates, no barrels, no coils of rope, no fishing gear of any kind. The middle of the deck floor stays clear and empty, reserved for people to stand on. Draw NO planking lines, NO wood grain, NO texture, and NO lettering, NO numbers and NO writing of any kind anywhere. Muted palette of pale grey, white, dark navy and pale blue in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Background MỚI 2026-08-16 — boong tàu cảnh sát nhìn từ trên tàu, cặp đôi với 'Fishing Boat Deck' (cùng kiểu dựng dải ngang: trời → cabin → sàn → lan can + dải biển) để 2 cảnh boong tàu trong cùng đoạn đọc ra cùng một ngôn ngữ dựng. Phân biệt bằng CHẤT LIỆU: sàn xám kim loại + cabin trắng dài 3 cửa sổ + phao cứu sinh (thuyền cá: sàn gỗ tan + hộp lái vuông 1 cửa sổ + cuộn thừng + thùng gỗ). CỐ Ý không dùng Prop 'Police Patrol Boat' làm reference — prop đó vẽ cả con thuyền nhìn từ ngoài, không có sàn để đặt người, đúng lý do đã ghi ở 'Fishing Boat Deck'. Tham khảo refs/case-5/35-police-boat-02.jpg (3 cảnh sát đứng trên boong trước, lan can thấp chắn ngang mép dưới)."
+    }
+  ]
+}

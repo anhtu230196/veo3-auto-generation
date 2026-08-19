@@ -6,16 +6,32 @@
  * không khớp, KHÔNG nói được asset đang mang tên gì thật sự (đã tạo nhưng rename hỏng? tên
  * bị cắt bớt? search trả về chậm?). Script này trả lời đúng câu đó.
  *
- *   npx tsx scripts/check-asset-in-picker.ts "Don Decker"
+ * 🔴 PHẢI truyền đúng `--project <flowProject>` từ CHÍNH file assets.json/scenes.json của
+ * case đang tra (2026-08-15, lỗi thật đã xảy ra). Mỗi case có 1 project Flow RIÊNG
+ * (RUNBOOK mục "MỖI CASE MỘT THƯ MỤC + MỘT PROJECT FLOW"); bỏ trống `--project` thì hàm
+ * `ensureProject(page)` mở `state/project.json` (project mặc định/legacy) — TRA SAI PROJECT
+ * HOÀN TOÀN, "0 card" khi đó không chứng minh được gì, và tin vào nó rồi tạo lại asset có
+ * thể tạo ra card TRÙNG TÊN trong project thật.
+ *
+ *   npx tsx scripts/check-asset-in-picker.ts "Don Decker" --project ten-tap-case-3
  */
 import { launchVeo3Browser } from "../src/veo3bot/browser.js";
 import { ensureProject } from "../src/veo3bot/project.js";
 
 const query = process.argv[2] ?? "";
+const projectFlagIndex = process.argv.indexOf("--project");
+const projectKey = projectFlagIndex >= 0 ? process.argv[projectFlagIndex + 1] : undefined;
+if (!projectKey) {
+  console.warn(
+    "⚠️  KHÔNG có --project — sẽ tra project MẶC ĐỊNH (state/project.json), rất có thể SAI " +
+      "project của case bạn đang làm. Truyền đúng flowProject từ assets.json/scenes.json của case đó."
+  );
+}
 
 const context = await launchVeo3Browser();
 const page = context.pages()[0] ?? (await context.newPage());
-await ensureProject(page);
+const projectUrl = await ensureProject(page, projectKey);
+console.log(`Project: ${projectUrl}${projectKey ? ` (key="${projectKey}")` : " (MẶC ĐỊNH — có thể sai)"}`);
 await page.waitForTimeout(4000);
 
 await page.locator('button:has-text("add_2")').first().click({ timeout: 20000 });

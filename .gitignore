@@ -16,9 +16,10 @@ scripts/*.png
 # File audio narration (thành phẩm nặng, không lưu trong git).
 *.mp3
 
-# Ảnh tham khảo tải từ Wikimedia Commons — nặng (~20MB/tập) và TẢI LẠI ĐƯỢC:
-# refs/README.md giữ đủ URL nguồn + giấy phép của từng file, nên chỉ commit
-# manifest, không commit ảnh.
-narration-scripts/*/refs/*.jpg
-narration-scripts/*/refs/*.jpeg
-narration-scripts/*/refs/*.png
+# Ảnh tham khảo tải về — nặng (~20MB/tập) và TẢI LẠI ĐƯỢC: mỗi README.md giữ đủ
+# URL nguồn + giấy phép, nên chỉ commit manifest, không commit ảnh.
+# Dùng ** vì ảnh nằm trong thư mục con theo case (refs/case-N/), không phải phẳng.
+narration-scripts/*/refs/**/*.jpg
+narration-scripts/*/refs/**/*.jpeg
+narration-scripts/*/refs/**/*.png
+narration-scripts/*/refs/**/*.webp

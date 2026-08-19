@@ -47,7 +47,8 @@ Hệ quả khi viết prompt:
 ```
 narration-scripts/<tập>/
   en.md                  ← kịch bản cả tập
-  refs/                  ← ảnh tham khảo (gitignore, xem README trong đó)
+  refs/case-1/  case-5/  ← ảnh tham khảo, MỖI CASE MỘT THƯ MỤC + README manifest
+                            (ảnh gitignore, chỉ commit README — xem refs/README.md)
   case-1/assets.json  scenes.json
   case-2/assets.json  scenes.json
   ...
@@ -95,10 +96,27 @@ Thứ tự bắt buộc: mọi asset trong `references` của 1 scene phải `st
 1. Đọc trọn đoạn kịch bản của case trong `en.md`.
 2. **Phân shot** (mục 4) — ra danh sách khung hình cần vẽ.
 3. Kiểm kê asset: mỗi shot cần Character nào, Background nào, Prop nào.
-4. Viết `assets.json` → `npm run banana -- <file> --case N`.
-5. **Người dùng xem bằng mắt** trước khi đi tiếp — sai bối cảnh mà ghép cảnh
+4. 🔴 **GOM ẢNH TƯ LIỆU cho các asset đó — BẮT BUỘC.** Dùng skill riêng
+   **`case-reference-images`**. Làm TRƯỚC khi viết một dòng prompt nào.
+5. Viết `assets.json` → `npm run banana -- <file> --case N`.
+6. **Người dùng xem bằng mắt** trước khi đi tiếp — sai bối cảnh mà ghép cảnh
    luôn thì hỏng hàng loạt.
-6. Viết `scenes.json` → `npm run banana-scenes -- <file> --case N`.
+7. Viết `scenes.json` → `npm run banana-scenes -- <file> --case N`.
+
+### 3b. Bước 4 (gom ảnh tư liệu) → skill RIÊNG
+
+Toàn bộ chi tiết của bước 4 nằm ở skill **`case-reference-images`** (tách riêng
+2026-08-15 theo yêu cầu người dùng: tìm tư liệu là việc khác hẳn viết prompt).
+Ở đó có: tìm gì, nguồn nào, mẹo tra Commons, cách tra vụ án bằng **tên gốc bản
+ngữ** để ra ảnh nhân vật thật, cách tải (User-Agent, Referer, lazy-load), quy ước
+thư mục `refs/case-N/` + manifest, và pattern `.gitignore`.
+
+Ở skill này chỉ cần nhớ 2 điều:
+- **Không viết prompt từ trí nhớ.** Mọi case đều thuộc một thời kỳ và một vùng cụ
+  thể; viết chay ra thứ chung chung, sai niên đại, và chỉ lộ khi đã tạo xong cả mẻ.
+- **Soi ảnh bằng mắt rồi mới viết `description`**, tả lại bằng chữ đo được. KHÔNG
+  đính ảnh vào prompt — pipeline chỉ đính `reference-character.jpeg` cho
+  Character; Background/Prop không đính gì (xem mục 5).
 
 ## 4. PHÂN SHOT — luật quan trọng nhất
 
@@ -119,6 +137,23 @@ xứng để đọc `assets.json` là hiểu quan hệ:
 `Long Wang 18 Lakes Hillside` (nhóm đứng) ↔ `Long Wang 18 Lakes Opposite
 Hilltop` (A Fei đứng). Background thứ 2 phải mô tả rõ có 1 quả đồi KHÁC ở
 midground, cách nhau bằng chỗ trũng thấy được.
+
+### 4b. CẶP CẢNH ĐỐI XỨNG ĐẦU–CUỐI (gài rồi mở)
+
+Nhiều case có một hiện tượng lạ ở đầu, tới cuối mới được giải thích. Đừng vẽ hai
+cảnh đó rời rạc — **dựng chúng thành một cặp đối xứng**: cùng background, cùng
+góc máy, cùng tư thế nhân vật, cùng mọi chi tiết — **chỉ khác đúng thứ được
+reveal**. Cắt cạnh nhau trong video là khán giả tự nhận ra ngay, không cần lời
+giải thích nào.
+
+Ví dụ case 5: `The Bicycle Grows Heavy` (bánh sau bẹp, người chồng ngoái lại nhìn
+yên sau trống) ↔ `The Spirit On The Bicycle` (y hệt, nhưng giờ thấy cô gái ngồi
+đó, và người chồng KHÔNG ngoái lại vì anh ta không biết).
+
+⚠️ **Ở cảnh GÀI, phải cấm tường minh cái sắp reveal** — model rất hay tự thêm
+người vào chỗ trống cho "đầy khung": *"the luggage rack is EMPTY: draw absolutely
+NO second person, NO figure, NO silhouette and NO shape sitting on it"*. Cùng
+lớp với luật để đối tượng ngoài khung ở shot "nhìn thấy từ xa" ngay dưới đây.
 
 ⚠️ Ở shot "nhìn thấy từ xa", **cố ý để đối tượng NGOÀI KHUNG** (nhân vật nhìn
 off-frame), KHÔNG vẽ người tí hon ở xa: `BACKGROUND_STYLE_BLOCK` cấm mọi bóng
@@ -204,6 +239,29 @@ nhau. Phải tả tường minh, vì `editFrom` không có style block nào đ�
 - **Chừa chỗ**: dồn nhóm vào 1/3 khung và nói rõ phần còn lại *"must be left
   clear and completely empty"* — nếu không họ tràn kín, hết chỗ đặt nhân vật
   chính.
+
+### 5d. 🔑 Vai phụ LẶP LẠI qua nhiều cảnh → PHẢI có Character asset
+
+Mục 5c nói đám đông nền thì vẽ thẳng vào background. Nhưng có một nhóm nằm GIỮA
+hai thái cực đó, và đây là chỗ dễ sai nhất: **vai phụ không cần tên nhưng xuất
+hiện lặp lại qua nhiều cảnh** (nhóm bạn đồng hành, tổ công tác, mấy đứa trẻ theo
+chân nhân vật chính).
+
+Tả họ bằng chữ trong prompt CỦA TỪNG CẢNH — kể cả khi tả rất kỹ và có câu
+*"vary their heights and hair colours"* — sẽ cho ra **người khác hẳn nhau ở mỗi
+ảnh**, vì mỗi lần generate model chọn lại từ đầu, không có gì neo giữ. Người dùng
+phát hiện đúng chuyện này ở case 5 (3 người tị nạn đổi diện mạo qua cả 3 cảnh
+hành trình).
+
+👉 **Luật**: vai phụ xuất hiện ở **từ 2 cảnh trở lên** thì tạo Character asset
+riêng và đính reference như nhân vật chính. Chỉ giữ cách tả-trong-prompt cho vai
+xuất hiện ĐÚNG 1 cảnh (case 5: 2 ngư dân phụ trên thuyền cá — chỉ có mặt 1 cảnh
+nên không cần asset).
+
+⚠️ Đám đông nền của mục 5c cũng theo luật này: bake vào background chỉ ăn khi
+background đó ĐỨNG YÊN qua các cảnh. Nếu nhóm người đi theo một Prop DI CHUYỂN
+qua nhiều bối cảnh (con thuyền qua bến → giữa biển → gặp thuyền khác), không có
+background nào để bake vào — lúc đó buộc phải là Character asset.
 
 ### 5b. Nhân vật đổi TRANG PHỤC trong truyện → mỗi bộ đồ 1 asset riêng
 
@@ -323,6 +381,26 @@ hiên) mà khác tông là lộ ngay khi cắt qua lại. Đã dính thật: t�
 Sinh mới sẽ ra cầu thang/đồ đạc "na ná" nhưng lệch vị trí — đúng thứ mà cặp cảnh
 cắt qua lại sẽ phơi ra.
 
+### 6i. MỌI THỨ CÓ CHỮ ĐỀU ĐỂ TRỐNG — không có ngoại lệ
+
+Model **không viết được chữ**: ra ký tự méo mó, sai chính tả, hoặc chữ Hán vô
+nghĩa. Đã dính 3 lần liên tiếp (bảng tưởng niệm case 4; bài vị + băng vải tang lễ
++ mặt báo case 5), nên đây là luật cứng chứ không phải lưu ý.
+
+👉 Với MỌI vật mang chữ trong đời thật — bia mộ, bài vị, bảng hiệu, băng rôn,
+biển tên, mặt báo, thư từ, hồ sơ — mô tả nó là **hình chữ nhật trống hoàn toàn**
+và cấm theo tên: *"completely BLANK — absolutely no writing, no letters, no
+characters, no headlines and no carving on it anywhere"*.
+
+Muốn vật đó vẫn ĐỌC RA đúng loại thì cho **tín hiệu hình học thay cho chữ**:
+- Mặt báo → *"EXACTLY FOUR plain thin horizontal grey lines standing for columns
+  of text and nothing more"*.
+- Bài vị → dáng chữ nhật đầu tròn + một viền vàng mảnh bên trong mép.
+- Bia mộ → dáng phiến đá đầu vòm.
+
+Chữ thật là việc của khâu dựng — ghi vào `notes` để người dùng biết chỗ nào cần
+điền, đừng để họ tưởng ảnh bị thiếu.
+
 ### 6g. CHÊNH CAO trong bố cục phẳng (cầu thang, giếng trời, cửa hầm)
 
 Bố cục phẳng không có chiều sâu, nên **"nhìn xuống tầng dưới" không tả được bằng
@@ -370,6 +448,21 @@ ra `Shue House Upstairs Stairwell Flat` của case 4 và **người dùng đã d
 - **Vật thể CAO xuyên qua nhiều dải** (tháp, cột, cây lớn): đừng liệt kê nó
   trong danh sách dải ngang, sẽ bị cắt cụt. Phải nói rõ 3 điều: chạy suốt từ
   mép trên xuống đâu, nằm TRƯỚC hay SAU các dải kia, và chạm đất thế nào.
+- 🔴 **THỨ TỰ DẢI MÃ HOÁ KHOẢNG CÁCH — trên là XA, dưới là GẦN.** Nghe hiển
+  nhiên nhưng rất dễ xếp sai khi cảnh có nhiều mặt nền (đất + nước, sân + đường,
+  sàn + bậc). Soát bằng đúng 1 câu hỏi: **"nhân vật đứng/nổi trên cái gì?"** —
+  cái đó BẮT BUỘC là dải DƯỚI CÙNG.
+
+  Đã dính thật (case 5, `Kinmen Shore Daytime`): xếp trời → nhà → **biển** → cát,
+  tức biển nằm giữa nhà và bãi cát, nghĩa là nhà ở phía sau mặt nước. Ảnh ra dãy
+  nhà **đứng thẳng trên mặt biển**, chân nhà bị mép dải biển cắt ngang. Bản đúng
+  là trời → nhà → bãi cát (nhà đứng trên đó) → **biển ở dải dưới cùng**, vì cô
+  gái ngồi trên thuyền nổi trên biển.
+
+  ⚠️ Câu *"X tựa lên mép xa của dải Y và phải chạm vào nó"* — vốn là câu chữa
+  lỗi vật lơ lửng — **làm lỗi này nặng thêm** nếu Y sai chỗ: nó ép vật đứng lên
+  đúng cái dải không nên đứng. Gán vật vào dải NÀO phải đúng trước, rồi mới nói
+  chuyện chạm.
 
 ### 6c. 🔢 RA SỐ CỤ THỂ cho mọi thứ LẶP LẠI — "một số ít" là vô nghĩa
 
@@ -401,6 +494,24 @@ Kèm 2 việc nữa:
 cánh (vẫn tốt hơn 30). Cần chính xác hơn nữa thì neo bằng tỉ lệ khung
 (*"each door is one quarter of the cabinet run"*).
 
+🔴 **Chữ "OR" giữa 2 trạng thái ngang hàng = cho model quyền CHỌN, và nó chọn
+lỏng.** Khác hẳn lớp lỗi "số lượng" ở trên — đây là lỗi **THUỘC TÍNH** (mắt
+mở/nhắm, đứng/ngồi, vui/buồn). Viết *"eyes as two round dots OR two downward
+curves"* để NHÓM NGƯỜI cùng ở một trạng thái (vd cả nhóm đang kiệt sức) thường ra
+kết quả trộn lẫn — model chọn mắt mở cho phần lớn, chỉ 1-2 người chọn đúng nhắm.
+
+Đã dính thật (case 5, "Adrift At Sea"): tả 4 người trôi dạt kiệt sức, câu mắt
+viết "two round dots or two downward curves" → 2 trong 3 người phụ vẫn mắt mở
+ngồi thẳng, chỉ đúng cách gán tư thế cho nhân vật chính riêng mới đọc đúng.
+
+👉 Khi CẢ NHÓM phải cùng một trạng thái, bỏ hẳn lựa chọn — chỉ còn ĐÚNG MỘT thuộc
+tính, và gán tư thế **cụ thể theo từng vị trí** thay vì một câu chung áp cho cả
+nhóm: *"EVERY ONE of these three has EYES CLOSED, drawn ONLY as two downward
+curves — never open, never round dots"*, rồi mô tả riêng người ở đầu trái tựa
+tay lên mạn thuyền, người giữa gục xuống tấm ván, người đầu phải ngả đầu ra sau.
+Cùng nguyên tắc gốc: câu có nhiều lựa chọn ngang hàng luôn bị diễn giải lỏng,
+dù đó là số lượng hay thuộc tính.
+
 ### 6d. Vật che trước mặt nhân vật (song sắt, lan can, cây) — phải cấm ĐÈ LÊN người
 
 Background có thứ chắn ngang (song sắt, hàng rào, cột) thì lúc ghép, model rất
@@ -414,6 +525,35 @@ left completely clear across the width"*).
 *"stand IN FRONT OF the bars, closer to the viewer than the bars, so that NO bar
 passes in front of any part of their bodies or their faces"* — kèm
 *"do NOT add any extra bars anywhere"*.
+
+### 6e-2. 🔑 KHÔNG vẽ chiều sâu khoang — vẽ THÀNH làm mốc che thân, đảo ngược mục
+6d
+
+Khi nhiều người cùng "ở trong" một vật chứa nông/hẹp mà máy hay vẽ sai tỉ lệ
+(thuyền, xe, bồn tắm, hố...), đừng cố mô tả đúng chiều sâu 3D của khoang — đó là
+thứ model liên tục đoán sai (đã dính 3 vòng liên tiếp ở case 5: nhân vật chồm ra
+mép mũi thuyền, thân thuyền quá nông lộ hết người, mô tả "sâu hơn" cũng không
+đủ). Thay vào đó, áp dụng NGƯỢC LẠI mục 6d: mục 6d cấm vật che MẶT, cho phép che
+THÂN; ở đây ta chủ động dùng đúng cơ chế che thân đó để thay thế toàn bộ việc mô
+tả chiều sâu.
+
+**Cách làm**: vật chứa chỉ còn là MỘT DẢI PHẲNG (thành/mép), không vẽ nội thất
+bên trong (không sàn, không ghế, không đáy) — *"the boat's INTERIOR IS NOT SHOWN
+AT ALL... the hull reads as ONE simple flat shape, like a long low wall"*. Người
+đứng/ngồi NGAY SAU dải đó; ở prompt cảnh nói thứ tự lớp — *"the near side of the
+hull passes IN FRONT OF every one of them, hiding their body from the waist down
+... heads, shoulders and upper chest stay fully visible ... no part of the hull
+may cross anyone's face"*. Không có phép tính 3D nào cả, chỉ là quan hệ lớp
+trước/sau phẳng — đúng thứ model làm tốt.
+
+**Lợi ích kèm theo**: tư thế "mệt mỏi/kiệt sức" của cả nhóm cũng đơn giản hẳn —
+*"leans forward with both arms folded on top of the rim and head resting down on
+their own folded arms"*, mọi người làm ĐÚNG MỘT động tác, chỉ đổi góc nghiêng
+đầu để tránh nhân bản. Đỡ hẳn việc phải nghĩ 4 tư thế phức tạp khác nhau (dựa
+mạn, gục ván, ngả ra sau...) mà vẫn dễ sai như 2 vòng sửa trước.
+
+Vật chứa cần kéo DÀI hơn bình thường để đủ chỗ cho cả nhóm xếp hàng dọc theo mép
+— nói tường minh tỉ lệ (*"about twice the length of an ordinary rowing boat"*).
 
 ### 6b. Biến thể của cùng 1 bối cảnh → dùng `editFrom`, ĐỪNG sinh mới từ chữ
 
@@ -445,6 +585,24 @@ slightly larger than its hinge edge"*). Cùng nguyên tắc mục 9.
 - Vật thể chỉ thuộc **ĐÚNG 1 bối cảnh** → **vẽ thẳng vào mô tả Background đó**,
   đơn giản và chắc hơn nhiều so với tạo Prop rồi ghép lại (ghép cần prompt hình
   học rất chặt, dễ sai vị trí/góc).
+
+### 7b. 🔴 Prop phải có ĐỦ BỘ PHẬN mà cảnh sẽ đụng tới
+
+Trước khi chạy, đọc lại các cảnh dùng prop đó và **liệt kê mọi bộ phận được nhắc
+tên trong tư thế nhân vật** — tay cầm gì, chân đặt lên đâu, ngồi lên chỗ nào —
+rồi soát xem mô tả prop có tả ra đủ từng cái không.
+
+Đã dính thật (case 5, `Old Bicycle`): mô tả liệt kê bánh, khung, ghi-đông, yên,
+yên sau — **quên hẳn BÀN ĐẠP**, trong khi cả 5 cảnh đều viết *"both leg lines
+bent at the pedals"*. Ảnh ra chiếc xe không có bàn đạp, và mọi cảnh đạp xe đều
+vô nghĩa. Kiểu lỗi này KHÔNG báo lỗi, không ai phát hiện cho tới lúc soi mắt.
+
+Chỗ dễ quên nhất là **bộ phận để tương tác** chứ không phải bộ phận để nhận
+dạng: bàn đạp, quai xách, dây đeo, tay nắm, bậc lên, chỗ ngồi. Mắt ta nhìn ảnh
+prop thấy "đúng là cái xe đạp" nên bỏ qua.
+
+👉 Sửa bằng `editFrom` chỉ thêm bộ phận thiếu, đừng sinh lại từ chữ — dáng vật
+đã đúng thì giữ.
 
 ## 8. Cảnh ghép (`scenes.json`)
 
@@ -598,6 +756,28 @@ Rà nhanh trước khi chạy:
 node -e "const a=require('./narration-scripts/<tập>/assets.json').assets.map(x=>x.name);console.log(a.filter(n=>a.some(m=>m!==n&&m.toLowerCase().includes(n.toLowerCase()))))"
 ```
 
+## 9c. 🔴 SỬA ĐÚNG TẦNG — lỗi lặp lại 2 lần là dấu hiệu sai ở TẦNG TRÊN
+
+Khi người dùng chê cùng một điểm ở nhiều vòng liên tiếp, **dừng việc vá prompt
+cảnh lại** và hỏi: lỗi này nằm ở cảnh, hay ở chính Prop/Background mà cảnh đang
+dùng?
+
+Ca thật (case 5, thuyền tị nạn): người dùng chê nhân vật "không ở trong thuyền".
+Tôi sửa **tư thế trong prompt cảnh** 2 vòng liền (đổi hướng gục đầu, đổi chỗ tựa)
+— đều không dứt điểm. Nguyên nhân thật nằm ở **Prop**: mô tả thuyền ghi *"shallow
+curved hull"*, mạn thấp hơn vai người ngồi, nên **mọi tư thế** đều lộ thân. Sửa 1
+dòng ở Prop giải quyết cả 3 cảnh cùng lúc.
+
+Dấu hiệu nhận biết nhanh:
+- Cùng một lời chê xuất hiện ở **nhiều cảnh khác nhau** → gần như chắc chắn lỗi ở
+  Prop/Background dùng chung, không phải ở cảnh.
+- Sửa cảnh 2 lần vẫn ra vấn đề tương tự → lỗi ở tầng trên.
+- Lời chê nói về **tỉ lệ/kích thước/độ sâu** của một vật → tra Prop trước tiên;
+  đây là nhóm thuộc tính mà prompt cảnh gần như không ghi đè được.
+
+Sửa ở tầng trên tốn 1 lần tạo lại Prop + N lần tạo lại cảnh, nhưng đó vẫn rẻ hơn
+nhiều so với vá vô hạn ở tầng cảnh mà không bao giờ đúng.
+
 ## 10. Đặt tên & sửa asset đã tạo sai
 
 Asset đã `success` là **đã tồn tại thật trong Flow dưới tên đó**. Sửa mô tả rồi
@@ -606,6 +786,22 @@ giữ nguyên tên → runner tra tên thấy "đã có" và bỏ qua, không ba
 👉 **Luôn tạo tên MỚI**: `<tên> V2`, `V3`… Giữ nguyên entry cũ (`status:
 "success"` + `notes` ghi rõ lỗi thời và vì sao). **Không xoá, không ghi đè cùng
 tên** — trùng tên gây lẫn lộn khi tra reference sau này.
+
+### 10b. Tạo lại 1 CẢNH: đặt lại `status` sẽ tạo card TRÙNG TÊN trong Flow
+
+Mục 10 nói asset phải đổi tên V2 khi sửa. Với **cảnh ghép** thì khác: cách nhanh
+nhất để tạo lại là đặt `status: "waiting"` rồi chạy runner — nhưng phải biết hệ
+quả: **ảnh cũ vẫn nằm trong Flow dưới đúng tên đó**, nên project sẽ có 2 (hoặc
+nhiều) card cùng tên. Xác nhận trực tiếp 2026-08-15 bằng
+`check-asset-in-picker.ts`: 2 card "Wu Approaches The Coffin".
+
+Vì sao thường KHÔNG sao (người dùng case 5 chấp nhận): cảnh ghép là khung hình
+cuối, hiếm khi được dùng làm reference cho cảnh khác; người dùng chọn ảnh bằng
+mắt lúc dựng. Và nếu có cảnh nào tham chiếu tới nó, Flow sắp theo "Recent" nên
+card đầu tiên khớp tên chính là bản MỚI NHẤT — thường đúng là bản vừa sửa.
+
+👉 Chỉ cần đổi tên V2 cho cảnh khi cảnh đó **được cảnh khác dùng làm reference**
+(kỹ thuật keyframe ở mục 8) — lúc đó trùng tên mới thật sự nguy hiểm.
 
 ## 11. Sự cố thường gặp
 
@@ -651,8 +847,21 @@ rồi hỏng cả nhịp kể.
 ### 11b. Trước khi chạy lại 1 mục lỗi, TRA THẲNG trong Flow xem nó có thật không
 
 ```bash
-npx tsx scripts/check-asset-in-picker.ts "Tên cần tra"
+npx tsx scripts/check-asset-in-picker.ts "Tên cần tra" --project <flowProject-của-case>
 ```
+
+🔴 **`--project` BẮT BUỘC — lấy đúng giá trị `flowProject` trong chính
+`assets.json`/`scenes.json` của case đang tra.** Sự cố thật (2026-08-15): script
+gọi thiếu cờ này mở `state/project.json` (project mặc định/legacy) thay vì
+project của case, nên "0 card" trả về KHÔNG chứng minh được gì — nó tra nhầm cả
+project. Bỏ trống thì script tự cảnh báo, nhưng vẫn chạy tiếp và vẫn cho ra kết
+quả (sai) trông y hệt kết quả đúng, nên đừng trông chờ có ai giật mình đọc cảnh
+báo giữa lúc đang xử lý dồn dập.
+
+Hậu quả nếu tin nhầm: kết luận "chưa tồn tại" rồi chạy lại có thể tạo ra **card
+TRÙNG TÊN** trong project thật — 2 asset cùng tên, không biết cái nào mới hơn.
+Trót tra sai thì PHẢI tra lại đúng project trước khi tin bất kỳ kết luận nào,
+không suy luận tiếp từ kết quả sai.
 
 Script chỉ-đọc: mở bảng chọn media, gõ vào ô "Search assets", in ra **tên thật**
 của mọi card hiện lên. Không tốn credit. Dùng để phân biệt 3 tình huống mà log
