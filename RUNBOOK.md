@@ -77,6 +77,22 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   ⚠️ 2 cảnh từng đánh dấu rủi ro chính sách (`Carl Walks Toward The Well At
   Night` có súng, `Worker Finds Bones In The Mud` có hài cốt) đều QUA NGAY lần
   đầu — cách viết trung tính trong `notes` của chúng dùng lại được cho case sau.
+
+  🔴 **(2026-08-16) ĐÃ LÀM LẠI TOÀN BỘ SANG NỀN PHẲNG — bộ dùng chính thức giờ
+  là 9 background mang hậu tố ` Flat`.** `case-3/{assets,scenes}.json` hiện
+  **32/32 asset `success` + 23/23 cảnh `success`** (23 cảnh chạy 1 mẻ liền,
+  ~29 phút, không lỗi cái nào). Đây là việc treo lâu nhất của tập, nay đã đóng:
+  cả 5 case giờ cùng một phong cách nền phẳng.
+  - **9 background cũ đã đánh dấu LỖI THỜI trong `notes` — đừng dùng làm
+    reference.** Giữ lại làm lịch sử, không xoá. (`Well Bottom Mud Interior`
+    bản đầu vốn đã lỗi thời từ trước và không cảnh nào dùng, nên không làm lại.)
+  - **Cảnh GIỮ NGUYÊN TÊN**, chỉ đặt lại `status` rồi chạy lại — giống hệt cách
+    case 4 đã làm ở vòng bỏ phối cảnh. Hệ quả đã biết và chấp nhận: Flow có 2
+    card trùng tên cho mỗi cảnh, **card mới nhất là bản nền phẳng** (skill mục
+    10b).
+  - Ngoài viết lại `description`, phải thêm `no perspective` vào câu style cuối
+    của **cả 23 prompt cảnh** — case 3 vốn không có câu đó vì nền là phối cảnh.
+    Đây đúng là việc thứ 3 trong skill mục 6e, chỗ dễ quên nhất.
 - **(2026-08-15, cập nhật 2026-08-16) Case 5 (Chu Xiu-hua) — phần ảnh XONG, ĐANG
   TRONG VÒNG RÀ SOÁT THEO TỪNG CÂU KỊCH BẢN**. `case-5/{assets,scenes}.json` —
   **57/57 asset `success` + 37/37 cảnh `success`**.
@@ -261,9 +277,20 @@ mọi thứ có chiều sâu.
 - `SIMPLE_PERSPECTIVE_BLOCK` **vẫn còn trong code** nhưng KHÔNG dùng nữa;
   docstring đã ghi rõ. Đừng tự đề xuất dùng lại. `INTERIOR_CORNER_NOTE`
   (`composition: "corner"`) thì DÙNG LẠI — xem bổ sung 2026-08-15 ở trên.
-- **Case 3 (Carl Ledges) đang mang toàn bộ background phối cảnh** — 23 asset +
-  23 cảnh đã tạo xong theo phong cách nay bị loại. **CHƯA quyết** làm lại hay
-  giữ; hỏi người dùng trước, đừng tự tạo lại (tốn cả 23 cảnh ghép).
+- ~~**Case 3 (Carl Ledges) đang mang toàn bộ background phối cảnh** — CHƯA
+  quyết~~ → ✅ **ĐÃ QUYẾT 2026-08-16: LÀM LẠI HẾT sang nền phẳng.** Cách đi:
+  tạo THỬ đúng 1 background trước (`Stone Well Close View Daytime Flat`, chọn
+  cái được 5 cảnh dùng), người dùng xem rồi mới chốt — *"Bản Flat này tôi thấy
+  tốt hơn đó"*. Sau đó mới làm nốt 8 background + chạy lại cả 23 cảnh.
+  👉 **Cách "thử 1 cái trước" này nên dùng lại cho mọi vòng đổi phong cách
+  diện rộng** — tốn 2 phút thay vì cược cả 50 phút vào một quyết định chưa ai
+  nhìn thấy kết quả.
+  ⚠️ Phép đếm ban đầu ra **7 background phối cảnh là SAI, thật ra là 10**. Ba
+  cái ghi `composition: "flat"` (`Old Farmstead Yard With Neighbours`,
+  `Carl Horse Ranch Yard Night`, `Stone Well Close View Night`) đều dựng bằng
+  `editFrom` từ bản phối cảnh — mà **`editFrom` bỏ qua mọi style block, nên cờ
+  `composition` của chúng KHÔNG có tác dụng gì cả**. Đọc cờ mà kết luận phong
+  cách là sai; phải truy ngược `editFrom` về tận asset gốc.
 - Sửa block thôi KHÔNG đủ: mô tả từng background còn tự viết *"drawn at an
   angle"* / *"two walls meeting at one vertical corner line"* — mô tả cụ thể
   thường thắng block, phải sửa cả câu chữ trong `description`.

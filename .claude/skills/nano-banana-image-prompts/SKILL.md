@@ -565,6 +565,15 @@ Sinh mới từ chữ sẽ ra căn phòng "na ná" nhưng lệch vị trí đồ
 giữa 2 cảnh là lộ ngay. Asset gốc phải đứng **TRƯỚC** trong mảng `assets` và đã
 `success` (`loadAssetFile` kiểm tra và báo lỗi nếu xếp sai).
 
+🔴 **`composition` của asset có `editFrom` là VÔ NGHĨA — đừng đọc cờ đó để đoán
+phong cách.** Runner bỏ qua mọi style block khi có `editFrom`, nên asset ghi
+`composition: "flat"` mà `editFrom` trỏ tới một ảnh phối cảnh thì **ảnh ra vẫn là
+phối cảnh**. Đã dính thật (case 3, 2026-08-16): đếm background cần làm lại bằng
+cách lọc `composition === "perspective"` ra **7**, trong khi con số đúng là
+**10** — 3 cái còn lại nấp sau `editFrom`. Muốn biết phong cách thật của một
+asset thì **truy ngược chuỗi `editFrom` về tận asset gốc không có `editFrom`**,
+rồi đọc cờ của cái đó.
+
 `description` lúc này chỉ nói **đúng thứ cần đổi** + câu giữ nguyên phần còn lại:
 
 > Use the single reference image and keep absolutely everything unchanged — same
