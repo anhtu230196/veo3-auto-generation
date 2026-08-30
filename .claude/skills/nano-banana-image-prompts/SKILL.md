@@ -401,6 +401,55 @@ Muốn vật đó vẫn ĐỌC RA đúng loại thì cho **tín hiệu hình h�
 Chữ thật là việc của khâu dựng — ghi vào `notes` để người dùng biết chỗ nào cần
 điền, đừng để họ tưởng ảnh bị thiếu.
 
+### 6j. 🔴 ĐỊA ĐIỂM ĐÔNG ĐÚC phải CÓ NGƯỜI và CÓ HÀNG — đừng "đơn giản hoá" nó thành nơi bỏ hoang
+
+Mục 6c dạy cấm chi tiết và ra số để chống lặp vô hạn. Nhưng luật đó **có chiều
+ngược lại**, và rất dễ đi quá tay: áp máy móc vào một địa điểm vốn ĐÔNG ĐÚC thì
+ra một cái chợ đã dẹp hàng, một bến cảng không thuyền, một ga tàu không khách —
+ảnh sạch sẽ nhưng **sai hẳn không khí và nói ngược lời kể**.
+
+Đã dính thật (case 1, `Village Market Street`): mô tả cấm nguyên một dây
+*"no scales, no boxes, no crates, no hanging goods, no sacks"* cộng *"There are
+no people anywhere"*, quầy chỉ còn đúng 2 cái rổ. Người dùng xem xong yêu cầu
+làm lại: *"thêm nhiều người có phong cách tương tự, và trên sạp hàng có nhiều
+hàng hoá"*.
+
+👉 **Câu hỏi rà trước khi chốt danh sách cấm**: *"bỏ thứ này đi thì nơi này còn
+đọc ra là chợ/bến/ga nữa không?"*
+
+| | Cấm & ra số (mục 6c) | PHẢI CÓ, và cũng ra số |
+|---|---|---|
+| Bản chất | Thứ LẶP LẠI vô hạn, không mang nghĩa | Thứ ĐỊNH NGHĨA địa điểm |
+| Ví dụ | cánh tủ, song sắt, gạch sàn, vân gỗ, hàng ghế | hàng hoá trên quầy, thuyền ở bến, người mua kẻ bán |
+
+Hai thứ luôn phải có ở địa điểm đông đúc, và **cả hai vẫn ra số**:
+
+1. **Hàng hoá**: liệt kê từng món kèm số, đừng nói "nhiều hàng" —
+   *"on EACH counter keep the two baskets and add EXACTLY THREE more plain flat
+   produce shapes and no more: one stack of THREE round green cabbages, one
+   bundle of FOUR long orange carrots, one heap of THREE round red tomatoes"*.
+   Thêm một tầng ở cao độ khác cho khung đỡ phẳng: *"under EACH awning hang
+   EXACTLY TWO plain bundles on short straight strings"*.
+2. **Người nền**: tả theo **mục 5c** (góc 3/4, mắt 2 chấm + miệng 1 nét, thân
+   dạng que, chống nhân bản) và **nói rõ ai đứng đâu** —
+   *"THREE behind the counters, one behind each stall; THREE on the path, TWO in
+   the LEFT THIRD and ONE in the RIGHT THIRD"*.
+
+🔑 **Cách làm: `editFrom` từ chính background trống đã đạt**, đừng sinh mới từ
+chữ. Ba lý do cùng lúc: giữ nguyên bố cục sạp/nhà vốn đã duyệt (mục 6b),
+`editFrom` **bỏ qua mọi style block** nên không vướng điều khoản *"NO people"*
+của `BACKGROUND_STYLE_BLOCK` (mục 5c), và bản trống vẫn giữ lại làm ảnh gốc.
+
+⚠️ **Vẫn phải chừa chỗ cho nhân vật chính** — mục 5c. Nói thẳng vùng nào cấm
+đứng: *"the MIDDLE of the path, directly in front of the middle stall, must be
+left clear and completely empty — no person may stand there"*.
+
+⚠️ Ở prompt CẢNH dùng background này, phải khoá người nền bằng đủ ba vế:
+*"do NOT remove any of them, do NOT redraw them as detailed people and do NOT
+add any more of them"* — model rất hay tự nâng cấp người nền thành nhân vật đầy
+đủ, lúc đó họ tranh chỗ và tranh cả sự chú ý với nhân vật chính. Kèm câu cấm
+chồng lấp: *"she must NOT overlap any of them"*.
+
 ### 6g. CHÊNH CAO trong bố cục phẳng (cầu thang, giếng trời, cửa hầm)
 
 Bố cục phẳng không có chiều sâu, nên **"nhìn xuống tầng dưới" không tả được bằng

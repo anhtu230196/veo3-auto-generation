@@ -56,12 +56,43 @@ khác, không liên quan gì tới Playwright/Google Flow/tạo video**:
   cho nó, đừng tạo `case-6/`. —
   bản tiếng Anh (`en.md`) do người dùng cung cấp thẳng, không qua bước viết
   nháp tiếng Việt trong hội thoại (khác quy trình chuẩn ở trên, nhưng vẫn hợp
-  lệ). **Case 1 (A Fei) đã HOÀN TẤT toàn bộ phần ảnh**: `assets.json` 29/29
-  Character/Background/Prop `success`, `scenes.json` 18/18 cảnh ghép
-  `success` (12 cảnh chạy xong 2026-08-10 qua `npm run banana-scenes -- ...
-  --case 1`, sau đó thêm 1 background + 1 cảnh nữa khi tách shot đoạn "18
-  Lakes" — xem mục 8.2i; không lỗi nào). Xem mục 8.2 cho các bài học rút ra
-  khi làm case 1.
+  lệ).
+
+  🔴 **(2026-08-30) Case 1 (A Fei) ĐÃ LÀM LẠI TOÀN BỘ TỪ ĐẦU — bộ đang dùng là
+  THẾ HỆ 2.** `case-1/{assets,scenes}.json` — **25/25 asset `success` + 21/21
+  cảnh `success`**. Người dùng CHỦ ĐỘNG yêu cầu (*"viết prompt và tạo lại ảnh
+  cho case 1 với kinh nghiệm đã đúc kết"*) — case 1 viết đầu tiên nên thiếu gần
+  hết các luật rút ra sau đó.
+  **`flowProject: "vu-viec-tam-linh-case-1"` — PROJECT FLOW RIÊNG, MỚI**:
+  `https://labs.google/fx/tools/flow/project/3f8f04ff-48a0-46c5-b1be-23b9c144cd95`
+  Trước đó case 1 nằm chung project cũ với case 2; tách ra vì tạo lại toàn bộ ở
+  project cũ sẽ đụng tên với chính bộ gen-1 còn nằm đó.
+  - **Bộ gen-1 lưu ở `case-1/assets.gen1.json` + `scenes.gen1.json`** (29 asset
+    + 18 cảnh, nằm trong project Flow CŨ). Giữ làm lịch sử, đừng trỏ reference
+    vào.
+  - 5 lỗi nặng của gen-1 đã sửa: **thứ tự dải của làng bị ngược** (nhà → đường →
+    cỏ ở đáy, trong khi nhân vật đi trên ĐƯỜNG — đúng lỗi mục 6a); **1 asset
+    `Generic Villager` dùng chung cho cả đám đông** (ra mấy bản sao cùng một
+    người, nay bake vào background bằng `editFrom` theo mục 5c); **định lượng mờ
+    khắp nơi** ("two or three houses", "a few items" — mục 6c); **không cấm chữ
+    ở đâu cả** (chợ/kệ/lịch, mục 6i); **bản đêm sinh mới từ chữ** thay vì
+    `editFrom` nên chỉ "na ná" bản ngày (mục 6f).
+  - 3 cảnh THÊM MỚI vì kịch bản có mà gen-1 không có ảnh: `The Beautiful
+    Waterfall`, `The Search Party In The Forest`, và **cặp đối xứng đầu–cuối**
+    `A Fei Meets The Five On The Hillside` ↔ `Alone On The Hillside` (mục 4b).
+  - ⚠️ **A Fei ĐEO KHẨU TRANG** (theo ảnh thật người dùng đưa, bối cảnh 2020) →
+    không nhìn thấy miệng, **mọi biểu cảm dồn vào MẮT**. Mọi prompt cảnh đều có
+    câu cấm vẽ miệng cô + chỉ định mắt theo trạng thái. Cảnh kêu cứu phải giải
+    bằng hình thể (hai tay giơ lên, đầu ngửa). Viết cảnh mới cho case này thì
+    NHỚ giữ đúng quy ước đó.
+  - ⚠️ Cảnh rủi ro chính sách duy nhất `Led Deeper Into The Forest` (đúng câu
+    "nhóm dẫn 1 phụ nữ đi sâu vào rừng" từng bị chặn ở mục 11) **QUA NGAY lần
+    đầu** nhờ bỏ hẳn quan hệ dẫn dắt, chỉ tả 6 người cùng đi một hướng có khoảng
+    cách. Phương án lùi vẫn ghi sẵn trong `notes` của cảnh đó.
+  - ⚠️ Chợ: bản đầu `Village Market Street` bị **cấm quá tay** nên ra chợ đã dẹp
+    hàng; người dùng yêu cầu thêm người + hàng hoá → `Village Market Street V2`
+    (`editFrom`). Bài học đã ghi thành **mục 6j của skill** — thứ ĐỊNH NGHĨA địa
+    điểm thì phải có, khác với thứ lặp vô hạn thì mới cấm.
 - **(2026-08-11) Case 2 (Don Decker) đã HOÀN TẤT phần ảnh** — bộ dùng chính thức
   là **thế hệ `3Q`**: 13 nhân vật + 23 cảnh mang hậu tố ` 3Q`, góc 3/4 + thân
   tối giản. Các entry KHÔNG có hậu tố đó là bản cũ, đã đánh dấu lỗi thời trong
@@ -224,9 +255,11 @@ tên/khớp nhầm (mục 8.1.3l).
 
 ### ✅ BA QUYẾT ĐỊNH CHỐT CUỐI PHIÊN 2026-08-11
 
-1. **Case 1 (A Fei) GIỮ NGUYÊN** — người dùng xác nhận tạo hình nhân vật case 1
-   đã đúng, KHÔNG tạo lại theo thế hệ `3Q` như case 2. Đừng tự đề xuất làm lại
-   để "đồng bộ" nữa.
+1. ~~**Case 1 (A Fei) GIỮ NGUYÊN** — đừng tự đề xuất làm lại để "đồng bộ"~~ →
+   ❌ **HẾT HIỆU LỰC 2026-08-30: người dùng CHỦ ĐỘNG yêu cầu làm lại case 1**
+   *("viết prompt và tạo lại ảnh cho case 1 với kinh nghiệm đã đúc kết")*. Phần
+   "đừng TỰ đề xuất" vẫn đúng về tinh thần — quyết định làm lại là của người
+   dùng, không phải của ta. Chi tiết bộ mới xem mục 0.
 2. **Case 3-6: làm từ từ**, không gấp. *(Cập nhật 2026-08-16: case 6 đã bị loại,
    tập chỉ còn 5 case và cả 5 đều xong phần ảnh — xem mục 0.)*
 3. ~~**CHỐT dùng phong cách PHỐI CẢNH cho background**~~ — ❌ **ĐÃ ĐẢO NGƯỢC

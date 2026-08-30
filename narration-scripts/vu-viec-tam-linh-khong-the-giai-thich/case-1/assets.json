@@ -1,248 +1,228 @@
 {
   "episode": "Vụ Việc Tâm Linh Không Thể Giải Thích — case 1",
+  "flowProject": "vu-viec-tam-linh-case-1",
   "assets": [
     {
-      "name": "A Fei",
+      "name": "A Fei Woman",
       "type": "character",
       "case": 1,
-      "description": "a middle-aged rural Chinese woman wearing a plain single-layer faded blue button-front blouse with long sleeves and plain loose dark trousers, no jacket or coat over it, plain flat cloth shoes, black hair tied back in a simple low ponytail with no loose strands framing the face, simple round eyes with no eyeliner",
+      "description": "a woman of about forty wearing a quilted bright red winter puffer jacket zipped up to the neck as her one and only garment, its fur-trimmed hood folded down flat around the shoulders and never pulled up over the head, plain loose dark grey trousers, black hair cut short to the chin with a straight fringe across the forehead and no long loose strands, no hat, wearing a plain white disposable face mask covering the nose and mouth, round eyes with no eyeliner",
       "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): người dùng cung cấp ảnh thật của A Fei — mặc áo phao đỏ, tóc ngắn, đeo khẩu trang — không khớp mô tả áo sơ mi xanh/tóc buộc thấp ở trên. Đã tạo lại đúng ngoại hình dưới tên \"A Fei V2\", đừng dùng entry này làm nhân vật chính thức nữa."
+      "notes": "Nhân vật chính. Ngoại hình lấy từ ẢNH THẬT người dùng cung cấp 2026-08-03 (áo phao đỏ, tóc ngắn, đeo khẩu trang) — giữ nguyên, KHÔNG đổi. ⚠️ HỆ QUẢ PHẢI NHỚ KHI VIẾT CẢNH: khẩu trang che miệng nên MẮT gánh toàn bộ biểu cảm. Mọi prompt cảnh phải tả mắt tường minh theo trạng thái (2 chấm tròn = bình thường, 2 nét cong xuống = nhắm/kiệt sức, 2 vòng tròn trắng có con ngươi = sợ/sốc) và TUYỆT ĐỐI không tả miệng, vì không nhìn thấy miệng."
     },
     {
-      "name": "A Fei V2",
+      "name": "A Fei Father",
       "type": "character",
       "case": 1,
-      "description": "a middle-aged rural Chinese woman wearing a quilted bright red winter puffer jacket zipped up to the neck with a fur-trimmed hood folded down around the shoulders (hood down, not pulled up over the head), short black chin-length hair with a straight fringe and no loose long strands, wearing a plain white disposable face mask covering the nose and mouth, simple round eyes with no eyeliner",
-      "status": "success"
-    },
-    {
-      "name": "Generic Villager",
-      "type": "character",
-      "case": 1,
-      "description": "a plain ordinary person wearing a simple solid dark green short-sleeved shirt, short plain dark brown hair combed to one side, no distinguishing accessories, no headwear",
-      "notes": "Chỉ dùng cho đám đông/hàng xóm nền không cần nhận diện (KHÔNG dùng cho cha mẹ/cảnh sát/5 người rừng nữa — đã tách riêng thành asset dưới đây theo yêu cầu người dùng).",
-      "status": "success"
-    },
-    {
-      "name": "Forest Elder 1",
-      "type": "character",
-      "case": 1,
-      "description": "an elderly man with a completely bald head and a long flowing white beard reaching his chest, wearing a plain single-layer grey buttoned Mao-collar jacket, no headwear",
-      "status": "success"
-    },
-    {
-      "name": "Forest Elder 2",
-      "type": "character",
-      "case": 1,
-      "description": "an elderly man with short white hair and a thin grey moustache, wearing a plain single-layer dark blue traditional buttoned tunic and a small round black skullcap",
-      "status": "success"
-    },
-    {
-      "name": "Forest Elder 3",
-      "type": "character",
-      "case": 1,
-      "description": "an elderly man with grey hair combed straight back, no facial hair, wearing a plain single-layer brown buttoned jacket, no headwear",
-      "status": "success"
-    },
-    {
-      "name": "Forest Elder 4",
-      "type": "character",
-      "case": 1,
-      "description": "an elderly woman with grey hair tied in a low bun, wearing a plain single-layer navy blue tunic with a round collar, simple round eyes with no eyeliner",
-      "status": "success"
-    },
-    {
-      "name": "Forest Elder 5",
-      "type": "character",
-      "case": 1,
-      "description": "an elderly woman with short white hair, wearing a plain single-layer maroon tunic with a round collar, simple round eyes with no eyeliner",
-      "status": "success"
-    },
-    {
-      "name": "A Fei's Father",
-      "type": "character",
-      "case": 1,
-      "description": "a middle-aged man with short black hair combed neatly to one side, no facial hair, wearing a plain single-layer white button-front shirt",
-      "status": "success"
-    },
-    {
-      "name": "A Fei's Mother",
-      "type": "character",
-      "case": 1,
-      "description": "a middle-aged woman with grey-streaked black hair tied in a low bun, wearing a plain single-layer grey tunic with a round collar, simple round eyes with no eyeliner",
-      "status": "success"
-    },
-    {
-      "name": "Police Officer",
-      "type": "character",
-      "case": 1,
-      "description": "a police officer wearing a plain dark navy buttoned police uniform shirt and a dark navy flat-topped peaked cap with a small round badge on the front, short black hair, no facial hair",
-      "status": "success"
-    },
-    {
-      "name": "Long Wang Village Day",
-      "type": "background",
-      "case": 1,
-      "description": "A quiet rural Chinese village street on an overcast day, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale grey-white overcast sky band, a row of small single-storey stone and timber village houses with sloped tile roofs standing shoulder to shoulder all at the same height, a narrow flat dirt path running edge to edge across the middle, and a flat grassy ground strip across the bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge, no receding side wall visible. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
+      "description": "a man of about sixty-five wearing a plain single-layer dark olive buttoned Mao-collar jacket as his one and only garment, no hat, black hair going grey at the temples and combed flat to one side, a thick black moustache and no beard",
       "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): người dùng thấy ảnh quá phức tạp (nhiều nhà, có lớp nhà phía sau). Đã tạo lại đơn giản hơn dưới tên \"Long Wang Village Day V2\" — chỉ vài căn nhà nằm ngang mặt đường, không có nhà phía sau. Đừng dùng entry này nữa."
+      "notes": "Cha A Fei. Râu ria cố ý KHÁC 'Village Police Officer' (cạo nhẵn, đội mũ kê-pi) và 'Village Neighbour Man' (râu cằm không ria) theo skill mục 5a."
     },
     {
-      "name": "Long Wang Village Night",
-      "type": "background",
+      "name": "A Fei Mother",
+      "type": "character",
       "case": 1,
-      "description": "The same quiet rural Chinese village street at night, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dark navy night sky band with a few small pale stars, a row of small single-storey stone and timber village houses with sloped tile roofs standing shoulder to shoulder all at the same height, one or two windows glowing with warm dim lantern light, a narrow flat dirt path running edge to edge across the middle, and a flat dark ground strip across the bottom. Every roofline perfectly horizontal and unbroken edge to edge. Dark cold nighttime palette of deep navy, charcoal and warm dim yellow window light.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
-      "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): cùng lý do với \"Long Wang Village Day\" — đã tạo lại đơn giản hơn dưới tên \"Long Wang Village Night V2\". Đừng dùng entry này nữa."
-    },
-    {
-      "name": "Long Wang Village Day V2",
-      "type": "background",
-      "case": 1,
-      "description": "A quiet rural Chinese village street on an overcast day, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, their front walls facing directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty pale grey-white overcast sky directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat grassy ground strip along the very bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
-      "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): người dùng so sánh với bản Night V2 và thấy dãy nhà KHÔNG tràn hết chiều ngang khung hình (còn hở đất/trời 2 bên), khác hẳn bản Night V2 tràn kín. Đã tạo lại dưới tên \"Long Wang Village Day V3\" ép rõ tràn hết cạnh-tới-cạnh. Đừng dùng entry này nữa."
-    },
-    {
-      "name": "Long Wang Village Day V3",
-      "type": "background",
-      "case": 1,
-      "description": "A quiet rural Chinese village street on an overcast day, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, scaled up so the row of houses completely fills the frame from the far left edge to the far right edge with absolutely no gap of visible grass or open sky at either side — the same edge-to-edge width as a theatre backdrop flat, not a small cluster floating in the middle of the frame. Their front walls face directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty pale grey-white overcast sky directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat grassy ground strip along the very bottom. Every roofline and house front perfectly horizontal and unbroken from the left edge to the right edge. Muted rural palette of grey stone, weathered brown timber and pale earth tones.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
+      "description": "a woman of about sixty wearing a plain single-layer grey round-collared tunic as her one and only garment, no hat, black hair heavily streaked with grey and tied back in a low bun at the nape, round eyes with no eyeliner",
       "status": "success"
     },
     {
-      "name": "Long Wang Village Night V2",
-      "type": "background",
+      "name": "Village Police Officer",
+      "type": "character",
       "case": 1,
-      "description": "The same quiet rural Chinese village street at night, drawn like a very simple theatre backdrop. Only two or three single-storey stone and timber houses stand side by side in a single row, their front walls facing directly toward the viewer, each with a plain sloped tile roof, all at exactly the same height, one or two windows glowing with warm dim lantern light. Nothing stands behind the houses at all — no second row of buildings, no distant rooftops, just plain empty dark navy night sky with a few small pale stars directly above the roofline. A wide flat dirt path fills most of the frame in front of the houses, running edge to edge, with a narrow flat dark ground strip along the very bottom. Every roofline perfectly horizontal and unbroken from the left edge to the right edge. Dark cold nighttime palette of deep navy, charcoal and warm dim yellow window light.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
+      "description": "a man in his forties wearing a plain dark navy buttoned police uniform shirt with two plain chest pockets as his one and only garment, a plain dark navy flat-topped peaked cap with ONE plain small round badge on the front and no writing on it anywhere, black hair cropped very short showing below the cap, clean-shaven with no beard and no moustache at all",
       "status": "success"
     },
     {
-      "name": "Village Market",
-      "type": "background",
+      "name": "Village Neighbour Man",
+      "type": "character",
       "case": 1,
-      "description": "A small outdoor rural market street, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a pale overcast sky band, a row of simple wooden market stalls with striped fabric awnings all standing at the same height along one side, each stall holding a few simple woven baskets of produce, a flat dirt path strip running edge to edge, and a flat ground strip across the bottom. Every stall front perfectly horizontal and unbroken edge to edge, no receding side wall. Muted daytime palette of warm brown wood, faded red and cream awning stripes, pale earth tones.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
+      "description": "a man of about fifty wearing a plain single-layer dark brown zip-front work jacket as his one and only garment, no hat, thick black hair receding well back from the forehead, a short black beard along the jaw and no moustache",
       "status": "success"
     },
     {
-      "name": "Foggy Mountain Trail",
-      "type": "background",
+      "name": "Village Neighbour Woman",
+      "type": "character",
       "case": 1,
-      "description": "A narrow dirt trail winding through a misty mountainside. Layered flat-depth composition: background layer of pale grey-white fog completely swallowing the distant hills, midground layer of tall bare tree trunks fading into the fog, foreground layer of a narrow dirt trail bordered by low scrubby bushes running across the bottom of the frame. Dense heavy fog rolling low across the whole scene, muted cold palette of pale grey, muted green and soft white mist.",
-      "composition": "layered",
-      "reserveCharacterSpace": true,
+      "description": "a woman of about forty-five wearing a plain single-layer dark teal padded jacket as her one and only garment, no hat, black hair cut in a short straight bob held back on one side by ONE plain small red hairclip, round eyes with no eyeliner",
       "status": "success"
     },
     {
-      "name": "Long Wang 18 Lakes Hillside",
-      "type": "background",
+      "name": "Forest Elder One",
+      "type": "character",
       "case": 1,
-      "description": "A scenic hillside overlook above a chain of small lakes, a popular tourist spot. Layered flat-depth composition: background layer of a series of pale blue-grey lakes nestled between low misty hills, midground layer of a grassy hillside slope with a few scattered rocks, foreground layer of a flat grassy hilltop clearing spanning the bottom of the frame. Soft overcast palette of pale blue, muted green and grey mist.",
-      "composition": "layered",
-      "reserveCharacterSpace": true,
+      "description": "an old man wearing a plain single-layer pale grey buttoned Mao-collar jacket as his one and only garment, no hat, a completely bald head with no hair at all, and a long flowing white beard reaching down to the chest with no moustache",
       "status": "success"
     },
     {
-      "name": "Long Wang 18 Lakes Opposite Hilltop",
-      "type": "background",
+      "name": "Forest Elder Two",
+      "type": "character",
       "case": 1,
-      "description": "A second scenic hilltop at the same lake district, the viewpoint looking across toward a neighbouring hill. Layered flat-depth composition: background layer of the same chain of pale blue-grey lakes nestled between low misty hills, midground layer of one distinct rounded grassy hill standing clearly apart across a shallow empty dip of lower ground, its bare grassy crown plainly visible, foreground layer of a flat grassy hilltop clearing spanning the bottom of the frame. Same soft overcast palette of pale blue, muted green and grey mist as the other hillside background, with the same simple scattered rock and grass shapes. The far hill must be clearly separated from the near foreground hilltop by the visible dip of lower ground between them, so the two hilltops plainly read as two separate places a short distance apart.",
-      "composition": "layered",
-      "reserveCharacterSpace": true,
-      "status": "success",
-      "notes": "Bối cảnh ĐỐI DIỆN của 'Long Wang 18 Lakes Hillside' — cùng địa điểm nhưng là ngọn đồi A Fei ĐỨNG, nhìn sang đồi bên kia (nơi nhóm 5 người đứng). Tạo ra để tách câu kịch bản 'spotted a group ... then drew closer' thành 2 shot có vị trí không gian khác nhau (shot/reverse-shot) thay vì gộp làm 1 ảnh — xem RUNBOOK mục 8.2i."
-    },
-    {
-      "name": "Misty Forest Interior",
-      "type": "background",
-      "case": 1,
-      "description": "Deep inside a dense misty forest. Layered flat-depth composition: background layer of tall tree trunks fading into thick pale fog, midground layer of a dense cluster of bare and leafy tree trunks of varying width, foreground layer of a flat forest floor covered in fallen leaves and low undergrowth spanning the bottom of the frame. Heavy fog drifting between the trees, muted cold palette of deep green, grey-brown bark and pale mist.",
-      "composition": "layered",
-      "reserveCharacterSpace": true,
+      "description": "an old man wearing a plain single-layer dark blue buttoned tunic as his one and only garment, a plain small round black skullcap on the head, short white hair showing below the cap, a thin sparse grey moustache and no beard",
       "status": "success"
     },
     {
-      "name": "A Fei's House Interior",
-      "type": "background",
+      "name": "Forest Elder Three",
+      "type": "character",
       "case": 1,
-      "description": "Flat head-on elevation of the inside of a small rural Chinese living room, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a plain cream wall band, one straight wooden shelf running edge to edge holding a few simple household items, a band with one plain wooden table and a couple of simple wooden chairs standing at the same height, and a flat wooden floor strip across the bottom. Every piece of furniture drawn face-on at the same scale, no receding side wall visible, every horizontal line unbroken from the left edge to the right edge. Warm muted palette of cream and brown wood tones.",
-      "composition": "flat",
-      "reserveCharacterSpace": true,
+      "description": "an old man wearing a plain single-layer faded brown buttoned jacket as his one and only garment, no hat, grey hair combed straight back from a high forehead, clean-shaven with no beard and no moustache at all",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder Four",
+      "type": "character",
+      "case": 1,
+      "description": "an old woman wearing a plain single-layer navy blue round-collared tunic as her one and only garment, a plain dark grey headscarf tied over the top of the head with white hair showing at the temples below it, round eyes with no eyeliner",
+      "status": "success"
+    },
+    {
+      "name": "Forest Elder Five",
+      "type": "character",
+      "case": 1,
+      "description": "an old woman wearing a plain single-layer dark maroon round-collared tunic as her one and only garment, no hat, white hair parted in the middle and worn in TWO short thin braids, one hanging in front of each shoulder, round eyes with no eyeliner",
       "status": "success"
     },
     {
       "name": "Woven Shopping Basket",
       "type": "prop",
       "case": 1,
-      "description": "A round woven wicker shopping basket with two curved carrying handles arching over the top, holding a few simple wrapped cloth bundles and a couple of vegetables poking out from inside.",
-      "status": "success"
-    },
-    {
-      "name": "Forest Boulder",
-      "type": "prop",
-      "case": 1,
-      "description": "A single large rounded grey boulder half-covered in patches of moss, resting alone on bare ground, flat mottled grey stone surface, roughly the size a person could sit down on.",
+      "description": "A single round woven wicker shopping basket seen from the side, drawn as ONE plain flat tan basket shape with EXACTLY ONE curved carrying handle arching over the top and no more. Inside it, poking above the rim, are EXACTLY THREE plain simple shapes and nothing else: one plain rounded cloth bundle, one plain green leafy vegetable top and one plain orange root vegetable. Draw NO woven texture, NO wicker weave lines, NO basket-work pattern, NO label and NO writing of any kind anywhere on it.",
       "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): người dùng quyết định cảnh \"ngồi xuống tảng đá lớn\" nên vẽ thẳng tảng đá VÀO trong 1 Background hoàn chỉnh (xem \"Forest Clearing With Boulder\" bên dưới) thay vì tách riêng thành Prop rồi ghép sau. Đừng dùng entry Prop này nữa."
+      "notes": "Ra SỐ cụ thể theo skill mục 6c — bản gen-1 ghi 'a few simple wrapped cloth bundles and a couple of vegetables', kiểu định lượng mờ này chính là thứ đã cho ra 30 cánh tủ bếp ở case 2. Cấm vân đan vì phong cách phải đồ lại bằng tay."
     },
     {
-      "name": "Forest Ridge Overlook",
+      "name": "Long Wang Village Day",
       "type": "background",
       "case": 1,
-      "description": "A dramatic misty forest overlook, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline filling the top of the frame with dark green treetops on brown trunks, midground layer of a tall eroded dirt and clay embankment face running the full width of the frame with varied earthy brown tones and shadowed crevices, foreground layer of low green bushes and drifting pale mist along the very bottom edge. Muted earthy palette of brown clay, dark green foliage and soft white mist.",
-      "composition": "layered",
-      "reserveCharacterSpace": false,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A quiet rural Chinese village street on an overcast day in 2020, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain pale grey-white overcast sky band across the top with no clouds and no birds; SECOND a row of EXACTLY THREE small single-storey village houses and no more, standing side by side in ONE straight row, each seen straight from the front with its front wall ONE single flat shape of pale grey stone and NO side wall visible at all, each under ONE single simple triangular dark grey tile roof, all three roofs at exactly the same height. The row of houses is scaled up so that it completely fills the frame from the far left edge to the far right edge with absolutely NO gap of open sky, grass or ground left at either side. Each house has EXACTLY ONE plain door and EXACTLY ONE plain square window and no more. THIRD a narrow strip of plain flat green grass running edge to edge along the foot of the houses; and FOURTH, filling the whole bottom third of the frame nearest the viewer, one wide plain flat tan dirt path running edge to edge, left completely clear and empty so that people can stand and walk on it. The houses stand ON the grass strip and must touch it, not float. Every roofline and every band runs perfectly horizontally, unbroken from the left edge to the right edge; nothing is drawn at an angle, nothing narrows toward a distance and there is no vanishing point anywhere. Nothing stands behind the houses at all — no second row of buildings and no distant rooftops. Draw NO wood grain, NO plank lines, NO brick courses, NO roof tiles drawn one by one and NO texture of any kind. Every sign, board and notice is left completely BLANK — absolutely no writing, no letters, no characters and no numbers anywhere in the picture. There are no people, no animals, no vehicles, no poles and no wires anywhere. Muted rural palette of grey stone, weathered brown timber, green and pale earth tones in a few flat tints. Plain flat overcast daylight, daytime.",
       "status": "success",
-      "notes": "LỖI THỜI (2026-08-03): người dùng thấy ảnh thiếu đường đi. Đã tạo lại có thêm đường mòn dưới tên \"Forest Ridge Overlook V2\". Đừng dùng entry này nữa."
+      "notes": "Bản gen-1 xếp dải là nhà → ĐƯỜNG ĐẤT → cỏ ở đáy, tức A Fei đi trên đường mà đường lại không phải dải dưới cùng — đúng lỗi đã trả giá ở case 5 ('Kinmen Shore Daytime', skill mục 6a: hỏi NHÂN VẬT ĐỨNG TRÊN CÁI GÌ, cái đó bắt buộc là dải DƯỚI CÙNG). Đã đảo thành cỏ → đường ở đáy. Thêm: ra số nhà (EXACTLY THREE), cấm chữ trên biển hiệu (mục 6i — làng Trung Quốc chắc chắn sinh biển chữ Hán bậy), cấm vân bề mặt, cấm người."
     },
     {
-      "name": "Forest Ridge Overlook V2",
+      "name": "Long Wang Village Night",
       "type": "background",
       "case": 1,
-      "description": "A dramatic misty forest overlook, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline filling the top of the frame with dark green treetops on brown trunks, midground layer of a tall eroded dirt and clay embankment face running the full width of the frame with varied earthy brown tones and shadowed crevices, foreground layer of a narrow dirt trail path running along the base of the embankment from the far left edge to the far right edge, bordered by low green bushes and drifting pale mist along the very bottom edge. Muted earthy palette of brown clay, dark green foliage and soft white mist.",
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "editFrom": "Long Wang Village Day",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same three houses in the same places at the same size, the same doors and windows, the same roofs, the same grass strip, the same wide dirt path across the bottom, the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY the colours and the time of day to night, and nothing else at all. The sky band becomes ONE flat very dark navy shape carrying EXACTLY FIVE plain small white dots for stars and nothing more. EXACTLY TWO of the windows are filled with one flat warm yellow shape to read as lit, and every remaining surface keeps its own shape but is filled with a much darker flat tint of the colour it already has. Do NOT add any lamp, any lantern, any glow, any halo, any light beam, any moon, any cloud, any shadow and any texture. Do not move anything, do not resize anything, add no people and no animals. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Dùng editFrom thay vì sinh mới từ chữ — theo skill mục 6f: hai background của CÙNG một nơi mà sinh riêng sẽ ra bố cục 'na ná' nhưng lệch vị trí, lộ ngay khi cắt qua lại giữa cảnh ngày (A Fei rời nhà) và cảnh đêm (A Fei kêu cứu, đoàn tụ). Bản gen-1 sinh mới nên đúng rủi ro đó."
+    },
+    {
+      "name": "Long Wang Village Night With Villagers",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "editFrom": "Long Wang Village Night",
+      "description": "Use the single reference image and keep absolutely everything in it unchanged — the same three houses, the same lit windows, the same stars, the same grass strip, the same wide dirt path, the same colours and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY this: add EXACTLY FOUR plain standing people in ONE loose group, all of them standing on the dirt path in the RIGHT THIRD of the picture only. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights and their flat hair colours slightly so that they do not look like copies of one figure. The LEFT TWO THIRDS of the dirt path must be left clear and completely empty. Add nothing else at all — no lamps, no torches, no vehicles. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Đám đông hàng xóm = vẽ thẳng vào background bằng editFrom theo skill mục 5c, KHÔNG dùng 1 Character asset chung. Bản gen-1 dùng asset 'Generic Villager' cho đám đông — nhiều người cùng 1 asset trong 1 khung sẽ ra như nhân bản một người (skill mục 5). Dồn nhóm vào 1/3 phải và nói rõ 2/3 trái để trống, nếu không họ tràn kín hết chỗ đặt nhân vật chính."
+    },
+    {
+      "name": "Village Market Street",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small outdoor rural market street on an overcast day, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain pale grey-white overcast sky band across the top; SECOND a row of EXACTLY THREE simple wooden market stalls and no more, standing side by side in ONE straight row, each seen straight from the front with NO side wall visible, each one a plain flat wooden counter under ONE plain flat awning drawn as a simple rectangle with EXACTLY FOUR wide vertical stripes of faded red and cream and no more. The row of stalls is scaled up so that it fills the frame from the far left edge to the far right edge with no gap of open ground or sky at either side, and all three awnings sit at exactly the same height. On each counter stand EXACTLY TWO plain round woven baskets and nothing else — no scales, no boxes, no crates, no hanging goods, no sacks. THIRD, filling the whole bottom third of the frame nearest the viewer, one wide plain flat tan dirt path running edge to edge, left completely clear and empty so that people can stand on it; the stalls rest ON the far edge of that path and must touch it, not float. Every awning line and every band runs perfectly horizontally, unbroken from edge to edge; nothing is drawn at an angle and there is no vanishing point anywhere. Every sign, board, price card, banner and notice is left completely BLANK — absolutely no writing, no letters, no characters, no numbers and no prices anywhere in the picture. Draw NO wood grain, NO plank lines, NO fabric folds and NO texture of any kind. There are no people, no animals and no vehicles anywhere. Muted daytime palette of warm brown wood, faded red and cream, and pale earth tones in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "⚠️ LỖI THỜI 2026-08-30 — thay bằng 'Village Market Street V2'. Bản này cấm sạch hàng hoá và không có người nên ra cái chợ đã dẹp hàng, sai không khí. Giữ lại làm ảnh GỐC cho editFrom của V2, đừng dùng trực tiếp trong cảnh nào. Đổi tên từ 'Village Market' (bản gen-1) vì tên đó là chuỗi con của không tên nào nhưng quá chung; quan trọng hơn là ĐÃ CẤM CHỮ tường minh — chợ là chỗ chắc chắn model tự vẽ biển hiệu chữ Hán vô nghĩa (skill mục 6i, đã dính 3 lần ở case 4 và 5). Ra số quầy/sọc bạt/rổ theo mục 6c."
+    },
+    {
+      "name": "Village Market Street V2",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "editFrom": "Village Market Street",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same pale grey sky band, the same row of three wooden market stalls in the same places at the same size, the same striped awnings all at the same height, the same wide tan dirt path across the bottom, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Do not move anything and do not resize anything. Change ONLY these two things. FIRST, load the stalls with goods: on EACH of the three counters keep the two round woven baskets that are already there and add EXACTLY THREE more plain flat produce shapes beside them and no more — one plain stack of THREE round green cabbages, one plain bundle of FOUR long orange carrots lying flat, and one plain heap of THREE round red tomatoes — and under EACH awning hang EXACTLY TWO plain bundles on short straight strings and no more, each drawn as ONE simple flat teardrop shape. Every one of these is ONE plain flat shape with a bold black outline: no texture, no speckles, no highlights, no shine and no shadows. SECOND, add EXACTLY SIX plain people and no more: THREE of them standing behind the counters, one behind each stall, as stallholders, and THREE of them standing on the dirt path as shoppers — TWO in the LEFT THIRD of the picture and ONE in the RIGHT THIRD. Draw every one of these six turned about forty-five degrees to one side with both of their eyes visible, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights and their flat hair colours slightly so that they do not look like copies of one figure. The MIDDLE of the dirt path, directly in front of the middle stall, must be left clear and completely empty — no person may stand there. Every sign, board, price card, banner and notice stays completely BLANK, with absolutely no writing, no letters, no characters, no numbers and no prices anywhere. Add no animals, no vehicles, no umbrellas, no bicycles and no extra stalls. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Người dùng yêu cầu 2026-08-30: chợ phải CÓ NGƯỜI và CÓ NHIỀU HÀNG HOÁ. Bản đầu ('Village Market Street') tôi cấm hết hàng hoá ('no scales, no boxes, no crates, no hanging goods, no sacks') vì lo chi tiết vụn — cấm quá tay nên ra cái chợ dẹp hàng. Bài học đã ghi thành mục 6j của skill nano-banana-image-prompts. Dùng editFrom để giữ nguyên bố cục sạp vốn đã đạt, chỉ THÊM vào. Người nền tả theo mục 5c (góc 3/4, mắt 2 chấm, thân que, cấm nhân bản) vì editFrom bỏ qua mọi style block nên không có gì đỡ cho. Chừa giữa đường trống làm chỗ đứng cho A Fei."
+    },
+    {
+      "name": "Foggy Mountain Trail",
+      "type": "background",
+      "case": 1,
       "composition": "layered",
-      "reserveCharacterSpace": false,
-      "status": "success"
+      "reserveCharacterSpace": true,
+      "description": "A narrow dirt trail on a misty mountainside, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: plain pale grey-white fog completely swallowing the distant hills, drawn as ONE single flat pale shape with no detail in it at all. MIDDLE LAYER: EXACTLY SEVEN plain bare tree trunks and no more, drawn as plain straight vertical bars of flat grey-brown of slightly different heights and widths, spaced apart with clear gaps of fog between them, each one a simple flat shape with NO branches drawn one by one, NO leaves, NO bark texture and NO roots. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one plain flat tan dirt trail running edge to edge from the far left to the far right, left completely clear and empty so that people can walk on it, with EXACTLY FOUR plain low rounded bushes of flat muted green sitting along its far edge and no more. The trail is the layer CLOSEST to the viewer and the fog is furthest away. Draw NO grass blades, NO stones, NO fallen branches, NO leaf detail, NO shadows and NO texture of any kind. There are no people, no animals and no birds anywhere in the picture. Muted cold palette of pale grey, muted green and soft white mist in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Giữ composition 'layered' vì đây là phong cảnh thiên nhiên rộng — đúng ô dùng của skill mục 6. Sửa chính so với gen-1: RA SỐ cho mọi thứ lặp (7 thân cây, 4 bụi) thay vì 'tall bare tree trunks' để mở, và nói rõ dải đường là dải GẦN NHẤT (mục 6a)."
+    },
+    {
+      "name": "Long Wang 18 Lakes Hillside",
+      "type": "background",
+      "case": 1,
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "description": "A scenic hillside above a chain of small lakes, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: EXACTLY THREE plain pale blue-grey lake shapes and no more, lying between EXACTLY THREE plain low rounded misty hill shapes, all drawn as simple flat shapes with no ripples, no reflections and no detail. MIDDLE LAYER: one plain grassy hillside slope of flat muted green running edge to edge, carrying EXACTLY THREE plain rounded grey rock shapes of different sizes and no more. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one flat grassy hilltop clearing of plain muted green running edge to edge, left completely clear and empty so that several people can stand on it side by side. The near hilltop is the layer CLOSEST to the viewer and the lakes are furthest away. Draw NO grass blades, NO wildflowers, NO paths, NO fences, NO signs, NO benches, NO stone texture and NO shadows. There are no people, no animals and no birds anywhere in the picture. Soft overcast palette of pale blue, muted green and grey mist in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Đây là ngọn đồi NHÓM 5 NGƯỜI đứng — cặp đối xứng với 'Long Wang 18 Lakes Opposite Hilltop'. Chừa dải gần trống rộng vì cảnh ghép tới 6 người đứng cạnh nhau."
     },
     {
       "name": "Forest Waterfall Meadow",
       "type": "background",
       "case": 1,
-      "description": "A hidden waterfall in a misty mountain valley, no people, pure scenic wide shot. Layered flat-depth composition: background layer of a dense forest treeline along the top of the frame with a faint pale mountain silhouette peeking between the trees, midground layer of two tall grey rock cliff faces flanking a narrow waterfall dropping straight down between them, foreground layer of a flat green grassy meadow spanning the full width of the frame with a couple of smooth grey rocks at the base of the waterfall. Cool palette of grey stone, pale blue water and soft green grass.",
       "composition": "layered",
-      "reserveCharacterSpace": false,
-      "status": "success"
+      "reserveCharacterSpace": true,
+      "description": "A hidden waterfall in a misty mountain valley, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: one plain dense forest treeline of flat dark green running edge to edge along the top of the frame, with EXACTLY ONE plain pale grey mountain silhouette showing above it and no more. MIDDLE LAYER: EXACTLY TWO plain tall grey rock cliff faces, one on each side, each drawn as ONE single flat shape with no cracks and no stone texture, and between them ONE plain narrow waterfall drawn as ONE single flat pale blue vertical band dropping straight down, with NO spray, NO foam, NO droplets and NO sparkle. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one flat green grassy meadow running edge to edge, left completely clear and empty so that several people can stand on it side by side, with EXACTLY TWO plain smooth grey rock shapes sitting at the foot of the waterfall and no more. The meadow is the layer CLOSEST to the viewer and the treeline is furthest away. Draw NO grass blades, NO wildflowers, NO ripples, NO mist clouds, NO rainbows and NO shadows. There are no people, no animals and no birds anywhere in the picture. Cool palette of grey stone, pale blue water and soft green grass in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Background này đã tạo ở gen-1 nhưng KHÔNG cảnh nào dùng — lần này dùng thật cho câu 'A Fei felt the scenery was breathtakingly beautiful', câu vốn không có ảnh nào minh hoạ."
+    },
+    {
+      "name": "Misty Forest Interior",
+      "type": "background",
+      "case": 1,
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "description": "Deep inside a dense misty forest, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: plain thick pale grey fog drawn as ONE single flat pale shape with no detail in it at all. MIDDLE LAYER: EXACTLY NINE plain tree trunks and no more, drawn as plain straight vertical bars of flat grey-brown of clearly different heights and widths, spaced apart with clear gaps of fog between them, each one a simple flat shape with NO branches drawn one by one, NO leaves, NO bark texture and NO roots; above them one plain band of flat dark green treetops running edge to edge, so no sky is visible at all. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one plain flat forest floor of muted brown running edge to edge, left completely clear and empty so that several people can walk on it side by side, with EXACTLY FIVE plain low rounded shapes of flat muted green along its far edge for undergrowth and no more. The forest floor is the layer CLOSEST to the viewer and the fog is furthest away. Draw NO fallen leaves drawn one by one, NO grass blades, NO stones, NO fallen branches, NO shadows and NO texture of any kind. There are no people, no animals and no birds anywhere in the picture. Muted cold palette of deep green, grey-brown bark and pale mist in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Ra số 9 thân cây + 5 bụi thay cho 'a dense cluster of trunks of varying width' của gen-1. Dải sàn rừng phải đủ rộng cho 6 người đi hàng ngang ở cảnh dẫn vào rừng."
+    },
+    {
+      "name": "Misty Forest Interior Night",
+      "type": "background",
+      "case": 1,
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "editFrom": "Misty Forest Interior",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same nine tree trunks in the same places at the same heights, the same band of treetops, the same fog layer, the same forest floor with its five undergrowth shapes, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY the colours and the time of day to night, and nothing else at all. Every surface keeps its own shape but is filled with a much darker flat tint of the colour it already has, and the fog layer becomes ONE flat dark blue-grey shape. Do NOT add any moon, any stars, any lamp, any torch, any glow, any halo, any light beam, any shadow and any texture. Do not move anything, do not resize anything, add no people and no animals. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Cần cho cảnh A Fei mò mẫm trong rừng lúc nửa đêm — gen-1 dùng nhầm background bãi trống ban đêm cho cảnh này. Dùng editFrom để bản đêm khớp tuyệt đối bản ngày (mục 6f), vì hai cảnh cắt gần nhau trong cùng đoạn."
     },
     {
       "name": "Forest Clearing With Boulder",
       "type": "background",
       "case": 1,
-      "description": "A small forest clearing, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame with dark green treetops, brown trunks and darker green bushes along the tree line, and a flat dirt clearing floor strip across the bottom, no sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on. The rest of the clearing floor stays open and empty. Muted palette of deep green foliage, brown dirt and grey stone.",
       "composition": "flat",
       "reserveCharacterSpace": true,
-      "status": "success"
+      "description": "A small forest clearing, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST one plain band of flat dark green treetops running edge to edge across the top, so that NO sky is visible anywhere; SECOND a row of EXACTLY SEVEN plain tree trunks and no more, drawn as plain straight vertical bars of flat grey-brown of slightly different heights and widths, standing side by side and filling the frame from the far left edge to the far right edge, with EXACTLY FOUR plain low rounded dark green bush shapes along their feet and no more; and THIRD, filling the whole bottom third of the frame nearest the viewer, one plain flat tan dirt clearing floor running edge to edge. Sitting on that clearing floor in the LEFT THIRD of the picture, in front of the tree trunks, is a cluster of EXACTLY THREE large rounded grey boulder shapes and no more, the largest of them about the right height for a person to sit down on, each drawn as ONE plain flat grey shape with EXACTLY ONE plain flat patch of muted green moss on it and no more — no cracks, no speckles, no stone texture. The MIDDLE and RIGHT parts of the clearing floor are left clear and completely empty so that a person can stand or lie there. The boulders and the tree trunks rest ON the clearing floor and must touch it, not float. Every band runs perfectly horizontally, unbroken from edge to edge; nothing is drawn at an angle and there is no vanishing point anywhere. Draw NO bark texture, NO fallen leaves drawn one by one, NO grass blades, NO shadows and NO texture of any kind. There are no people and no animals anywhere in the picture. Muted palette of deep green foliage, grey-brown bark, brown dirt and grey stone in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "success",
+      "notes": "Tảng đá vẽ THẲNG vào background chứ không tách Prop rồi ghép — đúng luật mục 7 (vật chỉ thuộc 1 bối cảnh) và cũng là điều gen-1 đã tự sửa. Ra số 3 tảng, 7 thân cây, 4 bụi, 1 mảng rêu mỗi tảng."
     },
     {
       "name": "Forest Clearing With Boulder Night",
       "type": "background",
       "case": 1,
-      "description": "The same small forest clearing as \"Forest Clearing With Boulder\" but at night, drawn like a theatre backdrop. Horizontal bands stacked top to bottom: a dense forest treeline filling the upper portion of the frame, dark navy night sky with a few small pale stars just visible through gaps between the treetops, and a flat dark dirt clearing floor strip across the bottom, no other sky visible. Sitting on the left side of the clearing floor, in front of the treeline, one cluster of two or three large rounded grey boulders half-covered in patches of moss, big enough for a person to sit down on, same shape and position as the day version. The rest of the clearing floor stays open and empty. Dark cold nighttime palette of deep navy, charcoal and muted moonlit blue-grey.",
       "composition": "flat",
       "reserveCharacterSpace": true,
-      "status": "success"
+      "editFrom": "Forest Clearing With Boulder",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same band of treetops, the same seven tree trunks in the same places, the same four bushes, the same three boulders in the same places at the same sizes with their moss patches, the same clearing floor, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY the colours and the time of day to night, and nothing else at all. Every surface keeps its own shape but is filled with a much darker flat tint of the colour it already has, so the whole picture reads as deep night. Do NOT add any sky, any moon, any stars, any lamp, any torch, any glow, any halo, any light beam, any shadow and any texture. Do not move anything, do not resize anything, add no people and no animals. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "editFrom bản ngày để cặp cảnh 'ngất đi lúc chiều' ↔ 'tỉnh dậy lúc nửa đêm' khớp tuyệt đối từng tảng đá — đây là chỗ cắt liền hai cảnh nên lệch vị trí là lộ ngay (mục 6f). Bản gen-1 sinh mới từ chữ nên chỉ 'na ná'."
+    },
+    {
+      "name": "A Fei House Interior",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small plain rural Chinese living room, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain pale cream ceiling band across the top; SECOND a plain pale cream plaster back wall filling the middle, carrying in its RIGHT HALF EXACTLY ONE plain straight wooden shelf drawn as ONE single flat horizontal bar, with EXACTLY THREE plain simple objects standing on it and no more — one plain jar, one plain bowl and one plain rectangular box, all completely BLANK with absolutely no writing, no letters, no characters and no pattern on them — and carrying in its LEFT HALF EXACTLY ONE plain square window with EXACTLY FOUR plain straight bars across it and no more, filled with one flat pale grey shape; and THIRD, filling the whole bottom third of the frame nearest the viewer, one plain flat brown wooden floor running edge to edge. Standing on that floor against the back wall in the RIGHT THIRD of the picture is EXACTLY ONE plain low wooden table seen from the side, drawn as ONE plain flat rectangle top on two plain straight legs with nothing on it at all, and beside it EXACTLY TWO plain wooden stools and no more, each drawn as ONE plain flat square seat on two plain straight legs. The table and the stools rest ON the floor and must touch it, not float. The LEFT TWO THIRDS of the floor is left clear and completely empty so that several people can stand there. Every band and every shelf line runs perfectly horizontally, unbroken from edge to edge; nothing is drawn at an angle and there is no vanishing point anywhere. The floor is ONE single flat shape with absolutely NO floorboards, NO tiles, NO chequered pattern and NO grid. Draw NO wood grain, NO plaster texture, NO pictures, NO calendars, NO posters and NO writing of any kind anywhere. There are no people in the picture. Warm muted palette of pale cream, grey and brown wood in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "success",
+      "notes": "Sửa lớn so với gen-1 ('a few simple household items', 'a couple of simple wooden chairs' — định lượng mờ, mục 6c). Cấm sàn caro tường minh vì đây đúng lớp lỗi đã dính ở case 2. Cấm lịch/tranh/chữ treo tường theo mục 6i. Chừa 2/3 trái sàn trống vì cảnh đông nhất có 4 người đứng."
     }
   ]
 }
