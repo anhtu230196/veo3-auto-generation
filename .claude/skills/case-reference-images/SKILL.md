@@ -85,6 +85,86 @@ làm ảnh reference thứ 2 (pipeline chỉ đính `reference-character.jpeg`).
 vào manifest những chi tiết đã trích ra (tóc, râu, kiểu áo), để lần sau sửa
 Character không phải mở lại ảnh.
 
+## 4b. 🔴 TRA KHÔNG RA ≠ VỤ KHÔNG CÓ THẬT — bốn cách gỡ, theo thứ tự
+
+**Ca thật, case 1 (A Fei), 2026-08-31.** Tra hụt **hai lần** rồi ghi thẳng vào
+manifest *"không nguồn chính thống nào có vụ này"*. **Kết luận đó SAI.** Vụ này
+được **澎湃新闻 (The Paper)** và **Sina Đài Châu** đưa tin, có ảnh hiện trường,
+tìm ra trong đúng 1 truy vấn khi làm đúng cách. Mọi tên riêng trong kịch bản đều
+CÓ THẬT: 龙王村 (Long Wang village), 十八潭 ("18 Lakes"), 阿飞 (A Fei), 39 tuổi,
+mất tích 17 ngày.
+
+👉 **Luật**: chỉ được viết "không xác minh được" sau khi đã đi hết 4 bước dưới
+đây. Viết sớm là bịt đường của chính phiên sau — và nó đã bịt thật, phiên sau đọc
+manifest rồi tin luôn.
+
+### (1) Tra theo GÓC KỂ CỦA NGUỒN, không phải góc kể của kịch bản
+
+Sai lầm nặng nhất. Kịch bản kênh này là **truyện tâm linh**, nên tôi ghép từ khoá
+tâm linh: `灵异`, `鬼打墙` (ma dẫn lối), `监控显示独自一人 说话`. Trượt sạch.
+
+Báo địa phương viết vụ này là **tin cứu hộ tìm người mất tích** — tiêu đề thật:
+*"女子离奇失踪，警民联手数百人上山寻找！17天后…"*. Không một chữ tâm linh nào.
+
+👉 Tra bằng **từ vựng của bản tin**, không phải từ vựng của kịch bản:
+`失联 / 走失 / 搜救 / 找到 / 平安归来` + địa danh + số ngày. Chi tiết rùng rợn
+thường nằm ở **đoạn giữa bài**, không nằm ở tiêu đề — nên đừng dùng nó làm từ khoá.
+
+### (2) Thử BIẾN THỂ CHÍNH TẢ của tên
+
+Phiên âm sang tiếng Anh làm mất chữ gốc. "A Fei" có thể là `阿菲` hoặc `阿飞` —
+tôi tra `阿菲`, tên thật là **`阿飞`**. Một chữ sai là trượt hết.
+
+👉 Với tên Hán/Nhật/Hàn phiên âm, **liệt kê 2-3 biến thể đồng âm rồi tra lần
+lượt**. Tương tự: dịch nghĩa địa danh cũng lệch — *"18 Lakes"* thật ra là
+**十八潭** (mười tám cái *vũng/đầm*), không phải hồ.
+
+### (3) 🔑 TÌM MỘT NEO CÓ THẬT TRONG ẢNH — cách đã mở khoá được ca này
+
+Khi tên trong kịch bản không ra gì, **đừng tra tiếp bằng tên đó**. Nhìn sang bất
+kỳ ảnh nào đang có (người dùng gửi, ảnh chụp màn hình video nguồn) và **đọc chữ
+trong ảnh**:
+
+- chữ trên **đồng phục / áo phản quang** → ra đơn vị, ra địa phương
+- **biển hiệu, bảng trực ban, băng rôn, cờ cảm tạ** → ra cơ quan, ra ngày tháng
+- **biển số xe, số hiệu tàu, logo đài truyền hình**
+
+Ca thật: ảnh người dùng gửi có chữ **`杜桥义警`** trên áo phản quang và
+**`2020年03月09日`** trên bảng trực ban. Từ đó ra `临海市杜桥镇` (Chiết Giang), và
+truy vấn `临海 杜桥 女子 失联 17天 山上 找到 生还 2020年3月` **ra ngay bài gốc**.
+
+👉 Neo địa danh + neo thời gian mạnh hơn hẳn tên người, vì báo địa phương luôn ghi
+đủ hai thứ đó, còn tên nạn nhân thì hay viết tắt hoặc giấu.
+
+### (4) Hỏi thẳng người dùng NGUỒN của kịch bản
+
+Kịch bản kênh này thường lấy từ **video tổng hợp** (YouTube/TikTok/Douyin). Kênh
+đó đã tìm được ảnh rồi — nghĩa là **có đường đi, chỉ là ta chưa tìm ra**. Hỏi link
+video nguồn rẻ hơn nhiều so với tra mò thêm 5 vòng.
+
+⚠️ Nhưng vẫn phải **kiểm chéo**: ảnh trên kênh tổng hợp có thể là ảnh minh hoạ lấy
+từ chỗ khác. Chỉ tin sau khi truy được về bài báo gốc.
+
+### 📌 Ghi vào manifest thế nào cho đúng
+
+Nếu cuối cùng vẫn không ra: ghi **đã tra những truy vấn NÀO** (liệt kê nguyên văn)
+chứ đừng chỉ ghi "không tìm thấy" — để phiên sau biết chỗ nào đã cày rồi. Và ghi
+kèm câu *"chưa đi hết mục 4b"* nếu còn bước nào chưa thử.
+
+Nếu sau đó tìm ra: **sửa lại manifest thành ĐÍNH CHÍNH tường minh**, đừng lặng lẽ
+xoá dòng cũ — người đọc cần biết kết luận trước đã sai để không tin nhầm bản ghi
+tương tự ở case khác.
+
+### 🔴 Ảnh thật ra rồi thì PHẢI SOI LẠI BACKGROUND ĐÃ VẼ
+
+Tìm ra tư liệu muộn nghĩa là phần ảnh đã vẽ theo phỏng đoán. Ca thật: *"18 Lakes"*
+khiến background vẽ **mấy cái hồ giữa đồi sương mù**, trong khi 十八潭 thật là
+**một dòng suối núi trong khe rừng** — vũng nước nối nhau bằng thác nhỏ, hai bên
+vách đá, có bậc đá đi bộ. Sai hẳn địa hình.
+
+👉 Có ảnh thật rồi thì **đối chiếu từng background một** với ảnh, và ghi vào
+manifest cái nào sai + sai ở đâu, kể cả khi chưa sửa ngay.
+
 ## 5. Mẹo tìm trên Commons (đúc kết, đừng mò lại)
 
 - Tìm bằng từ CHUNG kiểu `"mountain lake China"` ra **toàn tranh thuỷ mặc cổ** —
@@ -148,6 +228,10 @@ Giữ NGẮN — manifest là để tra lại, không phải để làm sổ sá
    thì lần sau có người tưởng là sót và đi tìm lại từ đầu. Ví dụ case 5: không có
    ảnh bệnh viện quân y thập niên 1950 → dùng bệnh viện dân sự thời Nhật thuộc;
    không có ảnh thuyền tị nạn Kim Môn 1958 → dùng nhóm thuyền gỗ nhỏ.
+   ⚠️ **Phân biệt "không tìm ra MỘT LOẠI ẢNH" với "không xác minh được VỤ ÁN".**
+   Cái thứ nhất ghi thoải mái. Cái thứ hai là kết luận NẶNG, chỉ được viết sau khi
+   đã đi hết mục 4b — viết ẩu thì phiên sau đọc rồi tin luôn, không tra lại nữa
+   (đã xảy ra thật với case 1).
 4. Với nhóm ảnh nhân vật thật: **chi tiết đã trích ra** để viết Character. Đây là
    phần GIÁ TRỊ NHẤT của manifest — nó tiết kiệm cả vòng mở lại ảnh về sau.
 

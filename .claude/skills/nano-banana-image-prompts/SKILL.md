@@ -184,6 +184,36 @@ rõ.
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
 
+### 5e. 🔴 KHÔNG BAO GIỜ tả QUẦN / GIÀY / đồ mặc phần chân
+
+Người dùng chốt 2026-08-31: **nhân vật không mặc quần.** Dưới mảng áo, chân là
+**hai nét mảnh trần** chạy thẳng xuống rồi cụt — đúng như ảnh master.
+
+`CHARACTER_BODY_BLOCK` trong `styleDNA.ts` VỐN ĐÃ cấm điều này
+(*"Draw NO trousers and no separate leg clothing of any kind"*). Nhưng **mô tả cụ
+thể của asset THẮNG style block** (mục 6e) — nên chỉ cần lỡ viết *"plain loose
+dark grey trousers"* vào `description` là ra quần ngay, block cấm cũng vô hiệu.
+
+Đã dính thật: `A Fei Woman` (case 1) — tôi tự thêm quần xám vào mô tả, và cô là
+nhân vật DUY NHẤT của case có quần, lệch hẳn dàn còn lại.
+
+👉 **Luật**: phần `description` chỉ tả **áo phần thân trở lên**. Không có từ nào
+thuộc nhóm *trousers / pants / shoes / boots / socks / leggings* được xuất hiện.
+
+**Ngoại lệ DUY NHẤT — đồ LIỀN THÂN** che luôn phần chân bằng chính mảng áo đó:
+áo choàng linh mục (cassock), váy liền, áo dài, áo thụng. Lúc đó vẫn KHÔNG phải
+là "quần" — tả nó như **một mảng áo duy nhất kéo dài xuống**, và nói rõ chân ló
+ra bên dưới vẫn là nét trần: *"one single plain black cassock shape reaching down
+to the ankles, with the bare thin leg lines showing below its hem"*.
+
+⚠️ Váy ngắn + áo (hai mảnh) KHÔNG thuộc ngoại lệ này — nó vẫn là đồ phần chân.
+Cần nhân vật nữ mặc váy thì chuyển hẳn thành **váy liền** một mảng.
+
+⚠️ Rà lại các case cũ trước khi dùng làm mẫu: **case 2 có 12 nhân vật đang tả
+quần/váy** (`Don Decker`, `Bob`, `Landlord`, `Patrol Officer`, `Prison Guard`,
+`Chief Warden`, `Cellmate`, `Bob's Wife`…) — viết trước khi có luật này, đừng
+chép theo.
+
 ### 5a. TÓC + RÂU: mô tả cho MỌI nhân vật có tên, và phải KHÁC NHAU
 
 Người dùng chốt 2026-08-13: **mỗi nhân vật có tên đều phải được tả tóc, và tả
@@ -212,7 +242,46 @@ nhân vật nào trùng cả hai không? Trùng thì đổi, đừng để tới
 *(Case 3 "Carl Ledges" là case đầu áp quy tắc này: 8 nhân vật ra 8 kiểu râu/tóc
 khác nhau — xem `case-3/assets.json` làm mẫu.)*
 
+### 5c-2. 🔴 NGƯỜI NỀN PHẢI CÓ ASSET RIÊNG — tả bằng chữ thì SAI TỈ LỆ, luôn luôn
+
+**Người dùng chốt 2026-08-31 sau khi xem ảnh chợ và ảnh làng ban đêm của case 1.**
+Đây là bản sửa cho mục 5c ngay dưới — đọc mục này TRƯỚC, vì nó lật lại kết luận
+chính của 5c.
+
+**Vấn đề**: tỉ lệ thân người trong phong cách này KHÔNG nằm trong chữ, nó nằm
+trong **ảnh master reference** (đầu to, thân ngắn). Nhân vật có tên đi qua ảnh
+master nên đúng tỉ lệ. Người nền tả bằng chữ trong `editFrom` thì **không có ảnh
+nào neo** — model tự chọn, và nó luôn chọn tỉ lệ người thật: **đầu nhỏ, thân dài
+lêu nghêu**. Đứng cạnh nhau trong cùng một khung là lộ ngay hai hệ tỉ lệ khác
+nhau.
+
+Không chữa được bằng cách tả kỹ hơn. Câu *"vary their heights"* của mục 5c càng
+làm nặng thêm — nó cho phép model tự do đúng cái chiều đang sai.
+
+👉 **Luật mới**: tạo sẵn **2-3 Character asset "quần chúng" vô danh cho mỗi
+case** (`Village Extra Man`, `Village Extra Woman`, `Village Extra Elder`) và
+**đính chúng làm reference của CẢNH** như mọi nhân vật khác. Chúng đi qua đúng
+ảnh master nên tỉ lệ khớp tuyệt đối với dàn chính.
+
+- **Mỗi asset dùng TỐI ĐA MỘT LẦN trong một khung** — dùng 2 lần là ra 2 bản sao
+  (mục 5).
+- Cần đông hơn 3 người thì phần dư mới đẩy vào background, và **chấp nhận** rằng
+  nhóm đó lệch tỉ lệ — nên chỉ làm vậy với người ở rất xa, cỡ bằng chấm.
+- Mô tả chúng như nhân vật thật: tóc + râu theo mục 5a, chỉ khác là **không cần
+  khác biệt mạnh** vì họ vô danh. Vẫn theo mục 5e: không quần, không giày.
+
+⚠️ **Hệ quả với `editFrom`**: `createImageAssets` chỉ đính **ĐÚNG MỘT** ảnh gốc
+khi có `editFrom` (`reference: [asset.editFrom]`), nên **không thể** vừa giữ bố
+cục nền vừa neo tỉ lệ người bằng ảnh thứ hai. Đó chính là lý do phải chuyển người
+nền lên tầng CẢNH. Background lúc này quay về vai trò thuần: **chỉ đồ vật, không
+người**.
+
 ### 5c. ĐÁM ĐÔNG NỀN: vẽ thẳng vào background bằng `editFrom`, không tạo asset riêng
+
+> ⚠️ **ĐỌC MỤC 5c-2 NGAY TRÊN TRƯỚC.** Kết luận "đừng tạo asset riêng" ở mục này
+> đã bị lật 2026-08-31 vì lỗi SAI TỈ LỆ. Phần còn lại bên dưới vẫn đúng cho
+> trường hợp hẹp còn được phép (người ở rất xa), và giữ lại vì cách tả mặt/thân
+> tối giản vẫn dùng được.
 
 Cảnh cần vài người vô danh (khách viếng đám tang, quản giáo đứng nền, hàng xóm
 tụ tập)? **Đừng tạo Character asset cho từng người** rồi ghép — vừa tốn, vừa

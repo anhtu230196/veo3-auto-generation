@@ -8,7 +8,15 @@
       "case": 1,
       "description": "a woman of about forty wearing a quilted bright red winter puffer jacket zipped up to the neck as her one and only garment, its fur-trimmed hood folded down flat around the shoulders and never pulled up over the head, plain loose dark grey trousers, black hair cut short to the chin with a straight fringe across the forehead and no long loose strands, no hat, wearing a plain white disposable face mask covering the nose and mouth, round eyes with no eyeliner",
       "status": "success",
-      "notes": "Nhân vật chính. Ngoại hình lấy từ ẢNH THẬT người dùng cung cấp 2026-08-03 (áo phao đỏ, tóc ngắn, đeo khẩu trang) — giữ nguyên, KHÔNG đổi. ⚠️ HỆ QUẢ PHẢI NHỚ KHI VIẾT CẢNH: khẩu trang che miệng nên MẮT gánh toàn bộ biểu cảm. Mọi prompt cảnh phải tả mắt tường minh theo trạng thái (2 chấm tròn = bình thường, 2 nét cong xuống = nhắm/kiệt sức, 2 vòng tròn trắng có con ngươi = sợ/sốc) và TUYỆT ĐỐI không tả miệng, vì không nhìn thấy miệng."
+      "notes": "⚠️ LỖI THỜI 2026-08-31 — ĐỪNG DÙNG. Mô tả có quần xám, lệch dàn nhân vật còn lại. Thay bằng 'A Fei Woman V2'. Nhân vật chính. Ngoại hình lấy từ ẢNH THẬT người dùng cung cấp 2026-08-03 (áo phao đỏ, tóc ngắn, đeo khẩu trang) — giữ nguyên, KHÔNG đổi. ⚠️ HỆ QUẢ PHẢI NHỚ KHI VIẾT CẢNH: khẩu trang che miệng nên MẮT gánh toàn bộ biểu cảm. Mọi prompt cảnh phải tả mắt tường minh theo trạng thái (2 chấm tròn = bình thường, 2 nét cong xuống = nhắm/kiệt sức, 2 vòng tròn trắng có con ngươi = sợ/sốc) và TUYỆT ĐỐI không tả miệng, vì không nhìn thấy miệng."
+    },
+    {
+      "name": "A Fei Woman V2",
+      "type": "character",
+      "case": 1,
+      "description": "a woman of about forty wearing a quilted bright red winter puffer jacket zipped up to the neck as her one and only garment, its fur-trimmed hood folded down flat around the shoulders and never pulled up over the head, black hair cut short to the chin with a straight fringe across the forehead and no long loose strands, no hat, wearing a plain white disposable face mask covering the nose and mouth, round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Bỏ QUẦN theo yêu cầu người dùng 2026-08-31 (skill mục 5e). Bản V1 tôi tự viết 'plain loose dark grey trousers' vào mô tả — mà mô tả cụ thể THẮNG style block, nên dù CHARACTER_BODY_BLOCK đã cấm quần thì ảnh vẫn ra quần. Cô là nhân vật DUY NHẤT của case 1 dính lỗi này. Mọi thứ khác chép NGUYÊN VĂN từ V1. ⚠️ Khẩu trang che miệng nên biểu cảm vẫn dồn hết vào MẮT — xem notes V1."
     },
     {
       "name": "A Fei Father",
@@ -45,6 +53,30 @@
       "case": 1,
       "description": "a woman of about forty-five wearing a plain single-layer dark teal padded jacket as her one and only garment, no hat, black hair cut in a short straight bob held back on one side by ONE plain small red hairclip, round eyes with no eyeliner",
       "status": "success"
+    },
+    {
+      "name": "Village Extra Man",
+      "type": "character",
+      "case": 1,
+      "description": "a plain dark grey zip-front jacket as his one and only garment, no hat, short black hair combed flat to one side, clean-shaven with no beard and no moustache at all",
+      "status": "success",
+      "notes": "Nhân vật QUẦN CHÚNG vô danh, thêm 2026-08-31 theo skill mục 5c-2. Trước đây người nền tả bằng chữ trong editFrom của background nên KHÔNG có ảnh nào neo tỉ lệ — ra người đầu nhỏ thân dài lêu nghêu, lệch hẳn dàn chính vốn thừa hưởng tỉ lệ từ ảnh master. Thành Character asset thì đi qua đúng ảnh master, tỉ lệ khớp tuyệt đối. ⚠️ Mỗi asset chỉ được dùng TỐI ĐA MỘT LẦN trong một khung, dùng 2 lần là ra 2 bản sao."
+    },
+    {
+      "name": "Village Extra Woman",
+      "type": "character",
+      "case": 1,
+      "description": "a plain dark maroon padded jacket as her one and only garment, no hat, black hair tied back in a short low ponytail, round eyes with no eyeliner",
+      "status": "success",
+      "notes": "Nhân vật QUẦN CHÚNG vô danh, thêm 2026-08-31 theo skill mục 5c-2. Trước đây người nền tả bằng chữ trong editFrom của background nên KHÔNG có ảnh nào neo tỉ lệ — ra người đầu nhỏ thân dài lêu nghêu, lệch hẳn dàn chính vốn thừa hưởng tỉ lệ từ ảnh master. Thành Character asset thì đi qua đúng ảnh master, tỉ lệ khớp tuyệt đối. ⚠️ Mỗi asset chỉ được dùng TỐI ĐA MỘT LẦN trong một khung, dùng 2 lần là ra 2 bản sao."
+    },
+    {
+      "name": "Village Extra Elder",
+      "type": "character",
+      "case": 1,
+      "description": "a plain faded olive quilted jacket as his one and only garment, no hat, white hair cropped very short, a full white beard along the jaw with no moustache",
+      "status": "success",
+      "notes": "Nhân vật QUẦN CHÚNG vô danh, thêm 2026-08-31 theo skill mục 5c-2. Trước đây người nền tả bằng chữ trong editFrom của background nên KHÔNG có ảnh nào neo tỉ lệ — ra người đầu nhỏ thân dài lêu nghêu, lệch hẳn dàn chính vốn thừa hưởng tỉ lệ từ ảnh master. Thành Character asset thì đi qua đúng ảnh master, tỉ lệ khớp tuyệt đối. ⚠️ Mỗi asset chỉ được dùng TỐI ĐA MỘT LẦN trong một khung, dùng 2 lần là ra 2 bản sao."
     },
     {
       "name": "Forest Elder One",
@@ -119,7 +151,7 @@
       "editFrom": "Long Wang Village Night",
       "description": "Use the single reference image and keep absolutely everything in it unchanged — the same three houses, the same lit windows, the same stars, the same grass strip, the same wide dirt path, the same colours and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills. Change ONLY this: add EXACTLY FOUR plain standing people in ONE loose group, all of them standing on the dirt path in the RIGHT THIRD of the picture only. Draw each of them turned about forty-five degrees to one side, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights and their flat hair colours slightly so that they do not look like copies of one figure. The LEFT TWO THIRDS of the dirt path must be left clear and completely empty. Add nothing else at all — no lamps, no torches, no vehicles. Everything else stays exactly as it already is.",
       "status": "success",
-      "notes": "Đám đông hàng xóm = vẽ thẳng vào background bằng editFrom theo skill mục 5c, KHÔNG dùng 1 Character asset chung. Bản gen-1 dùng asset 'Generic Villager' cho đám đông — nhiều người cùng 1 asset trong 1 khung sẽ ra như nhân bản một người (skill mục 5). Dồn nhóm vào 1/3 phải và nói rõ 2/3 trái để trống, nếu không họ tràn kín hết chỗ đặt nhân vật chính."
+      "notes": "⚠️ LỖI THỜI 2026-08-31 — ĐỪNG DÙNG. Cùng lỗi sai tỉ lệ người nền. Cảnh đoàn tụ nay dùng thẳng 'Long Wang Village Night' + 3 asset quần chúng. Đám đông hàng xóm = vẽ thẳng vào background bằng editFrom theo skill mục 5c, KHÔNG dùng 1 Character asset chung. Bản gen-1 dùng asset 'Generic Villager' cho đám đông — nhiều người cùng 1 asset trong 1 khung sẽ ra như nhân bản một người (skill mục 5). Dồn nhóm vào 1/3 phải và nói rõ 2/3 trái để trống, nếu không họ tràn kín hết chỗ đặt nhân vật chính."
     },
     {
       "name": "Village Market Street",
@@ -140,7 +172,18 @@
       "editFrom": "Village Market Street",
       "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same pale grey sky band, the same row of three wooden market stalls in the same places at the same size, the same striped awnings all at the same height, the same wide tan dirt path across the bottom, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Do not move anything and do not resize anything. Change ONLY these two things. FIRST, load the stalls with goods: on EACH of the three counters keep the two round woven baskets that are already there and add EXACTLY THREE more plain flat produce shapes beside them and no more — one plain stack of THREE round green cabbages, one plain bundle of FOUR long orange carrots lying flat, and one plain heap of THREE round red tomatoes — and under EACH awning hang EXACTLY TWO plain bundles on short straight strings and no more, each drawn as ONE simple flat teardrop shape. Every one of these is ONE plain flat shape with a bold black outline: no texture, no speckles, no highlights, no shine and no shadows. SECOND, add EXACTLY SIX plain people and no more: THREE of them standing behind the counters, one behind each stall, as stallholders, and THREE of them standing on the dirt path as shoppers — TWO in the LEFT THIRD of the picture and ONE in the RIGHT THIRD. Draw every one of these six turned about forty-five degrees to one side with both of their eyes visible, with EXACTLY TWO small round black dots for the eyes and ONE short straight line for the mouth, no nose and no eyebrows. Draw their arms and legs as THIN PLAIN STRAIGHT LINES with no thickness at all, with no hands, no fingers, no feet and no shoes, and draw the clothing of each one as ONE plain flat dark shape with no folds, no creases and no buttons. Vary their heights and their flat hair colours slightly so that they do not look like copies of one figure. The MIDDLE of the dirt path, directly in front of the middle stall, must be left clear and completely empty — no person may stand there. Every sign, board, price card, banner and notice stays completely BLANK, with absolutely no writing, no letters, no characters, no numbers and no prices anywhere. Add no animals, no vehicles, no umbrellas, no bicycles and no extra stalls. Everything else stays exactly as it already is.",
       "status": "success",
-      "notes": "Người dùng yêu cầu 2026-08-30: chợ phải CÓ NGƯỜI và CÓ NHIỀU HÀNG HOÁ. Bản đầu ('Village Market Street') tôi cấm hết hàng hoá ('no scales, no boxes, no crates, no hanging goods, no sacks') vì lo chi tiết vụn — cấm quá tay nên ra cái chợ dẹp hàng. Bài học đã ghi thành mục 6j của skill nano-banana-image-prompts. Dùng editFrom để giữ nguyên bố cục sạp vốn đã đạt, chỉ THÊM vào. Người nền tả theo mục 5c (góc 3/4, mắt 2 chấm, thân que, cấm nhân bản) vì editFrom bỏ qua mọi style block nên không có gì đỡ cho. Chừa giữa đường trống làm chỗ đứng cho A Fei."
+      "notes": "⚠️ LỖI THỜI 2026-08-31 — ĐỪNG DÙNG. Người nền bake trong ảnh nên SAI TỈ LỆ so với dàn chính. Thay bằng 'Village Market Street V3' (chỉ hàng hoá) + 3 asset quần chúng ghép ở tầng cảnh. Người dùng yêu cầu 2026-08-30: chợ phải CÓ NGƯỜI và CÓ NHIỀU HÀNG HOÁ. Bản đầu ('Village Market Street') tôi cấm hết hàng hoá ('no scales, no boxes, no crates, no hanging goods, no sacks') vì lo chi tiết vụn — cấm quá tay nên ra cái chợ dẹp hàng. Bài học đã ghi thành mục 6j của skill nano-banana-image-prompts. Dùng editFrom để giữ nguyên bố cục sạp vốn đã đạt, chỉ THÊM vào. Người nền tả theo mục 5c (góc 3/4, mắt 2 chấm, thân que, cấm nhân bản) vì editFrom bỏ qua mọi style block nên không có gì đỡ cho. Chừa giữa đường trống làm chỗ đứng cho A Fei."
+    },
+    {
+      "name": "Village Market Street V3",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "editFrom": "Village Market Street",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same pale grey sky band, the same row of three wooden market stalls in the same places at the same size, the same striped awnings all at the same height, the same wide tan dirt path across the bottom, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Do not move anything and do not resize anything. Change ONLY this: load the stalls with goods. On EACH of the three counters keep the two round woven baskets that are already there and add EXACTLY THREE more plain flat produce shapes beside them and no more — one plain stack of THREE round green cabbages, one plain bundle of FOUR long orange carrots lying flat, and one plain heap of THREE round red tomatoes — and under EACH awning hang EXACTLY TWO plain bundles on short straight strings and no more, each drawn as ONE simple flat teardrop shape. Every one of these is ONE plain flat shape with a bold black outline: no texture, no speckles, no highlights, no shine and no shadows. Add NO people at all: no stallholders, no shoppers, no figures and no silhouettes anywhere — the whole dirt path stays clear and completely empty. Every sign, board, price card, banner and notice stays completely BLANK, with absolutely no writing, no letters, no characters, no numbers and no prices anywhere. Add no animals, no vehicles, no umbrellas, no bicycles and no extra stalls. Everything else stays exactly as it already is.",
+      "status": "success",
+      "notes": "Thay 'Village Market Street V2'. Cùng nội dung hàng hoá, chỉ KHÁC ở chỗ KHÔNG bake người vào nữa — người chuyển lên tầng CẢNH bằng 3 asset quần chúng để khớp tỉ lệ (skill mục 5c-2). editFrom trỏ về bản GỐC trống chứ không phải V2, vì bảo model 'xoá người đi' từ V2 là việc nó làm rất kém."
     },
     {
       "name": "Foggy Mountain Trail",
@@ -160,7 +203,17 @@
       "reserveCharacterSpace": true,
       "description": "A scenic hillside above a chain of small lakes, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: EXACTLY THREE plain pale blue-grey lake shapes and no more, lying between EXACTLY THREE plain low rounded misty hill shapes, all drawn as simple flat shapes with no ripples, no reflections and no detail. MIDDLE LAYER: one plain grassy hillside slope of flat muted green running edge to edge, carrying EXACTLY THREE plain rounded grey rock shapes of different sizes and no more. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one flat grassy hilltop clearing of plain muted green running edge to edge, left completely clear and empty so that several people can stand on it side by side. The near hilltop is the layer CLOSEST to the viewer and the lakes are furthest away. Draw NO grass blades, NO wildflowers, NO paths, NO fences, NO signs, NO benches, NO stone texture and NO shadows. There are no people, no animals and no birds anywhere in the picture. Soft overcast palette of pale blue, muted green and grey mist in a few flat tints. Plain flat overcast daylight, daytime.",
       "status": "success",
-      "notes": "Đây là ngọn đồi NHÓM 5 NGƯỜI đứng — cặp đối xứng với 'Long Wang 18 Lakes Opposite Hilltop'. Chừa dải gần trống rộng vì cảnh ghép tới 6 người đứng cạnh nhau."
+      "notes": "⚠️ LỖI THỜI 2026-08-31 — ĐỪNG DÙNG. Vẽ ba cái hồ giữa đồi sương mù, sai hẳn địa hình thật (十八潭 là khe núi có vũng nước và thác, không phải hồ). Thay bằng 'Long Wang Eighteen Pools Gorge'. Đây là ngọn đồi NHÓM 5 NGƯỜI đứng — cặp đối xứng với 'Long Wang 18 Lakes Opposite Hilltop'. Chừa dải gần trống rộng vì cảnh ghép tới 6 người đứng cạnh nhau."
+    },
+    {
+      "name": "Long Wang Eighteen Pools Gorge",
+      "type": "background",
+      "case": 1,
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "description": "A narrow rocky gorge on a wooded mountain in summer, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: one plain band of dense dark green forest canopy running edge to edge across the top, covering the hillside above the gorge, with only a narrow strip of plain pale blue sky showing above it. MIDDLE LAYER: EXACTLY TWO plain grey rock cliff faces standing close together, one filling the left side and one filling the right side, each drawn as ONE single flat shape with NO cracks, NO strata lines and NO stone texture; the gap between them is plainly NARROW, only about one third of the width of the picture. In that gap ONE plain narrow waterfall drops straight down as ONE single flat pale blue vertical band, with NO spray, NO foam, NO droplets and NO sparkle, falling into ONE plain deep pool of flat dark blue-green water that spreads out toward the viewer, its surface drawn as ONE single flat shape crossed by EXACTLY TWO plain thin lighter horizontal lines and NOTHING MORE — no ripples and no reflections. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one plain flat pale grey rock bank running edge to edge along the near side of the pool, left completely clear and empty so that several people can stand on it side by side, with EXACTLY THREE plain rounded grey boulder shapes of different sizes sitting at its edges and no more. Crossing the shallow water at the LEFT end of the pool are EXACTLY FOUR plain flat stepping stones set in ONE straight row and no more, standing for the walking crossing that visitors use. The rock bank is the layer CLOSEST to the viewer and the forest canopy is furthest away. Draw NO grass blades, NO ferns drawn one by one, NO fallen branches, NO handrails, NO fences, NO signs, NO steps and NO shadows. There are no people, no animals and no birds anywhere in the picture. Fresh summer palette of deep green, grey stone and dark blue-green water in a few flat tints. Plain flat daylight, daytime.",
+      "status": "success",
+      "notes": "Thay 'Long Wang 18 Lakes Hillside'. Bản cũ vẽ BA CÁI HỒ giữa ba quả đồi sương mù — SAI HẲN, do kịch bản tiếng Anh dịch 十八潭 thành '18 Lakes'. Ảnh tư liệu thật (refs/case-1/07-shibatan-01, 06-real-people-03) cho thấy đây là MỘT KHE NÚI HẸP: vũng nước xanh thẫm dưới chân thác nhỏ, hai bên vách đá cao, rừng rậm phía trên, bờ đá tảng ở tiền cảnh. Ép 'khe HẸP, khoảng hở chỉ 1/3 khung' vì độ chật là thứ giải thích được vì sao lạc trong đó 17 ngày. Bốn phiến đá bước lấy từ 07-shibatan-02 — tín hiệu 'khu du lịch có quản lý' rẻ nhất, cần có vì kịch bản nói A Fei tưởng nhóm kia là khách tham quan. GIỮ MÙA HÈ theo yêu cầu người dùng 2026-08-31 (ảnh thật đúng mùa là mùa đông, xem 08-tourists-10, nhưng các background khác của case đã vẽ mùa hè rồi). Cố ý làm HẸP và KÍN để khác hẳn 'Forest Waterfall Meadow' vốn là đồng cỏ rộng thoáng."
     },
     {
       "name": "Forest Waterfall Meadow",
