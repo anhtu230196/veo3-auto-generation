@@ -17,7 +17,7 @@
  */
 import { launchVeo3Browser } from "../veo3bot/browser.js";
 import { ensureProject } from "../veo3bot/project.js";
-import { createImageIngredient } from "../veo3bot/imageAsset.js";
+import { createImageIngredient, GenerationRejectedError } from "../veo3bot/imageAsset.js";
 import { atomicWriteJson, loadSceneFile } from "./scenes.js";
 import {
   CROWD_SILHOUETTE_BLOCK,
@@ -69,6 +69,7 @@ async function main() {
 
   let ok = 0;
   const failed: string[] = [];
+  let quotaStop = false;
   for (const scene of todo) {
     console.log(
       `→ "${scene.name}" (case ${scene.case})${scene.crowd ? " [crowd]" : ""} — refs: ${scene.references.join(", ")}`
@@ -106,9 +107,16 @@ async function main() {
       scene.lastError = (e as Error).message;
       failed.push(scene.name);
       console.error(`  ❌ ${scene.lastError}`);
+      // Hết quota thì cảnh sau chắc chắn cũng hỏng — dừng thay vì mất 3,5 phút mỗi cảnh.
+      if (e instanceof GenerationRejectedError && e.quotaExhausted) quotaStop = true;
     }
     // Ghi ngay sau MỖI cảnh — crash ở cảnh sau không làm mất tiến độ đã có.
     await atomicWriteJson(sceneFilePath, file);
+    if (quotaStop) {
+      console.error("\n⛔ Flow báo hết hạn mức tạo ảnh — DỪNG cả mẻ tại đây.");
+      console.error("   Chờ quota hồi rồi chạy lại đúng lệnh này; cảnh đã xong sẽ được bỏ qua.");
+      break;
+    }
   }
 
   console.log(`\nXong: ${ok} thành công, ${failed.length} lỗi.`);

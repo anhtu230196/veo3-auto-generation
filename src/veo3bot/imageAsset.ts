@@ -15,29 +15,98 @@ const GENERATE_TIMEOUT_MS = 2 * 60 * 1000;
 const POLL_INTERVAL_MS = 4000;
 const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
 
+/** Chờ lưới media render xong trước khi chụp baseline — xem `snapshotGridSrcs`. */
+const GRID_RENDER_TIMEOUT_MS = 30 * 1000;
+
 /**
- * XÁC NHẬN TRỰC TIẾP (project ~20+ asset) — cùng lớp bug đã xác nhận cho
- * video trong generate.ts::firstVideoSrc (mục 4.33 RUNBOOK): lưới media ảo hoá (`react-virtuoso`)
- * chỉ render 1 SỐ LƯỢNG CỐ ĐỊNH phần tử trong viewport (quan sát thực tế: luôn đúng 5), bất kể
- * project có bao nhiêu ảnh — thêm 1 ảnh mới ở ĐẦU danh sách thì 1 ảnh cũ bị đẩy khỏi vùng render
- * ở cuối, nên `imageLinksAll.count()` KHÔNG BAO GIỜ tăng một khi project vượt ngưỡng render ban
- * đầu (~17 asset trở lên, đúng lúc gặp trực tiếp: 12 Character + 5 Setting đầu thành công, rồi
- * 14 asset SAU ĐÓ liên tục "timeout" dù ảnh đã tạo đúng, thấy rõ trong debug capture). Đếm kiểu
- * "chờ tăng so với baseline" (như cũ) khiến mọi lần chạy lại tạo THÊM 1 bản trùng cho asset đó.
- *
- * SỬA giống hệt tinh thần `firstVideoSrc`: không đếm nữa — theo dõi ĐÚNG 1 VỊ TRÍ (item đầu tiên,
- * dựa vào sort "Recent" mặc định của Flow, đã dùng nhất quán ở `.first()` trong toàn bộ file này)
- * và coi là "có ảnh mới" CHỈ KHI `src` ở vị trí 0 đổi khác so với lúc trước khi bấm Create — không
- * phụ thuộc số lượng phần tử render được.
+ * Flow TỪ CHỐI tạo ảnh (hết quota / bị bóp tốc độ) — khác hẳn "ảnh chưa xong".
+ * `quotaExhausted` = true thì chạy tiếp các asset sau là vô nghĩa, runner phải DỪNG CẢ MẺ.
  */
-async function firstImageSrc(page: Page): Promise<string | undefined> {
-  // 🔴 ĐỔI 2026-09-05: giao diện mới KHÔNG còn thẻ <a aria-label="Generated image">. Mỗi ảnh giờ
-  // là: flow-grid-tile-container[aria-label=...] > flow-tile-container > flow-image-tile > img.image
-  // Hệ quả nếu không sửa: runner sinh ảnh THÀNH CÔNG nhưng không nhận ra, báo timeout, rồi lần chạy
-  // sau tạo thêm bản trùng — đúng lớp lỗi tốn kém nhất vì nó im lặng.
-  const first = page.locator("flow-image-tile img").first();
-  if (!(await first.count())) return undefined;
-  return (await first.getAttribute("src")) ?? undefined;
+export class GenerationRejectedError extends Error {
+  readonly quotaExhausted: boolean;
+  constructor(message: string, quotaExhausted: boolean) {
+    super(message);
+    this.name = "GenerationRejectedError";
+    this.quotaExhausted = quotaExhausted;
+  }
+}
+
+const QUOTA_TEXT_RE = /reached your usage limit/i;
+const REJECTED_TEXT_RE = /(not been charged for this generation|noticed some unusual activity)/i;
+
+/**
+ * Đọc card lỗi Flow dựng ngay trong lưới media ("Failed / You've reached your usage limit…").
+ *
+ * 🔴 PHẢI ĐỌC TRƯỚC KHI RELOAD: reload xoá sạch card, nên nhánh timeout cũ chụp debug sau
+ * reload chỉ thấy một trang sạch bong và kết luận nhầm thành "lỗi selector" (mất cả buổi
+ * 2026-09-06 vì đúng chuyện này).
+ */
+async function findGenerationFailure(page: Page): Promise<{ quota: boolean; text: string } | undefined> {
+  const body = await page
+    .locator("body")
+    .innerText()
+    .catch(() => "");
+  const line = body
+    .split("\n")
+    .map((l) => l.trim())
+    .find((l) => QUOTA_TEXT_RE.test(l) || REJECTED_TEXT_RE.test(l));
+  if (!line) return undefined;
+  // Cụm "usage limit" và cụm "not been charged" nằm ở HAI dòng khác nhau của cùng một card,
+  // nên phải xét cờ quota trên toàn bộ text chứ không chỉ trên dòng khớp đầu tiên.
+  return { quota: QUOTA_TEXT_RE.test(body), text: line };
+}
+
+/**
+ * Toàn bộ `src` ảnh đang render trong lưới media.
+ *
+ * 🔴 ĐỔI 2026-09-05: giao diện mới KHÔNG còn thẻ <a aria-label="Generated image">. Mỗi ảnh giờ
+ * là: flow-grid-tile-container[aria-label=...] > flow-tile-container > flow-image-tile > img.image
+ */
+async function allImageSrcs(page: Page): Promise<string[]> {
+  return page
+    .locator("flow-image-tile img")
+    .evaluateAll((els) => els.map((e) => e.getAttribute("src")).filter((s): s is string => !!s));
+}
+
+/**
+ * 🔴🔴 BẰNG CHỨNG "ĐÃ CÓ ẢNH MỚI" — ĐỌC HẾT TRƯỚC KHI ĐỤNG VÀO. Sai ở đây thì HỎNG DỮ LIỆU,
+ * không phải chỉ chạy lỗi.
+ *
+ * Lịch sử 3 đời, mỗi đời sửa cái trước:
+ *
+ * 1. **Đếm số phần tử, chờ tăng.** Hỏng vì lưới ảo hoá (`react-virtuoso`) chỉ render một số
+ *    lượng CỐ ĐỊNH: thêm 1 ảnh ở đầu thì 1 ảnh cũ bị đẩy khỏi vùng render, số đếm KHÔNG BAO GIỜ
+ *    tăng khi project đã nhiều media. Hậu quả: báo timeout oan → lần sau tạo THÊM bản trùng.
+ * 2. **So `src` ở VỊ TRÍ 0 với lúc trước khi bấm Create.** Hỏng nặng hơn nhiều, và đây là bug
+ *    đã HỎNG DỮ LIỆU THẬT ngày 2026-09-06: vị trí 0 đổi vì RẤT NHIỀU lý do không phải "có ảnh
+ *    mới" — card "Failed" chen vào rồi biến mất sau reload, lưới render lại khác đi, hoặc
+ *    baseline đọc phải lúc lưới CHƯA render (trả `undefined`, rồi mọi ảnh cũ hiện ra sau đó đều
+ *    khác `undefined` nên bị coi là mới). Lúc đó `newImageSrc` trỏ vào một ẢNH CŨ, và bước
+ *    rename ĐẶT TÊN ĐÈ LÊN NÓ. Thực tế: hết quota nên không ảnh nào được tạo, nhưng runner vẫn
+ *    lần lượt đổi tên các asset cũ thành `Carved Fence Post`, `Roanoke Shore Daytime`… và đánh
+ *    dấu `success`. Người dùng phát hiện vì thấy ảnh ông đội mũ nồi mang tên cột gỗ.
+ * 3. **(hiện tại) So TẬP HỢP src.** Ảnh mới = `src` CHƯA TỪNG thấy trước khi bấm Create. Chiều
+ *    so sánh này miễn nhiễm với ảo hoá: ảnh bị đẩy khỏi vùng render là MẤT khỏi tập, không phải
+ *    THÊM vào, nên không bao giờ bị nhận nhầm là mới.
+ *
+ * Điều kiện tiên quyết: baseline phải chụp khi lưới ĐÃ render. Vì thế `snapshotGridSrcs` chờ
+ * tới khi có ít nhất 1 ảnh (project mới tinh thì hết `GRID_RENDER_TIMEOUT_MS` mới trả tập rỗng
+ * — chậm 30s đúng 1 lần cho asset đầu tiên, đổi lại là không bao giờ rename đè).
+ */
+async function snapshotGridSrcs(page: Page): Promise<Set<string>> {
+  const deadline = Date.now() + GRID_RENDER_TIMEOUT_MS;
+  let srcs = await allImageSrcs(page);
+  while (srcs.length === 0 && Date.now() < deadline) {
+    await page.waitForTimeout(1000);
+    srcs = await allImageSrcs(page);
+  }
+  return new Set(srcs);
+}
+
+/** `src` đầu tiên chưa có trong `baseline` — tức ảnh vừa được tạo. */
+async function findNewImageSrc(page: Page, baseline: ReadonlySet<string>): Promise<string | undefined> {
+  for (const src of await allImageSrcs(page)) if (!baseline.has(src)) return src;
+  return undefined;
 }
 
 /**
@@ -283,17 +352,19 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
  * Ném lỗi ở ĐÂY thì runner đánh dấu asset đó `failed` và lần chạy sau tự tạo lại — thay vì
  * để dữ liệu sai nằm im chờ phá 1 mẻ cảnh ghép về sau.
  */
-async function assertAssetNamed(page: Page, name: string): Promise<void> {
-  const projectUrl = projectUrlOf(page);
-
-  // ⚠️ PHẢI POLL, KHÔNG tra 1 phát rồi kết luận. Bản đầu của hàm này chỉ chờ cố định 2 giây
-  // sau khi gõ vào ô search rồi chốt — và đã BÁO NHẦM cho "Bob Bathroom V2" (asset tồn tại
-  // thật, rename ăn bình thường, nhưng lưới asset nạp bất đồng bộ nên chưa kịp hiện). Báo
-  // nhầm còn tai hại hơn im lặng: runner đánh `failed`, lần sau tạo lại → sinh ảnh TRÙNG.
-  const ATTEMPTS = 2;
+/**
+ * Tra bảng chọn media xem đã có asset tên `name` chưa. Trả `undefined` khi KHÔNG MỞ ĐƯỢC bảng
+ * chọn — "không biết" khác hẳn "không có", và người gọi phải phân biệt hai cái đó.
+ */
+async function lookupAssetByName(
+  page: Page,
+  name: string,
+  attempts: number,
+  projectUrl: string
+): Promise<boolean | undefined> {
   let sawSearchBox = false;
 
-  for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
     await dismissOverlays(page);
     await page
       .locator(ASSET_PICKER_SELECTOR)
@@ -311,12 +382,46 @@ async function assertAssetNamed(page: Page, name: string): Promise<void> {
         if (await page.locator('[role="option"]', { hasText: name }).first().count()) {
           // Về lại project để đóng bảng chọn — Escape không đáng tin với dialog Flow (mục 8.1.4).
           await backToProject(page, projectUrl);
-          return;
+          return true;
         }
       }
     }
     await backToProject(page, projectUrl);
   }
+
+  return sawSearchBox ? false : undefined;
+}
+
+/**
+ * 🔴 CHỐNG TẠO TRÙNG (2026-09-06). Bất cứ lỗi nào NGAY SAU khi ảnh đã sinh ra — rename hỏng,
+ * `assertAssetNamed` báo nhầm, mẻ bị kill giữa chừng — đều để lại asset ở `status: "failed"`
+ * dù ẢNH ĐÃ CÓ THẬT trong Flow. Lần chạy sau runner thấy `failed` là tạo lại từ đầu, và đốt
+ * thêm một lượt quota cho một ảnh y hệt.
+ *
+ * Thực tế đo được: project Roanoke có **5 ảnh Governor John White** gần như giống hệt, chỉ 1
+ * cái mang tên. Bốn cái kia là bốn lần chạy lại.
+ *
+ * Vì vậy: tra tên TRƯỚC khi tạo. Có rồi thì bỏ qua hẳn, coi như thành công.
+ * ⚠️ Chỉ bỏ qua khi tra được CHẮC CHẮN là "có". Không mở được bảng chọn (`undefined`) thì vẫn
+ * tạo — thà trùng còn hơn bỏ sót im lặng.
+ * ⚠️ Khớp theo CHUỖI CON (giống `assertAssetNamed`), nên tên này là tiền tố của tên kia sẽ
+ * khớp nhầm và bỏ qua oan. Đó chính là lý do skill mục 9b cấm đặt tên kiểu tiền tố.
+ */
+async function assetAlreadyExists(page: Page, name: string, projectUrl: string): Promise<boolean> {
+  return (await lookupAssetByName(page, name, 1, projectUrl)) === true;
+}
+
+async function assertAssetNamed(page: Page, name: string): Promise<void> {
+  const projectUrl = projectUrlOf(page);
+
+  // ⚠️ PHẢI POLL, KHÔNG tra 1 phát rồi kết luận. Bản đầu của hàm này chỉ chờ cố định 2 giây
+  // sau khi gõ vào ô search rồi chốt — và đã BÁO NHẦM cho "Bob Bathroom V2" (asset tồn tại
+  // thật, rename ăn bình thường, nhưng lưới asset nạp bất đồng bộ nên chưa kịp hiện). Báo
+  // nhầm còn tai hại hơn im lặng: runner đánh `failed`, lần sau tạo lại → sinh ảnh TRÙNG.
+  const ATTEMPTS = 2;
+  const found = await lookupAssetByName(page, name, ATTEMPTS, projectUrl);
+  if (found === true) return;
+  const sawSearchBox = found === false;
 
   throw new Error(
     sawSearchBox
@@ -360,6 +465,13 @@ export async function createImageIngredient(
    */
   reference?: string | string[]
 ): Promise<void> {
+  // 🔴 CHỐNG TẠO TRÙNG — xem docstring assetAlreadyExists. Phải đứng TRƯỚC mọi thao tác tạo:
+  // asset `failed` trong JSON không có nghĩa là Flow chưa có ảnh của nó.
+  if (await assetAlreadyExists(page, name, projectUrl)) {
+    console.log(`[imageAsset] "${name}" ĐÃ có sẵn trong Flow — bỏ qua, không tạo lại.`);
+    return;
+  }
+
   // Pill hiển thị mode/tỷ lệ khung hình hiện tại — cùng selector đã xác nhận trong
   // generate.ts::ensureModelAndDuration (icon "crop_16_9" luôn xuất hiện, duy nhất TRƯỚC khi
   // bảng cài đặt mở ra). Có fallback reload nếu trang đang ở trạng thái lag/kẹt.
@@ -427,26 +539,30 @@ export async function createImageIngredient(
 
   await page.keyboard.type(`${name}: ${description}. ${styleBlock}`);
 
-  // Baseline-diff theo SRC vị trí đầu tiên (KHÔNG đếm số lượng nữa — xem docstring firstImageSrc
-  // ở trên, lưới ảo hoá khiến đếm số lượng sai khi project đã tích luỹ nhiều media).
-  const baselineFirstSrc = await firstImageSrc(page);
-  debugLog("baseline", `ingredient "${name}": baselineFirstSrc=${baselineFirstSrc ?? "(none)"}`);
+  // Baseline = TẬP HỢP src đang render, chụp khi lưới đã render xong (xem docstring
+  // snapshotGridSrcs — so vị trí 0 như bản cũ đã gây đổi tên đè lên ảnh cũ).
+  const baselineSrcs = await snapshotGridSrcs(page);
+  debugLog("baseline", `ingredient "${name}": ${baselineSrcs.size} ảnh đang render trước khi tạo`);
+  // Card lỗi của asset TRƯỚC có thể còn nằm đó — ghi lại để chỉ phản ứng với lỗi MỚI.
+  const failureBefore = await findGenerationFailure(page);
 
   await page.locator('button:has-text("arrow_forward")').last().click();
 
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
-  let done = false;
   let newImageSrc: string | undefined;
   while (Date.now() < deadline) {
-    const current = await firstImageSrc(page);
-    if (current !== undefined && current !== baselineFirstSrc) {
-      done = true;
-      newImageSrc = current;
-      break;
+    newImageSrc = await findNewImageSrc(page, baselineSrcs);
+    if (newImageSrc) break;
+    // Bắt lỗi NGAY trong lúc poll: hết quota thì chờ đủ 2 phút rồi reload là vô ích, mà còn
+    // xoá mất card lỗi — đúng cách bản cũ đã chẩn đoán nhầm thành lỗi selector.
+    const failure = await findGenerationFailure(page);
+    if (failure && (failure.quota || failure.text !== failureBefore?.text)) {
+      await debugCapture(page, `generation-rejected-${name}`);
+      throw new GenerationRejectedError(`Flow từ chối tạo ảnh cho "${name}": ${failure.text}`, failure.quota);
     }
     await page.waitForTimeout(POLL_INTERVAL_MS);
   }
-  if (!done) {
+  if (!newImageSrc) {
     // XÁC NHẬN TRỰC TIẾP (2026-07-17): cùng lỗi đã gặp với video trong generate.ts — ảnh THẬT
     // RA đã tạo xong (thấy rõ trong media grid, đúng nền xanh + đúng prompt) nhưng bot không
     // phát hiện kịp trong lúc poll trực tiếp. Trước khi kết luận lỗi thật, reload lại trang 1
@@ -457,6 +573,15 @@ export async function createImageIngredient(
     // CHỤP DEBUG TRƯỚC KHI RELOAD (xác nhận trực tiếp 2026-07-19, xem generate.ts cùng bug) —
     // reload xoá mất trạng thái lỗi thật trước khi kịp chụp nếu chụp SAU.
     await debugCapture(page, `pre-reload-timeout-ingredient-${name}`);
+    // 🔴 ĐỌC CARD LỖI TRƯỚC KHI RELOAD — reload xoá sạch nó. Bản cũ reload trước rồi mới soi,
+    // nên một mẻ HẾT QUOTA hoàn toàn lại trông y hệt "ảnh tạo xong mà không nhận ra".
+    const failureAtTimeout = await findGenerationFailure(page);
+    if (failureAtTimeout) {
+      throw new GenerationRejectedError(
+        `Flow từ chối tạo ảnh cho "${name}": ${failureAtTimeout.text}`,
+        failureAtTimeout.quota
+      );
+    }
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     // Modal onboarding hiện lại sau reload và chặn mọi click (RUNBOOK 8.1).
     await dismissOnboardingDialog(page);
@@ -465,28 +590,32 @@ export async function createImageIngredient(
     // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
     await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
-    let currentAfterReload = await firstImageSrc(page);
-    let foundAfterReload = currentAfterReload !== undefined && currentAfterReload !== baselineFirstSrc;
-    while (!foundAfterReload && Date.now() < recheckDeadline) {
+    newImageSrc = await findNewImageSrc(page, baselineSrcs);
+    while (!newImageSrc && Date.now() < recheckDeadline) {
       await page.waitForTimeout(POLL_INTERVAL_MS);
-      currentAfterReload = await firstImageSrc(page);
-      foundAfterReload = currentAfterReload !== undefined && currentAfterReload !== baselineFirstSrc;
+      newImageSrc = await findNewImageSrc(page, baselineSrcs);
     }
-    if (!foundAfterReload) {
+    if (!newImageSrc) {
       await debugCapture(page, `timeout-ingredient-${name}`);
       throw new Error(`Hết thời gian chờ tạo ảnh cho "${name}" — kiểm tra thủ công trong Flow.`);
     }
-    newImageSrc = currentAfterReload;
     console.log(`[imageAsset] ảnh cho "${name}" thực ra ĐÃ tạo xong — reload phát hiện được, tiếp tục đổi tên.`);
   }
 
-  // Tìm ĐÚNG ảnh vừa tạo bằng src đã biết chắc chắn (newImageSrc) — KHÔNG dùng .first() mù
-  // (xem docstring firstImageSrc: vị trí 0 có thể lệch nếu có thao tác khác chen giữa lúc poll
-  // và lúc rename). Giống hệt cách renameLatestVideo tìm video trong generate.ts.
-  if (!newImageSrc) {
-    await debugCapture(page, `new-image-src-missing-${name}`);
-    throw new Error(`Không xác định được src ảnh vừa tạo cho "${name}" — thử lại.`);
+  // 🔴 CHỐT AN TOÀN CUỐI CÙNG trước khi đổi tên — lớp phòng thủ thứ hai cho bug 2026-09-06.
+  // `newImageSrc` chỉ được phép là ảnh CHƯA có trong lưới lúc trước khi bấm Create. Nếu vì lý
+  // do nào đó nó lại là ảnh cũ thì THÀ HỎNG MẺ còn hơn đổi tên đè lên asset đã có.
+  if (baselineSrcs.has(newImageSrc)) {
+    await debugCapture(page, `refuse-rename-old-image-${name}`);
+    throw new Error(
+      `Từ chối đổi tên cho "${name}": ảnh định đặt tên đã có trong lưới TRƯỚC khi tạo, tức là ` +
+        `ảnh CŨ của asset khác. Không đổi tên gì cả — tra tay trong Flow trước khi chạy lại.`
+    );
   }
+
+  // Tìm ĐÚNG ảnh vừa tạo bằng src đã biết chắc chắn (newImageSrc) — KHÔNG dùng .first() mù
+  // (vị trí 0 có thể lệch nếu có thao tác khác chen giữa lúc poll và lúc rename).
+  // Giống hệt cách renameLatestVideo tìm video trong generate.ts.
   const newImage = page
     .locator(`img[src="${newImageSrc}"]`)
     .locator("xpath=ancestor::flow-grid-tile-container[1]")

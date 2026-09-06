@@ -19,7 +19,7 @@
 import path from "node:path";
 import { launchVeo3Browser } from "../veo3bot/browser.js";
 import { ensureProject } from "../veo3bot/project.js";
-import { createImageIngredient } from "../veo3bot/imageAsset.js";
+import { createImageIngredient, GenerationRejectedError } from "../veo3bot/imageAsset.js";
 import { atomicWriteJson, loadAssetFile, type ImageAsset } from "./assets.js";
 import {
   CHARACTER_PROMPT_PREFIX,
@@ -138,6 +138,7 @@ async function main() {
 
   let ok = 0;
   const failed: string[] = [];
+  let quotaStop = false;
   for (const asset of todo) {
     const { description, styleBlock, reference } = buildPrompt(asset);
     console.log(`→ [${asset.type}] "${asset.name}" (case ${asset.case})`);
@@ -153,9 +154,17 @@ async function main() {
       asset.lastError = (e as Error).message;
       failed.push(asset.name);
       console.error(`  ❌ ${asset.lastError}`);
+      // Hết quota thì mọi asset sau CHẮC CHẮN cũng hỏng — chạy tiếp chỉ tổ mất 3,5 phút mỗi
+      // cái để nhận đúng một lỗi. 2026-09-06 đã để nó chạy hết cả mẻ như vậy.
+      if (e instanceof GenerationRejectedError && e.quotaExhausted) quotaStop = true;
     }
     // Ghi ngay sau MỖI asset — crash ở asset sau không làm mất tiến độ đã có.
     await atomicWriteJson(assetFilePath, file);
+    if (quotaStop) {
+      console.error("\n⛔ Flow báo hết hạn mức tạo ảnh — DỪNG cả mẻ tại đây.");
+      console.error("   Chờ quota hồi rồi chạy lại đúng lệnh này; asset đã xong sẽ được bỏ qua.");
+      break;
+    }
   }
 
   console.log(`\nXong: ${ok} thành công, ${failed.length} lỗi.`);

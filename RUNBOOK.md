@@ -107,6 +107,60 @@ chiều sâu, "bóng đứng phía sau" = chồng lấp, mà block thì cấm ch
 thành bóng** không, và tỉ lệ bóng có bám theo người vẽ đủ đứng cạnh không. Chi
 tiết + cách chữa: skill `nano-banana-image-prompts` mục 5c-3.
 
+#### 🔴🔴 (2026-09-06) BUG ĐÃ HỎNG DỮ LIỆU THẬT: hết quota → runner ĐỔI TÊN ĐÈ LÊN ẢNH CŨ
+
+**Đã vá. Đọc phần này trước khi đụng vào khối tạo ảnh của `imageAsset.ts`.**
+
+Triệu chứng người dùng thấy: trong project Flow, ảnh nhân vật A lại **mang tên**
+của asset B (`Colonist Man One` thành `Carved Fence Post`), kèm **rất nhiều ảnh
+trùng không tên** (5 bản `Governor John White` gần y hệt, chỉ 1 bản có tên).
+
+Ba lỗi RIÊNG BIỆT chồng lên nhau, phải sửa cả ba:
+
+**1. Bằng chứng "có ảnh mới" quá yếu → đổi tên đè lên ảnh cũ.**
+Bản cũ coi là có ảnh mới khi `src` ở **vị trí 0** khác lúc trước khi bấm Create.
+Vị trí 0 đổi vì đủ thứ lý do KHÔNG phải "có ảnh mới": card `Failed` chen vào rồi
+biến mất sau reload, lưới ảo hoá render lại khác đi, hoặc baseline đọc phải lúc
+lưới chưa render (trả `undefined`). Khi đó `newImageSrc` trỏ vào một **ảnh cũ**,
+và bước rename đặt tên đè lên nó — rồi đánh dấu `success`.
+👉 Sửa: baseline giờ là **TẬP HỢP toàn bộ `src`** đang render, chụp sau khi đã
+chờ lưới render xong; ảnh mới = `src` **chưa từng thấy**. Chiều so sánh này miễn
+nhiễm với ảo hoá (ảnh bị đẩy khỏi vùng render là MẤT khỏi tập, không phải THÊM).
+Thêm **chốt an toàn**: từ chối rename nếu src đó đã có trong baseline.
+
+**2. Không phát hiện card lỗi → chờ 3,5 phút rồi rename bừa.**
+Card `Failed / You've reached your usage limit` nằm ngay trong lưới, nhưng runner
+không đọc. Tệ hơn: nhánh timeout **reload TRƯỚC rồi mới chụp debug**, mà reload
+xoá sạch card — nên ảnh debug trông như một trang bình thường và rất dễ chẩn
+đoán nhầm thành "lỗi selector" (đã nhầm đúng như vậy mất cả buổi).
+👉 Sửa: `findGenerationFailure()` đọc card **trong vòng poll** và **trước khi
+reload**, ném `GenerationRejectedError` với cờ `quotaExhausted`.
+
+**3. Hết quota vẫn chạy tiếp cả mẻ.**
+👉 Sửa: cả 2 runner `break` ngay khi bắt được `quotaExhausted`.
+
+**Kèm theo — chống TẠO TRÙNG:** bất cứ lỗi nào xảy ra SAU khi ảnh đã sinh (rename
+hỏng, `assertAssetNamed` báo nhầm, mẻ bị kill) đều để asset ở `failed` dù ảnh đã
+có thật → lần sau tạo lại, đốt thêm quota cho ảnh y hệt. `createImageIngredient`
+giờ **tra tên trong Flow TRƯỚC khi tạo**, có rồi thì bỏ qua. Chỉ bỏ qua khi tra
+được chắc chắn là "có"; không mở được bảng chọn thì vẫn tạo.
+
+⚠️ Vá xong **chưa chạy thử được** vì đang hết quota. Mẻ đầu tiên sau khi quota
+hồi phải soi: có bỏ qua đúng asset đã tồn tại không, và card quota có làm dừng cả
+mẻ ngay lập tức không.
+
+⚠️ **Dọn tay trước khi chạy lại**: project Roanoke đang có nhiều ảnh bị đặt sai
+tên và nhiều bản trùng vô danh do bug này. Người dùng tự đổi tên/xoá. Bước tra
+tên trước khi tạo sẽ **bỏ qua** asset nào đã có tên đúng — nên tên phải đúng
+trước, không thì runner bỏ qua nhầm.
+
+⚠️ **`TaskStop` không giết được runner** — nó chỉ giết vỏ `npm`, tiến trình `tsx`
+con vẫn sống và chạy tiếp (2026-09-06: chạy thêm ~20 phút sau khi tưởng đã dừng,
+và chính quãng đó gây ra phần lớn thiệt hại). Giết đúng cách:
+```
+powershell -Command "Get-CimInstance Win32_Process -Filter \"Name='node.exe'\" | Where-Object { $_.CommandLine -like '*createImageAssets*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+```
+
 ⚠️ **PHÂN BIỆT 3 loại lỗi generate — cả ba đều hiện thành "Failed" trên card, rất
 dễ nhầm là lỗi code:**
 - *"You've reached your usage limit"* → **hết quota**, chờ reset, không sửa gì cả.
