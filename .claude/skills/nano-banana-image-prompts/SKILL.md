@@ -242,7 +242,138 @@ nhân vật nào trùng cả hai không? Trùng thì đổi, đừng để tới
 *(Case 3 "Carl Ledges" là case đầu áp quy tắc này: 8 nhân vật ra 8 kiểu râu/tóc
 khác nhau — xem `case-3/assets.json` làm mẫu.)*
 
+### 5c-3. 🔴 ĐÁM ĐÔNG = BÓNG ĐEN ĐẶC, không mặt, không trang phục
+
+**Người dùng chốt 2026-09-06. Mục này ĐỨNG TRÊN cả 5c-2 lẫn 5c** — đọc trước,
+rồi mới đọc hai mục dưới để hiểu vì sao chúng còn ở đây.
+
+Trong **cảnh đông người**, đám đông vô danh là **bóng đổ đặc**: tô kín bằng
+**một màu đen đặc duy nhất** (hoặc một màu đơn sắc tối duy nhất), **không mắt,
+không miệng, không mặt, không cổ áo, không cúc, không nếp gấp, không màu thứ hai
+nào bên trong hình**. Mục đích: dồn sự chú ý vào **nhân vật chính**.
+
+#### 🔑 HAI TẦNG, không phải "chính diện vs bóng đen"
+
+**Người dùng chốt 2026-09-06 (bản sửa ngay trong ngày):** đừng biến **cả** đám
+đông thành bóng. Khung đông người dựng **hai tầng**:
+
+| Tầng | Ai | Vẽ thế nào |
+|---|---|---|
+| **Tiền cảnh** | Nhân vật chính **+ 2-3 quần chúng CÓ ASSET** | Vẽ đủ mặt, đủ màu |
+| **Phần còn lại** | Đám đông vô danh | Bóng đen đặc |
+
+Vì sao phải giữ 2-3 người vẽ đủ chứ không quét sạch thành bóng:
+
+- **Khung toàn bóng đen mất hết chỗ bám.** Cảnh van nài, cảnh tiễn biệt… cảm
+  xúc nằm ở mặt; bỏ hết mặt thì còn mỗi tư thế.
+- **Bóng cần vật neo TỈ LỆ ngay trong khung.** Người vẽ đủ đi qua ảnh master nên
+  đúng tỉ lệ đầu-to-thân-ngắn; bóng đứng cạnh họ thì bám theo được. Khung không
+  còn ai vẽ đủ thì chỉ còn mỗi câu "đầu bằng 1/4 chiều cao" trong block đỡ —
+  mỏng hơn hẳn (đây chính là lỗi mục 5c-2 đã tốn công tìm ra).
+- Nhân vật chính vẫn nổi, vì **tương phản đã đủ mạnh** giữa vài người có màu và
+  cả một mảng đen.
+
+⚠️ **Bố cục tách theo CHIỀU NGANG, không phải xa–gần.** Phong cách phẳng không
+có chiều sâu, nên "bóng đứng phía sau" là không vẽ được: đứng sau = chồng lấp,
+mà block thì cấm chồng lấp. Cách làm đúng: **người vẽ đủ chiếm 1/3–2/3 bên này,
+bóng lấp phần còn lại ra tới mép**. Xem 4 cảnh đông người của case 1 tập
+`ca-mot-nhom-nguoi-bien-mat-khong-dau-vet` làm mẫu.
+
+⚠️ **Model rất hay "hạ cấp" người có asset thành bóng cho đồng bộ với đám đông.**
+Phải có câu chốt tường minh trong prompt cảnh: *"The three people named above are
+the ONLY people drawn in full, and every one of them keeps their own face, their
+two eyes and all of their own colours — do NOT turn any of them into a silhouette
+and do NOT darken their clothes."*
+
+Chữ thật của luật này nằm ở **`CROWD_SILHOUETTE_BLOCK`** trong `styleDNA.ts` —
+**đừng chép nó vào prompt cảnh** (mục 0). Bật bằng cờ:
+
+```json
+{ "name": "The Colony Lands", "crowd": true, "references": ["..."], "prompt": "..." }
+```
+
+`createSceneComposites` thấy `crowd: true` thì tự nối block vào đầu prompt và
+nối `CROWD_SILHOUETTE_REMINDER` vào cuối (khoá hai đầu, công thức chống "ảnh
+thắng chữ").
+
+#### Ai thành bóng, ai giữ nguyên
+
+| Nhóm | Vẽ thế nào |
+|---|---|
+| Nhân vật **có tên** trong lời kể | Vẽ đủ, đính Character asset như cũ |
+| Vai phụ **có thoại/hành động riêng**, lặp qua nhiều cảnh (mục 5d) | Vẽ đủ, có asset riêng |
+| **2-3 quần chúng "đại diện"** — chọn ra từ đám đông | Vẽ đủ, **có asset riêng** (mục 5c-2 vẫn nguyên giá trị cho nhóm này) |
+| Phần **còn lại** của đám đông vô danh | **Bóng đen đặc**, KHÔNG asset, tả thẳng trong prompt cảnh |
+
+Chọn 2-3 người "đại diện" theo **việc họ làm trong khung**, không theo lời kể:
+ai đang van nài, ai đang chỉ tay, ai đang bế con. Người còn lại chỉ đứng đó thì
+thành bóng.
+
+⚠️ **Nhất quán trong cùng một case**: đã chọn ai làm quần chúng đại diện thì
+dùng lại đúng người đó ở các cảnh đông người khác, đừng mỗi cảnh nâng một người
+khác lên. Số bóng thì đổi tự do theo khung.
+
+⚠️ **`crowd: true` KHÔNG dùng cho cảnh 2-3 người mà ai cũng cần nhận diện** —
+bật nhầm thì nhân vật đáng ra vẽ đủ bị biến thành bóng đen. Cảnh đối thoại tay
+đôi, cảnh gia đình, cảnh nhân vật chính với một người cụ thể: để tắt.
+
+#### Prompt cảnh vẫn phải tự tả phần DÀN CẢNH
+
+Block chỉ lo **cách vẽ**. Bố cục vẫn là việc của prompt, và vẫn **ra số** theo
+mục 6c:
+
+- **Đúng bao nhiêu bóng**: *"draw EXACTLY SEVEN plain solid black silhouette
+  figures and no more"*.
+- **Đứng ở đâu** — nêu theo phần khung, để bóng nối tiếp người vẽ đủ ra tới mép:
+  *"in ONE loose band filling the RIGHT THIRD of the picture out to the right
+  edge"*.
+- **Chừa vùng cho người vẽ đủ**: *"no silhouette may stand in the LEFT THIRD or
+  the MIDDLE THIRD, and no silhouette may touch, overlap or pass in front of any
+  of the three people drawn in full"*.
+- **Chốt ai được vẽ đủ** (câu chống "hạ cấp", xem trên).
+- **Tổng số người**: *"There are exactly ten people in the picture — the three
+  drawn in full and the seven silhouettes — and nobody else anywhere."*
+
+#### Ba cái bẫy
+
+1. **Nền tối nuốt bóng đen.** Trời đêm, tán rừng sẫm, tường gạch tối — bóng đen
+   dán vào đó là mất hình. Chữa theo thứ tự: (a) đặt nhóm đứng trên dải nền
+   NHẠT (bãi cát, đường đất, mảng trời), (b) nếu không được thì prompt cảnh nêu
+   thẳng **một màu đơn sắc tối khác** đủ tách khỏi nền — block đã chừa sẵn cửa
+   *"or with the one single dark colour this prompt names instead"*.
+2. **Bóng dính thành một mảng đen.** Phải nói rõ có khoảng hở giữa từng bóng.
+   Block đã có câu này, nhưng nhóm đông (>8) thì prompt cảnh nên nhắc lại kèm
+   vị trí cụ thể.
+3. **Model tự "nâng cấp" bóng thành người đủ.** Đúng cái bẫy mục 6j đã ghi.
+   Block khoá hai đầu là để chống chuyện này; đừng gỡ cờ `crowd` rồi tự viết
+   tay mô tả bóng — viết tay thì không có vế nhắc lại ở cuối.
+4. **Chiều ngược lại: model "hạ cấp" người có asset thành bóng** cho đồng bộ với
+   đám đông. Chống bằng câu chốt ở phần HAI TẦNG bên trên. Đây là bẫy MỚI, chỉ
+   xuất hiện từ khi có bóng đen trong khung.
+
+#### Hệ quả với asset "quần chúng" (mục 5c-2)
+
+Vẫn **cần** — chỉ ít đi. Trước 2026-09-06 mỗi case tạo 2-3 asset quần chúng để
+lấp cả đám đông; giờ 2-3 asset đó là **hàng đầu tiền cảnh**, còn phần đông phía
+sau chuyển thành bóng. Số asset không đổi, việc chúng làm thì đổi.
+
+Vì sao vẫn phải là asset chứ không tả bằng chữ: đúng lý do cũ của mục 5c-2 — tỉ
+lệ đầu-to-thân-ngắn chỉ ảnh master neo được. Bóng thì neo bằng chữ tạm đủ
+(*"its head alone is about one quarter of that figure's whole height"*), nhưng
+người vẽ đủ có mặt và quần áo thì không.
+
+*(Ba asset `Village Extra Man/Woman/Elder` của case 1 tập
+`vu-viec-tam-linh-khong-the-giai-thich` vẫn dùng làm mẫu được — chỉ khác là các
+cảnh đó chưa có tầng bóng đen phía sau.)*
+
+
 ### 5c-2. 🔴 NGƯỜI NỀN PHẢI CÓ ASSET RIÊNG — tả bằng chữ thì SAI TỈ LỆ, luôn luôn
+
+> ⚠️ **ĐỌC MỤC 5c-3 NGAY TRÊN TRƯỚC.** Luật "phải có asset quần chúng" ở mục
+> này **vẫn nguyên giá trị** — nhưng từ 2026-09-06 nó chỉ còn áp cho **2-3 quần
+> chúng đại diện đứng tiền cảnh**; phần đông phía sau là **bóng đen đặc** và
+> không cần asset. Số asset cần tạo không đổi, việc chúng làm trong khung thì
+> đổi.
 
 **Người dùng chốt 2026-08-31 sau khi xem ảnh chợ và ảnh làng ban đêm của case 1.**
 Đây là bản sửa cho mục 5c ngay dưới — đọc mục này TRƯỚC, vì nó lật lại kết luận
@@ -278,10 +409,12 @@ người**.
 
 ### 5c. ĐÁM ĐÔNG NỀN: vẽ thẳng vào background bằng `editFrom`, không tạo asset riêng
 
-> ⚠️ **ĐỌC MỤC 5c-2 NGAY TRÊN TRƯỚC.** Kết luận "đừng tạo asset riêng" ở mục này
-> đã bị lật 2026-08-31 vì lỗi SAI TỈ LỆ. Phần còn lại bên dưới vẫn đúng cho
-> trường hợp hẹp còn được phép (người ở rất xa), và giữ lại vì cách tả mặt/thân
-> tối giản vẫn dùng được.
+> ⚠️ **ĐỌC MỤC 5c-3 VÀ 5c-2 NGAY TRÊN TRƯỚC.** Mục này đã bị lật HAI LẦN:
+> 2026-08-31 (lỗi SAI TỈ LỆ → phải có asset riêng, mục 5c-2) và 2026-09-06 (đám
+> đông nay là **bóng đen đặc**, mục 5c-3). Cụ thể, cách tả mặt/thân bên dưới —
+> *"góc 3/4, thấy đủ hai mắt, mắt 2 chấm + miệng 1 nét"* — **KHÔNG còn áp dụng
+> cho đám đông**: bóng đen không có mặt. Giữ mục này làm lịch sử quyết định và
+> cho phần chừa chỗ/chống nhân bản vẫn còn đúng.
 
 Cảnh cần vài người vô danh (khách viếng đám tang, quản giáo đứng nền, hàng xóm
 tụ tập)? **Đừng tạo Character asset cho từng người** rồi ghép — vừa tốn, vừa
@@ -499,10 +632,12 @@ Hai thứ luôn phải có ở địa điểm đông đúc, và **cả hai vẫn
    bundle of FOUR long orange carrots, one heap of THREE round red tomatoes"*.
    Thêm một tầng ở cao độ khác cho khung đỡ phẳng: *"under EACH awning hang
    EXACTLY TWO plain bundles on short straight strings"*.
-2. **Người nền**: tả theo **mục 5c** (góc 3/4, mắt 2 chấm + miệng 1 nét, thân
-   dạng que, chống nhân bản) và **nói rõ ai đứng đâu** —
-   *"THREE behind the counters, one behind each stall; THREE on the path, TWO in
-   the LEFT THIRD and ONE in the RIGHT THIRD"*.
+2. **Người nền**: tả theo **mục 5c-3** — **bóng đen đặc, không mặt, không trang
+   phục** — và **nói rõ ai đứng đâu** kèm số: *"THREE plain solid black
+   silhouette figures behind the counters, one behind each stall; THREE more on
+   the path, TWO in the LEFT THIRD and ONE in the RIGHT THIRD"*.
+   ⚠️ Đây là điểm đã đổi so với bản cũ của mục này (tả 3/4 + mắt 2 chấm theo mục
+   5c) — bóng đen không có mặt để tả.
 
 🔑 **Cách làm: `editFrom` từ chính background trống đã đạt**, đừng sinh mới từ
 chữ. Ba lý do cùng lúc: giữ nguyên bố cục sạp/nhà vốn đã duyệt (mục 6b),
@@ -518,6 +653,10 @@ left clear and completely empty — no person may stand there"*.
 add any more of them"* — model rất hay tự nâng cấp người nền thành nhân vật đầy
 đủ, lúc đó họ tranh chỗ và tranh cả sự chú ý với nhân vật chính. Kèm câu cấm
 chồng lấp: *"she must NOT overlap any of them"*.
+
+🔑 **Cảnh dùng background loại này nên bật luôn `crowd: true`** (mục 5c-3): vế
+nhắc lại ở cuối prompt là lớp chống "nâng cấp thành người đủ" mạnh nhất hiện có,
+và nó giữ luôn cho nhóm người đã bake sẵn trong nền.
 
 ### 6g. CHÊNH CAO trong bố cục phẳng (cầu thang, giếng trời, cửa hầm)
 
@@ -746,6 +885,11 @@ Công thức prompt đã chạy ổn định, gồm 4 phần theo đúng thứ t
    Cảnh `layered` thì viết "no single-point converging perspective" thay vì
    "no perspective" (tránh mâu thuẫn với chiều sâu xếp lớp).
 
+**Cảnh đông người**: thêm `"crowd": true` — runner tự nối
+`CROWD_SILHOUETTE_BLOCK` vào hai đầu prompt, đám đông vô danh thành **bóng đen
+đặc**. Xem mục 5c-3 để biết khi nào bật và phần dàn cảnh nào prompt vẫn phải tự
+viết.
+
 **Liên tục đạo cụ**: trước khi viết `references`, rà lại nhân vật đang cầm/đeo
 gì ở shot TRƯỚC. Không có cơ chế tự kiểm tra — lỗi chỉ lộ khi xem 2 ảnh cạnh
 nhau. (Đã dính thật: giỏ đi chợ biến mất giữa 2 cảnh liền kề.)
@@ -775,6 +919,10 @@ có nhân vật đó — không có cơ chế nào nhớ hộ.
 Block do `createSceneComposites` tự nối vào mọi cảnh **cấm vẽ lưng, cấm profile,
 bắt LUÔN thấy đủ 2 mắt**. Nó nằm ở đầu prompt VÀ nhắc lại ở cuối — tức 2 vị trí
 mạnh nhất, còn prompt cảnh nằm ở giữa. Đừng viết cảnh đánh nhau với nó, sẽ thua.
+
+⚠️ Từ 2026-09-06 block này chỉ còn ràng buộc **người được vẽ đủ** ("every person
+DRAWN IN FULL"). **Bóng đen của mục 5c-3 là ngoại lệ đã ghi thẳng trong block** —
+không cần và KHÔNG ĐƯỢC tìm cách đi vòng để bóng đen có mắt.
 
 Gặp cảnh mà kịch bản đòi đúng thứ bị cấm (quay đầu 180°, nhìn từ sau lưng, chỉ
 thấy 1 bên mặt) thì **đi vòng**, đừng ép:

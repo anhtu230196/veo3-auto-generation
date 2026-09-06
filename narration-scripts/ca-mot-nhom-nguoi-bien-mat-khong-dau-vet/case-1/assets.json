@@ -24,7 +24,7 @@
       "case": 1,
       "description": "a man of about thirty wearing a plain rust-red Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, no hat, thick brown hair cut level at the jaw, clean-shaven with no beard and no moustache at all",
       "status": "success",
-      "notes": "Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
+      "notes": "🔑 QUẦN CHÚNG ĐƯỢC VẼ ĐỦ ở cảnh đông người (skill mục 5c-3): trong khung `crowd: true`, người này đứng ở TIỀN CẢNH cạnh nhân vật chính và giữ nguyên mặt + màu của mình; đám đông còn lại phía sau mới là bóng đen đặc. Đừng biến người này thành bóng. Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
     },
     {
       "name": "Colonist Man One",
@@ -32,7 +32,7 @@
       "case": 1,
       "description": "a man of about forty wearing a plain slate-blue Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, a plain flat brown cap, black hair showing below the cap, a full black beard along the jaw with no moustache",
       "status": "success",
-      "notes": "Dân thuộc địa vô danh — theo skill mục 5c-2, người nền PHẢI là Character asset để tỉ lệ khớp dàn chính, và mỗi asset chỉ dùng TỐI ĐA MỘT LẦN trong một khung. Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
+      "notes": "🔑 QUẦN CHÚNG ĐƯỢC VẼ ĐỦ ở cảnh đông người (skill mục 5c-3): trong khung `crowd: true`, người này đứng ở TIỀN CẢNH cạnh nhân vật chính và giữ nguyên mặt + màu của mình; đám đông còn lại phía sau mới là bóng đen đặc. Đừng biến người này thành bóng. Dân thuộc địa vô danh — theo skill mục 5c-2, người nền PHẢI là Character asset để tỉ lệ khớp dàn chính, và mỗi asset chỉ dùng TỐI ĐA MỘT LẦN trong một khung. Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
     },
     {
       "name": "Colonist Man Two",
@@ -49,7 +49,8 @@
       "case": 1,
       "description": "a woman of about forty wearing one plain long mustard-brown gown reaching down to the ankles as her one and only garment, with the bare thin leg lines showing below its hem, no coif and no hat, grey-streaked brown hair parted in the middle and tied back in a low bun",
       "status": "failed",
-      "lastError": "locator.count: Target page, context or browser has been closed"
+      "lastError": "locator.count: Target page, context or browser has been closed",
+      "notes": "🔑 QUẦN CHÚNG ĐƯỢC VẼ ĐỦ ở cảnh đông người (skill mục 5c-3): trong khung `crowd: true`, người này đứng ở TIỀN CẢNH cạnh nhân vật chính và giữ nguyên mặt + màu của mình; đám đông còn lại phía sau mới là bóng đen đặc. Đừng biến người này thành bóng. "
     },
     {
       "name": "Ship Master",

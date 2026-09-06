@@ -66,7 +66,7 @@ style DNA.
 #### ⏸️ ĐANG DỪNG VÌ HẾT QUOTA (2026-09-06)
 
 Case 1 Roanoke mới xong **4/17 asset** (`Governor John White`, `Eleanor Dare`,
-`Colonist Husband Ananias`, `Colonist Man One`). 13 cái còn lại vẫn `waiting`.
+`Colonist Husband Ananias`, `Colonist Man One`). 13 cái còn lại vẫn chờ.
 
 Flow báo: **"You've reached your usage limit. Please try again later. You have not
 been charged for this generation."** Người dùng chốt tạm dừng.
@@ -77,6 +77,35 @@ thiếu, không tạo trùng:
 ```
 npm run banana -- narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/assets.json --case 1
 ```
+
+#### 🆕 (2026-09-06) ĐÁM ĐÔNG = BÓNG ĐEN ĐẶC — luật mới, ảnh CHƯA chạy lần nào
+
+Người dùng chốt: **cảnh đông người thì đám đông vẽ hoàn toàn bằng đen (hoặc một
+màu đơn sắc tối), không mặt, không trang phục** — để dồn sự chú ý vào nhân vật
+chính. **Sửa ngay trong ngày**: KHÔNG quét sạch cả đám đông thành bóng — vẫn giữ
+**2-3 quần chúng có asset được vẽ đủ ở tiền cảnh** (`Colonist Man One`,
+`Colonist Woman One`, `Colonist Husband Ananias`), bóng chỉ lấp phần còn lại.
+Đã làm 4 việc:
+
+1. `styleDNA.ts`: thêm `CROWD_SILHOUETTE_BLOCK` + `CROWD_SILHOUETTE_REMINDER`.
+2. `styleDNA.ts`: **thu hẹp `SCENE_CHARACTER_VIEW_BLOCK`** từ *"every person"*
+   thành *"every person DRAWN IN FULL"*. Bắt buộc — block cũ ra lệnh *"EXACTLY
+   TWO EYES on every single face"* ở CẢ hai đầu prompt, chỏi thẳng với bóng đen
+   không mặt và sẽ thắng.
+3. `scenes.json` có cờ mới **`crowd: true`** (`scenes.ts` + `createSceneComposites.ts`)
+   — bật thì runner tự nối cặp block trên vào hai đầu prompt.
+4. Case 1 Roanoke: 4 cảnh đông người viết lại thành **hai tầng** —
+   `The Colonists Come Ashore` (3 vẽ đủ + 7 bóng), `The Settlement Full Of People`
+   (4 + 6), `The Colonists Beg Him To Sail` (3 + 5), `White Sails Away` (3 + 5).
+   Cả 17 asset vẫn còn được dùng, không cái nào mồ côi.
+
+⚠️ **Bố cục tách theo CHIỀU NGANG chứ không xa–gần** — phong cách phẳng không có
+chiều sâu, "bóng đứng phía sau" = chồng lấp, mà block thì cấm chồng lấp.
+
+⚠️ **Chưa có ảnh nào chạy bằng luật này** (đang hết quota). Mẻ đầu tiên ra thì soi
+3 thứ: bóng có **dính thành một mảng đen** không, người có asset có bị **hạ cấp
+thành bóng** không, và tỉ lệ bóng có bám theo người vẽ đủ đứng cạnh không. Chi
+tiết + cách chữa: skill `nano-banana-image-prompts` mục 5c-3.
 
 ⚠️ **PHÂN BIỆT 3 loại lỗi generate — cả ba đều hiện thành "Failed" trên card, rất
 dễ nhầm là lỗi code:**

@@ -151,28 +151,79 @@ export const CHARACTER_BODY_BLOCK =
  *
  * Câu mở đầu bằng "every person" nên cảnh KHÔNG có người thì mệnh đề tự vô hiệu, không sợ
  * model tự thêm người vào.
+ *
+ * ⚠️ 2026-09-06: câu "every person" cũ ĐÃ PHẢI THU HẸP lại thành "every person drawn in full".
+ * Lý do: đám đông nền nay vẽ thành BÓNG ĐEN ĐẶC KHÔNG CÓ MẶT (`CROWD_SILHOUETTE_BLOCK`), mà
+ * block này lại ra lệnh "EXACTLY TWO EYES ... on every single face in the picture" — hai vế
+ * chỏi nhau trực tiếp, và vế này còn được NHẮC LẠI ở cuối prompt nên nó thắng. Không thu hẹp
+ * thì model sẽ gắn mắt vào bóng đen.
  */
 export const SCENE_CHARACTER_VIEW_BLOCK =
-  "IMPORTANT — every person in this picture keeps the THREE-QUARTER VIEW they already have in " +
-  "their own character reference image: head and body turned about forty-five degrees to one " +
+  "IMPORTANT — every person DRAWN IN FULL in this picture, meaning everyone who has their own " +
+  "character reference image attached, keeps the THREE-QUARTER VIEW they already have in " +
+  "that reference image: head and body turned about forty-five degrees to one " +
   "side, only ONE ear visible, the mass of the hair sitting toward the far side, and one " +
   "shoulder plainly nearer the viewer than the other. THREE-QUARTER means BETWEEN the two " +
   "extremes, and BOTH extremes are forbidden: do NOT straighten anyone into a flat symmetrical " +
   "front view, and equally do NOT turn anyone into a full side profile or show anyone from " +
-  "behind. EXACTLY TWO EYES must be visible on every single face in the picture — never one " +
+  "behind. EXACTLY TWO EYES must be visible on every single face drawn in full — never one " +
   "eye, never none, never the back of a head. If a pose would hide one eye, rotate that person " +
   "back toward the viewer until both eyes show again. The eyes are drawn only as two plain " +
   "round black dots, or as two simple downward curves when the eyes are closed, or as two " +
   "large white circles with small black pupils for shock — with no nose and no eyebrows. " +
+  "The ONE exception is any figure this prompt asks for as a plain solid single-colour " +
+  "silhouette: such a figure has NO face at all, so do NOT give it eyes, a mouth or any other " +
+  "feature, and do NOT redraw it as a person drawn in full. " +
   "Every person also keeps the minimal body build of their reference image: arms and legs as " +
   "plain thin tapered lines that simply stop, with NO hands, NO feet and NO shoes; NO sleeves; " +
   "NO trousers or separate leg clothing — bare thin lines below one single flat garment shape.";
 
 /** Nhắc lại ở CUỐI prompt cảnh ghép — truyền qua tham số `styleBlock` của createImageIngredient. */
 export const SCENE_CHARACTER_VIEW_REMINDER =
-  "Remember: every person stays three-quarter turned — never flattened into a front view and " +
-  "never turned into a side profile or seen from behind — and EXACTLY TWO EYES are visible on " +
-  "every single face, never one.";
+  "Remember: every person drawn in full stays three-quarter turned — never flattened into a " +
+  "front view and never turned into a side profile or seen from behind — and EXACTLY TWO EYES " +
+  "are visible on every single face drawn in full, never one. Plain solid single-colour " +
+  "silhouette figures are the exception and keep no face at all.";
+
+/**
+ * ĐÁM ĐÔNG NỀN = BÓNG ĐEN ĐẶC (người dùng chốt 2026-09-06).
+ *
+ * `createSceneComposites` chỉ nối block này vào cảnh có `crowd: true` trong `scenes.json` —
+ * KHÔNG nối vào mọi cảnh, vì cảnh 2-3 người không phải cảnh đông người và ở đó ai cũng phải
+ * được vẽ đầy đủ.
+ *
+ * VÌ SAO: đám đông vẽ đầy đủ chi tiết tranh hết sự chú ý với nhân vật chính, và (bài học mục
+ * 5c-2 của skill) người nền tả bằng chữ luôn ra sai tỉ lệ vì không có ảnh master nào neo. Bóng
+ * đen đặc giải quyết cả hai: không còn mặt/trang phục để tranh sự chú ý, và thứ duy nhất còn
+ * lại là HÌNH DÁNG — thứ CÓ THỂ khoá bằng chữ (ra hẳn tỉ lệ đầu/thân), khác hẳn mặt và quần áo.
+ *
+ * Màu: mặc định đen đặc. Nền tối (trời đêm, rừng sẫm) thì prompt CẢNH nói rõ một màu đơn sắc
+ * tối khác — câu "or ... the one single dark colour this prompt names instead" chừa sẵn cửa đó.
+ */
+export const CROWD_SILHOUETTE_BLOCK =
+  "IMPORTANT — this is a CROWD picture, and everyone in the crowd is drawn as a plain " +
+  "SILHOUETTE ONLY. Fill each crowd figure completely with ONE single flat solid black, the " +
+  "same black as the outlines, or with the one single dark colour this prompt names instead, " +
+  "so that the whole figure reads as one unbroken flat shape with nothing inside it: draw NO " +
+  "eyes, NO dots, NO mouth, NO nose, NO ears and NO face of any kind on any of them, and NO " +
+  "collar, NO buttons, NO belt, NO pocket, NO folds, NO creases, NO pattern and NO second " +
+  "colour anywhere inside the shape. A crowd figure still has the same build as the people " +
+  "drawn in full: one plain round head sitting directly on ONE single plain flat garment " +
+  "shape, with the arms and the bare legs continuing as thin plain straight lines that simply " +
+  "stop at their ends — no hands, no feet, no shoes and no trousers. Every crowd figure is the " +
+  "SAME total height and the SAME large-head short-body proportion as the people drawn in " +
+  "full: its head alone is about one quarter of that figure's whole height, never a small head " +
+  "on a long body. Keep a clear gap between crowd figures so their shapes never merge into one " +
+  "black mass, and vary only their heights and the outline of their hair and garment shapes " +
+  "slightly so they do not look like copies of one figure. The crowd stays background: no " +
+  "crowd figure may overlap, touch or stand in front of anyone drawn in full, and none of them " +
+  "may be turned into a detailed person.";
+
+/** Nhắc lại ở CUỐI prompt cảnh đông người — nửa sau của công thức chống "ảnh thắng chữ". */
+export const CROWD_SILHOUETTE_REMINDER =
+  "Remember: every person in the crowd stays one plain flat solid single-colour silhouette " +
+  "with no face, no features and no clothing detail inside it — only the people who have their " +
+  "own character reference image attached keep their faces, their two eyes and their colours.";
 
 /** Nhắc lại ở CUỐI prompt — nửa sau của công thức chống "ảnh thắng chữ" (mục 8.1.3f). */
 export const CHARACTER_VIEW_REMINDER =

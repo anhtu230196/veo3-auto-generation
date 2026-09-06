@@ -25,6 +25,18 @@ export interface SceneComposite {
   references: string[];
   /** Prompt đầy đủ mô tả cách ghép — không cần lặp lại style block, các ảnh reference đã neo phong cách. */
   prompt: string;
+  /**
+   * CẢNH ĐÔNG NGƯỜI — bật thì `createSceneComposites` nối thêm `CROWD_SILHOUETTE_BLOCK`, bắt
+   * đám đông nền phải là BÓNG ĐEN ĐẶC không mặt, không trang phục (người dùng chốt 2026-09-06,
+   * xem skill `nano-banana-image-prompts` mục 5c-3).
+   *
+   * Chỉ bật khi trong khung có một NHÓM người vô danh. Cảnh 2-3 người mà ai cũng cần nhận diện
+   * thì để tắt — bật nhầm sẽ biến nhân vật đáng ra vẽ đủ thành bóng đen.
+   *
+   * Prompt của cảnh vẫn phải tự tả PHẦN DÀN CẢNH: đúng bao nhiêu bóng, đứng ở đâu, chừa vùng
+   * nào trống cho nhân vật chính. Block chỉ lo cách VẼ, không lo bố cục.
+   */
+  crowd?: boolean;
   status?: AssetStatus;
   lastError?: string;
   notes?: string;

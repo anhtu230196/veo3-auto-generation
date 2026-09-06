@@ -20,6 +20,8 @@ import { ensureProject } from "../veo3bot/project.js";
 import { createImageIngredient } from "../veo3bot/imageAsset.js";
 import { atomicWriteJson, loadSceneFile } from "./scenes.js";
 import {
+  CROWD_SILHOUETTE_BLOCK,
+  CROWD_SILHOUETTE_REMINDER,
   SCENE_CHARACTER_VIEW_BLOCK,
   SCENE_CHARACTER_VIEW_REMINDER,
 } from "./styleDNA.js";
@@ -68,18 +70,30 @@ async function main() {
   let ok = 0;
   const failed: string[] = [];
   for (const scene of todo) {
-    console.log(`→ "${scene.name}" (case ${scene.case}) — refs: ${scene.references.join(", ")}`);
+    console.log(
+      `→ "${scene.name}" (case ${scene.case})${scene.crowd ? " [crowd]" : ""} — refs: ${scene.references.join(", ")}`
+    );
     const t0 = Date.now();
     try {
       // KHOÁ góc 3/4 ở CẢ ĐẦU LẪN CUỐI prompt (công thức chống "ảnh thắng chữ", RUNBOOK
       // 8.1.3f). `styleBlock` được createImageIngredient nối vào cuối, nên đó đúng là chỗ
       // "nhắc lại". Không để scene tự viết tay 2 đoạn này — dễ quên, mà quên thì nhân vật bị
       // nắn thẳng về chính diện và chỉ phát hiện được bằng mắt.
+      //
+      // Cảnh `crowd: true` đi kèm cặp block bóng đen, cũng khoá hai đầu đúng công thức đó.
+      // Đặt SAU block góc 3/4 để nó là vế nói sau về mặt/mắt — block kia đã tự chừa ngoại lệ
+      // cho bóng đen, nhưng thứ tự này thì kể cả model đọc lướt vẫn ra đúng.
+      const prefix = scene.crowd
+        ? `${SCENE_CHARACTER_VIEW_BLOCK} ${CROWD_SILHOUETTE_BLOCK}`
+        : SCENE_CHARACTER_VIEW_BLOCK;
+      const reminder = scene.crowd
+        ? `${SCENE_CHARACTER_VIEW_REMINDER} ${CROWD_SILHOUETTE_REMINDER}`
+        : SCENE_CHARACTER_VIEW_REMINDER;
       await createImageIngredient(
         page,
         scene.name,
-        `${SCENE_CHARACTER_VIEW_BLOCK} ${scene.prompt}`,
-        SCENE_CHARACTER_VIEW_REMINDER,
+        `${prefix} ${scene.prompt}`,
+        reminder,
         projectUrl,
         scene.references
       );
