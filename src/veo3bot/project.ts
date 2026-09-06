@@ -54,14 +54,66 @@ export async function dismissOnboardingDialog(page: Page): Promise<void> {
 }
 
 /**
- * Phải chờ tường minh nút "Add Media" (luôn có mặt bên trong 1 project đã load xong)
- * trước khi coi là sẵn sàng, vì "networkidle" bắn xong trước khi Flow hydrate xong.
- * LƯU Ý: textContent thật của nút là "addAdd Media" (icon ligature "add" dính liền
- * label, KHÔNG có khoảng trắng) — selector chỉ nên match phần label "Add Media"
- * (has-text làm substring match nên vẫn khớp đúng phần này bên trong chuỗi dính liền).
+ * 🔴 TÍN HIỆU "PROJECT ĐÃ HYDRATE XONG" — ĐỔI 2026-09-05, xem RUNBOOK mục 0.
+ *
+ * Google đổi Flow sang tên miền `flow.google.com` kèm giao diện mới. Nút
+ * **"Add Media" BIẾN MẤT HOÀN TOÀN** — mọi chỗ chờ nó đều treo 45-90 giây rồi ném lỗi,
+ * và triệu chứng nhìn y hệt "trang tải chậm" nên rất dễ chẩn đoán nhầm.
+ *
+ * Thay bằng nút mở bảng media. Giao diện mới có **aria-label tử tế**, nên bám theo
+ * aria-label thay vì hack ligature `has-text("addAdd Media")` như bản cũ — bền hơn hẳn,
+ * và không phụ thuộc vào việc icon ligature có dính liền label hay không.
+ *
+ * Đã xác minh trực tiếp trên trình duyệt thật 2026-09-05: đây là nút DUY NHẤT luôn có mặt
+ * trong 1 project đã load xong, và nó cũng chính là nút mở bảng chọn media (thay `add_2` cũ).
+ */
+export const PROJECT_READY_SELECTOR = 'button[aria-label="Add media menu"]';
+
+/**
+ * 🔴 NÚT MỞ BẢNG CHỌN ASSET (thay `button:has-text("add_2")` cũ) — ĐỔI 2026-09-05.
+ *
+ * ⚠️ ĐỪNG NHẦM với `PROJECT_READY_SELECTOR` ở trên. Tôi đã nhầm đúng một lần: giao diện mới
+ * có HAI nút khác nhau, cả hai đều "thêm media", nhưng mở ra hai thứ hoàn toàn khác:
+ * - `Add media menu` (nút này) → menu Upload / New collection / Create character / New scene.
+ *   Luôn có mặt, nên dùng làm tín hiệu SẴN SÀNG — nhưng KHÔNG có ô "Search assets".
+ * - `Add ingredients to the prompt box` (hằng số dưới đây) → BẢNG CHỌN ASSET thật: tab
+ *   All/Images/Videos/Characters/Uploads + ô "Search assets" + nút "Upload media".
+ *   Đây mới là thứ `attachReferenceImage` và `attachExistingAssets` cần.
+ */
+export const ASSET_PICKER_SELECTOR = 'button[aria-label="Add ingredients to the prompt box"]';
+
+/**
+ * 🔴 DỌN OVERLAY CÒN SÓT — BẮT BUỘC gọi trước mọi click sau khi đã mở menu/bảng nào đó.
+ *
+ * Giao diện mới dựng bằng Angular Material: mỗi menu/bảng mở ra kèm một
+ * `div.cdk-overlay-backdrop` phủ toàn trang. Backdrop này TRONG SUỐT nên nhìn ảnh chụp
+ * KHÔNG thấy gì bất thường, nhưng nó **nuốt mọi cú click** — Playwright báo
+ * *"subtree intercepts pointer events"* rồi timeout 30 giây.
+ *
+ * Đây chính là thủ phạm của triệu chứng "pill cài đặt không phản hồi" sau khi đổi giao diện:
+ * selector của pill vẫn đúng, chỉ là có backdrop đè lên. Chẩn đoán nhầm sang "trang lag" rất
+ * dễ, vì runner có sẵn nhánh reload cho trường hợp đó.
+ */
+export async function dismissOverlays(page: Page): Promise<void> {
+  // ⚠️ KHÔNG chỉ kiểm `.cdk-overlay-backdrop`. Menu chuột phải của lưới media mở ra KHÔNG kèm
+  // backdrop (Angular Material cho phép `hasBackdrop: false`), nên vòng lặp chỉ nhìn backdrop sẽ
+  // thoát ngay trong khi `div[role="menu"]` vẫn còn đó và vẫn nuốt click. Đã dính thật: sau một
+  // lần đổi tên hỏng, MỌI asset sau đó đều timeout ở những click hoàn toàn không liên quan.
+  // `.cdk-overlay-pane` bao trùm mọi thứ Material bung ra: menu, dialog, bảng chọn, tooltip panel.
+  const OPEN_OVERLAY = ".cdk-overlay-backdrop, .cdk-overlay-container .cdk-overlay-pane";
+  for (let i = 0; i < 8; i++) {
+    if ((await page.locator(OPEN_OVERLAY).count()) === 0) return;
+    await page.keyboard.press("Escape").catch(() => {});
+    await page.waitForTimeout(400);
+  }
+}
+
+/**
+ * Phải chờ tường minh 1 phần tử chắc chắn có bên trong project đã load xong trước khi coi
+ * là sẵn sàng, vì "networkidle" bắn xong trước khi Flow hydrate xong.
  */
 export async function waitForProjectReady(page: Page): Promise<void> {
-  const addMediaButton = page.locator('button:has-text("Add Media")');
+  const addMediaButton = page.locator(PROJECT_READY_SELECTOR);
   try {
     await addMediaButton.waitFor({ state: "visible", timeout: 45000 });
   } catch {

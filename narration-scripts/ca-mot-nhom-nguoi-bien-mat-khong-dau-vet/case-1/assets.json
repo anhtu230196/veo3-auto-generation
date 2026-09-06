@@ -1,0 +1,166 @@
+{
+  "episode": "Cả Một Nhóm Người Biến Mất Không Dấu Vết — case 1 (Roanoke)",
+  "flowProject": "nhom-bien-mat-case-1",
+  "assets": [
+    {
+      "name": "Governor John White",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about fifty wearing a plain dark brown Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, a plain tall-crowned wide-brimmed black hat, grey hair showing below the hat brim, a short pointed grey beard and a grey moustache",
+      "status": "success",
+      "notes": "Nhân vật chính, thống đốc. Ngoại hình theo bản khắc tư liệu refs/case-1/07-croatoan-03.jpg (ông đứng giữa, râu bạc, mũ vành rộng). Theo skill mục 5e: KHÔNG tả quần/giày dù người Anh thế kỷ 16 mặc quần chẽn — thời kỳ đọc ra qua MŨ và áo doublet, chân vẫn là nét trần như cả kênh. Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
+    },
+    {
+      "name": "Eleanor Dare",
+      "type": "character",
+      "case": 1,
+      "description": "a woman of about twenty-five wearing one plain long dark green gown reaching down to the ankles as her one and only garment, with the bare thin leg lines showing below its hem, a plain white linen coif covering the top of the head and tied under the chin, brown hair showing at the temples below the coif",
+      "status": "success",
+      "notes": "Con gái White, mẹ của Virginia Dare. Áo dài LIỀN THÂN — đúng ngoại lệ duy nhất của skill mục 5e (đồ liền thân che phần chân thì tả như một mảng áo kéo dài, và nói rõ chân ló ra dưới gấu vẫn là nét trần). Không dùng váy-rời-áo vì đó vẫn là đồ phần chân."
+    },
+    {
+      "name": "Colonist Husband Ananias",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about thirty wearing a plain rust-red Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, no hat, thick brown hair cut level at the jaw, clean-shaven with no beard and no moustache at all",
+      "status": "success",
+      "notes": "Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
+    },
+    {
+      "name": "Colonist Man One",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about forty wearing a plain slate-blue Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, a plain flat brown cap, black hair showing below the cap, a full black beard along the jaw with no moustache",
+      "status": "success",
+      "notes": "Dân thuộc địa vô danh — theo skill mục 5c-2, người nền PHẢI là Character asset để tỉ lệ khớp dàn chính, và mỗi asset chỉ dùng TỐI ĐA MỘT LẦN trong một khung. Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay."
+    },
+    {
+      "name": "Colonist Man Two",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about fifty-five wearing a plain dark grey Elizabethan doublet buttoned up the front as his one and only garment, ONE small plain white ruff collar standing at the neck above it, no hat, a bald crown with grey hair at the sides only, a long grey moustache and no beard",
+      "status": "failed",
+      "notes": "Cổ ruff trắng thêm 2026-08-31 sau khi soi bản khắc refs/case-1/08-white-depictions-01 (lễ rửa tội Virginia Dare): đây là dấu hiệu thời Elizabeth SỐNG SÓT được qua đơn giản hoá — chỉ một vạch trắng ở cổ, rẻ hơn nhiều so với tả phồng tay áo hay quần chẽn, mà đọc ra niên đại ngay.",
+      "lastError": "Hết thời gian chờ tạo ảnh cho \"Colonist Man Two\" — kiểm tra thủ công trong Flow."
+    },
+    {
+      "name": "Colonist Woman One",
+      "type": "character",
+      "case": 1,
+      "description": "a woman of about forty wearing one plain long mustard-brown gown reaching down to the ankles as her one and only garment, with the bare thin leg lines showing below its hem, no coif and no hat, grey-streaked brown hair parted in the middle and tied back in a low bun",
+      "status": "failed",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Ship Master",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about forty-five wearing a plain dark navy short seaman's coat buttoned up the front as his one and only garment, a plain knitted dark red cap pulled over the head, brown hair showing below the cap, a thick brown moustache and a short brown chin beard",
+      "status": "failed",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Hatteras Islander",
+      "type": "character",
+      "case": 1,
+      "description": "a man of about thirty-five wearing one plain soft tan deerskin garment over one shoulder as his one and only garment, no hat, black hair shaved close on one side of the head and left long on the other side and gathered into a knot, clean-shaven with no beard and no moustache at all, and pale grey eyes",
+      "status": "failed",
+      "notes": "Người bản địa đảo Hatteras — kiểu tóc cạo một bên búi một bên tả theo tranh màu nước CHÍNH JOHN WHITE vẽ tại chỗ năm 1585 (refs/case-1/01-john-white-*), không viết theo trí nhớ. Mắt xám là chi tiết chốt của case (kịch bản: 'ancestors described as having pale skin and gray eyes'). Vẽ trang nghiêm, không kỳ dị hoá.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Carved Fence Post",
+      "type": "prop",
+      "case": 1,
+      "description": "A single thick upright wooden fence post seen from the front, standing alone, its top cut to a plain point. Its face carries ONE plain rectangular carved panel, sunk slightly into the wood, roughly a third of the way down from the top. That panel is completely BLANK — absolutely no writing, no letters, no words, no marks and no scratches on it anywhere. Draw NO wood grain, NO bark, NO knots, NO rope and NO nails. Plain flat mid-brown wood in a few flat tints.",
+      "status": "failed",
+      "notes": "🔴 CHI TIẾT CHỐT CỦA CẢ CASE, và cũng là chỗ pipeline yếu nhất. Chữ CROATOAN PHẢI để trống theo skill mục 6i — model viết chữ ra ký tự méo mó, đã dính 4 lần (bia case 4; bài vị + băng tang + mặt báo case 5). Vẽ sẵn MỘT khung khắc chữ nhật rỗng đúng chỗ, NGƯỜI DÙNG ĐIỀN CHỮ 'CROATOAN' lúc dựng. Cấm luôn cả 'no scratches' vì model hay bịa nét khắc nguệch ngoạc cho giống chữ. Tham khảo refs/case-1/07-croatoan-03.jpg (bản khắc kinh điển: chữ khắc ngang thân cột, cỡ ngang tầm ngực).",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Elizabethan Ship",
+      "type": "prop",
+      "case": 1,
+      "description": "A single small Elizabethan sailing ship seen from the side, floating level, the whole ship inside the frame. One plain curved dark brown hull with a plain raised block at the stern end, EXACTLY THREE plain straight masts of different heights, and on them EXACTLY THREE plain square white sails and no more. Draw NO rigging lines, NO ropes, NO flags, NO planking lines, NO gun ports, NO lettering and no water around it.",
+      "status": "failed",
+      "notes": "Tàu của White. Ra số cột buồm và buồm theo skill mục 6c — để mở là model vẽ cả mạng dây chằng, không đồ lại nổi. Tham khảo refs/case-1/06-elizabethan-ship-01/02 (bản dựng lại tàu Golden Hind cùng thời).",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Rifled Chest",
+      "type": "prop",
+      "case": 1,
+      "description": "A single wooden chest seen from the side, standing on the ground with its lid tipped fully open and leaning back, so the chest reads as emptied. The chest is ONE plain flat mid-brown box shape with ONE plain darker band around its lid edge and nothing else — no lock, no hinges drawn, no studs, no wood grain, no carving and no lettering. It is completely EMPTY inside: draw nothing at all within it.",
+      "status": "failed",
+      "notes": "Đồ đạc bị đào lên và lục tung. Hòm để TRỐNG có chủ đích — cái rùng rợn của case là sự VẮNG MẶT, đúng nguyên tắc mục 11e (thứ đáng sợ nằm ở lời kể, không nằm trong ảnh).",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Roanoke Settlement Standing",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A small English settlement on a wooded island in 1587, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain pale grey overcast sky band across the top; SECOND one low row of plain dark green pine and oak treetops running edge to edge, so the woods close off the far side; THIRD a row of EXACTLY THREE small plain timber cottages standing side by side and seen FACE ON, filling the frame from the far left edge to the far right edge with no gap of open ground at either side — each cottage wall ONE single flat shape of pale weathered brown drawn as a true rectangle with its edges parallel to the edges of the picture and NO side wall visible, each under ONE single simple triangular dark grey thatched roof, all three roofs at exactly the same height, and each cottage having EXACTLY ONE plain doorway and EXACTLY ONE plain square window and no more; FOURTH one plain palisade fence running straight across the whole width in front of the cottages, drawn as EXACTLY TWELVE plain upright timber posts standing shoulder to shoulder, every post the same width and every post cut to a plain point at the top, with nothing else on it — no gate, no rails, no rope; and FIFTH, filling the whole bottom third of the frame nearest the viewer, one plain flat pale sandy-yellow ground strip running edge to edge, left completely clear and empty so that people can stand on it. Every band runs perfectly horizontally, unbroken from edge to edge; nothing is drawn at an angle, nothing narrows toward a distance and there is no vanishing point anywhere. The palisade posts stand ON the sandy ground strip and must touch it, not float. Draw NO wood grain, NO plank lines, NO thatch straws drawn one by one, NO grass blades and NO shadows. Every sign and board is left completely BLANK — no writing, no letters and no carving anywhere. There are no people, no animals, no boats and no fires in the picture. Muted palette of pale weathered brown, dark green, sandy yellow and pale grey in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "failed",
+      "notes": "🔑 CẢNH GÀI của cặp đối xứng — bản LÀNG CÒN NGUYÊN. Địa hình theo ảnh di tích thật Fort Raleigh (refs/case-1/03-fort-raleigh-04.jpg): đất cát vàng nhạt, rừng thông và sồi cao phía sau, trời xám. Hàng rào cọc đầu nhọn theo bản khắc 07-croatoan-03.jpg. Ra số 3 nhà + 12 cọc theo mục 6c.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Roanoke Settlement Dismantled",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "editFrom": "Roanoke Settlement Standing",
+      "description": "Use the single reference image and keep absolutely everything about the layout unchanged — the same pale grey sky band, the same row of dark green treetops, the same sandy-yellow ground strip across the bottom, the same colours, and the same flat 2D style with bold uniform-width black outlines and completely flat colour fills, no shading and no gradients. Do not move anything and do not change the camera. Change ONLY this, so that the settlement reads as carefully taken apart and abandoned: REMOVE all three cottages completely and in their place leave EXACTLY THREE plain bare rectangular outlines of foundation timbers lying flat on the ground where each cottage used to stand, each drawn as ONE plain thin empty rectangle of darker brown and nothing more — no walls, no roofs, no rubble, no broken planks and no burnt marks. From the palisade fence REMOVE most of the posts, leaving EXACTLY THREE upright posts still standing, spaced far apart with wide empty gaps between them, each still cut to a plain point at the top. Everything else stays exactly as it already is. The whole sandy ground strip across the bottom stays completely clear and empty. There are still no people, no animals, no boats and no fires anywhere in the picture, and no writing or letters on anything.",
+      "status": "failed",
+      "notes": "🔑 CẢNH MỞ của cặp — dùng editFrom để trùng khít TỪNG mét với bản còn nguyên, vì cả sức nặng của case nằm ở chỗ hai khung hình giống hệt nhau mà một cái trống. Kịch bản nói nhà bị 'carefully taken apart' chứ không phải bị phá — nên vẽ móng nhà còn nguyên nét, cấm tường minh đổ nát/cháy. Chừa lại 3 cọc để còn chỗ gắn cột khắc chữ ở cảnh sau.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Roanoke Shore Daytime",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "A bare sandy shore on a wooded island in 1587, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain pale grey overcast sky band filling the upper part; SECOND one single perfectly straight horizontal horizon line running unbroken from the far left edge to the far right edge; THIRD a plain flat grey-blue sea band running edge to edge, drawn as ONE single flat shape crossed by EXACTLY THREE plain thin darker horizontal lines and NOTHING MORE — no waves, no foam, no crests and no reflections; and FOURTH, filling the whole bottom third of the frame nearest the viewer, one plain flat pale sandy-yellow beach strip running edge to edge, left completely clear and empty so that people can stand on it, carrying EXACTLY TWO plain pieces of pale grey driftwood drawn as simple straight bars and no more. The beach is the band CLOSEST to the viewer and the sky is furthest away. Draw NO grass blades, NO shells, NO pebble texture, NO footprints and NO shadows. There are no people, no boats, no ships and no birds anywhere in the picture. Muted palette of pale grey, grey-blue and sandy yellow in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "failed",
+      "notes": "Bãi biển nơi đoàn đổ bộ và nơi White rời đi. Cố ý KHÔNG vẽ tàu vào background — tàu là Prop riêng, để cảnh nào cần thì ghép, cảnh 'không còn một chiếc thuyền nào' thì để trống. Thứ tự dải theo mục 6a: bãi cát là dải DƯỚI CÙNG vì người đứng trên đó.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Colonist Cottage Interior",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The inside of a small plain timber cottage in 1587, seen straight on like a theatre backdrop. The picture is built from horizontal bands stacked top to bottom: FIRST a plain dark brown beam band across the top standing for the roof timbers; SECOND a plain pale clay-brown plaster back wall filling the middle, carrying EXACTLY ONE plain small square window with EXACTLY FOUR plain straight bars across it in its LEFT HALF, filled with one flat pale grey shape, and EXACTLY ONE plain shelf drawn as ONE single flat horizontal bar in its RIGHT HALF with EXACTLY TWO plain blank pots standing on it and no more; and THIRD, filling the whole bottom third of the frame nearest the viewer, one plain flat packed-earth floor running edge to edge. Standing on that floor against the back wall in the RIGHT THIRD is EXACTLY ONE plain low wooden bed, drawn as ONE plain flat mattress slab with ONE plain flat blanket shape over it and nothing else on it, and beside it EXACTLY ONE plain wooden stool. The LEFT TWO THIRDS of the floor is left clear and completely empty so that people can stand there. The bed and the stool rest ON the floor and must touch it, not float. Every band runs perfectly horizontally, unbroken from edge to edge; nothing is drawn at an angle and there is no vanishing point anywhere. The floor is ONE single flat shape with absolutely NO floorboards, NO tiles and NO grid. Draw NO wood grain, NO plaster texture, NO fire, NO hearth, NO pictures and NO writing of any kind anywhere. There are no people in the picture. Warm muted palette of clay brown, dark brown and pale grey in a few flat tints. Plain flat indoor daylight, daytime.",
+      "status": "failed",
+      "notes": "Cảnh Virginia Dare chào đời. Cấm lò sưởi/lửa vì nó kéo theo khói và ánh sáng ấm, phá nền phẳng.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Ship Deck In Storm",
+      "type": "background",
+      "case": 1,
+      "composition": "flat",
+      "reserveCharacterSpace": true,
+      "description": "The open deck of a small wooden sailing ship at sea in a storm, seen straight on from on board. The picture is built from horizontal bands stacked top to bottom: FIRST a plain very dark grey storm sky band across the top with EXACTLY TWO plain darker cloud shapes and no more — no lightning, no rain streaks and no stars; SECOND EXACTLY ONE plain straight mast pole rising from the deck at one side, running from the top edge of the picture down to the deck, with ONE plain furled sail bundle tied across it and no rigging lines at all; THIRD a plain flat dark brown wooden deck floor filling the middle and running edge to edge; and FOURTH, along the very bottom edge, one plain low wooden rail running edge to edge at roughly waist height, with a narrow strip of flat dark grey-green sea just visible beyond it. The middle of the deck floor stays clear and empty, reserved for people to stand on. Draw NO planking lines, NO wood grain, NO ropes, NO barrels, NO crates, NO water on the deck, NO spray and NO texture of any kind. There are no people in the picture. Dark palette of dark grey, dark brown and grey-green in a few flat tints. Plain flat stormy daylight, daytime.",
+      "status": "failed",
+      "notes": "Cảnh bão thổi dạt tàu. Cấm mưa/sét/sóng bắn vì phong cách phẳng không vẽ được hiệu ứng động — bão đọc ra qua TRỜI SẪM và cột buồm cuốn buồm, phần còn lại để lời kể gánh.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    },
+    {
+      "name": "Hatteras Woodland Shore",
+      "type": "background",
+      "case": 1,
+      "composition": "layered",
+      "reserveCharacterSpace": true,
+      "description": "A quiet wooded shore on a low sandy island, drawn as a layered flat-depth landscape with three clearly separated layers and nothing else. FAR LAYER: one plain flat grey-blue band of open water running edge to edge along the top, with ONE single perfectly straight horizon line above it and a plain pale grey sky band above that. MIDDLE LAYER: EXACTLY SEVEN plain tall pine trunks and no more, drawn as plain straight vertical bars of flat grey-brown of slightly different heights, spaced apart with clear gaps between them, each carrying ONE simple flat dark green rounded crown at the top and no branches drawn one by one. NEAR LAYER, filling the whole bottom third of the frame nearest the viewer: one plain flat pale sandy-yellow ground strip running edge to edge, left completely clear and empty so that people can stand on it, with EXACTLY THREE plain low rounded shapes of flat muted green along its far edge for scrub and no more. The sandy ground is the layer CLOSEST to the viewer and the open water is furthest away. Draw NO grass blades, NO pine needles drawn one by one, NO bark texture, NO shells and NO shadows. There are no people, no animals and no birds anywhere in the picture. Muted palette of pale grey, grey-blue, grey-brown, dark green and sandy yellow in a few flat tints. Plain flat overcast daylight, daytime.",
+      "status": "failed",
+      "notes": "Đảo Hatteras cho cảnh kết. Cảnh quan theo ảnh Outer Banks thật (refs/case-1/04-roanoke-coast-*): đảo cát thấp, rừng thông thưa, nước nông vây quanh.",
+      "lastError": "locator.count: Target page, context or browser has been closed"
+    }
+  ]
+}

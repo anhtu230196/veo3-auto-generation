@@ -33,7 +33,7 @@ Chia theo nhóm, mỗi nhóm ứng với một hoặc vài asset:
 
 | Nhóm | Ví dụ |
 |---|---|
-| **Nhân vật CÓ THẬT** | ảnh chân dung, ảnh báo chí, ảnh thờ — **ưu tiên số 1**, xem mục 4 |
+| **Nhân vật CÓ THẬT** | ảnh chân dung, ảnh báo chí, ảnh thờ — **ưu tiên số 1**, xem mục 4. Case trước thời nhiếp ảnh, hoặc không có chân dung nào → **mục 4c** |
 | Kiến trúc | nhà ở theo vùng/thời kỳ, nội thất, công trình công cộng |
 | Trang phục theo thời kỳ | thường phục nông thôn, đồng phục, tang phục |
 | Phương tiện & đồ vật | xe đạp, thuyền, nông cụ, đồ thờ |
@@ -164,6 +164,85 @@ vách đá, có bậc đá đi bộ. Sai hẳn địa hình.
 
 👉 Có ảnh thật rồi thì **đối chiếu từng background một** với ảnh, và ghi vào
 manifest cái nào sai + sai ở đâu, kể cả khi chưa sửa ngay.
+
+## 4c. 🔴 NHÂN VẬT KHÔNG CÓ ẢNH CHỤP — dùng TRANH VẼ, và CẤM ảnh diễn viên
+
+Kênh này sẽ còn gặp nhiều case trước thời nhiếp ảnh (Roanoke 1587, Franklin 1845,
+Flannan Isle 1900...). Mục 4 dạy tra ảnh nhân vật thật; mục này là việc phải làm
+khi **ảnh thật không tồn tại**.
+
+### (1) XÁC MINH là không có, rồi GHI LẠI
+
+Đừng im lặng bỏ qua. Tra thẳng *"<tên> portrait known likeness exists"* rồi ghi
+kết quả vào manifest kèm nguồn.
+
+Ca thật (case Roanoke, 2026-08-31): **John White không có chân dung nào** — nghịch
+lý là chính ông là hoạ sĩ của đoàn, vẽ hàng chục bức về người Algonquian nhưng
+không vẽ mình, và không ai cùng thời vẽ ông. Ta có tranh ông VẼ, không có tranh vẽ
+ÔNG. Eleanor Dare, Virginia Dare cũng vậy.
+
+Không ghi ra thì phiên sau lại đi tra vòng nữa — đúng lỗi đã mắc ở mục 4b, chỉ
+ngược chiều.
+
+### (2) Người dùng chốt: KHÔNG có ảnh thật thì lấy ẢNH VẼ LẠI
+
+*"nếu không có ảnh người thật thì kiếm ảnh vẽ lại cũng được"* (2026-08-31). Nguồn
+tốt, theo thứ tự:
+
+- **Bản khắc / minh hoạ sách thế kỷ 19-20** — loại nhiều nhất, dễ tìm trên
+  Commons qua tên sách: `Stories of American explorers`, `Stories of the three
+  Americas`, tra kèm tên sự kiện.
+- **Tranh sơn dầu / bản khắc cùng thời** nếu có.
+- **Tượng đài, tem thư, mặt đồng xu kỷ niệm** — cũng là hình dung tạo hình.
+- **Bản dựng lại của hoạ sĩ** cho công trình/địa điểm (`artist's reconstruction`).
+
+### (3) 🔴 CẤM TUYỆT ĐỐI: ảnh DIỄN VIÊN HOÁ TRANG / tái hiện lịch sử
+
+**Người dùng chốt thẳng: *"chỉ lấy ảnh vẽ lại chứ không lấy ảnh diễn viên hóa
+trang"*.**
+
+Lý do: diễn viên là **diện mạo của một người thật đang sống**, không liên quan gì
+tới câu chuyện. Lấy làm mẫu tạo hình nghĩa là ta đang vẽ lại người đó. Bản khắc
+thì khác — nó là hình dung tập thể về nhân vật lịch sử, không gắn với ai cụ thể.
+
+⚠️ Loại này **rất dễ lọt** vì nằm lẫn trong kết quả tìm địa danh. Đã lọt 4 ảnh ở
+case Roanoke: biển thuyết minh và nhà hát ngoài trời ở khu di tích, cộng **một bưu
+thiếp VẼ LẠI cảnh sân khấu** — vẽ thì có vẽ thật, nhưng vẫn là diễn viên hoá
+trang. Dấu hiệu nhận biết trong tiêu đề file: `Lost Colony`, `outdoor drama`,
+`historical drama`, `reenactment`, `living history`, `festival park`,
+`Waterside Theatre`, tên đoàn kịch.
+
+👉 Rà lại tiêu đề file trước khi ghi vào manifest, đừng chỉ nhìn ảnh — một số ảnh
+sân khấu nhìn y như tranh lịch sử.
+
+### (4) 🔑 Viết mô tả theo CHỖ HỘI TỤ của nhiều hoạ sĩ, không theo một bản
+
+Mỗi bản vẽ là tưởng tượng riêng của một hoạ sĩ, chép nguyên một bản là chép luôn
+cái tuỳ tiện của người đó. Gom **3-4 bản của các hoạ sĩ khác nhau, cách xa nhau về
+thời gian**, rồi lấy phần trùng nhau.
+
+Ca thật: bốn bản vẽ cảnh phát hiện chữ CROATOAN (1890, 1906, 1979, cộng bản
+Sheppard) hội tụ ở — **đàn ông có râu, mũ có chóp, áo doublet cổ dựng, tay giơ về
+phía chữ khắc**. Mô tả `Governor John White` viết theo đúng chỗ hội tụ đó. Với
+người không ai biết mặt thì đây là căn cứ vững nhất có thể có.
+
+Chi tiết nào chỉ xuất hiện ở MỘT bản thì bỏ (bản 1890 có con chó và khẩu súng
+hoả mai — không đưa vào).
+
+### (5) Ghi vào manifest 2 điều, không được thiếu
+
+1. **Nhân vật này là HƯ CẤU CÓ CƠ SỞ**, mô tả dựa trên bản vẽ nào, ra đời cách sự
+   kiện bao lâu. Kèm khuyến cáo: dùng được cho kênh kể chuyện, nhưng **đừng ghi
+   trong video rằng đây là chân dung nhân vật**.
+2. **Chỗ ta CỐ Ý vẽ khác sự thật khảo cổ**, kèm lý do. Ca thật: công trình thật ở
+   Roanoke là **luỹ đất hình sao có hào**, nhưng background vẫn vẽ **hàng rào cọc
+   gỗ** — vì kịch bản nói *"carved into a post of the FENCE"* (không có hàng rào
+   thì không khắc được), và vì luỹ đất thấp trong phong cách phẳng không đọc ra là
+   công sự. Ghi ra để phiên sau biết đó là lựa chọn, không phải sai sót.
+
+⚠️ Các bản vẽ cũng **mâu thuẫn nhau**, phải chọn có ý thức: bản 1890 khắc chữ lên
+**thân cây**, bản Sheppard khắc lên **cột hàng rào**. Chọn theo KỊCH BẢN, rồi ghi
+lại đã chọn gì.
 
 ## 5. Mẹo tìm trên Commons (đúc kết, đừng mò lại)
 

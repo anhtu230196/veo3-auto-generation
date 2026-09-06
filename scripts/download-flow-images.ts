@@ -61,7 +61,7 @@ async function main() {
 
   /** Tải 1 URL ảnh về file. Dùng request context của page nên đi kèm cookie đăng nhập. */
   const fetchTo = async (src: string, file: string) => {
-    const url = new URL(src, "https://labs.google").toString();
+    const url = new URL(src, new URL(page.url()).origin).toString();
     const res = await page.request.get(url);
     if (!res.ok()) {
       console.log(`  ✗ ${path.basename(file)}: HTTP ${res.status()}`);
@@ -75,7 +75,7 @@ async function main() {
   // ---- CHẾ ĐỘ TRA THEO TÊN (xem docstring của `nameQuery`) ----
   if (nameQuery) {
     await page.waitForTimeout(4000);
-    await page.locator('button:has-text("add_2")').first().click({ timeout: 20_000 });
+    await page.locator('button[aria-label="Add media menu"]').first().click({ timeout: 20_000 });
     await page.waitForTimeout(1500);
     const search = page.getByRole("textbox", { name: /search assets/i }).first();
     if (!(await search.count())) throw new Error('Không mở được ô "Search assets".');
@@ -99,7 +99,7 @@ async function main() {
   }
 
   // Cùng selector mà imageAsset.ts dùng để dò ảnh mới (`firstImageSrc`).
-  const links = page.getByRole("link", { name: "Generated image" });
+  const links = page.locator("flow-image-tile img");
   await links.first().waitFor({ timeout: 30_000 }).catch(() => {});
 
   // ⚠️ Lưới media của Flow ẢO HOÁ: chỉ render những thẻ đang lọt khung nhìn, nên đếm ngay lúc
@@ -153,7 +153,7 @@ async function main() {
     const label = (await link.innerText().catch(() => "")) || "";
     const name = safe(label.split("\n").find((l) => l.trim() && l !== "Generated image") ?? `image-${i}`);
 
-    const url = new URL(src, "https://labs.google").toString();
+    const url = new URL(src, new URL(page.url()).origin).toString();
     // Dùng request context của chính page nên đi kèm cookie đăng nhập.
     const res = await page.request.get(url);
     if (!res.ok()) {

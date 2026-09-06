@@ -1,7 +1,7 @@
 import type { Page } from "playwright";
 import path from "node:path";
 import { debugCapture, debugLog } from "./debug.js";
-import { dismissOnboardingDialog } from "./project.js";
+import { dismissOnboardingDialog, dismissOverlays, PROJECT_READY_SELECTOR, ASSET_PICKER_SELECTOR } from "./project.js";
 
 // XÁC NHẬN TRỰC TIẾP (2026-07-18): "Spanish Royal Banner" (Prop quốc kỳ/biểu tượng) vẫn CHƯA
 // xong sau đủ 3 phút + reload-recheck cũ (chỉ chờ thêm 3 giây cố định) — throw oan dù người
@@ -31,7 +31,11 @@ const RELOAD_RECHECK_TIMEOUT_MS = 90 * 1000;
  * phụ thuộc số lượng phần tử render được.
  */
 async function firstImageSrc(page: Page): Promise<string | undefined> {
-  const first = page.getByRole("link", { name: "Generated image" }).first().locator("img").first();
+  // 🔴 ĐỔI 2026-09-05: giao diện mới KHÔNG còn thẻ <a aria-label="Generated image">. Mỗi ảnh giờ
+  // là: flow-grid-tile-container[aria-label=...] > flow-tile-container > flow-image-tile > img.image
+  // Hệ quả nếu không sửa: runner sinh ảnh THÀNH CÔNG nhưng không nhận ra, báo timeout, rồi lần chạy
+  // sau tạo thêm bản trùng — đúng lớp lỗi tốn kém nhất vì nó im lặng.
+  const first = page.locator("flow-image-tile img").first();
   if (!(await first.count())) return undefined;
   return (await first.getAttribute("src")) ?? undefined;
 }
@@ -61,7 +65,7 @@ async function firstImageSrc(page: Page): Promise<string | undefined> {
  *
  * ⚠️ BẪY ĐÃ DÍNH: bảng có nút "Add to Prompt" ở góc dưới phải, rất dễ tưởng đó là bước
  * xác nhận bắt buộc. THỰC TẾ (xác nhận bằng scripts/inspect-picker.ts): ngay khi click vào
- * card (`div[role="option"]`), Flow đính ảnh vào prompt và ĐÓNG LUÔN bảng — nút "Add to
+ * card (`[role="option"]`), Flow đính ảnh vào prompt và ĐÓNG LUÔN bảng — nút "Add to
  * Prompt" BIẾN MẤT. Code bản đầu click card rồi mới đi tìm "Add to Prompt" nên timeout 15s
  * dù thao tác đã thành công. Vẫn giữ nhánh bấm nút đó làm dự phòng, phòng biến thể UI khác.
  *
@@ -72,20 +76,60 @@ async function firstImageSrc(page: Page): Promise<string | undefined> {
 export async function attachReferenceImage(page: Page, referenceImagePath: string): Promise<void> {
   const fileName = path.basename(referenceImagePath);
 
-  await page.locator('button:has-text("add_2")').first().click({ timeout: 15000 });
+  await dismissOverlays(page);
+  await page.locator(ASSET_PICKER_SELECTOR).first().click({ timeout: 15000 });
   await page.waitForTimeout(1500);
 
-  const card = page.locator(`text=${fileName}`).first();
+  // 🔴 PHẢI GIỚI HẠN TRONG OVERLAY (2026-09-05). Bản cũ dùng `text=<tên file>` trên TOÀN TRANG,
+  // và nó khớp nhầm cái thẻ ở LƯỚI MEDIA NỀN phía sau bảng chọn — thẻ đó bị overlay che nên
+  // click treo 20-30 giây rồi lỗi, trong khi thẻ ĐÚNG nằm trong bảng thì không ai đụng tới.
+  // Triệu chứng đánh lừa hoàn toàn: log ghi "đã có sẵn trong project — dùng lại" (đúng), rồi
+  // chết ở bước click (sai chỗ).
+  const OVERLAY = ".cdk-overlay-container";
+  // Phải GÕ TÊN vào ô Search thì thẻ mới hiện trong bảng — bảng không tự liệt kê hết asset.
+  const search = page.getByRole("textbox", { name: /search assets/i }).first();
+  await search.waitFor({ state: "visible", timeout: 20000 });
+  await search.fill(path.parse(fileName).name);
+  await page.waitForTimeout(2500);
+
+  // Thẻ asset trong bảng là `button[role="option"]` (class `asset-item`) — giao diện cũ là
+  // `div[role="option"]`, nên selector cũ khớp 0 phần tử.
+  const card = page.locator(`${OVERLAY} [role="option"]`).filter({ hasText: fileName }).first();
   if (await card.count()) {
     debugLog("reference", `"${fileName}" đã có sẵn trong project — dùng lại, không upload nữa`);
   } else {
     debugLog("reference", `chưa có "${fileName}" trong project — đang upload`);
-    await page.locator('input[type="file"]').first().setInputFiles(referenceImagePath);
+    // 🔴 ĐỔI 2026-09-05: giao diện mới KHÔNG còn `input[type="file"]` nằm sẵn trong DOM —
+    // nút "Upload media" mở hộp thoại chọn file của HỆ ĐIỀU HÀNH. `setInputFiles` vì thế
+    // treo đúng 30 giây rồi ném lỗi. Cách đúng là bắt sự kiện `filechooser` của Playwright,
+    // và PHẢI đăng ký lắng nghe TRƯỚC khi bấm nút, nếu không sự kiện bắn mất trước khi chờ.
+    const [chooser] = await Promise.all([
+      page.waitForEvent("filechooser", { timeout: 30000 }),
+      page.getByRole("button", { name: /upload media/i }).first().click({ timeout: 15000 }),
+    ]);
+    await chooser.setFiles(referenceImagePath);
+    // Sau khi upload, phải gõ lại vào ô Search thì thẻ mới hiện ra trong bảng.
+    await page.waitForTimeout(4000);
+    await search.fill("");
+    await page.waitForTimeout(600);
+    await search.fill(path.parse(fileName).name);
     await card.waitFor({ state: "visible", timeout: 90000 });
     await page.waitForTimeout(2000); // chờ Flow xử lý xong file vừa nạp
   }
 
-  await card.click();
+  // 🔴 ĐỔI 2026-09-05: giao diện mới bọc tên file trong `<span class="footer-title">` — bản thân
+  // span đó KHÔNG bấm được (Playwright resolve ra nó rồi treo ở "waiting for element to be
+  // stable"). Phải leo lên phần tử cha thật sự nhận click. Giữ span làm phương án cuối để không
+  // vỡ nếu Google đổi lại cấu trúc.
+  await card.scrollIntoViewIfNeeded().catch(() => {});
+  const clickableCard = card
+    .locator('xpath=ancestor-or-self::*[@role="option" or @role="button" or self::button or self::a][1]')
+    .first();
+  if (await clickableCard.count()) {
+    await clickableCard.click({ timeout: 20000 });
+  } else {
+    await card.click({ timeout: 20000 });
+  }
   await page.waitForTimeout(1500);
 
   // Dự phòng: nếu biến thể UI nào đó VẪN còn nút "Add to Prompt" sau khi chọn card thì bấm.
@@ -135,8 +179,9 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
     // (2 lần đính trước cùng mẻ đều ổn), trong khi tra tay thấy asset hiện ra ngay lập tức.
     let panelOpened = false;
     for (let attempt = 1; attempt <= 3 && !panelOpened; attempt++) {
+      await dismissOverlays(page);
       await page
-        .locator('button:has-text("add_2")')
+        .locator(ASSET_PICKER_SELECTOR)
         .first()
         .click({ timeout: 15000 })
         .catch(() => {});
@@ -165,7 +210,7 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
     // Hậu quả ÂM THẦM: cảnh vẫn tạo ra bình thường nhưng ĐÍNH SAI ẢNH, chỉ lộ khi soi bằng mắt.
     // Phát hiện được nhờ ảnh debug: đính "Bob" xong thì thanh prompt hiện thumbnail phòng tắm,
     // và tới lượt "Bob Bathroom V2" thật thì Flow báo "No results found" vì nó đã bị đính rồi.
-    const cards = page.locator('div[role="option"]');
+    const cards = page.locator('[role="option"]');
     const want = assetName.trim().toLowerCase();
     let target: ReturnType<typeof cards.nth> | null = null;
     let seen: string[] = [];
@@ -202,7 +247,7 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
     let closed = false;
     for (let i = 0; i < 10 && !closed; i++) {
       await page.waitForTimeout(800);
-      closed = (await page.locator('div[role="option"]').first().count()) === 0;
+      closed = (await page.locator('[role="option"]').first().count()) === 0;
     }
     if (!closed) {
       // Nhánh dự phòng: một số lần click card không tự đóng, phải bấm nút xác nhận.
@@ -211,7 +256,7 @@ export async function attachExistingAssets(page: Page, names: string[]): Promise
         await addBtn.click().catch(() => {});
         for (let i = 0; i < 6 && !closed; i++) {
           await page.waitForTimeout(800);
-          closed = (await page.locator('div[role="option"]').first().count()) === 0;
+          closed = (await page.locator('[role="option"]').first().count()) === 0;
         }
       }
     }
@@ -249,8 +294,9 @@ async function assertAssetNamed(page: Page, name: string): Promise<void> {
   let sawSearchBox = false;
 
   for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+    await dismissOverlays(page);
     await page
-      .locator('button:has-text("add_2")')
+      .locator(ASSET_PICKER_SELECTOR)
       .first()
       .click({ timeout: 20000 })
       .catch(() => {});
@@ -262,7 +308,7 @@ async function assertAssetNamed(page: Page, name: string): Promise<void> {
       await search.fill(name);
       for (let i = 0; i < 8; i++) {
         await page.waitForTimeout(1000);
-        if (await page.locator('div[role="option"]', { hasText: name }).first().count()) {
+        if (await page.locator('[role="option"]', { hasText: name }).first().count()) {
           // Về lại project để đóng bảng chọn — Escape không đáng tin với dialog Flow (mục 8.1.4).
           await backToProject(page, projectUrl);
           return;
@@ -286,7 +332,7 @@ async function assertAssetNamed(page: Page, name: string): Promise<void> {
 async function backToProject(page: Page, projectUrl: string): Promise<void> {
   await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
   await dismissOnboardingDialog(page);
-  await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
+  await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 });
 }
 
 /** URL project hiện tại — dùng để quay lại sau khi mở bảng chọn media. */
@@ -318,6 +364,11 @@ export async function createImageIngredient(
   // generate.ts::ensureModelAndDuration (icon "crop_16_9" luôn xuất hiện, duy nhất TRƯỚC khi
   // bảng cài đặt mở ra). Có fallback reload nếu trang đang ở trạng thái lag/kẹt.
   const pill = page.locator('button:has-text("crop_16_9")').first();
+  // 🔴 BẮT BUỘC dọn overlay trước (2026-09-05): giao diện Angular Material để lại
+  // `cdk-overlay-backdrop` TRONG SUỐT sau mỗi lần mở bảng chọn asset ở asset TRƯỚC ĐÓ. Nó nuốt
+  // click nên pill "không phản hồi" dù selector đúng — và nhánh reload bên dưới che mất triệu
+  // chứng thật, khiến rất dễ chẩn đoán nhầm thành "trang lag".
+  await dismissOverlays(page);
   try {
     await pill.click({ timeout: 15000 });
   } catch {
@@ -328,7 +379,7 @@ export async function createImageIngredient(
     await page.reload({ waitUntil: "domcontentloaded", timeout: 45000 }).catch(() => {});
     // Modal onboarding hiện lại sau reload và chặn mọi click (RUNBOOK 8.1).
     await dismissOnboardingDialog(page);
-    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
+    await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 });
     await pill.click({ timeout: 15000 });
   }
   await page.waitForTimeout(500);
@@ -341,8 +392,8 @@ export async function createImageIngredient(
   // Tức là tab số lượng tên **"x1"**, KHÔNG phải "1x" như codegen cũ ghi (và như RUNBOOK
   // 4.10 vẫn chép lại). Tên cũ làm click timeout 30s ngay lần chạy đầu.
   // Chấp nhận CẢ HAI tên để không vỡ nếu Google đổi lại — regex khớp cả "x1" lẫn "1x".
-  await page.getByRole("tab", { name: "image Image" }).click();
-  await page.getByRole("tab", { name: /^(x1|1x)$/ }).click({ timeout: 15000 });
+  await page.getByRole("radio", { name: "Image", exact: true }).click({ timeout: 20000 });
+  await page.getByRole("radio", { name: "x1" }).click({ timeout: 15000 });
 
   // THIẾU SÓT ĐÃ SỬA: quên đóng bảng cài đặt (Radix popper) sau khi chọn xong — bảng còn mở
   // che mất ô nhập prompt bên dưới, khiến click bị chặn (pointer-events intercepted), giống
@@ -412,7 +463,7 @@ export async function createImageIngredient(
     // Chờ trang THẬT SỰ sẵn sàng (lưới media đã render) trước khi đếm lại — "Add Media" luôn
     // xuất hiện khi trang tương tác được thật sự (xem mục 4.14 RUNBOOK), đáng tin hơn 1 mốc
     // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
-    await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
+    await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
     let currentAfterReload = await firstImageSrc(page);
     let foundAfterReload = currentAfterReload !== undefined && currentAfterReload !== baselineFirstSrc;
@@ -436,24 +487,33 @@ export async function createImageIngredient(
     await debugCapture(page, `new-image-src-missing-${name}`);
     throw new Error(`Không xác định được src ảnh vừa tạo cho "${name}" — thử lại.`);
   }
-  const newImage = page.locator(`img[src="${newImageSrc}"]`).locator("xpath=ancestor::a[1]").first();
+  const newImage = page
+    .locator(`img[src="${newImageSrc}"]`)
+    .locator("xpath=ancestor::flow-grid-tile-container[1]")
+    .first();
   if (!(await newImage.count())) {
     await debugCapture(page, `rename-card-missing-${name}`);
     throw new Error(`Không thấy item ảnh vừa tạo (src="${newImageSrc}") trong lưới media để đổi tên "${name}" — thử lại.`);
   }
   await newImage.click({ button: "right" });
-  await page.getByRole("menuitem", { name: "whiteboard Rename" }).click();
+  // 🔴 ĐỔI 2026-09-05: nhãn menu bỏ phần ligature icon — "whiteboard Rename" thành "Rename",
+  // và icon cũng đổi từ whiteboard sang edit. Accessible name KHÔNG chứa ligature (giống radio
+  // "Image" chứ không phải "imageImage"), nên khớp chính xác "Rename".
+  await page.getByRole("menuitem", { name: "Rename", exact: true }).click({ timeout: 20000 });
 
-  const nameInput = page.getByRole("textbox", { name: "Editable text" });
+  // 🔴 PHẢI GIỚI HẠN TRONG OVERLAY (2026-09-05): aria-label "Editable text" bị DÙNG LẠI cho ô
+  // TÊN PROJECT ở thanh trên cùng, nên selector không giới hạn khớp 2 phần tử và Playwright ném
+  // "strict mode violation". Ô đổi tên ảnh nằm trong .cdk-overlay-container.
+  const nameInput = page.locator(".cdk-overlay-container").getByRole("textbox", { name: "Editable text" }).first();
   await nameInput.press("ControlOrMeta+a");
   await nameInput.fill(name);
-  await page.getByRole("button", { name: "done Done" }).click();
+  await page.locator(".cdk-overlay-container").getByRole("button", { name: "Done", exact: true }).click({ timeout: 20000 });
 
   // "networkidle" KHÔNG bao giờ fire ổn định khi project đã có nhiều media (xem ghi chú
   // tương tự trong characters.ts/generate.ts) — dùng "domcontentloaded" + chờ phần tử cụ thể.
   await page.goto(projectUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
   await dismissOnboardingDialog(page);
-  await page.locator('button:has-text("Add Media")').waitFor({ state: "visible", timeout: 90000 });
+  await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 });
 
   // Chốt lại: tên phải TRA ĐƯỢC thật, không chỉ "đã bấm Done" (xem docstring assertAssetNamed).
   await assertAssetNamed(page, name);

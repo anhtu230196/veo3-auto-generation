@@ -11,6 +11,126 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### ✅ (2026-09-05→06) GOOGLE ĐỔI FLOW — ĐÃ VÁ XONG PIPELINE ẢNH
+
+**Trạng thái: `npm run banana` CHẠY LẠI ĐƯỢC** trên giao diện mới (đã tạo thành
+công asset thật). `banana-scenes` dùng chung `imageAsset.ts` nên về lý cũng chạy,
+nhưng **CHƯA thử** — chạy mẻ cảnh đầu tiên thì soi kỹ.
+
+Giữ nguyên phần mô tả bên dưới để hiểu vì sao gãy và đã sửa những gì.
+
+#### Bảy chỗ đã sửa (selector mới đều đã xác minh trên trình duyệt thật)
+
+| Vỡ ở đâu | Cũ | Mới |
+|---|---|---|
+| Cổng "project sẵn sàng" | `button:has-text("Add Media")` | `button[aria-label="Add media menu"]` (`PROJECT_READY_SELECTOR`) |
+| Mở bảng chọn asset | `button:has-text("add_2")` | `button[aria-label="Add ingredients to the prompt box"]` (`ASSET_PICKER_SELECTOR`) |
+| Upload ảnh master | `input[type=file]` + `setInputFiles` | bắt sự kiện `filechooser` (nút mở hộp thoại HĐH) |
+| Chọn thẻ reference | `text=<tên file>` toàn trang | gõ ô `Search assets` rồi lấy `[role="option"]` **trong `.cdk-overlay-container`** |
+| Chuyển chế độ Image | `role=tab "image Image"` / `"x1"` | `role=radio "Image"` / `"x1"` |
+| Nhận diện ảnh mới | `role=link "Generated image"` | `flow-image-tile img` |
+| Đổi tên | `menuitem "whiteboard Rename"`, `button "done Done"` | `menuitem "Rename"`, `button "Done"` — **cả hai giới hạn trong `.cdk-overlay-container`** |
+
+⚠️ **HAI NÚT "thêm media" KHÁC NHAU** — tôi đã map nhầm một lần: `Add media menu`
+mở menu Upload/New collection/Create character (dùng làm tín hiệu SẴN SÀNG),
+`Add ingredients to the prompt box` mới là bảng chọn asset có ô `Search assets`.
+
+⚠️ **Accessible name BỎ ligature icon**: nút hiện chữ `imageImage` nhưng accessible
+name là `"Image"`; `whiteboard Rename` → `"Rename"`. Bám `textContent` sẽ trượt hết.
+
+⚠️ **`aria-label="Editable text"` bị DÙNG LẠI** cho ô tên project ở thanh trên —
+không giới hạn phạm vi thì Playwright ném "strict mode violation".
+
+#### 🔴 BÀI HỌC ĐẮT NHẤT: `cdk-overlay-pane` nuốt click
+
+Giao diện mới là **Angular Material**. Mỗi menu/bảng bung ra để lại một
+`.cdk-overlay-pane` **TRONG SUỐT** phủ trang. Ảnh chụp debug nhìn **hoàn toàn bình
+thường**, nhưng mọi click đều bị nuốt (`subtree intercepts pointer events`).
+
+Triệu chứng đánh lừa kinh khủng: cú click **KHÔNG LIÊN QUAN GÌ** ở asset **SAU ĐÓ**
+bị timeout — dễ chẩn đoán nhầm thành "trang lag", nhất là vì runner có sẵn nhánh
+reload cho đúng trường hợp đó (nhánh này CHE MẤT triệu chứng thật).
+
+👉 Đã thêm `dismissOverlays(page)` trong `project.ts`, gọi trước các thao tác.
+⚠️ Nó **KHÔNG được chỉ kiểm `.cdk-overlay-backdrop`**: menu chuột phải của lưới
+media mở ra **không kèm backdrop**, nên vòng lặp thoát ngay trong khi menu vẫn chặn.
+Phải kiểm cả `.cdk-overlay-pane`.
+
+#### ✅ Model vẫn là Nano Banana
+
+Chip mặc định của project mới là `Video · Omni 1.1 Flash`, nhưng **chuyển sang chế
+độ Image thì model là `🍌 Nano Banana Pro`**. Ảnh tạo ra đã soi bằng mắt: **đúng
+phong cách 5 case cũ** (nét đen đều, màu phẳng, chân nét trần). Không phải làm lại
+style DNA.
+
+#### ⏸️ ĐANG DỪNG VÌ HẾT QUOTA (2026-09-06)
+
+Case 1 Roanoke mới xong **4/17 asset** (`Governor John White`, `Eleanor Dare`,
+`Colonist Husband Ananias`, `Colonist Man One`). 13 cái còn lại vẫn `waiting`.
+
+Flow báo: **"You've reached your usage limit. Please try again later. You have not
+been charged for this generation."** Người dùng chốt tạm dừng.
+
+👉 Hết giới hạn thì chạy lại **đúng lệnh cũ**, runner resume-safe nên chỉ làm phần
+thiếu, không tạo trùng:
+
+```
+npm run banana -- narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/assets.json --case 1
+```
+
+⚠️ **PHÂN BIỆT 3 loại lỗi generate — cả ba đều hiện thành "Failed" trên card, rất
+dễ nhầm là lỗi code:**
+- *"You've reached your usage limit"* → **hết quota**, chờ reset, không sửa gì cả.
+- *"We noticed some unusual activity"* → **bóp tốc độ tạm thời**, chạy lại là qua
+  (đã gặp nhiều lần trong ngày, asset ngay sau đó vẫn tạo được bình thường).
+- Không có card lỗi nào mà runner vẫn timeout → mới là **lỗi selector**, xem bảng
+  7 chỗ đã vá ở trên.
+
+⚠️ Project Flow của case này (`state/project-nhom-bien-mat-case-1.json`) có vài
+**ảnh mồ côi chưa đổi tên** — sinh ra từ những vòng chạy thử lúc dò selector, lúc
+đó ảnh tạo thành công nhưng runner chưa nhận diện được nên không rename. Chúng vô
+danh nên không đụng tên với asset thật, xoá tay lúc nào cũng được.
+
+#### Còn lại chưa vá
+
+`src/veo3bot/characters.ts` và `generate.ts` (pipeline VIDEO) vẫn dùng
+`button:has-text("Add Media")` — **sẽ gãy y hệt** khi nào quay lại làm video.
+`scripts/check-asset-scope.ts`, `inspect-flow-*.ts` cũng còn URL `labs.google` cũ.
+
+Phát hiện khi bắt đầu case 1 của tập "cả một nhóm người biến mất". Đã xác minh
+trực tiếp bằng script chẩn đoán chỉ-đọc trên trình duyệt thật:
+
+| | Trước | Bây giờ |
+|---|---|---|
+| Tên miền | `labs.google/fx/tools/flow/project/<uuid>` | **`flow.google.com/project/<uuid>`** |
+| Nút chờ-sẵn-sàng | `button:has-text("Add Media")` | **KHÔNG CÒN TỒN TẠI** |
+| Model ảnh | `Nano Banana 2` | **`Omni 1.1 Flash`** |
+| Chip chế độ | `Nano Banana 2 · x1` | `Video · 360p · 8s · crop_16_9 · x2` |
+
+Nút hiện có trong project (đọc từ DOM thật): `arrow_back`, `more_vert`, `search`,
+`filter_list`, `add`, `help`, `settings_2`, `Agent`, chip chế độ, `arrow_forward`.
+Không có `[role="textbox"]` nào — ô prompt cũng đã đổi cấu trúc.
+
+✅ **Năng lực KHÔNG mất**: menu chế độ vẫn còn đủ `Image`, `Video`, `Frames`,
+`Ingredients`. Đây là **đổi giao diện + đổi tên miền**, không phải gỡ tính năng.
+
+**Chỗ chắc chắn phải sửa** (chưa sửa gì, đang chờ người dùng quyết):
+1. `src/veo3bot/project.ts` — `waitForProjectReady()` chờ "Add Media"; và URL gốc
+   để mở/tạo project.
+2. `src/veo3bot/imageAsset.ts` — chuyển chế độ Image, chọn model, ô prompt, nút
+   generate, đổi tên ảnh, và `attachExistingAssets` (ô "Search assets").
+3. `scripts/download-flow-images.ts` — dựng URL theo `https://labs.google`.
+4. `src/veo3bot/characters.ts` + `generate.ts` — pipeline VIDEO, cùng lớp lỗi
+   nhưng chưa cần tới.
+
+⚠️ **Câu hỏi lớn hơn cả selector**: model đổi từ Nano Banana 2 sang Omni 1.1
+Flash. Kể cả vá xong selector, **ảnh mới có thể không khớp phong cách 5 case đã
+làm**. Phải tạo thử vài ảnh rồi so bằng mắt TRƯỚC khi chạy lại cả mẻ.
+
+📌 5 case của tập "vu-viec-tam-linh" đã tạo xong ảnh từ trước nên KHÔNG bị ảnh
+hưởng — chúng nằm nguyên trong các project Flow cũ. Chỉ việc tạo ảnh MỚI mới gãy.
+
+
 - **(2026-07-31) Không có project video nào đang chạy.** Người dùng đã xoá
   toàn bộ dữ liệu của các project video trước đó và xác nhận không tiếp tục
   làm nữa — `state/`, `output/`, `input/story.txt` đều đang TRỐNG. **Code
