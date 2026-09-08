@@ -1,5 +1,16 @@
 # Chủ đề + case đã dùng (không gợi ý lại)
 
+> 🔴 **2026-09-07 — CHẠY CỔNG KIẾM TIỀN TRƯỚC KHI GỢI Ý.** Trước khi đề xuất bất
+> kỳ chủ đề nào, chạy 4 cổng ở mục "⛔ CỔNG KIẾM TIỀN YOUTUBE" trong SKILL.md.
+> Hai tập dưới đây được đánh dấu **KHÔNG LÀM LẠI dưới mọi biến thể** vì chính
+> chúng là loại chủ đề gây tắt kiếm tiền:
+> - `Trở về sau nhiều năm biến mất` (2026-08-05) — 5/6 case là trẻ em bị bắt cóc
+>   và giam giữ. Mọi biến thể kiểu "người mất tích được tìm thấy còn sống",
+>   "sống sót sau khi bị giam" đều rơi vào cùng cái bẫy.
+> - `Vụ án phá được nhờ một chi tiết nhỏ` (2026-08-06) — 5/5 case giết người hàng
+>   loạt kèm đếm số tội tình dục. Chủ đề "phá án" chỉ dùng lại được nếu case là
+>   trộm cắp/lừa đảo/gián điệp, không phải án mạng hàng loạt.
+
 > ⚠️ 2 tập dưới đây viết theo FORMAT CŨ (giọng lạnh/deadpan, case ngắn) — format
 > đó đã bị thay hẳn ngày 2026-08-03, xem SKILL.md. Giữ lại danh sách CHỈ để
 > tránh trùng case, ĐỪNG lấy 2 tập đó làm mẫu văn phong.

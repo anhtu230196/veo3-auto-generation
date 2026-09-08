@@ -30,12 +30,155 @@ cùng thuộc 1 chủ đề chung.
 - Mốc quy đổi CHỈ để tham khảo, không phải mục tiêu cần đạt: khoảng **170 từ
   tiếng Anh ≈ 1 phút đọc**.
 
+## ⛔ CỔNG KIẾM TIỀN YOUTUBE — lọc case TRƯỚC KHI viết (thêm 2026-09-07)
+
+Mục này ra đời sau khi kênh dính vấn đề bật kiếm tiền. **Nguyên nhân KHÔNG nằm ở
+câu chữ, nó nằm ở việc CHỌN CASE** — nên mục này phải chạy ở bước 1, không phải
+lúc soát bản cuối.
+
+### Hai bộ lọc HOÀN TOÀN KHÁC NHAU — đừng nhầm
+
+| | ElevenLabs (TTS) | YouTube (kiếm tiền) |
+| --- | --- | --- |
+| Lọc theo | **cụm từ** trong văn bản | **chủ đề** của cả video |
+| Biểu hiện | báo "may violate our Terms of Service", không đọc | icon vàng (Limited ads) hoặc tắt hẳn (No ads) |
+| Cách chữa | đổi từ ngữ | **đổi CASE** |
+| Đổi từ ngữ có cứu được không? | Có | **KHÔNG** |
+
+🔴 Đây là chỗ dễ sai nhất trong skill này: mục *"Bộ từ vựng an toàn"* ở phần
+"Bản tiếng Anh" là để qua **ElevenLabs**, và nó **KHÔNG cứu được YouTube**. Đổi
+`sexual assault ... of a minor` thành `abusing her and holding her against her
+will` vẫn là mô tả xâm hại trẻ em. Bộ lọc quảng cáo đọc NỘI DUNG, không dò từ khoá.
+
+### 3 mức của YouTube (advertiser-friendly guidelines)
+
+Phần luật dính tới kênh này:
+
+- **Controversial Issues** gồm: `child abuse`, `adult sexual abuse`,
+  `sexual harassment`, `self-harm`, `suicide`, `eating disorders`,
+  `domestic abuse`, `abortion`.
+  - Nhắc thoáng qua, không mô tả → **Full ads** 🟢
+  - *"Artistic, educational, documentary, or scientific representation of
+    controversial issues"* → **Limited ads** 🟡
+  - *"Descriptive content related to child abuse as the main topic"* →
+    **No ads** 🔴
+- **Violence**: *"Focus on blood, guts, gore ... crime scenes ... with little to
+  no context"* → No ads. *"Descriptions of tragedy details"* → Limited ads.
+
+👉 **Hệ quả quyết định hướng đi của kênh**: format ở đây là kể ĐẦY ĐỦ, có diễn
+biến, có chi tiết — tức là luôn rơi vào ô *"documentary representation"*. Nghĩa
+là **bất kỳ case controversial nào, dù viết khéo tới đâu, trần cao nhất cũng chỉ
+là Limited ads.** Không tồn tại cách viết giữ được Full ads mà vẫn kể đủ. Cách
+duy nhất giữ nguyên doanh thu là **không chọn case thuộc nhóm đó ngay từ đầu**.
+
+### 4 cổng chọn case — chạy ở BƯỚC 1, trước khi tra cứu
+
+**Cổng 1 — CẤM TUYỆT ĐỐI: trẻ em là nạn nhân của hành vi con người.**
+Loại thẳng khỏi danh sách gợi ý, không có cách viết nào cứu được:
+- bắt cóc / giam giữ trẻ em
+- xâm hại tình dục trẻ em — kể cả nhắc gián tiếp qua bản án, `sex offender`,
+  `began abusing him`, `convicted of abusing a child`
+- giết trẻ em, cha mẹ giết con
+- bạo hành / bỏ đói / tra tấn trẻ em
+
+Trẻ em chết do **tai nạn, thiên tai, bệnh tật, chiến tranh** thì KHÔNG thuộc cổng
+này (vd 5 anh chị em nhà Sodder trong đám cháy) — nhưng vẫn phải qua cổng 2.
+
+**Cổng 2 — LUẬT 1/6.** Trong 1 tập, tối đa **1 case** được chạm vào nhóm
+controversial (tính cả nạn nhân người lớn: cưỡng hiếp, bạo hành gia đình, tự
+sát), và case đó phải nằm **ở giữa tập** — không được là case mở hay case đóng.
+Từ 2 case trở lên thì chủ đề của cả video đã nhuốm màu đó, và YouTube chấm ở cấp
+video chứ không chấm từng case.
+
+**Cổng 3 — TEST TÊN CHỦ ĐỀ THẬT.** Viết lại tên chủ đề theo cách một người kiểm
+duyệt sẽ tóm tắt nó. Nếu bản viết lại có chữ "trẻ em" đi kèm một từ chỉ hành vi
+gây hại → loại cả chủ đề, không phải loại 1 case.
+- *"Trở về sau nhiều năm biến mất"* → đọc thật là *"6 chuyện trẻ em bị bắt cóc
+  và giam giữ nhiều năm"* → **LOẠI**.
+- *"Cả một nhóm người biến mất không dấu vết"* → *"6 vụ mất tích tập thể trong
+  lịch sử"* → **GIỮ**.
+
+Chủ đề nghe vô hại vẫn có thể là tuyển tập tội ác trẻ em trá hình. Đúng cái bẫy
+này đã lọt qua một lần rồi.
+
+**Cổng 4 — 30 GIÂY ĐẦU + TIÊU ĐỀ + THUMBNAIL.** Ba chỗ này bị chấm nặng nhất.
+Case số 1 của tập phải là case **sạch nhất**, không phải case mạnh nhất về tội ác
+— ngược hẳn với bản năng "mở bằng case gây sốc".
+
+### Nếu buộc phải chạm (đúng 1 case theo cổng 2)
+
+Không phải né chữ, mà là **rút camera ra khỏi hành vi**:
+
+- Nêu tội đúng **một lần**, ở tầng **kết quả pháp lý**, trong mệnh đề phụ:
+  *"was convicted and sentenced to 15 years"*. Không kể lại hành vi.
+- Cấm mọi chi tiết cảnh của hành vi: xảy ra ở đâu, kéo dài bao lâu, làm gì, nạn
+  nhân phản ứng thế nào.
+- **Cấm đếm số tội tình dục**: *"at least 51 rapes"* → *"a string of violent
+  attacks across the state"*. Đây là **ngoại lệ DUY NHẤT** của luật "số liệu cụ
+  thể rất quan trọng" ở mục Giọng văn — mọi số liệu khác vẫn giữ nguyên.
+- Phần được kể ĐẦY ĐỦ phải là **điều tra / giải cứu / hậu quả**, không phải phần
+  nạn nhân bị hại.
+
+### Self-certification: khai THẬT
+
+Lúc upload, YouTube hỏi bảng tự khai nội dung. Khai thiếu để lấy icon xanh thì
+khi hệ thống quét lại sẽ ăn phạt **cấp kênh** — nặng hơn nhiều so với 1 video bị
+icon vàng. Case controversial thì tick đúng ô của nó và chấp nhận Limited ads.
+
+### Chủ đề AN TOÀN — ưu tiên lấy từ đây cho các tập sau
+
+Đều là chuyện có thật, đủ diễn biến để kể trọn, và không chạm nhóm controversial:
+
+- Sống sót phi thường trong tự nhiên (lạc trong rừng/biển/sa mạc, trôi dạt).
+- Thảm hoạ kỹ thuật & thiên tai — sập cầu, vỡ đập, cháy rừng, núi lửa.
+- Thám hiểm mất tích, tàu ma, đoàn khảo sát không trở về.
+- Khảo cổ & kho báu tìm thấy tình cờ.
+- Mật mã, bản thảo, tài liệu chưa ai giải được.
+- Trò lừa đảo lịch sử bị vạch trần (hoax, hàng giả, kẻ mạo danh).
+- Vượt ngục / đào tẩu ngoạn mục.
+- Sai lầm y học và những ca chẩn đoán không tưởng.
+- Thí nghiệm khoa học hỏng ngoài dự tính.
+- Trùng hợp không thể tin nổi, đồ vật thất lạc quay về sau nhiều thập kỷ.
+- Động vật cứu người.
+- Hiện tượng tự nhiên kỳ lạ chưa có lời giải.
+
+⚠️ Cảnh giác 2 chủ đề trông an toàn mà không an toàn: **"người mất tích được tìm
+thấy còn sống"** (rất dễ trượt thành bắt cóc trẻ em) và **"án oan"** (rất dễ
+trượt thành án giết trẻ em, vì đó là loại án hay bị xử sai nhất).
+
+### Trạng thái 8 tập đã viết (rà 2026-09-07)
+
+| Tập | Mức | Vì sao |
+| --- | --- | --- |
+| `chet-boi-phat-minh-cua-minh` | 🟢 | tai nạn phát minh, không có tội phạm |
+| `roi-tu-tren-troi-ma-khong-chet` | 🟢 | sống sót sau tai nạn |
+| `nguoi-ngoai-hanh-tinh-va-ufo` | 🟢 | không có bạo lực |
+| `vu-viec-tam-linh-khong-the-giai-thich` | 🟡 nhẹ | 2 case có án mạng người lớn, kể ở tầng hồ sơ/toà án |
+| `ca-mot-nhom-nguoi-bien-mat-khong-dau-vet` | 🟡 nhẹ | Sodder (trẻ em chết trong hoả hoạn — tai nạn, không thuộc cổng 1) + chi tiết chấn thương Dyatlov |
+| `ngoi-tu-oan-hang-chuc-nam` | 🟡 | vượt LUẬT 1/6: Sally Clark, Willingham, Morton — 3/6 case dính trẻ em chết hoặc án mạng, dù góc kể là án oan |
+| `vu-an-pha-boi-mot-chi-tiet-nho` | 🔴 | 5/5 case giết người hàng loạt; có `at least 51 rapes`, `multiple sexual assaults`, `bind, torture, and kill`, `rape kit` — gần như chắc chắn Limited ads |
+| `tro-ve-sau-nhieu-nam-bien-mat` | 🔴🔴 | **ứng viên số 1 gây tắt kiếm tiền**: 5/6 case là trẻ em bị bắt cóc + giam giữ + xâm hại, nêu thẳng `began abusing him`, `register as a sex offender`, `convicted of abusing a child`. Đúng định nghĩa *"descriptive content related to child abuse as the main topic"* → No ads. **Không sửa bằng từ ngữ được.** |
+
+🔒 **CHỐT 2026-09-07 (người dùng quyết): KHÔNG sửa lại kịch bản của bất kỳ tập
+nào ĐÃ RENDER MP3.** Bảng trên là tài liệu tham khảo để CHỌN CHỦ ĐỀ MỚI, không
+phải danh sách việc cần làm. Đừng mở các file `en.md` đó ra sửa, kể cả khi thấy
+câu chữ rõ ràng vi phạm — sửa text mà không làm lại giọng đọc thì kịch bản lệch
+với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đã lên.
+
+3 tập CHƯA có mp3 (`ngoi-tu-oan-hang-chuc-nam`, `roi-tu-tren-troi-ma-khong-chet`,
+`vu-viec-tam-linh-khong-the-giai-thich`) thì sửa được — trong đó chỉ
+`ngoi-tu-oan-hang-chuc-nam` là thật sự cần (vượt LUẬT 1/6).
+
+
 ## Quy trình bắt buộc — 5 bước, KHÔNG gộp/bỏ bước
 
 0. **Đọc `used-topics.md`** (file cùng thư mục) để biết chủ đề + các case đã
    dùng. KHÔNG gợi ý lại chủ đề đã làm, và KHÔNG dùng lại 1 case đã kể ở tập
    trước dù tập đó khác chủ đề.
-1. **Gợi ý chủ đề** — đề xuất 3-5 chủ đề MỚI, mỗi chủ đề kèm vài case ví dụ có
+1. **Gợi ý chủ đề** — CHẠY 4 CỔNG KIẾM TIỀN Ở NGAY BƯỚC NÀY (xem mục "⛔ CỔNG
+   KIẾM TIỀN YOUTUBE" bên trên) TRƯỚC KHI mở miệng gợi ý. Chủ đề/case không
+   qua cổng thì không được đưa vào danh sách, kể cả khi nó hay. Sau đó đề xuất
+   3-5 chủ đề MỚI, mỗi chủ đề kèm vài case ví dụ có
    thật. Tiêu chí chọn case cho format này KHÁC format cũ: case phải có **đủ
    diễn biến để kể thành một câu chuyện có đầu có cuối** (bối cảnh → chuyện lạ
    xảy ra → điều tra/diễn biến → vỡ lẽ → dư âm). Case chỉ có 1 dữ kiện gây sốc
@@ -299,6 +442,12 @@ nhau tuỳ loại case:
   đầu, đừng chờ bị chặn rồi mới sửa. Nguyên tắc chung là **thay danh từ pháp
   lý tường minh bằng động từ mô tả hành động**.
 
+  🔴 **CHỈ CỨU ĐƯỢC ElevenLabs, KHÔNG CỨU ĐƯỢC YOUTUBE.** Bảng dưới làm cho câu
+  văn đọc lọt bộ lọc TTS; nó KHÔNG làm case bớt là case xâm hại trẻ em trong mắt
+  bộ lọc quảng cáo. Nếu một case cần tới bảng này để viết được, hãy quay lại mục
+  "⛔ CỔNG KIẾM TIỀN YOUTUBE" và hỏi lại xem case đó có được phép tồn tại trong
+  tập hay không — thường là KHÔNG.
+
   | Nên né | Thay bằng |
   | --- | --- |
   | `sexual assault`, `rape`, `rapist` | `forced his way into her room and attacked her`, `assaulted her`, `the attacker` |
@@ -315,6 +464,8 @@ nhau tuỳ loại case:
   được test qua ElevenLabs. Nếu 2 câu đó qua được thì ngưỡng lọc chỉ gắt với
   nội dung liên quan TRẺ EM; nếu bị chặn thì phải áp bộ từ vựng trên cho toàn
   bộ case người lớn nữa. Cập nhật lại mục này sau khi có kết quả test thật.
+  **Về phía YouTube thì 2 câu đó đã CHẮC CHẮN có vấn đề** dù ElevenLabs có đọc
+  được hay không — xem cách viết lại ở mục "⛔ CỔNG KIẾM TIỀN YOUTUBE".
 
 ## ⚠️ CẢNH BÁO BẢN QUYỀN
 
