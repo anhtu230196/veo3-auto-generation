@@ -11,6 +11,70 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### 🎨 (2026-09-09) ĐỔI PHONG CÁCH ẢNH SANG KIỂU BROFESSOR STEIN — CHƯA CHẠY THỬ
+
+Người dùng chốt chuyển phong cách hình ảnh sang kênh **Brofessor Stein**. Đã tải
+3 video làm tư liệu, cắt 371 frame, phân tích và viết lại style.
+
+Tư liệu (thư mục `input/style-ref/brofessor-stein/`, video và frame đã gitignore):
+- `ANALYSIS.md` — hệ thống hình ảnh tổng thể của kênh đó
+- `DRAWING-SPEC.md` — cách vẽ nhân vật/đồ vật/cảnh vật, dùng làm chuẩn
+- `nRiezhIOHH0/narration-per-frame.txt` — phụ đề ghép theo từng frame, đây là
+  nguồn để rút bảng "nội dung này thì đưa hình nào"
+
+**Đã đổi:**
+1. `src/nanoBanana/reference-character.jpeg` — ảnh master mới (người đàn ông mặc
+   vest, cắt từ frame 3:09 của `nRiezhIOHH0`). Bản cũ giữ ở
+   `reference-character.old-2026-08-03.jpeg`.
+2. `src/nanoBanana/styleDNA.ts` — viết lại 12 block. Style cũ *"đầu tròn, hai
+   chấm mắt, tay chân nét cụt không bàn tay, một độ dày nét, vẽ đủ căn phòng"* →
+   style mới *"giải phẫu người lớn thật, mặt có nếp nhăn, bàn tay 5 ngón, HAI độ
+   dày nét, không vẽ phòng chỉ vẽ đồ đạc trên nền phẳng"*. Biên dịch sạch.
+3. Skill `nano-banana-image-prompts` — thêm mục **4c: bảng tra "nội dung này thì
+   đưa hình nào"**, lật ngược mục 5e (giờ PHẢI tả quần/giày), thêm cảnh báo đầu file.
+
+**⚠️ CHƯA TẠO ẢNH NÀO theo style mới.** Mẻ đầu soi đúng 4 thứ: tay có đủ 5 ngón
+không, nét có hai độ dày không, mặt có nếp nhăn không, background có ra "đồ đạc
+trên nền phẳng" hay model vẫn tự vẽ sàn và tường.
+
+**✅ ĐÃ BỎ MỤC TIÊU "ĐỒ LẠI ẢNH BẰNG TAY"** (chốt 2026-09-09). Ảnh Nano Banana
+giờ là sản phẩm dùng thẳng — tách nền, ghép, dựng phim, không vẽ lại. Đã sửa
+`SIMPLIFY_DETAIL_BLOCK`, `HAND_DRAWN_LINE_BLOCK`, `SIMPLE_PERSPECTIVE_BLOCK`
+trong `styleDNA.ts` và viết lại **mục 1 của skill ảnh** — mục đó vốn định khung
+mọi ưu tiên còn lại theo mục tiêu đồ tay. Tiêu chí số 1 giờ là **nhất quán phong
+cách**, số 2 là **phần tử tách nền được**.
+
+**⚠️ Việc còn treo:** asset cũ (case 1 Roanoke 4/17, 5 case tập tâm linh) đã lệch
+phong cách — bỏ hay giữ?
+
+**Đã cài thêm vào máy** (winget): `yt-dlp` + `ffmpeg` (kèm Deno). Tải video
+YouTube phải mượn cookie profile bot: `--cookies-from-browser "chrome:.auth/chrome-profile"`,
+không có cookie thì YouTube trả 403.
+
+
+### 🔴 (2026-09-07) KÊNH DÍNH VẤN ĐỀ BẬT KIẾM TIỀN — đã siết luật chọn case
+
+Không phải lỗi code, không liên quan pipeline ảnh. Vấn đề nằm ở **nội dung kịch
+bản**: một số tập chọn phải case mà YouTube xếp vào nhóm *Controversial Issues*,
+nặng nhất là nhóm xâm hại trẻ em (*"descriptive content related to child abuse as
+the main topic"* → **No ads**).
+
+Đã thêm mục **"⛔ CỔNG KIẾM TIỀN YOUTUBE"** vào skill
+`.claude/skills/true-story-compilation-script/SKILL.md` — 4 cổng lọc case chạy ở
+BƯỚC 1, kèm bảng rà 8 tập đã viết. Skill ảnh (`nano-banana-image-prompts`, mục
+11e) cũng đã thêm luật thumbnail + 30 giây đầu.
+
+⚠️ Bài học cốt lõi để không sửa nhầm tầng: **ElevenLabs lọc theo CỤM TỪ, YouTube
+lọc theo CHỦ ĐỀ.** Bộ từ vựng an toàn đã có từ 2026-08-06 chỉ chữa được cái đầu.
+Đổi chữ KHÔNG cứu được cái sau — phải đổi case.
+
+2 tập rủi ro cao nhất: `tro-ve-sau-nhieu-nam-bien-mat` (5/6 case bắt cóc + giam
+giữ trẻ em) và `vu-an-pha-boi-mot-chi-tiet-nho` (5/5 case giết người hàng loạt,
+có đếm số tội tình dục). 🔒 **Người dùng chốt: KHÔNG đụng vào kịch bản của tập
+nào đã render mp3** — cả 2 tập đỏ đều thuộc diện này, để nguyên. Luật mới chỉ áp
+cho tập từ đây trở đi. Tập chưa có mp3 mà còn rủi ro: `ngoi-tu-oan-hang-chuc-nam`.
+
+
 ### ✅ (2026-09-05→06) GOOGLE ĐỔI FLOW — ĐÃ VÁ XONG PIPELINE ẢNH
 
 **Trạng thái: `npm run banana` CHẠY LẠI ĐƯỢC** trên giao diện mới (đã tạo thành
