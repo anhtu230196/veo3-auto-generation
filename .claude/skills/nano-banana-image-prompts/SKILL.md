@@ -5,6 +5,25 @@ description: Write the image prompts and the assets.json / scenes.json entries t
 
 # Viết prompt ảnh cho pipeline Nano Banana
 
+> 🔴🔴 **ĐỔI PHONG CÁCH TOÀN DIỆN — 2026-09-09.** Kênh chuyển sang phong cách
+> **Brofessor Stein**. Đọc `input/style-ref/brofessor-stein/DRAWING-SPEC.md`
+> (cách vẽ) và `ANALYSIS.md` (hệ thống hình ảnh) TRƯỚC khi viết prompt, và đọc
+> khối chú thích đầu `src/nanoBanana/styleDNA.ts`.
+>
+> **Ba thứ đảo ngược so với mọi mục cũ trong file này:**
+> 1. Nhân vật giờ là **người thật có giải phẫu đúng** — bàn tay 5 ngón, có quần,
+>    có giày, mặt có nếp nhăn. Mục 5e đã bị lật ngược, đọc lại mục đó.
+> 2. **KHÔNG vẽ căn phòng nữa** — chỉ vẽ đồ đạc đứng trên nền phẳng xanh nhạt.
+>    Toàn bộ mục 6 (Background) phải đọc với tinh thần đó; các mục con nói về
+>    tường/sàn/góc phòng/chiều sâu chỉ còn dùng cho cảnh inset có viền, vốn hiếm.
+> 3. **Đồ vật và người ĐƯỢC PHÉP chồng lấp nhau.** Luật cấm chồng lấp cũ bỏ.
+>
+> **Không đổi**: mục 6i (mọi thứ có chữ để trống) — chữ vẫn làm ở hậu kỳ, Nano
+> Banana viết chữ vẫn sai.
+>
+> ⚠️ Asset đã tạo theo style cũ (case 1 Roanoke, 5 case tập tâm linh) đã lệch
+> phong cách. Người dùng chưa quyết bỏ hay giữ.
+
 Skill này ghi lại **cách QUYẾT ĐỊNH viết gì** khi soạn `assets.json` /
 `scenes.json` cho 1 tập trong `narration-scripts/`. Nó KHÔNG chứa nội dung các
 style block — xem mục 0.
@@ -28,19 +47,29 @@ Runner tự ghép block theo `type` + `composition` + `reserveCharacterSpace` �
 
 ## 1. Ảnh này để LÀM GÌ — quyết định mọi ưu tiên còn lại
 
-Ảnh sinh ra **không phải sản phẩm cuối**. Người dùng **vẽ đồ lại bằng tay** rồi
-tự chỉnh (xác nhận 2026-08-10). Ảnh AI đóng vai **bản nháp bố cục**: để xem
-*nhân vật/vật thể đặt vào cảnh với kích cỡ và vị trí thế nào cho hợp lý*.
+> 🔄 **ĐỔI HẲN 2026-09-09.** Trước đây ảnh AI chỉ là **bản nháp bố cục** để người
+> dùng **vẽ đồ lại bằng tay**. **Mục tiêu đồ tay đã bỏ.** Ảnh Nano Banana giờ là
+> **sản phẩm dùng thẳng**: người dùng tách nền, ghép và dựng phim, không vẽ lại.
+
+Ảnh sinh ra **là nghệ thuật cuối cùng lên hình**. Khâu hậu kỳ của người dùng là
+tách nền, xếp lớp, gắn chữ và icon, cho phần tử bay vào theo timeline — không
+phải vẽ lại.
 
 Hệ quả khi viết prompt:
 
-- **Tiêu chí số 1**: đúng TỈ LỆ nhân vật so với bối cảnh, đúng VỊ TRÍ đứng,
-  đúng GÓC MÁY. Sai mấy cái này thì ảnh vô dụng.
-- **Không tối ưu cho "đẹp"**: chi tiết tinh xảo là gánh nặng, vì phải đồ lại
-  bằng tay. Đây chính là lý do `SIMPLIFY_DETAIL_BLOCK` và
-  `HAND_DRAWN_LINE_BLOCK` tồn tại.
-- Phân vân giữa "ảnh đẹp hơn" và "bố cục/tỉ lệ đọc rõ hơn" → **luôn chọn cái
-  sau**.
+- **Tiêu chí số 1 giờ là NHẤT QUÁN PHONG CÁCH.** Ảnh sẽ nằm cạnh nhau trong cùng
+  một video mà không qua tay ai làm đồng đều lại, nên lệch nét, lệch bảng màu,
+  lệch tỉ lệ người là lỗi lên thẳng màn hình. Đây là chỗ ảnh master
+  (`reference-character.jpeg`) gánh phần lớn việc.
+- **Tiêu chí số 2: phần tử phải TÁCH ĐƯỢC.** Nền phẳng một màu, không đổ bóng,
+  không có gì dính vào mép khung — để cắt ra ghép được. Cảnh chật kín, phần tử
+  chồng ra ngoài khung, nền có hoa văn đều làm khâu hậu kỳ khổ.
+- **Chi tiết giờ được phép** ở mức một người vẽ minh hoạ sẽ vẽ (đường chỉ đệm
+  ghế, nếp nhăn trên mặt, cửa sổ của toà nhà) — nhưng vẫn cấm chất liệu kiểu ảnh
+  chụp. Xem `SIMPLIFY_DETAIL_BLOCK`.
+- **Chừa chỗ trống** cho chữ và icon bay vào (mục 4c). Bố cục kín mít là lỗi.
+- Phân vân giữa "ảnh đẹp hơn" và "đúng phong cách hơn" → **luôn chọn đúng phong
+  cách**.
 
 ## 1b. Bố cục thư mục: MỖI CASE MỘT THƯ MỤC, MỘT PROJECT FLOW
 
@@ -161,6 +190,66 @@ người trong background, và nhân vật vẽ nhỏ thì không giữ được
 theo reference. Đối tượng được reveal ở shot kế tiếp — đó mới là chỗ cần nhìn
 rõ.
 
+### 4c. 🔑 NỘI DUNG NÀY THÌ ĐƯA HÌNH NÀO — bảng tra (thêm 2026-09-09)
+
+Rút ra bằng cách ghép **phụ đề có mốc thời gian** với **từng frame** của video
+`nRiezhIOHH0` (Brofessor Stein). Dữ liệu gốc còn ở
+`input/style-ref/brofessor-stein/nRiezhIOHH0/narration-per-frame.txt` — mở ra đối
+chiếu khi cần thêm ví dụ.
+
+#### Nguyên tắc trùm: ảnh thật để NHẬN DẠNG, hình vẽ để DIỄN HÀNH ĐỘNG
+
+Người thật, vật thật, địa danh thật → dùng **ảnh tư liệu thật** (ảnh nhận dạng,
+ảnh hiện vật, ảnh toà nhà, bản đồ, logo). Hành động, diễn biến, cảnh → **vẽ**.
+Cùng một người xuất hiện cả hai dạng trong một case: ảnh thật lúc giới thiệu,
+bản vẽ ở mọi cảnh hành động sau đó.
+
+👉 Việc của Nano Banana **chỉ là phần VẼ**: nhân vật, đồ vật, toà nhà, cảnh
+inset. Ảnh thật, bản đồ, logo, icon, mũi tên, nhãn chữ, bóng thoại đều là hậu kỳ.
+
+#### Bảng tra
+
+| Lời kể nói về... | Đưa hình gì |
+| --- | --- |
+| **Mở đầu một case** | ảnh thật của nhân vật + tên + icon vai trò (bóng đen đội mũ = sát thủ) + icon/logo tổ chức |
+| **Thủ đoạn, cách thức** | cận cảnh CHỈ bộ phận liên quan + đồ vật đó. Không dựng cả hiện trường |
+| **Một con số người cụ thể** (7 trùm bị tử hình) | đúng 7 cái đầu nhỏ, gạch chéo đỏ nếu họ chết |
+| **Số quá lớn / số người bị giết** | viết chặn bằng X — `3XX`, `3XXX` — kèm đầu lâu. Họ cố tình KHÔNG ghi số chính xác |
+| **Địa điểm có tên** | toà nhà vẽ như một vật thể đứng riêng + nhãn tên + mũi tên chỉ đúng tầng/chỗ được nhắc |
+| **Khoảng cách, độ cao, kích thước** | thanh đo vẽ đè lên chính vật đó + con số (`42 feet (13m)`) |
+| **Người chết / thi thể** | khung inset CÓ VIỀN, thi thể vẽ phẳng nằm nghiêng, không máu. Không đưa ra nền phẳng chung |
+| **Ai đó nói/khai/tuyên bố điều gì** | bóng thoại, chữ là nguyên văn lời họ (`I've killed over 200 people`) |
+| **Bệnh tật** | icon nội tạng bị bệnh, KHÔNG vẽ mặt người ốm |
+| **Cả một nhóm cùng làm một việc** (18 cảnh sát đều khai đang ngủ) | 2 người đại diện làm động tác đó. Không vẽ đủ 18 |
+| **Danh mục nạn nhân** (cảnh sát, thẩm phán, nhà báo) | mỗi loại đúng 1 icon nhỏ |
+| **Sự kiện hiện đại, nền tảng mạng** | logo thật + phần tử giao diện thật (nút Subscribe) + con số |
+| **Thảm hoạ phương tiện** | vẽ phương tiện làm VẬT THỂ + nhãn số hiệu + số người chết viết ra. KHÔNG vẽ cảnh tai nạn |
+| **Vật được nhắc trong câu giải thích** | vẽ riêng bên cạnh hành động, nối bằng mũi tên |
+| **Bắt giữ** | dàn 3 người: 2 cảnh sát + nghi phạm giơ tay |
+| **Địa lý, nơi chốn** | bản đồ thật, vùng được nhắc tô đỏ, mũi tên chỉ vào |
+| **Quan hệ nhân quả / dẫn tới** | mũi tên đen cong nối hai phần tử |
+| **Điều gì đó KHÔNG xảy ra, thất bại** | dấu X đỏ to đè lên phần tử đó |
+
+#### Nhịp — đừng vẽ lại khung mới cho mỗi câu
+
+Một case dài khoảng 55-60 giây có chừng **10-15 trạng thái hình**, nhưng KHÔNG
+phải 10-15 ảnh khác nhau. Phần lớn là **cùng một bố cục gốc, mỗi câu thêm đúng
+một phần tử**.
+
+Ví dụ có thật (case Abe Reles, 0:32 → 0:56): toà khách sạn Half Moon vẽ một lần,
+rồi lần lượt gắn thêm nhãn tên → mũi tên đỏ chỉ tầng 6 → thanh đo 42 feet. Một
+hình gốc, ba trạng thái.
+
+👉 Hệ quả cho `scenes.json`: đừng tách thành 3 cảnh. Tạo **một** ảnh toà nhà
+sạch, phần còn lại là hậu kỳ. Chỉ tách cảnh mới khi **bố cục vẽ thật sự đổi** —
+đổi nhân vật, đổi nơi chốn, đổi hành động.
+
+#### Chừa chỗ
+
+Bố cục luôn để trống một khoảng lớn — thường hẳn nửa khung — cho chữ và icon bay
+vào lúc dựng. Khi viết prompt cảnh, đẩy nhân vật/vật thể lệch về một bên và nói
+rõ phần còn lại là nền phẳng trống.
+
 ## 5. Character
 
 - Mô tả **chỉ gồm** những mục trong `CHARACTER_DESCRIPTION_CHECKLIST`
@@ -184,7 +273,25 @@ rõ.
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
 
-### 5e. 🔴 KHÔNG BAO GIỜ tả QUẦN / GIÀY / đồ mặc phần chân
+### 5e. 🔴 ĐẢO NGƯỢC 2026-09-09 — GIỜ PHẢI tả QUẦN, GIÀY, BÀN CHÂN
+
+> ⚠️ **Mục này đã bị lật ngược hoàn toàn khi đổi sang phong cách Brofessor
+> Stein.** Luật cũ (chốt 2026-08-31) là *"nhân vật không mặc quần, chân là hai
+> nét mảnh trần rồi cụt"* — luật đó **HẾT HIỆU LỰC**. Style mới vẽ người thật:
+> có quần, có giày, có bàn chân, có bàn tay 5 ngón.
+>
+> **Luật mới**: nhân vật nào lên hình nguyên người thì phần `description`
+> **PHẢI** tả rõ trang phục phần chân và giày. Ảnh master mới bị cắt ngang đùi
+> nên KHÔNG neo được phần dưới — không tả rõ là ra cụt chân. Xem
+> `MASTER_REFERENCE_NOTE` trong `styleDNA.ts`.
+>
+> Phần bên dưới giữ lại vì bài học **"mô tả asset thắng style block"** vẫn đúng
+> nguyên — chỉ có chiều áp dụng là ngược lại: trước kia phải im lặng để khỏi ra
+> quần, giờ phải nói rõ để khỏi ra cụt.
+
+---
+
+*(Nội dung cũ, chỉ còn giá trị lịch sử:)*
 
 Người dùng chốt 2026-08-31: **nhân vật không mặc quần.** Dưới mảng áo, chân là
 **hai nét mảnh trần** chạy thẳng xuống rồi cụt — đúng như ảnh master.
@@ -1104,6 +1211,16 @@ Công thức đã qua bộ lọc, dùng lại được:
   chứng** (bác sĩ giơ chiếc khăn).
 - **Xô xát** → *"neither man touches the other"*, đổi thành giơ tay ra hiệu dừng
   + người kia lùi một bước.
+
+⚠️ **Công thức trên phục vụ HAI bộ lọc khác nhau, đừng dừng ở bộ lọc đầu.** Nó
+sinh ra để qua bộ lọc của Nano Banana, nhưng ảnh còn lên hình trong video nên còn
+phải qua **bộ lọc quảng cáo YouTube** — thứ chấm nặng nhất ở *thumbnail* và
+*30 giây đầu*. Vì vậy: (1) không bao giờ lấy cảnh có thi thể/án mạng/trẻ em gặp
+nạn làm thumbnail hay làm cảnh mở đầu, dù nó là cảnh đẹp nhất; (2) trẻ em trong
+khung phải đang ở trạng thái BÌNH THƯỜNG (đi học, chơi, đứng cạnh người lớn),
+không sợ hãi, không bị nắm/kéo/giữ, không ở gần người lớn có tư thế đe doạ. Luật
+chọn case nằm ở skill `true-story-compilation-script`, mục "⛔ CỔNG KIẾM TIỀN
+YOUTUBE".
 
 👉 Cảnh nào rủi ro thì **viết sẵn phương án lùi vào `notes` của chính cảnh đó**
 lúc soạn prompt, đừng đợi bị chặn rồi mới nghĩ — lúc đó đang giữa mẻ, dễ sửa vội

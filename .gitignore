@@ -23,3 +23,10 @@ narration-scripts/*/refs/**/*.jpg
 narration-scripts/*/refs/**/*.jpeg
 narration-scripts/*/refs/**/*.png
 narration-scripts/*/refs/**/*.webp
+
+# tư liệu style tham khảo: video + frame nặng, không commit
+input/style-ref/**/*.mp4
+input/style-ref/**/*.webm
+input/style-ref/**/frames/
+input/style-ref/**/sheets/
+input/style-ref/**/*.info.json

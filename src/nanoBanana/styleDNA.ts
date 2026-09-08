@@ -12,14 +12,67 @@
  * `src/veo3bot/`, dùng lại các block ở đây.
  */
 
-export const STYLE_NAME = "Nano Banana flat 2D vector (geometric-primitive, no-shading)";
+/**
+ * 🔴🔴 ĐỔI PHONG CÁCH TOÀN DIỆN — 2026-09-09. ĐỌC TRƯỚC KHI SỬA BẤT KỲ BLOCK NÀO DƯỚI ĐÂY.
+ *
+ * Người dùng chốt chuyển sang phong cách kênh **Brofessor Stein**. Tư liệu phân tích đầy đủ:
+ * `input/style-ref/brofessor-stein/DRAWING-SPEC.md` (cách vẽ) và `ANALYSIS.md` (hệ thống
+ * hình ảnh tổng thể), dựng từ 3 video đã tải về, video chuẩn là `nRiezhIOHH0`.
+ *
+ * Style CŨ (đến 2026-09-08): đầu tròn to, hai chấm mắt đen, không mũi không miệng, tay chân
+ * nét cụt KHÔNG bàn tay, một độ dày nét duy nhất, background vẽ đầy đủ cả căn phòng.
+ * Style MỚI: giải phẫu người lớn thật (~7 đầu), mặt vẽ đủ có nếp nhăn biểu cảm, BÀN TAY 5
+ * NGÓN, HAI độ dày nét, và KHÔNG vẽ căn phòng — chỉ vẽ đồ đạc đứng trên nền phẳng.
+ *
+ * ✅ ĐÃ ĐỔI ẢNH MASTER: `reference-character.jpeg` giờ là người đàn ông mặc vest, cắt từ
+ * frame 3:09 của `nRiezhIOHH0`. Bản cũ giữ ở `reference-character.old-2026-08-03.jpeg`.
+ * Đổi ảnh TRƯỚC là bắt buộc — bài học "ảnh thắng text": sửa block chữ mà giữ ảnh cũ thì ảnh
+ * cũ kéo mọi nhân vật mới về kiểu đầu tròn chấm mắt.
+ *
+ * ⚠️ ẢNH MASTER MỚI BỊ CẮT NGANG ĐÙI, KHÔNG CÓ BÀN CHÂN. Nhân vật nào vẽ nguyên người thì
+ * PHẢI mô tả rõ giày/bàn chân, nếu không sẽ ra cụt. Đã ghi vào `MASTER_REFERENCE_NOTE`.
+ *
+ * ⚠️ CHƯA CHẠY THỬ ẢNH NÀO theo style mới. Mẻ đầu tiên phải soi đúng 4 thứ:
+ *   1. Bàn tay có ra đủ 5 ngón không (đây là thứ khó nhất, và là thứ style cũ CẤM).
+ *   2. Nét có ra HAI độ dày không, hay model vẫn vẽ một độ dày đều.
+ *   3. Mặt có nếp nhăn biểu cảm không, hay vẫn phẳng lì.
+ *   4. Background có ra "đồ đạc trên nền phẳng" không, hay model vẫn tự vẽ sàn và tường.
+ *
+ * ⚠️ TOÀN BỘ ASSET CŨ ĐÃ LỆCH PHONG CÁCH: case 1 Roanoke (4/17 asset) và 5 case của tập
+ * `vu-viec-tam-linh-khong-the-giai-thich` đều vẽ theo style cũ. Ghép chung với ảnh style
+ * mới sẽ đá nhau. Người dùng chưa quyết bỏ hay giữ.
+ *
+ * ✅ ĐÃ BỎ MỤC TIÊU "ĐỒ LẠI ẢNH BẰNG TAY" (người dùng chốt 2026-09-09). Ảnh Nano Banana giờ
+ * là SẢN PHẨM DÙNG THẲNG — người dùng tách nền và dựng phim, không vẽ lại. Ba chỗ đã sửa
+ * theo: `SIMPLIFY_DETAIL_BLOCK` (bỏ tiêu chí "vài nét là đồ xong", chuyển sang "chi tiết
+ * đúng mức một người vẽ minh hoạ sẽ vẽ"), `HAND_DRAWN_LINE_BLOCK` (giữ nét run tay vì đó
+ * ĐÚNG là đặc điểm của style mới, nhưng bỏ mảng màu tô lem và sửa câu bảo vệ bố cục vốn đang
+ * mô tả bố cục cũ), `SIMPLE_PERSPECTIVE_BLOCK` (bỏ câu "extremely simple to trace by hand").
+ * ⚠️ Comment lịch sử của hai block đó vẫn nhắc mục tiêu đồ tay — đó là lý do RA ĐỜI của
+ * chúng, giữ lại để hiểu vì sao có từng điều khoản, KHÔNG phải mục tiêu hiện tại.
+ *
+ * Các block bên dưới còn giữ nguyên comment lịch sử của style cũ. Comment mô tả KẾT QUẢ TEST
+ * của style cũ vẫn có giá trị tham khảo về CÁCH model phản ứng với từng loại câu lệnh, nhưng
+ * ĐỪNG đọc chúng như mô tả style đang dùng.
+ */
+
+export const STYLE_NAME =
+  "Brofessor Stein hand-drawn flat illustration (two-weight ink line, real anatomy, no environment)";
 
 /**
  * Áp dụng cho MỌI ảnh (Character lẫn Background) — phần lõi chung của phong cách.
  */
 export const BASE_STYLE_BLOCK =
-  "Flat 2D vector illustration style, bold uniform-width black outlines around every shape. " +
-  "Completely flat color fills, no shading, no gradients, no drop shadows.";
+  "Hand-drawn flat 2D illustration. Everything is inked in black using TWO distinct line " +
+  "weights: a THICK outer contour around the silhouette of each person and each object, and " +
+  "clearly THINNER interior lines for everything inside that silhouette — facial features, " +
+  "cloth folds, lapels, seams, panel edges, wood grain. The interior lines are roughly half " +
+  "the thickness of the outer contour. Colors are flat fills with no gradients, no highlights " +
+  "and no cast shadows. A single slightly darker tone of the same colour may appear on a few " +
+  "recessed areas only, such as a seat cushion or a table top — never all-over cel shading. " +
+  "The palette is muted and slightly desaturated: browns, greys, wine red, navy, olive, " +
+  "beige. Skin is a flat fill with no blush and no shading, and pale-skinned characters are " +
+  "left plain white so the face reads through line work alone.";
 
 /**
  * CHARACTER — đã dùng để tạo ra ảnh MASTER REFERENCE ban đầu (2026-08-01, mô tả NGẮN GỌN, cụ
@@ -73,12 +126,19 @@ export const CHARACTER_STYLE_BLOCK =
  * lỗi hệ thống hay ngẫu nhiên — cần thêm 1-2 nhân vật nữa mới kết luận được.
  */
 export const MASTER_REFERENCE_NOTE =
-  "Reference image: reference-character (man with side-swept brown hair, long strands framing " +
-  "both sides of the face down to chest level, skin-tone round head, small ear visible, white " +
-  "lab coat open over a blue shirt and grey tie) — the single fixed visual anchor for ALL human " +
-  "characters going forward. If a new character needs a clearly different hairstyle, skin " +
-  "tone, or outfit type, describe that explicitly — otherwise the reference's specific traits " +
-  "(long side hair strands, skin tone, layered coat-and-tie outfit) will carry over by default.";
+  "Reference image: reference-character (an adult man seen at a slight three-quarter turn, " +
+  "short dark hair, pale skin left plain white so the face reads through line work alone, a " +
+  "fully drawn face with eyebrows, nose, mouth and a few expression lines on the cheeks, a " +
+  "layered outfit of a grey suit jacket open over a white shirt and dark green tie, and BOTH " +
+  "hands drawn in full with five separate fingers holding a clipboard and a pen) — the single " +
+  "fixed visual anchor for ALL human characters going forward. What must carry over is the " +
+  "CONSTRUCTION: realistic adult proportions of about seven heads, a fully drawn face, fully " +
+  "drawn five-fingered hands, layered clothing with a few sparse fold lines, and the two-weight " +
+  "ink line. If a new character needs a different hairstyle, skin tone, build, age or outfit, " +
+  "describe that explicitly — otherwise the reference's own traits (short dark hair, pale " +
+  "skin, suit and tie) will carry over by default. The reference is cropped at mid-thigh and " +
+  "shows NO feet, so whenever a character is drawn at full length the feet and the shoes must " +
+  "be described explicitly or they will come out missing.";
 
 /**
  * PREFIX CHUẨN để ghép trước mô tả nhân vật mới — dùng CHUNG cho MỌI nhân vật từ giờ trở đi,
@@ -108,16 +168,13 @@ export const MASTER_REFERENCE_NOTE =
  * nên phải neo vào TAI (chỉ hiện 1 bên), KHỐI TÓC (dồn về phía xa) và KHOẢNG MÁ TRỐNG.
  */
 export const CHARACTER_THREE_QUARTER_BLOCK =
-  "IMPORTANT — the attached reference image shows its character facing straight forward, but " +
-  "this new character must NOT be drawn that way. Draw the character in THREE-QUARTER VIEW, " +
-  "turned about forty-five degrees to one side: the head is turned so that ONE ear shows on " +
-  "the far side of the face and no ear at all on the near side, the mass of the hair sits " +
-  "mostly toward that far side, and both eyes stay clearly visible but sit closer together and " +
-  "shifted toward the side the face is turned to, leaving a wider empty area of cheek on the " +
-  "other side. EXACTLY TWO EYES must be visible — three-quarter means BETWEEN front and profile, " +
-  "so a full side profile or a back view is just as wrong as a flat front view. " +
-  "other side. The body turns the same way, so one shoulder is plainly nearer the viewer than " +
-  "the other.";
+  "Draw the character in THREE-QUARTER VIEW, turned about forty-five degrees to one side, the " +
+  "same way the attached reference image is turned. The nose and the jawline read clearly " +
+  "against the far cheek, ONE ear shows on the near side of the head while the other is " +
+  "hidden, and the body turns the same way so that one shoulder sits plainly nearer the viewer " +
+  "than the other. EXACTLY TWO EYES stay visible. THREE-QUARTER means BETWEEN a flat " +
+  "symmetrical front view and a full side profile, and BOTH extremes are wrong, as is any " +
+  "view from behind.";
 
 /**
  * KHOÁ CẤU TẠO THÂN NGƯỜI — chống trôi khỏi ảnh master (2026-08-11, người dùng chỉ ra).
@@ -132,12 +189,15 @@ export const CHARACTER_THREE_QUARTER_BLOCK =
  * "ra số cụ thể" ở SIMPLIFY_DETAIL_BLOCK.
  */
 export const CHARACTER_BODY_BLOCK =
-  "Build the body exactly the minimal way the reference image does: arms and legs are plain " +
-  "THIN TAPERED LINES that simply STOP at their ends — draw NO hands, NO fingers, NO feet and " +
-  "NO shoes at all. Draw NO sleeves: each arm line attaches directly to the edge of the torso " +
-  "shape. Draw NO trousers and no separate leg clothing of any kind — below the garment the " +
-  "legs continue as bare thin lines. The clothing is ONE single flat garment shape covering " +
-  "the torso only, with no folds, no creases and no shading.";
+  "Build the body as a real adult human, the way the reference image does: proportions of " +
+  "about seven heads, never a large head on a small body. Draw BOTH HANDS IN FULL with five " +
+  "separate articulated fingers, able to actually grip whatever the character holds. Draw real " +
+  "arms inside real sleeves with cuffs. When the character is shown at full length, draw the " +
+  "legs, the feet and the shoes in full. The clothing is LAYERED — an outer garment sitting " +
+  "open over what is worn underneath — with collar, cuffs, lapels, pockets and hem all drawn " +
+  "as thin interior lines. Add cloth folds as a FEW short curved thin lines only, at the " +
+  "elbows, the waist, the knees and the hem: sparse marks, never dense hatching and never " +
+  "shading.";
 
 /**
  * KHOÁ GÓC 3/4 KHI GHÉP CẢNH — `createSceneComposites` tự nối vào MỌI cảnh ghép.
@@ -168,22 +228,27 @@ export const SCENE_CHARACTER_VIEW_BLOCK =
   "front view, and equally do NOT turn anyone into a full side profile or show anyone from " +
   "behind. EXACTLY TWO EYES must be visible on every single face drawn in full — never one " +
   "eye, never none, never the back of a head. If a pose would hide one eye, rotate that person " +
-  "back toward the viewer until both eyes show again. The eyes are drawn only as two plain " +
-  "round black dots, or as two simple downward curves when the eyes are closed, or as two " +
-  "large white circles with small black pupils for shock — with no nose and no eyebrows. " +
+  "back toward the viewer until both eyes show again. Every face is drawn IN FULL: eyes with " +
+  "an upper lid line and a dark iris, eyebrows that carry the expression, a nose drawn with " +
+  "one or two short lines, a mouth drawn as a real shape, and a few thin expression lines — a " +
+  "frown between the brows, creases from nose to mouth corner, shadows under the eyes — used " +
+  "to convey age and mood. " +
   "The ONE exception is any figure this prompt asks for as a plain solid single-colour " +
   "silhouette: such a figure has NO face at all, so do NOT give it eyes, a mouth or any other " +
   "feature, and do NOT redraw it as a person drawn in full. " +
-  "Every person also keeps the minimal body build of their reference image: arms and legs as " +
-  "plain thin tapered lines that simply stop, with NO hands, NO feet and NO shoes; NO sleeves; " +
-  "NO trousers or separate leg clothing — bare thin lines below one single flat garment shape.";
+  "Every person also keeps the real adult build of their reference image: about seven heads " +
+  "tall, BOTH HANDS drawn in full with five separate fingers gripping whatever they hold, real " +
+  "sleeves with cuffs, and — whenever the figure is shown at full length — feet and shoes " +
+  "drawn in full. Clothing stays layered, with a few sparse thin fold lines at elbows, waist, " +
+  "knees and hem.";
 
 /** Nhắc lại ở CUỐI prompt cảnh ghép — truyền qua tham số `styleBlock` của createImageIngredient. */
 export const SCENE_CHARACTER_VIEW_REMINDER =
   "Remember: every person drawn in full stays three-quarter turned — never flattened into a " +
-  "front view and never turned into a side profile or seen from behind — and EXACTLY TWO EYES " +
-  "are visible on every single face drawn in full, never one. Plain solid single-colour " +
-  "silhouette figures are the exception and keep no face at all.";
+  "front view and never turned into a side profile or seen from behind — with EXACTLY TWO " +
+  "EYES visible, a fully drawn face including eyebrows, nose and mouth, and BOTH HANDS drawn " +
+  "in full with five separate fingers. Plain solid single-colour silhouette figures are the " +
+  "exception and keep no face and no fingers at all.";
 
 /**
  * ĐÁM ĐÔNG NỀN = BÓNG ĐEN ĐẶC (người dùng chốt 2026-09-06).
@@ -207,13 +272,12 @@ export const CROWD_SILHOUETTE_BLOCK =
   "so that the whole figure reads as one unbroken flat shape with nothing inside it: draw NO " +
   "eyes, NO dots, NO mouth, NO nose, NO ears and NO face of any kind on any of them, and NO " +
   "collar, NO buttons, NO belt, NO pocket, NO folds, NO creases, NO pattern and NO second " +
-  "colour anywhere inside the shape. A crowd figure still has the same build as the people " +
-  "drawn in full: one plain round head sitting directly on ONE single plain flat garment " +
-  "shape, with the arms and the bare legs continuing as thin plain straight lines that simply " +
-  "stop at their ends — no hands, no feet, no shoes and no trousers. Every crowd figure is the " +
-  "SAME total height and the SAME large-head short-body proportion as the people drawn in " +
-  "full: its head alone is about one quarter of that figure's whole height, never a small head " +
-  "on a long body. Keep a clear gap between crowd figures so their shapes never merge into one " +
+  "colour anywhere inside the shape. A crowd figure keeps the same REAL ADULT PROPORTIONS as " +
+  "the people drawn in full — about seven heads tall, never a large head on a short body — but " +
+  "reduced to its outline: the head, the shoulders, the arms and the legs read as one " +
+  "continuous filled shape, with no fingers, no shoes and no clothing edges picked out inside " +
+  "it. Every crowd figure is the SAME total height as the people drawn in full. " +
+  "Keep a clear gap between crowd figures so their shapes never merge into one " +
   "black mass, and vary only their heights and the outline of their hair and garment shapes " +
   "slightly so they do not look like copies of one figure. The crowd stays background: no " +
   "crowd figure may overlap, touch or stand in front of anyone drawn in full, and none of them " +
@@ -231,9 +295,10 @@ export const CHARACTER_VIEW_REMINDER =
   "profile or back view — with EXACTLY TWO EYES visible on the face, never one.";
 
 export const CHARACTER_PROMPT_PREFIX =
-  "Using the exact same illustration style as the attached reference image — same bold " +
-  "uniform-width black outlines, same flat color fill with zero shading, same stick-line limb " +
-  "treatment, same simplified head/eyes, no background:";
+  "Using the exact same illustration style as the attached reference image — same two-weight " +
+  "black ink line with a thick outer contour and thinner interior detail, same flat colour " +
+  "fill with no gradients, same realistic adult human proportions, same fully drawn face and " +
+  "same fully drawn five-fingered hands, on the same plain flat pale-blue background:";
 
 /**
  * CHECKLIST MÔ TẢ NHÂN VẬT — xác nhận 2026-08-01 sau khi test nhân vật lịch sử (Napoleon,
@@ -298,15 +363,15 @@ export const CHARACTER_DESCRIPTION_CHECKLIST = [
  * cho nhóm 4 chân, 1 ảnh chuẩn cho nhóm chim/2 chân+cánh).
  */
 export const ANIMAL_STYLE_BLOCK =
-  "Minimalist animal character design, flat 2D vector art style, bold uniform-width black " +
-  "outlines, completely flat colors, no shading, no gradients, no textures. Plain solid " +
-  "single-color background, no scenery. Simplified head built from basic geometric shapes " +
-  "(species-appropriate snout/beak shape, simple flat ear shapes if any, one or two black dot " +
-  "eyes, no other facial detail). Flat-colored simplified body shape. Legs drawn as simple " +
-  "flat-colored solid shapes (short rounded cylinders/rectangles with real width and volume — " +
-  "NOT thin stick lines), each ending in a small simple rounded flat paw/hoof shape with no " +
-  "toe or claw detail. Tail matching the same solid-shape treatment (not a thin line). " +
-  "Standing pose, side profile view, full body visible.";
+  "One animal, hand-drawn flat illustration, on a PLAIN FLAT PALE BLUE background with no " +
+  "scenery, no ground line and no cast shadow. Ink it with TWO line weights: a thick outer " +
+  "contour around the whole animal, thinner interior lines for the face, the ear edges, the " +
+  "muscle and coat divisions. Correct animal anatomy and correct proportions for the species — " +
+  "not a simplified geometric toy shape. The face is drawn in full: an eye with a lid line and " +
+  "a dark iris, the nostril, the mouth line. Legs are solid shapes with real width ending in a " +
+  "properly drawn paw or hoof. Flat colour fills with no gradients; at most ONE slightly " +
+  "darker tone of the same colour for a marking or a recessed area. Standing pose, three-" +
+  "quarter or side view, whole body visible.";
 
 /**
  * GIẢM MẬT ĐỘ CHI TIẾT — ✅ ĐÃ TEST (2026-08-02, tạo lại cả 6 background của case 1).
@@ -333,14 +398,14 @@ export const ANIMAL_STYLE_BLOCK =
  * đồ lại) thay vì tính từ mơ hồ như "đơn giản".
  */
 export const SIMPLIFY_DETAIL_BLOCK =
-  "Draw the scene with as few separate shapes as possible, because a person has to be able to " +
-  "trace the whole picture by hand quickly. Any repeating structural pattern — lattice " +
-  "girders, railings, balusters, roof tiles, rows of columns, window panes, brickwork — must " +
-  "be reduced to a SMALL number of large simple shapes, never dozens of small individual " +
-  "pieces. Draw only a few widely spaced members and let them stand for the whole structure. " +
-  "No fine hatching, no small repeated marks, no surface texture, no tiny ornament. If a " +
-  "detail would take more than a few strokes to trace, simplify it into one flat shape " +
-  "instead.";
+  "Give every object the amount of detail a hand illustrator would draw, and stop there. An " +
+  "armchair gets its arms, its turned wooden legs and a few seam lines on the upholstery; a " +
+  "building gets its windows, its roofline, its door and its sign bracket. What it never gets " +
+  "is photographic surface texture: no fine hatching, no cross-hatching, no rendered material, " +
+  "no dense ornament, no filigree. Any repeating structural pattern — brickwork, roof tiles, " +
+  "clapboard, lattice girders, balusters, rows of window panes — is SUGGESTED with a scatter " +
+  "of a few marks over part of the surface, never drawn out course by course across the whole " +
+  "of it. Detail belongs on the things the story is about; everything else stays plain.";
 
 /**
  * NÉT VẼ TAY "NGUỆCH NGOẠC" — ✅ ĐÃ TEST (2026-08-02, cảnh "Tower Winter Dawn Sketch", 43s).
@@ -370,14 +435,15 @@ export const SIMPLIFY_DETAIL_BLOCK =
  */
 export const HAND_DRAWN_LINE_BLOCK =
   "Hand-drawn look: every outline is drawn freehand with a felt-tip marker, NOT with a ruler " +
-  "and NOT as clean computer vector paths. Each stroke wobbles slightly, its thickness varies " +
-  "a little along its length, and strokes slightly overshoot and cross each other at corners. " +
-  "Flat color fills are painted a little loosely so they sometimes stop just short of the " +
-  "outline or spill a little past it. " +
+  "and NOT as clean computer vector paths. Each stroke wobbles slightly and strokes slightly " +
+  "overshoot and cross each other at corners. This does NOT blur the two line weights: an " +
+  "outer contour stays clearly thicker than the interior detail lines throughout. " +
+  "The flat colour fills themselves stay clean and stop at the outline — the looseness is in " +
+  "the ink line, not in the paint. " +
   "IMPORTANT: this changes only the QUALITY OF THE INK LINE, never the layout. The composition " +
-  "stays exactly as described: same flat head-on arrangement, same horizontal bands, same " +
-  "symmetry, no perspective. A line described as horizontal must still read as horizontal and " +
-  "span the full width, it is just drawn by a slightly unsteady hand rather than a machine.";
+  "stays exactly as described: same placement, same relative sizes, same three-quarter object " +
+  "views, same plain flat background field. A shape described as upright must still read as " +
+  "upright, it is just drawn by a slightly unsteady hand rather than by a machine.";
 
 /**
  * PROP / VẬT DỤNG — ✅ ĐÃ TEST THẬT LẦN 1 (2026-08-02, prop "Newsreel Camera" của case
@@ -426,16 +492,17 @@ export const HAND_DRAWN_LINE_BLOCK =
  * nhắc chốt ảnh reference riêng theo TỪNG NHÓM (đồ mặc được / máy móc có chân đế / vũ khí...).
  */
 export const PROP_STYLE_BLOCK =
-  "Minimalist single-object prop design, flat 2D vector art style, bold uniform-width black " +
-  "outlines, completely flat colors, no shading, no gradients, no textures. Plain solid " +
-  "single-color background, no scenery, no ground line, no cast shadow. ONE object only, " +
-  "centered, entire object fully visible inside the frame. NO people, NO hands, NO characters " +
-  "of any kind. Build the whole object from basic geometric primitives only (rectangles, " +
-  "circles, simple arcs, plain tapered shapes) — no intricate ornament, no engraved detail, no " +
-  "fine linework, no realistic material texture. Every rigid part (legs, poles, handles, " +
-  "shafts, frames) drawn as a flat-colored solid shape with real width and volume, NOT as a " +
-  "thin stick line. Fabric parts drawn as simple flat-colored panels with a few plain fold " +
-  "lines only.";
+  "ONE single object, centered, entirely visible inside the frame, on a PLAIN FLAT PALE BLUE " +
+  "background — no scenery, no room, no ground line, no cast shadow. NO people, NO hands, NO " +
+  "characters of any kind. Draw the object in a LOOSE THREE-QUARTER VIEW so it reads as a " +
+  "solid thing with real depth: a table top is a parallelogram, an armrest recedes, a box " +
+  "shows two faces. Give it the amount of detail a real object has — an armchair has arms, " +
+  "turned wooden legs and seam lines on the upholstery; a building sign has a frame and a " +
+  "bracket — but stop well short of photographic texture. Ink it with the TWO line weights: a " +
+  "thick outer contour around the whole object, thinner lines inside for panel edges, seams, " +
+  "wood grain and joins. Flat colour fills, with at most ONE slightly darker tone of the same " +
+  "colour on a recessed face such as a seat cushion or a table top. Fabric parts get a few " +
+  "plain fold lines only.";
 
 /**
  * BACKGROUND — quy tắc chung cho MỌI ảnh bối cảnh (Setting), áp dụng cùng với BASE_STYLE_BLOCK.
@@ -443,12 +510,16 @@ export const PROP_STYLE_BLOCK =
  * trường thị trấn, hội trường nghị viện) — 2026-08-01.
  */
 export const BACKGROUND_STYLE_BLOCK =
-  "Full-bleed composition filling the entire frame edge to edge — no decorative border, no " +
-  "vignette. NO people, NO characters, NO figures of any kind — empty environment only. " +
-  "Keep all decorative detail extremely minimal and simplified — every detail must be built " +
-  "from basic geometric primitives only (rectangles, simple arcs/half-circles, circles, plain " +
-  "spiral/volute shapes). Avoid intricate repeating ornamental patterns, filigree, carved " +
-  "relief, or fine linework — plain flat-colored panels and simple trim only.";
+  "Do NOT draw a room and do NOT draw an environment. Draw ONLY the furniture and the objects " +
+  "that tell the viewer where this is, standing on a PLAIN FLAT PALE BLUE background: no " +
+  "floor, no walls, no ceiling, no rug, no sky, no horizon line and no cast shadows. Three " +
+  "armchairs around a low table with glasses on it IS the sitting room — nothing else is " +
+  "needed and nothing else may be added. NO people, NO characters, NO figures of any kind. " +
+  "The objects are drawn in a loose three-quarter view and MAY overlap each other freely. " +
+  "When the subject is a BUILDING, draw the building as one standalone object in loose " +
+  "two-point perspective with its real architectural detail, and put a SMALL irregular patch " +
+  "of ground or pavement directly under it that simply ends a short way out — never a full " +
+  "street, never neighbouring buildings, never a drawn sky. Leave any text surface blank.";
 
 /**
  * CHỐNG PHỐI CẢNH HỘI TỤ — bắt buộc cho cảnh có kiến trúc thẳng hàng (phố, mặt tiền nhà, dãy
@@ -458,11 +529,13 @@ export const BACKGROUND_STYLE_BLOCK =
  * LAYERED_DEPTH_LANDSCAPE_NOTE bên dưới cho trường hợp đó.
  */
 export const NO_PERSPECTIVE_BLOCK =
-  "Flat orthographic composition with NO perspective and NO vanishing point — camera looking " +
-  "straight at the scene, not down a receding street or into a converging corner. Elements " +
-  "arranged as flat parallel planes across the frame, like a theater backdrop or paper cutout " +
-  "diorama, all at the same flat depth layer. No 3D depth, no diminishing scale toward a " +
-  "horizon point.";
+  "Perspective lives INSIDE each object and nowhere else. Each individual object is drawn in a " +
+  "loose three-quarter view with real volume — a table top reads as a parallelogram, a chair " +
+  "arm recedes — but the picture as a whole has NO shared perspective: no vanishing point, no " +
+  "receding street, no converging room corner, no horizon line, no drawn ground plane and no " +
+  "cast shadows. Everything stands directly on the plain flat background field. Objects and " +
+  "people are placed side by side at roughly the same scale and MAY overlap each other freely; " +
+  "nothing shrinks toward a distance.";
 
 /**
  * Ghi chú (không phải block để nối trực tiếp vào prompt) — cho cảnh phong cảnh thiên nhiên
@@ -521,11 +594,11 @@ export const SIMPLE_PERSPECTIVE_BLOCK =
   "parallel to the frame — that skewed corner-on look is wrong here. If an object shows only one " +
   "face, that face is a plain upright rectangle facing the viewer, not a parallelogram. This is " +
   "still a real perspective view with depth, NOT a flat theater backdrop. " +
-  "BUT it must stay extremely simple to trace by hand: every single surface is filled with ONE " +
+  "BUT the rendering stays flat: every single surface is filled with ONE " +
   "flat solid color — absolutely no gradients, no shading, no cast shadows, no texture, no " +
   "hatching, no highlights, no reflections. Depth comes ONLY from the angle and the size of " +
-  "flat shapes, never from rendering or lighting. Every shape carries a bold uniform-width " +
-  "black outline. " +
+  "flat shapes, never from rendering or lighting. Every shape carries the two-weight black " +
+  "ink line: thick outer contour, thinner lines inside it. " +
   "Use a narrow palette for the whole picture: one dominant hue rendered in a few flat tints, " +
   "so the mood comes from colour choice rather than from light and shadow. If sky is visible it " +
   "is ONE flat colour band with a simple skyline of plain flat rectangles in a lighter tint. " +
@@ -556,7 +629,8 @@ export const INTERIOR_CORNER_NOTE =
   "only so a character standing in the room reads as being inside a real space. This is NOT a " +
   "deep perspective scene: no long receding corridor, no second vanishing point, no rows of " +
   "objects or floor tiles shrinking away into the distance. Every surface stays a plain flat " +
-  "color fill with bold uniform-width black outlines, no shading and no gradients.";
+  "colour fill inked with the two-weight black line — thick outer contour, thinner lines " +
+  "inside — with no shading and no gradients.";
 
 export const LAYERED_DEPTH_LANDSCAPE_NOTE =
   "Layered flat-depth landscape composition (background/midground/foreground layers stacked " +
