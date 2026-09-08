@@ -6,11 +6,17 @@
 | Thư mục | Case | Số ảnh |
 |---|---|---|
 | [`case-1/`](case-1/README.md) | A Fei — Long Wang, Trung Quốc 2020 | 49 |
+| [`case-2/`](case-2/README.md) | Don Decker — Stroudsburg, Pennsylvania 1983 | 187 |
 | [`case-5/`](case-5/README.md) | Chu Xiu-hua — Đài Loan 1959 | 205 |
 
-Số thứ tự nhóm KHÔNG reset giữa các case (case 1 giữ `01-05`, case 5 dùng
-`06-34`) — để đọc tên file là biết ngay thuộc case nào kể cả khi bị copy ra
-ngoài thư mục.
+Số thứ tự nhóm KHÔNG reset giữa các case (case 1 giữ `01-08`, case 5 dùng
+`06-35`, case 2 dùng `36-51`) — để đọc tên file là biết ngay thuộc case nào kể
+cả khi bị copy ra ngoài thư mục.
+
+⚠️ Từ case 2 trở đi, tra Commons bằng **`generator=categorymembers`** thay cho
+`generator=search` — category do người thật phân loại nên sạch hơn hẳn. Mỗi thư
+mục case có thêm `titles.json` ghi tên file gốc trên Commons của từng ảnh, để
+rà rác bằng tên thay vì mở từng cái.
 
 ## Quy ước
 
