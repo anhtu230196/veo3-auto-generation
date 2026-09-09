@@ -27,6 +27,10 @@ bước sau bắt đầu, thay vì chỉ review một lần ở cuối.
 - Cách dùng hằng ngày: [`coordination/README.md`](coordination/README.md).
 - Quy trình nhận một lượt: [`.claude/skills/deliberation/SKILL.md`](.claude/skills/deliberation/SKILL.md).
 
+Script phối hợp chép nguyên từ `youtube-research-system`, nên prompt của nó có
+chỗ nói **"AGENTS.md mục 8"** — repo này không đánh số mục, câu đó trỏ về đúng
+mục này và về `coordination/RULES.md`.
+
 Ba điểm dễ bỏ sót:
 
 - **Claim trước khi làm việc nặng** — `python scripts/claims.py check`. Không đụng
