@@ -10,7 +10,11 @@
         "--allowedTools",
         "Read Grep Glob WebFetch WebSearch",
         "--permission-mode",
-        "dontAsk"
+        "dontAsk",
+        "--model",
+        "opus",
+        "--effort",
+        "max"
       ],
       "write_cmd": [
         "claude",
@@ -19,35 +23,47 @@
         "--allowedTools",
         "Read Grep Glob WebFetch WebSearch Write Edit",
         "--permission-mode",
-        "acceptEdits"
+        "acceptEdits",
+        "--model",
+        "opus",
+        "--effort",
+        "max"
       ],
       "timeout": 1800,
       "verified": true,
-      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc."
+      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc. Model chot 2026-09-09: --model opus --effort max (max la muc cao nhat; cac muc hop le: low, medium, high, xhigh, max). Khong co model nao ten 'ultracode' — 'ultrareview' la mot lenh khac, khong lien quan."
     },
     "gemini": {
-      "bin": "gemini",
+      "bin": "agy",
       "cmd": [
-        "gemini",
+        "agy",
         "-p",
         "{prompt}",
-        "--approval-mode",
+        "--mode",
         "plan",
-        "-o",
-        "text"
+        "--output-format",
+        "text",
+        "--print-timeout",
+        "25m",
+        "--model",
+        "gemini-3.8-flash-high"
       ],
       "write_cmd": [
-        "gemini",
+        "agy",
         "-p",
         "{prompt}",
-        "--approval-mode",
-        "auto_edit",
-        "-o",
-        "text"
+        "--mode",
+        "accept-edits",
+        "--output-format",
+        "text",
+        "--print-timeout",
+        "25m",
+        "--model",
+        "gemini-3.8-flash-high"
       ],
-      "timeout": 600,
-      "verified": false,
-      "note": "2026-09-09: dang 429 (het quota), chua kiem chung duoc quyen web o --approval-mode plan. Kiem lai khi quota hoi."
+      "timeout": 1800,
+      "verified": true,
+      "note": "Antigravity CLI (agy), khong phai 'gemini' CLI nua: Google da ngat OAuth cua gemini CLI cho tai khoan ca nhan tu 2026-06-18 (Gemini Code Assist for individuals / AI Pro / Ultra), chi con API key tra tien moi dung duoc. Da kiem chung 2026-09-09 tren may AnhTu bang subprocess: doc file trong repo OK khong can --add-dir, web OK (mo example.com that), ghi BI CHAN that. Canh bao: --mode plan KHONG phai hang rao — do lai thi no van ghi duoc file. Chan ghi la nho permissions.deny ['write_file(*)','command(*)'] trong ~/.gemini/antigravity-cli/settings.json. Vi vay write_cmd o day chua dung duoc: muon cho Gemini cam vai tac gia thi phai go deny do ra truoc. AGENTS.md muc 2 va muc 8 khong giao cho Gemini vai tac gia o buoc nao nen tam thoi khong can. Dang nhap: agy dung chung phien voi app Antigravity da cai san. Model chot 2026-09-09: --model gemini-3.8-flash-high, do thu chay OK. Canh bao: 'agy models' co ca claude-opus-4-6-thinking va gpt-oss-120b — cam nham vao ghe nay thi luong mat gia tri ba model doc lap soi nhau."
     },
     "codex": {
       "bin": "codex",
@@ -56,18 +72,26 @@
         "exec",
         "{prompt}",
         "--sandbox",
-        "read-only"
+        "read-only",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high"
       ],
       "write_cmd": [
         "codex",
         "exec",
         "{prompt}",
         "--sandbox",
-        "workspace-write"
+        "workspace-write",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high"
       ],
       "timeout": 1800,
       "verified": true,
-      "note": "Da kiem chung 2026-09-09: doc OK, web OK, ghi bi chan o --sandbox read-only. stdout lan nhieu (web search:, tokens used) nen lay ket qua qua --output-last-message.",
+      "note": "Da kiem chung 2026-09-09: doc OK, web OK, ghi bi chan o --sandbox read-only. stdout lan nhieu (web search:, tokens used) nen lay ket qua qua --output-last-message. Model chot 2026-09-09: -m gpt-6-astra -c model_reasoning_effort=high, do thu chay OK. Dat thang o day thay vi dua vao ~/.codex/config.toml (dang de medium) de cau hinh luong khong phu thuoc may.",
       "output_file_flag": "--output-last-message"
     }
   }

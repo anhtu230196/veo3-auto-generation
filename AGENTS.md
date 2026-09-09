@@ -46,5 +46,5 @@ python scripts/orchestrate.py start "Chọn 6 case cho tập chủ đề mất t
 ```
 
 Lệnh này chạy CLI của cả ba agent bằng subscription (`claude -p`, `codex exec`,
-`gemini -p`), không gọi API. Chạy nó từ terminal thật, đừng chạy bên trong một
+`agy -p` — Antigravity CLI), không gọi API. Chạy nó từ terminal thật, đừng chạy bên trong một
 phiên agent — sẽ lồng phiên và ăn hai lần quota.

@@ -136,7 +136,7 @@ Không agent nào tự đánh thức agent khác.
 
 **Thủ công:** `python scripts/thread.py next <slug>` in ra đúng câu cần dán cho agent kế tiếp. Tú dán, agent làm, rồi `thread.py apply`.
 
-**Tự động bằng CLI:** `scripts/orchestrate.py` gọi thẳng CLI của từng agent ở chế độ headless — `claude -p`, `gemini -p`, `codex exec` — nên chạy bằng subscription đã trả, không tính theo token như gọi API. Cấu hình lệnh ở `coordination/agents.json`.
+**Tự động bằng CLI:** `scripts/orchestrate.py` gọi thẳng CLI của từng agent ở chế độ headless — `claude -p`, `agy -p` (Antigravity CLI), `codex exec` — nên chạy bằng subscription đã trả, không tính theo token như gọi API. Cấu hình lệnh ở `coordination/agents.json`.
 
 ```bash
 python scripts/orchestrate.py doctor --probe   # CLI nao dung duoc, con dang nhap khong
@@ -152,7 +152,15 @@ hoặc chạm trần. Đổi người viết bản đầu bằng `--author claud
 
 Luật an toàn của chế độ tự động:
 
-- **Lượt review chạy chế độ chỉ đọc** (`--approval-mode plan`, `--permission-mode plan`, `--sandbox read-only`). Người review không cần quyền ghi, và không nên có.
+- **Lượt review chạy chế độ chỉ đọc.** Người review không cần quyền ghi, và không nên có. Cách chặn khác nhau theo từng CLI, và cờ chế độ không phải lúc nào cũng là hàng rào:
+
+  | Agent | Chặn ghi bằng gì |
+  | --- | --- |
+  | Codex | `--sandbox read-only` — cờ này chặn thật |
+  | Claude | `--allowedTools` không có Write/Edit. Không dùng `--permission-mode plan`: nó chặn luôn WebFetch |
+  | Gemini (`agy`) | `permissions.deny` trong `~/.gemini/antigravity-cli/settings.json`. **`--mode plan` không chặn ghi** — đo lại ngày 2026-09-09 thì nó vẫn tạo được file |
+
+  Thêm một agent mới thì phải đo thật xem nó có ghi được không, đừng tin tên cờ.
 - **Chỉ lượt tác giả được sửa artifact.** Không lượt nào được sửa `THREAD.md`; orchestrator lấy stdout làm file vòng rồi tự cập nhật sổ.
 - Agent không xuất được khối `points` thì orchestrator **giữ lại file vòng và dừng**, không đoán thay. Sửa tay rồi `thread.py apply`.
 - `run` dừng ngay khi luồng chuyển `settled` hoặc `blocked`, và có trần số lượt riêng.

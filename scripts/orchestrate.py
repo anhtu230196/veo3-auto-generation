@@ -28,6 +28,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import thread as th  # noqa: E402
+import thread_view as tv  # noqa: E402
+
+# Trang doc tu tai lai sau chung nay giay khi luong con dang chay. Mot luot
+# that mat 100-700s nen khong can nhanh hon; chi can nguoi doc khong phai F5.
+VIEW_REFRESH = 20
 
 CONFIG = Path(__file__).resolve().parents[1] / "coordination" / "agents.json"
 MAX_TURNS = 12
@@ -321,15 +326,37 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
     return status
 
 
+def refresh_view(slug: str, running: bool) -> Path | None:
+    """Sinh lai trang doc sau moi luot. Loi o day khong duoc lam hong luong."""
+    try:
+        return tv.write_view(slug, refresh=VIEW_REFRESH if running else 0)
+    except Exception as exc:  # trang doc la tien nghi, khong phai san pham
+        print(f"    (khong sinh duoc trang doc: {exc})")
+        return None
+
+
+def announce_view(slug: str) -> None:
+    path = refresh_view(slug, running=True)
+    if path:
+        print(f"Theo doi truc tiep: {path.as_uri()}")
+        print(f"  trang tu tai lai moi {VIEW_REFRESH}s trong luc luong chay.\n")
+
+
 def cmd_turn(args) -> int:
+    if not args.dry_run:
+        announce_view(args.slug)
     status = one_turn(args.slug, load_config(), args.dry_run)
+    if not args.dry_run:
+        refresh_view(args.slug, running=(status == "open"))
     return 0 if status in ("open", "settled", "dry") else 1
 
 
 def cmd_run(args) -> int:
     agents = load_config()
+    announce_view(args.slug)
     for i in range(args.max_turns):
         status = one_turn(args.slug, agents, dry=False)
+        refresh_view(args.slug, running=(status == "open"))
         if status != "open":
             print(f"\nDung o luot {i + 1}: {status}")
             if status == "settled":

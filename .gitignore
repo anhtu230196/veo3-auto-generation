@@ -33,3 +33,6 @@ input/style-ref/**/*.info.json
 
 # Python cache cua scripts/*.py trong lop phoi hop agent
 __pycache__/
+
+# Trang doc luong review, sinh ra moi luot (scripts/thread_view.py)
+coordination/threads/*/view.html
