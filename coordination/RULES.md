@@ -180,19 +180,25 @@ Mỗi ý kèm `file:dòng`, và kèm `claim_id` hoặc `source_id` khi nói về
 
 ### Chốt cuối vẫn ở nhánh, không phải ở luồng
 
-Luồng review lo chất lượng từng bước. Cổng cuối trước khi vào `master` là Tú đọc nhánh.
+**Tú quyết ngày 2026-09-09: commit thẳng lên `master`, không mở pull request và không
+chờ ai merge nhánh.** Chỉ dẫn này ghi đè phần cổng nhánh ở bản trước.
 
-Repo này chưa chạy pull request — agent commit lên nhánh `codex/<slug>`, `claude/<slug>`,
-`gemini/<slug>` rồi báo Tú merge. Luật vẫn giữ nguyên tinh thần:
+Luồng review lo chất lượng từng bước, và giờ nó là **lớp duyệt duy nhất giữa agent với
+nhau** — nên phải chạy xong TRƯỚC khi commit vào `master`, không phải song song. Bước
+nào bỏ luồng thì commit đó nói rõ vì sao.
 
-- Nhánh phải dẫn ra luồng review tương ứng, hoặc nói rõ vì sao bước này không cần luồng.
-- Agent viết ra một thứ không duyệt thứ đó. **Không agent nào tự merge nhánh của mình vào `master`.**
-- Review dài — đối chiếu nguồn từng case, kiểm giấy phép ảnh — viết
-  `coordination/reviews/<slug>-<agent>.md` và commit lên chính nhánh đang review.
-- Không commit thẳng lên `master` trừ file claim.
+- Chạy `python scripts/claims.py check` và `python scripts/thread.py check` tại máy
+  **trước khi đẩy**. Không còn cổng nào chặn giúp sau lưng.
+- Commit message nêu rõ đang giữ claim nào và thuộc luồng nào — trước đây những thứ
+  này nói miệng lúc báo Tú merge, giờ không có chỗ nào khác để ghi.
+- Review dài — đối chiếu nguồn từng case, kiểm giấy phép ảnh — vẫn viết
+  `coordination/reviews/<slug>-<agent>.md` và commit cùng việc đang review.
+- Nhánh `codex/<slug>`, `claude/<slug>`, `gemini/<slug>` vẫn dùng khi việc còn dở qua
+  nhiều phiên hoặc hai agent chạy song song. Nhánh là chỗ làm việc, không còn là cổng duyệt.
 
-Khi nào bắt đầu dùng PR thật (`gh pr create`) thì đổi mục này và dùng thêm skill
-`cross-review` bên repo youtube-research-system.
+Người quyết cuối là Tú, sau khi code đã vào `master`. Đây là đánh đổi có chủ đích: đi
+nhanh hơn, trả giá bằng việc lỗi có thể vào `master` rồi mới bị phát hiện. Sửa thì sửa
+tiếp bằng commit mới, không viết lại lịch sử `master`.
 
 ### Điều một agent không được làm
 

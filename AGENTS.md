@@ -35,9 +35,10 @@ Ba điểm dễ bỏ sót:
 
 - **Claim trước khi làm việc nặng** — `python scripts/claims.py check`. Không đụng
   vào việc đang có claim `active` của agent khác.
-- **Không commit thẳng lên `master`** trừ file claim. Nhánh đặt tên
-  `codex/<slug>`, `claude/<slug>`, `gemini/<slug>`.
-- **Người viết không phải người review.** Không agent nào tự merge nhánh của mình.
+- **Commit thẳng lên `master`** — Tú quyết 2026-09-09, không mở PR, không chờ merge
+  nhánh. Chạy `claims.py check` và `thread.py check` tại máy trước khi đẩy.
+- **Người viết không phải người review.** Lớp duyệt duy nhất còn lại là luồng review
+  ở `coordination/threads/`, nên nó phải chạy xong TRƯỚC khi commit.
 
 Mở một việc mới bằng một câu:
 
