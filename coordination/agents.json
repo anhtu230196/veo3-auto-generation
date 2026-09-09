@@ -1,0 +1,74 @@
+{
+  "_doc": "Cach goi CLI cua tung agent o che do headless. {prompt} duoc thay bang noi dung that. 'cmd' dung cho luot review: phai DOC va TRUY CAP WEB duoc nhung KHONG GHI duoc. 'write_cmd' dung cho luot tac gia. 'output_file_flag' danh cho CLI co stdout lan nhieu: orchestrator them co do kem mot file tam va doc ket qua tu do. Xem AGENTS.md muc 8.",
+  "agents": {
+    "claude": {
+      "bin": "claude",
+      "cmd": [
+        "claude",
+        "-p",
+        "{prompt}",
+        "--allowedTools",
+        "Read Grep Glob WebFetch WebSearch",
+        "--permission-mode",
+        "dontAsk"
+      ],
+      "write_cmd": [
+        "claude",
+        "-p",
+        "{prompt}",
+        "--allowedTools",
+        "Read Grep Glob WebFetch WebSearch Write Edit",
+        "--permission-mode",
+        "acceptEdits"
+      ],
+      "timeout": 1800,
+      "verified": true,
+      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc."
+    },
+    "gemini": {
+      "bin": "gemini",
+      "cmd": [
+        "gemini",
+        "-p",
+        "{prompt}",
+        "--approval-mode",
+        "plan",
+        "-o",
+        "text"
+      ],
+      "write_cmd": [
+        "gemini",
+        "-p",
+        "{prompt}",
+        "--approval-mode",
+        "auto_edit",
+        "-o",
+        "text"
+      ],
+      "timeout": 600,
+      "verified": false,
+      "note": "2026-09-09: dang 429 (het quota), chua kiem chung duoc quyen web o --approval-mode plan. Kiem lai khi quota hoi."
+    },
+    "codex": {
+      "bin": "codex",
+      "cmd": [
+        "codex",
+        "exec",
+        "{prompt}",
+        "--sandbox",
+        "read-only"
+      ],
+      "write_cmd": [
+        "codex",
+        "exec",
+        "{prompt}",
+        "--sandbox",
+        "workspace-write"
+      ],
+      "timeout": 1800,
+      "verified": true,
+      "note": "Da kiem chung 2026-09-09: doc OK, web OK, ghi bi chan o --sandbox read-only. stdout lan nhieu (web search:, tokens used) nen lay ket qua qua --output-last-message.",
+      "output_file_flag": "--output-last-message"
+    }
+  }
+}
