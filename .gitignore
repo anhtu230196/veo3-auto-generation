@@ -30,3 +30,6 @@ input/style-ref/**/*.webm
 input/style-ref/**/frames/
 input/style-ref/**/sheets/
 input/style-ref/**/*.info.json
+
+# Python cache cua scripts/*.py trong lop phoi hop agent
+__pycache__/

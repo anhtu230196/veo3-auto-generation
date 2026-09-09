@@ -16,3 +16,31 @@ vì sao Setting/Prop không dùng chung style block với Character, vì sao
 
 Sau khi đọc RUNBOOK.md, dùng `git status`/`git diff`/`git log` để xem thay đổi
 gần nhất thay vì hỏi lại người dùng.
+
+## Nhiều agent cùng làm repo này
+
+Repo này dùng chung lớp phối hợp với `youtube-research-system`: ba agent (Codex,
+Claude Code, Gemini) tranh luận nhiều vòng trên một sản phẩm trung gian trước khi
+bước sau bắt đầu, thay vì chỉ review một lần ở cuối.
+
+- Luật đầy đủ: [`coordination/RULES.md`](coordination/RULES.md).
+- Cách dùng hằng ngày: [`coordination/README.md`](coordination/README.md).
+- Quy trình nhận một lượt: [`.claude/skills/deliberation/SKILL.md`](.claude/skills/deliberation/SKILL.md).
+
+Ba điểm dễ bỏ sót:
+
+- **Claim trước khi làm việc nặng** — `python scripts/claims.py check`. Không đụng
+  vào việc đang có claim `active` của agent khác.
+- **Không commit thẳng lên `master`** trừ file claim. Nhánh đặt tên
+  `codex/<slug>`, `claude/<slug>`, `gemini/<slug>`.
+- **Người viết không phải người review.** Không agent nào tự merge nhánh của mình.
+
+Mở một việc mới bằng một câu:
+
+```bash
+python scripts/orchestrate.py start "Chọn 6 case cho tập chủ đề mất tích không lời giải"
+```
+
+Lệnh này chạy CLI của cả ba agent bằng subscription (`claude -p`, `codex exec`,
+`gemini -p`), không gọi API. Chạy nó từ terminal thật, đừng chạy bên trong một
+phiên agent — sẽ lồng phiên và ăn hai lần quota.
