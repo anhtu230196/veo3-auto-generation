@@ -2,7 +2,7 @@
 id: sys-dong-bo-phoi-hop
 agent: claude
 branch: claude/dong-bo-lop-phoi-hop
-status: active
+status: done
 opened: 2026-09-09
 updated: 2026-09-09
 scope:
@@ -20,3 +20,5 @@ scope:
 **Không đụng tới:** (ghi rõ phần agent khác vẫn sửa song song được)
 
 **Ghi chú:** 
+
+**Đóng:** Xong 2026-09-09: năm file byte-identical với repo youtube, RULES.md áp tay, `doctor --probe` từ repo này cả ba OK. Đã vào `master`.
