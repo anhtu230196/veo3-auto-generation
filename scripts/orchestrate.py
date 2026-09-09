@@ -123,6 +123,31 @@ Trang thai hop le, chep dung nguyen van mot trong cac chuoi sau:
 """
 
 
+# Dat o CUOI prompt. Hai lan chay dau tien agent deu viet bao cao ve tinh
+# huong cua no ("toi bi chan quyen ghi, file nam o scratchpad") thay vi noi
+# dung file vong. No khong co cho hop le de bao viec bi chan, nen no chiem
+# luon cho cua san pham. Cho no mot cho — ben trong file vong.
+OUTPUT_CONTRACT = """
+
+===============================================================================
+HOP DONG DAU RA — doc ky, day la cho hai luot truoc da lam sai
+
+STDOUT CUA BAN CHINH LA FILE VONG. Khong phai bao cao ve file vong.
+
+- Ky tu dau tien ban in ra phai la ky tu dau tien cua file vong (dau '#').
+- KHONG mo dau bang loi giai thich, loi chao, hay tom tat viec ban vua lam.
+- KHONG tao file. Khong Write, khong chep ra scratchpad. Orchestrator ghi ho.
+- KHONG ke chuyen ban lam duoc gi hay bi chan gi o ngoai file vong.
+
+Bi chan quyen thi ghi vao muc "Toi da khong kiem cai gi" BEN TRONG file vong,
+noi ro cong cu nao bi chan va do do ket luan nao chua duoc kiem. Do la thong
+tin that va agent sau can biet — nhung no thuoc trong file, khong thay the file.
+
+Ket thuc bang khoi ```points```. Thieu khoi do thi ca luot nay bi bo.
+===============================================================================
+"""
+
+
 def load_config() -> dict:
     if not CONFIG.exists():
         sys.exit(f"khong tim thay {CONFIG}")
@@ -254,7 +279,8 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
         return "blocked-cli"
 
     preamble = PREAMBLE_WRITE if t["needs_write"] else PREAMBLE_READ
-    prompt = preamble + t["prompt"] + POINTS_CONTRACT
+    # Hop dong dau ra dat cuoi cung: do la thu agent hay lam sai nhat.
+    prompt = preamble + t["prompt"] + POINTS_CONTRACT + OUTPUT_CONTRACT
 
     print(f"--- vong {t['round']}/{th.MAX_ROUND} · {agent} ({t['role']}) "
           f"-> {t['file']} {'[sua duoc artifact]' if t['needs_write'] else '[chi doc]'}")

@@ -23,7 +23,7 @@
       ],
       "timeout": 1800,
       "verified": true,
-      "note": "Da kiem chung 2026-09-09: doc OK, WebFetch OK, Write bi chan that o che do dontAsk. Khong dung --permission-mode plan: no chan luon WebFetch nen nguoi review mu internet."
+      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc."
     },
     "gemini": {
       "bin": "gemini",
