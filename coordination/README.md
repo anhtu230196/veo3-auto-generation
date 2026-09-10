@@ -42,11 +42,19 @@ python scripts/thread.py check           # kiem tra tinh nhat quan
 
 `THREAD.md` trong mỗi luồng là thứ **duy nhất** cần đọc để biết làm gì tiếp: đang vòng mấy, tới lượt ai, điểm `D**` nào còn mở.
 
-Lượt review chạy chế độ chỉ đọc; chỉ lượt tác giả mới được sửa artifact. Cấu hình lệnh CLI ở [`agents.json`](agents.json) — kiểm bằng:
+Lượt review chạy chế độ chỉ đọc; chỉ lượt tác giả mới được sửa artifact. Cả ba ghế đều làm tác giả được — Gemini cần `orchestrate.py` gỡ tạm khoá ghi, xem `RULES.md`. Cấu hình lệnh CLI ở [`agents.json`](agents.json) — kiểm bằng:
 
 ```bash
 python scripts/orchestrate.py doctor --probe
 ```
+
+Đổi model cho một lần chạy mà không sửa `agents.json`:
+
+```bash
+AGENT_MODEL_GEMINI=gemini-3.8-flash-high python scripts/orchestrate.py run <slug>
+```
+
+Mặc định: Claude `opus`/`max`, Codex `gpt-6-astra`/`ultra`, Gemini `gemini-3.1-pro-high`. `doctor` in ra model đang có hiệu lực.
 
 ## claims/
 

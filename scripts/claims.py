@@ -117,9 +117,15 @@ def cmd_check(args) -> int:
         status = str(data["status"])
         if status not in STATUSES:
             problems.append(f"{rel}: status {status!r} khong thuoc {sorted(STATUSES)}.")
-        if not str(data["branch"]).startswith(tuple(f"{a}/" for a in AGENTS)):
+        branch = str(data["branch"])
+        # Tu 2026-09-09 luat la commit thang len nhanh mac dinh, khong mo PR, nen
+        # claim khong con bat buoc nam tren nhanh rieng. Nhanh rieng van hop le
+        # khi viec keo dai qua nhieu phien hoac hai agent chay song song.
+        if (branch not in ("main", "master", default_branch())
+                and not branch.startswith(tuple(f"{a}/" for a in AGENTS))):
             problems.append(
-                f"{rel}: branch {data['branch']!r} phai bat dau bang codex/, claude/ hoac gemini/."
+                f"{rel}: branch {branch!r} phai la nhanh mac dinh (main/master) "
+                f"hoac bat dau bang codex/, claude/ hoac gemini/."
             )
 
         opened = parse_day(data["opened"])
@@ -226,7 +232,8 @@ def main() -> int:
     p_new = sub.add_parser("new", help="tao mot claim moi")
     p_new.add_argument("id", help="NET-0007 hoac sys-<slug>")
     p_new.add_argument("--agent", required=True, choices=sorted(AGENTS))
-    p_new.add_argument("--branch", required=True, help="vi du codex/net-0007-research")
+    p_new.add_argument("--branch", required=True,
+                       help="nhanh mac dinh (master/main) hoac vi du codex/net-0007-research")
     p_new.add_argument("--task", required=True, help="mo ta viec trong mot dong")
     p_new.add_argument("--scope", action="append", help="duong dan nam trong pham vi (lap lai duoc)")
     p_new.add_argument("--force", action="store_true", help="ghi de claim da co")

@@ -26,7 +26,7 @@ Vai tác giả xoay theo bước, không cố định theo agent. Bảng dưới
 | 1 | Chủ đề tập + danh sách 5-6 case đã qua cổng kiếm tiền | Codex | Claude (chống trùng `used-topics.md`), Gemini |
 | 2 | Bản tiếng Việt của kịch bản tuyển tập | Codex | Claude, Gemini — rồi **Tú duyệt nội dung** |
 | 3 | Bản tiếng Anh thu âm | Claude | Codex, Gemini (đối chiếu bản Việt đã duyệt) |
-| 4 | Manifest ảnh tư liệu một case (`refs/case-N/README.md`) | Gemini | Claude (giấy phép, nguồn), Codex |
+| 4 | Manifest ảnh tư liệu một case (`refs/case-N/README.md`) | Claude | Codex (giấy phép, nguồn), Gemini |
 | 5 | Prompt ảnh + `assets.json` / `scenes.json` | Claude | Codex, Gemini |
 | 6 | Sửa `src/veo3bot/`, `src/nanoBanana/`, script pipeline | Claude | Codex |
 
@@ -158,9 +158,18 @@ Luật an toàn của chế độ tự động:
   | --- | --- |
   | Codex | `--sandbox read-only` — cờ này chặn thật |
   | Claude | `--allowedTools` không có Write/Edit. Không dùng `--permission-mode plan`: nó chặn luôn WebFetch |
-  | Gemini (`agy`) | `permissions.deny` trong `~/.gemini/antigravity-cli/settings.json`. **`--mode plan` không chặn ghi** — đo lại ngày 2026-09-09 thì nó vẫn tạo được file |
+  | Gemini (`agy`) | `permissions.deny` trong `~/.gemini/antigravity-cli/settings.json` — chặn thật, lỗi trả về nguyên văn `Matches user-configured deny rule`. **`--mode plan` và `--dangerously-skip-permissions` đều không phải hàng rào**, và cũng không mở được khóa đó |
 
   Thêm một agent mới thì phải đo thật xem nó có ghi được không, đừng tin tên cờ.
+- **Cả ba ghế đều làm tác giả được.** Codex ghi bằng `--sandbox workspace-write`, Claude bằng `--allowedTools` có Write/Edit. Gemini không có cờ nào lấy được quyền ghi, nên `orchestrate.py` gỡ tạm `write_file(*)` khỏi `permissions.deny` đúng trong lượt tác giả rồi trả lại trong `finally` (khai báo ở khoá `write_unlock` của `coordination/agents.json`). `command(*)` vẫn nằm trong deny cả ở lượt tác giả: Gemini được ghi file, không được chạy shell. Bị giết cứng giữa chừng thì bản khoá nằm ở `settings.json.orchestrate-bak`, và lần chạy sau tự khôi phục trước khi gọi CLI.
+- ⚠️ **Bẫy `--add-dir`:** thiếu cờ này thì `agy` ghi vào thư mục scratch của nó (`~/.gemini/antigravity-cli/scratch/`) chứ **không báo lỗi** — nhìn từ ngoài giống hệt bị chặn ghi. `write_cmd` của Gemini đã có `--add-dir {repo}`; `{repo}` được thay bằng đường dẫn gốc repo lúc chạy.
+- **Đổi model cho một lần chạy** bằng biến môi trường `AGENT_MODEL_<TÊN>`, không phải sửa `agents.json`:
+
+  ```bash
+  AGENT_MODEL_GEMINI=gemini-3.8-flash-high python scripts/orchestrate.py run <slug>
+  ```
+
+  Mặc định: Claude `opus --effort max`, Codex `gpt-6-astra` effort `ultra`, Gemini `gemini-3.1-pro-high`. Ghế Gemini đổi qua lại giữa `gemini-3.1-pro-high` (suy luận sâu) và `gemini-3.8-flash-high` (nhanh, rẻ) tuỳ lượt. `python scripts/orchestrate.py doctor` in ra model đang có hiệu lực.
 - **Chỉ lượt tác giả được sửa artifact.** Không lượt nào được sửa `THREAD.md`; orchestrator lấy stdout làm file vòng rồi tự cập nhật sổ.
 - Agent không xuất được khối `points` thì orchestrator **giữ lại file vòng và dừng**, không đoán thay. Sửa tay rồi `thread.py apply`.
 - `run` dừng ngay khi luồng chuyển `settled` hoặc `blocked`, và có trần số lượt riêng.

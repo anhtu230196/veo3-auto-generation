@@ -14,6 +14,7 @@ sua artifact. Xem AGENTS.md muc 8.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import os
 import re
@@ -88,7 +89,9 @@ trinh bay nhu da doc het se lam agent sau tin nham.
 PREAMBLE_WRITE = """Ban dang chay o che do TU DONG, khong co nguoi doc man hinh cua ban.
 
 Luat cua che do nay:
-- Ban DUOC sua file artifact neu luot nay yeu cau sua.
+- Ban DUOC va PHAI ghi file artifact bang CONG CU GHI FILE cua ban.
+  Khong ghi qua shell (bash / powershell / cmd): quyen chay shell bi chan o
+  moi luot, ke ca luot tac gia. Thu ghi qua shell la mat trang san pham.
 - KHONG tao file vong tren dia va KHONG sua THREAD.md. Orchestrator lo viec do.
 - In TOAN BO noi dung file vong ra stdout, khong in gi khac ngoai no.
 - Doc vua du de tra loi. Dung doc lai AGENTS.md hay SKILL.md.
@@ -141,7 +144,7 @@ STDOUT CUA BAN CHINH LA FILE VONG. Khong phai bao cao ve file vong.
 
 - Ky tu dau tien ban in ra phai la ky tu dau tien cua file vong (dau '#').
 - KHONG mo dau bang loi giai thich, loi chao, hay tom tat viec ban vua lam.
-- KHONG tao file. Khong Write, khong chep ra scratchpad. Orchestrator ghi ho.
+{ghi_file}
 - KHONG ke chuyen ban lam duoc gi hay bi chan gi o ngoai file vong.
 
 Bi chan quyen thi ghi vao muc "Toi da khong kiem cai gi" BEN TRONG file vong,
@@ -151,6 +154,19 @@ tin that va agent sau can biet — nhung no thuoc trong file, khong thay the fil
 Ket thuc bang khoi ```points```. Thieu khoi do thi ca luot nay bi bo.
 ===============================================================================
 """
+
+
+# Dong "khong tao file" o tren dung cho luot review. O luot tac gia no mau
+# thuan voi chinh viec phai lam: Gemini doc hai cau nay roi bo han viec ghi
+# artifact va chi bao cao lai la minh bi chan (do lai 2026-09-10).
+GHI_FILE_READ = "- KHONG tao file. Khong Write, khong chep ra scratchpad. Orchestrator ghi ho."
+GHI_FILE_WRITE = """- KHONG tao FILE VONG tren dia — orchestrator ghi ho tu stdout cua ban.
+- ARTIFACT thi nguoc lai: ban PHAI ghi no ra dung duong dan artifact ghi o tren,
+  bang cong cu ghi file, khong qua shell. Khong ghi thi luot nay khong co san pham."""
+
+
+def output_contract(write: bool) -> str:
+    return OUTPUT_CONTRACT.replace("{ghi_file}", GHI_FILE_WRITE if write else GHI_FILE_READ)
 
 
 def load_config() -> dict:
@@ -176,11 +192,93 @@ def kill_tree(proc: subprocess.Popen) -> None:
         proc.kill()
 
 
-def run_cli(spec: dict, prompt: str, write: bool, timeout: int | None = None):
+def unlock_path(spec: dict) -> Path | None:
+    conf = spec.get("write_unlock")
+    return Path(os.path.expanduser(conf["settings"])) if conf else None
+
+
+def relock_if_stale(spec: dict) -> None:
+    """Lan chay truoc bi giet cung (SIGKILL, tat may) co the de settings o trang
+    thai da mo khoa. Ban sao .orchestrate-bak la ban DA KHOA, nen thay no la
+    khoi phuc ngay — truoc khi bat ky luot nao chay."""
+    path = unlock_path(spec)
+    if path is None:
+        return
+    bak = Path(str(path) + ".orchestrate-bak")
+    if bak.exists():
+        path.write_text(bak.read_text(encoding="utf-8"), encoding="utf-8")
+        bak.unlink(missing_ok=True)
+        print(f"    (da khoa lai {path.name} bi bo lai tu lan chay truoc)")
+
+
+@contextlib.contextmanager
+def write_unlocked(spec: dict):
+    """Mo tam quyen ghi o tang settings cho dung mot luot tac gia.
+
+    Can cho agy: co --mode va --dangerously-skip-permissions deu khong lay
+    duoc quyen ghi, thu duy nhat co tac dung la permissions.deny trong
+    settings.json. Mo bang cach go dung cac muc trong deny_remove, giu nguyen
+    phan con lai (command(*) van bi chan), roi tra lai ban goc trong finally.
+    """
+    conf = spec.get("write_unlock")
+    path = unlock_path(spec)
+    if not conf or path is None or not path.exists():
+        yield
+        return
+    original = path.read_text(encoding="utf-8")
+    bak = Path(str(path) + ".orchestrate-bak")
+    bak.write_text(original, encoding="utf-8")
+    try:
+        data = json.loads(original)
+        perms = data.setdefault("permissions", {})
+        drop = set(conf.get("deny_remove", []))
+        perms["deny"] = [d for d in perms.get("deny", []) if d not in drop]
+        allow = list(perms.get("allow", []))
+        for item in conf.get("allow_add", []):
+            if item not in allow:
+                allow.append(item)
+        perms["allow"] = allow
+        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        yield
+    finally:
+        path.write_text(original, encoding="utf-8")
+        bak.unlink(missing_ok=True)
+
+
+def apply_model_override(name: str, spec: dict, cmd: list) -> list:
+    """AGENT_MODEL_<TEN> doi model cho dung lan chay nay.
+
+    Vi du: AGENT_MODEL_GEMINI=gemini-3.8-flash-high python scripts/orchestrate.py run <slug>
+    """
+    flag = spec.get("model_flag")
+    want = os.environ.get(f"AGENT_MODEL_{name.upper()}")
+    if not flag or not want:
+        return cmd
+    for i, part in enumerate(cmd[:-1]):
+        if part == flag:
+            cmd[i + 1] = want
+            return cmd
+    return cmd
+
+
+def effective_model(name: str, spec: dict) -> str:
+    flag = spec.get("model_flag")
+    cmd = apply_model_override(name, spec, list(spec["cmd"]))
+    if flag and flag in cmd:
+        return cmd[cmd.index(flag) + 1]
+    return "(khong khai bao model_flag)"
+
+
+def run_cli(name: str, spec: dict, prompt: str, write: bool,
+            timeout: int | None = None):
     """Goi CLI, tra ve (ma thoat, stdout, stderr, giay)."""
+    relock_if_stale(spec)
     template = spec["write_cmd" if write else "cmd"]
-    cmd = [prompt if part == "{prompt}" else part.replace("{prompt}", prompt)
+    repo = str(th.repo_root())
+    cmd = [prompt if part == "{prompt}"
+           else part.replace("{prompt}", prompt).replace("{repo}", repo)
            for part in template]
+    cmd = apply_model_override(name, spec, cmd)
     # Tren Windows, subprocess khong tu ap dung PATHEXT: "gemini" khong chay,
     # phai la duong dan day du toi gemini.CMD.
     resolved = shutil.which(cmd[0])
@@ -197,44 +295,53 @@ def run_cli(spec: dict, prompt: str, write: bool, timeout: int | None = None):
 
     secs_cap = timeout or spec.get("timeout", 600)
     t0 = time.time()
+    # Mo khoa ghi tu day toi het lan cho, va tra lai trong finally — ke ca khi
+    # bi Ctrl+C giua chung. De ho ra thi hai kieu: luot tac gia chay luc da bi
+    # khoa lai se ghi vao scratch ma khong bao loi, hoac khoa mo nam lai sau
+    # khi luong ket thuc va luot review sau do het chi doc.
+    unlock = write_unlocked(spec) if write else contextlib.nullcontext()
+    unlock.__enter__()
     try:
-        proc = subprocess.Popen(
-            cmd, cwd=th.repo_root(),
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            # Khong co stdin: cac CLI headless doi du lieu ong dan va treo
-            # 3-30s neu de mac dinh.
-            stdin=subprocess.DEVNULL,
-            text=True, encoding="utf-8", errors="replace",
-            **({} if IS_WIN else {"start_new_session": True}))
-    except FileNotFoundError:
-        if out_file:
-            out_file.unlink(missing_ok=True)
-        return 127, "", f"khong tim thay lenh {cmd[0]!r}", 0.0
-
-    def finish(code, out, err):
-        if out_file:
-            try:
-                content = out_file.read_text(encoding="utf-8", errors="replace")
-                if content.strip():
-                    out = content
-            except OSError:
-                pass
-            out_file.unlink(missing_ok=True)
-        return code, out or "", err or "", time.time() - t0
-
-    try:
-        out, err = proc.communicate(timeout=secs_cap)
-        return finish(proc.returncode, out, err)
-    except subprocess.TimeoutExpired:
-        # subprocess.run(timeout=) mot minh khong du: no giet tien trinh cha
-        # nhung con chau van giu ong dan, va communicate() cho vo han. Cac CLI
-        # nay deu la shim goi node nen luon co con chau.
-        kill_tree(proc)
         try:
-            out, err = proc.communicate(timeout=15)
+            proc = subprocess.Popen(
+                cmd, cwd=th.repo_root(),
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                # Khong co stdin: cac CLI headless doi du lieu ong dan va treo
+                # 3-30s neu de mac dinh.
+                stdin=subprocess.DEVNULL,
+                text=True, encoding="utf-8", errors="replace",
+                **({} if IS_WIN else {"start_new_session": True}))
+        except FileNotFoundError:
+            if out_file:
+                out_file.unlink(missing_ok=True)
+            return 127, "", f"khong tim thay lenh {cmd[0]!r}", 0.0
+
+        def finish(code, out, err):
+            if out_file:
+                try:
+                    content = out_file.read_text(encoding="utf-8", errors="replace")
+                    if content.strip():
+                        out = content
+                except OSError:
+                    pass
+                out_file.unlink(missing_ok=True)
+            return code, out or "", err or "", time.time() - t0
+
+        try:
+            out, err = proc.communicate(timeout=secs_cap)
+            return finish(proc.returncode, out, err)
         except subprocess.TimeoutExpired:
-            out, err = "", ""
-        return finish(124, out, (err or "") + f"\nqua {secs_cap}s — da giet cay tien trinh")
+            # subprocess.run(timeout=) mot minh khong du: no giet tien trinh cha
+            # nhung con chau van giu ong dan, va communicate() cho vo han. Cac CLI
+            # nay deu la shim goi node nen luon co con chau.
+            kill_tree(proc)
+            try:
+                out, err = proc.communicate(timeout=15)
+            except subprocess.TimeoutExpired:
+                out, err = "", ""
+            return finish(124, out, (err or "") + f"\nqua {secs_cap}s — da giet cay tien trinh")
+    finally:
+        unlock.__exit__(None, None, None)
 
 
 def cmd_doctor(args) -> int:
@@ -245,13 +352,15 @@ def cmd_doctor(args) -> int:
         mark = "co" if installed else "CHUA CAI"
         flag = "" if spec.get("verified") else "  [co CHUA KIEM CHUNG]"
         print(f"{name:<8} {mark:<9}{flag}")
+        if installed:
+            print(f"         model: {effective_model(name, spec)}")
         if spec.get("note"):
             print(f"         {spec['note']}")
         if not installed:
             bad += 1
             continue
         if args.probe:
-            code, out, err, secs = run_cli(spec, "Tra loi dung mot tu: OK",
+            code, out, err, secs = run_cli(name, spec, "Tra loi dung mot tu: OK",
                                            write=False, timeout=PROBE_TIMEOUT)
             first = (out.strip().splitlines() or [""])[0][:60]
             if code == 0 and first:
@@ -285,7 +394,7 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
 
     preamble = PREAMBLE_WRITE if t["needs_write"] else PREAMBLE_READ
     # Hop dong dau ra dat cuoi cung: do la thu agent hay lam sai nhat.
-    prompt = preamble + t["prompt"] + POINTS_CONTRACT + OUTPUT_CONTRACT
+    prompt = preamble + t["prompt"] + POINTS_CONTRACT + output_contract(t["needs_write"])
 
     print(f"--- vong {t['round']}/{th.MAX_ROUND} · {agent} ({t['role']}) "
           f"-> {t['file']} {'[sua duoc artifact]' if t['needs_write'] else '[chi doc]'}")
@@ -293,7 +402,7 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
         print(prompt)
         return "dry"
 
-    code, out, err, secs = run_cli(spec, prompt, write=t["needs_write"])
+    code, out, err, secs = run_cli(agent, spec, prompt, write=t["needs_write"])
     if code != 0 or not out.strip():
         if looks_like_quota(err, out):
             print(f"    HET QUOTA hoac BI CHAN TOC DO sau {secs:.0f}s.")
