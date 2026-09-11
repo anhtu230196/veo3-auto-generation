@@ -146,11 +146,21 @@ async function main() {
   const saved: string[] = [];
   for (let i = 0; i < Math.min(total, limit); i++) {
     const link = links.nth(i);
-    const src = await link.locator("img").first().getAttribute("src");
+    // 🔴 `links` Ở TRÊN ĐÃ LÀ CHÍNH THẺ <img> (`flow-image-tile img`), không phải thẻ bọc.
+    // Bản trước còn sót `.locator("img")` từ thời selector cũ là `role=link "Generated image"`
+    // — tức đi tìm <img> LỒNG TRONG <img>, không bao giờ khớp. Triệu chứng đánh lừa: script in
+    // "Thấy 8 ảnh, tải 8 ảnh" rồi mới timeout 30s ở ảnh đầu, nên trông như Flow lag chứ không
+    // như selector sai (gặp thật 2026-09-11).
+    const src = await link.getAttribute("src");
     if (!src) continue;
 
-    // Tên card nằm ở text trong chính thẻ link (Flow hiển thị tên dưới ảnh).
-    const label = (await link.innerText().catch(() => "")) || "";
+    // Tên card nằm ở thẻ bọc ngoài, không nằm trong <img> — phải leo lên tổ tiên mới lấy được.
+    const label =
+      (await link
+        .locator("xpath=ancestor::flow-grid-tile-container[1]")
+        .first()
+        .innerText()
+        .catch(() => "")) || "";
     const name = safe(label.split("\n").find((l) => l.trim() && l !== "Generated image") ?? `image-${i}`);
 
     const url = new URL(src, new URL(page.url()).origin).toString();
@@ -160,7 +170,13 @@ async function main() {
       console.log(`  ✗ ${name}: HTTP ${res.status()}`);
       continue;
     }
-    const file = path.join(outDir, `${String(i + 1).padStart(2, "0")}-${name}.png`);
+    // 🔴 ĐỪNG HARDCODE .png: Flow phục vụ ảnh ở dạng WEBP. Bản trước lưu nội dung WebP dưới
+    // đuôi .png — mở bằng mắt thì vẫn thấy (trình xem đoán theo nội dung), nhưng mọi công cụ
+    // đọc theo đuôi đều gãy: ffmpeg báo "Invalid PNG signature 0x52494646" (RIFF = WebP) và
+    // không ghép nổi contact sheet để duyệt cả mẻ (gặp thật 2026-09-11).
+    const type = res.headers()["content-type"] ?? "";
+    const ext = type.includes("webp") ? "webp" : type.includes("jpeg") ? "jpg" : "png";
+    const file = path.join(outDir, `${String(i + 1).padStart(2, "0")}-${name}.${ext}`);
     await fs.writeFile(file, await res.body());
     saved.push(file);
     console.log(`  ✓ ${path.basename(file)}`);
