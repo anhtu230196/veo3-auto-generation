@@ -32,7 +32,7 @@
       "model_flag": "--model",
       "timeout": 1800,
       "verified": true,
-      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc. Model chot 2026-09-09: --model opus --effort max (max la muc cao nhat; cac muc hop le: low, medium, high, xhigh, max). Khong co model nao ten 'ultracode' — 'ultrareview' la mot lenh khac, khong lien quan."
+      "note": "Da kiem chung 2026-09-09 bang subprocess: doc OK, WebFetch OK (ca dang cach nhau bang space lan dau phay), Write bi chan that. Khong dung --permission-mode plan: no chan luon WebFetch. Luu y: agent co the bao nham la WebFetch bi chan — da do lai va no chay duoc. Model chot 2026-09-09: --model opus --effort max (max la muc cao nhat; cac muc hop le: low, medium, high, xhigh, max). Khong co model nao ten 'ultracode' — 'ultrareview' la mot lenh khac, khong lien quan. Do lai 2026-09-11 tren claude-cli 2.1.236: --effort chi nhan low, medium, high, xhigh, max (CLI tu in danh sach nay khi nhan gia tri sai). 'max' da la muc cao nhat, KHONG co muc nao cao hon va khong co muc nao ten 'Ultra Code'. Dung thu nang them — chu 'ultra' duy nhat trong CLI la lenh 'ultrareview', viec khac han."
     },
     "gemini": {
       "bin": "agy",
@@ -67,8 +67,12 @@
       "model_flag": "--model",
       "write_unlock": {
         "settings": "~/.gemini/antigravity-cli/settings.json",
-        "deny_remove": ["write_file(*)"],
-        "allow_add": ["write_file(*)"]
+        "deny_remove": [
+          "write_file(*)"
+        ],
+        "allow_add": [
+          "write_file(*)"
+        ]
       },
       "timeout": 1800,
       "verified": true,
@@ -85,7 +89,7 @@
         "-m",
         "gpt-6-astra",
         "-c",
-        "model_reasoning_effort=ultra"
+        "model_reasoning_effort=max"
       ],
       "write_cmd": [
         "codex",
@@ -96,12 +100,12 @@
         "-m",
         "gpt-6-astra",
         "-c",
-        "model_reasoning_effort=ultra"
+        "model_reasoning_effort=max"
       ],
       "model_flag": "-m",
       "timeout": 1800,
       "verified": true,
-      "note": "Da kiem chung 2026-09-09: doc OK, web OK, ghi bi chan o --sandbox read-only. stdout lan nhieu (web search:, tokens used) nen lay ket qua qua --output-last-message. Model chot: -m gpt-6-astra -c model_reasoning_effort=ultra. Dat thang o day thay vi dua vao ~/.codex/config.toml de cau hinh luong khong phu thuoc may.",
+      "note": "Da kiem chung 2026-09-09: doc OK, web OK, ghi bi chan o --sandbox read-only. stdout lan nhieu (web search:, tokens used) nen lay ket qua qua --output-last-message. Model chot: -m gpt-6-astra. Dat thang o day thay vi dua vao ~/.codex/config.toml de cau hinh luong khong phu thuoc may. Effort ha xuong 'max' ngay 2026-09-11 theo yeu cau cua Tu: 'ultra' dot token qua nhanh. Thang day du cua gpt-6-astra lay tu ~/.codex/models_cache.json (supported_reasoning_levels): low -> medium -> high -> xhigh -> max -> ultra. Khac biet giua hai bac cuoi khong phai do sau suy luan: 'max' = 'Maximum reasoning depth for the hardest problems', 'ultra' = 'Maximum reasoning with automatic task delegation' — phan tu chia viec cho sub-task moi la cho ton token. Ha ultra->max giu nguyen do sau, bo phan delegation.",
       "output_file_flag": "--output-last-message"
     }
   }
