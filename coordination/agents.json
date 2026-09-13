@@ -38,6 +38,8 @@
         "{prompt}",
         "--mode",
         "plan",
+        "--add-dir",
+        "{repo}",
         "--output-format",
         "text",
         "--print-timeout",
@@ -72,7 +74,7 @@
       },
       "timeout": 1800,
       "verified": true,
-      "note": "Antigravity CLI (agy), khong phai 'gemini' CLI nua: Google da ngat OAuth cua gemini CLI cho tai khoan ca nhan tu 2026-06-18 (Gemini Code Assist for individuals / AI Pro / Ultra), chi con API key tra tien moi dung duoc. Dang nhap: agy dung chung phien voi app Antigravity da cai san. Model mac dinh gemini-3.1-pro-high; doi sang gemini-3.8-flash-high cho luot nhe bang AGENT_MODEL_GEMINI. Canh bao: 'agy models' co ca claude-opus-4-6-thinking va gpt-oss-120b — cam nham vao ghe nay thi luong mat gia tri ba model doc lap soi nhau. QUYEN GHI (do lai 2026-09-10, ket qua khac lan truoc): --mode plan va --dangerously-skip-permissions deu KHONG phai hang rao va cung khong mo duoc khoa; thu chan/mo duy nhat co tac dung la permissions.deny trong ~/.gemini/antigravity-cli/settings.json — deny that su chan, loi tra ve nguyen van 'Matches user-configured deny rule'. Vi vay luot tac gia dung write_unlock: orchestrator go tam 'write_file(*)' khoi deny, chay, roi tra lai trong finally. Bay them: khong co --add-dir thi agy ghi vao thu muc scratch cua no (~/.gemini/antigravity-cli/scratch/) chu khong bao loi — nhin ben ngoai giong het nhu bi chan ghi. 'command(*)' van nam trong deny ca o luot tac gia: Gemini duoc ghi file, khong duoc chay shell."
+      "note": "Antigravity CLI (agy), khong phai 'gemini' CLI nua: Google da ngat OAuth cua gemini CLI cho tai khoan ca nhan tu 2026-06-18 (Gemini Code Assist for individuals / AI Pro / Ultra), chi con API key tra tien moi dung duoc. Dang nhap: agy dung chung phien voi app Antigravity da cai san. Model mac dinh gemini-3.1-pro-high; doi sang gemini-3.8-flash-high cho luot nhe bang AGENT_MODEL_GEMINI. Canh bao: 'agy models' co ca claude-opus-4-6-thinking va gpt-oss-120b — cam nham vao ghe nay thi luong mat gia tri ba model doc lap soi nhau. QUYEN GHI (do lai 2026-09-10, ket qua khac lan truoc): --mode plan va --dangerously-skip-permissions deu KHONG phai hang rao va cung khong mo duoc khoa; thu chan/mo duy nhat co tac dung la permissions.deny trong ~/.gemini/antigravity-cli/settings.json — deny that su chan, loi tra ve nguyen van 'Matches user-configured deny rule'. Vi vay luot tac gia dung write_unlock: orchestrator go tam 'write_file(*)' khoi deny, chay, roi tra lai trong finally. Bay them: khong co --add-dir thi agy ghi vao thu muc scratch cua no (~/.gemini/antigravity-cli/scratch/) chu khong bao loi — nhin ben ngoai giong het nhu bi chan ghi. 'command(*)' van nam trong deny ca o luot tac gia: Gemini duoc ghi file, khong duoc chay shell. | 2026-09-13 THEM --add-dir {repo} VAO LENH REVIEW (cmd). Truoc do chi write_cmd co. Su co that: luot review Gemini luong img-skill-a1-lessons r1 luc 09:53 KHONG DOC DUOC GI - model tim trong ~/.gemini/antigravity-cli/scratch (thu muc rong) roi ket luan file khong ton tai; loi tu choi duy nhat la lenh shell fd (dung luat). Log luot do ghi Language server version 1.1.28, trong khi moi luot chay tot deu la 1.2.1 hoac 1.2.2. Thu lai 10:24 co --add-dir, app Antigravity desktop van mo: doc dung RUNBOOK.md trong 18s, server 1.2.2. CHUA CHOT vi sao 09:53 ra 1.1.28, va lan thu doi CA HAI bien nen khong chung minh rieng --add-dir cuu duoc luot 1.1.28. Kiem sau moi luot Gemini: dong 'Language server version' trong log moi nhat o ~/.gemini/antigravity-cli/log/."
     },
     "codex": {
       "bin": "codex",
@@ -85,7 +87,7 @@
         "-m",
         "gpt-6-astra",
         "-c",
-        "model_reasoning_effort=xhigh"
+        "model_reasoning_effort=medium"
       ],
       "write_cmd": [
         "codex",
@@ -96,7 +98,7 @@
         "-m",
         "gpt-6-astra",
         "-c",
-        "model_reasoning_effort=xhigh"
+        "model_reasoning_effort=medium"
       ],
       "model_flag": "-m",
       "timeout": 1800,

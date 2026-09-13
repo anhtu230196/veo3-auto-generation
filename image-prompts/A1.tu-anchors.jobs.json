@@ -1,0 +1,219 @@
+[
+  {
+    "id": "A1-01",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "character",
+    "outName": "Reles Ref Broad Face Simple",
+    "prompt": "A man in his early thirties seen from the chest up. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark and wavy, swept straight back with no parting, slightly receding at the temples. He has very thick dark eyebrows, a broad nose and is clean shaven. He is wearing a dark herringbone tweed overcoat with very wide lapels, a white shirt and a dark diagonally striped tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-02",
+    "segment": "A1",
+    "at": "0:05",
+    "kind": "group",
+    "outName": "Men In Suits",
+    "prompt": "A group of men in 1930s suits standing shoulder to shoulder. They are wearing sharp, tailored wool suits in muted colors like charcoal, navy, and brown, with wide lapels and padded shoulders. They wear fedora hats tilted slightly down, and their expressions are stern and menacing. They wear matching suit trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Draw every figure whole, from head to shoes: all of them fit inside the frame, nothing cropped off by the edges. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "A1-03",
+    "segment": "A1",
+    "at": "0:09",
+    "kind": "object",
+    "outName": "Ice Pick Weapon",
+    "prompt": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-04",
+    "segment": "A1",
+    "at": "0:12",
+    "kind": "object",
+    "outName": "Ear Close Up",
+    "prompt": "A close up view of a human ear seen from the side, illuminated by harsh, dramatic lighting that highlights the curves of the cartilage and the pale skin. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-05",
+    "segment": "A1",
+    "at": "0:17",
+    "kind": "figure",
+    "outName": "Doctor Writing",
+    "prompt": "A doctor wearing a crisp white lab coat over a formal shirt and tie, holding a silver clipboard. He is writing on a blank unlined sheet of white paper with a classic fountain pen. No text on the paper. The lab coat reaches his knees; below it he wears dark trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-06",
+    "segment": "A1",
+    "at": "0:22",
+    "kind": "object",
+    "outName": "Mugshot Grid",
+    "prompt": "A grid of small vintage black-and-white mugshot portraits of different men in 1930s clothing. Below each face is a dark, blank wooden name board with no text or numbers on it. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-07",
+    "segment": "A1",
+    "at": "0:26",
+    "kind": "object",
+    "outName": "Empty Electric Chair",
+    "prompt": "An empty electric chair made of heavy, dark stained oak wood. It has thick leather straps hanging loosely from the armrests and legs, and a complex metal headpiece with coiled black wires attached to the high backrest. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-08",
+    "segment": "A1",
+    "at": "0:29",
+    "kind": "character",
+    "outName": "Man Swearing Oath",
+    "prompt": "A man in a sharply tailored 1930s grey pinstripe suit raising his right hand to swear an oath. He is wearing a crisp white shirt with a wide collar and a dark silk tie. His expression is serious. He wears matching grey pinstripe trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-08b",
+    "segment": "A1",
+    "at": "0:29",
+    "kind": "place",
+    "outName": "Wooden Paneled Courtroom",
+    "prompt": "An empty courtroom featuring rich wooden paneling on the walls. The judge's bench is elevated, made of polished dark wood, conveying an imposing, serious atmosphere. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-09",
+    "segment": "A1",
+    "at": "0:34",
+    "kind": "group",
+    "outName": "Seven Men In Suits",
+    "prompt": "Seven men standing in a lineup. They are dressed in formal 1930s attire, wearing heavy wool overcoats and sharp double-breasted suits in dark grey and navy. Their faces are grim, and they wear fedora hats casting shadows over their eyes. They wear matching dark trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Draw every figure whole, from head to shoes: all of them fit inside the frame, nothing cropped off by the edges. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "A1-10",
+    "segment": "A1",
+    "at": "0:38",
+    "kind": "figure",
+    "outName": "Lawyer With Folder",
+    "prompt": "A lawyer in a well-fitted 1930s three-piece charcoal suit. He is carrying a thick, bulging manila folder under his arm. He has a serious expression, wearing wire-rimmed glasses and a neatly combed hairstyle. He wears matching charcoal trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-11",
+    "segment": "A1",
+    "at": "0:42",
+    "kind": "place",
+    "outName": "Brick Hotel Tower On The Boardwalk",
+    "prompt": "A tall brick hotel tower from the 1920s, with a rectangular body that steps back as it rises. The roof features Spanish Colonial Revival architecture, including arched windows, an intricate tiled dome, and a weather vane on top, flanked by urn finials at the corners. Lower wings with tiled roofs sit on both sides of the main tower. A lower flat-roofed building with a continuous row of uniform windows, each with a dark fabric awning, runs across the front. A wooden boardwalk stretches in front of the building. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\image-prompts\\refs\\A1\\09-half-moon-hotel-1927-cihp__claude.jpg"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", no lettering, no signs, no people"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-12",
+    "segment": "A1",
+    "at": "0:46",
+    "kind": "figure",
+    "outName": "Police Officer Standing",
+    "prompt": "An older 1940s New York policeman. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. He wears dark uniform trousers and black leather boots. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-13",
+    "segment": "A1",
+    "at": "0:50",
+    "kind": "character",
+    "outName": "Heavy Set Man Lying Face Down",
+    "prompt": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie. The overcoat is rucked up over dark wool trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now lying face down on a flat roof with his arms slack, wearing the same overcoat, only one person, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-14",
+    "segment": "A1",
+    "at": "0:55",
+    "kind": "object",
+    "outName": "Knotted Bed Sheet Rope",
+    "prompt": "Three white cotton bed sheets knotted end to end into a makeshift rope. Between the knots the fabric stays FLAT AND WIDE like a sheet, with loose corners and creases showing — it is bed linen twisted together, not a woven rope and not a cord. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-15",
+    "segment": "A1",
+    "at": "0:59",
+    "kind": "object",
+    "outName": "Cast Iron Radiator",
+    "prompt": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-16",
+    "segment": "A1",
+    "at": "1:03",
+    "kind": "character",
+    "outName": "Man Falling Through Air",
+    "prompt": "A man in his early thirties falling through the air, his dark heavy herringbone tweed overcoat flapping. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a white shirt and a dark diagonally striped tie. He wears dark wool trousers and black leather shoes. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now falling through the air with his overcoat flapping open, arms out, only one person, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-17",
+    "segment": "A1",
+    "at": "1:08",
+    "kind": "figure",
+    "outName": "Police Officer Asleep In Chair",
+    "prompt": "An older 1940s New York policeman asleep in a chair. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. He wears dark uniform trousers and black leather boots. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-18",
+    "segment": "A1",
+    "at": "1:14",
+    "kind": "object",
+    "outName": "Plain Banknote Bundle",
+    "prompt": "A thick bundle of banknotes stacked neatly together, bound tightly by a wide brown paper currency strap. The notes are pale green and completely plain: no lettering, no numbers, no words, no printed portrait, no signature, nothing written on the strap either. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  }
+]

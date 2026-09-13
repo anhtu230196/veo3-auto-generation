@@ -1,0 +1,33 @@
+[
+  {
+    "id": "A1-01",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "character",
+    "outName": "Reles Ref Broad Face Wavy Hair",
+    "prompt": "a man in his early thirties, broad heavy face, wide jaw and strong chin, thick neck, heavy dark eyebrows almost meeting, heavy-lidded eyes, broad nose, short dark wavy hair swept back with the hairline receding at the temples, clean shaven, in a dark overcoat over a white shirt and a dark patterned tie. Use a white background, and make it look like it was drawn in an old computer painting program with a mouse. It should be vaguely similar but also not really, kind of matching but also off in a confusing, awkward way, with that low-quality pixel-by-pixel feel that really emphasizes how ridiculously bad it is.",
+    "refNames": []
+  },
+  {
+    "id": "A1-13",
+    "segment": "A1",
+    "at": "0:44",
+    "kind": "character",
+    "outName": "Same Man Lying Face Down",
+    "prompt": "the same man lying face down, arms slack. Use a white background, and make it look like it was drawn in an old computer painting program with a mouse. It should be vaguely similar but also not really, kind of matching but also off in a confusing, awkward way, with that low-quality pixel-by-pixel feel that really emphasizes how ridiculously bad it is.",
+    "refNames": [
+      "Reles Ref Broad Face Wavy Hair"
+    ]
+  },
+  {
+    "id": "A1-16",
+    "segment": "A1",
+    "at": "0:57",
+    "kind": "character",
+    "outName": "Same Man Falling Through Air",
+    "prompt": "the same man falling through the air, coat flapping. Use a white background, and make it look like it was drawn in an old computer painting program with a mouse. It should be vaguely similar but also not really, kind of matching but also off in a confusing, awkward way, with that low-quality pixel-by-pixel feel that really emphasizes how ridiculously bad it is.",
+    "refNames": [
+      "Reles Ref Broad Face Wavy Hair"
+    ]
+  }
+]

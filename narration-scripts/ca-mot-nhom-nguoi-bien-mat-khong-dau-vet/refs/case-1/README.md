@@ -111,6 +111,31 @@ bản khắc `07-croatoan-03`. Luỹ đất thấp trong phong cách phẳng cũ
 
 Ghi ra để phiên sau biết đây là **lựa chọn có ý thức**, không phải sai sót.
 
+## 📌 Dùng cho `case-1.shots.json` (2026-09-13)
+
+Bản prompt mới theo skill `nano-banana-image-prompts` mục 4d thay cho `assets.json`/`scenes.json`.
+Ba chỗ **đổi so với lựa chọn cũ** ở trên:
+
+- **Hàng rào đặt PHÍA SAU dãy nhà**, không phía trước (C1-03). Lý do: cảnh làng bị tháo dỡ (C1-16)
+  phải còn thấy móng nhà. Và ở cảnh đó hàng rào **VẪN ĐỨNG** — bản cũ nhổ gần hết cọc, trong khi lời kể
+  chỉ nói nhà bị tháo dỡ và chữ khắc nằm trên *"a post of the fence"*.
+- **Cột khắc chữ là một cột làm từ thân cây, chỗ bóc vỏ ngang tầm đầu người**, theo đúng bản khắc
+  `07-croatoan-03` (bản cũ tả cột ván trơn, khung chữ nhật lõm).
+- **Người bản địa (C1-30) theo `01-john-white-07`** — tóc mái bằng, búi thấp sau gáy, chuỗi hạt — nhưng
+  **CỐ Ý thêm áo choàng da hươu kín ngực** (bản gốc để trần phần trên) cho cổng kiếm tiền YouTube.
+
+Chưa có trong thư mục này, prompt đang tả theo hiểu biết chung:
+- Trang phục **thuỷ thủ thế kỷ 16** (C1-26).
+- Trang phục **nhà thám hiểm đầu thế kỷ 18** (C1-29).
+- Tranh **hạm đội Armada 1588** (C1-09) — hình tàu hiện theo bản dựng lại Golden Hind.
+- Tranh John White vẽ **đàn ông** Algonquian — mới soi tranh vẽ phụ nữ.
+- ~~Văn bản tường thuật 1590 của White~~ — **đã đối chiếu 2026-09-13** qua bản đăng ở Encyclopedia Virginia
+  (bản in 1600): nhà *"taken downe"*, nơi ở rào bằng *"a high palisado of great trees"*, chữ CROATOAN khắc trên
+  cây/cột *"at the right side of the entrance"* đã bóc vỏ, cách đất 5 feet, không dấu thập; năm cái rương bị đào
+  lên và phá. **Không** nhắc móng nhà hay đống gỗ.
+- **Bản đồ trống không chữ** (blank outline map) bờ biển Mỹ / North Carolina — cho C1-01c.
+- Ảnh **thuyền nhỏ thế kỷ 16** (ship's boat / pinnace) — cho C1-01b. Ảnh **địa cầu thế kỷ 16** — cho C1-03b.
+
 ## 🔎 Còn thiếu / tìm không ra
 
 - **Chân dung John White** — xem mục trên, không tồn tại.

@@ -38,6 +38,9 @@ Chia theo nhóm, mỗi nhóm ứng với một hoặc vài asset:
 | Trang phục theo thời kỳ | thường phục nông thôn, đồng phục, tang phục |
 | Phương tiện & đồ vật | xe đạp, thuyền, nông cụ, đồ thờ |
 | Địa danh có thật | đảo, làng, bờ biển, nghĩa trang |
+| **Bản đồ tham chiếu hình dạng** — thêm 2026-09-13 | vùng/bang/nước lời kể nhắc, đúng khung ranh giới (hiện đại được nếu lời kể nói *"would later become"*). **Bắt buộc** cho mọi shot bản đồ — skill `nano-banana-image-prompts` 4d-bis. **Có chữ cũng được** (Tú chốt 2026-09-13: chữ trong ảnh bản đồ được chấp nhận) — ưu tiên nhãn tiếng Anh in rõ, ít chữ; tránh bản đồ chữ viết tay cổ. Tra Commons: `map <tên vùng>`, `locator map <tên vùng>` |
+| **Cờ, biểu tượng đúng năm và đúng vai trò** | quốc kỳ / cờ hạm đội / cờ chỉ huy là ba vai khác nhau — ghi nguồn xác nhận mẫu; không có thì ghi `stillMissing` |
+| **Vật ngầm trong động từ, vật tượng trưng thời kỳ** | thuyền nhỏ thế kỷ 16 cho *"landed"*, địa cầu thời kỳ cho *"in the New World"* |
 
 ## 3. Nguồn
 
@@ -243,6 +246,30 @@ hoả mai — không đưa vào).
 ⚠️ Các bản vẽ cũng **mâu thuẫn nhau**, phải chọn có ý thức: bản 1890 khắc chữ lên
 **thân cây**, bản Sheppard khắc lên **cột hàng rào**. Chọn theo KỊCH BẢN, rồi ghi
 lại đã chọn gì.
+
+## 4d. 🔴 TÊN TRONG LỜI KỂ CÓ THỂ LÀ TÊN CỦA THỜI KỲ KHÁC — kiểm niên đại của chính cái tên
+
+**Ca thật (A1, Abe Reles, 2026-09-13).** Lời kể nói *"the Gambino family"* cho năm 1940. Tra
+Commons ra ảnh mang đúng tên đó — nhưng là ảnh FBI 1979–1981, sơ đồ tổ chức 1963, ảnh căn cước
+1993–2004. Năm 1940 cái tên đó **chưa tồn tại**: khi đó là gia đình **Mangano**, Anastasia nắm
+quyền từ 1951, tên Gambino có từ 1957 (Britannica; The Mob Museum). Chữ *"the future boss"* trong
+lời kể đã ngầm thừa nhận.
+
+👉 Lời kể gọi một tổ chức, quốc gia, thành phố hay đơn vị bằng một cái tên **có thể đã đổi** →
+**tra tên đó có từ bao giờ TRƯỚC khi** lấy ảnh mang tên đó làm căn cứ. Ảnh đúng tên mà sai thời
+kỳ **nguy hiểm hơn không có ảnh** — nó trông như bằng chứng.
+
+- Tra thêm bằng **tên đúng thời kỳ** (`Mangano crime family 1940`), không chỉ bằng tên lời kể dùng.
+- Ghi vào manifest: tên lời kể dùng, tên đúng thời kỳ, **nguồn** của mốc niên đại, và **đúng các
+  truy vấn đã chạy** — kết quả chỉ là mẫu của mấy truy vấn đó, không phải kiểm kê cả kho.
+- Không tự sửa lời kể (việc của Tú). Hình thay thế khi không có ảnh đúng thời kỳ: skill
+  `nano-banana-image-prompts` mục 4d, luật 4.
+- Đừng biến thành "tra lịch sử mọi danh từ". Chỉ soi loại tên **hay đổi**: tổ chức mang tên
+  người cầm đầu về sau, quốc gia/thành phố đổi tên, đơn vị bị sáp nhập.
+
+Cùng họ lỗi với **ảnh chân dung sai tuổi**: người có thật thì chọn ảnh **đúng tuổi ở thời điểm
+câu chuyện**, không lấy ảnh nổi tiếng nhất. Ca A1: Anastasia có ảnh 1950s nổi tiếng hơn, nhưng
+lúc đó ông đã già, hói, béo — câu chuyện là năm 1940, nên dùng ảnh căn cước **1936**.
 
 ## 5. Mẹo tìm trên Commons (đúc kết, đừng mò lại)
 

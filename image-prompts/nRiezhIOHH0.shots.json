@@ -1,0 +1,55 @@
+{
+  "_doc": "BAN THI DIEM — chi 3 shot cua segment A1, du de chay thu co che dung lai asset nhan vat (D05). KHONG phai ban chuyen day du 385 dong (D04).",
+
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+
+  "styleBlock": { "source": "scripts/build_image_prompts.py:STYLE_BLOCK", "version": 2 },
+
+  "assets": [
+    { "id": "char-reles", "flowAssetName": "Reles Ref Broad Face Wavy Hair" }
+  ],
+
+  "segments": [
+    {
+      "id": "A1",
+      "title": "Abe Reles",
+      "start": "0:00",
+      "end": "1:19",
+      "refs": "image-prompts/refs/A1/",
+      "shots": [
+        {
+          "id": "A1-01",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "character",
+          "outName": "Reles Ref Broad Face Wavy Hair",
+          "draw": "a man in his early thirties, broad heavy face, wide jaw and strong chin, thick neck, heavy dark eyebrows almost meeting, heavy-lidded eyes, broad nose, short dark wavy hair swept back with the hairline receding at the temples, clean shaven, in a dark overcoat over a white shirt and a dark patterned tie",
+          "refs": ["05-reles-mugshot-1940-jjay__codex.jpg"],
+          "produces": "char-reles"
+        },
+        {
+          "id": "A1-13",
+          "at": "0:44",
+          "cue": "found dead on the roof",
+          "kind": "character",
+          "outName": "Same Man Lying Face Down",
+          "draw": "the same man lying face down, arms slack",
+          "useAsset": ["char-reles"]
+        },
+        {
+          "id": "A1-16",
+          "at": "0:57",
+          "cue": "fell roughly 42 feet",
+          "kind": "character",
+          "outName": "Same Man Falling Through Air",
+          "draw": "the same man falling through the air, coat flapping",
+          "useAsset": ["char-reles"]
+        }
+      ]
+    }
+  ]
+}

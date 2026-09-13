@@ -1,0 +1,394 @@
+{
+  "_doc": "Ban VIET LAI cua case A1 (Abe Reles), 2026-09-12. Thay image-prompts/A1.tu-anchors.shots.json. Ba nguon: (1) 6 de nghi trong coordination/reviews/nano-banana-prompt-content-2026-09-12.md cua Codex, (2) cac luat do duoc trong ngay (nhan vat nua than + mat don gian + sinh toan than tu asset; chip @ cho noi chon co anh tu lieu; cam chu tuong minh voi vat co chu), (3) hai loi noi dung lo ra o me anh that (A1-14 ga giuong, A1-18 chu tren tien). Truong `intent` = de nghi so 1: moi shot phai tra loi nguoi xem can hieu dieu gi. | 2026-09-13: them 8 gop y cua Tu (A1-04b, A1-07a, A1-09b, A1-09c, A1-14a, A1-15 sua, A1-15b, A1-18a-e). Luat tong quat rut ra dang qua luong review img-skill-a1-lessons, ban nhap o coordination/drafts/img-skill-a1-lessons.md.",
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+  "styleBlock": "Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+  "styleByKind": {
+    "character": "Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "figure": "Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "group": "Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings."
+  },
+  "assets": [
+    {
+      "id": "char-reles",
+      "flowAssetName": "Reles Ref Broad Face Simple"
+    },
+    {
+      "id": "char-anastasia",
+      "flowAssetName": "Anastasia Ref Heavy Brows"
+    },
+    {
+      "id": "char-luciano",
+      "flowAssetName": "Luciano Ref Drooping Eyelid"
+    },
+    {
+      "id": "prop-sheet-rope",
+      "flowAssetName": "Knotted Bed Sheet Rope"
+    },
+    {
+      "id": "frame-luciano-base",
+      "flowAssetName": "Luciano Leaning Back Laughing"
+    }
+  ],
+  "segments": [
+    {
+      "id": "A1",
+      "title": "Abe Reles",
+      "start": "0:00",
+      "end": "1:19",
+      "refs": "image-prompts/refs/A1/",
+      "shots": [
+        {
+          "id": "A1-01",
+          "at": "0:01",
+          "cue": "the top freelance killer",
+          "kind": "character",
+          "outName": "Reles Ref Broad Face Simple",
+          "intent": "Day la nhan vat chinh, va han la sat thu so mot cua to chuc",
+          "draw": "A man in his early thirties seen from the chest up. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark and wavy, swept straight back with no parting, slightly receding at the temples. He has very thick dark eyebrows, a broad nose and is clean shaven. He is wearing a dark herringbone tweed overcoat with very wide lapels, a white shirt and a dark diagonally striped tie.",
+          "produces": "char-reles",
+          "refs": [
+            "01-reles-portrait-loc__codex.jpg",
+            "05-reles-mugshot-1940-jjay__codex.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Nua than tren + mat don gian (Tu chot 2026-09-12) — mat it chi tiet thi moi canh sau dung lai duoc ma khong troi dung mao."
+        },
+        {
+          "id": "A1-02",
+          "at": "0:03",
+          "cue": "the enforcement arm",
+          "kind": "group",
+          "outName": "Row Of Mob Enforcers",
+          "intent": "Han khong hanh dong mot minh — dung sau la mot to chuc co nguoi",
+          "draw": "Six men in 1930s suits standing shoulder to shoulder in a row, facing forward, seen full length from head to shoes. Heavy wool double-breasted suits and overcoats in charcoal, navy and brown with wide lapels, fedora hats, hands in pockets or at their sides."
+        },
+        {
+          "id": "A1-03",
+          "at": "0:07",
+          "cue": "preferred an ice pick",
+          "kind": "object",
+          "outName": "Ice Pick Wooden Handle",
+          "intent": "Vu khi dac trung cua han la mot cai dui da, khong phai sung",
+          "draw": "An ice pick from the 1930s lying flat: a bulbous wooden handle that tapers toward the neck, a short metal collar, and a long straight steel spike tapering evenly to a very sharp point.",
+          "refs": [
+            "07-ice-pick-awl-1930s-pemberton__codex.jpg"
+          ]
+        },
+        {
+          "id": "A1-04",
+          "at": "0:10",
+          "cue": "Driven through the ear",
+          "kind": "object",
+          "outName": "Ear Seen From The Side",
+          "intent": "Duong vao cua mui dui la lo tai — vi the gan nhu khong chay mau",
+          "draw": "A close view of a human ear seen from the side, drawn flat with clean outlines and flat skin colour, no shading, no modelling, on a plain white background. Nothing else in the frame."
+        },
+        {
+          "id": "A1-04b",
+          "at": "0:10",
+          "cue": "Driven through the ear",
+          "kind": "figure",
+          "outName": "Man In Profile Showing Ear",
+          "intent": "Tai cua NAN NHAN — de hau ky dat cai dui da (A1-03) ke sat tai. Nguoi nay la nan nhan vo danh, KHONG phai Reles",
+          "draw": "A man in his thirties seen exactly side-on in profile from the shoulders up, facing left, his ear fully visible and uncovered in the middle of the frame. Short dark hair cut above the ear, plain white shirt collar, calm closed-mouth expression. No weapon, no object touching him, no wound, no blood.",
+          "note": "Gop y Tu 2026-09-13: tach NGUOI va VAT de hau ky ghep (luat 1 trong coordination/drafts/img-skill-a1-lessons.md). Nhin nghieng HAN vi bo phan can lo la tai."
+        },
+        {
+          "id": "A1-05",
+          "at": "0:13",
+          "cue": "coroners write it off",
+          "kind": "figure",
+          "outName": "Coroner Signing A Form",
+          "intent": "Cai chet bi GHI SAI thanh xuat huyet nao — trong tam la chu ky, khong phai ong bac si",
+          "draw": "A doctor standing, seen from the chest up, wearing a white lab coat over a shirt and tie, holding a clipboard in one hand and signing the blank unlined sheet on it with a fountain pen. The sheet is completely blank: no lettering, no lines, no stamp."
+        },
+        {
+          "id": "A1-06",
+          "at": "0:17",
+          "cue": "at least 30 murders",
+          "kind": "object",
+          "outName": "Stack Of Case Folders",
+          "intent": "Rat nhieu vu an don ve MOT nguoi. Con so 30 de hau ky gan chu — dung ve 30 nguoi, va dung ve luoi anh mugshot (nguoi xem doc ra danh sach bi bat, khong ra so vu giet nguoi)",
+          "draw": "A tall leaning stack of buff-coloured paper case folders tied shut with string, edges uneven and dog-eared, with loose sheets sticking out at the sides. Every folder and sheet is completely blank: no lettering, no numbers, no labels.",
+          "note": "Thay luoi anh mugshot cua ban cu — de nghi so 1 trong review cua Codex (coordination/reviews/nano-banana-prompt-content-2026-09-12.md)."
+        },
+        {
+          "id": "A1-07a",
+          "at": "0:19",
+          "cue": "Arrested in 1940",
+          "kind": "group",
+          "outName": "Reles Handcuffed Under Escort",
+          "intent": "Han BI BAT — buoc ngoat cua ca doan. Ghe dien o A1-07 chi la thu dang cho; day moi la nhan vat o trang thai moi",
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now walking forward with his wrists handcuffed in front of him and his head slightly lowered, wearing the same overcoat, while a 1940s New York policeman in a dark heavy tunic and peaked cap with a blank round badge walks beside him gripping his upper arm, both seen full length from head to shoes, no lettering anywhere, plain white background",
+          "useAsset": [
+            "char-reles"
+          ],
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "note": "Gop y Tu 2026-09-13, luat 2. Kind la GROUP chu khong phai character: luat character co cau 'Only one person in the image', noi vao canh ap giai la mau thuan truc tiep."
+        },
+        {
+          "id": "A1-07",
+          "at": "0:20",
+          "cue": "facing the electric chair",
+          "kind": "object",
+          "outName": "Empty Electric Chair",
+          "intent": "An tu dang cho san — day moi la ly do han chiu khai",
+          "draw": "An empty electric chair made of heavy dark oak, seen from the front. Thick leather straps hang loose from the armrests and front legs, and a metal headpiece on a bracket hangs above the seat back with a cable running from it."
+        },
+        {
+          "id": "A1-08",
+          "at": "0:24",
+          "cue": "sent seven senior mobsters",
+          "kind": "character",
+          "outName": "Man Taking An Oath",
+          "intent": "Han doi ben: tu sat thu thanh nguoi lam chung",
+          "draw": "A man in a 1930s grey pinstripe suit seen from the chest up, raising his right hand palm-forward to take an oath, his other hand resting flat on a small closed book. White shirt with a wide collar, dark tie, level expression."
+        },
+        {
+          "id": "A1-09",
+          "at": "0:24",
+          "cue": "seven senior mobsters",
+          "kind": "group",
+          "outName": "Seven Men In A Lineup",
+          "intent": "Bay trum bi loi khai cua han ha xuong",
+          "draw": "Seven men standing in a single row facing forward, seen full length from head to shoes, in heavy 1930s wool overcoats and double-breasted suits in dark grey and navy, each wearing a fedora."
+        },
+        {
+          "id": "A1-09b",
+          "at": "0:27",
+          "cue": "bring down Albert Anastasia",
+          "kind": "character",
+          "outName": "Anastasia Ref Heavy Brows",
+          "intent": "Hau qua lon nhat cua loi khai la mot trum co that — nhung loi ke chi noi 'was said to', nen CHAN DUNG TRUNG TINH, khong ve bi bat hay ngoi toa",
+          "draw": "A man in his mid thirties seen from the chest up. Thick dark wavy hair combed straight back and piled high on top of his head. Very heavy dark eyebrows. Deep-set heavy-lidded eyes. A large prominent nose with a high straight bridge. Full lips, fleshy cheeks, clean shaven. Wearing a dark 1930s suit jacket, white shirt and a patterned tie.",
+          "produces": "char-anastasia",
+          "refs": [
+            "10-anastasia-mugshot-1936-commons__claude.jpg"
+          ],
+          "note": "Anh 1936 la ban DUY NHAT dung tuoi; anh 1950s noi tieng hon nhung da gia, hoi, beo — cau chuyen la nam 1940. Net nhan ra: mui to song cao + long may ram. Thuc te Reles chet truoc khi kip lam chung chong Anastasia — dung ve canh Anastasia bi ha xuong. | Da kiem nguon 2026-09-13: Reles co lich lam chung chong Anastasia NGAY SANG 12-11-1941, cai chet chan vu truy to (Wikipedia 'Abe Reles', The Mob Museum). Cau transcript 0:27 nguoc voi su that."
+        },
+        {
+          "id": "A1-09c",
+          "at": "0:30",
+          "cue": "of the Gambino family",
+          "kind": "group",
+          "outName": "Crime Family Of Men In Suits",
+          "intent": "Anastasia sau nay cam dau mot to chuc lon. Loi ke dung TEN VE SAU (Gambino co tu 1957); nam 1940 la gia dinh Mangano — nen ve theo trang phuc 1940, khong lay anh FBI 1981 lam mau",
+          "draw": "Five men in 1940s suits standing together in a loose semicircle, seen full length from head to shoes, facing the viewer. Heavy double-breasted wool suits and overcoats in dark grey, navy and brown, wide lapels, fedora hats, one man older and heavier in the centre with the others slightly behind him.",
+          "note": "Gop y Tu: 'tim anh tai lieu cho Gambino family, neu khong co thi tao prompt'. Co anh nhung SAI THOI KY — xem manifest khoa `gambinoName`. Luat 4 trong ban nhap."
+        },
+        {
+          "id": "A1-10",
+          "at": "0:31",
+          "cue": "The Brooklyn DA",
+          "kind": "figure",
+          "outName": "Prosecutor With Case File",
+          "intent": "Phia cong to la ben dang giu han",
+          "draw": "A lawyer in a 1930s three-piece charcoal suit seen from the chest up, carrying a thick bulging manila folder clamped under one arm, wire-rimmed glasses, neatly combed hair. The folder is blank: no lettering, no labels."
+        },
+        {
+          "id": "A1-11",
+          "at": "0:35",
+          "cue": "Half Moon Hotel",
+          "kind": "place",
+          "outName": "Brick Hotel Tower On Boardwalk",
+          "intent": "Noi han bi giu — mot khach san bien cu the, nhan ra duoc",
+          "mention": "draw a {{09-half-moon-hotel-1927-cihp__claude.jpg}} with the same style as {{01-pyramid-place.png}}, the tall tower is the subject seen from the boardwalk looking up at it, no lettering, no signs, no people, no sun, no sky",
+          "refs": [
+            "09-half-moon-hotel-1927-cihp__claude.jpg"
+          ],
+          "note": "Duong @mention: anh chup that giu vai HINH KHOI, anh neo giu vai NET VE. Ta bang chu khong neo duoc kien truc — ban cu ra mot toa nha co vom khac han."
+        },
+        {
+          "id": "A1-12",
+          "at": "0:37",
+          "cue": "guarded by 18 cops",
+          "kind": "figure",
+          "outName": "Officer On Guard At A Door",
+          "intent": "Han duoc canh gac lien tuc — trong tam la DONG TAC GAC, khong phai bo dong phuc",
+          "draw": "A 1940s New York policeman standing guard directly in front of a closed panelled wooden door, seen full length from head to shoes, facing the viewer with his feet apart and both hands clasped behind his back. Dark heavy tunic uniform with loose sleeves, peaked cap with a blank round badge, no lettering anywhere.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "note": "Ban cu ta ky dong phuc ma KHONG co dong tac gac — de nghi so 1 cua Codex. Da them cua dong va the dung gac."
+        },
+        {
+          "id": "A1-13",
+          "at": "0:44",
+          "cue": "found dead on the roof",
+          "kind": "character",
+          "outName": "Same Man Lying Face Down",
+          "intent": "Han chet, nam up mat tren mai",
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now lying face down on a flat tar roof with his arms slack, wearing the same overcoat, only one person, plain white background",
+          "useAsset": [
+            "char-reles"
+          ]
+        },
+        {
+          "id": "A1-14a",
+          "at": "0:48",
+          "cue": "Officially, he had",
+          "kind": "object",
+          "outName": "Folded White Bed Sheet",
+          "intent": "Vat lieu GOC truoc khi bien thanh day — de hau ky keo mui ten sang A1-14",
+          "draw": "A single plain white cotton bed sheet folded loosely into a thick stack on a plain white background, one corner hanging down and showing the soft woven fabric and a hemmed edge. No pattern, no lettering, no bed, nothing else.",
+          "note": "Gop y Tu 2026-09-13, luat 5. Mau va chat vai phai khop A1-14 de mui ten doc duoc."
+        },
+        {
+          "id": "A1-14",
+          "at": "0:50",
+          "cue": "knotted bed sheets",
+          "kind": "object",
+          "outName": "Knotted Bed Sheet Rope",
+          "intent": "Duong thoat than tu che bang GA GIUONG, khong phai day bong",
+          "draw": "Three white cotton bed sheets knotted end to end into a makeshift rope. Between the knots the fabric stays flat and wide like a sheet, with loose cloth corners and creases showing. Show both free ends and every knot.",
+          "note": "Ban dau ra mot soi day BEN vi danh tu rope lan chu bedsheets — de nghi so 2 cua Codex. Gio ta ro trang thai cua vai. | D03: A1-14a va A1-14 sinh DOC LAP, cung mo ta vai — chua dung chip sinh B tu A (phuong an chua do).",
+          "produces": "prop-sheet-rope"
+        },
+        {
+          "id": "A1-15",
+          "at": "0:53",
+          "cue": "tied one end to a radiator",
+          "kind": "object",
+          "outName": "Bed Sheet Rope Tied To Radiator",
+          "intent": "Cho NOI: dau day ga duoc buoc vao lo suoi — cau noi ve cai nut buoc, khong noi ve lo suoi",
+          "mention": "draw the rope from {{Knotted Bed Sheet Rope}} with one end knotted tightly around the pipe of a heavy cast iron steam radiator with vertical ribbed sections and a round brass valve, the knot clearly visible, the rest of the rope trailing away across the floor, no lettering, plain white background",
+          "note": "Gop y Tu 2026-09-13, luat 6. Sinh TU asset day A1-14 de giu dung vai phang va rong. Day khong mo lai cam dinh vi tuong doi: hai vat da NOI THANH MOT, cai nut la chu the."
+        },
+        {
+          "id": "A1-15b",
+          "at": "0:54",
+          "cue": "trying to escape",
+          "kind": "character",
+          "outName": "Reles Climbing Down Sheet Rope",
+          "intent": "Hanh dong NOI giua buoc day va roi, theo GIA THUYET CHINH THUC ma loi ke neu ro ('Officially, he had knotted bed sheets'). Chi tiet '20 feet from the wall' o A1-16b DAT NGHI VAN ve gia thuyet nay, khong phu nhan no",
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now hanging and climbing down {{Knotted Bed Sheet Rope}} hand over hand, his feet braced against the brick outside wall of a tall building, wearing the same overcoat, seen full length from head to shoes, plain white background",
+          "useAsset": [
+            "char-reles"
+          ],
+          "note": "Gop y Tu 2026-09-13, luat 7. Hai chip: nhan vat va vat. | D04: anh minh hoa GIA THUYET CHINH THUC, dung kem ngu canh do o hau ky."
+        },
+        {
+          "id": "A1-16",
+          "at": "0:58",
+          "cue": "fell roughly 42 feet",
+          "kind": "character",
+          "outName": "Same Man Falling",
+          "intent": "Han roi xuong",
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now falling through the air with his overcoat flapping open and his arms out, only one person, plain white background",
+          "useAsset": [
+            "char-reles"
+          ]
+        },
+        {
+          "id": "A1-16b",
+          "at": "1:04",
+          "cue": "20 feet away from the wall",
+          "kind": "place",
+          "outName": "Body Far Out On The Roof",
+          "intent": "Chi tiet loi ke dung de DAT NGHI VAN: thi the nam cach tuong khoang 20 feet, dat sau chu 'but'. Hinh chi can cho thay khoang cach, khong ket luan ve cach roi",
+          "draw": "A flat tar roof seen from high above, looking straight down. The brick wall of a taller building runs along one edge of the frame, and a man in a dark overcoat lies face down on the roof a long way out from that wall, with empty roof surface between him and the wall. Nothing else on the roof.",
+          "note": "Them moi. Day la chi tiet lam nen ca vu an, ma ban cu bo qua."
+        },
+        {
+          "id": "A1-17",
+          "at": "1:08",
+          "cue": "claimed they had been asleep",
+          "kind": "figure",
+          "outName": "Officer Explaining Himself",
+          "intent": "Day la LOI KHAI cua canh sat, khong phai dieu ai chung kien — nen ve luc ho DANG GIAI TRINH, khong ve canh ho dang ngu",
+          "draw": "A 1940s New York policeman standing, seen from the chest up, both hands raised open-palmed in front of him in a shrugging, explaining gesture, mouth open mid-sentence, eyebrows raised. Dark heavy tunic uniform, peaked cap with a blank round badge, no lettering.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "note": "Ban cu ve canh sat DANG NGU tren ghe — de nghi so 4 cua Codex: hinh do nang loi khai thanh viec da duoc chung kien."
+        },
+        {
+          "id": "A1-18a",
+          "at": "1:09",
+          "cue": "Lucky Luciano later boasted",
+          "kind": "character",
+          "outName": "Luciano Ref Drooping Eyelid",
+          "intent": "Nguoi noi ra con so — mot trum co that dang o tu. Asset goc cho ca chuoi canh khoe",
+          "draw": "A man in his late thirties seen from the chest up. Dark hair combed neatly back with a side parting and a slight wave. His right eyelid droops noticeably lower than the left, and a short scar marks his right cheek. A long face, a straight nose, thin lips, a strong square chin, clean shaven. Wearing a plain grey prison shirt buttoned to the collar.",
+          "produces": "char-luciano",
+          "refs": [
+            "13-luciano-mugshot-1931-commons__claude.jpg",
+            "14-luciano-mugshot-1936-commons__claude.jpg",
+            "15-luciano-mugshot-1936b-commons__claude.jpg"
+          ],
+          "note": "Net nhan ra so mot: MI MAT PHAI SUP + SEO MA PHAI (ro nhat anh 15). Voi mat don gian (mat la diem) thi mat sup ve thanh mot net ngang thay cho diem. Ao tu la MO TA CHUNG — chua co anh trang phuc nha tu bang New York 1936-46 (manifest stillMissing)."
+        },
+        {
+          "id": "A1-18b",
+          "at": "1:11",
+          "cue": "boasted from prison",
+          "kind": "group",
+          "outName": "Luciano Boasting On Prison Bunk",
+          "intent": "Han DANG KHOE voi ban tu — ve hanh vi noi (loi ke xac nhan viec khoe), KHONG ve noi dung loi khoe (canh tra tien)",
+          "mention": "draw the same man as in {{Luciano Ref Drooping Eyelid}}, keep his face exactly the same, sitting on the edge of a narrow steel prison bunk and leaning forward with one hand raised mid-gesture and a smug grin, while two other prisoners in the same plain grey prison shirts sit on the bunk opposite leaning in to listen, a small barred window high on the wall behind them, no lettering anywhere, plain white background",
+          "useAsset": [
+            "char-luciano"
+          ],
+          "note": "Gop y Tu 2026-09-13, luat 8 phan 1-2: nguoi dang noi + nguoi nghe."
+        },
+        {
+          "id": "A1-18c",
+          "at": "1:11",
+          "cue": "boasted from prison",
+          "kind": "character",
+          "outName": "Luciano Leaning Back Laughing",
+          "intent": "Chuoi tu the de hau ky cat thanh chuyen dong — Tu the 1/3: cuoi lon, nga nguoi",
+          "mention": "draw the same man as in {{Luciano Ref Drooping Eyelid}}, keep his face exactly the same, leaning back with his head tipped up, laughing with his mouth open, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background",
+          "useAsset": [
+            "char-luciano"
+          ],
+          "note": "D05 + D01: chuoi tu the la TUY CHON va THU NGHIEM, chua do duoc co cat noi chuyen dong. Gop y Tu 2026-09-13, luat 8 phan 3. Phan khung hinh GIONG HET nhau giua 3 tu the, chi cu chi khac. CHUA DO duoc co cat noi duoc khong — xem de xuat, muc yeu nhat.",
+          "produces": "frame-luciano-base"
+        },
+        {
+          "id": "A1-18d",
+          "at": "1:11",
+          "cue": "boasted from prison",
+          "kind": "character",
+          "outName": "Luciano Rubbing Fingers Together",
+          "intent": "Chuoi tu the de hau ky cat thanh chuyen dong — Tu the 2/3: cu chi tien — noi 'dat tien' ma khong ve tien",
+          "mention": "draw the same man in the same framing as in {{Luciano Leaning Back Laughing}}, keep his face exactly the same, leaning forward and rubbing his thumb against his first two fingers in a money gesture, eyebrows raised, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background",
+          "useAsset": [
+            "frame-luciano-base"
+          ],
+          "note": "D05 + D01: chuoi tu the la TUY CHON va THU NGHIEM, chua do duoc co cat noi chuyen dong. Gop y Tu 2026-09-13, luat 8 phan 3. Phan khung hinh GIONG HET nhau giua 3 tu the, chi cu chi khac. CHUA DO duoc co cat noi duoc khong — xem de xuat, muc yeu nhat."
+        },
+        {
+          "id": "A1-18e",
+          "at": "1:11",
+          "cue": "boasted from prison",
+          "kind": "character",
+          "outName": "Luciano Tapping His Chest",
+          "intent": "Chuoi tu the de hau ky cat thanh chuyen dong — Tu the 3/3: tu nhan cong",
+          "mention": "draw the same man in the same framing as in {{Luciano Leaning Back Laughing}}, keep his face exactly the same, tapping his own chest with his open hand, chin lifted, smug half smile, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background",
+          "useAsset": [
+            "frame-luciano-base"
+          ],
+          "note": "D05 + D01: chuoi tu the la TUY CHON va THU NGHIEM, chua do duoc co cat noi chuyen dong. Gop y Tu 2026-09-13, luat 8 phan 3. Phan khung hinh GIONG HET nhau giua 3 tu the, chi cu chi khac. CHUA DO duoc co cat noi duoc khong — xem de xuat, muc yeu nhat."
+        },
+        {
+          "id": "A1-18",
+          "at": "1:13",
+          "cue": "cost him $50,000",
+          "kind": "object",
+          "outName": "Plain Banknote Bundle",
+          "intent": "So tien Luciano khoe — giu lam PHAN TU ROI de hau ky dat canh chuoi canh khoe, khong nhet vao tay nhan vat",
+          "draw": "A thick bundle of banknotes stacked neatly and bound tightly by a wide brown paper currency strap. The notes are pale green and completely plain: no lettering, no numbers, no words, no printed portrait, no signature, nothing written on the strap either.",
+          "note": "Ban dau ra DAY CHU (U.S. CURRENCY, $100, $10,000, mot chu ky gia). Vat ma ban chat co chu in tren no thi prompt PHAI cam chu tuong minh."
+        }
+      ]
+    }
+  ],
+  "_noteMieng": "2026-09-13: cau mat don gian tung ghi 'a simple line for the mouth' — MAU THUAN voi cac tu the dang cuoi/dang noi cua chuoi Luciano (A1-18b-e). Tu chi chot mieng DON GIAN, chu 'mot net' la Claude tu them. Da noi rong: mot net, hoac mot hinh mo don gian khi dang noi/cuoi."
+}

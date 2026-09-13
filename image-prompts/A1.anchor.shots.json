@@ -1,0 +1,78 @@
+{
+  "_doc": "THI NGHIEM huong 2: tao mot anh NEO PHONG CACH truoc, roi dinh no vao moi shot sau. Khong ghi de artifact cua Gemini — day la viec co che (buoc 6), khong phai viec noi dung (buoc 5).",
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+  "styleBlock": "with the same style with reference images",
+  "assets": [
+    {
+      "id": "style-anchor",
+      "flowAssetName": "Style Anchor Chair And Hat"
+    }
+  ],
+  "segments": [
+    {
+      "id": "A1",
+      "start": "0:00",
+      "end": "1:19",
+      "refs": "image-prompts/refs/A1/",
+      "shots": [
+        {
+          "id": "A1-00",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "object",
+          "outName": "Style Anchor Chair And Hat",
+          "draw": "a plain wooden chair with a grey felt fedora resting on the seat, drawn by hand in ink with visible pencil hatching in the shading, clean ink outlines filled with flat muted colour, warm browns and greys, slightly rough linework, on a plain white background",
+          "produces": "style-anchor"
+        },
+        {
+          "id": "A1-01",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "character",
+          "outName": "Broad Faced Man In Dark Overcoat",
+          "draw": "A man in his early thirties. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark, and distinctly wavy (marcel wave style), swept straight back with no clear parting, and slightly receding at the temples. He has very thick, dark eyebrows that almost meet, with heavy-lidded eyes, a broad nose with wide nostrils, and thick lips. His ears are quite large and stick out. He is clean-shaven. He is wearing a dark, heavy herringbone tweed overcoat with very wide lapels, a white shirt, and a dark diagonally striped tie.",
+          "useAsset": [
+            "style-anchor"
+          ]
+        },
+        {
+          "id": "A1-03",
+          "at": "0:09",
+          "cue": "preferred an ice pick",
+          "kind": "object",
+          "outName": "Ice Pick With Wooden Handle",
+          "draw": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point.",
+          "useAsset": [
+            "style-anchor"
+          ]
+        },
+        {
+          "id": "A1-13",
+          "at": "0:50",
+          "cue": "found dead on the roof",
+          "kind": "character",
+          "outName": "Heavy Set Man Lying Face Down",
+          "draw": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie.",
+          "useAsset": [
+            "style-anchor"
+          ]
+        },
+        {
+          "id": "A1-15",
+          "at": "0:59",
+          "cue": "tied one end to a radiator",
+          "kind": "object",
+          "outName": "Cast Iron Radiator",
+          "draw": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor.",
+          "useAsset": [
+            "style-anchor"
+          ]
+        }
+      ]
+    }
+  ]
+}

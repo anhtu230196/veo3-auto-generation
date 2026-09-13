@@ -1,0 +1,39 @@
+{
+  "_doc": [
+    "Anh neo nao dinh vao shot loai nao. `run-shots.ts` doc file nay neu co; khong co thi",
+    "dinh HET anh trong thu muc (hanh vi cu).",
+    "",
+    "Vi sao phai tach theo loai — do bang luoi 1/10 khung ngay 2026-09-12:",
+    "  - shot `group` (bay mobster) dinh 03-five-men-group.png ra ty le DUNG: 6,6 dau,",
+    "    chan 47% chieu cao. Dung chuan cua anh neo.",
+    "  - shot MOT NGUOI, cung khung 16:9, cung khoi style, ra 4,0-4,9 dau va chan 14-24%.",
+    "    Ba lan sua bang CHU (ke ca ghi thang 'about six and a half heads tall') khong",
+    "    nhuc nhich. Khac biet duy nhat: shot nhom co anh neo CUNG LOAI BO CUC de bat chuoc,",
+    "    shot mot nguoi thi khong — 02-doctor-figure.png chi co nua tren.",
+    "  - va dinh 03 (5 nguoi xep hang) vao shot mot nguoi thi ra BA BAN SAO cung mot nguoi.",
+    "",
+    "Nen: 04-one-man-fullbody.png = mot nguoi nguyen kho, cat tu chinh 03 (nguoi ngoai cung",
+    "ben phai, la nguoi duy nhat khong bi nguoi ben canh chen vao). Van la tranh cua Tu,",
+    "chi la cat ra.",
+    "",
+    "Phu thu hai: dinh 1-2 anh thay vi 3 cat bot ~1 luot mo bang chon moi shot, cho 385",
+    "prompt thi la hang gio.",
+    "",
+    "CAP NHAT 2026-09-12 (Tu chot chap nhan nhan vat nua than tren): character/figure giờ",
+    "dinh 02-doctor-figure.png (nua than, dung bo cuc can) chu khong dinh 04 nua.",
+    "04-one-man-fullbody.png VAN GIU tren dia: no la anh neo duy nhat co mot nguoi NGUYEN",
+    "KHO, can khi nao muon mot canh toan than that."
+  ],
+  "default": [
+    "01-pyramid-place.png"
+  ],
+  "character": [
+    "02-doctor-figure.png"
+  ],
+  "figure": [
+    "02-doctor-figure.png"
+  ],
+  "group": [
+    "03-five-men-group.png"
+  ]
+}

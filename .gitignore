@@ -23,6 +23,11 @@ narration-scripts/*/refs/**/*.jpg
 narration-scripts/*/refs/**/*.jpeg
 narration-scripts/*/refs/**/*.png
 narration-scripts/*/refs/**/*.webp
+# Cung chinh sach cho anh tu lieu cua luong .shots.json (SPEC-v2 muc 2): manifest.json giu du URL.
+image-prompts/refs/**/*.jpg
+image-prompts/refs/**/*.jpeg
+image-prompts/refs/**/*.png
+image-prompts/refs/**/*.webp
 
 # tư liệu style tham khảo: video + frame nặng, không commit
 input/style-ref/**/*.mp4

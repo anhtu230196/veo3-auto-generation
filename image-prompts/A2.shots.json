@@ -1,0 +1,159 @@
+{
+  "_doc": "Danh sach shot segment A2 (Popeye), viet theo 6 de nghi trong coordination/reviews/nano-banana-prompt-content-2026-09-12.md cua Codex. Truong `intent` la de nghi so 1 cua ban review: moi shot phai tra loi 'nguoi xem can hieu dieu gi' TRUOC khi chon hinh — cue khop transcript chi chung minh prompt gan dung cau, khong chung minh hinh noi dung cau do.",
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+  "styleBlock": "Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+  "styleByKind": {
+    "character": "Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "figure": "Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "group": "Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face."
+  },
+  "assets": [],
+  "segments": [
+    {
+      "id": "A2",
+      "title": "John Jairo Velasquez \"Popeye\"",
+      "start": "1:19",
+      "end": "2:12",
+      "refs": "image-prompts/refs/A2/",
+      "shots": [
+        {
+          "id": "A2-01",
+          "at": "1:19",
+          "cue": "the chief sicario",
+          "kind": "figure",
+          "outName": "Sicario In Leather Jacket",
+          "intent": "Nguoi nay la sat thu so mot cua cartel — nghe nghiep, khong phai danh tinh",
+          "draw": "A man in his late twenties standing, seen from the chest up, wearing a scuffed black leather jacket over a plain shirt, holding a pistol down at his side in one hand. Short dark hair, clean shaven, stocky build, calm blank expression.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-02",
+          "at": "1:31",
+          "cue": "police, judges",
+          "kind": "object",
+          "outName": "Police Peaked Cap",
+          "intent": "Nan nhan gom CANH SAT",
+          "draw": "A 1980s Colombian police peaked cap lying on its side, dark navy crown, black patent brim, a blank round metal badge above the brim with no lettering and no emblem.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-03",
+          "at": "1:31",
+          "cue": "police, judges",
+          "kind": "object",
+          "outName": "Judges Wooden Gavel",
+          "intent": "Nan nhan gom QUAN TOA",
+          "draw": "A wooden judge's gavel resting on its round striking block, dark polished hardwood with a brass band around the head."
+        },
+        {
+          "id": "A2-04",
+          "at": "1:32",
+          "cue": "journalists, politicians",
+          "kind": "object",
+          "outName": "Press Camera With Flash",
+          "intent": "Nan nhan gom NHA BAO",
+          "draw": "A 1980s press photographer's camera: a black 35mm SLR body with a wide lens and a bulky rectangular flash unit mounted on top, a worn fabric neck strap hanging loose.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-05",
+          "at": "1:32",
+          "cue": "journalists, politicians",
+          "kind": "object",
+          "outName": "Empty Campaign Podium",
+          "intent": "Nan nhan gom CHINH TRI GIA — buc noi bo TRONG, khong ve mot chinh tri gia co that",
+          "draw": "An empty wooden campaign podium seen from the front, with two slim microphones angled up from its top edge and a blank front panel bearing no lettering, no seal and no flag. Nobody standing at it."
+        },
+        {
+          "id": "A2-06",
+          "at": "1:34",
+          "cue": "a car bomb operation",
+          "kind": "object",
+          "outName": "Car Trunk With Wired Device",
+          "intent": "Cach gay an: bom gai trong xe",
+          "draw": "The open trunk of a 1980s sedan seen from behind, lid raised. Inside the trunk sits a taped bundle of cylindrical sticks with coloured wires running from it to a small box. The rest of the car is cropped away below the trunk opening."
+        },
+        {
+          "id": "A2-07",
+          "at": "1:38",
+          "cue": "aboard Avianca Flight 203",
+          "kind": "place",
+          "outName": "Airliner In Flight",
+          "intent": "110 nguoi chet tren mot chuyen bay hanh khach",
+          "draw": "A 1980s twin-engine passenger jet airliner in level flight seen from the side, white fuselage with a plain unmarked tail fin, no lettering, no livery stripes, no logo, on a plain background with no sky and no clouds.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-08",
+          "at": "1:45",
+          "cue": "who wasn't on board",
+          "kind": "object",
+          "outName": "Empty Aircraft Seat",
+          "intent": "Muc tieu that KHONG co tren may bay — day la cai lam vu do that bai",
+          "draw": "A single empty aircraft passenger seat seen from the front, grey-blue upholstery, seat belt unbuckled and lying loosely across the cushion, tray table folded up."
+        },
+        {
+          "id": "A2-09",
+          "at": "1:51",
+          "cue": "allegedly had been talking",
+          "kind": "object",
+          "outName": "Telephone Off The Hook",
+          "intent": "Chi la CAO BUOC co ta lien lac voi doi thu — hinh trung tinh, khong ve co ta, khong ve cuoc gap",
+          "draw": "A 1980s desk telephone with the handset lifted off its cradle and lying on its side beside the base, the coiled cord stretched and twisted.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-10",
+          "at": "1:55",
+          "cue": "surrendered in 1992",
+          "kind": "group",
+          "outName": "Handcuffed Man Between Two Soldiers",
+          "intent": "Ra dau thu: bi dan di giua hai nguoi vu trang",
+          "draw": "Three men walking forward side by side, seen full length from head to shoes. The man in the middle wears a plain shirt and dark trousers with his wrists handcuffed in front of him, head lowered. The two men flanking him wear plain olive-green military fatigues and soft caps, each with a rifle slung across the chest, one hand on the middle man's upper arm.",
+          "needsRefs": true
+        },
+        {
+          "id": "A2-11",
+          "at": "1:56",
+          "cue": "served 23 years",
+          "kind": "place",
+          "outName": "Bare Prison Cell",
+          "intent": "23 nam trong tu — do dai thoi gian de hau ky gan chu, hinh chi can noi 'nha tu'",
+          "draw": "A bare prison cell seen from inside: a narrow steel bunk with a thin mattress against one wall, a small square window high up crossed by four vertical bars, bare concrete floor and walls, nothing else in the cell."
+        },
+        {
+          "id": "A2-12",
+          "at": "2:01",
+          "cue": "reinvented himself as a YouTube personality",
+          "kind": "object",
+          "outName": "Phone On Tripod Recording",
+          "intent": "Sau khi ra tu thi lam kenh video ke lai chuyen cu",
+          "draw": "A smartphone clamped upright in a small desktop tripod, screen facing the viewer and blank, with a round ring light on a second stand beside it. No lettering and no icons on the screen."
+        },
+        {
+          "id": "A2-13",
+          "at": "2:06",
+          "cue": "re-arrested in 2018",
+          "kind": "object",
+          "outName": "Open Handcuffs",
+          "intent": "Bi bat lai — de rieng khoi canh dau thu o A2-10 de hau ky dung duoc hai moc khac nhau",
+          "draw": "A pair of steel handcuffs lying open, one cuff swung back on its hinge, the short chain between them slack."
+        },
+        {
+          "id": "A2-14",
+          "at": "2:11",
+          "cue": "he died of stomach cancer",
+          "kind": "place",
+          "outName": "Empty Hospital Bed With Barred Window",
+          "intent": "Chet vi benh TRONG LUC DANG BI GIAM — thanh cua so gan la thu noi len 'trong trai giam'",
+          "draw": "An empty hospital bed seen from the side, white sheets rumpled and pushed back, a rolling drip stand standing beside it with an empty bag, and behind the bed a window crossed by four vertical bars. Nobody in the bed."
+        }
+      ],
+      "_noteEnd": "SHOT-LIST v1 ghi A2 = 1:19-2:08, nhung cau ke ve cai chet cua Popeye chay tiep toi ~2:12 moi sang Kuklinski. Da noi `end` ra 2:12 theo dung loi ke, khong theo moc cu — cue 'he died of stomach cancer' o 2:11 la cua A2."
+    }
+  ]
+}

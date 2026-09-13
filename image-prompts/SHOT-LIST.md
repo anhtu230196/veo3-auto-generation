@@ -36,6 +36,14 @@ Artifact của luồng `img-prompts-brofessor-2video` (bước 5). Nguồn đọ
    không phải mọi hình có hơn một người.
 8. **Mốc thời gian để căn, không phải để cắt chính xác.** Sai số ±3 giây:
    transcript gộp khối 15 giây.
+9. **Cảnh bạo lực thì tách thành hai vật rời, đừng ghép hung khí vào người.**
+   Bộ lọc nội dung của Flow chặn thật — đo ngày 2026-09-11: `A1-04` bản cũ là
+   *"a man's head seen from the side with an ice pick at his ear"* bị từ chối
+   (`not been charged for this generation`), trong khi `A1-03` *"an ice pick"*
+   đứng riêng thì qua. Tú chốt: vẽ **cái tai** một dòng, **cái dùi** một dòng,
+   hậu kỳ tự ghép. Cùng mẻ đó `A1-08` *"raising his right hand to swear an
+   oath"* cũng bị chặn — động tác giơ tay dễ bị đọc thành chào phát xít, nên
+   đổi cách tả tư thế thay vì giữ nguyên rồi thử lại.
 
 ### ⚠️ Hai điểm luồng review không hội tụ — chờ Tú quyết
 
@@ -77,7 +85,7 @@ Mật độ nhắm tới: một ảnh mỗi 5–8 giây, bám theo video gốc.
 | A1-01 | 0:00 | a 1930s gangster in a pinstripe suit and fedora |
 | A1-02 | 0:05 | a group of men in 1930s suits standing shoulder to shoulder |
 | A1-03 | 0:09 | an ice pick |
-| A1-04 | 0:12 | a man's head seen from the side with an ice pick at his ear |
+| A1-04 | 0:12 | a human ear seen from the side |
 | A1-05 | 0:17 | a doctor writing on a clipboard with a blank unlined sheet |
 | A1-06 | 0:22 | a grid of small mugshot portraits with blank name boards |
 | A1-07 | 0:26 | an empty electric chair |

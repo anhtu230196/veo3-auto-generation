@@ -1,0 +1,366 @@
+{
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+  "styleBlock": "with the same style with reference images",
+  "assets": [
+    {
+      "id": "style-anchor",
+      "flowAssetName": "Style Anchor Chair And Hat"
+    }
+  ],
+  "segments": [
+    {
+      "id": "A1",
+      "title": "Abe Reles",
+      "start": "0:00",
+      "end": "1:19",
+      "refs": "image-prompts/refs/A1/",
+      "shots": [
+        {
+          "id": "A1-00",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "object",
+          "outName": "Style Anchor Chair And Hat",
+          "draw": "a plain wooden chair with a grey felt fedora resting on the seat, drawn by hand in ink with visible pencil hatching in the shading, clean ink outlines filled with flat muted colour, warm browns and greys, slightly rough linework, on a plain white background",
+          "produces": "style-anchor",
+          "invented": [
+            "plain wooden chair with a grey felt fedora resting on the seat"
+          ]
+        },
+        {
+          "id": "A1-01",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "character",
+          "outName": "Broad Faced Man In Dark Overcoat",
+          "draw": "A man in his early thirties. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark, and distinctly wavy (marcel wave style), swept straight back with no clear parting, and slightly receding at the temples. He has very thick, dark eyebrows that almost meet, with heavy-lidded eyes, a broad nose with wide nostrils, and thick lips. His ears are quite large and stick out. He is clean-shaven. He is wearing a dark, heavy herringbone tweed overcoat with very wide lapels, a white shirt, and a dark diagonally striped tie.",
+          "refs": [
+            "01-reles-portrait-loc__codex.jpg",
+            "04-reles-c1935-commons__claude.jpg",
+            "05-reles-mugshot-1940-jjay__codex.jpg",
+            "06-reles-fulllength-1933-jjay__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-02",
+          "at": "0:05",
+          "cue": "the enforcement arm",
+          "kind": "group",
+          "outName": "Men In Suits",
+          "draw": "A group of men in 1930s suits standing shoulder to shoulder. They are wearing sharp, tailored wool suits in muted colors like charcoal, navy, and brown, with wide lapels and padded shoulders. They wear fedora hats tilted slightly down, and their expressions are stern and menacing.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "group of men in 1930s suits standing shoulder to shoulder",
+            "sharp, tailored wool suits in muted colors like charcoal, navy, and brown",
+            "wide lapels and padded shoulders",
+            "fedora hats tilted slightly down",
+            "stern and menacing expressions"
+          ]
+        },
+        {
+          "id": "A1-03",
+          "at": "0:09",
+          "cue": "preferred an ice pick",
+          "kind": "object",
+          "outName": "Ice Pick Weapon",
+          "draw": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point.",
+          "refs": [
+            "07-ice-pick-awl-1930s-pemberton__codex.jpg",
+            "08-ice-pick-modern-commons__gemini.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-04",
+          "at": "0:12",
+          "cue": "Driven through the ear",
+          "kind": "object",
+          "outName": "Ear Close Up",
+          "draw": "A close up view of a human ear seen from the side, illuminated by harsh, dramatic lighting that highlights the curves of the cartilage and the pale skin.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "close up view of a human ear seen from the side",
+            "illuminated by harsh, dramatic lighting",
+            "pale skin"
+          ]
+        },
+        {
+          "id": "A1-05",
+          "at": "0:17",
+          "cue": "coroners write it off",
+          "kind": "figure",
+          "outName": "Doctor Writing",
+          "draw": "A doctor wearing a crisp white lab coat over a formal shirt and tie, holding a silver clipboard. He is writing on a blank unlined sheet of white paper with a classic fountain pen. No text on the paper.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "doctor wearing a crisp white lab coat over a formal shirt and tie",
+            "holding a silver clipboard",
+            "writing on a blank unlined sheet of white paper",
+            "classic fountain pen"
+          ]
+        },
+        {
+          "id": "A1-06",
+          "at": "0:22",
+          "cue": "30 murders",
+          "kind": "object",
+          "outName": "Mugshot Grid",
+          "draw": "A grid of small vintage black-and-white mugshot portraits of different men in 1930s clothing. Below each face is a dark, blank wooden name board with no text or numbers on it.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "grid of small vintage black-and-white mugshot portraits of different men",
+            "1930s clothing",
+            "dark, blank wooden name board with no text or numbers below each face"
+          ]
+        },
+        {
+          "id": "A1-07",
+          "at": "0:26",
+          "cue": "facing the electric chair",
+          "kind": "object",
+          "outName": "Empty Electric Chair",
+          "draw": "An empty electric chair made of heavy, dark stained oak wood. It has thick leather straps hanging loosely from the armrests and legs, and a complex metal headpiece with coiled black wires attached to the high backrest.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "empty electric chair made of heavy, dark stained oak wood",
+            "thick leather straps hanging loosely from the armrests and legs",
+            "complex metal headpiece with coiled black wires attached to the high backrest"
+          ]
+        },
+        {
+          "id": "A1-08",
+          "at": "0:29",
+          "cue": "sent seven senior mobsters",
+          "kind": "character",
+          "outName": "Man Swearing Oath",
+          "draw": "A man in a sharply tailored 1930s grey pinstripe suit raising his right hand to swear an oath. He is wearing a crisp white shirt with a wide collar and a dark silk tie. His expression is serious.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg",
+            "01-reles-portrait-loc__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "man raising his right hand to swear an oath",
+            "sharply tailored 1930s grey pinstripe suit",
+            "crisp white shirt with a wide collar",
+            "dark silk tie",
+            "serious expression"
+          ]
+        },
+        {
+          "id": "A1-08b",
+          "at": "0:29",
+          "cue": "sent seven senior mobsters",
+          "kind": "place",
+          "outName": "Wooden Paneled Courtroom",
+          "draw": "An empty courtroom featuring rich wooden paneling on the walls. The judge's bench is elevated, made of polished dark wood, conveying an imposing, serious atmosphere.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "empty courtroom",
+            "rich wooden paneling on the walls",
+            "elevated judge's bench made of polished dark wood",
+            "imposing, serious atmosphere"
+          ]
+        },
+        {
+          "id": "A1-09",
+          "at": "0:34",
+          "cue": "seven senior mobsters",
+          "kind": "group",
+          "outName": "Seven Men In Suits",
+          "draw": "Seven men standing in a lineup. They are dressed in formal 1930s attire, wearing heavy wool overcoats and sharp double-breasted suits in dark grey and navy. Their faces are grim, and they wear fedora hats casting shadows over their eyes.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "seven men standing in a lineup",
+            "formal 1930s attire",
+            "heavy wool overcoats",
+            "sharp double-breasted suits in dark grey and navy",
+            "grim faces",
+            "fedora hats casting shadows over their eyes"
+          ]
+        },
+        {
+          "id": "A1-10",
+          "at": "0:38",
+          "cue": "The Brooklyn DA",
+          "kind": "figure",
+          "outName": "Lawyer With Folder",
+          "draw": "A lawyer in a well-fitted 1930s three-piece charcoal suit. He is carrying a thick, bulging manila folder under his arm. He has a serious expression, wearing wire-rimmed glasses and a neatly combed hairstyle.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "lawyer carrying a thick, bulging manila folder under his arm",
+            "well-fitted 1930s three-piece charcoal suit",
+            "serious expression",
+            "wire-rimmed glasses",
+            "neatly combed hairstyle"
+          ]
+        },
+        {
+          "id": "A1-11",
+          "at": "0:42",
+          "cue": "Half Moon Hotel",
+          "kind": "place",
+          "outName": "Tall Brick Hotel Exterior",
+          "draw": "A tall brick hotel tower from the 1920s, with a rectangular body that steps back as it rises. The roof features Spanish Colonial Revival architecture, including arched windows, an intricate tiled dome, and a weather vane on top, flanked by urn finials at the corners. Lower wings with tiled roofs sit on both sides of the main tower. A lower flat-roofed building with a continuous row of uniform windows, each with a dark fabric awning, runs across the front. A wooden boardwalk stretches in front of the building.",
+          "refs": [
+            "02-half-moon-hotel__codex.jpg",
+            "09-half-moon-hotel-1927-cihp__claude.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-12",
+          "at": "0:46",
+          "cue": "guarded by 18 cops",
+          "kind": "figure",
+          "outName": "Police Officer Standing",
+          "draw": "An older 1940s New York policeman. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-13",
+          "at": "0:50",
+          "cue": "found dead on the roof",
+          "kind": "character",
+          "outName": "Heavy Set Man Lying Face Down",
+          "draw": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "lying face down, arms slack",
+            "dark, heavy herringbone tweed overcoat",
+            "dark diagonally striped tie"
+          ]
+        },
+        {
+          "id": "A1-14",
+          "at": "0:55",
+          "cue": "knotted bed sheets",
+          "kind": "object",
+          "outName": "Knotted Bedsheets",
+          "draw": "A makeshift rope constructed from several white cotton bedsheets tightly knotted together. The fabric is twisted and strained, showing heavy tension at the thick, bulky knots connecting each piece of cloth.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "makeshift rope constructed from several white cotton bedsheets",
+            "tightly knotted together",
+            "fabric is twisted and strained",
+            "showing heavy tension at the thick, bulky knots connecting each piece of cloth"
+          ]
+        },
+        {
+          "id": "A1-15",
+          "at": "0:59",
+          "cue": "tied one end to a radiator",
+          "kind": "object",
+          "outName": "Cast Iron Radiator",
+          "draw": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "heavy cast iron steam radiator",
+            "painted in chipped, dull silver",
+            "multiple vertical ribbed sections standing on small curved legs",
+            "round brass steam valve attached to the side near the floor"
+          ]
+        },
+        {
+          "id": "A1-16",
+          "at": "1:03",
+          "cue": "fell roughly 42 feet",
+          "kind": "character",
+          "outName": "Man Falling Through Air",
+          "draw": "A man in his early thirties falling through the air, his dark heavy herringbone tweed overcoat flapping. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a white shirt and a dark diagonally striped tie.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "falling through the air",
+            "dark heavy herringbone tweed overcoat flapping",
+            "white shirt and a dark diagonally striped tie"
+          ]
+        },
+        {
+          "id": "A1-17",
+          "at": "1:08",
+          "cue": "claimed they had been asleep",
+          "kind": "figure",
+          "outName": "Police Officer Asleep In Chair",
+          "draw": "An older 1940s New York policeman asleep in a chair. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "asleep in a chair"
+          ]
+        },
+        {
+          "id": "A1-18",
+          "at": "1:14",
+          "cue": "cost him $50,000",
+          "kind": "object",
+          "outName": "Bundle Of Cash",
+          "draw": "A thick bundle of vintage United States banknotes stacked neatly together. The stack is bound tightly by a wide, brown paper currency strap. The bills are crisp and printed in dull green and black ink.",
+          "useAsset": [
+            "style-anchor"
+          ],
+          "invented": [
+            "thick bundle of vintage United States banknotes stacked neatly together",
+            "bound tightly by a wide, brown paper currency strap",
+            "crisp bills printed in dull green and black ink"
+          ]
+        }
+      ]
+    }
+  ]
+}

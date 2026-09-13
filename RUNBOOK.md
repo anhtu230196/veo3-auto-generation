@@ -11,6 +11,573 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### 🗺️ (2026-09-13, tối) TÚ CHẤP NHẬN CHỮ TRONG ẢNH BẢN ĐỒ — ghi đè luồng vừa settled
+
+Tú chốt: *"Chấp nhận bản đồ và chữ nằm trong ảnh luôn"*. Luồng `img-skill-nhieu-anh-moi-cau` đã chốt bản đồ **vẽ trơn,
+không chữ, nhãn làm hậu kỳ, chỉ dùng bản đồ trống làm tham chiếu** — nay đổi:
+- Ảnh **bản đồ được có chữ tên địa danh**. Prompt ghi **nguyên văn từng tên** trong ngoặc kép, chữ in hoa, câu *"spell
+  every name exactly as written here"*, **cấm tiêu đề**; `canSoi` bắt buộc soi chính tả. Mũi tên, chấm vẫn hậu kỳ.
+- Bản đồ tham chiếu **có chữ cũng được** (tránh chữ viết tay cổ).
+- **Chỉ bản đồ.** Cờ, địa cầu, cột khắc CROATOAN, tiền, biển hiệu… vẫn không chữ (skill 6i).
+
+Đã sửa: skill `nano-banana-image-prompts` 4d-bis phần 4a + bảng ô 6 + bảng giới hạn cứng, 4c, 6i, banner; SPEC-v2
+§3, §6; `case-reference-images` §2; `C1-01c` (prompt ghi "NORTH CAROLINA", "ATLANTIC OCEAN"); đồng bộ `.agents/`.
+Ghi vào `THREAD.md` phần "Ngoài lượt" — không mở luồng mới (Tú quyết).
+
+### ✅ (2026-09-13, chiều) LUỒNG `img-skill-nhieu-anh-moi-cau` SETTLED — ĐÃ CHÉP VÀO SKILL (mục 4d-bis)
+
+Tú yêu cầu ba agent cùng cập nhật skill prompt ảnh để **mỗi câu lời kể ra nhiều ảnh nhất có thể**, kèm
+ví dụ: câu 1587 thêm thuyền cập bờ cát + bản đồ North Carolina; câu *"second attempt"* thêm cờ Anh + ảnh
+cho *"in the New World"*. Claim `sys-img-skill-nhieu-anh`.
+
+- **Bản nháp:** `coordination/drafts/img-skill-nhieu-anh-moi-cau.md` — tách mỗi câu thành **10 ô ảnh**
+  (người, hành động, vật ngầm trong động từ, vật, nơi chốn, địa lý → bản đồ vẽ trơn, quốc gia → cờ đúng năm,
+  cụm khái niệm → vật cụ thể, trạng thái nối, con số). **Thay** "Điều kiện chặn" ở skill mục 4d: chỉ còn bỏ
+  khi trùng ảnh hoặc vướng giới hạn cứng.
+- **Áp thử:** `case-1.shots.json` 32 → **36 shot** (`C1-01b` thuyền, `C1-01c` bản đồ, `C1-03a` cờ chữ thập
+  St George — không phải Union Jack, `C1-03b` quả địa cầu; `C1-18` đổi sang sinh từ asset thuyền). Build
+  sạch, bản review sinh lại. Bảng mục 6 bản nháp liệt kê thêm 35 ô cho cả case (~71 shot), **chưa viết prompt**.
+- **Chưa sinh ảnh, chưa sửa skill.** Mẻ tạo ảnh case 1 vẫn dừng ở 7 ảnh.
+
+**Vòng 1 xong, vòng 2 đã trả lời** (`r2-00-response-claude.md`, bản nháp **v2**). Codex nêu D01–D05, Gemini
+D06–D07 — Claude chấp nhận 6 điểm, **phản bác D06** (Gemini đòi giữ nguyên điều kiện chặn cũ; bằng chứng: chính điều
+kiện đó đã loại lá cờ Tú yêu cầu). v2 thay bằng bộ lọc *trùng chức năng*, bảng áp thử còn **~47 shot**; 3 shot
+(`C1-01b`, `C1-01c`, `C1-03b`) gắn `choTuLieu` — **không chạy** trước khi gom tư liệu. Nguồn đã mở kiểm: tường thuật
+1590 của White (Encyclopedia Virginia), Flag Institute (Union Flag 1606).
+
+**Vòng 2 xong:** Codex chốt D01–D05, Gemini chấp nhận bộ lọc trùng chức năng và chốt D06–D07. Codex mở hai điểm mới,
+Claude chấp nhận cả hai ở `r3-00-response-claude.md` (bản nháp **v3**):
+- **D08** — khác cụm lời kể không còn tự động được thêm ảnh; ảnh sẵn có gánh được cùng thông tin thì dùng lại (♻️). Bản đồ
+  Hatteras dùng lại bản đồ Roanoke–Croatoan → case 1 còn **~46 shot**, 5 bản đồ.
+- **D09** — **nét mặt trung tính là mặc định**; bỏ cảm xúc không có nguồn ở 9 shot (giữ C1-21). **C1-04 và C1-06 đã tạo ảnh
+  nên đổi `outName`** — ảnh cũ còn trên Flow dưới tên cũ, bản review hiện "🔁 cần tạo lại".
+
+**Vòng 3 xong — luồng `settled`:** Codex (16:11) và Gemini (16:56, language server 1.2.2) chốt D08/D09, không mở điểm
+mới. Đã chép vào:
+- skill `nano-banana-image-prompts` **mục 4d-bis mới** (10 ô ứng viên, giới hạn cứng gồm *Nét mặt*, thứ tự quyết
+  định + bộ lọc trùng chức năng, cách viết bản đồ / cờ / vật tượng trưng / vật ngầm, trường mới); sửa 4c (câu trùm,
+  dòng Địa lý + 2 dòng mới), 4d (bỏ "Điều kiện chặn", cột "Không áp khi" luật 2/3/5, đoạn Gaviria, câu rà 10 + 11);
+- SPEC-v2 §5c (trường `intent`, `anhSeRa`, `anhSeRaHash`, `canSoi`, `choTuLieu`) và §6 (mở rộng chip ảnh thật sang
+  bản đồ trống);
+- skill `case-reference-images` §2 (bản đồ trống, cờ đúng vai trò, vật ngầm);
+- đồng bộ `.agents/`. Claim `sys-img-skill-nhieu-anh` → `done`.
+
+**Chưa làm:** gom tư liệu cho 3 shot `choTuLieu`; viết prompt cho 10 ứng viên ➕ của case 1; sinh ảnh để đo bản đồ,
+cờ, địa cầu. Lượt Gemini vòng 3 chạy từ phiên Claude theo yêu cầu Tú (chỉ gọi `agy`, không lồng `claude -p`).
+
+### 📚 (2026-09-13, tối) BÀI HỌC A1 ĐÃ VÀO SKILL + ÁP LẦN ĐẦU CHO CASE ROANOKE — 7/32 ảnh đã tạo, TÚ DỪNG MẺ ĐỂ REVIEW PROMPT, chưa commit
+
+> ⏸ **Đang dừng theo lệnh Tú** (*"khoan chạy tạo ảnh, tôi cần review lại xem prompt tạo ảnh sẽ tạo
+> những gì"*). Đã tạo C1-01 → C1-07 trong project `nhom-bien-mat-c1-shots`; dừng khi C1-08 đang gõ câu
+> mention, trước bước gửi. Bản để Tú review: `narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.review.md`
+> (sinh từ `.shots.json` + `.jobs.json`, prompt nguyên văn). **Đừng chạy tiếp khi Tú chưa duyệt.** Sửa
+> prompt shot đã tạo thì phải đổi `outName`, không thì runner thấy tên đã có và bỏ qua (skill mục 10).
+
+Tú yêu cầu: tóm tắt case A1 thành skill dùng chung cho các chủ đề sau, rồi áp skill đó cho tập
+`ca-mot-nhom-nguoi-bien-mat-khong-dau-vet`. Claim `sys-img-shots-nhom-bien-mat`.
+
+**1. Skill — chép khi luồng `img-skill-a1-lessons` CHƯA `settled`** (theo lệnh Tú, đã ghi ở
+`THREAD.md` phần "Ngoài lượt"; mục ngay dưới ghi "settled mới chép" là trạng thái trước lệnh đó):
+- `nano-banana-image-prompts` **mục 4d** mới: luật gốc *bộ phần tử, không phải khung hình* + điều
+  kiện chặn + bảng 8 luật + chi tiết + 4 điểm cơ chế + **10 câu hỏi rà bộ shot**. Banner đầu file
+  trỏ về 4d và nói rõ đường đang chạy là `.shots.json` + ảnh neo.
+- `case-reference-images` **mục 4d**: kiểm niên đại của chính cái tên + chọn chân dung đúng tuổi.
+- Đồng bộ `.agents/` (kiểm bằng `cmp`: nội dung khớp từng byte, bản nano-banana có thêm header bản sao).
+- ⚠️ **D07 xử lý ngoài luồng, chưa ai review** (skill 4d-9d): câu mention có nhiều loại phần tử mới
+  thì tính người trước vật. Lượt Gemini r3 vẫn nên chạy; điểm nào lật thì sửa thẳng skill.
+
+**2. Builder:** `build_image_prompts.py` đọc thư mục ảnh tư liệu theo `segments[].refs` (mặc định
+vẫn `image-prompts/refs/<id>/`). Kịch bản của kênh để ảnh ở `narration-scripts/<tập>/refs/case-N/`
+— thiếu bản vá này thì `{{tên ảnh}}` và `refImages` của tập đó không bao giờ tìm thấy file. Đã chạy
+lại `--check` trên `A1.shots.json`: 30 shot, cue khớp.
+
+**3. Case 1 Roanoke:** `narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json`,
+**32 shot cho 150 giây**, build sạch ra `case-1.jobs.json`. Thay cho `assets.json`/`scenes.json` cũ
+của case 1 (đường cũ, style cũ — giữ nguyên, không xoá). Khối `_raSoatSkill4d` trong file trả lời 10
+câu hỏi rà, kể cả những chỗ **quyết định không thêm**.
+
+Ba chỗ phải soi trước khi chạy:
+- **`at` giữ CÂU LỜI KỂ, không giữ mốc thời gian** (Tú chốt 2026-09-13, SPEC-v2 mục 5b-bis phần
+  ngoại lệ). Bản đầu ghi mốc ước tính theo vị trí chữ trên thời lượng `1.mp3` (lệch tới ±5 giây, vì
+  chưa có VTT) — Tú đổi sang chữ để lúc dựng tìm theo kịch bản. Sinh lại bản review sau mỗi lần sửa:
+  `python scripts/review_shots.py <file>.shots.json --log output/run-c1-try2.log --log output/run-c1.log`.
+- **Giới hạn bằng chứng (luật 7) quyết nhiều nhất ở tập mất tích này:** không vẽ dân thuộc địa rời
+  làng / tới Croatoan / bị tấn công; đảo Croatoan vẽ không người; không vẽ cái chết của White; không
+  vẽ "da nhạt mắt xám" thành sự thật.
+- **Thử nghiệm chưa đo:** 6 shot mention gọi tên ảnh neo (C1-06, 11, 12, 20, 23, 26); C1-16 sinh làng
+  bị tháo dỡ TỪ asset làng. Ra lệch thì xoá cụm ảnh neo / viết lại bằng `draw`.
+
+```bash
+npx tsx scripts/run-shots.ts --jobs narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.jobs.json --project nhom-bien-mat-c1-shots
+```
+
+Dùng project MỚI — `nhom-bien-mat-case-1` đang chứa asset style cũ.
+
+#### 🔴 Hai bẫy gặp khi chạy mẻ này (2026-09-13, profile `.auth/chrome-profile-plus`)
+
+**Bẫy 1 — mở Chrome mới thì runner chết ngay: `page.goto: Target page, context or browser has been closed`**
+ở `ensureProject`. Chrome profile PRO bật lên kèm màn **"Sign in to Chrome"** (`chrome://intro`) và trang
+mời đồng bộ (`accounts.google.com/...GlifDesktopChromeSync`, `chrome://history-sync-optin`). Mấy tab đó
+**tự đóng** vài giây sau — mà `run-shots.ts` lấy `context.pages()[0]`, đúng là một trong số chúng. Không tạo
+được gì, không tốn lượt. Trang đòi mật khẩu đó là lời mời đồng bộ **của Chrome**, không phải Flow mất phiên:
+mở tab mới tới Flow thì vào thẳng `flow.google.com`. Cách chữa: đóng mọi tab `page` không phải
+`flow.google.com` qua `http://127.0.0.1:9222/json/close/<id>`, chỉ để lại một tab Flow, rồi mới chạy.
+
+**Bẫy 2 — project TRẮNG: shot đầu tiên của mỗi ảnh neo rơi, `bảng chọn media vẫn mở sau 8 giây`.**
+Ảnh debug (`output/debug/reference-panel-still-open-03-five-men-group.png-*.png`) cho thấy **upload đã
+xong** — thẻ nằm ngay trong bảng — nhưng cú bấm thẻ **ngay sau khi upload** không đính được. Shot sau dùng
+lại ảnh neo đã có sẵn thì đính bình thường (`C1-04` ✅ 73,9s). Mẻ này rơi C1-01, C1-02, C1-03 (ba ảnh neo
+03, 02, 01). **Nguy hiểm ở chỗ C1-02 là asset nhân vật** — mọi shot mention gọi nó sẽ rơi dây chuyền. Đã
+dừng mẻ sau khi C1-05 xong (đừng giết giữa lúc đang tạo ảnh: ảnh vẫn ra mà chưa đặt tên, chạy lại sẽ tạo
+bản trùng) rồi chạy lại cả file — card đã có được bỏ qua theo tên. Log lần chạy hỏng: `output/run-c1-try2.log`.
+**Chưa sửa code** (`imageAsset.ts` đang có thay đổi chưa commit của việc khác). Đến lúc sửa thì chỗ cần xem
+là nhánh sau upload trong `attachReferenceImage`: bấm thẻ khi Flow còn đang xử lý file vừa nạp. Tạm thời:
+project mới thì **chấp nhận 1–3 shot đầu rơi rồi chạy lại**, hoặc để shot đầu mỗi `kind` là shot không có
+shot nào phụ thuộc.
+
+**Chưa làm:**
+- **Case 2–6 chưa có ảnh tư liệu** (`refs/` mới có `case-1`), mà skill bắt gom tư liệu TRƯỚC khi viết
+  prompt. Việc kế tiếp: skill `case-reference-images` cho Flannan Isles, USS Cyclops, Franklin, Dyatlov,
+  Sodder — rồi mới áp 4d.
+- Mới tạo 7/32 ảnh (C1-01 → C1-07), dừng chờ Tú review prompt — xem khối ⏸ đầu mục. **Chưa qua luồng
+  review 3 agent** — người viết không phải người review, mở luồng trước khi commit.
+- Chưa commit gì, kể cả file claim mới.
+- ✅ Đã đối chiếu 2026-09-13 (Encyclopedia Virginia, bản in 1600): tường thuật 1590 của White (cột bóc vỏ,
+  khắc chữ cách đất 5 feet, bên phải lối vào, nơi ở rào bằng hàng cọc cao) — dùng ở C1-13, C1-16, C1-20.
+  Tường thuật **không** nhắc móng nhà, nên C1-16 đã đổi sang nền trống.
+
+### 🗣️ (2026-09-13) LUỒNG REVIEW `img-skill-a1-lessons` — VÒNG 3 (CUỐI), tới lượt Codex rồi Gemini
+
+- Vòng 2: **Codex chốt cả D01–D05** (`chốt: đã sửa`). **Gemini review thật lần đầu** — log ghi server
+  1.2.2, workspace có repo: cách sửa `--add-dir` bên dưới đã chạy đúng. Gemini nêu **D06**: tiêu chí chọn
+  ảnh neo cho câu `@mention`.
+- Vòng 3: Claude **chấp nhận D06**, bản nháp lên **v3** — chọn ảnh neo theo **loại của phần tử MỚI** trong
+  câu, ghi là **thử nghiệm**, chỗ đo là `A1-07a`, `A1-15`, `A1-18b`. **Không đổi prompt** trong
+  `A1.shots.json` ở vòng cuối.
+- Đây là vòng cuối: điểm nào còn mở sau hai lượt review vòng 3 thì luồng chuyển `blocked`, Tú quyết.
+  Luồng `settled` thì mới chép bản nháp vào skill (cả `.claude/` lẫn `.agents/`).
+
+Chạy tiếp từ terminal thật, **hai lần**:
+
+```bash
+python scripts/orchestrate.py turn img-skill-a1-lessons
+```
+
+#### 🔴 Lượt review r1 của Gemini KHÔNG đọc được gì — và vì sao
+
+`r1-02-review-gemini.md` ghi *"hoàn toàn mù thông tin"*, khối `points` rỗng — nhưng orchestrator
+vẫn nộp nó vào sổ như một lượt review bình thường. **Luồng mất trắng lượt review của Gemini ở vòng 1.**
+Lượt r2 của Gemini là lượt review thật đầu tiên.
+
+Chẩn đoán (đọc log `~/.gemini/antigravity-cli/log/` và SQLite hội thoại `conversations/*.db`):
+
+- **Không phải lỗi quyền.** Model tìm file trong `~/.gemini/antigravity-cli/scratch` (rỗng) thay vì
+  repo, rồi kết luận file không tồn tại. Lỗi từ chối duy nhất là lệnh shell `fd` — đúng luật.
+- Log lượt đó ghi **`Language server version: 1.1.28`**. Mọi lượt Gemini chạy tốt (11-09, 12-09) là
+  **1.2.1 / 1.2.2**. `agy --version` vẫn là 1.2.2, `agy.exe` (193 MB) tự mang server — **chưa chốt
+  được vì sao lượt đó chạy bản cũ**.
+- Nghi app Antigravity desktop (đang mở, có server riêng) → **đã loại**: thử lại lúc 10:24 với app
+  vẫn mở thì agy chạy 1.2.2.
+- Dòng *"You are not logged into Antigravity"* có ở MỌI lần chạy (46–66 lần) — nhiễu, **không phải**
+  dấu hiệu.
+
+Sửa hai lớp:
+
+1. **`coordination/agents.json`: thêm `--add-dir {repo}` vào lệnh review (`cmd`) của Gemini.** Trước đó
+   chỉ lệnh tác giả có. Thử có cờ này: đọc đúng dòng đầu `RUNBOOK.md` trong 18 giây. ⚠️ Lần thử đổi cả
+   hai biến (server 1.2.2 + `--add-dir`), nên **không chứng minh riêng cờ này cứu được một lượt 1.1.28**.
+2. **`scripts/orchestrate.py` chặn lượt Gemini "mù"**: lượt Gemini có khối `points` **rỗng** mà câu trả
+   lời có dấu hiệu không thấy repo, hoặc log agy mới nhất ghi server **dưới 1.2** → giữ file vòng,
+   **không nộp**, trả `needs-human`. Đã thử trên dữ liệu thật: review mù hôm nay bị chặn, review Codex
+   lọt, log 1.1.28 bị gắn cờ, log 1.2.x không.
+
+🔴 **Bẫy phụ gặp khi viết lớp chặn: mọi `print` trong `orchestrate.py` phải là ASCII.** Console
+PowerShell là cp1252; in chữ tiếng Việt ra đó là `UnicodeEncodeError`. Bản đầu của lớp chặn in nguyên
+dấu hiệu tiếng Việt ngoài khối `try` → đúng lúc bắt được lượt mù thì cả lượt nổ traceback.
+
+**Kiểm sau MỖI lượt Gemini** (kể cả khi lớp chặn không kêu):
+
+```powershell
+Select-String "Language server version" (Get-ChildItem ~\.gemini\antigravity-cli\log | Sort-Object LastWriteTime | Select-Object -Last 1)
+```
+
+⚠️ **Repo `youtube-research-system` dùng chung lớp phối hợp này và có ĐÚNG lỗ hổng đó** — lệnh review
+Gemini thiếu `--add-dir`. `RULES.md` ghi *"sửa một bên thì chép sang bên kia"*; chưa chép, chờ Tú quyết.
+
+Tú gửi 8 góp ý trên bộ ảnh A1 và yêu cầu **ba agent cùng thảo luận để nâng cấp skill prompt ảnh**
+cho các case sau. Claude viết lượt tác giả, luồng đang chờ hai lượt review.
+
+- **Bản nháp luật mới:** `coordination/drafts/img-skill-a1-lessons.md` — 1 nguyên lý chung (*mỗi đoạn
+  lời kể sinh ra BỘ PHẦN TỬ + TRẠNG THÁI NỐI, không phải một khung hình*) và 8 luật, mỗi luật có mục
+  "Không áp khi". **Chưa chép vào skill** — chỉ chép sau khi luồng `settled`.
+- **Đề xuất + 5 chỗ yếu tự khai + 4 câu hỏi:** `coordination/threads/img-skill-a1-lessons/r1-00-proposal-claude.md`.
+- **Ví dụ áp dụng:** `image-prompts/A1.shots.json`, 19 → **30 shot**. Chưa sinh ảnh cho 11 shot mới.
+- **Tư liệu mới:** ảnh 10–15 trong `image-prompts/refs/A1/` (Anastasia 1936, Luciano 1931/1936).
+
+🔴 **Chạy lượt review TỪ TERMINAL THẬT, không chạy trong phiên agent** (lồng phiên, ăn hai lần quota):
+
+```bash
+python scripts/orchestrate.py turn img-skill-a1-lessons   # Codex review
+python scripts/orchestrate.py turn img-skill-a1-lessons   # Gemini review
+```
+
+Sau hai lượt đó, lượt trả lời của tác giả nên làm **trong phiên Claude đang có ngữ cảnh**, không để
+`orchestrate.py run` gọi một `claude -p` nguội — lượt trả lời cần các số đo và lý do chưa ghi hết
+vào file.
+
+Hai phát hiện đáng nhớ trong lúc làm, đã ghi vào bản nháp:
+- **Tên "Gambino family" sai thời kỳ cho năm 1940** (khi đó là gia đình Mangano). Ảnh tư liệu mang tên
+  đó trên Commons đều là ảnh FBI 1979–1981 — **trông như bằng chứng mà sai thời kỳ**. Ghi ở manifest
+  khoá `gambinoName`.
+- **Builder từng bỏ qua `styleByKind` với shot `@mention`** — người MỚI được đưa vào câu mention (cảnh
+  sát áp giải, bạn tù) sẽ ra mặt vẽ chì tả thực. Đã vá. Kèm theo: câu mặt đơn giản từng khoá miệng thành
+  "một nét", chỏi với tư thế đang cười — **khối style theo `kind` chỉ được tả hình thức, không tả
+  trạng thái**.
+
+### 🎨 (2026-09-12) TÚ GỬI ẢNH NEO PHONG CÁCH — PHONG CÁCH GIỜ NEO BẰNG ẢNH, KHÔNG BẰNG CHỮ
+
+Tú gửi **3 tranh vẽ** làm chuẩn phong cách và chốt: *"đây là những ảnh reference,
+mỗi project hãy tải lên"*. Ba file nằm ở `input/style-ref/_anchors/`
+(`01-pyramid-place.png`, `02-doctor-figure.png`, `03-five-men-group.png`), phủ
+đúng ba nhóm bố cục: công trình/vật lớn · một người · nhiều người. Chi tiết và lý
+do ở `input/style-ref/_anchors/README.md`.
+
+**Vì sao đổi:** mẻ 10 ảnh A1 chạy sáng cùng ngày (`output/reles-a1-sheet.png`) ra
+**tranh chì tả thực chi tiết** — nhất quán với nhau nhưng lệch hẳn khỏi phong cách
+Tú muốn. Style block bằng chữ (kể cả khối "vẽ bằng chuột cho thật tệ" Tú từng
+chốt, `build_image_prompts.py:STYLE_BLOCK`) không neo nổi nét vẽ.
+
+**Đã đổi trong code:**
+1. `attachReferences` mới trong `src/veo3bot/imageAsset.ts` — mảng `reference`
+   giờ TRỘN được: phần tử là đường dẫn file có thật → upload, còn lại → tên asset
+   đã có trong Flow. Trước đó `string` và `string[]` loại trừ nhau, nên một shot
+   không thể đính cả ảnh neo trên đĩa lẫn asset nhân vật.
+2. `scripts/run-shots.ts --anchors <thư mục>` (mặc định `input/style-ref/_anchors`,
+   `none` để tắt) — đính mọi ảnh trong thư mục vào TRƯỚC `refNames` của từng shot.
+3. `attachReferenceImage` được vá hai chỗ vì giờ nó chạy nhiều lần mỗi shot:
+   - **Khớp thẻ hai tầng** (tên có đuôi → phần thân tên). Bản cũ chỉ khớp tên KÈM
+     đuôi; nếu Flow đổi sang ẩn đuôi thì nhánh đó khớp 0 thẻ và code rơi vào
+     UPLOAD LẠI — ảnh neo đính vào mọi shot nên sẽ nhân bản theo cả mẻ.
+   - **Xác minh bằng "bảng đã đóng"**, không chỉ bằng nút `Clear prompt`. Từ ảnh
+     thứ hai trở đi prompt đã có nội dung sẵn, nên `Clear prompt` hiện lên bất kể
+     cú đính đó có ăn hay không — hai ảnh neo cuối có thể rớt im lặng.
+
+**Khối style đi kèm phải NGẮN** — đã có ảnh neo thì tả lại nét vẽ bằng chữ là cho
+model hai nguồn chỉ dẫn chỏi nhau: `"Draw this in exactly the same drawing style
+as the reference images, on a plain white background."`
+
+Artifact nội dung của Gemini (`image-prompts/A1.newstyle.shots.json`, claim
+`sys-img-gemini-newstyle`) **không bị ghi đè**: bản dùng ảnh neo là file riêng
+`image-prompts/A1.tu-anchors.shots.json` (19 shot, bỏ shot A1-00 tự sinh ảnh neo
+và bỏ `useAsset`).
+
+✅ **ĐÃ CHẠY THỬ, ẢNH NEO ĂN.** Mẻ 5 shot A1 chạy 12:43-12:52 ngày 2026-09-12 trên
+**tài khoản PRO** (xem mục dưới), project `reles-a1-plus`. Ảnh:
+`output/reles-a1-plus-all/` + tờ so sánh `output/reles-a1-plus-sheet.png`.
+
+Kết quả 5/5: cả ba nhóm `kind` đều ra **cùng một chất nét với ảnh neo** — viền
+mực đen, tô phẳng, gạch chì, nền trắng. Quan trọng nhất: `A1-03` (ice pick) và
+`A1-11` (khách sạn) **xa cả ba ảnh neo về nội dung** mà vẫn đúng phong cách, nên
+đây là **chuyển phong cách thật**, không phải bắt chước nội dung. So với mẻ
+11:52 cùng ngày bằng style block chữ (`output/reles-a1-sheet.png`, ra tranh chì
+tả thực) thì khác hẳn một trời một vực.
+
+Hai điều lệch còn lại, chưa sửa:
+1. **Ảnh ra CHI TIẾT HƠN ảnh neo.** Ảnh neo có nét thô không đều, mặt đơn giản
+   (mắt là vệt), gạch sáp vụng. Ảnh ra nét mảnh hơn, mặt Reles có khối má, khách
+   sạn có cửa sổ li ti. Cùng họ phong cách nhưng **mức giản lược thấp hơn**.
+   Chưa rõ chữa bằng cách nào — thêm chữ vào khối style là quay lại đúng cái
+   thua, có lẽ phải đổi ảnh neo sang bản vẽ thô hơn.
+2. **"Plain white background" không được tôn trọng đều**: `A1-01` và `A1-03` ra
+   nền trắng sạch, còn `A1-11`/`A1-09`/`A1-05` có nền xám nhạt + bóng đổ dưới chân.
+
+🔎 **Câu chưa trả lời:** đính CẢ BA ảnh neo vào mọi shot (hiện tại) hay đính MỘT
+ảnh theo `kind` (`place`/`object` → 01, `figure`/`character` → 02, `group` → 03)?
+Đính ba tốn 3 lượt mở bảng chọn mỗi shot (cỡ 5 giờ cho 385 prompt). Và mẻ này cho
+thấy rủi ro thật: `A1-05` (bác sĩ) ra **gần như bản sao ảnh neo 02** — trùng cả
+bố cục, dáng, màu. Nội dung trùng ảnh neo thì model tái tạo chứ không diễn giải.
+
+Chạy 14 shot A1 còn lại:
+
+```bash
+npx tsx scripts/run-shots.ts --jobs image-prompts/A1.tu-anchors.jobs.json --project reles-a1-plus
+```
+
+🔧 **Đã sửa trong mẻ này: mốc chờ upload 90s → 180s** (`imageAsset.ts`). Mốc 90s
+làm **rơi đúng shot đầu** (`A1-01`, asset nhân vật Reles): upload đầu tiên vào
+project TRẮNG chậm hơn hẳn các lần sau, mà shot ngay sau đó upload lại xong trong
+vài giây. Chạy lại `--only A1-01` sau khi nâng mốc thì ăn ngay (91s).
+
+### ✅ (2026-09-12) CHẠY XONG CẢ 19 SHOT A1 — 19/19, ảnh ở `output/a1-full/`
+
+Project Flow `reles-a1-final`, tờ soi `output/a1-sheet.png`. Không rơi shot nào,
+không dính quota. Ba shot `@mention` đều chạy: A1-11 (ảnh chụp thật khách sạn),
+A1-13 và A1-16 (sinh từ asset `Reles Ref Broad Face Simple` do A1-01 tạo đầu mẻ).
+
+**Hai lỗi lộ ra, ĐÃ SỬA và chạy lại:**
+
+1. **A1-18 (bó tiền) ra ĐẦY CHỮ** — "U.S. CURRENCY", "$100", "$10,000" và một chữ
+   ký giả, vi phạm luật cấm chữ trong ảnh. Bài học: **vật mà bản chất có chữ in
+   trên nó (tiền giấy, báo, biển hiệu, tem) thì prompt PHẢI cấm chữ tường minh**,
+   không thể để mặc — khối style chung không chặn nổi. Câu đã thêm: *"The notes
+   are pale green and completely plain: no lettering, no numbers, no words, no
+   printed portrait, no signature, nothing written on the strap either."*
+2. **A1-14 ra một SỢI DÂY BỆN có nút, không ra ga giường.** Mô tả cũ viết *"a
+   makeshift rope constructed from several white cotton bedsheets"* — model bám
+   chữ `rope` và bỏ chữ `bedsheets`. Bài học: **danh từ đứng đầu quyết định hình
+   dạng**; muốn vải thì phải tả trạng thái của vải (*"between the knots the fabric
+   stays FLAT AND WIDE like a sheet, with loose corners and creases showing — it
+   is bed linen twisted together, not a woven rope"*).
+
+**Ba chỗ lệch phong cách còn lại, CHƯA sửa** (chờ Tú quyết mức chấp nhận):
+`A1-06` (lưới ảnh mugshot) ra **mặt vẽ chì tả thực** — lệch xa ảnh neo nhất cả
+mẻ; `A1-04` (tai) có bóng chì và nền xám chứ không trắng; `A1-13`/`A1-16` (sinh
+từ asset) đổ bóng chì nhiều hơn hẳn A1-01. Mười hai ảnh còn lại đúng chất ảnh neo,
+`A1-02`/`A1-09`/`A1-12` sát nhất.
+
+🔴 **BẪY KHI TẢI ẢNH VỀ: ĐỪNG SUY MÃ SHOT THEO THỨ TỰ LƯỚI.** Lưới Flow xếp theo
+thời gian, và **file upload nằm LẪN vào giữa** loạt ảnh tạo ra (3 ảnh neo upload ở
+shot đầu, ảnh tư liệu khách sạn upload ở giữa mẻ). Tờ contact sheet đầu tiên vì
+thế có 2 ô là ảnh upload và **lệch nhãn từ đó trở đi** — tôi đã dán nhãn A1-01 cho
+ảnh pyramid. Dùng `scripts/download-by-names.ts` (mới, tra theo TÊN CARD, mở
+project một lần cho cả danh sách):
+
+```bash
+npx tsx scripts/download-by-names.ts --project reles-a1-final --names output/a1/names.txt --out output/a1-img
+```
+
+⚠️ Ảnh lấy qua bảng chọn là **thumbnail 512×286**, không phải bản đủ nét
+1376×768. Muốn bản đủ nét thì lấy ở chế độ lưới của `download-flow-images.ts` rồi
+ghép cặp bằng nội dung. Và nhãn thẻ trong lưới đôi khi đọc ra chữ **"favorite"**
+thay vì tên asset (thẻ đang bật trạng thái đó) — đừng tin tên file của chế độ lưới.
+
+### ⭐ (2026-09-12) CÁCH PROMPT ĐÚNG: CHIP `@` XEN GIỮA CÂU — TÚ CHỈ, ĐÃ CHẠY ĂN
+
+Tú gửi ảnh chụp cách Tú tự prompt trên Flow và chốt dùng cách đó cho ảnh nơi chốn:
+
+```
+draw a @09-half-moon-hotel-1927-cihp__claude.jpg with the same style as @01-pyramid-place.png
+```
+
+**Vì sao mạnh hơn hẳn cách cũ:** câu TỰ NÓI ảnh nào giữ vai **hình khối** và ảnh
+nào giữ vai **nét vẽ**. Cách cũ đính 3-4 ảnh qua bảng chọn media rồi tả style
+bằng một khối chữ 5 câu — model phải tự đoán vai của từng ảnh, và nó đoán sai:
+bản v1 lấy nét của ảnh chụp (ra bản vẽ kiến trúc), bản v2 lấy cả CHỮ trên biển
+hiệu. Cách của Tú không có chỗ cho việc đoán.
+
+Kết quả A1-11 bằng cách này (`output/hotel-mention/`): hình khối khớp ảnh chụp,
+nét tay đúng phong cách ảnh neo, nền trắng, không chữ — **và prompt chỉ còn MỘT
+câu** thay cho khối style 5 câu của v4.
+
+Khai trong `.shots.json` bằng trường **`mention`**, chỗ chèn chip là `{{tên ảnh}}`:
+
+```json
+"mention": "draw a {{09-half-moon-hotel-1927-cihp__claude.jpg}} with the same style as {{01-pyramid-place.png}}, no lettering, no signs, no people"
+```
+
+Builder tra tên trong `image-prompts/refs/<segmentId>/` rồi
+`input/style-ref/_anchors/`; không thấy thì coi là tên asset có sẵn trên Flow.
+Shot có `mention` được gắn cờ `noAnchors` — runner **không đính thêm ảnh neo**,
+vì ảnh nào không được nhắc tên trong câu là ảnh không rõ vai.
+
+#### Ba điều về UI phải biết trước khi sửa `typeMentionPrompt`
+
+1. 🔴 **Gõ `@` mở ĐÚNG bảng chọn media của `attachReferenceImage`** —
+   `.cdk-overlay-container` + `[role="option"]`, cùng dải nav All/Images/Videos/
+   Voices/Characters/Avatars/Uploads, cùng nút "Upload media". **KHÔNG** phải
+   Radix `[role="dialog"]` như luồng video trong `generate.ts`. Bê nguyên selector
+   của luồng video sang thì khớp 0 phần tử và báo *"không thấy asset"* trong khi
+   thẻ nằm ngay trước mắt.
+2. 🔴 **Nhãn thẻ bị CẮT bằng dấu ba chấm** — tìm
+   `09-half-moon-hotel-1927-cihp__claude.jpg` thì thẻ hiện nhãn
+   `09-half-moon-hotel-192…`. Khớp tên chính xác LUÔN trượt với tên file dài. Cách
+   khớp đang dùng: bỏ đuôi loại media và dấu ba chấm khỏi nhãn, rồi đòi **tên
+   mình muốn `startsWith` nhãn đó** — chiều so sánh này an toàn hơn `hasText`
+   (khớp chuỗi con, đúng cái bug 4.11 chọn nhầm asset).
+3. Chip thật trong DOM là
+   `<span class="mention-chip" data-mention-id="…" data-reference-type="media">`.
+   Đếm theo **`[data-mention-id]`**, không theo class.
+
+#### Lớp xác minh mà luồng video KHÔNG có
+
+`generate.ts` đã **bỏ hẳn** chip inline (RUNBOOK mục 4.49) vì sau khi chọn card,
+dialog đôi lúc chưa đóng nên **mọi ký tự gõ tiếp rơi vào ô search và mất sạch** —
+prompt gửi đi bị cụt, không một dòng lỗi. Ở đây inline là yêu cầu, nên thay vì né,
+`typeMentionPrompt` **ĐỌC LẠI prompt sau khi gõ**: mọi mảnh chữ phải còn nguyên và
+số chip phải đủ, sai thì xoá sạch gõ lại (3 lượt). Đúng lớp này đã bắt được lỗi
+thật ngay lần chạy đầu — nó báo `chip 0/2` ba lượt liền và **không đốt một
+generation nào**, trong khi bản cũ sẽ gửi Flow một prompt không có chip.
+
+### ✅ (2026-09-12, chiều) NHÂN VẬT: NỬA THÂN + MẶT ĐƠN GIẢN — VÀ TỶ LỆ TỰ HẾT SAI
+
+**Tú lật lại luật của chính buổi sáng:** *"về phần tạo nhân vật hãy quay lại là
+chấp nhận vẽ nhân vật nửa thân trên"*, kèm *"nên cho mắt, mũi, miệng nhân vật đơn
+giản"*. Và Tú hỏi thẳng: **có tạo được ảnh toàn thân của cùng nhân vật mà không
+làm đổi khuôn mặt không?**
+
+Đã đo, ảnh ở `output/face-compare.png` và `output/reuse-compare.png`:
+
+**1. Câu trả lời là CÓ.** Đường đi: shot tạo asset vẽ nửa thân trên → cảnh toàn
+thân **sinh ra từ asset đó** bằng chip `@`:
+
+```
+draw the same man as in @Reles Ref Broad Face Simple, keep his face exactly the
+same, now standing and seen full length from head to shoes, wearing the same
+overcoat over dark wool trousers and black leather shoes, arms at his sides,
+only one person, plain white background
+```
+
+Mặt giữ được: cùng khối mặt bạnh, cùng nếp tóc gợn hất ngược, cùng chân tóc lùi ở
+thái dương, cùng lông mày thanh ngang đậm, cùng mắt hai điểm, mũi và miệng một
+nét. Lệch nhỏ: mặt bản toàn thân hơi dài hơn, tóc bớt dày. Ở cỡ trong video thì
+là cùng một người.
+
+**2. MẶT ĐƠN GIẢN là thứ làm việc đó chạy được**, không chỉ là phong cách: mặt ít
+chi tiết thì ít thứ để trôi. Câu đang dùng nằm trong `styleByKind`:
+*"Simple face: the eyes are small dots, a simple short nose, a simple line for the
+mouth, no shading and no modelling on the face…"*
+
+**3. 🎯 VÀ ĐÂY LÀ CÁCH SỬA TỶ LỆ, sau 7 lần thất bại.** Ảnh toàn thân sinh từ
+asset đo được **5,8 đầu** — tốt nhất trong 8 lần, mà prompt **không nhắc một chữ
+nào** về tỷ lệ. Bảy lần trước (ép bằng chữ có cả con số, đổi 9:16, đổi 1:1, đổi
+ảnh neo) đều nằm 4,0-5,2. Bảng đo đầy đủ ở mục ngay dưới.
+
+👉 **Luật rút ra: muốn người đứng một mình đúng tỷ lệ thì ĐỪNG TẢ LẠI NGOẠI HÌNH
+BẰNG CHỮ — hãy sinh ra từ asset đã có.** Mô tả chữ cho một người đơn lẻ luôn ra
+thân bè và đầu to; asset thì mang sẵn tỷ lệ đúng sang cảnh mới.
+
+⚠️ Cảnh **úp mặt / quay lưng** không kiểm được dung mạo (không thấy mặt) — đừng
+lấy làm bằng chứng asset dùng lại được. Trong mẻ này `T-facedown` ra đúng thế
+nằm nhưng vô dụng cho việc đối chiếu mặt.
+
+### ⚠️ (2026-09-12) TỶ LỆ NGƯỜI ĐỨNG MỘT MÌNH — 7 CÁCH ĐẦU ĐỀU TRƯỢT (cách sửa ở mục trên)
+
+Tú báo ảnh nhân vật sai tỷ lệ. Đo bằng lưới 1/10 khung, so với chuẩn là chính ảnh
+neo của Tú (**6,3 đầu**, chân **43%** chiều cao). Ảnh: `output/proportion-compare.png`.
+
+| # | Đổi gì | Cao mấy đầu | Chân | Ghi chú |
+| --- | --- | --- | --- | --- |
+| 1 | gốc, 16:9, đính cả 3 ảnh neo | 4,85 | 24% | |
+| 2 | + ghi thẳng "about six and a half heads tall" | 4,65 | 14% | và ra **3 bản sao** cùng một người |
+| 3 | + "exactly one person" + ép độ dài áo | 4,0 | 19% | hết nhân bản ✅ |
+| 4 | khung **9:16** | 5,2 | 21% | ảnh ra chỉ **286×512**, không dùng được |
+| 5 | ảnh neo theo `kind` (một người nguyên khổ) | 4,4 | 18% | |
+| 6 | khung **1:1** | 4,9 | 19% | 512×512, và phong cách lệch sang tranh chì |
+| — | **shot NHÓM (7 người), 16:9, cùng khối style** | **6,6** | **47%** | ✅ đúng chuẩn |
+
+| 7 | prompt dạng chip `@` (cách Tú) | 4,6 | 26% | phong cách sát ảnh neo hơn rõ |
+| **8** | **sinh từ ASSET nhân vật đã có** | **5,8** | 25% | ✅ **cách sửa** — xem mục trên |
+
+**Kết luận: bảy cách đầu đều trượt** — không sửa được bằng chữ (kể cả ghi thẳng
+con số), bằng tỷ lệ khung, hay bằng việc đổi ảnh neo; cả bảy nằm gọn trong 4,0–5,2.
+Hai cấu hình cho ra tỷ lệ đúng đều **không tả ngoại hình bằng chữ**: ảnh có nhiều
+người xếp cạnh nhau (6,6 đầu), và ảnh sinh từ asset đã có (5,8 đầu).
+
+👉 Nhìn `output/proportion-compare.png` thì thấy chỗ khác nhau thật: sáu bản đều
+**bè ngang**, hai ảnh chuẩn thì **cao và thon**. Người đứng một mình được cả khung
+ngang cho riêng nó nên model bè thân ra, và đầu to theo thân.
+
+🔎 **Giả thuyết CHƯA thử** (để mẻ sau, đừng thử lại ba cái đã trượt ở trên): chính
+`draw` đang nói *"broad, heavy face, wide jaw, thick neck"* — mô tả **đúng** dung
+mạo Reles thật, nhưng model có thể đang áp chữ "broad/heavy/thick" lên CẢ THÂN
+chứ không chỉ khuôn mặt. Thử tách: giữ "broad heavy face" cho phần đầu, thêm câu
+nói rõ thân người tỷ lệ thường.
+
+Hai thứ đã sửa được trong lúc đo:
+- **Nhân bản: xong.** Câu `"Exactly one person in the image, alone, no duplicates
+  and no second figure."` — nguyên nhân là ảnh neo `03-five-men-group.png` (5
+  người xếp hàng) đính vào shot một người.
+- **Ảnh neo giờ chọn theo `kind`**: `input/style-ref/_anchors/by-kind.json`
+  (runner đọc nếu có, không có thì đính hết như cũ). Thêm
+  `04-one-man-fullbody.png` — một người nguyên khổ, cắt từ chính ảnh neo 03 của
+  Tú (người ngoài cùng bên phải, người duy nhất không bị người bên cạnh chen).
+  Phụ thu: 1-2 lượt đính mỗi shot thay vì 3, cho 385 prompt là tiết kiệm hàng giờ.
+  ⚠️ Khoá `default` (object/place/symbol) giờ chỉ đính `01-pyramid-place.png` —
+  **chưa soi lại ảnh đồ vật** sau khi đổi, mẻ sau kiểm.
+
+🔴 **BẪY ĐÃ DÍNH: TỶ LỆ KHUNG LƯU THEO PROJECT.** Chạy thử `--aspect 1:1` là
+project đó **nằm luôn ở 1:1**, mẻ sau không truyền cờ sẽ âm thầm ra 512×512 vuông.
+Và nút cài đặt trong `imageAsset.ts` vốn hard-code `button:has-text("crop_16_9")`
+— sau khi đổi sang 9:16 thì **không tìm thấy nút**, triệu chứng hiện ra là *"pill
+cài đặt không phản hồi"* rồi reload rồi timeout 15s, trông y hệt lỗi trang lag.
+Đã vá hai chỗ: selector khớp mọi `crop_*`, và `run-shots.ts` **luôn chốt tỷ lệ,
+mặc định `16:9`** (`--aspect none` để giữ cài đặt project).
+
+### 🔧 (2026-09-12) HAI LUẬT MỚI TÚ CHỐT SAU KHI SOI MẺ ĐẦU
+
+**1. Nhân vật LUÔN đủ từ đầu đến chân.** Không shot bán thân, không chân dung cắt
+ngang ngực — mọi shot `character`/`figure`/`group` phải ra nguyên người, hai bàn
+chân trong khung. Mẻ đầu cắt Reles ở ngực và bác sĩ ở hông **dù `draw` không hề
+xin chân dung**: mô tả chỉ có áo khoác/sơ mi/cà vạt nên model coi cảnh chỉ cần
+nửa trên. Luật đi cặp với mục 5e của skill ảnh (tả quần + giày) — thiếu một trong
+hai là ra cắt khúc.
+
+Cài bằng trường **`styleByKind`** mới của `.shots.json` (`build_image_prompts.py`),
+KHÔNG nhồi vào khối style chung: câu "cả người từ đầu đến chân" dán vào prompt một
+cái ice pick là mời model **vẽ thêm một người** vào ảnh đồ vật.
+
+**2. Nơi chốn đặc biệt: ĐÍNH ẢNH CHỤP THẬT lên Flow.** Trường mới **`refImages`**
+(tên file trong `refs/<segmentId>/`) được builder đổi thành đường dẫn và nhét vào
+`refNames` — `attachReferences` thấy file có thật thì upload. Đây là **ngoại lệ có
+chủ đích** của luật "`refs` không bao giờ tới runner" (SPEC-v2 mục 6).
+
+Lý do: `A1-11` tả khách sạn Half Moon bằng chữ **rất chi tiết và đúng** mà ảnh ra
+là một toà nhà **vòm đối xứng** không liên quan. Chữ không neo được hình khối kiến
+trúc, và ai biết công trình đó thì nhận ra sai ngay.
+
+Giới hạn — đọc kỹ 3 gạch này:
+- **Chỉ nơi chốn.** Luật "ảnh chụp người thật chỉ để soi rồi tả bằng chữ" GIỮ
+  NGUYÊN. Không mở cho `character`/`figure`/`group`.
+- **Chỉ nơi chốn ĐẶC BIỆT/nhận ra được.** Phòng chung chung (`A1-08b` toà án ốp
+  gỗ) thì tả chữ là đủ, đừng đốt thêm lượt upload.
+- **Phải kèm `style` riêng** ép nét vẽ tay, nếu không ảnh chụp kéo kết quả về phía
+  ảnh thật. Khối đang dùng cho A1-11: *"Copy the shape and proportions of the
+  building from the photograph. Draw it by hand in the same rough style as the
+  reference drawings: wobbly uneven ink outlines, flat colour, visible pencil
+  hatching, plain white background, not photographic."*
+
+Đã ghi vào skill `nano-banana-image-prompts` (mục 5d-bis mới + gạch ngoại lệ ở
+mục 5d) và SPEC-v2 (mục 5c + mục 6).
+
+#### Kết quả đo (project `reles-a1-fix`, ảnh ở `output/`)
+
+**Luật đầu-đến-chân: ĂN, cả `character` lẫn `group`.** Reles ra nguyên người có
+quần có giày, nền trắng sạch; bảy mobster đủ 7 người từ mũ tới giày, không ai bị
+mép khung cắt. So sánh: `output/fullbody-compare.png`.
+
+**Nơi chốn đặc biệt: ĂN ở bản v4.** Bốn bản đã thử, `output/hotel-compare.png`:
+
+| Bản | Thứ tự đính | Được | Mất |
+| --- | --- | --- | --- |
+| v1 | 3 ảnh neo → ảnh chụp | hình khối **đúng**, sạch, không chữ | nét thẳng thớm như bản vẽ kiến trúc, đối xứng tuyệt đối |
+| v2 | ảnh chụp → 3 ảnh neo | nét lỏng hơn rõ | **lôi CHỮ từ biển hiệu trong ảnh chụp** ("LOO-CHOO WEST END BATHS", "5c"), ăn cả tia nắng của ảnh neo pyramid, thân nhà phình rộng |
+| v3 | v2 + cấm chữ/người/nắng | không chữ, không người, nét lỏng, góc 3/4 | toà tháp bị đẩy ra sau, dãy nhà thấp thành vai chính |
+| **v4** | v3 + **câu ép bố cục** | ✅ tháp là chủ thể, nhìn từ đường đạo lên, hình khối và tháp chuông khớp ảnh chụp, nét tay lỏng, nền trắng, không chữ | nét vẫn còn khá gọn so với ba ảnh neo |
+
+Câu ép bố cục đã thêm ở v4 (khối `style` của A1-11 giữ nguyên văn):
+*"The tall tower is the subject and fills most of the frame, seen from the
+boardwalk looking up at it; the low building in front of it stays small at its
+foot."* — Không có câu này thì model lấy dãy nhà thấp làm vai chính, vì trong
+ảnh chụp nó chiếm nhiều diện tích hơn.
+
+Bốn bài học từ mẻ này, đừng phải đo lại:
+1. **Thứ tự đính có ảnh hưởng thật.** Đảo ảnh neo xuống sau ảnh chụp làm nét lỏng
+   ra ngay. Cài bằng cờ `anchorsLast` (builder tự bật cho shot có `refImages`).
+2. **Ảnh chụp có biển hiệu thì model ĐỌC VÀ VẼ LẠI CHỮ.** Shot dùng `refImages`
+   **bắt buộc** có câu cấm chữ tường minh trong khối style — v2 chứng minh.
+3. **Ảnh neo cũng lẫn nội dung sang.** Tia nắng trong v2 đến từ
+   `01-pyramid-place.png`, không từ ảnh chụp. Cấm luôn `no sun, no sky` cho shot
+   nơi chốn.
+4. **Ảnh chụp KHÔNG quyết bố cục.** Model lấy vật chiếm nhiều diện tích trong
+   ảnh chụp làm chủ thể, không lấy vật quan trọng trong lời kể. Shot nơi chốn
+   phải nói rõ **cái gì là chủ thể và chiếm bao nhiêu khung**.
+
+📌 **Đổi tên card giữa các bản thử:** `createImageIngredient` bỏ qua im lặng khi
+trùng tên (`assetAlreadyExists`), nên bốn bản trên có bốn `outName` khác nhau
+trong cùng project `reles-a1-fix`. **Đừng đặt tên kiểu "V2"/"A1-11"** — runner gõ
+tên card VÀO CHÍNH PROMPT (`imageAsset.ts`), model sẽ vẽ chuỗi đó thành chữ trong
+ảnh. Tên phải là mô tả tự nhiên (`Hotel Tower Seen From The Boardwalk`).
+
 ### 🎨 (2026-09-09) ĐỔI PHONG CÁCH ẢNH SANG KIỂU BROFESSOR STEIN — CHƯA CHẠY THỬ
 
 Người dùng chốt chuyển phong cách hình ảnh sang kênh **Brofessor Stein**. Đã tải
@@ -817,6 +1384,22 @@ rồi mở Chrome BẰNG TAY trước khi chạy bất kỳ lệnh nào:
 ```bash
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir=C:\Users\AnhTu\Desktop\claude\.auth\chrome-profile --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --disable-background-timer-throttling
 ```
+
+- 🔑 **HAI PROFILE, HAI TÀI KHOẢN GOOGLE** (2026-09-12). Mỗi profile giữ session
+  của một tài khoản; đổi tài khoản = bật Chrome trỏ vào profile khác, KHÔNG phải
+  thêm tài khoản vào cùng một profile (cùng profile thì Flow tự chọn tài khoản
+  mặc định, và `ensureProject` sẽ im lặng làm việc trên tài khoản sai).
+
+  | Profile | Tài khoản | Trạng thái |
+  | --- | --- | --- |
+  | `.auth/chrome-profile` | tài khoản free | **hết quota** 2026-09-12, ~10 ảnh/ngày là chặn |
+  | `.auth/chrome-profile-plus` | tài khoản có Gemini **PRO** | đang dùng; trang Flow hiện badge `PRO` |
+
+  ⚠️ **State file gắn với TÀI KHOẢN, không chỉ với project key.**
+  `ensureProject` đọc `state/project-<key>.json` rồi `goto` thẳng URL đó — URL của
+  project thuộc tài khoản khác sẽ treo ở `waitForProjectReady` đủ 90 giây rồi
+  throw. Đổi tài khoản thì **dùng project key MỚI** (`reles-a1-tu` là của tài
+  khoản free, `reles-a1-plus` là của tài khoản PRO).
 
 - `--user-data-dir` PHẢI khác profile Chrome cá nhân đang chạy — trùng thì Chrome
   chỉ mở thêm tab và cổng debug KHÔNG BAO GIỜ mở. Dùng `.auth/chrome-profile`

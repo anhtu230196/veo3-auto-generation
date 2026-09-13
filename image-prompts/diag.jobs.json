@@ -1,0 +1,24 @@
+[
+  {
+    "id": "T-NOSTYLE",
+    "segment": "A1",
+    "at": "0:44",
+    "kind": "character",
+    "outName": "Test No Style Lying Face Down",
+    "prompt": "the same man lying face down, arms slack. Keep the same man as the attached reference.",
+    "refNames": [
+      "Reles Ref Broad Face Wavy Hair"
+    ]
+  },
+  {
+    "id": "T-CUT",
+    "segment": "A1",
+    "at": "0:44",
+    "kind": "character",
+    "outName": "Test Cut Sentence Lying Face Down",
+    "prompt": "the same man lying face down, arms slack. Use a white background, and make it look like it was drawn in an old computer painting program with a mouse. Keep the same man as the attached reference.",
+    "refNames": [
+      "Reles Ref Broad Face Wavy Hair"
+    ]
+  }
+]

@@ -34,6 +34,8 @@ OPEN_MARKS = ("mở", "chờ")
 REQUIRED = ["id", "artifact", "artifact_version", "author", "reviewers",
             "round", "turn", "turn_role", "status", "opened", "updated"]
 
+EVERY_TURN_HEADER = "## Việc mọi lượt phải làm"
+
 TABLE_HEADER = "| ID | Nêu bởi | Vòng | Nội dung | Trạng thái |"
 TABLE_SEP = "| --- | --- | --- | --- | --- |"
 
@@ -128,6 +130,33 @@ def participants(data) -> list:
     return [data.get("author")] + reviewers_of(data)
 
 
+def read_every_turn_task(text: str) -> str:
+    """Doc muc "## Việc mọi lượt phải làm" trong THREAD.md.
+
+    VI SAO CO MUC NAY (2026-09-11): Tu giao "ba agent cung di tim nguon anh".
+    Tac gia viet yeu cau do vao file vong r1-00 cua minh — cho ma nguoi review
+    chi DOC NHU TAI LIEU NEN. Prompt cua luot review khong he nhac toi viec tim
+    kiem, va no dinh nghia cong viec cua luot la "neu diem D**". Ket qua: Codex
+    pha khung va di tim that, Gemini lam dung phan viec duoc giao nen khong tim
+    gi ca, con tac gia cung khong tim vi luot tac gia cung khong co nghia vu do.
+    Khong phai loi nang luc — do lai thi search_web cua agy chay tot, 25,8 giay.
+
+    👉 Viec nao MOI LUOT deu phai lam thi phai nam o day, de turn_prompt chen
+    thang vao prompt, ngang hang voi luat review. Dung nhet vao file vong.
+    """
+    lines = text.splitlines()
+    try:
+        start = next(i for i, l in enumerate(lines) if l.strip() == EVERY_TURN_HEADER)
+    except StopIteration:
+        return ""
+    body = []
+    for line in lines[start + 1:]:
+        if line.startswith("## "):
+            break
+        body.append(line)
+    return "\n".join(body).strip()
+
+
 def read_points(text: str) -> list:
     """Doc bang diem trong THREAD.md -> [{id, by, round, note, state}]."""
     out = []
@@ -183,10 +212,12 @@ def next_index(d: Path, rnd: int) -> int:
     return sum(1 for p in d.glob(f"r{rnd}-*.md") if FILE_RE.match(p.name))
 
 
-def turn_prompt(d: Path, data: dict):
+def turn_prompt(d: Path, data: dict, text: str | None = None):
     """Mo ta luot hien tai + cau prompt cho agent. None neu luong da dong."""
     if data.get("status") != "open":
         return None
+    if text is None:
+        text = (d / "THREAD.md").read_text(encoding="utf-8")
     turn, role = data.get("turn"), data.get("turn_role")
     rnd = int(data.get("round", 1))
     rel = d.relative_to(repo_root()).as_posix()
@@ -235,7 +266,8 @@ AGENTS.md muc 8, .claude/skills/deliberation/SKILL.md — chi mo khi can tra."""
 
     return {"turn": turn, "role": role, "round": rnd, "kind": kind,
             "file": fname, "path": d / fname, "artifact": artifact,
-            "needs_write": role == "author", "prompt": body}
+            "needs_write": role == "author", "prompt": body,
+            "task": read_every_turn_task(text)}
 
 
 def advance(d: Path, data: dict, text: str, actor: str, points_block, bump_version: bool):
@@ -354,6 +386,10 @@ updated: {today}
 ## Câu hỏi luồng này phải trả lời
 
 {args.question}
+
+{EVERY_TURN_HEADER}
+
+{args.task or "(khong co — luot nao chi lam dung phan viec cua luot do)"}
 
 ## Điểm tranh luận
 
@@ -550,6 +586,8 @@ def main() -> int:
     p_new.add_argument("--artifact", required=True)
     p_new.add_argument("--author", required=True, choices=AGENTS)
     p_new.add_argument("--reviewers", required=True, help="vi du gemini,codex")
+    p_new.add_argument("--task", default="",
+                       help="viec MOI LUOT phai lam, chen thang vao prompt tung luot")
     p_new.add_argument("--question", required=True)
     p_new.add_argument("--step", help="so buoc trong bang o AGENTS.md muc 8")
     p_new.set_defaults(func=cmd_new)

@@ -1,0 +1,420 @@
+[
+  {
+    "id": "A1-01",
+    "segment": "A1",
+    "at": "0:01",
+    "kind": "character",
+    "outName": "Reles Ref Broad Face Simple",
+    "prompt": "A man in his early thirties seen from the chest up. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark and wavy, swept straight back with no parting, slightly receding at the temples. He has very thick dark eyebrows, a broad nose and is clean shaven. He is wearing a dark herringbone tweed overcoat with very wide lapels, a white shirt and a dark diagonally striped tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-02",
+    "segment": "A1",
+    "at": "0:03",
+    "kind": "group",
+    "outName": "Row Of Mob Enforcers",
+    "prompt": "Six men in 1930s suits standing shoulder to shoulder in a row, facing forward, seen full length from head to shoes. Heavy wool double-breasted suits and overcoats in charcoal, navy and brown with wide lapels, fedora hats, hands in pockets or at their sides. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "A1-03",
+    "segment": "A1",
+    "at": "0:07",
+    "kind": "object",
+    "outName": "Ice Pick Wooden Handle",
+    "prompt": "An ice pick from the 1930s lying flat: a bulbous wooden handle that tapers toward the neck, a short metal collar, and a long straight steel spike tapering evenly to a very sharp point. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-04",
+    "segment": "A1",
+    "at": "0:10",
+    "kind": "object",
+    "outName": "Ear Seen From The Side",
+    "prompt": "A close view of a human ear seen from the side, drawn flat with clean outlines and flat skin colour, no shading, no modelling, on a plain white background. Nothing else in the frame. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-04b",
+    "segment": "A1",
+    "at": "0:10",
+    "kind": "figure",
+    "outName": "Man In Profile Showing Ear",
+    "prompt": "A man in his thirties seen exactly side-on in profile from the shoulders up, facing left, his ear fully visible and uncovered in the middle of the frame. Short dark hair cut above the ear, plain white shirt collar, calm closed-mouth expression. No weapon, no object touching him, no wound, no blood. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-05",
+    "segment": "A1",
+    "at": "0:13",
+    "kind": "figure",
+    "outName": "Coroner Signing A Form",
+    "prompt": "A doctor standing, seen from the chest up, wearing a white lab coat over a shirt and tie, holding a clipboard in one hand and signing the blank unlined sheet on it with a fountain pen. The sheet is completely blank: no lettering, no lines, no stamp. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-06",
+    "segment": "A1",
+    "at": "0:17",
+    "kind": "object",
+    "outName": "Stack Of Case Folders",
+    "prompt": "A tall leaning stack of buff-coloured paper case folders tied shut with string, edges uneven and dog-eared, with loose sheets sticking out at the sides. Every folder and sheet is completely blank: no lettering, no numbers, no labels. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-07a",
+    "segment": "A1",
+    "at": "0:19",
+    "kind": "group",
+    "outName": "Reles Handcuffed Under Escort",
+    "prompt": "draw the same man as in @Reles Ref Broad Face Simple, keep his face exactly the same, now walking forward with his wrists handcuffed in front of him and his head slightly lowered, wearing the same overcoat, while a 1940s New York policeman in a dark heavy tunic and peaked cap with a blank round badge walks beside him gripping his upper arm, both seen full length from head to shoes, no lettering anywhere, plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now walking forward with his wrists handcuffed in front of him and his head slightly lowered, wearing the same overcoat, while a 1940s New York policeman in a dark heavy tunic and peaked cap with a blank round badge walks beside him gripping his upper arm, both seen full length from head to shoes, no lettering anywhere, plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-07",
+    "segment": "A1",
+    "at": "0:20",
+    "kind": "object",
+    "outName": "Empty Electric Chair",
+    "prompt": "An empty electric chair made of heavy dark oak, seen from the front. Thick leather straps hang loose from the armrests and front legs, and a metal headpiece on a bracket hangs above the seat back with a cable running from it. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-08",
+    "segment": "A1",
+    "at": "0:24",
+    "kind": "character",
+    "outName": "Man Taking An Oath",
+    "prompt": "A man in a 1930s grey pinstripe suit seen from the chest up, raising his right hand palm-forward to take an oath, his other hand resting flat on a small closed book. White shirt with a wide collar, dark tie, level expression. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-09",
+    "segment": "A1",
+    "at": "0:24",
+    "kind": "group",
+    "outName": "Seven Men In A Lineup",
+    "prompt": "Seven men standing in a single row facing forward, seen full length from head to shoes, in heavy 1930s wool overcoats and double-breasted suits in dark grey and navy, each wearing a fedora. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "A1-09b",
+    "segment": "A1",
+    "at": "0:27",
+    "kind": "character",
+    "outName": "Anastasia Ref Heavy Brows",
+    "prompt": "A man in his mid thirties seen from the chest up. Thick dark wavy hair combed straight back and piled high on top of his head. Very heavy dark eyebrows. Deep-set heavy-lidded eyes. A large prominent nose with a high straight bridge. Full lips, fleshy cheeks, clean shaven. Wearing a dark 1930s suit jacket, white shirt and a patterned tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-09c",
+    "segment": "A1",
+    "at": "0:30",
+    "kind": "group",
+    "outName": "Crime Family Of Men In Suits",
+    "prompt": "Five men in 1940s suits standing together in a loose semicircle, seen full length from head to shoes, facing the viewer. Heavy double-breasted wool suits and overcoats in dark grey, navy and brown, wide lapels, fedora hats, one man older and heavier in the centre with the others slightly behind him. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "A1-10",
+    "segment": "A1",
+    "at": "0:31",
+    "kind": "figure",
+    "outName": "Prosecutor With Case File",
+    "prompt": "A lawyer in a 1930s three-piece charcoal suit seen from the chest up, carrying a thick bulging manila folder clamped under one arm, wire-rimmed glasses, neatly combed hair. The folder is blank: no lettering, no labels. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-11",
+    "segment": "A1",
+    "at": "0:35",
+    "kind": "place",
+    "outName": "Brick Hotel Tower On Boardwalk",
+    "prompt": "draw a @09-half-moon-hotel-1927-cihp__claude.jpg with the same style as @01-pyramid-place.png, the tall tower is the subject seen from the boardwalk looking up at it, no lettering, no signs, no people, no sun, no sky",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\image-prompts\\refs\\A1\\09-half-moon-hotel-1927-cihp__claude.jpg"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", the tall tower is the subject seen from the boardwalk looking up at it, no lettering, no signs, no people, no sun, no sky"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-12",
+    "segment": "A1",
+    "at": "0:37",
+    "kind": "figure",
+    "outName": "Officer On Guard At A Door",
+    "prompt": "A 1940s New York policeman standing guard directly in front of a closed panelled wooden door, seen full length from head to shoes, facing the viewer with his feet apart and both hands clasped behind his back. Dark heavy tunic uniform with loose sleeves, peaked cap with a blank round badge, no lettering anywhere. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-13",
+    "segment": "A1",
+    "at": "0:44",
+    "kind": "character",
+    "outName": "Same Man Lying Face Down",
+    "prompt": "draw the same man as in @Reles Ref Broad Face Simple, keep his face exactly the same, now lying face down on a flat tar roof with his arms slack, wearing the same overcoat, only one person, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now lying face down on a flat tar roof with his arms slack, wearing the same overcoat, only one person, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-14a",
+    "segment": "A1",
+    "at": "0:48",
+    "kind": "object",
+    "outName": "Folded White Bed Sheet",
+    "prompt": "A single plain white cotton bed sheet folded loosely into a thick stack on a plain white background, one corner hanging down and showing the soft woven fabric and a hemmed edge. No pattern, no lettering, no bed, nothing else. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-14",
+    "segment": "A1",
+    "at": "0:50",
+    "kind": "object",
+    "outName": "Knotted Bed Sheet Rope",
+    "prompt": "Three white cotton bed sheets knotted end to end into a makeshift rope. Between the knots the fabric stays flat and wide like a sheet, with loose cloth corners and creases showing. Show both free ends and every knot. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-15",
+    "segment": "A1",
+    "at": "0:53",
+    "kind": "object",
+    "outName": "Bed Sheet Rope Tied To Radiator",
+    "prompt": "draw the rope from @Knotted Bed Sheet Rope with one end knotted tightly around the pipe of a heavy cast iron steam radiator with vertical ribbed sections and a round brass valve, the knot clearly visible, the rest of the rope trailing away across the floor, no lettering, plain white background",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw the rope from "
+      },
+      {
+        "asset": "Knotted Bed Sheet Rope"
+      },
+      {
+        "text": " with one end knotted tightly around the pipe of a heavy cast iron steam radiator with vertical ribbed sections and a round brass valve, the knot clearly visible, the rest of the rope trailing away across the floor, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-15b",
+    "segment": "A1",
+    "at": "0:54",
+    "kind": "character",
+    "outName": "Reles Climbing Down Sheet Rope",
+    "prompt": "draw the same man as in @Reles Ref Broad Face Simple, keep his face exactly the same, now hanging and climbing down @Knotted Bed Sheet Rope hand over hand, his feet braced against the brick outside wall of a tall building, wearing the same overcoat, seen full length from head to shoes, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now hanging and climbing down "
+      },
+      {
+        "asset": "Knotted Bed Sheet Rope"
+      },
+      {
+        "text": " hand over hand, his feet braced against the brick outside wall of a tall building, wearing the same overcoat, seen full length from head to shoes, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-16",
+    "segment": "A1",
+    "at": "0:58",
+    "kind": "character",
+    "outName": "Same Man Falling",
+    "prompt": "draw the same man as in @Reles Ref Broad Face Simple, keep his face exactly the same, now falling through the air with his overcoat flapping open and his arms out, only one person, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Reles Ref Broad Face Simple"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Reles Ref Broad Face Simple"
+      },
+      {
+        "text": ", keep his face exactly the same, now falling through the air with his overcoat flapping open and his arms out, only one person, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-16b",
+    "segment": "A1",
+    "at": "1:04",
+    "kind": "place",
+    "outName": "Body Far Out On The Roof",
+    "prompt": "A flat tar roof seen from high above, looking straight down. The brick wall of a taller building runs along one edge of the frame, and a man in a dark overcoat lies face down on the roof a long way out from that wall, with empty roof surface between him and the wall. Nothing else on the roof. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "A1-17",
+    "segment": "A1",
+    "at": "1:08",
+    "kind": "figure",
+    "outName": "Officer Explaining Himself",
+    "prompt": "A 1940s New York policeman standing, seen from the chest up, both hands raised open-palmed in front of him in a shrugging, explaining gesture, mouth open mid-sentence, eyebrows raised. Dark heavy tunic uniform, peaked cap with a blank round badge, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-18a",
+    "segment": "A1",
+    "at": "1:09",
+    "kind": "character",
+    "outName": "Luciano Ref Drooping Eyelid",
+    "prompt": "A man in his late thirties seen from the chest up. Dark hair combed neatly back with a side parting and a slight wave. His right eyelid droops noticeably lower than the left, and a short scar marks his right cheek. A long face, a straight nose, thin lips, a strong square chin, clean shaven. Wearing a plain grey prison shirt buttoned to the collar. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "A1-18b",
+    "segment": "A1",
+    "at": "1:11",
+    "kind": "group",
+    "outName": "Luciano Boasting On Prison Bunk",
+    "prompt": "draw the same man as in @Luciano Ref Drooping Eyelid, keep his face exactly the same, sitting on the edge of a narrow steel prison bunk and leaning forward with one hand raised mid-gesture and a smug grin, while two other prisoners in the same plain grey prison shirts sit on the bunk opposite leaning in to listen, a small barred window high on the wall behind them, no lettering anywhere, plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Luciano Ref Drooping Eyelid"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Luciano Ref Drooping Eyelid"
+      },
+      {
+        "text": ", keep his face exactly the same, sitting on the edge of a narrow steel prison bunk and leaning forward with one hand raised mid-gesture and a smug grin, while two other prisoners in the same plain grey prison shirts sit on the bunk opposite leaning in to listen, a small barred window high on the wall behind them, no lettering anywhere, plain white background. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-18c",
+    "segment": "A1",
+    "at": "1:11",
+    "kind": "character",
+    "outName": "Luciano Leaning Back Laughing",
+    "prompt": "draw the same man as in @Luciano Ref Drooping Eyelid, keep his face exactly the same, leaning back with his head tipped up, laughing with his mouth open, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Luciano Ref Drooping Eyelid"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Luciano Ref Drooping Eyelid"
+      },
+      {
+        "text": ", keep his face exactly the same, leaning back with his head tipped up, laughing with his mouth open, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-18d",
+    "segment": "A1",
+    "at": "1:11",
+    "kind": "character",
+    "outName": "Luciano Rubbing Fingers Together",
+    "prompt": "draw the same man in the same framing as in @Luciano Leaning Back Laughing, keep his face exactly the same, leaning forward and rubbing his thumb against his first two fingers in a money gesture, eyebrows raised, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Luciano Leaning Back Laughing"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man in the same framing as in "
+      },
+      {
+        "asset": "Luciano Leaning Back Laughing"
+      },
+      {
+        "text": ", keep his face exactly the same, leaning forward and rubbing his thumb against his first two fingers in a money gesture, eyebrows raised, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-18e",
+    "segment": "A1",
+    "at": "1:11",
+    "kind": "character",
+    "outName": "Luciano Tapping His Chest",
+    "prompt": "draw the same man in the same framing as in @Luciano Leaning Back Laughing, keep his face exactly the same, tapping his own chest with his open hand, chin lifted, smug half smile, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Luciano Leaning Back Laughing"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man in the same framing as in "
+      },
+      {
+        "asset": "Luciano Leaning Back Laughing"
+      },
+      {
+        "text": ", keep his face exactly the same, tapping his own chest with his open hand, chin lifted, smug half smile, sitting on the edge of a narrow steel prison bunk, seen from the chest up, facing slightly to the left, wearing the same grey prison shirt, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when he is talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "A1-18",
+    "segment": "A1",
+    "at": "1:13",
+    "kind": "object",
+    "outName": "Plain Banknote Bundle",
+    "prompt": "A thick bundle of banknotes stacked neatly and bound tightly by a wide brown paper currency strap. The notes are pale green and completely plain: no lettering, no numbers, no words, no printed portrait, no signature, nothing written on the strap either. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  }
+]

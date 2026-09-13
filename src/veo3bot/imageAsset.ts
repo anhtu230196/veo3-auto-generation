@@ -1,5 +1,6 @@
 import type { Page } from "playwright";
 import path from "node:path";
+import fs from "node:fs";
 import { debugCapture, debugLog } from "./debug.js";
 import { dismissOnboardingDialog, dismissOverlays, PROJECT_READY_SELECTOR, ASSET_PICKER_SELECTOR } from "./project.js";
 
@@ -142,49 +143,277 @@ async function findNewImageSrc(page: Page, baseline: ReadonlySet<string>): Promi
  * từ nhân vật thứ 2 trở đi nó đã nằm sẵn trong Uploads của project — upload lại mỗi lần sẽ
  * đẻ ra hàng loạt bản trùng (đúng lớp lỗi đã gặp ở mục 4.15/4.45).
  */
-export async function attachReferenceImage(page: Page, referenceImagePath: string): Promise<void> {
-  const fileName = path.basename(referenceImagePath);
+/**
+ * Mở bảng chọn media, TRA file theo tên, upload nếu chưa có — rồi TRẢ VỀ thẻ của nó với bảng
+ * VẪN ĐANG MỞ. Người gọi quyết định làm gì tiếp:
+ *
+ * - `attachReferenceImage` click thẻ → đính vào prompt.
+ * - `ensureAssetUploaded` bấm Escape → chỉ cần file nằm trong project, không đính.
+ *
+ * Tách ra 2026-09-12 cho luồng @mention: chip `@` vừa đính ảnh vừa nêu tên nó trong câu, nên
+ * bước đính qua bảng chọn là thừa — nhưng ảnh VẪN phải có sẵn trong project, vì dialog `@`
+ * chỉ tra được asset đã tồn tại (nó không có nút upload).
+ */
+const OVERLAY = ".cdk-overlay-container";
+
+async function findOrUploadInPicker(page: Page, filePath: string) {
+  const fileName = path.basename(filePath);
+  const stem = path.parse(fileName).name;
 
   await dismissOverlays(page);
   await page.locator(ASSET_PICKER_SELECTOR).first().click({ timeout: 15000 });
   await page.waitForTimeout(1500);
 
-  // 🔴 PHẢI GIỚI HẠN TRONG OVERLAY (2026-09-05). Bản cũ dùng `text=<tên file>` trên TOÀN TRANG,
-  // và nó khớp nhầm cái thẻ ở LƯỚI MEDIA NỀN phía sau bảng chọn — thẻ đó bị overlay che nên
-  // click treo 20-30 giây rồi lỗi, trong khi thẻ ĐÚNG nằm trong bảng thì không ai đụng tới.
-  // Triệu chứng đánh lừa hoàn toàn: log ghi "đã có sẵn trong project — dùng lại" (đúng), rồi
-  // chết ở bước click (sai chỗ).
-  const OVERLAY = ".cdk-overlay-container";
-  // Phải GÕ TÊN vào ô Search thì thẻ mới hiện trong bảng — bảng không tự liệt kê hết asset.
   const search = page.getByRole("textbox", { name: /search assets/i }).first();
   await search.waitFor({ state: "visible", timeout: 20000 });
-  await search.fill(path.parse(fileName).name);
+  await search.fill(stem);
   await page.waitForTimeout(2500);
 
-  // Thẻ asset trong bảng là `button[role="option"]` (class `asset-item`) — giao diện cũ là
-  // `div[role="option"]`, nên selector cũ khớp 0 phần tử.
-  const card = page.locator(`${OVERLAY} [role="option"]`).filter({ hasText: fileName }).first();
-  if (await card.count()) {
+  const cardBy = (text: string) =>
+    page.locator(`${OVERLAY} [role="option"]`).filter({ hasText: text }).first();
+  const findCard = async (timeoutMs: number) => {
+    const deadline = Date.now() + timeoutMs;
+    for (;;) {
+      for (const text of [fileName, stem]) {
+        const c = cardBy(text);
+        if (await c.count()) return c;
+      }
+      if (Date.now() >= deadline) return null;
+      await page.waitForTimeout(1000);
+    }
+  };
+
+  let card = await findCard(0);
+  if (card) {
     debugLog("reference", `"${fileName}" đã có sẵn trong project — dùng lại, không upload nữa`);
-  } else {
-    debugLog("reference", `chưa có "${fileName}" trong project — đang upload`);
-    // 🔴 ĐỔI 2026-09-05: giao diện mới KHÔNG còn `input[type="file"]` nằm sẵn trong DOM —
-    // nút "Upload media" mở hộp thoại chọn file của HỆ ĐIỀU HÀNH. `setInputFiles` vì thế
-    // treo đúng 30 giây rồi ném lỗi. Cách đúng là bắt sự kiện `filechooser` của Playwright,
-    // và PHẢI đăng ký lắng nghe TRƯỚC khi bấm nút, nếu không sự kiện bắn mất trước khi chờ.
-    const [chooser] = await Promise.all([
-      page.waitForEvent("filechooser", { timeout: 30000 }),
-      page.getByRole("button", { name: /upload media/i }).first().click({ timeout: 15000 }),
-    ]);
-    await chooser.setFiles(referenceImagePath);
-    // Sau khi upload, phải gõ lại vào ô Search thì thẻ mới hiện ra trong bảng.
-    await page.waitForTimeout(4000);
-    await search.fill("");
-    await page.waitForTimeout(600);
-    await search.fill(path.parse(fileName).name);
-    await card.waitFor({ state: "visible", timeout: 90000 });
-    await page.waitForTimeout(2000); // chờ Flow xử lý xong file vừa nạp
+    return { card, fileName, stem };
   }
+
+  debugLog("reference", `chưa có "${fileName}" trong project — đang upload`);
+  const [chooser] = await Promise.all([
+    page.waitForEvent("filechooser", { timeout: 30000 }),
+    page.getByRole("button", { name: /upload media/i }).first().click({ timeout: 15000 }),
+  ]);
+  await chooser.setFiles(filePath);
+  await page.waitForTimeout(4000);
+  await search.fill("");
+  await page.waitForTimeout(600);
+  await search.fill(stem);
+  card = await findCard(180000);
+  if (!card) {
+    await debugCapture(page, `reference-upload-card-missing-${fileName}`);
+    throw new Error(
+      `Upload "${fileName}" xong mà không thấy thẻ của nó trong bảng chọn media sau 180 giây.`
+    );
+  }
+  await page.waitForTimeout(2000); // chờ Flow xử lý xong file vừa nạp
+  return { card, fileName, stem };
+}
+
+/**
+ * Đảm bảo 1 file trên đĩa ĐÃ NẰM TRONG project (upload nếu chưa), KHÔNG đính vào prompt.
+ * Trả về tên asset để gõ vào dialog `@` — chính là tên file kèm đuôi.
+ *
+ * Ghi chú: dialog `@` CŨNG có nút "Upload media", nên về lý thuyết upload được ngay trong đó.
+ * Vẫn tách bước này ra vì `findOrUploadInPicker` đã mang sẵn mọi bài học về chờ/khớp tên/chống
+ * trùng của luồng upload (mốc 180 giây, khớp tên hai tầng), không viết lại lần hai.
+ */
+export async function ensureAssetUploaded(page: Page, filePath: string): Promise<string> {
+  const { fileName } = await findOrUploadInPicker(page, filePath);
+  // Đóng bảng mà KHÔNG click thẻ: click thẻ là đính luôn vào prompt, mà luồng @mention không
+  // muốn thế (đính hai lần cùng một ảnh thì nó nặng gấp đôi so với ảnh còn lại trong câu).
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(600);
+  await dismissOverlays(page);
+  return fileName;
+}
+
+/** Một mảnh prompt: chữ thường, hoặc một chip `@` trỏ tới asset đã có trong project. */
+export type PromptPart = { text: string } | { asset: string };
+
+/**
+ * Gõ prompt có CHIP `@` XEN GIỮA CÂU — cách Tú prompt (chốt 2026-09-12):
+ *
+ *     draw a @<ảnh chụp thật> with the same style as @<ảnh neo>
+ *
+ * Mạnh hơn hẳn cách đính ảnh qua bảng chọn rồi tả style bằng chữ: câu tự nói ảnh nào giữ vai
+ * HÌNH KHỐI và ảnh nào giữ vai NÉT VẼ. Đính 4 ảnh vào rồi mong model tự đoán vai thì không.
+ *
+ * 🔴 ĐỌC TRƯỚC KHI SỬA — BẪY ĐÃ LÀM `generate.ts` BỎ HẲN CHIP INLINE (RUNBOOK mục 4.49):
+ * sau khi click card, dialog `@` **đôi lúc chưa đóng**, nên mọi ký tự gõ tiếp rơi vào Ô SEARCH
+ * của dialog chứ không vào prompt — và mất sạch. Prompt gửi đi bị cụt mà KHÔNG có một dòng lỗi
+ * nào. `generate.ts` đã thử vá bằng "chờ ô search biến mất" và **vẫn vỡ**, nên nó chuyển sang
+ * gõ trọn text rồi dồn chip ở cuối.
+ *
+ * Ở đây inline là YÊU CẦU (chip phải đứng đúng chỗ trong câu mới nói được vai của từng ảnh),
+ * nên thay vì né, ta thêm lớp mà `generate.ts` không có: **ĐỌC LẠI prompt sau khi gõ** và so
+ * với chuỗi mong đợi. Sai thì xoá sạch và làm lại — biến lỗi mất-text-âm-thầm thành lỗi ồn ào
+ * có retry. Cách này giữ được cú pháp câu MÀ vẫn không gửi đi prompt cụt.
+ *
+ * Ba phòng thủ khác chép nguyên từ `generate.ts` vì đã trả giá để biết:
+ * 1. Mọi lần chèn chip đều xảy ra khi cursor ở CUỐI tài liệu — không bao giờ nhảy vào giữa
+ *    đoạn đã gõ (click card làm mất focus; cursor ở giữa thì phần gõ sau bị mất).
+ * 2. Chờ ô search ĐÓNG HẲN trước khi gõ mảnh tiếp theo, Escape nếu quá hạn.
+ * 3. Danh sách asset trong dialog dùng virtuoso (ảo hoá) — phải POLL + CUỘN, không chờ cứng.
+ */
+export async function typeMentionPrompt(page: Page, parts: PromptPart[]): Promise<void> {
+  const promptBox = page.locator('div[contenteditable="true"]').first();
+  const wantText = parts
+    .map((p) => ("text" in p ? p.text : ""))
+    .join("")
+    .replace(/\s+/g, " ")
+    .trim();
+  const wantChips = parts.filter((p) => "asset" in p).length;
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    await dismissOverlays(page);
+    await promptBox.click();
+    await page.keyboard.press("ControlOrMeta+A");
+    await page.keyboard.press("Backspace");
+
+    for (const part of parts) {
+      if ("text" in part) {
+        await page.keyboard.type(part.text);
+        continue;
+      }
+      await insertMentionChip(page, promptBox, part.asset);
+    }
+
+    // ĐỌC LẠI — xem docstring. `innerText` của ô prompt gồm cả nhãn chip, nên chỉ kiểm rằng
+    // MỌI mảnh chữ còn nguyên (theo đúng thứ tự) và số chip đủ, không so khớp tuyệt đối.
+    const got = ((await promptBox.innerText().catch(() => "")) || "").replace(/\s+/g, " ");
+    const textOk = parts
+      .filter((p): p is { text: string } => "text" in p)
+      .every((p) => got.includes(p.text.replace(/\s+/g, " ").trim()));
+    // Chip thật trong DOM (đọc từ dump 2026-09-12):
+    //   <span class="mention-chip" data-mention-id="…" data-reference-type="media"
+    //         contenteditable="false">09-half-moon-hotel-1927-cihp__claude.jpg</span>
+    // Đếm theo `data-mention-id` chứ không theo class, vì id là thứ Flow bắt buộc phải có để
+    // biết chip trỏ tới asset nào; class thì đổi tên lúc nào cũng được.
+    const chipCount = await promptBox.locator("[data-mention-id]").count();
+
+    if (textOk && chipCount >= wantChips) {
+      debugLog("mention", `prompt @mention xong (${wantChips} chip): ${got.slice(0, 160)}`);
+      return;
+    }
+
+    debugLog(
+      "mention",
+      `lượt ${attempt}: prompt chưa đúng (chữ ${textOk ? "đủ" : "THIẾU"}, chip ${chipCount}/${wantChips}) — gõ lại. Đang có: ${got.slice(0, 200)}`
+    );
+    if (attempt === 3) {
+      await debugCapture(page, `mention-prompt-broken`);
+      throw new Error(
+        `Gõ prompt @mention thất bại sau 3 lượt (chữ ${textOk ? "đủ" : "thiếu"}, ` +
+          `chip ${chipCount}/${wantChips}). Mong đợi: "${wantText}". Đang có: "${got.slice(0, 300)}".`
+      );
+    }
+  }
+}
+
+async function insertMentionChip(
+  page: Page,
+  promptBox: ReturnType<Page["locator"]>,
+  assetName: string
+): Promise<void> {
+  // Luôn mở dialog khi cursor ở CUỐI tài liệu (phòng thủ 1 ở docstring trên).
+  await promptBox.click();
+  await page.keyboard.press("ControlOrMeta+ArrowDown");
+  await page.keyboard.press("End");
+  await page.keyboard.type("@");
+  await page.waitForTimeout(1200);
+
+  // 🔴 GÕ "@" MỞ ĐÚNG BẢNG CHỌN MEDIA CỦA `attachReferenceImage`, không phải một dialog khác
+  // (đo thật 2026-09-12 qua ảnh debug: cùng overlay Angular Material, cùng dải nav All/Images/
+  // Videos/Voices/Characters/Avatars/Uploads, cùng nút "Upload media"). Luồng video của
+  // `generate.ts` scope theo `[role="dialog"]` vì hồi đó UI khác — bê nguyên selector đó sang
+  // đây thì khớp 0 phần tử và báo "không thấy asset" trong khi thẻ nằm ngay trước mắt.
+  const search = page.getByRole("textbox", { name: /search assets/i }).first();
+  try {
+    await search.waitFor({ state: "visible", timeout: 8000 });
+  } catch {
+    await debugCapture(page, `mention-picker-fail-${assetName}`);
+    throw new Error(`Gõ "@" không mở được bảng chọn asset cho "${assetName}".`);
+  }
+  await search.fill(assetName);
+  await page.waitForTimeout(2000);
+
+  // 🔴 NHÃN THẺ BỊ CẮT BẰNG DẤU BA CHẤM — khớp tên chính xác LUÔN TRƯỢT với tên file dài.
+  // Đo thật 2026-09-12: tìm `09-half-moon-hotel-1927-cihp__claude.jpg` thì thẻ hiện đúng một
+  // kết quả, nhưng nhãn là `09-half-moon-hotel-192…`. Cả tên đầy đủ lẫn phần thân tên đều
+  // không khớp `exact: true`, nên bản đầu báo "không thấy asset" trong khi nó nằm ngay đó.
+  //
+  // Cách khớp: lấy nhãn thẻ, bỏ đuôi loại media ("Image"/"Video"…) và dấu ba chấm, rồi đòi
+  // tên MÌNH MUỐN **bắt đầu bằng** nhãn đó. Chiều so sánh này an toàn hơn `hasText` (khớp
+  // chuỗi con — đúng cái bug 4.11 chọn nhầm asset): nhãn bị cắt là TIỀN TỐ của tên thật, nên
+  // "tên thật startsWith nhãn" chỉ đúng với asset đúng.
+  const scroller = page.locator('[data-testid="virtuoso-scroller"]').first();
+  const want = assetName.trim().toLowerCase();
+  const deadline = Date.now() + 20000;
+  let card: ReturnType<Page["locator"]> | null = null;
+  let seen: string[] = [];
+
+  while (Date.now() < deadline && !card) {
+    const rows = page.locator(`${OVERLAY} [role="option"]`);
+    const n = await rows.count();
+    seen = [];
+    let best = -1;
+    for (let i = 0; i < n; i++) {
+      const raw = (await rows.nth(i).innerText().catch(() => "")).replace(/\s+/g, " ").trim();
+      if (!raw) continue;
+      const label = raw
+        .replace(/\s+(Image|Video|Voice|Character|Avatar)$/i, "")
+        .replace(/[…]|\.\.\.$/g, "")
+        .trim()
+        .toLowerCase();
+      if (label.length < 8) continue;
+      seen.push(label);
+      if (want.startsWith(label) && label.length > best) {
+        best = label.length;
+        card = rows.nth(i);
+      }
+    }
+    if (card) break;
+    await scroller.evaluate((el) => { el.scrollTop += el.clientHeight * 0.8; }).catch(() => {});
+    await page.waitForTimeout(500);
+  }
+  if (!card) {
+    await debugCapture(page, `mention-card-missing-${assetName}`);
+    throw new Error(
+      `Không thấy asset "${assetName}" trong dialog @mention. Các nhãn đang hiện: ` +
+        `${seen.length ? seen.map((s) => `"${s}"`).join(", ") : "(không có)"}. ` +
+        `Ảnh phải được upload vào project trước — xem ensureAssetUploaded.`
+    );
+  }
+  await card.click();
+  await page.waitForTimeout(600);
+
+  // Nút thật là "Add to prompt" (chữ p NHỎ) và nó nằm dưới ô xem trước, tức click thẻ chỉ
+  // CHỌN chứ chưa chèn chip. Dùng regex không phân biệt hoa thường để không lệ thuộc cách
+  // Google viết hoa.
+  const addBtn = page.getByRole("button", { name: /add to prompt/i }).first();
+  if (await addBtn.count()) {
+    await addBtn.click({ timeout: 10000 }).catch(() => {});
+  } else {
+    const addText = page.getByText(/add to prompt/i).last();
+    if (await addText.count()) await addText.click({ timeout: 10000 }).catch(() => {});
+  }
+
+  // Phòng thủ 2: chờ dialog ĐÓNG HẲN, nếu không thì mảnh chữ tiếp theo rơi vào ô search.
+  try {
+    await search.waitFor({ state: "hidden", timeout: 4000 });
+  } catch {
+    await page.keyboard.press("Escape").catch(() => {});
+    await search.waitFor({ state: "hidden", timeout: 3000 }).catch(() => {});
+  }
+  await page.waitForTimeout(300);
+  await promptBox.click();
+  await page.keyboard.press("ControlOrMeta+ArrowDown");
+  await page.keyboard.press("End");
+}
+
+export async function attachReferenceImage(page: Page, referenceImagePath: string): Promise<void> {
+  const { card, fileName } = await findOrUploadInPicker(page, referenceImagePath);
 
   // 🔴 ĐỔI 2026-09-05: giao diện mới bọc tên file trong `<span class="footer-title">` — bản thân
   // span đó KHÔNG bấm được (Playwright resolve ra nó rồi treo ở "waiting for element to be
@@ -208,12 +437,29 @@ export async function attachReferenceImage(page: Page, referenceImagePath: strin
     await page.waitForTimeout(1200);
   }
 
-  // XÁC MINH THẬT SỰ ĐÃ ĐÍNH — cùng tinh thần mục 4.1 (đếm chip @mention): nếu ảnh reference
+  // XÁC MINH 1 — BẢNG ĐÃ ĐÓNG. Đây là tín hiệu `attachExistingAssets` vẫn dùng ("click card
+  // là đính xong và bảng tự đóng"), và nó là tín hiệu DUY NHẤT còn đúng khi đính NHIỀU ảnh
+  // liên tiếp: từ ảnh thứ hai trở đi prompt đã có nội dung sẵn, nên nút "Clear prompt" bên
+  // dưới hiện lên BẤT KỂ cú đính này có ăn hay không. Thiếu bước này thì 2 ảnh neo cuối có
+  // thể rớt im lặng, và ta chỉ thấy khi soi ảnh ra sai phong cách.
+  let panelClosed = false;
+  for (let i = 0; i < 10 && !panelClosed; i++) {
+    await page.waitForTimeout(800);
+    panelClosed = (await page.locator(`${OVERLAY} [role="option"]`).first().count()) === 0;
+  }
+  if (!panelClosed) {
+    await debugCapture(page, `reference-panel-still-open-${fileName}`);
+    throw new Error(
+      `Đính ảnh reference "${fileName}" thất bại — bảng chọn media vẫn mở sau 8 giây.`
+    );
+  }
+
+  // XÁC MINH 2 — cùng tinh thần mục 4.1 (đếm chip @mention): nếu ảnh reference
   // không đính được mà vẫn chạy tiếp, Nano Banana sẽ vẽ nhân vật KHÔNG theo phong cách gốc,
   // và ta chỉ phát hiện khi soi ảnh bằng mắt (tốn credit + rất dễ lọt).
   // Tín hiệu dùng: nút "Clear prompt" chỉ xuất hiện khi prompt CÓ nội dung. Vì hàm này LUÔN
   // chạy TRƯỚC bước gõ chữ, lúc này prompt chưa có text — nên nút đó xuất hiện đồng nghĩa
-  // với "đã có ảnh đính vào".
+  // với "đã có ảnh đính vào". (Chỉ chặt với ảnh ĐẦU TIÊN — xem xác minh 1.)
   const clearPrompt = page.getByRole("button", { name: /clear prompt/i }).first();
   await clearPrompt.waitFor({ state: "visible", timeout: 10000 }).catch(() => {});
   if (!(await clearPrompt.count())) {
@@ -239,6 +485,31 @@ export async function attachReferenceImage(page: Page, referenceImagePath: strin
  * ⚠️ Ô "Search assets" là BẮT BUỘC khi project đã nhiều media: lưới media dùng virtualized
  * list (mục 4.25/4.33/4.45), asset cần tìm có thể chưa được render nếu chỉ cuộn/tìm mù.
  */
+/**
+ * Đính một DANH SÁCH TRỘN: phần tử nào là đường dẫn file có thật trên đĩa thì upload
+ * (`attachReferenceImage`), còn lại coi là tên asset đã có trong Flow (`attachExistingAssets`).
+ *
+ * Sinh ra 2026-09-12 cho ẢNH NEO PHONG CÁCH Tú gửi (`input/style-ref/_anchors/`, xem README
+ * ở đó): mỗi shot cần đính CẢ ảnh neo trên đĩa LẪN asset nhân vật đã tạo trong Flow, mà
+ * `createImageIngredient` cũ chỉ nhận một trong hai loại (`string` = file, `string[]` = tên
+ * asset), không nhận trộn.
+ *
+ * Không có cờ nào phân loại: phân theo `fs.existsSync`. Tên asset trên Flow là tên người đặt
+ * ("Reles Ref Broad Face Wavy Hair") nên không bao giờ trùng một đường dẫn có thật.
+ *
+ * ⚠️ THỨ TỰ ĐÍNH GIỮ NGUYÊN THỨ TỰ MẢNG. Chưa đo được ảnh nào thắng khi đính nhiều ảnh, nên
+ * quy ước của runner là: ảnh neo phong cách trước, asset nội dung (nhân vật) sau.
+ */
+export async function attachReferences(page: Page, entries: string[]): Promise<void> {
+  for (const entry of entries) {
+    if (fs.existsSync(entry)) {
+      await attachReferenceImage(page, entry);
+    } else {
+      await attachExistingAssets(page, [entry]);
+    }
+  }
+}
+
 export async function attachExistingAssets(page: Page, names: string[]): Promise<void> {
   for (const assetName of names) {
     // Mở bảng chọn media. ⚠️ Bản cũ chỉ mở 1 lần rồi `if (await search.count())` — nếu bảng
@@ -458,12 +729,28 @@ export async function createImageIngredient(
    *
    * - `string` = đường dẫn file trên đĩa (image-to-image, upload qua `attachReferenceImage`) —
    *   dùng cho Character (luôn đính `reference-character.jpeg`).
-   * - `string[]` = tên các asset ĐÃ CÓ SẴN trong Flow (đính qua `attachExistingAssets`) — dùng
-   *   để ghép nhiều asset đã tạo (Character + Background, hoặc chỉ 1 cảnh đã ghép sẵn để sửa
-   *   chi tiết nhỏ) thành 1 ảnh mới, thay cho việc viết riêng 1 file .ts cho mỗi cảnh ghép (xem
-   *   `src/nanoBanana/createSceneComposites.ts` — RUNBOOK mục 8.2).
+   * - `string[]` = danh sách TRỘN, đính theo đúng thứ tự mảng (`attachReferences`): phần tử
+   *   nào là đường dẫn file có thật trên đĩa thì upload, còn lại là tên asset ĐÃ CÓ SẴN trong
+   *   Flow. Dùng để ghép nhiều asset đã tạo (Character + Background, hoặc 1 cảnh đã ghép sẵn
+   *   để sửa chi tiết nhỏ) thành 1 ảnh mới, thay cho việc viết riêng 1 file .ts cho mỗi cảnh
+   *   ghép (xem `src/nanoBanana/createSceneComposites.ts` — RUNBOOK mục 8.2), và để đính ảnh
+   *   neo phong cách của Tú kèm asset nhân vật.
    */
-  reference?: string | string[]
+  reference?: string | string[],
+  /**
+   * Tỷ lệ khung, đúng tên nút radio trên Flow: `"16:9"` · `"9:16"` · `"1:1"`. Bỏ trống = giữ
+   * nguyên cài đặt project (16:9) — hành vi cũ, không lời gọi nào phải đổi.
+   */
+  aspect?: string,
+  /**
+   * Prompt dạng CHIP `@` XEN GIỮA CÂU (cách Tú prompt) — xem `typeMentionPrompt`. Khai trường
+   * này thì `description`, `styleBlock` và `reference` **bị bỏ qua hoàn toàn**: câu mention đã
+   * mang cả nội dung, cả vai của từng ảnh, và tự đính ảnh qua chip.
+   *
+   * Phần tử `{asset}` là đường dẫn file trên đĩa (được upload trước) hoặc tên asset đã có
+   * trong project.
+   */
+  promptParts?: PromptPart[]
 ): Promise<void> {
   // 🔴 CHỐNG TẠO TRÙNG — xem docstring assetAlreadyExists. Phải đứng TRƯỚC mọi thao tác tạo:
   // asset `failed` trong JSON không có nghĩa là Flow chưa có ảnh của nó.
@@ -475,7 +762,15 @@ export async function createImageIngredient(
   // Pill hiển thị mode/tỷ lệ khung hình hiện tại — cùng selector đã xác nhận trong
   // generate.ts::ensureModelAndDuration (icon "crop_16_9" luôn xuất hiện, duy nhất TRƯỚC khi
   // bảng cài đặt mở ra). Có fallback reload nếu trang đang ở trạng thái lag/kẹt.
-  const pill = page.locator('button:has-text("crop_16_9")').first();
+  // 🔴 KHỚP MỌI TỶ LỆ, đừng hard-code `crop_16_9` (sự cố thật 2026-09-12). Nút này hiện icon
+  // của tỷ lệ ĐANG chọn, và tỷ lệ được LƯU THEO PROJECT. Chạy một mẻ với `--aspect 9:16` là
+  // từ đó pill hiện `crop_9_16`, và mọi lần chạy sau trên project đó không tìm thấy nút —
+  // triệu chứng hiện ra là "pill cài đặt không phản hồi" rồi reload rồi timeout 15s, trông y
+  // hệt lỗi trang lag, trong khi thật ra selector đã trượt.
+  const pill = page
+    .locator("button")
+    .filter({ hasText: /crop_(16_9|9_16|1_1|3_4|4_3)/ })
+    .first();
   // 🔴 BẮT BUỘC dọn overlay trước (2026-09-05): giao diện Angular Material để lại
   // `cdk-overlay-backdrop` TRONG SUỐT sau mỗi lần mở bảng chọn asset ở asset TRƯỚC ĐÓ. Nó nuốt
   // click nên pill "không phản hồi" dù selector đúng — và nhánh reload bên dưới che mất triệu
@@ -507,6 +802,17 @@ export async function createImageIngredient(
   await page.getByRole("radio", { name: "Image", exact: true }).click({ timeout: 20000 });
   await page.getByRole("radio", { name: "x1" }).click({ timeout: 15000 });
 
+  // TỶ LỆ KHUNG. Bỏ trống = giữ nguyên cài đặt của project (16:9, mặc định của Flow) — đúng
+  // hành vi cũ, nên mọi lời gọi hiện có không đổi gì.
+  //
+  // Vì sao cần cờ này (đo 2026-09-12): shot MỘT NGƯỜI ĐỨNG ra sai tỷ lệ cơ thể — 4,0-4,9 đầu
+  // thay vì 6,3 đầu như ảnh neo, chân chỉ chiếm 14-24% chiều cao. Ba lần sửa bằng CHỮ (kể cả
+  // ghi thẳng "about six and a half heads tall") đều không nhúc nhích. Giả thuyết: khung 16:9
+  // chỉ cho người đứng 768px chiều cao, model phóng đầu to để giữ mặt đọc được.
+  if (aspect) {
+    await page.getByRole("radio", { name: aspect }).click({ timeout: 15000 });
+  }
+
   // THIẾU SÓT ĐÃ SỬA: quên đóng bảng cài đặt (Radix popper) sau khi chọn xong — bảng còn mở
   // che mất ô nhập prompt bên dưới, khiến click bị chặn (pointer-events intercepted), giống
   // hệt cách ensureModelAndDuration trong generate.ts đã xử lý bằng "Escape".
@@ -526,18 +832,37 @@ export async function createImageIngredient(
   // - Đính SAU khi gõ chữ: mở/đóng bảng chọn media có nguy cơ làm rớt text đã gõ, đúng lớp
   //   bug 4.42/4.49 (chèn chip @mention sau khi gõ làm mất câu).
   // Kẹp vào giữa là vị trí duy nhất an toàn cho cả hai phía.
-  if (reference) {
-    if (Array.isArray(reference)) {
-      await attachExistingAssets(page, reference);
-    } else {
-      await attachReferenceImage(page, reference);
+  if (promptParts?.length) {
+    // ĐƯỜNG @MENTION (cách Tú prompt) — chip đứng đúng chỗ trong câu nên tự nói vai của từng
+    // ảnh. Chip vừa nêu tên vừa đính ảnh, nên KHÔNG đi qua bảng chọn media nữa; nhưng ảnh phải
+    // có sẵn trong project trước, vì dialog `@` không có nút upload.
+    for (const part of promptParts) {
+      if ("asset" in part && fs.existsSync(part.asset)) {
+        await ensureAssetUploaded(page, part.asset);
+      }
     }
-    // Bảng chọn media lấy mất focus — phải click lại vào ô prompt trước khi gõ.
-    await promptBox.click();
-    await page.waitForTimeout(300);
-  }
+    const resolved: PromptPart[] = promptParts.map((p) =>
+      "asset" in p ? { asset: fs.existsSync(p.asset) ? path.basename(p.asset) : p.asset } : p
+    );
+    // Tên card đi vào prompt ở đường cũ (`${name}: …`), nhưng ở đây thì KHÔNG: câu mention là
+    // nguyên văn của người viết, chèn thêm tên card vào là model vẽ chuỗi đó thành chữ (D12).
+    await typeMentionPrompt(page, resolved);
+  } else {
+    if (reference) {
+      if (Array.isArray(reference)) {
+        // Mảng có thể TRỘN đường dẫn file (ảnh neo trên đĩa) với tên asset đã có trong Flow —
+        // xem `attachReferences`.
+        await attachReferences(page, reference);
+      } else {
+        await attachReferenceImage(page, reference);
+      }
+      // Bảng chọn media lấy mất focus — phải click lại vào ô prompt trước khi gõ.
+      await promptBox.click();
+      await page.waitForTimeout(300);
+    }
 
-  await page.keyboard.type(`${name}: ${description}. ${styleBlock}`);
+    await page.keyboard.type(`${name}: ${description}. ${styleBlock}`);
+  }
 
   // Baseline = TẬP HỢP src đang render, chụp khi lưới đã render xong (xem docstring
   // snapshotGridSrcs — so vị trí 0 như bản cũ đã gây đổi tên đè lên ảnh cũ).

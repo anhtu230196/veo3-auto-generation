@@ -57,8 +57,9 @@ Luat cua che do nay:
 - KHONG tao hay sua bat ky file nao. Ban chi doc.
 - KHONG sua THREAD.md. Orchestrator lo viec do.
 - In TOAN BO noi dung file vong ra stdout, khong in gi khac ngoai no.
-- Doc vua du de tra loi. Dung doc lai AGENTS.md hay SKILL.md — luat can
-  thiet nam ngay duoi day.
+- Luat review da dan ngay duoi day roi, nen khong can mo AGENTS.md hay
+  SKILL.md de tra lai. Cac file KHAC trong repo va tren web thi cu doc thoai
+  mai — dong nay KHONG phai lenh cam doc.
 
 LUAT REVIEW
 
@@ -94,7 +95,8 @@ Luat cua che do nay:
   moi luot, ke ca luot tac gia. Thu ghi qua shell la mat trang san pham.
 - KHONG tao file vong tren dia va KHONG sua THREAD.md. Orchestrator lo viec do.
 - In TOAN BO noi dung file vong ra stdout, khong in gi khac ngoai no.
-- Doc vua du de tra loi. Dung doc lai AGENTS.md hay SKILL.md.
+- Luat da dan ngay duoi day, khong can mo lai AGENTS.md hay SKILL.md. Cac
+  file KHAC va web thi cu doc thoai mai — dong nay KHONG phai lenh cam doc.
 
 LUAT PHAN BAC
 
@@ -167,6 +169,31 @@ GHI_FILE_WRITE = """- KHONG tao FILE VONG tren dia — orchestrator ghi ho tu st
 
 def output_contract(write: bool) -> str:
     return OUTPUT_CONTRACT.replace("{ghi_file}", GHI_FILE_WRITE if write else GHI_FILE_READ)
+
+
+def every_turn_block(task: str) -> str:
+    """Chen viec bat buoc vao prompt, NGANG HANG voi luat review.
+
+    Dat TRUOC phan mo ta luot: agent doc tuan tu, va thu nao nam sau cau
+    "san pham cua luot nay la file vong X" deu bi coi la ghi chu phu.
+    """
+    if not task.strip():
+        return ""
+    return f"""===============================================================
+VIEC MOI LUOT PHAI LAM — ngang hang voi viec review, khong phai doc them.
+Luot nao cung lam, KE CA luot tac gia.
+
+{task.strip()}
+
+Ghi ket qua thanh MOT MUC RIENG trong file vong, dat TRUOC khoi points.
+Day la ngoai le duy nhat cua hop dong dau ra ben duoi: muc nay DUOC phep
+khong phai mot diem D**.
+
+Khong lam duoc thi noi ro vuong cai gi. Bo im lang la hong nhat, vi luot
+sau se tuong da co nguoi lam roi.
+===============================================================
+
+"""
 
 
 def load_config() -> dict:
@@ -378,7 +405,7 @@ def cmd_doctor(args) -> int:
 def one_turn(slug: str, agents: dict, dry: bool) -> str:
     """Chay mot luot. Tra ve status cua luong sau luot do."""
     d, data, text = th.read_thread(slug)
-    t = th.turn_prompt(d, data)
+    t = th.turn_prompt(d, data, text)
     if t is None:
         print(f"Luong {slug} dang {data.get('status')} — khong co luot nao de chay.")
         return str(data.get("status"))
@@ -394,7 +421,8 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
 
     preamble = PREAMBLE_WRITE if t["needs_write"] else PREAMBLE_READ
     # Hop dong dau ra dat cuoi cung: do la thu agent hay lam sai nhat.
-    prompt = preamble + t["prompt"] + POINTS_CONTRACT + output_contract(t["needs_write"])
+    prompt = (preamble + every_turn_block(t.get("task", "")) + t["prompt"]
+              + POINTS_CONTRACT + output_contract(t["needs_write"]))
 
     print(f"--- vong {t['round']}/{th.MAX_ROUND} · {agent} ({t['role']}) "
           f"-> {t['file']} {'[sua duoc artifact]' if t['needs_write'] else '[chi doc]'}")
@@ -419,6 +447,56 @@ def one_turn(slug: str, agents: dict, dry: bool) -> str:
     print(f"    da ghi {t['path'].relative_to(th.repo_root()).as_posix()} ({secs:.0f}s)")
 
     block = th.parse_points_block(out)
+
+    # 🔴 CHAN LUOT GEMINI "MU" (su co that 2026-09-13, luong img-skill-a1-lessons r1).
+    # Luot review cua Gemini tra ve khoi points RONG kem cau "hoan toan mu thong tin": model da
+    # tim file trong ~/.gemini/antigravity-cli/scratch (thu muc rong) chu khong phai repo. Khong
+    # phai loi quyen. Log luot do ghi language server 1.1.28, moi luot chay tot deu la 1.2.x.
+    # Ban cu van `advance` binh thuong -> MAT TRANG MOT VONG trong tran 3 vong ma so luong ghi
+    # la da review. Chi bat khi khoi points RONG, de mot review that co nhac chu "workspace"
+    # khong bi chan nham. Loi trong lop chan KHONG duoc lam hong luot binh thuong.
+    if agent == "gemini" and isinstance(block, list) and not block:
+        reasons = []
+        try:
+            import re as _re
+            from pathlib import Path as _Path
+            low = out.lower()
+            # Moi dau hieu kem NHAN ASCII, va CHI IN NHAN. In thang chuoi tieng Viet ra console
+            # cp1252 cua PowerShell la UnicodeEncodeError — ma lenh print nam NGOAI try, nen
+            # dung luc bat duoc luot mu thi ca luot no traceback thay vi bao gon (do that bang
+            # bai thu 2026-09-13). Vi the moi dong print trong file nay deu la ASCII.
+            # KHONG dung "mu thong tin": bai thu cho thay no KHONG khop luot mu that (Gemini viet
+            # co ngoac kep giua chu) ma lai KHOP file cua agent khac TRICH LAI cau do — chi them
+            # chan nham, khong bat them duoc gi.
+            for needle, label in (("không tồn tại trong workspace", "file 'khong ton tai trong workspace'"),
+                                  ("workspace trống", "'workspace trong'"),
+                                  ("do not exist in", "'do not exist in'"),
+                                  ("cannot find the file", "'cannot find the file'"),
+                                  ("could not find the file", "'could not find the file'")):
+                if needle in low:
+                    reasons.append(f"cau tra loi chua {label}")
+            logs = sorted((_Path.home() / ".gemini" / "antigravity-cli" / "log").glob("cli-*.log"),
+                          key=lambda f: f.stat().st_mtime)
+            if logs:
+                m = _re.search(r"Language server version: (\d+)\.(\d+)",
+                               logs[-1].read_text(encoding="utf-8", errors="ignore"))
+                if m and (int(m.group(1)), int(m.group(2))) < (1, 2):
+                    reasons.append(f"agy chay language server {m.group(1)}.{m.group(2)}.x "
+                                   "(moi luot chay tot deu la 1.2.x)")
+        except Exception as exc:  # lop chan hong thi bo qua, khong chan luot
+            print(f"    (bo qua lop chan Gemini mu: {exc})")
+            reasons = []
+        if reasons:
+            print("    KHONG AP DUNG: luot Gemini co dau hieu KHONG DOC DUOC REPO:")
+            for r in reasons:
+                print(f"      - {r}")
+            print("    File vong da giu lai, THREAD.md khong doi. Kiem truoc khi chay lai:")
+            print("      agy -p \"Reply with only the first line of RUNBOOK.md\" --mode plan "
+                  f"--add-dir {th.repo_root()} --output-format text")
+            print("    roi xem dong 'Language server version' trong log moi nhat o "
+                  "~/.gemini/antigravity-cli/log/.")
+            return "needs-human"
+
     if block is None or isinstance(block, str):
         reason = block if isinstance(block, str) else "khong co khoi ```points```"
         print(f"    KHONG AP DUNG DUOC: {reason}")
@@ -505,7 +583,8 @@ def cmd_start(args) -> int:
         (th.repo_root() / artifact).parent.mkdir(parents=True, exist_ok=True)
         th.cmd_new(argparse.Namespace(
             slug=slug, author=author, reviewers=",".join(reviewers),
-            artifact=artifact, step=args.step, question=topic))
+            artifact=artifact, step=args.step, question=topic,
+            task=args.task))
         print(f"  tac gia: {author} · review: {', '.join(reviewers)}")
         print(f"  artifact: {artifact}")
 
@@ -529,6 +608,8 @@ def main() -> int:
     p_start.add_argument("--artifact", help="mac dinh coordination/drafts/<slug>.md")
     p_start.add_argument("--slug", help="mac dinh suy ra tu topic")
     p_start.add_argument("--step", help="so buoc trong bang AGENTS.md muc 8")
+    p_start.add_argument("--task", default="",
+                         help="viec MOI LUOT phai lam (chen thang vao prompt tung luot)")
     p_start.add_argument("--no-run", action="store_true",
                          help="chi tao luong, khong goi CLI")
     p_start.add_argument("--max-turns", type=int, default=MAX_TURNS)

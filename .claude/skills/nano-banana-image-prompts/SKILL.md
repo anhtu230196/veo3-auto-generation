@@ -20,9 +20,19 @@ description: Write the image prompts and the assets.json / scenes.json entries t
 >
 > **Không đổi**: mục 6i (mọi thứ có chữ để trống) — chữ vẫn làm ở hậu kỳ, Nano
 > Banana viết chữ vẫn sai.
+> 🗺️ **Ngoại lệ duy nhất (Tú chốt 2026-09-13): chữ trong ảnh bản đồ được chấp nhận** — mục 4d-bis phần 4a.
 >
 > ⚠️ Asset đã tạo theo style cũ (case 1 Roanoke, 5 case tập tâm linh) đã lệch
 > phong cách. Người dùng chưa quyết bỏ hay giữ.
+
+> 🆕 **2026-09-13 — đọc MỤC 4d VÀ 4d-bis TRƯỚC khi phân shot một case mới.** Mọi mẻ ảnh từ
+> 2026-09-11 chạy qua đường **`.shots.json` + ảnh neo của Tú** (`image-prompts/SPEC-v2.md`,
+> `input/style-ref/_anchors/`, RUNBOOK mục 0), không qua `assets.json`/`scenes.json` +
+> `styleDNA.ts` như phần lớn các mục bên dưới mô tả. Mục 4d là 8 luật rút từ góp ý của Tú
+> trên case A1: chúng quyết mỗi đoạn lời kể cần **bộ phần tử** nào, kèm 11 câu hỏi rà trước
+> khi chốt. Mục **4d-bis** (Tú yêu cầu *"nhiều ảnh nhất có thể cho mỗi câu"*) tách mỗi câu
+> thành 10 ô ứng viên và thay "Điều kiện chặn" cũ bằng bộ lọc trùng chức năng. Ví dụ áp dụng thứ hai (case Roanoke):
+> `narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json`.
 
 Skill này ghi lại **cách QUYẾT ĐỊNH viết gì** khi soạn `assets.json` /
 `scenes.json` cho 1 tập trong `narration-scripts/`. Nó KHÔNG chứa nội dung các
@@ -205,7 +215,9 @@ Cùng một người xuất hiện cả hai dạng trong một case: ảnh thậ
 bản vẽ ở mọi cảnh hành động sau đó.
 
 👉 Việc của Nano Banana **chỉ là phần VẼ**: nhân vật, đồ vật, toà nhà, cảnh
-inset. Ảnh thật, bản đồ, logo, icon, mũi tên, nhãn chữ, bóng thoại đều là hậu kỳ.
+inset. Ảnh thật, logo hiện đại, icon, mũi tên, nhãn chữ, bóng thoại đều là hậu kỳ.
+**Ngoại lệ (2026-09-13, mục 4d-bis):** **bản đồ và cờ thời kỳ** do Nano Banana vẽ. Cờ vẽ trơn
+không chữ; **bản đồ được có chữ tên địa danh ngay trong ảnh** (Tú chốt); mũi tên, chấm đánh dấu vẫn là hậu kỳ.
 
 #### Bảng tra
 
@@ -226,7 +238,9 @@ inset. Ảnh thật, bản đồ, logo, icon, mũi tên, nhãn chữ, bóng tho�
 | **Thảm hoạ phương tiện** | vẽ phương tiện làm VẬT THỂ + nhãn số hiệu + số người chết viết ra. KHÔNG vẽ cảnh tai nạn |
 | **Vật được nhắc trong câu giải thích** | vẽ riêng bên cạnh hành động, nối bằng mũi tên |
 | **Bắt giữ** | dàn 3 người: 2 cảnh sát + nghi phạm giơ tay |
-| **Địa lý, nơi chốn** | bản đồ thật, vùng được nhắc tô đỏ, mũi tên chỉ vào |
+| **Địa lý, nơi chốn** | **bản đồ vẽ** theo bản đồ tham chiếu hình dạng (chip `@`), vùng được nhắc tô đỏ, **tên địa danh ghi thẳng trong ảnh**; mũi tên, chấm hậu kỳ — 4d-bis phần 4a |
+| **Quốc gia, tổ chức, phe** | **cờ / biểu tượng có mẫu được tài liệu xác nhận cho đúng năm và đúng vai trò**; không có mẫu thì bỏ — 4d-bis phần 4b |
+| **Cụm khái niệm** (*"in the New World"*) | **vật tượng trưng** đứng riêng, không chung khung với người — 4d-bis phần 4c |
 | **Quan hệ nhân quả / dẫn tới** | mũi tên đen cong nối hai phần tử |
 | **Điều gì đó KHÔNG xảy ra, thất bại** | dấu X đỏ to đè lên phần tử đó |
 
@@ -250,6 +264,345 @@ Bố cục luôn để trống một khoảng lớn — thường hẳn nửa kh
 vào lúc dựng. Khi viết prompt cảnh, đẩy nhân vật/vật thể lệch về một bên và nói
 rõ phần còn lại là nền phẳng trống.
 
+### 4d. 🔑 BỘ PHẦN TỬ, KHÔNG PHẢI KHUNG HÌNH — 8 luật rút từ case A1 (2026-09-13)
+
+> **Nguồn:** 8 góp ý của Tú trên bộ ảnh A1 (Abe Reles, `output/a1-full/`), qua 3 vòng
+> review Claude/Codex/Gemini ở `coordination/threads/img-skill-a1-lessons/`. Bản nháp đầy
+> đủ kèm bằng chứng từng luật: `coordination/drafts/img-skill-a1-lessons.md`. **Ví dụ áp
+> dụng:** `image-prompts/A1.shots.json` (mã shot ghi trong bảng). Áp cho đường
+> `.shots.json` (`image-prompts/SPEC-v2.md`).
+>
+> ⚠️ **Chép vào skill theo lệnh Tú khi luồng CHƯA `settled`.** D01–D06 đã chốt qua review.
+> Cách xử lý D07 (chọn ảnh neo khi câu có nhiều loại phần tử mới, mục 4d-9d) là của
+> Claude, **chưa ai review**. Lượt review còn lại lật điểm nào thì sửa ở đây.
+>
+> 🧪 = **chưa đo**. Dùng như phép thử có ghi chú trong `note` của shot, không như luật.
+>
+> 🔁 **Cập nhật 2026-09-13 chiều:** đoạn "Điều kiện chặn", cột "Không áp khi" của luật 2, 3, 5, đoạn Gaviria và
+> câu rà 10 đã sửa theo **mục 4d-bis** (luồng `img-skill-nhieu-anh-moi-cau`, settled).
+
+#### Luật gốc
+
+Tú dựng video bằng **chồng lớp phần tử rời** ở hậu kỳ. Tám góp ý trên A1 không cái nào chê
+nét vẽ — cả tám đều nói **thiếu phần tử để dựng**. Nên mỗi đoạn lời kể sinh ra **một bộ phần
+tử + các trạng thái nối**, không phải một bức tranh. Trước khi viết prompt, hỏi:
+
+> *Hậu kỳ cần những mảnh nào để dựng được đoạn này — kể cả những mảnh lời kể không nói ra?*
+
+🔁 **"Điều kiện chặn" cũ đã bỏ (2026-09-13)** — bản cũ: *"chỉ thêm khi phần tử đó mang thông tin mà bộ hình
+hiện có chưa đảm nhiệm"*. Nó đã loại đúng lá cờ Tú yêu cầu thêm. Thay bằng **thứ tự quyết định + bộ lọc trùng
+chức năng** ở **mục 4d-bis phần 3**: không thêm khi vướng giới hạn cứng, hoặc khi đã có ảnh cho người xem đọc ra
+cùng thông tin và gánh được cùng thao tác dựng.
+
+#### Bảng tra
+
+| # | Dấu hiệu trong lời kể | Làm gì | Không áp khi | Ví dụ A1 |
+|---|---|---|---|---|
+| 1 | Vật tác động lên **một bộ phận cơ thể** (đâm vào tai, kề thái dương, đeo vào cổ) **và** hậu kỳ cần đặt/dời/làm chuyển động vật đó | **2 ảnh rời**: người lộ rõ đúng bộ phận + vật | hai thứ dính liền nghĩa (tay đang cầm vật, áo đang mặc); hậu kỳ không cần tách | `A1-04b` + `A1-03` |
+| 2 | Nhân vật **chuyển trạng thái**: bị bắt, bị kết án, ra tù, bỏ trốn, chết | ảnh **chính nhân vật** ở trạng thái mới, sinh từ asset. Vật tượng trưng (ghế điện, còng tay trên bàn) chỉ đi kèm, không thay được | đã có ảnh trùng chức năng (4d-bis phần 3) | `A1-07a` trước `A1-07` |
+| 3 | **Người có thật được gọi tên**, và lời kể nói họ làm gì / bị gì | ảnh `character` riêng, dù chỉ một câu | danh mục chung (*police, judges*) không phải tên riêng | `A1-09b`, `A1-18a` |
+| 4 | Tổ chức / thành phố / đơn vị gọi bằng **tên của thời kỳ khác** | kiểm tên đó có từ bao giờ **trước khi** lấy ảnh mang tên đó làm căn cứ | tên không đổi qua thời gian | `A1-09c` |
+| 5 | Vật A **được làm thành** vật B (ga → dây, gỗ → bè, thư → mảnh xé) | **cả A nguyên trạng lẫn B**, hai ảnh rời | — (A được gọi tên thì đã là ứng viên ô 4 của 4d-bis; không được gọi tên thì không thêm) | `A1-14a` → `A1-14` |
+| 6 | Hai vật **gắn vào nhau** (buộc vào, cắm vào, treo lên, xích vào) | ảnh thể hiện **đúng chỗ nối**; vật đã có asset thì sinh từ asset | — xem ranh giới với luật cấm định vị ở chi tiết | `A1-15` |
+| 7 | Lời kể đi **nguyên nhân → kết quả** mà bỏ qua hành động ở giữa | thêm **ảnh hành động nối** | hành động đó không có nguồn xác nhận, cũng không nằm trong giả thuyết lời kể đã nêu | `A1-15b` |
+| 8 | **Hành vi nói**: khoe, khai, thú nhận, đe doạ, van nài, từ chối, hứa | vẽ **người đang nói**; động từ hàm ý người nghe thì vẽ **người nghe** | người nghe đã có ở shot kề bên | `A1-18b` |
+
+#### Chi tiết — phần bảng không chứa được
+
+**1. Người riêng, vật riêng.**
+- Góc chọn **theo bộ phận**: tai → nhìn nghiêng hẳn; thái dương → ba phần tư; cổ tay → thấy mặt trong.
+- Câu cấm tường minh trong ảnh người: *"no weapon, no object touching him, no wound, no blood"*.
+  Hung khí chạm người còn bị **bộ lọc Flow chặn thật** (SHOT-LIST luật 9: bản ghép dùi đá vào tai bị từ chối).
+- Bộ phận là **của ai trong câu** thì vẽ đúng người đó. *"Driven through the ear"* là tai của
+  **nạn nhân** — vẽ Reles vào là đổi nghĩa câu.
+
+**2. Trạng thái nối.** Sinh từ asset bằng chip `@` (mục 5d-bis: cách duy nhất đã đo là giữ được
+mặt và cho tỷ lệ đúng). Người phụ trong cảnh (cảnh sát áp giải) tả bằng chữ trong cùng câu, và
+shot khai `kind: "group"` (4d-9b). A1 bản đầu có ghế điện mà không có cảnh Reles bị bắt: người
+xem thấy cái ghế, không thấy **ai** sẽ ngồi vào — mạch nhân vật đứt đúng ở bước ngoặt.
+
+**3. Người có thật được gọi tên.**
+- Gom tư liệu trước (skill `case-reference-images`). Chọn ảnh **đúng tuổi ở thời điểm câu
+  chuyện**, không lấy ảnh nổi tiếng nhất: Anastasia dùng ảnh căn cước 1936, bỏ ảnh 1950s nổi
+  tiếng hơn (lúc đó đã già, hói, béo — câu chuyện là năm 1940).
+- Chỉ tả **nét nhận ra được** (SPEC-v2 §4a): Anastasia là mũi to sống cao + lông mày rậm;
+  Luciano là mí mắt phải sụp + sẹo má phải.
+- 🔴 **Giữ mức chắc chắn của lời kể.** Câu ghi *"was said to bring down"* → vẽ **chân dung
+  trung tính**, không vẽ bị bắt hay ngồi toà. (Sự thật còn ngược lại: Reles chết trước khi kịp
+  làm chứng.)
+- Ranh giới: danh mục chung (*police, judges, journalists*) không phải tên riêng, không thuộc luật này.
+  🔁 Bản sáng 2026-09-13 ghi *César Gaviria* (A2) "không bắt buộc" vì ghế trống `A2-08` đã gánh thông tin —
+  **bỏ** theo 4d-bis: người có thật được gọi tên thì có chân dung trung tính riêng.
+
+**4. Tên sai thời kỳ.** Lời kể nói *"the Gambino family"* cho năm 1940. Năm đó là gia đình
+**Mangano**; tên Gambino có từ 1957. Ảnh mang đúng tên đó trên Commons toàn là ảnh FBI 1979–1981.
+**Ảnh đúng tên mà sai thời kỳ nguy hiểm hơn không có ảnh — nó trông như bằng chứng.** Không có
+ảnh đúng thời kỳ thì chọn hình theo **loại chủ thể**, không mặc định một loại:
+
+| Chủ thể mang tên sai thời kỳ | Hình thay thế |
+|---|---|
+| tổ chức của người (gia đình mafia, băng nhóm) | `group` theo trang phục năm câu chuyện |
+| thành phố, công trình | `place` theo ảnh tư liệu **đúng năm**, không theo tên |
+| đơn vị, cơ quan | `figure` (người của đơn vị) hoặc `symbol` trơn không chữ |
+
+Ghi tên đúng thời kỳ + lý do vào manifest. Cách tra: skill `case-reference-images` mục 4d.
+Đừng biến luật này thành "tra lịch sử mọi danh từ".
+
+**5. Trạng thái gốc.**
+- Giữ những thuộc tính **không đổi trong quá trình biến đổi**: ga → dây thì giữ chất vải và màu;
+  gỗ → than thì không.
+- ✅ Đã chứng minh: tả **trạng thái của vật liệu** ở cả A lẫn B. **Danh từ đứng đầu quyết định
+  hình dạng** — *"a makeshift rope constructed from bedsheets"* ra dây bện, vì chữ `rope` nuốt
+  chữ `bedsheets`; sửa bằng *"between the knots the fabric stays flat and wide like a sheet"*.
+- 🧪 Chưa đo: sinh B **từ A** bằng chip để giữ chất liệu. `A1-14a`/`A1-14` đang sinh độc lập.
+
+**6. Chỗ nối.** Không mở lại luật cấm định vị tương đối (SHOT-LIST luật 2, SPEC-v2 §3):
+
+| Vẫn cấm | Được |
+|---|---|
+| hai vật **rời** đặt cạnh nhau: *"a pistol next to a hat"* | hai vật **đã nối thành một**: *"the rope tied around the radiator pipe"* |
+| bố cục phụ thuộc khoảng cách giữa hai thứ | chỗ nối là **chủ thể** của ảnh |
+
+A1-15 cũ là cái lò sưởi trơ trọi, trong khi câu *"tied one end to a radiator"* nói về **cái nút buộc**.
+
+**7. Hành động nối.**
+- Cách tìm: đọc liền hai shot kề nhau, hỏi *"nhân vật đã làm gì để đi từ ảnh trước sang ảnh
+  sau?"*. Trả lời được bằng một động từ mà không ảnh nào cho động từ đó → **có thể** thiếu shot.
+- Viết bằng hai chip trong một câu — nhân vật và vật: *"draw the same man as in @Reles…
+  climbing down @Knotted Bed Sheet Rope…"*.
+- 🔴 **Giới hạn bằng chứng, bắt buộc:** chỉ bổ sung hành động **được nguồn xác nhận**, hoặc
+  **nằm trong giả thuyết / lời khai mà lời kể đã nêu rõ**. **Không lấp một khoảng trống thật sự
+  chưa biết.** Với chuyện **mất tích hay án chưa giải**, chính khoảng trống đó là điều câu chuyện
+  giữ — vẽ nó ra là bịa. A1 qua được nhờ chữ *"**Officially**, he had knotted bed sheets"*:
+  `A1-15b` là ảnh minh hoạ **giả thuyết chính thức**, hậu kỳ dùng kèm ngữ cảnh đó; còn chi tiết
+  *"20 feet away"* đứng sau chữ *"but"* là **nghi vấn**, không phải kết luận loại trừ.
+
+**8. Hành vi nói.**
+1. Ảnh là **người đang nói**, không phải vật được nói tới. `A1-18` cũ là bó tiền: minh hoạ
+   được *"$50,000"* nhưng mất hẳn *"boasted"*.
+2. Động từ hàm ý **người nghe** (*boasted to, confessed to, told, begged*) thì vẽ người nghe. Khoe
+   mà không ai nghe thì không còn là khoe.
+3. Vẽ **hành vi nói**, không vẽ **nội dung lời nói**. Vẽ Luciano đang khoe thì được — lời kể xác
+   nhận việc khoe. Vẽ cảnh trao tiền thì không — đó là điều chỉ có trong lời khoe.
+4. Vật được nói tới giữ làm **phần tử rời** để hậu kỳ đặt vào, không nhét vào tay nhân vật.
+5. 🧪 **Tuỳ chọn, chưa đo:** cảnh nói dễ đứng yên, **có thể** thêm 3-4 khung tư thế nối tiếp để
+   hậu kỳ cắt thành chuyển động (chữ của Tú là *"có thể thêm"*). Hai khâu: **khung gốc** một mình
+   sinh từ asset → các **biến thể** gọi chip **chính khung gốc**, chỉ đổi cử chỉ. Không sinh biến
+   thể từ asset (đã đo: asset giữ được mặt nhưng khung hình đổi giữa hai lần sinh), không sinh từ
+   ảnh nhóm (kéo người khác sang). Ví dụ `A1-18c` → `A1-18d`, `A1-18e`.
+
+👉 Quan hệ với bảng 4c (*"Ai đó nói/khai → bóng thoại, chữ nguyên văn"*): không mâu thuẫn. Bóng
+thoại và chữ là hậu kỳ; người đang nói là phần Nano Banana phải vẽ.
+
+#### 4d-9. Bốn điểm cơ chế đi kèm
+
+**a. Shot `mention` nhận phần `styleByKind`** — builder nối vào cuối câu (vá 2026-09-13). Trước
+đó câu mention bỏ qua `styleByKind`, nên người **mới** được đưa vào câu (cảnh sát áp giải, bạn
+tù) — không có asset nào mang luật mặt đơn giản — sẽ ra mặt vẽ chì tả thực.
+
+**b. Cảnh từ hai người trở lên thì `kind: "group"`**, kể cả khi một người đến từ asset. Luật
+`character`/`figure` có câu *"Only one person in the image"* — nối vào cảnh áp giải là mâu thuẫn
+trực tiếp.
+
+**c. 🔴 Khối style theo `kind` tả HÌNH THỨC, không tả TRẠNG THÁI.** Bản cũ ghi *"a simple line
+for the mouth"*, chỏi thẳng với *"laughing with his mouth open"* trong cùng prompt. Tú chỉ chốt
+miệng **đơn giản**; chữ "một nét" là do Claude tự thêm. Sửa thành *"a simple mouth drawn with a
+single line, or a simple open shape when he is talking or laughing"*. Mặt đơn giản là hình thức;
+miệng khép là trạng thái — và trạng thái thuộc về từng cảnh.
+
+**d. 🧪 Gọi tên ảnh neo trong câu mention — chưa đo.** `noAnchors` chỉ chặn runner **tự đính**
+ảnh không rõ vai; nó không chặn việc **gọi tên** ảnh neo ngay trong câu (cách Tú tự prompt,
+`A1-11`). Shot mention đưa phần tử **mới** vào thì **có thể** thêm *"in the same drawing style as
+{{<ảnh neo>}}"*, chọn theo **loại của phần tử MỚI**, không theo `kind` của cả shot — nhân vật đã
+có asset thì phong cách đã đi theo chip của chính nó:
+
+| Phần tử MỚI trong câu | Ảnh neo gọi tên |
+|---|---|
+| đồ vật, công trình, biểu tượng | `01-pyramid-place.png` |
+| một người | `02-doctor-figure.png` |
+| nhiều người | `03-five-men-group.png` |
+
+**Câu có nhiều loại phần tử mới (D07 — cách xử lý chưa review):** tính **người trước, vật sau**.
+Có người mới thì chọn theo số người mới; vật mới chỉ là chỗ đứng/ngồi/khung cảnh của người
+(giường, cửa sổ, lan can tàu) thì **không quyết định** ảnh neo. Không có người mới và vật mới chỉ
+là khung cảnh thì **không gọi ảnh neo**. Lý do có số đo: ở mẻ 19 ảnh A1, chỗ lệch phong cách nằm
+ở **mặt người** (`A1-06` ra mặt chì tả thực, `A1-04` tai có bóng chì), còn vật xa hẳn nội dung
+ảnh neo vẫn ra đúng nét (`A1-03` dùi đá, `A1-11` khách sạn). Ví dụ: `A1-18b` có hai bạn tù mới +
+giường + cửa sổ → `03`.
+
+⚠️ Hai rủi ro **đã đo được** khi gọi ảnh neo: ảnh neo **lẫn nội dung** sang ảnh ra (tia nắng của
+`01-pyramid-place.png` từng hiện trong ảnh khách sạn → shot gọi `01` thêm `no sun`), và
+`03-five-men-group.png` đính vào shot một người ra **ba bản sao** → chỉ gọi `03` khi phần tử mới
+thật sự là nhiều người.
+
+#### Rà bộ shot trước khi chốt — 11 câu hỏi
+
+Chạy trên **cả case**, sau khi phân shot và trước khi viết prompt. Ghi câu trả lời vào `_doc`
+của `.shots.json`, kể cả những chỗ **quyết định không thêm** — đó là thứ người review cần soi.
+
+1. Vật nào tác động lên cơ thể mà hậu kỳ cần tách? (luật 1)
+2. Mỗi bước ngoặt của nhân vật đã có ảnh **chính nhân vật** ở trạng thái mới chưa? (2)
+3. Mỗi tên người có thật kèm hành động đã có ảnh riêng chưa, tư liệu đúng tuổi chưa? (3)
+4. Tên tổ chức / nơi chốn nào có thể là tên của thời kỳ khác, hoặc đặt sai chỗ? (4)
+5. Vật nào được làm thành vật khác — đã có trạng thái gốc chưa? (5)
+6. Hai vật nào gắn vào nhau — ảnh đã thể hiện chỗ nối chưa? (6)
+7. Đọc liền từng cặp shot kề nhau: có chỗ nhảy cóc nào mà **nguồn hoặc lời kể xác nhận** hành
+   động ở giữa không? (7)
+8. Mỗi động từ nói đã có người nói, và người nghe nếu cần, chưa? (8)
+9. 🔴 Có ảnh nào đang vẽ thành sự thật điều mà lời kể chỉ nói là *"was said to"*,
+   *"officially"*, *"wrote that"*, *"it meant"* — hoặc điều **không ai biết** không? (3, 7, 8)
+10. Với **từng ứng viên** (từ 8 luật và bảng 10 ô của 4d-bis): đã có ảnh nào cho người xem đọc ra **cùng
+    thông tin** và gánh được **cùng thao tác dựng** chưa — bất kể ở câu nào? Có thì ghi ♻️ dùng lại, không tạo
+    mới; ghi cả những ứng viên đã bỏ và lý do. (4d-bis phần 3)
+11. Có nét mặt hay dáng người nào truyền **tâm trạng cụ thể** mà lời kể hoặc nguồn không nói? Có thì đổi về
+    trung tính; shot đã tạo ảnh thì đổi `outName` để tạo lại. (4d-bis phần 2, "Nét mặt")
+
+### 4d-bis. 🔑 MỖI CÂU → NHIỀU ẢNH NHẤT CÓ THỂ — 10 ô ứng viên + bộ lọc trùng chức năng (2026-09-13)
+
+> **Nguồn:** Tú yêu cầu *"cập nhập lại skill tạo prompt sao cho nhiều ảnh nhất có thể cho mỗi câu"*, kèm
+> ví dụ: câu *"In 1587 … landed on a small island in what would later become North Carolina…"* thêm **thuyền
+> cập bờ cát** + **bản đồ North Carolina**; câu *"It was England's second attempt at a lasting colony in the
+> New World"* thêm **cờ nước Anh** + **ảnh cho "in the New World"**. Qua 3 vòng review Claude/Codex/Gemini,
+> luồng `coordination/threads/img-skill-nhieu-anh-moi-cau/` **settled** (D01–D09 chốt). Bản nháp đầy đủ kèm lý
+> do từng quyết định: `coordination/drafts/img-skill-nhieu-anh-moi-cau.md` (v3). **Ví dụ áp dụng:**
+> `narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json` (`C1-01b`, `C1-01c`,
+> `C1-03a`, `C1-03b`, `C1-18`) và bảng áp thử 29 câu ở mục 6 bản nháp.
+>
+> Mục này **thay** đoạn "Điều kiện chặn" cũ của 4d. Bằng chứng: lá cờ Anh — ví dụ đầu tiên của Tú — chính là
+> phần tử đã bị loại theo điều kiện đó (`case-1.shots.json` → `_raSoatSkill4d.10`), dù `kind: "symbol"` có sẵn từ trước.
+>
+> 🧪 Chưa sinh ảnh nào cho bản đồ, cờ, địa cầu, thuyền: cách viết ở phần 4 **đã qua review, chưa đo**.
+
+#### 1. Bảng 10 ô — danh mục ỨNG VIÊN, chưa phải shot
+
+Viết câu ra, gạch dưới từng cụm, đi qua 10 ô. Cụm rơi vào một ô là **một ứng viên**; ứng viên thành shot khi
+qua ba bước ở phần 3. Shot có `cue` là chính cụm đó; mọi shot của cùng một câu chung `at` (**chỉ** kịch bản
+trong `narration-scripts/` — SPEC-v2 §5b-bis).
+
+| # | Ô | Câu hỏi | Thành ảnh gì | Ví dụ case 1 |
+|---|---|---|---|---|
+| 1 | **Người** | Ai có mặt hoặc được nhắc — kể cả gián tiếp (*"White's daughter"*)? | `character` / `figure` / `group` | `C1-01`, `C1-02` |
+| 2 | **Hành động** | Động từ chính **mà lời kể nói ra** là gì? | nhân vật đang làm đúng việc đó | `C1-06` van nài |
+| 3 | **Vật ngầm trong động từ** | Động từ cần vật gì mới xảy ra được? (*landed* → thuyền; *carve* → dao) | `object` | `C1-01b` thuyền cập bờ |
+| 4 | **Vật được gọi tên** | Danh từ nào là một vật? | `object` | `C1-05` thùng rỗng |
+| 5 | **Nơi chốn** | Chuyện xảy ra ở đâu, nhìn thấy được? | `place` | `C1-03` làng |
+| 6 | **Địa lý** | Có tên vùng, đảo, nước, *"off the coast of"*, *"near"*? | **bản đồ**, tên địa danh ghi thẳng trong ảnh (4a) | `C1-01c` bản đồ North Carolina |
+| 7 | **Quốc gia / tổ chức / phe** | Có nước, hạm đội, tổ chức được gọi tên? | **cờ có mẫu được tài liệu xác nhận** (4b) | `C1-03a` cờ St George |
+| 8 | **Cụm khái niệm** | Có cụm trừu tượng (*"in the New World"*, *"under distress"*)? | **vật tượng trưng** (4c) | `C1-03b` địa cầu |
+| 9 | **Trạng thái nối / quan hệ** | 8 luật mục 4d | theo từng luật | `C1-15` White trở lại |
+| 10 | **Con số, ngày tháng** | Có số người, năm, khoảng thời gian? | **chữ hậu kỳ**, không vẽ — trừ khi con số có hình (số người → ảnh nhóm) | 1587, *"three full years"* |
+
+Không có trần số ảnh mỗi câu. Chi phí đo được: case 1 Roanoke từ 32 lên **~46 shot**; mẻ case 1 chạy
+**~75–97 giây/shot**. Trần lượt tạo mỗi ngày của tài khoản PRO chưa đo.
+
+#### 2. Giới hạn cứng — không ô nào được vượt
+
+| Giới hạn | Ví dụ bị chặn ở case 1 |
+|---|---|
+| **Bằng chứng** (luật 7): không vẽ khoảng trống chưa biết | Virginia Dare lúc 3 tuổi; dân thuộc địa trên đảo Croatoan; cái chết của White |
+| **Dàn dựng**: không thêm **tâm trạng, hành động, dấu vết, hình thức cụ thể** mà lời kể hoặc nguồn không xác nhận | White bực bội nhìn biển; thư niêm sáp đỏ; gỗ nhà xếp đống; dân vẫy theo tàu; nhà khảo cổ đang đào |
+| **Nét mặt**: **trung tính là mặc định**. Nét mặt hoặc dáng người truyền **một tâm trạng cụ thể** (lo lắng, sững sờ, buồn bã, háo hức, mỉm cười, vai rũ) cần lời kể hoặc nguồn — **kể cả khi chỉ là chi tiết phụ**. Không cần nguồn cho từng nét mắt, miệng trung tính | bỏ ở 9 shot; **giữ** nụ cười hy vọng `C1-21` vì lời kể nói *"that looked like good news"* |
+| **Đồng nhất hiện vật**: dùng lại một asset để **thống nhất hình vẽ** không được khẳng định là **cùng hiện vật lịch sử** | `C1-18` cùng hình thuyền với `C1-01b`, không nói là cùng chiếc |
+| **Mức chắc chắn** (câu rà 9): không vẽ *"was said to"*, *"it meant"*, *"wrote that"* thành sự thật | "da nhạt mắt xám"; xác tàu đắm (*"refused to **risk** a wreck"*) |
+| **Niên đại** (luật 4): áp cho cả **cờ** và **bản đồ** | cờ Anh 1587 không phải Union Jack |
+| **Mẫu cờ phải có tài liệu cho đúng vai trò** | cờ Tây Ban Nha 1588 — bỏ ô |
+| **Tư liệu đối chiếu**: vật / nơi / bản đồ thuộc thời kỳ cụ thể phải có ảnh đối chiếu **trước khi chạy** (SPEC-v2 §5c) | `C1-01b`, `C1-01c`, `C1-03b` đang mang `choTuLieu` |
+| **Vật tượng trưng không được đọc thành đạo cụ của câu chuyện** | địa cầu không bao giờ sinh chung với người |
+| **Không chữ trong ảnh** (6i) — **trừ bản đồ** | cờ, địa cầu là loại model **rất hay tự điền chữ** → câu cấm tường minh. Bản đồ **được** có chữ tên địa danh (Tú chốt 2026-09-13: chữ trong ảnh bản đồ được chấp nhận): ghi nguyên văn tên trong prompt, soi chính tả (4a) |
+| **Cổng kiếm tiền YouTube** (11e) | bộ xương |
+| **Tên riêng không vào `outName` đường `draw`** (SPEC-v2 §5d) | *"North Carolina"* trong tên card có thể thành chữ trong ảnh |
+
+#### 3. Thứ tự quyết định
+
+**Bước 1 — giới hạn cứng (phần 2).** Vướng là loại.
+
+**Bước 2 — 8 luật mục 4d.** Luật nào **bắt thêm** thì ứng viên đó thành shot. Cột *"Không áp khi"* của 8 luật
+đã sửa theo mục này: luật 2 → *"trùng chức năng"*; luật 3 bỏ vế *"hình khác đã gánh"*; luật 5 bỏ ngoại lệ.
+
+**Bước 3 — ứng viên từ bảng 10 ô qua bộ lọc TRÙNG CHỨC NĂNG.** Một ứng viên **trùng chức năng** với một ảnh đã có
+khi ảnh đó **cho người xem đọc ra cùng thông tin** và **đảm nhiệm được cùng thao tác dựng** — **bất kể nằm ở cụm hay
+câu nào**. Khác cụm **không** tự động cần ảnh mới: ảnh sẵn có gánh được thì ghi dùng lại (♻️) vào `note`. Chỉ tạo
+ảnh mới khi cần **thêm nội dung hoặc trạng thái chưa có**.
+
+- "Na ná" (cùng nhân vật, tư thế gần) không tự là trùng, nhưng **đổi góc không tạo ra chức năng mới**.
+- **Giới hạn của việc dùng lại:** không dùng lại khi nó khiến người xem đọc **hai thứ khác nhau thành một** (giới hạn
+  "Đồng nhất hiện vật").
+
+| Cặp | Thông tin người xem đọc ra | Kết luận |
+|---|---|---|
+| cờ `C1-03a` (*"England's"*) / làng `C1-03` (*"a lasting colony"*) | nước nào / nơi họ ở | **giữ cả hai** — ví dụ của Tú |
+| bao lương thực rỗng / thùng rỗng `C1-05` | hết lương | **trùng** → bỏ bao |
+| thân cây bóc vỏ / cột `C1-13` (*"a tree or post"*) | chỗ khắc tên | **trùng** → bỏ thân cây |
+| mây bão / tàu trong bão `C1-23` | có bão | **trùng** → bỏ mây |
+| cờ `C1-03a` / câu *"turn back for England"* (khác câu) | nước Anh | **trùng** → ♻️ dùng lại cờ |
+| bản đồ đảo Hatteras / bản đồ Roanoke–Croatoan (khác câu) | vị trí đảo — NPS xác định Croatoan là Hatteras ngày nay | **trùng** → ♻️ dùng lại bản đồ |
+| đảo nhỏ Roanoke nhìn từ biển / `C1-22` đảo Croatoan | **hai đảo khác nhau** | **không dùng lại** — sẽ đọc thành cùng một đảo |
+| đống thùng tiếp tế (*"for more supplies"*) / — | thứ họ thiếu | không trùng → giữ |
+
+#### 4. Cách viết bốn loại ảnh mới
+
+**4a. Bản đồ (ô 6).**
+- **Vai trò:** bản đồ **định vị cho người xem hôm nay**, không phải bản đồ đương thời. Lời kể nói *"what would
+  **later become** North Carolina"* → ranh giới bang hiện đại được phép. Bản đồ minh hoạ sự kiện trong năm câu
+  chuyện (tàu dạt tới Azores năm 1590) thì **không** vẽ ranh giới đời sau.
+- 🗺️ **CHỮ TRONG ẢNH BẢN ĐỒ: ĐƯỢC** (Tú chốt 2026-09-13: chữ trong ảnh bản đồ được chấp nhận — ghi đè bản "vẽ trơn, không chữ, nhãn
+  làm hậu kỳ" đã qua luồng review). Tên địa danh nằm thẳng trong ảnh bản đồ. Đây là **ngoại lệ duy nhất** của mục 6i;
+  cờ, địa cầu và mọi vật khác vẫn không chữ.
+  - Rủi ro cũ không mất đi: model **viết sai chính tả** hoặc bịa chữ (6i). Giảm bằng cách chỉ ghi **tên lời kể nhắc**
+    (thêm tên biển / nước lân cận nếu cần để định hướng), **ghi nguyên văn từng tên trong ngoặc kép** ngay trong
+    prompt, chữ in hoa đơn giản, câu *"spell every name exactly as written here"*, và **cấm tiêu đề** (*"no title"*) —
+    đường `draw` gõ tên card vào prompt, tên đó có thể thành tiêu đề trên bản đồ.
+  - `canSoi` của shot bản đồ **bắt buộc** ghi soi chính tả từng tên. Sai → tạo lại, hoặc Tú sửa ở hậu kỳ.
+  - Mũi tên, chấm đánh dấu, thanh đo vẫn là hậu kỳ.
+- 🔴 **Bắt buộc có bản đồ tham chiếu hình dạng** — gom bằng skill `case-reference-images` §2. **Có chữ cũng được**,
+  nhưng ưu tiên bản đồ **nhãn tiếng Anh in rõ, ít chữ**, vì model có thể chép chữ từ ảnh tham chiếu. Tránh bản đồ
+  **chữ viết tay cổ, chữ trang trí** (bản đồ John White 1585) — model chép thành chữ vô nghĩa. Chưa có bản đồ tham
+  chiếu → shot mang `choTuLieu`, **không chạy**; `draw` bằng chữ lúc đó chỉ là bản nháp.
+- **Cách sinh: chip `@`** lấy bản đồ tham chiếu làm hình khối (SPEC-v2 §6, phần mở rộng bản đồ):
+
+  ```
+  draw a map shaped like {{<bản đồ tham chiếu>}} with the same style as {{01-pyramid-place.png}}, fill <vùng> with one flat red colour and label it "<TÊN IN HOA>" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows
+  ```
+
+  Lý do dùng chip như khách sạn `A1-11`: mô tả bằng chữ không neo được hình khối, bờ biển sai là nhận ra ngay.
+- `kind: "place"`.
+
+**4b. Cờ / biểu tượng quốc gia (ô 7).**
+- `kind: "symbol"`. **Tả hình học, không gọi tên cờ**: *"a plain white flag with one straight red cross running the full
+  height and the full width"* — gọi *"the English flag"* dễ kéo về Union Jack, thứ model thấy nhiều nhất.
+- 🔴 **Kiểm năm của lá cờ.** Có nguồn: cờ Union đầu tiên có từ **1606** (tuyên cáo của James I); trước đó tàu Anh treo
+  **chữ thập đỏ St George** — Flag Institute, *Union Flag history*.
+- 🔴 **Chỉ vẽ cờ khi có mẫu được tài liệu xác nhận cho đúng vai trò** ô cần: *biểu tượng quốc gia*, *cờ hạm đội* và
+  *cờ chỉ huy* là ba vai khác nhau (nghiên cứu cờ Armada 1588 của Pedro Luis Chinchilla phân biệt chúng và coi một số
+  mẫu là suy luận). Không có mẫu → **bỏ ô**, ghi lý do. Cùng lý do: đừng tự thêm dấu thập lên buồm tàu Armada.
+
+**4c. Cụm khái niệm (ô 8) — vật tượng trưng.**
+- Chọn **một vật cụ thể**; "người xem đọc ra ngay" là **mục tiêu phải kiểm khi ra ảnh**, không phải điều đã biết.
+- Ba điều bắt buộc:
+  1. **Không bao giờ sinh chung với người** hay đặt trong cảnh có nhân vật — vẽ đứng riêng trên nền trắng.
+  2. `intent` ghi rõ **VẬT TƯỢNG TRƯNG** và cụm nó đứng cho.
+  3. `note` nhắc hậu kỳ tách vật khỏi cảnh có nhân vật (khung hoặc nhãn minh hoạ). Dựng thế nào là việc của Tú.
+- Ví dụ: *"in the New World"* → quả địa cầu thế kỷ 16, **Bắc Mỹ và Nam Mỹ nằm chính giữa mặt cầu**, chỉ một mép châu
+  Âu–châu Phi ở rìa. Không chọn biểu tượng mơ hồ (bình minh, cánh cửa mở).
+
+**4d. Vật ngầm trong động từ (ô 3).**
+- Chọn vật **đúng cơ chế của động từ**: *"landed"* với tàu thế kỷ 16 là **thuyền nhỏ cập bãi** — tàu lớn neo ngoài khơi.
+  Thuyền mà mép dưới chạm cát không vi phạm SHOT-LIST luật 2: tách "thuyền" với "bãi" thì mất nghĩa "cập bờ".
+- Vật ngầm quay lại ở câu sau → tạo asset ngay lần đầu để **thống nhất hình vẽ**, không khẳng định cùng hiện vật.
+
+#### 5. Trường mới trên shot và bước duyệt
+
+- `anhSeRa` — mô tả tiếng Việt ảnh prompt **sẽ vẽ ra**; `anhSeRaHash` — dấu vân tay prompt lúc viết mô tả;
+  `canSoi` — rủi ro cần soi; `choTuLieu` — lý do shot chưa được chạy. Bảng trường: SPEC-v2 §5c.
+- Trước khi chạy, sinh bản review cho Tú duyệt (prompt nguyên văn + "Ảnh sẽ ra" + trạng thái trên Flow):
+
+  ```bash
+  python scripts/review_shots.py <file>.shots.json --flow-status <json tra Flow>
+  ```
+
+  Bản review báo **"Prompt đã đổi sau khi viết mô tả này"** khi `anhSeRaHash` lệch, và **"🔁 cần tạo lại"** khi shot
+  đã đổi `outName` mà ảnh cũ trên Flow mang tên cũ.
+
 ## 5. Character
 
 - Mô tả **chỉ gồm** những mục trong `CHARACTER_DESCRIPTION_CHECKLIST`
@@ -260,6 +613,28 @@ rõ phần còn lại là nền phẳng trống.
 - **Ảnh chụp thật của nhân vật có thật**: chỉ dùng để **soi bằng mắt rồi viết
   ra mô tả chữ**. KHÔNG đính làm reference thứ 2 — pipeline chỉ đính duy nhất
   `reference-character.jpeg` (ảnh phong cách).
+- 🔴 **NGOẠI LỆ CHO NƠI CHỐN ĐẶC BIỆT (Tú chốt 2026-09-12):** công trình **có
+  thật** thì ĐƯỢC đính thẳng ảnh chụp thật lên Flow. **Cách viết đúng là chip `@`
+  xen giữa câu**, đúng cách Tú tự prompt:
+
+  ```
+  draw a @<ảnh chụp thật> with the same style as @<ảnh neo>, no lettering, no signs, no people
+  ```
+
+  Khai bằng trường `mention` của shot, chỗ chèn chip là `{{tên ảnh}}` (SPEC-v2
+  mục 5d). Câu này TỰ NÓI ảnh nào giữ vai hình khối và ảnh nào giữ vai nét vẽ —
+  đó là chỗ hơn hẳn cách đính nhiều ảnh qua bảng chọn rồi tả style bằng chữ, vì
+  cách đó buộc model tự đoán vai và nó đoán sai (lần thì lấy nét của ảnh chụp ra
+  bản vẽ kiến trúc, lần thì vẽ lại cả CHỮ trên biển hiệu trong ảnh).
+  Vì sao mở ngoại lệ: A1-11 tả khách sạn Half Moon bằng **chữ rất chi tiết và
+  đúng** (thân gạch chữ nhật thu bậc, tháp chuông kiểu Tây Ban Nha) mà vẫn ra
+  một toà nhà **có vòm đối xứng** không liên quan. Chữ không neo được hình khối
+  kiến trúc; ai biết công trình đó sẽ nhận ra ngay là sai.
+  **Giới hạn:** chỉ nơi chốn, **KHÔNG áp cho người** (luật trên giữ nguyên), và
+  chỉ nơi chốn **đặc biệt/nhận ra được** — phòng chung chung (`A1-08b` toà án ốp
+  gỗ) thì tả chữ là đủ. Shot đó phải dùng khối style riêng ép nét vẽ tay, nếu
+  không ảnh chụp sẽ kéo kết quả về phía ảnh thật: xem `style` của A1-11 trong
+  `image-prompts/A1.tu-anchors.shots.json`.
 - **Ảnh người dùng gửi trong hội thoại làm "mẫu bố cục"** (vd screenshot từ 1
   video kênh khác): xử lý y hệt — **soi bằng mắt, tả lại bằng chữ trong
   `description`**, không đính vào prompt và không lưu vào repo. Tả bằng thứ đo
@@ -272,6 +647,51 @@ rõ phần còn lại là nền phẳng trống.
 - **Nhân vật phụ**: KHÔNG gộp nhiều vai vào 1 asset chung nếu họ có thể xuất
   hiện **cùng khung hình** (sẽ trông như nhân bản 1 người). Chỉ dùng asset
   chung cho đám đông nền không cần nhận diện. Phân vân thì **hỏi người dùng**.
+
+### 5d-bis. NHÂN VẬT: NỬA THÂN TRÊN + MẶT ĐƠN GIẢN, TOÀN THÂN THÌ SINH TỪ ASSET
+
+⚠️ **Mục này đã bị Tú lật NGAY TRONG NGÀY 2026-09-12.** Bản sáng ghi *"nhân vật
+LUÔN đủ từ đầu đến chân, không có ngoại lệ"*; chiều cùng ngày Tú chốt lại
+**CHẤP NHẬN nhân vật nửa thân trên**. Ghi cả hai để phiên sau đọc không làm ngược.
+
+**Luật hiện hành, ba phần:**
+
+1. **Shot tạo asset nhân vật vẽ NỬA THÂN TRÊN** (`seen from the chest up`). Không
+   ép toàn thân nữa — câu ép đó đã bỏ khỏi `styleByKind` cho `character`/`figure`
+   (vẫn giữ cho `group`, vì shot nhóm là cấu hình duy nhất cho ra tỷ lệ cơ thể
+   đúng: 6,6 đầu, chân 47%).
+2. **MẶT PHẢI ĐƠN GIẢN** — Tú chốt cùng lúc:
+
+   ```
+   Simple face: the eyes are small dots, a simple short nose, a simple line for
+   the mouth, no shading and no modelling on the face, drawn like the faces in
+   the reference drawings.
+   ```
+
+   Đây không chỉ là chuyện phong cách: **mặt càng ít chi tiết thì càng dễ dùng
+   lại**, vì có ít thứ để trôi. Xem phần 3.
+3. **Cảnh toàn thân thì SINH TỪ ASSET, không viết lại mô tả.** Câu dùng:
+
+   ```
+   draw the same man as in @<tên asset>, keep his face exactly the same, now
+   standing and seen full length from head to shoes, wearing the same overcoat
+   over dark wool trousers and black leather shoes, arms at his sides, only one
+   person, plain white background
+   ```
+
+**ĐO RỒI, hai kết quả đều tốt** (`output/face-compare.png`, `output/reuse-compare.png`):
+
+- **Mặt GIỮ ĐƯỢC.** Cùng khối mặt bạnh, cùng nếp tóc gợn hất ngược, cùng chân tóc
+  lùi ở thái dương, cùng cặp lông mày thanh ngang đậm, cùng mắt hai điểm, cùng
+  mũi và miệng một nét. Lệch nhỏ: mặt bản toàn thân hơi dài hơn, tóc bớt dày một
+  chút. Ở cỡ hiển thị trong video thì đọc ra cùng một người.
+- **Và tỷ lệ cơ thể TỰ TỐT LÊN: 5,8 đầu** — tốt nhất trong 8 lần đo, trong khi
+  prompt **không hề** nhắc chữ "đầu" hay tỷ lệ nào. Bảy lần trước ép bằng chữ, ép
+  bằng tỷ lệ khung, đổi ảnh neo đều nằm 4,0-5,2. 👉 **Muốn người đứng một mình
+  đúng tỷ lệ thì đừng tả lại, hãy sinh ra từ asset đã có.**
+
+⚠️ Cảnh **úp mặt / quay lưng** (A1-13) KHÔNG kiểm được dung mạo — không thấy mặt.
+Đừng lấy cảnh đó làm bằng chứng "asset dùng lại được".
 
 ### 5e. 🔴 ĐẢO NGƯỢC 2026-09-09 — GIỜ PHẢI tả QUẦN, GIÀY, BÀN CHÂN
 
@@ -690,7 +1110,11 @@ hiên) mà khác tông là lộ ngay khi cắt qua lại. Đã dính thật: t�
 Sinh mới sẽ ra cầu thang/đồ đạc "na ná" nhưng lệch vị trí — đúng thứ mà cặp cảnh
 cắt qua lại sẽ phơi ra.
 
-### 6i. MỌI THỨ CÓ CHỮ ĐỀU ĐỂ TRỐNG — không có ngoại lệ
+### 6i. MỌI THỨ CÓ CHỮ ĐỀU ĐỂ TRỐNG — ngoại lệ duy nhất: BẢN ĐỒ
+
+> 🗺️ **Ngoại lệ bản đồ (Tú chốt 2026-09-13: chữ trong ảnh bản đồ được chấp nhận):** ảnh bản đồ **được** có chữ tên địa danh ngay trong
+> ảnh. Cách giảm sai chính tả và cách soi: mục 4d-bis phần 4a. Mọi vật khác — bia, biển hiệu, mặt báo, tiền, cờ,
+> địa cầu, cột khắc chữ — vẫn theo luật dưới đây.
 
 Model **không viết được chữ**: ra ký tự méo mó, sai chính tả, hoặc chữ Hán vô
 nghĩa. Đã dính 3 lần liên tiếp (bảng tưởng niệm case 4; bài vị + băng vải tang lễ

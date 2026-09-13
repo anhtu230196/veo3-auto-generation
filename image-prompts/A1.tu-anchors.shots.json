@@ -1,0 +1,320 @@
+{
+  "_doc": "Bien the cua A1.newstyle.shots.json cho ANH NEO CUA TU (input/style-ref/_anchors). Khac hai cho: (1) khong con asset 'style-anchor' tu sinh, nen shots khong khai useAsset — anh neo do runner dinh vao qua --anchors; (2) styleBlock chi tro ve anh reference, khong ta phong cach bang chu (ly do: README trong _anchors).",
+  "video": {
+    "id": "nRiezhIOHH0",
+    "title": "How History's Deadliest Hitmen Died",
+    "transcript": "input/style-ref/brofessor-stein/nRiezhIOHH0/transcript.md"
+  },
+  "styleBlock": "Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+  "assets": [
+    {
+      "id": "char-reles",
+      "flowAssetName": "Reles Ref Broad Face Simple"
+    }
+  ],
+  "segments": [
+    {
+      "id": "A1",
+      "title": "Abe Reles",
+      "start": "0:00",
+      "end": "1:19",
+      "refs": "image-prompts/refs/A1/",
+      "shots": [
+        {
+          "id": "A1-01",
+          "at": "0:00",
+          "cue": "the top freelance killer",
+          "kind": "character",
+          "outName": "Reles Ref Broad Face Simple",
+          "draw": "A man in his early thirties seen from the chest up. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark and wavy, swept straight back with no parting, slightly receding at the temples. He has very thick dark eyebrows, a broad nose and is clean shaven. He is wearing a dark herringbone tweed overcoat with very wide lapels, a white shirt and a dark diagonally striped tie.",
+          "refs": [
+            "01-reles-portrait-loc__codex.jpg",
+            "04-reles-c1935-commons__claude.jpg",
+            "05-reles-mugshot-1940-jjay__codex.jpg",
+            "06-reles-fulllength-1933-jjay__codex.jpg"
+          ],
+          "invented": [],
+          "note": "SHOT TAO ASSET nhan vat. Nua than tren (Tu chot 2026-09-12). Mat don gian de moi canh sau dung lai duoc ma khong troi dung mao.",
+          "produces": "char-reles"
+        },
+        {
+          "id": "A1-02",
+          "at": "0:05",
+          "cue": "the enforcement arm",
+          "kind": "group",
+          "outName": "Men In Suits",
+          "draw": "A group of men in 1930s suits standing shoulder to shoulder. They are wearing sharp, tailored wool suits in muted colors like charcoal, navy, and brown, with wide lapels and padded shoulders. They wear fedora hats tilted slightly down, and their expressions are stern and menacing. They wear matching suit trousers and black leather shoes.",
+          "invented": [
+            "group of men in 1930s suits standing shoulder to shoulder",
+            "sharp, tailored wool suits in muted colors like charcoal, navy, and brown",
+            "wide lapels and padded shoulders",
+            "fedora hats tilted slightly down",
+            "stern and menacing expressions"
+          ]
+        },
+        {
+          "id": "A1-03",
+          "at": "0:09",
+          "cue": "preferred an ice pick",
+          "kind": "object",
+          "outName": "Ice Pick Weapon",
+          "draw": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point.",
+          "refs": [
+            "07-ice-pick-awl-1930s-pemberton__codex.jpg",
+            "08-ice-pick-modern-commons__gemini.jpg"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-04",
+          "at": "0:12",
+          "cue": "Driven through the ear",
+          "kind": "object",
+          "outName": "Ear Close Up",
+          "draw": "A close up view of a human ear seen from the side, illuminated by harsh, dramatic lighting that highlights the curves of the cartilage and the pale skin.",
+          "invented": [
+            "close up view of a human ear seen from the side",
+            "illuminated by harsh, dramatic lighting",
+            "pale skin"
+          ]
+        },
+        {
+          "id": "A1-05",
+          "at": "0:17",
+          "cue": "coroners write it off",
+          "kind": "figure",
+          "outName": "Doctor Writing",
+          "draw": "A doctor wearing a crisp white lab coat over a formal shirt and tie, holding a silver clipboard. He is writing on a blank unlined sheet of white paper with a classic fountain pen. No text on the paper. The lab coat reaches his knees; below it he wears dark trousers and black leather shoes.",
+          "invented": [
+            "doctor wearing a crisp white lab coat over a formal shirt and tie",
+            "holding a silver clipboard",
+            "writing on a blank unlined sheet of white paper",
+            "classic fountain pen"
+          ]
+        },
+        {
+          "id": "A1-06",
+          "at": "0:22",
+          "cue": "30 murders",
+          "kind": "object",
+          "outName": "Mugshot Grid",
+          "draw": "A grid of small vintage black-and-white mugshot portraits of different men in 1930s clothing. Below each face is a dark, blank wooden name board with no text or numbers on it.",
+          "invented": [
+            "grid of small vintage black-and-white mugshot portraits of different men",
+            "1930s clothing",
+            "dark, blank wooden name board with no text or numbers below each face"
+          ]
+        },
+        {
+          "id": "A1-07",
+          "at": "0:26",
+          "cue": "facing the electric chair",
+          "kind": "object",
+          "outName": "Empty Electric Chair",
+          "draw": "An empty electric chair made of heavy, dark stained oak wood. It has thick leather straps hanging loosely from the armrests and legs, and a complex metal headpiece with coiled black wires attached to the high backrest.",
+          "invented": [
+            "empty electric chair made of heavy, dark stained oak wood",
+            "thick leather straps hanging loosely from the armrests and legs",
+            "complex metal headpiece with coiled black wires attached to the high backrest"
+          ]
+        },
+        {
+          "id": "A1-08",
+          "at": "0:29",
+          "cue": "sent seven senior mobsters",
+          "kind": "character",
+          "outName": "Man Swearing Oath",
+          "draw": "A man in a sharply tailored 1930s grey pinstripe suit raising his right hand to swear an oath. He is wearing a crisp white shirt with a wide collar and a dark silk tie. His expression is serious. He wears matching grey pinstripe trousers and black leather shoes.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg",
+            "01-reles-portrait-loc__codex.jpg"
+          ],
+          "invented": [
+            "man raising his right hand to swear an oath",
+            "sharply tailored 1930s grey pinstripe suit",
+            "crisp white shirt with a wide collar",
+            "dark silk tie",
+            "serious expression"
+          ]
+        },
+        {
+          "id": "A1-08b",
+          "at": "0:29",
+          "cue": "sent seven senior mobsters",
+          "kind": "place",
+          "outName": "Wooden Paneled Courtroom",
+          "draw": "An empty courtroom featuring rich wooden paneling on the walls. The judge's bench is elevated, made of polished dark wood, conveying an imposing, serious atmosphere.",
+          "invented": [
+            "empty courtroom",
+            "rich wooden paneling on the walls",
+            "elevated judge's bench made of polished dark wood",
+            "imposing, serious atmosphere"
+          ]
+        },
+        {
+          "id": "A1-09",
+          "at": "0:34",
+          "cue": "seven senior mobsters",
+          "kind": "group",
+          "outName": "Seven Men In Suits",
+          "draw": "Seven men standing in a lineup. They are dressed in formal 1930s attire, wearing heavy wool overcoats and sharp double-breasted suits in dark grey and navy. Their faces are grim, and they wear fedora hats casting shadows over their eyes. They wear matching dark trousers and black leather shoes.",
+          "invented": [
+            "seven men standing in a lineup",
+            "formal 1930s attire",
+            "heavy wool overcoats",
+            "sharp double-breasted suits in dark grey and navy",
+            "grim faces",
+            "fedora hats casting shadows over their eyes"
+          ]
+        },
+        {
+          "id": "A1-10",
+          "at": "0:38",
+          "cue": "The Brooklyn DA",
+          "kind": "figure",
+          "outName": "Lawyer With Folder",
+          "draw": "A lawyer in a well-fitted 1930s three-piece charcoal suit. He is carrying a thick, bulging manila folder under his arm. He has a serious expression, wearing wire-rimmed glasses and a neatly combed hairstyle. He wears matching charcoal trousers and black leather shoes.",
+          "invented": [
+            "lawyer carrying a thick, bulging manila folder under his arm",
+            "well-fitted 1930s three-piece charcoal suit",
+            "serious expression",
+            "wire-rimmed glasses",
+            "neatly combed hairstyle"
+          ]
+        },
+        {
+          "id": "A1-11",
+          "at": "0:42",
+          "cue": "Half Moon Hotel",
+          "kind": "place",
+          "outName": "Brick Hotel Tower On The Boardwalk",
+          "draw": "A tall brick hotel tower from the 1920s, with a rectangular body that steps back as it rises. The roof features Spanish Colonial Revival architecture, including arched windows, an intricate tiled dome, and a weather vane on top, flanked by urn finials at the corners. Lower wings with tiled roofs sit on both sides of the main tower. A lower flat-roofed building with a continuous row of uniform windows, each with a dark fabric awning, runs across the front. A wooden boardwalk stretches in front of the building.",
+          "refs": [
+            "02-half-moon-hotel__codex.jpg",
+            "09-half-moon-hotel-1927-cihp__claude.jpg"
+          ],
+          "invented": [],
+          "note": "NOI CHON DAC BIET: cong trinh co that, hinh khoi sai la nhan ra ngay. Me 12:43 ngay 2026-09-12 ra mot toa nha co VOM doi xung, khac han thap gach vuong co thap chuong kieu Tay Ban Nha cua khach san Half Moon that (anh 09, chup 1927). Nen dinh anh that len Flow thay vi ta bang chu. | Me 13:05: dinh [3 anh neo, anh chup] ra dung hinh khoi nhung NET THANG THOM nhu ban ve kien truc, doi xung tuyet doi. Thu lai: anchorsLast (anh neo dinh SAU anh chup) + khoi style ep freehand manh hon. Ten card doi de khong bi nhanh chong trung bo qua; KHONG dung ten rieng 'Half Moon' trong ten card vi ten card bi go vao chinh prompt. | Me 13:22 (anchorsLast + freehand manh): net LONG hon that, nhung lôi CHU tu bien hieu trong anh chup vao ('LOO-CHOO WEST END BATHS', '5c') va an ca TIA NANG tu anh neo pyramid. Nen ban v3 phai cam chu/nguoi/nang tuong minh — anh chup co bien hieu thi mo hinh se doc va ve lai. | v3 sach chu nhung day thap ra sau, day nha thap thanh vai chinh. v4 them cau ep BO CUC: thap la chu the, chiem phan lon khung, nhin tu duong dao len. | 2026-09-12 doi sang duong @MENTION theo cach Tu prompt: chip trong cau noi ro anh chup giu vai hinh khoi, anh neo giu vai net ve. Bo `style` va `refImages` — cau mention mang ca hai vai va tu dinh anh.",
+          "mention": "draw a {{09-half-moon-hotel-1927-cihp__claude.jpg}} with the same style as {{01-pyramid-place.png}}, no lettering, no signs, no people"
+        },
+        {
+          "id": "A1-12",
+          "at": "0:46",
+          "cue": "guarded by 18 cops",
+          "kind": "figure",
+          "outName": "Police Officer Standing",
+          "draw": "An older 1940s New York policeman. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. He wears dark uniform trousers and black leather boots.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "invented": []
+        },
+        {
+          "id": "A1-13",
+          "at": "0:50",
+          "cue": "found dead on the roof",
+          "kind": "character",
+          "outName": "Heavy Set Man Lying Face Down",
+          "draw": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie. The overcoat is rucked up over dark wool trousers and black leather shoes.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg"
+          ],
+          "invented": [
+            "lying face down, arms slack",
+            "dark, heavy herringbone tweed overcoat",
+            "dark diagonally striped tie"
+          ],
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now lying face down on a flat roof with his arms slack, wearing the same overcoat, only one person, plain white background",
+          "useAsset": [
+            "char-reles"
+          ],
+          "note": "Sinh tu asset nhan vat, khong ta lai ngoai hinh — do 2026-09-12: cach nay giu duoc mat VA cho ty le tot nhat (5,8 dau). Ta lai bang chu thi ra than be dau to (4,0-5,2 dau)."
+        },
+        {
+          "id": "A1-14",
+          "at": "0:55",
+          "cue": "knotted bed sheets",
+          "kind": "object",
+          "outName": "Knotted Bed Sheet Rope",
+          "draw": "Three white cotton bed sheets knotted end to end into a makeshift rope. Between the knots the fabric stays FLAT AND WIDE like a sheet, with loose corners and creases showing — it is bed linen twisted together, not a woven rope and not a cord.",
+          "invented": [
+            "makeshift rope constructed from several white cotton bedsheets",
+            "tightly knotted together",
+            "fabric is twisted and strained",
+            "showing heavy tension at the thick, bulky knots connecting each piece of cloth"
+          ],
+          "note": "Me 2026-09-12 ra mot SOI DAY BEN co nut, khong ra ga giuong. Mo ta cu chi noi 'makeshift rope constructed from bedsheets' — chu 'rope' thang. Phai ta ro vai van PHANG VA RONG giua cac nut."
+        },
+        {
+          "id": "A1-15",
+          "at": "0:59",
+          "cue": "tied one end to a radiator",
+          "kind": "object",
+          "outName": "Cast Iron Radiator",
+          "draw": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor.",
+          "invented": [
+            "heavy cast iron steam radiator",
+            "painted in chipped, dull silver",
+            "multiple vertical ribbed sections standing on small curved legs",
+            "round brass steam valve attached to the side near the floor"
+          ]
+        },
+        {
+          "id": "A1-16",
+          "at": "1:03",
+          "cue": "fell roughly 42 feet",
+          "kind": "character",
+          "outName": "Man Falling Through Air",
+          "draw": "A man in his early thirties falling through the air, his dark heavy herringbone tweed overcoat flapping. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a white shirt and a dark diagonally striped tie. He wears dark wool trousers and black leather shoes.",
+          "refs": [
+            "05-reles-mugshot-1940-jjay__codex.jpg"
+          ],
+          "invented": [
+            "falling through the air",
+            "dark heavy herringbone tweed overcoat flapping",
+            "white shirt and a dark diagonally striped tie"
+          ],
+          "mention": "draw the same man as in {{Reles Ref Broad Face Simple}}, keep his face exactly the same, now falling through the air with his overcoat flapping open, arms out, only one person, plain white background",
+          "useAsset": [
+            "char-reles"
+          ],
+          "note": "Sinh tu asset nhan vat, khong ta lai ngoai hinh — do 2026-09-12: cach nay giu duoc mat VA cho ty le tot nhat (5,8 dau). Ta lai bang chu thi ra than be dau to (4,0-5,2 dau)."
+        },
+        {
+          "id": "A1-17",
+          "at": "1:08",
+          "cue": "claimed they had been asleep",
+          "kind": "figure",
+          "outName": "Police Officer Asleep In Chair",
+          "draw": "An older 1940s New York policeman asleep in a chair. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. He wears dark uniform trousers and black leather boots.",
+          "refs": [
+            "03-nyc-policeman-1942-loc__codex.jpg"
+          ],
+          "invented": [
+            "asleep in a chair"
+          ]
+        },
+        {
+          "id": "A1-18",
+          "at": "1:14",
+          "cue": "cost him $50,000",
+          "kind": "object",
+          "outName": "Plain Banknote Bundle",
+          "draw": "A thick bundle of banknotes stacked neatly together, bound tightly by a wide brown paper currency strap. The notes are pale green and completely plain: no lettering, no numbers, no words, no printed portrait, no signature, nothing written on the strap either.",
+          "invented": [
+            "thick bundle of vintage United States banknotes stacked neatly together",
+            "bound tightly by a wide, brown paper currency strap",
+            "crisp bills printed in dull green and black ink"
+          ],
+          "note": "Me 2026-09-12 ra anh DAY CHU: 'U.S. CURRENCY', '$100', '$10,000' va mot chu ky gia — vi pham luat cam chu trong anh. Tien giay thi ban chat co chu, nen prompt PHAI cam tuong minh, khong the de mac."
+        }
+      ]
+    }
+  ],
+  "styleByKind": {
+    "character": "Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "figure": "Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "group": "Draw every figure whole, from head to shoes: all of them fit inside the frame, nothing cropped off by the edges. Adult body proportions like the men in the reference drawings: about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple face: the eyes are small dots, a simple short nose, a simple line for the mouth, no shading and no modelling on the face, drawn like the faces in the reference drawings."
+  },
+  "_noteTyLe": "2026-09-12: Tu chot CHAP NHAN nhan vat nua than tren, nen cau ep toan than da BO khoi character/figure (giu cho group). Ty le nua duoi khong con la van de cua shot asset — 7 lan do cu (4,0-5,2 dau) chi con y nghia lich su, xem RUNBOOK. Them yeu cau MAT DON GIAN (mat la hai diem, mieng mot net) — vua dung phong cach anh neo, vua de dung lai duoc giua cac canh."
+}

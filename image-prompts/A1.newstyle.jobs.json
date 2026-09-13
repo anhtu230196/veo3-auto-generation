@@ -1,0 +1,220 @@
+[
+  {
+    "id": "A1-00",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "object",
+    "outName": "Style Anchor Chair And Hat",
+    "prompt": "a plain wooden chair with a grey felt fedora resting on the seat, drawn by hand in ink with visible pencil hatching in the shading, clean ink outlines filled with flat muted colour, warm browns and greys, slightly rough linework, on a plain white background. with the same style with reference images",
+    "refNames": []
+  },
+  {
+    "id": "A1-01",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "character",
+    "outName": "Broad Faced Man In Dark Overcoat",
+    "prompt": "A man in his early thirties. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark, and distinctly wavy (marcel wave style), swept straight back with no clear parting, and slightly receding at the temples. He has very thick, dark eyebrows that almost meet, with heavy-lidded eyes, a broad nose with wide nostrils, and thick lips. His ears are quite large and stick out. He is clean-shaven. He is wearing a dark, heavy herringbone tweed overcoat with very wide lapels, a white shirt, and a dark diagonally striped tie. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-02",
+    "segment": "A1",
+    "at": "0:05",
+    "kind": "group",
+    "outName": "Men In Suits",
+    "prompt": "A group of men in 1930s suits standing shoulder to shoulder. They are wearing sharp, tailored wool suits in muted colors like charcoal, navy, and brown, with wide lapels and padded shoulders. They wear fedora hats tilted slightly down, and their expressions are stern and menacing. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-03",
+    "segment": "A1",
+    "at": "0:09",
+    "kind": "object",
+    "outName": "Ice Pick Weapon",
+    "prompt": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-04",
+    "segment": "A1",
+    "at": "0:12",
+    "kind": "object",
+    "outName": "Ear Close Up",
+    "prompt": "A close up view of a human ear seen from the side, illuminated by harsh, dramatic lighting that highlights the curves of the cartilage and the pale skin. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-05",
+    "segment": "A1",
+    "at": "0:17",
+    "kind": "figure",
+    "outName": "Doctor Writing",
+    "prompt": "A doctor wearing a crisp white lab coat over a formal shirt and tie, holding a silver clipboard. He is writing on a blank unlined sheet of white paper with a classic fountain pen. No text on the paper. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-06",
+    "segment": "A1",
+    "at": "0:22",
+    "kind": "object",
+    "outName": "Mugshot Grid",
+    "prompt": "A grid of small vintage black-and-white mugshot portraits of different men in 1930s clothing. Below each face is a dark, blank wooden name board with no text or numbers on it. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-07",
+    "segment": "A1",
+    "at": "0:26",
+    "kind": "object",
+    "outName": "Empty Electric Chair",
+    "prompt": "An empty electric chair made of heavy, dark stained oak wood. It has thick leather straps hanging loosely from the armrests and legs, and a complex metal headpiece with coiled black wires attached to the high backrest. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-08",
+    "segment": "A1",
+    "at": "0:29",
+    "kind": "character",
+    "outName": "Man Swearing Oath",
+    "prompt": "A man in a sharply tailored 1930s grey pinstripe suit raising his right hand to swear an oath. He is wearing a crisp white shirt with a wide collar and a dark silk tie. His expression is serious. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-08b",
+    "segment": "A1",
+    "at": "0:29",
+    "kind": "place",
+    "outName": "Wooden Paneled Courtroom",
+    "prompt": "An empty courtroom featuring rich wooden paneling on the walls. The judge's bench is elevated, made of polished dark wood, conveying an imposing, serious atmosphere. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-09",
+    "segment": "A1",
+    "at": "0:34",
+    "kind": "group",
+    "outName": "Seven Men In Suits",
+    "prompt": "Seven men standing in a lineup. They are dressed in formal 1930s attire, wearing heavy wool overcoats and sharp double-breasted suits in dark grey and navy. Their faces are grim, and they wear fedora hats casting shadows over their eyes. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-10",
+    "segment": "A1",
+    "at": "0:38",
+    "kind": "figure",
+    "outName": "Lawyer With Folder",
+    "prompt": "A lawyer in a well-fitted 1930s three-piece charcoal suit. He is carrying a thick, bulging manila folder under his arm. He has a serious expression, wearing wire-rimmed glasses and a neatly combed hairstyle. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-11",
+    "segment": "A1",
+    "at": "0:42",
+    "kind": "place",
+    "outName": "Tall Brick Hotel Exterior",
+    "prompt": "A tall brick hotel tower from the 1920s, with a rectangular body that steps back as it rises. The roof features Spanish Colonial Revival architecture, including arched windows, an intricate tiled dome, and a weather vane on top, flanked by urn finials at the corners. Lower wings with tiled roofs sit on both sides of the main tower. A lower flat-roofed building with a continuous row of uniform windows, each with a dark fabric awning, runs across the front. A wooden boardwalk stretches in front of the building. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-12",
+    "segment": "A1",
+    "at": "0:46",
+    "kind": "figure",
+    "outName": "Police Officer Standing",
+    "prompt": "An older 1940s New York policeman. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-13",
+    "segment": "A1",
+    "at": "0:50",
+    "kind": "character",
+    "outName": "Heavy Set Man Lying Face Down",
+    "prompt": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-14",
+    "segment": "A1",
+    "at": "0:55",
+    "kind": "object",
+    "outName": "Knotted Bedsheets",
+    "prompt": "A makeshift rope constructed from several white cotton bedsheets tightly knotted together. The fabric is twisted and strained, showing heavy tension at the thick, bulky knots connecting each piece of cloth. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-15",
+    "segment": "A1",
+    "at": "0:59",
+    "kind": "object",
+    "outName": "Cast Iron Radiator",
+    "prompt": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-16",
+    "segment": "A1",
+    "at": "1:03",
+    "kind": "character",
+    "outName": "Man Falling Through Air",
+    "prompt": "A man in his early thirties falling through the air, his dark heavy herringbone tweed overcoat flapping. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a white shirt and a dark diagonally striped tie. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-17",
+    "segment": "A1",
+    "at": "1:08",
+    "kind": "figure",
+    "outName": "Police Officer Asleep In Chair",
+    "prompt": "An older 1940s New York policeman asleep in a chair. He is wearing a dark-colored, heavy fabric tunic uniform with loose sleeves, and a peaked cap (visor cap) with a blank round badge near the front, no text. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-18",
+    "segment": "A1",
+    "at": "1:14",
+    "kind": "object",
+    "outName": "Bundle Of Cash",
+    "prompt": "A thick bundle of vintage United States banknotes stacked neatly together. The stack is bound tightly by a wide, brown paper currency strap. The bills are crisp and printed in dull green and black ink. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  }
+]

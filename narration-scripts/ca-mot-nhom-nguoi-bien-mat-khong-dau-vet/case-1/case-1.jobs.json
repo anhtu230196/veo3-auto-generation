@@ -1,0 +1,572 @@
+[
+  {
+    "id": "C1-01",
+    "segment": "C1",
+    "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
+    "kind": "group",
+    "outName": "Colonists Walking Ashore With Bundles",
+    "prompt": "Six English colonists of the 1580s walking forward together, seen full length from head to shoes: three men, two women and one small child holding a woman's hand. The men wear plain dark doublets with small white collars, baggy knee-length breeches, stockings and flat shoes, one in a flat cap and one in a wide-brimmed felt hat, one carrying a cloth bundle on his shoulder. The women wear long plain dark gowns with white aprons and white linen coifs on their heads. No ship, no boat, no weapons, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "C1-01b",
+    "segment": "C1",
+    "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
+    "kind": "object",
+    "outName": "Rowing Boat Ref Pulled Up On Sand",
+    "prompt": "A small open wooden ship's boat of the 1580s seen from the side, its bow pulled up onto a pale sandy beach and its stern still touching the edge of shallow flat water, two oars resting across its seats and a coil of rope in the bow, empty. No people, no ship, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-01c",
+    "segment": "C1",
+    "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
+    "kind": "place",
+    "outName": "East Coast Map With One State Filled Red",
+    "prompt": "A simple flat map seen straight from above of the Atlantic coast of the United States from Virginia down to Georgia. The state of North Carolina is filled with one flat red colour and labelled \"NORTH CAROLINA\" in plain capital letters, the ocean is one flat pale blue labelled \"ATLANTIC OCEAN\" in plain capital letters, every other state is plain pale beige, with thin dark state border lines and the long thin barrier islands drawn along the North Carolina coast. Spell every name exactly as written here. No title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-02",
+    "segment": "C1",
+    "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
+    "kind": "character",
+    "outName": "Bearded Governor Ref Wide Brim Hat",
+    "prompt": "A man of about fifty seen from the chest up. A long face with a short pointed beard and a full moustache, his dark hair and beard streaked with grey. Dark hair showing below a wide-brimmed dark felt hat with a low rounded crown and a plain hat band. He wears a dark buttoned doublet with a small plain white collar lying flat around the neck. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-03a",
+    "segment": "C1",
+    "at": "It was England's second attempt at a lasting colony in the New World.",
+    "kind": "symbol",
+    "outName": "Red Cross Flag On Wooden Pole",
+    "prompt": "A plain white flag with one straight red cross running the full height and the full width of the cloth, hanging from a straight wooden pole and rippling slightly. No other colours on the cloth, no crest, no crown, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-03",
+    "segment": "C1",
+    "at": "It was England's second attempt at a lasting colony in the New World.",
+    "kind": "place",
+    "outName": "Timber Settlement Ref Three Cottages",
+    "prompt": "A small English settlement of 1587 seen straight on: exactly three small timber-framed cottages with steep thatched roofs standing side by side on pale sandy ground, each with one plain doorway and one small window. Behind the cottages a straight palisade fence of tall wooden posts cut to points at the top runs across the whole width, and a few tall pine trees rise above the fence. No people, no animals, no smoke, no flags, no sun, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-03b",
+    "segment": "C1",
+    "at": "It was England's second attempt at a lasting colony in the New World.",
+    "kind": "object",
+    "outName": "Old Globe Turned Toward The Americas",
+    "prompt": "An old globe from the 1500s on a wooden stand with a brass half ring around it, turned so that North America and South America face the viewer in the middle of the globe, with only a thin edge of Europe and Africa showing at the right edge, the land in flat pale brown and the sea in flat pale blue. No lettering, no names, no labels, no drawings of ships or sea creatures, no grid lines, no people, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-04",
+    "segment": "C1",
+    "at": "On August 18th that year, White's daughter Eleanor gave birth to a girl named Virginia Dare, the first English child ever born on American soil.",
+    "kind": "group",
+    "outName": "Young Mother Holding Swaddled Baby",
+    "prompt": "A young woman of about twenty-four sitting on a plain wooden stool, seen full length from head to shoes, holding a newborn baby wrapped snugly in white cloth against her chest and looking down at it. She wears a long plain dark green gown with a laced bodice, a small white ruff at her neck, a white apron, and a white linen coif over brown hair. The baby is swaddled so that only its small face shows. No bed, no other people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "C1-05",
+    "segment": "C1",
+    "at": "The colony was running desperately short on food.",
+    "kind": "object",
+    "outName": "Empty Provision Barrel",
+    "prompt": "An empty wooden provision barrel from the 1500s standing upright, bound with plain iron hoops, its round lid lifted off and leaning against its side, nothing at all inside. No lettering, no marks. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-06",
+    "segment": "C1",
+    "at": "The settlers begged White to sail back to England for more supplies.",
+    "kind": "group",
+    "outName": "Colonists Pleading Before The Governor",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, listening, while three English colonists of the 1580s stand facing him and plead with their hands clasped in front of them: a woman in a long dark gown with a white apron and a white coif, a thin young man in a plain brown doublet and flat cap, and a bald older man in a grey doublet, all seen full length from head to shoes, in the same drawing style as @03-five-men-group.png, no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, listening, while three English colonists of the 1580s stand facing him and plead with their hands clasped in front of them: a woman in a long dark gown with a white apron and a white coif, a thin young man in a plain brown doublet and flat cap, and a bald older man in a grey doublet, all seen full length from head to shoes, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\03-five-men-group.png"
+      },
+      {
+        "text": ", no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-07",
+    "segment": "C1",
+    "at": "He left on August 27th, 1587, promising to return quickly.",
+    "kind": "object",
+    "outName": "Sailing Ship Ref Three Masts",
+    "prompt": "An English sailing ship of the 1580s seen from the side: a dark brown wooden hull with a high raised stern castle and a lower raised bow, a thin band of plain red and yellow trim along the top edge of the hull, exactly three masts with square sails set and filled with wind, and only a few simple rigging lines. No flags, no lettering, no crest, no people, no water. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-08",
+    "segment": "C1",
+    "at": "He left on August 27th, 1587, promising to return quickly.",
+    "kind": "character",
+    "outName": "Governor Promising With Hand On Chest",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, seen from the chest up with his right hand pressed flat against his chest as he makes a promise, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up with his right hand pressed flat against his chest as he makes a promise, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-09",
+    "segment": "C1",
+    "at": "The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship from leaving port.",
+    "kind": "object",
+    "outName": "Fleet Of Spanish Galleons",
+    "prompt": "A fleet of five large Spanish galleons of 1588 sailing together in a wide curved line, seen from the side, each with a tall ornate stern castle and plain square sails. No flags with writing, no lettering, no cannon fire, no smoke, no water, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-10",
+    "segment": "C1",
+    "at": "The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship from leaving port.",
+    "kind": "character",
+    "outName": "Pale Queen With Lace Ruff",
+    "prompt": "A woman in her mid fifties seen from the chest up. A very pale, white-powdered face with a high forehead, thin arched eyebrows, a long narrow nose and small thin lips. Tightly curled reddish-orange hair dressed high around the face and set with strings of pearls and small jewels. A very large stiff white lace ruff standing open around her neck, a black gown covered in ropes of pearls and gold jewelled chains, and sheer pale gauze wings rising behind her shoulders. In one hand she holds out a folded document closed with a red wax seal, completely blank: no writing, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-11",
+    "segment": "C1",
+    "at": "The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship from leaving port.",
+    "kind": "object",
+    "outName": "Ship Moored With Sails Furled",
+    "prompt": "draw the same ship as in @Sailing Ship Ref Three Masts, now tied up alongside a plain wooden quay with thick mooring ropes running from the hull to two wooden posts on the quay, all of its sails furled and bound up on the yards, in the same drawing style as @01-pyramid-place.png, no people, no lettering, no sun, plain white background",
+    "refNames": [
+      "Sailing Ship Ref Three Masts"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same ship as in "
+      },
+      {
+        "asset": "Sailing Ship Ref Three Masts"
+      },
+      {
+        "text": ", now tied up alongside a plain wooden quay with thick mooring ropes running from the hull to two wooden posts on the quay, all of its sails furled and bound up on the yards, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", no people, no lettering, no sun, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-12",
+    "segment": "C1",
+    "at": "Before he'd left, he and the colonists had agreed on a signal.",
+    "kind": "group",
+    "outName": "Governor Explaining The Signal",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, tapping one finger on the palm of his other hand as he explains something carefully, while two English colonists of the 1580s stand facing him and nod: a broad man with a black beard in a slate-blue doublet and a woman in a long mustard-brown gown with a white apron and a white coif, all seen full length from head to shoes, in the same drawing style as @03-five-men-group.png, no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, tapping one finger on the palm of his other hand as he explains something carefully, while two English colonists of the 1580s stand facing him and nod: a broad man with a black beard in a slate-blue doublet and a woman in a long mustard-brown gown with a white apron and a white coif, all seen full length from head to shoes, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\03-five-men-group.png"
+      },
+      {
+        "text": ", no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-13",
+    "segment": "C1",
+    "at": "If they were forced to relocate, they would carve the name of their destination into a tree or post.",
+    "kind": "object",
+    "outName": "Pointed Post Ref Blank Carved Panel",
+    "prompt": "A single tall thick wooden post made from a tree trunk, standing upright, its top cut to a point. At about head height a smooth pale patch has been cut into the post where the bark was peeled away. The patch is completely blank: no letters, no words, no carving marks, no scratches, no cross. No rope, no nails, nothing else in the frame. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-14",
+    "segment": "C1",
+    "at": "If they left under distress, they'd carve a cross beside it.",
+    "kind": "object",
+    "outName": "Post With A Carved Cross",
+    "prompt": "draw the same post as in @Pointed Post Ref Blank Carved Panel, keep everything about it the same, and add one plain cross cut deep into the wood right beside the blank pale patch, two straight grooves crossing at right angles, the patch itself still completely blank with no letters, plain white background",
+    "refNames": [
+      "Pointed Post Ref Blank Carved Panel"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same post as in "
+      },
+      {
+        "asset": "Pointed Post Ref Blank Carved Panel"
+      },
+      {
+        "text": ", keep everything about it the same, and add one plain cross cut deep into the wood right beside the blank pale patch, two straight grooves crossing at right angles, the patch itself still completely blank with no letters, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-15",
+    "segment": "C1",
+    "at": "On August 18th, 1590, his granddaughter's third birthday, White landed again.",
+    "kind": "character",
+    "outName": "Governor Wading Ashore",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, now seen full length from head to shoes stepping out of shallow water onto a sandy beach and looking ahead, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots wet to the knee, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, now seen full length from head to shoes stepping out of shallow water onto a sandy beach and looking ahead, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots wet to the knee, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-16",
+    "segment": "C1",
+    "at": "The colony was empty.",
+    "kind": "place",
+    "outName": "Settlement Taken Apart",
+    "prompt": "draw the same settlement as in @Timber Settlement Ref Three Cottages from exactly the same viewpoint, but the three cottages are gone: the pale sandy ground where each cottage stood is left bare and flat, with no walls, no roofs, no rubble, no broken timbers and no burn marks, while the same palisade fence and the same pine trees still stand behind, no people, no boats, no lettering, no sun, plain white background",
+    "refNames": [
+      "Timber Settlement Ref Three Cottages"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same settlement as in "
+      },
+      {
+        "asset": "Timber Settlement Ref Three Cottages"
+      },
+      {
+        "text": " from exactly the same viewpoint, but the three cottages are gone: the pale sandy ground where each cottage stood is left bare and flat, with no walls, no roofs, no rubble, no broken timbers and no burn marks, while the same palisade fence and the same pine trees still stand behind, no people, no boats, no lettering, no sun, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-17",
+    "segment": "C1",
+    "at": "The houses had been carefully taken apart, their belongings dug up and rifled through.",
+    "kind": "object",
+    "outName": "Chest Dug Up And Rifled",
+    "prompt": "A wooden storage chest from the 1500s half dug out of a freshly dug hole in pale sandy soil, its lid broken open and thrown back, a few plain crumpled cloths and loose blank pages spilling out onto the loose sand. The pages are completely blank: no writing, no drawings. No people, no tools, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-18",
+    "segment": "C1",
+    "at": "Not a single boat remained on the shore.",
+    "kind": "object",
+    "outName": "Small Wooden Rowing Boat",
+    "prompt": "draw the same boat as in @Rowing Boat Ref Pulled Up On Sand, keep its shape and colours exactly the same, now shown on its own and empty with no sand and no water around it, the two oars resting across it, no people, no lettering, plain white background",
+    "refNames": [
+      "Rowing Boat Ref Pulled Up On Sand"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same boat as in "
+      },
+      {
+        "asset": "Rowing Boat Ref Pulled Up On Sand"
+      },
+      {
+        "text": ", keep its shape and colours exactly the same, now shown on its own and empty with no sand and no water around it, the two oars resting across it, no people, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-19",
+    "segment": "C1",
+    "at": "And carved into a post of the fence, one word. CROATOAN.",
+    "kind": "character",
+    "outName": "Governor Staring At Something",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, now seen full length from head to shoes, turned to his right and staring at something at eye level just out of the picture, one hand raised toward it with the palm open, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, now seen full length from head to shoes, turned to his right and staring at something at eye level just out of the picture, one hand raised toward it with the palm open, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-20",
+    "segment": "C1",
+    "at": "And carved into a post of the fence, one word. CROATOAN.",
+    "kind": "object",
+    "outName": "Blank Post Standing In Palisade",
+    "prompt": "draw the same post as in @Pointed Post Ref Blank Carved Panel, keep it exactly the same with its pale patch still completely blank, now standing as one post in a short straight row of tall pointed palisade posts, right beside an open gap in the fence, the blank patch facing the viewer, no cross anywhere, no letters, no carving marks, in the same drawing style as @01-pyramid-place.png, no people, no sun, plain white background",
+    "refNames": [
+      "Pointed Post Ref Blank Carved Panel"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same post as in "
+      },
+      {
+        "asset": "Pointed Post Ref Blank Carved Panel"
+      },
+      {
+        "text": ", keep it exactly the same with its pale patch still completely blank, now standing as one post in a short straight row of tall pointed palisade posts, right beside an open gap in the fence, the blank patch facing the viewer, no cross anywhere, no letters, no carving marks, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", no people, no sun, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-21",
+    "segment": "C1",
+    "at": "To White, that looked like good news.",
+    "kind": "character",
+    "outName": "Governor With A Hopeful Look",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, seen from the chest up, his shoulders relaxing and his eyebrows lifted with a small hopeful smile, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up, his shoulders relaxing and his eyebrows lifted with a small hopeful smile, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-22",
+    "segment": "C1",
+    "at": "It meant everyone had relocated safely to nearby Croatoan Island.",
+    "kind": "place",
+    "outName": "Low Sandy Island With Pines",
+    "prompt": "A long low sandy island seen from the side across shallow water: pale dunes, a few scattered wind-bent pine trees and patches of low scrub along its length. No people, no houses, no boats, no smoke, no lighthouse, no sun, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-23",
+    "segment": "C1",
+    "at": "But just as he prepared to sail there and check, a hurricane tore through the area.",
+    "kind": "object",
+    "outName": "Ship Tossed In A Storm",
+    "prompt": "draw the same ship as in @Sailing Ship Ref Three Masts, now heeled far over to one side on huge steep dark waves, its sails torn and flapping, in the same drawing style as @01-pyramid-place.png, no people, no lightning, no sun, no lettering, plain white background",
+    "refNames": [
+      "Sailing Ship Ref Three Masts"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same ship as in "
+      },
+      {
+        "asset": "Sailing Ship Ref Three Masts"
+      },
+      {
+        "text": ", now heeled far over to one side on huge steep dark waves, its sails torn and flapping, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", no people, no lightning, no sun, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-24",
+    "segment": "C1",
+    "at": "His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck.",
+    "kind": "object",
+    "outName": "Snapped Anchor Cable",
+    "prompt": "A length of thick hemp anchor cable from the 1500s snapped in two, its broken end frayed apart into loose unravelled strands. Only the rope and its broken end, no anchor, no ship, no water, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-25",
+    "segment": "C1",
+    "at": "His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck.",
+    "kind": "object",
+    "outName": "Single Iron Anchor",
+    "prompt": "A single iron ship's anchor of the 1500s lying flat: a long straight shank, two curved arms ending in pointed flukes, a ring at the top and a wooden crossbar just below the ring. No rope, no chain, no water, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-26",
+    "segment": "C1",
+    "at": "His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck.",
+    "kind": "group",
+    "outName": "Sailors Refusing The Governor",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, listening, while two sailors of the 1500s in loose off-white canvas shirts, baggy canvas breeches and knitted wool caps stand facing him with their arms folded, shaking their heads, all seen full length from head to shoes, in the same drawing style as @03-five-men-group.png, no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, now standing and seen full length from head to shoes, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots, listening, while two sailors of the 1500s in loose off-white canvas shirts, baggy canvas breeches and knitted wool caps stand facing him with their arms folded, shaking their heads, all seen full length from head to shoes, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\03-five-men-group.png"
+      },
+      {
+        "text": ", no lettering anywhere, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-27",
+    "segment": "C1",
+    "at": "They had no choice but to turn back for England.",
+    "kind": "character",
+    "outName": "Governor Looking Back From Ship Rail",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exactly the same, seen from the waist up standing at the wooden rail of a ship and looking back over his shoulder, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up standing at the wooden rail of a ship and looking back over his shoulder, wearing the same hat and doublet, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-28",
+    "segment": "C1",
+    "at": "He died years later, never learning what happened to his own family.",
+    "kind": "character",
+    "outName": "Governor Grown Old Sitting Alone",
+    "prompt": "draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face recognisably the same but now many years older, his hair and beard turned white and his cheeks thinner, sitting alone on a plain wooden chair and seen full length from head to shoes, bareheaded with the same wide-brimmed hat resting on his knee, wearing a plain dark doublet, dark knee-length breeches, stockings and flat shoes, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Bearded Governor Ref Wide Brim Hat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Bearded Governor Ref Wide Brim Hat"
+      },
+      {
+        "text": ", keep his face recognisably the same but now many years older, his hair and beard turned white and his cheeks thinner, sitting alone on a plain wooden chair and seen full length from head to shoes, bareheaded with the same wide-brimmed hat resting on his knee, wearing a plain dark doublet, dark knee-length breeches, stockings and flat shoes, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-29",
+    "segment": "C1",
+    "at": "Centuries afterward, one explorer wrote that the native people on nearby Hatteras Island had ancestors described as having pale skin and gray eyes.",
+    "kind": "figure",
+    "outName": "Explorer Writing In A Journal",
+    "prompt": "An English explorer of the early 1700s seen from the chest up, writing in an open journal with a quill pen, wearing a long brown coat, a plain white neckcloth and a three-cornered hat over shoulder-length hair tied back. The pages are completely blank: no lettering, no lines, no drawings. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-30",
+    "segment": "C1",
+    "at": "Centuries afterward, one explorer wrote that the native people on nearby Hatteras Island had ancestors described as having pale skin and gray eyes.",
+    "kind": "figure",
+    "outName": "Algonquian Woman In Deerskin Mantle",
+    "prompt": "A Carolina Algonquian woman of the 1580s seen from the waist up, standing calmly with her arms at her sides. Her dark hair is cut in a straight fringe across the forehead and tied in a low knot at the back of her head. She wears a fringed deerskin mantle wrapped over both shoulders and closed across her chest, and long strings of dark beads around her neck. No lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-31",
+    "segment": "C1",
+    "at": "But not one skeleton, one grave, or one piece of solid archaeological proof of those hundred and fifteen people has ever turned up.",
+    "kind": "object",
+    "outName": "Grave Mound With Wooden Cross",
+    "prompt": "A plain low mound of sandy earth with a simple cross made of two sticks tied together pushed into the soil at one end. No lettering, no bones, no flowers, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-32",
+    "segment": "C1",
+    "at": "But not one skeleton, one grave, or one piece of solid archaeological proof of those hundred and fifteen people has ever turned up.",
+    "kind": "place",
+    "outName": "Empty Excavation Pit",
+    "prompt": "A square archaeological excavation pit dug into pale sandy soil, its four edges marked out with taut string tied to wooden pegs at the corners, the bottom of the pit flat and completely empty, and a small pointed mason's trowel stuck upright in the loose soil at one corner. No people, no bones, no objects in the pit, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  }
+]

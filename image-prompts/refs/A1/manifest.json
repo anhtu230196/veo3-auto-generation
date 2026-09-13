@@ -1,0 +1,549 @@
+{
+  "segmentId": "A1",
+  "subject": "Abe Reles",
+  "video": "nRiezhIOHH0",
+  "updated": "2026-09-13",
+  "_doc": [
+    "foundBy = agent tim ra URL. verifiedBy = agent DA MO ANH RA NHIN.",
+    "Hai thu do khac nhau: luot review chay che do chi doc nen Codex va Gemini",
+    "khong tai file ve duoc, chung chi nop URL. Ai mo anh ra nhin thi ghi rieng.",
+    "evidenceFor = anh nay lam bang chung cho CAI GI. Khong phai moi anh trong",
+    "thu muc deu la bang chung ngang nhau (xem D08).",
+    "alsoFoundBy = agent khac cung tim ra dung nguon nay. KHONG tai lai, khong",
+    "de them file trung — chi ghi vao day. Tu chot 2026-09-11."
+  ],
+  "images": [
+    {
+      "file": "01-reles-portrait-loc__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://www.loc.gov/pictures/item/95511453/",
+      "sourceUrl": "https://cdn.loc.gov/service/pnp/cph/3c10000/3c14000/3c14600/3c14637v.jpg",
+      "sourceKind": "anh bao chi / luu tru",
+      "dated": "danh muc LOC ghi khoang 1930-1941, chua truy them",
+      "size": "816x1024",
+      "evidenceFor": "ngoai hinh nhan vat",
+      "shows": [
+        "dan ong khoang ngoai 30",
+        "toc den day, GON SONG RO (kieu uon marcel), hat nguoc ra sau, KHONG re ngoi rach roi",
+        "long may den rat dam",
+        "mat bau va rong, ham banh, cam day",
+        "co ngan va day",
+        "tai kha lo",
+        "cuoi he mot ben, moi day",
+        "khong rau",
+        "ao khoac da day van xuong ca ke to, ve rat rong; so mi trang; ca vat ke soc cheo"
+      ],
+      "usedFor": [
+        "A1-01"
+      ],
+      "note": "Codex nop URL ban thumbnail 120x150 (khong doc noi net mat). Doi sang ban dan xuat 'v' cua LOC moi ra 816x1024. Mo ta tren la do CLAUDE mo anh ra nhin, khong phai chep tu danh muc."
+    },
+    {
+      "file": "02-half-moon-hotel__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://www.boweryboyshistory.com/2013/09/the-big-crowd-kevin-baker-takes-on.html",
+      "sourceUrl": "https://www.boweryboyshistory.com/wp-content/uploads/2013/09/114.jpg",
+      "sourceKind": "buu thiep co, DA TO MAU LAI",
+      "dated": "KHONG RO — buu thiep khong ghi nam, va mot mau buu thiep duoc in lai nhieu nam",
+      "size": "494x760",
+      "evidenceFor": "HINH KHOI cong trinh. KHONG phai bang chung ve mau sac, cung KHONG phai bang chung ve nam 1941",
+      "shows": [
+        "thap khach san cao, than chu nhat, thu nho dan len tren theo kieu bac thang",
+        "dinh kieu phuc hung Tay Ban Nha: thap nho co mai vom va den long tren cung",
+        "hai canh thap hai ben chan thap chinh",
+        "day nha thap chay ngang phia truoc, mai bang, cua so lien tiep",
+        "duong dao bo go phia truoc, co nguoi di dao va mot xe day may kieu Coney Island"
+      ],
+      "usedFor": [
+        "A1-11"
+      ],
+      "primary": false,
+      "note": "TU LIEU PHU ke tu 2026-09-11. Tu chot dung anh 09 (chup that, 1927) lam can cu ve cho A1-11; buu thiep nay ha xuong lam doi chieu. Mau tren buu thiep la mau TO TAY sau khi in den trang — dung lay lam can cu mau. Codex da ghi ro chua xac minh nam; toi khong xac minh duoc them."
+    },
+    {
+      "file": "03-nyc-policeman-1942-loc__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://www.loc.gov/pictures/item/2017836691/",
+      "sourceUrl": "https://cdn.loc.gov/service/pnp/fsa/8d22000/8d22200/8d22267v.jpg",
+      "sourceKind": "anh tu lieu (FSA/OWI), tac gia Marjory Collins",
+      "dated": "thang 9-1942 theo danh muc LOC",
+      "size": "1024x1016",
+      "evidenceFor": "dong phuc canh sat New York DUNG THOI KY. KHONG phai anh nguoi gac Reles, khong phai anh tai khach san",
+      "shows": [
+        "canh sat lon tuoi, nghieng mat",
+        "mu ket luoi trai, co phu hieu tron gan truoc mu",
+        "ao tunic sam mau, vai day, tay ao rong",
+        "dang be mot dua tre — TU THE KHONG dung cho A1-12/A1-17, chi lay phan trang phuc"
+      ],
+      "usedFor": [
+        "A1-12",
+        "A1-17"
+      ],
+      "note": "Anh chup 9-1942, tuc SAU cai chet cua Reles (11-1941) 10 thang. Dung lam can cu trang phuc gan dung thoi ky, khong dung lam can cu hien truong."
+    },
+    {
+      "file": "04-reles-c1935-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://en.wikipedia.org/wiki/Abe_Reles",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/81/Abe-reles.jpg",
+      "sourceKind": "anh bao chi / luu tru (qua Wikimedia Commons)",
+      "dated": "chu thich Wikipedia ghi khoang 1935",
+      "size": "603x900",
+      "evidenceFor": "ngoai hinh nhan vat — BAN NET NHAT hien co cho khuon mat",
+      "shows": [
+        "cat sat hon ban LOC: mat chiem gan het khung",
+        "song toc thay rat ro — tung lop song song chay ngang dinh dau, kieu uon marcel",
+        "long may den, rat day, duoi may cong xuong",
+        "mat hoi xech, mi tren nang",
+        "mui to, canh mui rong",
+        "cuoi he lo rang, moi day",
+        "tai lon va lo han ra khoi toc",
+        "cung ao tweed van xuong ca, so mi trang, ca vat ke soc cheo"
+      ],
+      "usedFor": [
+        "A1-01"
+      ],
+      "note": "CUNG MOT BUOI CHUP voi anh 01 cua LOC — cung ao, cung ca vat, cung nep toc, cung cai cuoi. KHONG phai goc thu hai nhu toi di tim. Gia tri cua no la DO NET cho khuon mat, khong phai goc moi. Ghi ro de phien sau khong tuong A1 da co hai goc."
+    },
+    {
+      "file": "05-reles-mugshot-1940-jjay__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://dc.lib.jjay.cuny.edu/index.php/Detail/Object/Show/object_id/7152",
+      "sourceUrl": "https://dc.lib.jjay.cuny.edu/index.php/Detail/Object/DownloadRepresentation/representation_id/2427/object_id/7152/download/1/version/large",
+      "sourceKind": "anh nhan dang cua canh sat (mugshot), kho luu tru John Jay College",
+      "dated": "danh muc ghi 2-2-1940; placard trong anh ghi 29 40",
+      "size": "700x401",
+      "evidenceFor": "ngoai hinh nhan vat — GOC THU HAI, va la ban tot nhat hien co",
+      "shows": [
+        "bang mugshot hai o: ben trai nghieng, ben phai chinh dien, CUNG MOT LAN CHUP nen cung anh sang",
+        "nghieng: ham duoi nang va banh, cam manh, co day, tai lon ap sat, song mui thang va chop mui hoi gap xuong",
+        "chinh dien: mat rong, mi tren nang tru xuong, long may den day gan giao nhau",
+        "mui to, canh mui rong; moi day; nhan hai ben khoe mieng",
+        "toc ngan hon anh bao chi, song chat hon, chan toc lui o hai ben thai duong",
+        "ao khoac sam, so mi trang, ca vat sam co hoa van",
+        "khong rau",
+        "placard 'NYC POLICE 62038' treo truoc nguc o o chinh dien"
+      ],
+      "usedFor": [
+        "A1-01"
+      ],
+      "alsoFoundBy": [
+        {
+          "agent": "gemini",
+          "sourceUrl": "https://digitalcollections.lib.jjay.cuny.edu/files/original/B62038_reles.jpg",
+          "query": "site:cuny.edu \"Abraham Reles\" mugshot",
+          "note": "Gemini chi ra DUNG hien vat nay (cung so ho so B62038, cung mo ta chinh dien + nghieng phai, cung nam 1940) nen KHONG tai lai — chi ghi o day theo luat 2a-bis. Nhung URL no nop KHONG TON TAI: ten mien digitalcollections.lib.jjay.cuny.edu khong phan giai duoc (curl tra ve 000). Ten mien that la dc.lib.jjay.cuny.edu, va Codex da nop dung tu truoc. Rat co the Gemini lay so B62038 tu file vong r1-01 cua Codex roi tu dung nen mot duong dan trong hop ly."
+        }
+      ],
+      "note": "Day la GOC THU HAI that su — khac han anh 01/04 (cung mot buoi chup, dang cuoi, mac ao tweed). Mugshot cho ca nghieng lan chinh dien voi anh sang deu, nen la ban NEN DUNG lam goc cho mo ta nhan vat. Anh co chu (placard) nhung khong sao: day la anh de SOI, khong dua vao model."
+    },
+    {
+      "file": "06-reles-fulllength-1933-jjay__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://dc.lib.jjay.cuny.edu/index.php/Detail/Object/Show/object_id/222",
+      "sourceUrl": "https://dc.lib.jjay.cuny.edu/index.php/Detail/Object/DownloadRepresentation/representation_id/385/object_id/222/download/1/version/large",
+      "sourceKind": "anh nhan dang toan than, kho luu tru John Jay College",
+      "dated": "danh muc ghi 29-9-1933 — KHONG phai 1940 nhu truy van cua Codex nham",
+      "size": "700x1002",
+      "evidenceFor": "voc nguoi va trang phuc. KHONG dung cho khuon mat (mat nho, tuong phan thap)",
+      "shows": [
+        "hai nguoi dung canh thuoc do, Reles ben trai",
+        "ao khoac dai va quan dai",
+        "nhin chinh dien"
+      ],
+      "usedFor": [
+        "A1-01"
+      ],
+      "note": "Chup nam 1933, tuc truoc cac su kien trong doan A1 (1940-1941) bay nam. Dung cho voc nguoi, khong dung cho dien mao luc bi bat."
+    },
+    {
+      "file": "07-ice-pick-awl-1930s-pemberton__codex.jpg",
+      "foundBy": "codex",
+      "verifiedBy": "claude",
+      "sourcePage": "https://www.pembertonmuseum.org/objects/scratch-awl/",
+      "sourceUrl": "https://www.pembertonmuseum.org/wp-content/uploads/2024/10/0211055_ed.jpg",
+      "sourceKind": "anh hien vat bao tang (Pemberton Museum, so 021.10.55)",
+      "dated": "ho so bao tang ghi khoang thap nien 1930-1940",
+      "size": "800x533",
+      "evidenceFor": "HINH DANG dung cu cung thoi. KHONG phai bang chung ve loai Reles da dung",
+      "shows": [
+        "can go phinh tron o duoi, thot lai ve phia co",
+        "co kim loai ngan noi can voi than",
+        "than kim loai thang, thon deu ve mui, mui rat nhon",
+        "dat tren vai den, canh thuoc do va bang so hien vat"
+      ],
+      "usedFor": [
+        "A1-03"
+      ],
+      "note": "Ho so bao tang goi hien vat la 'scratch awl' va dong thoi dung ten 'ice pick'. Codex da ghi ro phan biet nay, khong tu nang thanh 'day la dui cua Reles'."
+    },
+    {
+      "file": "08-ice-pick-modern-commons__gemini.jpg",
+      "foundBy": "gemini",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ICEPICK2.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/db/ICEPICK2.jpg",
+      "sourceKind": "anh chup vat dung HIEN DAI tren giay ke o, tac gia Richard Frantz Jr.",
+      "dated": "2005-03-13 theo metadata Commons",
+      "size": "602x163",
+      "evidenceFor": "HINH DANG CHUNG cua mot cai dui da. KHONG phai bang chung ve thoi ky 1930-1940",
+      "shows": [
+        "can go son den bong",
+        "than kim loai thang thon deu ve mui nhon",
+        "chup ngang tren nen giay ke o 0,25 inch"
+      ],
+      "usedFor": [
+        "A1-03"
+      ],
+      "note": "⚠️ Gemini nop cai nay voi mo ta 'ice pick kieu 1930-1940'. METADATA COMMONS KHONG DO NOI DIEU DO: anh chup nam 2005, mo ta goc ghi la 'household implement' hien dai. Da sua lai evidenceFor cho dung. Muon can cu thoi ky thi dung anh 07 (bao tang Pemberton, ho so ghi 1930-1940)."
+    },
+    {
+      "file": "09-half-moon-hotel-1927-cihp__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://www.coneyislandhistory.org/collection/half-moon-hotel",
+      "sourceUrl": "https://www.coneyislandhistory.org/sites/default/files/documents/302/images/7504_ca_object_representations_media_319_original.png",
+      "sourceKind": "anh chup THAT (khong to mau), Coney Island History Project",
+      "dated": "1927 theo chu thich cua CIHP — khach san vua xay xong",
+      "size": "1400x1761 (ban da thu nho; ban goc 4532x5701 PNG 12,6 MB)",
+      "evidenceFor": "HINH KHOI va CHI TIET KIEN TRUC cua cong trinh. Khong phai bang chung ve hien truong nam 1941",
+      "shows": [
+        "thap gach cao, than thu nho dan len tren theo tung bac",
+        "dinh thap kieu Thuoc dia Tay Ban Nha: o vom cuon, mai vom kham, chong chong gio tren cung",
+        "vien mai lop ngoi, cac chop urn o goc",
+        "cac hang cua so deu dan, moi cua co mai hien vai sam",
+        "canh nha thap hon ben phai, mai ngoi",
+        "duong dao bo go phia truoc, nguoi mac ao khoac va doi mu thap nien 1920"
+      ],
+      "usedFor": [
+        "A1-11"
+      ],
+      "primary": true,
+      "decision": "Tu chot 2026-09-11: dung anh nay lam can cu ve cho A1-11, KHONG mua giay phep Getty cho tam 12-11-1941. Ly do: cong trinh khong doi hinh khoi giua 1927 va 1941, va 'dung ngay' khong doi lay duoc net ve nao khac tren mot buc ve chuot co tinh vung.",
+      "note": "TOT HON anh 02 (buu thiep to mau) cho viec ve cong trinh: day la anh chup that, net, do tuong phan cao. Nam 1927 chu khong phai 1941 — nhung cong trinh khong doi hinh khoi giua hai moc do. Ban goc 12,6 MB da thu nho con 280 KB vi anh chi de soi; URL goc giu o day de tai lai khi can."
+    },
+    {
+      "file": "10-anastasia-mugshot-1936-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:AnastasiaMugshot1936.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/AnastasiaMugshot1936.jpg",
+      "sourceKind": "anh can cuoc canh sat NYC (mat truoc + mat nghieng)",
+      "dated": "1936-10-22 (ghi tren bang so trong anh)",
+      "size": "550x303",
+      "evidenceFor": "ngoai hinh Albert Anastasia DUNG THOI KY cau chuyen (1940). Ban DUY NHAT dung tuoi trong bo nay",
+      "shows": [
+        "dan ong khoang giua 30",
+        "toc den DAY, gon song, chai nguoc va don cao tren dinh dau",
+        "long may den RAM va nang",
+        "mat sau, mi nang, quang tham duoi mat",
+        "MUI TO, song mui cao va dai — ro nhat o anh nghieng; day la net nhan ra",
+        "moi day, ma day thit, khong rau",
+        "ao vest toi, ca vat hoa van"
+      ],
+      "usedFor": [
+        "A1-09b"
+      ],
+      "note": "Chu va so tren bang can cuoc la cua anh chup — KHONG dua vao prompt."
+    },
+    {
+      "file": "11-anastasia-1950s-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:AlbertAnastasia1950s.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/AlbertAnastasia1950s.jpg",
+      "sourceKind": "anh bao chi",
+      "dated": "khoang 1953-1955 (theo mo ta Commons)",
+      "size": "360x450",
+      "evidenceFor": "DOI CHIEU mui va long may. KHONG dung cho tuoi, voc nguoi hay toc",
+      "shows": [
+        "da gia, beo han, toc thua va hoi",
+        "mu phot sang, ao vest sang, dieu thuoc",
+        "mui va long may khop anh 10"
+      ],
+      "usedFor": [],
+      "note": "SAI TUOI cho cau chuyen nam 1940 — hon 15 nam. Giu lai chi de xac nhan mui/long may la net on dinh."
+    },
+    {
+      "file": "12-anastasia-court-1955-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Albert_Anastasia_(left)_leaves_Federal_District_Court_with_his_attorney,_Anthony_Colendra.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Albert_Anastasia_%28left%29_leaves_Federal_District_Court_with_his_attorney%2C_Anthony_Colendra.jpg",
+      "sourceKind": "anh bao chi",
+      "dated": "1955-05-23",
+      "size": "564x588",
+      "evidenceFor": "voc nguoi CHAC, thap dam. KHONG dung cho khuon mat hay thoi ky",
+      "shows": [
+        "nguoi ben trai la Anastasia, nguyen than, dang di",
+        "vai rong, bung to"
+      ],
+      "usedFor": [],
+      "note": "Anh roi toa an 1955 — dung ve canh 'bi ha xuong' la SAI: loi ke chi noi loi khai cua Reles 'was said to' ha Anastasia, va thuc te Reles chet truoc khi kip lam chung. Khong lay anh nay lam goi y bo cuc."
+    },
+    {
+      "file": "13-luciano-mugshot-1931-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Lucky_Luciano_mugshot_1931_(cropped).jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Lucky_Luciano_mugshot_1931_%28cropped%29.jpg",
+      "sourceKind": "anh can cuoc canh sat NYC",
+      "dated": "1931-02-02 (ghi tren bang so)",
+      "size": "586x821",
+      "evidenceFor": "ngoai hinh Lucky Luciano, mat truoc",
+      "shows": [
+        "dan ong khoang dau 30",
+        "toc den chai nguoc gon, hoi gon song, co ngoi lech",
+        "MI MAT PHAI SUP xuong (mat ben trai nguoi xem) — net nhan ra so mot",
+        "mat dai, mui thang, moi mong, cam vuong",
+        "ao vest, ca vat soc cheo"
+      ],
+      "usedFor": [
+        "A1-18a"
+      ]
+    },
+    {
+      "file": "14-luciano-mugshot-1936-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Charles_Luciano.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Charles_Luciano.jpg",
+      "sourceKind": "anh can cuoc canh sat NYC (mat nghieng + mat truoc)",
+      "dated": "1936-04-18 (ghi tren bang so) — dung nam Luciano vao tu",
+      "size": "1024x683",
+      "evidenceFor": "ngoai hinh Luciano DUNG THOI KY 'khoe tu trong tu'; goc NGHIENG duy nhat",
+      "shows": [
+        "toc day gon song tren dinh (ro o anh nghieng)",
+        "mui thang dai nhin nghieng",
+        "mi mat phai sup van con",
+        "ca vat tron mau toi"
+      ],
+      "usedFor": [
+        "A1-18a"
+      ]
+    },
+    {
+      "file": "15-luciano-mugshot-1936b-commons__claude.jpg",
+      "foundBy": "claude",
+      "verifiedBy": "claude",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:LuckyLucianoSmaller.jpeg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/LuckyLucianoSmaller.jpeg",
+      "sourceKind": "anh can cuoc canh sat NYC, cat sat, tang tuong phan",
+      "dated": "1936",
+      "size": "530x740",
+      "evidenceFor": "SEO MA PHAI va MI MAT SUP — ban ro nhat cho hai net nay",
+      "shows": [
+        "seo lom tren ma phai",
+        "mi mat phai sup ro",
+        "cung ao, cung ca vat voi mat truoc cua anh 14"
+      ],
+      "usedFor": [
+        "A1-18a"
+      ],
+      "note": "CUNG MOT BUOI CHUP voi mat truoc cua anh 14 — khong phai goc thu hai (giong ca Reles 01/04). Giu ca hai vi ban nay cat sat va tuong phan cao, doc duoc seo."
+    }
+  ],
+  "searched": [
+    {
+      "query": "Abe Reles photograph mugshot Wikimedia Commons",
+      "by": "codex",
+      "result": "lan sang duoc ho so LOC 95511453"
+    },
+    {
+      "query": "Half Moon Hotel Coney Island 1941",
+      "by": "codex",
+      "result": "ra buu thiep, chua xac minh nam"
+    },
+    {
+      "query": "\"Half Moon Hotel\" \"Coney Island\" \"1941\" photograph exterior",
+      "by": "codex",
+      "result": "co ho so Getty 2265487109 chup 12-11-1941, KHONG lay duoc URL anh truc tiep"
+    },
+    {
+      "query": "Marjory Collins Irish American policeman Central Park 1942 Library Congress",
+      "by": "codex",
+      "result": "ra ho so LOC 2017836691"
+    },
+    {
+      "query": "\"ice pick\" \"1930\" \"collection\"",
+      "by": "codex",
+      "result": "ra trang icetoolcollection.com nhung URL anh khong phai anh"
+    },
+    {
+      "query": "Half Moon Hotel Coney Island 1941 photograph library",
+      "by": "codex",
+      "result": "co NYPL/CIHP va bo anh nam 1991; khong co URL anh 1941"
+    },
+    {
+      "query": "site:loc.gov New York policeman 1940 photograph uniform",
+      "by": "codex",
+      "result": "khong ra ho so anh phu hop"
+    },
+    {
+      "query": "site:americanhistory.si.edu \"ice pick\"",
+      "by": "codex",
+      "result": "co hien vat Smithsonian nhung danh muc ghi the ky XIX"
+    },
+    {
+      "query": "\"Half Moon Hotel\" site:commons.wikimedia.org/wiki/File",
+      "by": "codex",
+      "result": "ra cac dia diem trung ten o Anh/Wales"
+    },
+    {
+      "query": "\"Abe Reles\" portrait site:loc.gov (tim anh)",
+      "by": "codex",
+      "result": "cong cu tra ve rong"
+    },
+    {
+      "query": "Abe Reles photograph 1940 Murder Inc portrait archive",
+      "by": "claude",
+      "result": "ra Getty va Granger — deu chan tai. Lan sang Wikipedia moi ra duoc ban Commons"
+    },
+    {
+      "query": "trang Wikipedia Abe Reles, doc danh sach file anh",
+      "by": "claude",
+      "result": "ra Abe-reles.jpg tren Commons, tai duoc ban day du 603x900"
+    },
+    {
+      "query": "Half Moon Hotel Coney Island photograph wikimedia commons",
+      "by": "claude",
+      "result": "KHONG co tren Commons. Ra NYPL, Brooklyn Museum, Brooklyn Public Library, Coney Island History Project"
+    },
+    {
+      "query": "mo trang NYPL digitalcollections item 6faf1db0 (Riegelmann boardwalk - Half-Moon Hotel)",
+      "by": "claude",
+      "result": "TRUOT — trang dung bang JS, fetch ve rong, khong lay duoc URL anh truc tiep"
+    },
+    {
+      "query": "antique ice pick 1930s wood handle photograph museum collection",
+      "by": "claude",
+      "result": "chi ra eBay/Etsy/Pinterest, khong co hien vat bao tang co nien dai ro"
+    },
+    {
+      "query": "\"ice pick\" \"1930s\" museum collection",
+      "by": "codex",
+      "result": "ra hien vat Pemberton 021.10.55 — da tai, dung duoc"
+    },
+    {
+      "query": "\"Abe Reles\" \"police\" site:dc.lib.jjay.cuny.edu",
+      "by": "codex",
+      "result": "ra mugshot B62038 — GOC THU HAI, da tai, dung duoc"
+    },
+    {
+      "query": "\"Abe Reles\" profile photograph arrested 1940",
+      "by": "codex",
+      "result": "ra John Jay, Monroe Gallery, Kansas City Star"
+    },
+    {
+      "query": "\"Half Moon Hotel\" \"Mac Gramlich\" 1941",
+      "by": "codex",
+      "result": "ra anh WNYC nhung chi 221x268 va khong xac minh duoc nam"
+    },
+    {
+      "query": "\"Half Moon Hotel\" \"1941\" Getty 2265487109",
+      "by": "codex",
+      "result": "doc duoc chu thich dung ngay 12-11-1941; Getty tra ve TRANG DANG NHAP chu khong phai anh"
+    },
+    {
+      "query": "Kansas City Star anh 173428 (Reles ra toa 1940)",
+      "by": "codex",
+      "result": "HTTP 403"
+    },
+    {
+      "query": "\"File:Ice pick.jpg\" site:commons.wikimedia.org",
+      "by": "gemini",
+      "result": "ra File:ICEPICK2.jpg co that, NHUNG URL truc tiep Gemini nop (4/4b) tra 404 — duong dan Commons dung hash MD5 cua ten file, khong doan duoc. Claude tra API lay duoc duong dan that (d/db) roi tai ve"
+    },
+    {
+      "query": "\"urban archive\" \"Half Moon Hotel\" \"Coney Island\"",
+      "by": "gemini",
+      "result": "URL anh nop (api.urbanarchive.org/items/HalfMoonHotel1941/image) tra 404; trang nguon tra 403. Duong dan API co dang tu dat ten theo chinh tu khoa tim kiem"
+    },
+    {
+      "query": "site:cuny.edu \"Abraham Reles\" mugshot",
+      "by": "gemini",
+      "result": "chi dung hien vat (B62038) nhung ten mien nop khong phan giai duoc (000). Xem alsoFoundBy cua anh 05"
+    },
+    {
+      "agent": "claude",
+      "date": "2026-09-13",
+      "where": "Commons API",
+      "query": "Albert Anastasia",
+      "result": "3 anh dung nguoi (10, 11, 12); con lai la nha tho Sainte Anastasie — nhieu, bo"
+    },
+    {
+      "agent": "claude",
+      "date": "2026-09-13",
+      "where": "Commons API",
+      "query": "Lucky Luciano",
+      "result": "3 anh can cuoc dung (13, 14, 15); co mot KHUNG PHIM 1973 'Lucky Luciano (film)' — CAM theo skill case-reference-images muc 4c(3), khong tai"
+    },
+    {
+      "agent": "claude",
+      "date": "2026-09-13",
+      "where": "Commons API",
+      "query": "Carlo Gambino",
+      "result": "anh can cuoc 1930s cua Carlo Gambino — tai HONG, xem stillMissing"
+    },
+    {
+      "agent": "claude",
+      "date": "2026-09-13",
+      "where": "Commons API",
+      "query": "Gambino crime family",
+      "result": "toan anh FBI 1979-1981, so do to chuc 1963, anh can cuoc 1993-2004 — SAI THOI KY, xem ghi chu gambinoName"
+    }
+  ],
+  "stillMissing": [
+    {
+      "for": "A1-03",
+      "what": "ice pick kieu 1930-1940",
+      "why": "URL Codex nop (icetoolcollection.com/1p3cappedhandles_files/image002.jpg) tra ve HTML chu khong phai anh — Claude tai thu va xac nhan. Chua co anh thay the."
+    },
+    {
+      "for": "A1-11",
+      "what": "anh chup that Half Moon Hotel nam 1941",
+      "why": "Ho so Getty 2265487109 dung ngay 12-11-1941 nhung Getty chan tai. Buu thiep hien co du de ve hinh khoi."
+    },
+    {
+      "for": "A1-09c",
+      "what": "anh nhom cua gia dinh mafia nay DUNG THOI KY 1940",
+      "why": "Khong ton tai duoi ten Gambino: ten do co tu 1957. Nam 1940 la gia dinh Mangano. Tra 'Mangano crime family 1940' chua lam — viec cua phien sau neu can."
+    },
+    {
+      "for": "A1-09c",
+      "what": "anh can cuoc Carlo Gambino 1930s (Commons: Carlo_Gambino_(cropped).jpg) va so do to chuc 1963 (Gambino_Crime_Family.jpg)",
+      "why": "Hai lan tai (ban goc roi ban thumb) deu tra ve trang 'Wikimedia Error' 1990-2034 byte, duoi 3e0a — bi bop toc do sau loat tai. Da xoa file hong, KHONG ghi vao images. Tai lai sau."
+    },
+    {
+      "for": "A1-18b",
+      "what": "quan ao tu nhan nha tu bang New York 1936-1946 (Clinton / Great Meadow)",
+      "why": "Chua tra. Ca ba anh Luciano deu la anh can cuoc mac vest — khong phai trang phuc trong tu. Prompt dang ta chung chung, can doi chieu."
+    }
+  ],
+  "contributionLog": [
+    {
+      "agent": "gemini",
+      "run": "luong lan 1 (nay o coordination/threads/_archive-img-prompts-v2-json-vong1/)",
+      "what": "khong nop URL nao",
+      "detail": "Bo qua phan tim nguon. NGUYEN NHAN da do ra: KHONG phai thieu quyen — search_web cua agy chay tot (25,8 giay). Loi nam o prompt: luot review khong he duoc giao viec tim kiem, yeu cau do chi nam trong file vong cua tac gia. Da va co che 2026-09-11."
+    },
+    {
+      "agent": "gemini",
+      "run": "luong lan 2 (luot r1-02 hien tai)",
+      "what": "nop 3 URL, ca 3 deu KHONG tai duoc nhu nop",
+      "detail": "Sau khi viec tim kiem duoc chen thang vao prompt moi luot, Gemini chay 401 giay (lan truoc 104) va co di tim that. Nhung: (1) ice pick — file Commons CO THAT nhung duong dan truc tiep sai hash, Claude phai tra API moi lay duoc; (2) Half Moon Hotel — URL api.urbanarchive.org tra 404, trang nguon 403; (3) mugshot — ten mien khong phan giai duoc, va la trung voi thu Codex da nop. Gemini tu ghi ro la khong tai file ve kiem duoc do chay che do chi doc — dung, va day chinh la ly do spec tach foundBy khoi verifiedBy.",
+      "correction": "Gemini neu diem D10 rang muc nay ghi sai vi no CO dong gop. Dung mot nua: dong gop o luot nay, khong co o luot truoc. Da tach thanh hai ban ghi theo tung lan chay thay vi mot ket luan chung."
+    }
+  ],
+  "lessons": [
+    "HTTP 200 KHONG bao dam file du. Ba lan tai dau deu cut giua chung ma curl khong bao loi: anh Reles dung o 22KB (dang le 121KB), anh canh sat dung o 14KB (dang le 239KB). Nhin bang mat thi ra anh den si hoac chi mot dai pixel. PHAI kiem duoi file JPEG ket thuc bang FFD9 sau khi tai.",
+    "URL do agent khac nop la UNG VIEN, chua phai tu lieu. Trong 4 URL Codex nop: 1 la thumbnail qua nho phai doi sang ban dan xuat lon hon, 1 khong phai anh. Luot review chay che do chi doc nen ho khong tai ve kiem duoc — day la viec cua luot tac gia."
+  ],
+  "gambinoName": "LOI KE DUNG TEN VE SAU. Transcript 0:30 viet 'the future boss of the Gambino family'. Nam 1940-41, gia dinh nay la gia dinh MANGANO; Anastasia len lam trum 1951, ten Gambino co tu khi Carlo Gambino nam quyen 1957. Chu 'future' trong loi ke da ngam thua nhan dieu nay. He qua cho anh: moi anh tu lieu mang ten 'Gambino family' tren Commons thuoc 1960-2000s, KHONG dung lam can cu hinh anh cho canh 1940. Khong sua loi ke (viec cua Tu) — chi ghi lai de khong ai lay anh FBI 1981 lam mau."
+}

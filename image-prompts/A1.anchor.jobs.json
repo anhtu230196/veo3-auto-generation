@@ -1,0 +1,55 @@
+[
+  {
+    "id": "A1-00",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "object",
+    "outName": "Style Anchor Chair And Hat",
+    "prompt": "a plain wooden chair with a grey felt fedora resting on the seat, drawn by hand in ink with visible pencil hatching in the shading, clean ink outlines filled with flat muted colour, warm browns and greys, slightly rough linework, on a plain white background. with the same style with reference images",
+    "refNames": []
+  },
+  {
+    "id": "A1-01",
+    "segment": "A1",
+    "at": "0:00",
+    "kind": "character",
+    "outName": "Broad Faced Man In Dark Overcoat",
+    "prompt": "A man in his early thirties. He has a broad, heavy face with a wide, strong jaw and a thick neck. His hair is thick, dark, and distinctly wavy (marcel wave style), swept straight back with no clear parting, and slightly receding at the temples. He has very thick, dark eyebrows that almost meet, with heavy-lidded eyes, a broad nose with wide nostrils, and thick lips. His ears are quite large and stick out. He is clean-shaven. He is wearing a dark, heavy herringbone tweed overcoat with very wide lapels, a white shirt, and a dark diagonally striped tie. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-03",
+    "segment": "A1",
+    "at": "0:09",
+    "kind": "object",
+    "outName": "Ice Pick With Wooden Handle",
+    "prompt": "An antique scratch awl or ice pick from the 1930s. It has a wooden handle that is bulbous at the base and tapers toward the neck. A short metal collar connects the handle to a straight metal shaft that tapers evenly to a very sharp point. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-13",
+    "segment": "A1",
+    "at": "0:50",
+    "kind": "character",
+    "outName": "Heavy Set Man Lying Face Down",
+    "prompt": "A man in his early thirties lying face down, arms slack. He has thick, dark, wavy hair, a thick neck, and a broad face. He is wearing a dark, heavy herringbone tweed overcoat, a white shirt, and a dark diagonally striped tie. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  },
+  {
+    "id": "A1-15",
+    "segment": "A1",
+    "at": "0:59",
+    "kind": "object",
+    "outName": "Cast Iron Radiator",
+    "prompt": "A heavy cast iron steam radiator painted in chipped, dull silver. It has multiple vertical ribbed sections standing on small curved legs, with a round brass steam valve attached to the side near the floor. with the same style with reference images",
+    "refNames": [
+      "Style Anchor Chair And Hat"
+    ]
+  }
+]
