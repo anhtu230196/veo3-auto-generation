@@ -27,6 +27,15 @@
     "refNames": []
   },
   {
+    "id": "C1-01d",
+    "segment": "C1",
+    "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
+    "kind": "place",
+    "outName": "Low Wooded Island Seen From The Water",
+    "prompt": "A small low flat island seen from the water across a calm shallow sound: dense dark green pine and oak woods cover it right down to a narrow edge of pale sand and tall marsh reeds along the waterline, and flat calm water fills the lower part of the picture. No people, no houses, no boats, no ships, no smoke, no sun, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
     "id": "C1-02",
     "segment": "C1",
     "at": "In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, led by governor John White.",
@@ -110,6 +119,24 @@
     "noAnchors": true
   },
   {
+    "id": "C1-06b",
+    "segment": "C1",
+    "at": "The settlers begged White to sail back to England for more supplies.",
+    "kind": "object",
+    "outName": "Stack Of Barrels And Sacks",
+    "prompt": "A small pile of supplies from the 1500s: three wooden barrels bound with iron hoops, two plump tied cloth sacks of grain and one closed wooden crate, stacked together as one heap. No lettering, no marks, no labels, no people, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-06c",
+    "segment": "C1",
+    "at": "The settlers begged White to sail back to England for more supplies.",
+    "kind": "place",
+    "outName": "Ocean Map Between Two Coasts",
+    "prompt": "A simple flat map seen straight from above of the North Atlantic Ocean: the east coast of North America along the left edge and the coasts of Britain, Ireland and western Europe along the right edge, with open ocean between them. Draw only coastlines, with no country borders. England, the southern part of the island of Great Britain, is filled with one flat red colour and labelled \"ENGLAND\" in plain capital letters, the ocean is flat pale blue labelled \"ATLANTIC OCEAN\" in plain capital letters, and the rest of the land is plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
     "id": "C1-07",
     "segment": "C1",
     "at": "He left on August 27th, 1587, promising to return quickly.",
@@ -148,6 +175,15 @@
     "kind": "object",
     "outName": "Fleet Of Spanish Galleons",
     "prompt": "A fleet of five large Spanish galleons of 1588 sailing together in a wide curved line, seen from the side, each with a tall ornate stern castle and plain square sails. No flags with writing, no lettering, no cannon fire, no smoke, no water, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-09b",
+    "segment": "C1",
+    "at": "The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship from leaving port.",
+    "kind": "place",
+    "outName": "Sea Map Of Western Europe",
+    "prompt": "A simple flat map seen straight from above of western Europe around the English Channel: the southern half of Great Britain at the top, the coast of France below it across the narrow channel, and the Iberian Peninsula at the bottom left, with the Atlantic Ocean on the left. Draw only coastlines, with no country borders. England is filled with one flat red colour and labelled \"ENGLAND\", and the Iberian Peninsula is filled with one flat dark yellow colour and labelled \"SPAIN\" in its middle, both in plain capital letters. The sea is flat pale blue and the rest of the land plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
     "refNames": []
   },
   {
@@ -227,6 +263,15 @@
     "refNames": []
   },
   {
+    "id": "C1-13b",
+    "segment": "C1",
+    "at": "If they were forced to relocate, they would carve the name of their destination into a tree or post.",
+    "kind": "object",
+    "outName": "Small Carving Knife With Wooden Handle",
+    "prompt": "A small carving knife from the 1500s lying flat: a short pointed plain steel blade and a plain wooden handle bound with a band of cord. No blood, no lettering, no marks, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
     "id": "C1-14",
     "segment": "C1",
     "at": "If they left under distress, they'd carve a cross beside it.",
@@ -268,6 +313,35 @@
       },
       {
         "text": ", keep his face exactly the same, now seen full length from head to shoes stepping out of shallow water onto a sandy beach and looking ahead, wearing the same hat and doublet with dark knee-length breeches and tall brown leather boots wet to the knee, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-15b",
+    "segment": "C1",
+    "at": "On August 18th, 1590, his granddaughter's third birthday, White landed again.",
+    "kind": "object",
+    "outName": "Ship Riding At Anchor Offshore",
+    "prompt": "draw the same ship as in @Sailing Ship Ref Three Masts, now lying at anchor with all of its sails furled on the yards and one straight anchor rope running down from its bow into flat calm water, in the same drawing style as @01-pyramid-place.png, no people, no lettering, no sun, plain white background",
+    "refNames": [
+      "Sailing Ship Ref Three Masts"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same ship as in "
+      },
+      {
+        "asset": "Sailing Ship Ref Three Masts"
+      },
+      {
+        "text": ", now lying at anchor with all of its sails furled on the yards and one straight anchor rope running down from its bow into flat calm water, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", no people, no lettering, no sun, plain white background"
       }
     ],
     "noAnchors": true
@@ -412,6 +486,15 @@
     "refNames": []
   },
   {
+    "id": "C1-22b",
+    "segment": "C1",
+    "at": "It meant everyone had relocated safely to nearby Croatoan Island.",
+    "kind": "place",
+    "outName": "Coastal Map With Two Islands Marked",
+    "prompt": "A simple flat map seen straight from above of a stretch of the North Carolina coast: the mainland along the left, a wide shallow sound in the middle with a small island inside it near the mainland, and a long thin chain of barrier islands along the right side separating the sound from the open ocean. The small island in the sound is filled with one flat red colour and labelled \"ROANOKE\", and the southern part of the long barrier island, where it bends at a sharp cape, is filled with one flat orange colour and labelled \"CROATOAN\", both in plain capital letters. The sound and the ocean are flat pale blue and the rest of the land plain pale beige. Draw only coastlines, with no state borders and no roads. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
     "id": "C1-23",
     "segment": "C1",
     "at": "But just as he prepared to sail there and check, a hurricane tore through the area.",
@@ -459,6 +542,15 @@
     "refNames": []
   },
   {
+    "id": "C1-25b",
+    "segment": "C1",
+    "at": "His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck.",
+    "kind": "place",
+    "outName": "Jagged Rocks Under Calm Water",
+    "prompt": "A cut-away side view of shallow sea water: one straight flat water surface line runs across the whole picture, and below it several jagged dark rocks rise from the sea floor to just under the surface, their tops hidden a little below the waterline, the water drawn in flat pale grey-green. No ship, no boat, no people, no fish, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
     "id": "C1-26",
     "segment": "C1",
     "at": "His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck.",
@@ -486,6 +578,15 @@
       }
     ],
     "noAnchors": true
+  },
+  {
+    "id": "C1-26b",
+    "segment": "C1",
+    "at": "The storm blew them completely off course, and by the time they spotted land again, they were near the Azores, off the coast of Spain.",
+    "kind": "place",
+    "outName": "Open Ocean Map With Island Group",
+    "prompt": "A simple flat map seen straight from above of the North Atlantic Ocean: the east coast of North America along the left edge, the coasts of Europe and north-west Africa along the right edge, and a small group of nine islands far out in the ocean, about a quarter of the way across from Portugal towards America. The small island group is filled with one flat red colour and labelled \"AZORES\", and the ocean is flat pale blue labelled \"ATLANTIC OCEAN\", both in plain capital letters. Draw only coastlines, with no country borders. The land is plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
   },
   {
     "id": "C1-27",
@@ -567,6 +668,15 @@
     "kind": "place",
     "outName": "Empty Excavation Pit",
     "prompt": "A square archaeological excavation pit dug into pale sandy soil, its four edges marked out with taut string tied to wooden pegs at the corners, the bottom of the pit flat and completely empty, and a small pointed mason's trowel stuck upright in the loose soil at one corner. No people, no bones, no objects in the pit, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-32b",
+    "segment": "C1",
+    "at": "Not to this day.",
+    "kind": "place",
+    "outName": "Grassy Earthwork Ramparts Under Pines",
+    "prompt": "The low grass-covered earth ramparts of an old earthwork fort today, seen from its entrance: two rounded earth banks covered in grass and fallen brown leaves frame a gap, beyond them a flat grassy clearing enclosed by a low grassy bank, and tall pine and oak trees rise all around the clearing. No people, no signs, no fences, no buildings, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
     "refNames": []
   }
 ]

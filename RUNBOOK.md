@@ -11,6 +11,22 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
+
+`narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json`: 36 → **46 shot**, thêm 10 ứng viên
+còn lại của bảng áp thử — đảo Roanoke nhìn từ mặt nước (`C1-01d`), đống hàng tiếp tế (`C1-06b`), **4 bản đồ có chữ**
+(`C1-06c` đường về Anh, `C1-09b` Tây Âu ENGLAND/SPAIN, `C1-22b` ROANOKE/CROATOAN, `C1-26b` AZORES), dao khắc (`C1-13b`),
+tàu thả neo ngoài khơi (`C1-15b`), đá ngầm (`C1-25b`), di tích Fort Raleigh hôm nay (`C1-32b`).
+- Trường mới **`tomTat`** (một dòng tiếng Việt mỗi shot) và khối **`_dungLai`** (8 câu dùng lại ảnh có sẵn).
+- Script mới **`scripts/tomtat_shots.py`** sinh `case-1.tomtat.md`: bảng *câu lời kể → cụm → shot → hình → trạng thái*.
+  Bản review đầy đủ vẫn là `review_shots.py`.
+- Trạng thái (tra Flow lúc 12:28): ✅ 5 có sẵn · 🔁 2 cần tạo lại (`C1-04`, `C1-06` đổi tên) · ⏳ **7 chờ tư liệu**
+  (thuyền nhỏ, địa cầu, 5 bản đồ — cần bản đồ tham chiếu) · ⏸ 32 chưa tạo.
+
+```bash
+python scripts/tomtat_shots.py narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json --flow-status output/c1-flow-status.json
+```
+
 ### 🗺️ (2026-09-13, tối) TÚ CHẤP NHẬN CHỮ TRONG ẢNH BẢN ĐỒ — ghi đè luồng vừa settled
 
 Tú chốt: *"Chấp nhận bản đồ và chữ nằm trong ảnh luôn"*. Luồng `img-skill-nhieu-anh-moi-cau` đã chốt bản đồ **vẽ trơn,

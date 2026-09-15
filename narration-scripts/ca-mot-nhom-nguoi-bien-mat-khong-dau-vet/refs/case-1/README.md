@@ -64,6 +64,7 @@ rằng đây là chân dung ông**.
 | `06-elizabethan-ship` | Thuyền buồm thế kỷ 16 (bản dựng lại Golden Hind) | 5 |
 | `07-croatoan` | 🔑 Bản khắc cảnh phát hiện chữ CROATOAN + cây Croatoan | 5 |
 | `08-white-depictions` | 🔑 Các bản VẼ tưởng tượng về White và Virginia Dare + bản dựng lại pháo đài | 9 |
+| `09-elizabethan-sailor` | Trang phục thuỷ thủ / nhà thám hiểm Anh thời Elizabeth (Francis Drake...) | 10 |
 
 > ⚠️ **Chỉ lấy ẢNH VẼ, KHÔNG lấy ảnh diễn viên hoá trang** — người dùng chốt
 > 2026-08-31. Đã gỡ 4 ảnh vi phạm: 3 ảnh biển thuyết minh và nhà hát ngoài trời
@@ -98,6 +99,8 @@ thông và sồi cao** phía sau, trời xám. Đây là bảng màu đã dùng 
 bên đầu, bên kia để dài búi lại**. Dùng viết `Hatteras Islander`, không viết theo
 trí nhớ.
 
+**Từ `09-elizabethan-sailor-*`:** Thuyền trưởng (Francis Drake) đội **mũ nồi dẹt / mũ chóp vành hẹp** hoặc để đầu trần, áo **doublet tối màu/có hoa văn**, **cổ ruff xếp nếp màu trắng** rất to, đeo **giáp ngực kim loại** hoặc thắt lưng da rộng bản. Thuỷ thủ thường mặc **mũ len dệt/mũ lưỡi trai mềm**, áo **jerkin thô lỏng**, **quần ống rộng** (breeches) và đi **tất dài** (stockings).
+
 ## ⚠️ Chỗ tôi CỐ Ý vẽ khác sự thật khảo cổ
 
 `08-white-depictions-04` (bản dựng lại của hoạ sĩ) cho thấy công trình thật ở
@@ -125,7 +128,7 @@ Ba chỗ **đổi so với lựa chọn cũ** ở trên:
   **CỐ Ý thêm áo choàng da hươu kín ngực** (bản gốc để trần phần trên) cho cổng kiếm tiền YouTube.
 
 Chưa có trong thư mục này, prompt đang tả theo hiểu biết chung:
-- Trang phục **thuỷ thủ thế kỷ 16** (C1-26).
+- ~~Trang phục **thuỷ thủ thế kỷ 16** (C1-26).~~ Đã gom nhóm `09` (Sir Francis Drake, Elizabethan seaman).
 - Trang phục **nhà thám hiểm đầu thế kỷ 18** (C1-29).
 - Tranh **hạm đội Armada 1588** (C1-09) — hình tàu hiện theo bản dựng lại Golden Hind.
 - Tranh John White vẽ **đàn ông** Algonquian — mới soi tranh vẽ phụ nữ.

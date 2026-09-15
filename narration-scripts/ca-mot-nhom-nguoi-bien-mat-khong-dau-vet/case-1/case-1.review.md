@@ -2,7 +2,7 @@
 
 Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.json`. Prompt dưới đây là **nguyên văn** gửi Flow. Cột *Lời kể* là trường `at`; chữ in đậm là `cue`.
 
-**Trạng thái:** 5/36 ảnh đã tạo (theo log: tra thẳng Flow lúc 2026-09-13T05:28:07.181Z (output/c1-flow-status.json)).
+**Trạng thái:** 5/46 ảnh đã tạo (theo log: tra thẳng Flow lúc 2026-09-13T05:28:07.181Z (output/c1-flow-status.json)).
 
 **Mọi ảnh trong file này:** Mọi ảnh vẽ theo nét của ba ảnh neo phong cách Tú gửi — viền mực đen dày không đều, tô màu phẳng, gạch chì thấy nét, nền trắng trơn — khổ 16:9. Người trong ảnh có MẶT ĐƠN GIẢN: mắt là chấm nhỏ, mũi ngắn, miệng một nét (hoặc một hình mở khi đang nói/cười), không đổ bóng trên mặt. Ảnh nhóm có thêm câu tỷ lệ người lớn cao khoảng 6,5 đầu. Shot vẽ bằng CHỮ thì runner tự đính một ảnh neo theo loại: một người → 02-doctor-figure.png, nhóm → 03-five-men-group.png, đồ vật/nơi chốn → 01-pyramid-place.png. Shot @MENTION không tự đính ảnh neo — chỉ ảnh được gọi tên trong câu mới được dùng.
 
@@ -13,6 +13,7 @@ Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.js
 | C1-01 | In 1587, nearly a hundred and fifteen **English men, women, and children landed** on a small island in what would later become North Carolina, led by governor John White. | `group` | Colonists Walking Ashore With Bundles | chữ + ảnh neo | ✅ có trên Flow |
 | C1-01b | In 1587, nearly a hundred and fifteen English men, women, and children **landed on a small island** in what would later become North Carolina, led by governor John White. | `object` | Rowing Boat Ref Pulled Up On Sand | chữ + ảnh neo · **tạo asset** | ⏸ chưa tạo · ⏳ chờ tư liệu |
 | C1-01c | In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what **would later become North Carolina**, led by governor John White. | `place` | East Coast Map With One State Filled Red | chữ + ảnh neo | ⏸ chưa tạo · ⏳ chờ tư liệu |
+| C1-01d | In 1587, nearly a hundred and fifteen English men, women, and children landed on **a small island** in what would later become North Carolina, led by governor John White. | `place` | Low Wooded Island Seen From The Water | chữ + ảnh neo | ⏸ chưa tạo |
 | C1-02 | In 1587, nearly a hundred and fifteen English men, women, and children landed on a small island in what would later become North Carolina, **led by governor John White**. | `character` | Bearded Governor Ref Wide Brim Hat | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
 | C1-03a | **It was England's** second attempt at a lasting colony in the New World. | `symbol` | Red Cross Flag On Wooden Pole | chữ + ảnh neo | ⏸ chưa tạo |
 | C1-03 | It was England's **second attempt at a lasting colony** in the New World. | `place` | Timber Settlement Ref Three Cottages | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
@@ -20,15 +21,20 @@ Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.js
 | C1-04 | On August 18th that year, White's daughter Eleanor **gave birth to a girl named Virginia Dare**, the first English child ever born on American soil. | `group` | Young Mother Holding Swaddled Baby | chữ + ảnh neo | 🔁 ảnh cũ trên Flow mang tên cũ — cần tạo lại |
 | C1-05 | The colony was **running desperately short on food**. | `object` | Empty Provision Barrel | chữ + ảnh neo | ✅ có trên Flow |
 | C1-06 | **The settlers begged White** to sail back to England for more supplies. | `group` | Colonists Pleading Before The Governor | chip @ | 🔁 ảnh cũ trên Flow mang tên cũ — cần tạo lại |
+| C1-06b | The settlers begged White to sail back to England **for more supplies**. | `object` | Stack Of Barrels And Sacks | chữ + ảnh neo | ⏸ chưa tạo |
+| C1-06c | The settlers begged White to **sail back to England** for more supplies. | `place` | Ocean Map Between Two Coasts | chữ + ảnh neo | ⏸ chưa tạo · ⏳ chờ tư liệu |
 | C1-07 | **He left on August 27th**, 1587, promising to return quickly. | `object` | Sailing Ship Ref Three Masts | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
 | C1-08 | He left on August 27th, 1587, **promising to return quickly**. | `character` | Governor Promising With Hand On Chest | chip @ | ⏸ chưa có trên Flow |
 | C1-09 | **The Spanish Armada was threatening England**, and Queen Elizabeth banned any seaworthy ship from leaving port. | `object` | Fleet Of Spanish Galleons | chữ + ảnh neo | ⏸ chưa có trên Flow |
+| C1-09b | The Spanish Armada was **threatening England**, and Queen Elizabeth banned any seaworthy ship from leaving port. | `place` | Sea Map Of Western Europe | chữ + ảnh neo | ⏸ chưa tạo · ⏳ chờ tư liệu |
 | C1-10 | The Spanish Armada was threatening England, and **Queen Elizabeth banned** any seaworthy ship from leaving port. | `character` | Pale Queen With Lace Ruff | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-11 | The Spanish Armada was threatening England, and Queen Elizabeth banned any seaworthy ship **from leaving port**. | `object` | Ship Moored With Sails Furled | chip @ | ⏸ chưa có trên Flow |
 | C1-12 | Before he'd left, he and the colonists had **agreed on a signal**. | `group` | Governor Explaining The Signal | chip @ | ⏸ chưa có trên Flow |
 | C1-13 | If they were forced to relocate, they would **carve the name of their destination** into a tree or post. | `object` | Pointed Post Ref Blank Carved Panel | chữ + ảnh neo · **tạo asset** | ⏸ chưa có trên Flow |
+| C1-13b | If they were forced to relocate, **they would carve** the name of their destination into a tree or post. | `object` | Small Carving Knife With Wooden Handle | chữ + ảnh neo | ⏸ chưa tạo |
 | C1-14 | If they left under distress, they'd **carve a cross beside it**. | `object` | Post With A Carved Cross | chip @ | ⏸ chưa có trên Flow |
 | C1-15 | On August 18th, 1590, his granddaughter's third birthday, **White landed again**. | `character` | Governor Wading Ashore | chip @ | ⏸ chưa có trên Flow |
+| C1-15b | On August 18th, 1590, his granddaughter's third birthday, White **landed again**. | `object` | Ship Riding At Anchor Offshore | chip @ | ⏸ chưa tạo |
 | C1-16 | **The colony was empty**. | `place` | Settlement Taken Apart | chip @ | ⏸ chưa có trên Flow |
 | C1-17 | The houses had been carefully taken apart, their **belongings dug up and rifled through**. | `object` | Chest Dug Up And Rifled | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-18 | **Not a single boat remained** on the shore. | `object` | Small Wooden Rowing Boat | chip @ | ⏸ chưa có trên Flow |
@@ -36,31 +42,36 @@ Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.js
 | C1-20 | And carved into a post of the fence, **one word. CROATOAN**. | `object` | Blank Post Standing In Palisade | chip @ | ⏸ chưa có trên Flow |
 | C1-21 | To White, **that looked like good news**. | `character` | Governor With A Hopeful Look | chip @ | ⏸ chưa có trên Flow |
 | C1-22 | It meant everyone had **relocated safely to nearby Croatoan Island**. | `place` | Low Sandy Island With Pines | chữ + ảnh neo | ⏸ chưa có trên Flow |
+| C1-22b | It meant everyone had relocated safely to **nearby Croatoan Island**. | `place` | Coastal Map With Two Islands Marked | chữ + ảnh neo | ⏸ chưa tạo · ⏳ chờ tư liệu |
 | C1-23 | But just as he prepared to sail there and check, **a hurricane tore through the area**. | `object` | Ship Tossed In A Storm | chip @ | ⏸ chưa có trên Flow |
 | C1-24 | His ship's **anchor cable snapped** in the storm, leaving only a spare anchor in waters full of hidden rocks, and the crew refused to risk a wreck. | `object` | Snapped Anchor Cable | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-25 | His ship's anchor cable snapped in the storm, **leaving only a spare anchor** in waters full of hidden rocks, and the crew refused to risk a wreck. | `object` | Single Iron Anchor | chữ + ảnh neo | ⏸ chưa có trên Flow |
+| C1-25b | His ship's anchor cable snapped in the storm, leaving only a spare anchor in **waters full of hidden rocks**, and the crew refused to risk a wreck. | `place` | Jagged Rocks Under Calm Water | chữ + ảnh neo | ⏸ chưa tạo |
 | C1-26 | His ship's anchor cable snapped in the storm, leaving only a spare anchor in waters full of hidden rocks, and **the crew refused to risk a wreck**. | `group` | Sailors Refusing The Governor | chip @ | ⏸ chưa có trên Flow |
+| C1-26b | The storm blew them completely off course, and by the time they spotted land again, they were **near the Azores**, off the coast of Spain. | `place` | Open Ocean Map With Island Group | chữ + ảnh neo | ⏸ chưa tạo · ⏳ chờ tư liệu |
 | C1-27 | They had **no choice but to turn back** for England. | `character` | Governor Looking Back From Ship Rail | chip @ | ⏸ chưa có trên Flow |
 | C1-28 | He died years later, **never learning what happened** to his own family. | `character` | Governor Grown Old Sitting Alone | chip @ | ⏸ chưa có trên Flow |
 | C1-29 | Centuries afterward, **one explorer wrote** that the native people on nearby Hatteras Island had ancestors described as having pale skin and gray eyes. | `figure` | Explorer Writing In A Journal | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-30 | Centuries afterward, one explorer wrote that **the native people on nearby Hatteras Island** had ancestors described as having pale skin and gray eyes. | `figure` | Algonquian Woman In Deerskin Mantle | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-31 | But not one skeleton, **one grave**, or one piece of solid archaeological proof of those hundred and fifteen people has ever turned up. | `object` | Grave Mound With Wooden Cross | chữ + ảnh neo | ⏸ chưa có trên Flow |
 | C1-32 | But not one skeleton, one grave, or one piece of **solid archaeological proof** of those hundred and fifteen people has ever turned up. | `place` | Empty Excavation Pit | chữ + ảnh neo | ⏸ chưa có trên Flow |
+| C1-32b | **Not to this day**. | `place` | Grassy Earthwork Ramparts Under Pines | chữ + ảnh neo | ⏸ chưa tạo |
 
 ## Các quyết định theo skill 4d (rà 10 câu hỏi)
 
 - **1_vatTacDongCoThe** — Khong co trong case nay.
 - **2_trangThaiNhanVat** — White tro lai (C1-15), White buoc quay ve (C1-27), White gia di khong bao gio biet (C1-28). Tau bi giu o cang (C1-11). 'He died years later' KHONG ve canh chet: noi va cach ong chet khong ro, ve ra la bia (gioi han bang chung luat 7) — hau ky gan chu/icon.
 - **3_nguoiCoThatDuocGoiTen** — John White (C1-02, KHONG co chan dung that — hu cau co co so theo cho hoi tu cua cac ban khac, xem refs/case-1/README.md). Eleanor + Virginia Dare (C1-04, cung khong co chan dung). Nu hoang Elizabeth (C1-10, anh chan dung 1585-90 dung tuoi luc cam tau 1588).
-- **4_tenSaiThoiKy** — 'North Carolina' — loi ke da tu noi 'what would later become'. 'Croatoan Island' dung ten thoi ky. 'near the Azores, off the coast of Spain': Azores thuoc Bo Dao Nha (1580-1640 chung vuong mien Tay Ban Nha) va nam giua Dai Tay Duong, hon 1.300 km ve phia tay ban dao Iberia — ban do hau ky dat DUNG vi tri, dung ve sat bo Tay Ban Nha. Khong sua loi ke.
+- **4_tenSaiThoiKy** — 'North Carolina' — loi ke da tu noi 'what would later become'. 'Croatoan Island' dung ten thoi ky. 'near the Azores, off the coast of Spain': Azores thuoc Bo Dao Nha (1580-1640 chung vuong mien Tay Ban Nha) va nam giua Dai Tay Duong, hon 1.300 km ve phia tay ban dao Iberia — ban do C1-26b dat Azores DUNG vi tri giua Dai Tay Duong va khong ghi nhan SPAIN. Khong sua loi ke.
 - **5_trangThaiGoc** — Lang con nguyen (C1-03) -> lang bi thao do (C1-16). Cot tron (C1-13) -> cot co dau thap (C1-14, trang thai 'roi di vi nguy') va cot trong hang rao khong co dau thap (C1-20, trang thai tim thay).
 - **6_choNoi** — Cot la MOT cot cua hang rao (C1-20, 'a post of the fence'). Tau buoc day vao cau cang (C1-11).
 - **7_nhayCoc** — CO Y KHONG THEM hanh dong noi nao ve so phan dan thuoc dia (roi lang, di thuyen sang Croatoan, bi tan cong, hoa nhap voi nguoi ban dia): day la khoang trong THAT cua ca vu, loi ke giu no. Dao Croatoan ve KHONG nguoi (C1-22) — 'It meant everyone had relocated safely' la suy doan cua White, loi ke dat sau 'To White'. Ruong bi dao len (C1-17) khong ve AI dao. Hanh dong White nhin thay chu khac (C1-19) thi co: loi ke va ban khac cung thoi xac nhan.
 - **8_hanhViNoi** — Dan van nai (C1-06: nguoi noi + White nghe). White hua (C1-08: nguoi nghe da co o C1-06 ke ben -> khong ve lai). Thoa thuan am hieu (C1-12). Thuy thu tu choi (C1-26: nguoi noi + White nghe). Nha tham hiem VIET (C1-29): ve hanh vi viet, KHONG ve noi dung 'da nhat mat xam' thanh su that — nguoi ban dia o C1-30 ve trung tinh.
-- **9_mucChacChan** — C1-22 (dao khong nguoi), C1-28 (khong ve cai chet), C1-30 (khong ve mat xam). C1-17 (khong ve ke dao).
-- **10_daBoTheoDieuKienChan** — Co Anh cho 'second attempt' (lang C1-03 da ganh 'thuoc dia'). Thu cho phep 1590 (chu '1590' hau ky ganh). Anh rieng nu hoang dang ra lenh (tau bi giu C1-11 da ganh 'lenh cam'; nguoi da co o C1-10 cam van ban). Virginia Dare 3 tuoi (khong ai biet em con song — bia). Da ngam, tau dat toi Azores (ban do hau ky). Bo xuong (cong kiem tien, skill muc 11e — hau ky dung icon neu can). | 2026-09-13: Tu yeu cau them lai co Anh (C1-03a) — dieu kien chan dang duoc THAY bang 'phu kin tung cau' trong luong img-skill-nhieu-anh-moi-cau.
+- **9_mucChacChan** — C1-22 (dao khong nguoi), C1-28 (khong ve cai chet), C1-30 (khong ve mat xam). C1-17 (khong ve ke dao). C1-22b (ban do chi vi tri, khong ve duong di cua dan thuoc dia). C1-32b (luy dat hom nay khong ghi la lang 1587).
+- **10_trungChucNang_dungLai** — Skill 4d-bis phan 3. Dung lai (xem _dungLai): 8 cau. BO vi trung chuc nang: bao luong thuc rong (trung C1-05), than cay boc vo (trung C1-13), bai cat trong (trung C1-18), sach bia trong (trung C1-29), may bao (trung C1-23), dao Azores rieng (trung ban do C1-26b), can canh em be (trung C1-04), ban do Hatteras rieng (trung C1-22b). BO vi gioi han Dan dung: White buc boi nhin bien, thu niem sap + White cam thu, dan chia khau phan, dan vay theo tau, go nha xep dong, White chuan bi ra thuyen, thuy thu chi tay thay dat, White gia nhin bien, nha khao co dang dao. BO vi thieu mau co xac nhan: co Tay Ban Nha 1588. GIU dao Roanoke C1-01d rieng vi khac dao Croatoan.
+- **11_netMat** — Net mat trung tinh mac dinh (skill 4d-bis phan 2). Da bo cam xuc khong nguon o C1-04, C1-06, C1-08, C1-10, C1-15, C1-19, C1-26, C1-27, C1-28; giu C1-21 (loi ke 'looked like good news'). 10 shot moi khong co nguoi.
 
-**Thử nghiệm chưa đo:** Cac shot mention dua phan tu MOI vao cau co goi ten anh neo (skill muc 4d-9d, CHUA DO): C1-06, C1-11, C1-12, C1-20, C1-23, C1-26. Ra anh lech/lan noi dung anh neo thi xoa cum 'in the same drawing style as {{...}}' roi chay lai. C1-16 sinh lang bi thao do TU asset lang (luat 5 phan 'sinh B tu A', CHUA DO) — lech bo cuc thi viet lai bang `draw` doc lap.
+**Thử nghiệm chưa đo:** Cac shot mention dua phan tu MOI vao cau co goi ten anh neo (skill muc 4d-9d, CHUA DO): C1-06, C1-11, C1-12, C1-15b, C1-20, C1-23, C1-26. Ra anh lech/lan noi dung anh neo thi xoa cum 'in the same drawing style as {{...}}' roi chay lai. C1-16 sinh lang bi thao do TU asset lang (luat 5 phan 'sinh B tu A', CHUA DO) — lech bo cuc thi viet lai bang `draw` doc lap.
 
 ## Từng shot
 
@@ -137,6 +148,30 @@ A simple flat map seen straight from above of the Atlantic coast of the United S
 ```
 
 **Ghi chú:** Luong img-skill-nhieu-anh-moi-cau, muc 5a. outName KHONG chua ten bang vi duong draw go outName vao prompt. Chua co ban do ranh gioi NC trong refs/case-1; ban do John White 1585 (01-john-white-02) day chu viet tay nen khong dung lam chip. | Tu chot 2026-09-13 (sau khi luong settled): CHAP NHAN chu trong anh ban do — ghi nguyen van ten can hien (NORTH CAROLINA, ATLANTIC OCEAN) trong prompt, cam tieu de. outName van KHONG chua ten bang vi duong draw go outName vao prompt.
+
+### C1-01d · `place` · ⏸ chưa tạo
+
+**Tên card:** Low Wooded Island Seen From The Water
+
+**Lời kể (`at`):** In 1587, nearly a hundred and fifteen English men, women, and children landed on **a small island** in what would later become North Carolina, led by governor John White.
+
+**Ý đồ:** Hon dao nho noi doan do bo — Roanoke (o anh 5, noi chon). Phai KHAC hinh dao Croatoan C1-22 (gioi han dung lai, skill 4d-bis phan 3)
+
+**🖼️ Ảnh sẽ ra:** Một hòn đảo nhỏ, thấp và phẳng nhìn từ mặt nước qua một vùng vịnh nông lặng: rừng thông và sồi xanh sẫm dày phủ kín tới sát mép nước, viền cát nhạt hẹp và lau sậy đầm lầy cao dọc bờ; mặt nước phẳng lặng chiếm phần dưới khung. Không người, không nhà, không thuyền, không tàu, không khói, không mặt trời, không chữ.
+
+**🔍 Cần soi khi ra ảnh:** Phải KHÁC hẳn hình C1-22 (đảo Croatoan: đụn cát, thông thưa cong vì gió) — ở đây rừng dày, lau sậy, nước lặng. Model có tự thêm thuyền, tàu không.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A small low flat island seen from the water across a calm shallow sound: dense dark green pine and oak woods cover it right down to a narrow edge of pale sand and tall marsh reeds along the waterline, and flat calm water fills the lower part of the picture. No people, no houses, no boats, no ships, no smoke, no sun, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ảnh tư liệu đã soi (không gửi Flow):** `04-roanoke-coast-06.jpg`, `03-fort-raleigh-01.jpg`
+
+**Ghi chú:** Theo anh 04-roanoke-coast-06 (bo dam lay Roanoke hom nay: lau say, rung thong thap day sat mep nuoc, nuoc lang) va 03-fort-raleigh-01 (rung thong soi cao). Canh quan HOM NAY — dung cho hinh dang chung cua dao, khong phai anh 1587.
 
 ### C1-02 · `character` · ✅ có trên Flow
 
@@ -302,6 +337,52 @@ draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exact
 
 **Ghi chú:** Luat 8 + skill 4d-9b (nhieu nguoi -> group). Anh neo 03 vi phan tu moi la BA NGUOI (4d-9d, thu nghiem). | D09 (luong img-skill-nhieu-anh-moi-cau vong 3): bo net mat/dang nguoi truyen tam trang khong co nguon — net mat trung tinh la mac dinh. Van nai giu nguyen vi loi ke noi 'begged'.
 
+### C1-06b · `object` · ⏸ chưa tạo
+
+**Tên card:** Stack Of Barrels And Sacks
+
+**Lời kể (`at`):** The settlers begged White to sail back to England **for more supplies**.
+
+**Ý đồ:** Thu ho can — hang tiep te White phai ve Anh lay (o anh 4, vat duoc goi ten). Chi la thu duoc noi toi, KHONG khang dinh hang da co
+
+**🖼️ Ảnh sẽ ra:** Một đống hàng tiếp tế thế kỷ 16 xếp chung thành một khối: ba thùng gỗ đai sắt, hai bao vải đầy buộc miệng, một hòm gỗ đóng kín. Không chữ, không dấu, không nhãn, không người, không mặt trời.
+
+**🔍 Cần soi khi ra ảnh:** Model hay vẽ chữ hoặc dấu nung lên thùng, bao — soi chữ.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A small pile of supplies from the 1500s: three wooden barrels bound with iron hoops, two plump tied cloth sacks of grain and one closed wooden crate, stacked together as one heap. No lettering, no marks, no labels, no people, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Chua co anh tu lieu hang hoa the ky 16 trong refs/case-1 — vat chung, cung muc voi thung rong C1-05.
+
+### C1-06c · `place` · ⏸ chưa tạo · ⏳ chờ tư liệu
+
+**Tên card:** Ocean Map Between Two Coasts
+
+**Lời kể (`at`):** The settlers begged White to **sail back to England** for more supplies.
+
+**Ý đồ:** Hai trinh ve Anh — quang duong White phai vuot (o anh 6, dia ly). Su kien nam 1587 nen CHI ve duong bo, KHONG ranh gioi quoc gia doi sau (skill 4d-bis 4a)
+
+**🖼️ Ảnh sẽ ra:** Bản đồ phẳng nhìn từ trên xuống, Bắc Đại Tây Dương: bờ đông Bắc Mỹ dọc mép trái, bờ biển Anh, Ireland và Tây Âu dọc mép phải, biển rộng ở giữa. Chỉ vẽ đường bờ biển, không vẽ ranh giới quốc gia. Nước Anh (phần phía nam đảo Anh) tô đỏ phẳng, có chữ "ENGLAND"; biển xanh nhạt có chữ "ATLANTIC OCEAN"; đất liền khác màu be nhạt. Không tiêu đề, không tên khác, không số, không la bàn, không thước tỷ lệ, không lưới, không mũi tên, không tàu. Mũi tên hải trình và chấm Roanoke Tú gắn ở hậu kỳ.
+
+**🔍 Cần soi khi ra ảnh:** Chính tả "ENGLAND", "ATLANTIC OCEAN"; model có tự thêm tên nước hay tiêu đề không; hình bờ biển Anh và Bắc Mỹ có đọc ra không; không được có ranh giới quốc gia hiện đại (sự kiện năm 1587).
+
+**⏳ Chờ tư liệu — chưa chạy shot này:** Chua co BAN DO THAM CHIEU Bac Dai Tay Duong (bo dong Bac My + Anh, Tay Au) trong refs/case-1 — gom roi doi shot sang chip @ (skill 4d-bis 4a); chua co thi KHONG chay.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A simple flat map seen straight from above of the North Atlantic Ocean: the east coast of North America along the left edge and the coasts of Britain, Ireland and western Europe along the right edge, with open ocean between them. Draw only coastlines, with no country borders. England, the southern part of the island of Great Britain, is filled with one flat red colour and labelled "ENGLAND" in plain capital letters, the ocean is flat pale blue labelled "ATLANTIC OCEAN" in plain capital letters, and the rest of the land is plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Tu chap nhan chu trong anh ban do (2026-09-13). outName khong chua ten dia danh vi duong draw go outName vao prompt.
+
 ### C1-07 · `object` · ✅ có trên Flow
 
 **Tên card:** Sailing Ship Ref Three Masts
@@ -316,7 +397,7 @@ draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exact
 
 **Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
 
-**Tạo asset** `Sailing Ship Ref Three Masts` — dùng lại ở: C1-11, C1-23
+**Tạo asset** `Sailing Ship Ref Three Masts` — dùng lại ở: C1-11, C1-15b, C1-23
 
 **Prompt gửi Flow:**
 
@@ -369,6 +450,30 @@ A fleet of five large Spanish galleons of 1588 sailing together in a wide curved
 ```
 
 **Ghi chú:** D04 (luong img-skill-nhieu-anh-moi-cau): bo dau thap do tren buom — chua co tai lieu xac nhan mau co/buom dai dien cho Armada 1588. Chua co anh tu lieu ham doi Armada.
+
+### C1-09b · `place` · ⏸ chưa tạo · ⏳ chờ tư liệu
+
+**Tên card:** Sea Map Of Western Europe
+
+**Lời kể (`at`):** The Spanish Armada was **threatening England**, and Queen Elizabeth banned any seaworthy ship from leaving port.
+
+**Ý đồ:** Ham doi Tay Ban Nha de doa nuoc Anh — dat hai nuoc len cung mot ban do (o anh 6). Thay cho o co Tay Ban Nha da bo vi khong co mau co xac nhan dung vai tro
+
+**🖼️ Ảnh sẽ ra:** Bản đồ phẳng vùng Tây Âu quanh eo biển Anh: nửa nam đảo Anh ở trên, bờ biển Pháp bên dưới bên kia eo biển hẹp, bán đảo Iberia ở góc dưới trái, Đại Tây Dương bên trái. Chỉ vẽ đường bờ biển, không ranh giới quốc gia. Nước Anh tô đỏ phẳng có chữ "ENGLAND"; bán đảo Iberia tô vàng sẫm có chữ "SPAIN"; biển xanh nhạt; đất liền khác màu be. Không tiêu đề, không tên khác, không số, không la bàn, không thước tỷ lệ, không lưới, không mũi tên, không tàu. Mũi tên hướng hạm đội Tú gắn ở hậu kỳ.
+
+**🔍 Cần soi khi ra ảnh:** Chính tả "ENGLAND", "SPAIN"; hình eo biển Anh và bán đảo Iberia; model có tự thêm FRANCE, PORTUGAL hay ranh giới hiện đại không.
+
+**⏳ Chờ tư liệu — chưa chạy shot này:** Chua co BAN DO THAM CHIEU Tay Au (eo bien Anh, ban dao Iberia) trong refs/case-1 — gom roi doi sang chip @; chua co thi KHONG chay.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A simple flat map seen straight from above of western Europe around the English Channel: the southern half of Great Britain at the top, the coast of France below it across the narrow channel, and the Iberian Peninsula at the bottom left, with the Atlantic Ocean on the left. Draw only coastlines, with no country borders. England is filled with one flat red colour and labelled "ENGLAND", and the Iberian Peninsula is filled with one flat dark yellow colour and labelled "SPAIN" in its middle, both in plain capital letters. The sea is flat pale blue and the rest of the land plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Ca ban dao Iberia to mau 'SPAIN' vi nam 1588 vua Tay Ban Nha Philip II cung cai tri Bo Dao Nha (lien minh Iberia 1580-1640) — hieu biet chung, chua dan nguon.
 
 ### C1-10 · `character` · ⏸ chưa có trên Flow
 
@@ -464,6 +569,28 @@ A single tall thick wooden post made from a tree trunk, standing upright, its to
 
 **Ghi chú:** Chu CROATOAN PHAI de trong (skill 6i). Cho boc vo o tam dau nguoi theo ban khac Sheppard; ban tuong thuat 1590 cua White (Hakluyt) ghi cot bi boc vo va chu khac cach dat khoang 5 feet — DA DOI CHIEU 2026-09-13 (Encyclopedia Virginia, ban in 1600): 'one of the chiefe trees or postes at the right side of the entrance had the barke taken off, and 5. foote from the ground ... was graven CROATOAN'.
 
+### C1-13b · `object` · ⏸ chưa tạo
+
+**Tên card:** Small Carving Knife With Wooden Handle
+
+**Lời kể (`at`):** If they were forced to relocate, **they would carve** the name of their destination into a tree or post.
+
+**Ý đồ:** Vat ngam trong dong tu 'carve' (o anh 3) — cong cu de khac ten. Nguon khong noi cong cu gi: ve dao don gian, khong gan nhan vat, khong khang dinh do la dao cua dan thuoc dia
+
+**🖼️ Ảnh sẽ ra:** Một con dao khắc nhỏ thế kỷ 16 nằm phẳng: lưỡi thép ngắn đầu nhọn trơn, cán gỗ trơn quấn một vòng dây. Không máu, không chữ, không dấu, không mặt trời.
+
+**🔍 Cần soi khi ra ảnh:** Dao đứng riêng, không có tay người, không máu. Bộ lọc Flow có thể nhạy với dao — bị chặn thì đổi thành "a small wood-carving chisel".
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A small carving knife from the 1500s lying flat: a short pointed plain steel blade and a plain wooden handle bound with a band of cord. No blood, no lettering, no marks, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Vat chung, chua co anh tu lieu dao thoi ky trong refs/case-1.
+
 ### C1-14 · `object` · ⏸ chưa có trên Flow
 
 **Tên card:** Post With A Carved Cross
@@ -505,6 +632,28 @@ draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exact
 ```
 
 **Ghi chú:** 'his granddaughter's third birthday' KHONG ve Virginia 3 tuoi: khong ai biet em con song (luat 7, gioi han bang chung) — hau ky gan chu. | D09 (luong img-skill-nhieu-anh-moi-cau vong 3): bo net mat/dang nguoi truyen tam trang khong co nguon — net mat trung tinh la mac dinh.
+
+### C1-15b · `object` · ⏸ chưa tạo
+
+**Tên card:** Ship Riding At Anchor Offshore
+
+**Lời kể (`at`):** On August 18th, 1590, his granddaughter's third birthday, White **landed again**.
+
+**Ý đồ:** White tro lai 1590: tau lon tha neo ngoai khoi (o anh 3, vat ngam trong 'landed'). Khac C1-11 (tau bi giu o cang Anh)
+
+**🖼️ Ảnh sẽ ra:** Vẽ lại con tàu C1-07, giờ thả neo: toàn bộ buồm cuộn gọn trên xà, một sợi dây neo thẳng chạy từ mũi tàu xuống mặt nước phẳng lặng. Nét theo ảnh neo 01. Không người, không chữ, không mặt trời. Người lên bờ bằng thuyền nhỏ — hậu kỳ dùng lại hình C1-01b.
+
+**🔍 Cần soi khi ra ảnh:** Tàu có giữ đặc điểm C1-07 (viền đỏ-vàng, 3 cột) không; phải KHÁC C1-11 (tàu buộc ở cầu cảng) — ở đây không có cầu cảng.
+
+**Sinh bằng:** câu @mention — chip `@Sailing Ship Ref Three Masts` (asset từ C1-07), `@01-pyramid-place.png` (file ảnh). Không đính thêm ảnh neo.
+
+**Prompt gửi Flow:**
+
+```text
+draw the same ship as in @Sailing Ship Ref Three Masts, now lying at anchor with all of its sails furled on the yards and one straight anchor rope running down from its bow into flat calm water, in the same drawing style as @01-pyramid-place.png, no people, no lettering, no sun, plain white background
+```
+
+**Ghi chú:** Asset tau la hinh dung chung, khong phai tau that cua chuyen 1590. Anh neo 01 goi ten vi phan tu moi la mat nuoc (thu nghiem, skill 4d-9d).
 
 ### C1-16 · `place` · ⏸ chưa có trên Flow
 
@@ -660,6 +809,30 @@ A long low sandy island seen from the side across shallow water: pale dunes, a f
 
 **Ghi chú:** Luat 7 + cau ra soat 9: 'It meant everyone had relocated safely' la suy doan cua White. Ve dan thuoc dia tren dao la bien suy doan thanh su that. 07-croatoan-01 la Cape Hatteras hom nay co ngon hai dang hien dai — cam tuong minh.
 
+### C1-22b · `place` · ⏸ chưa tạo · ⏳ chờ tư liệu
+
+**Tên card:** Coastal Map With Two Islands Marked
+
+**Lời kể (`at`):** It meant everyone had relocated safely to **nearby Croatoan Island**.
+
+**Ý đồ:** Noi White TIN dan thuoc dia da chuyen toi — dat dao Roanoke va Croatoan len cung ban do (o anh 6). Dung lai cho cau 'nearby Hatteras Island' (NPS: Croatoan la Hatteras ngay nay)
+
+**🖼️ Ảnh sẽ ra:** Bản đồ phẳng một đoạn bờ biển North Carolina: đất liền dọc mép trái, vùng vịnh nông rộng ở giữa có một đảo nhỏ nằm gần đất liền, bên phải là chuỗi đảo chắn dài và mảnh ngăn vịnh với biển. Đảo nhỏ trong vịnh tô đỏ phẳng có chữ "ROANOKE"; phần phía nam của đảo chắn dài, chỗ đảo gập thành mũi nhọn, tô cam phẳng có chữ "CROATOAN"; vịnh và biển xanh nhạt; đất khác màu be. Chỉ vẽ đường bờ, không ranh giới bang, không đường sá. Không tiêu đề, không tên khác, không số, không la bàn, không thước tỷ lệ, không lưới, không mũi tên.
+
+**🔍 Cần soi khi ra ảnh:** Chính tả "ROANOKE", "CROATOAN"; vị trí: Roanoke nằm TRONG vịnh gần đất liền, Croatoan là phần nam đảo chắn gần mũi Hatteras. Đường bờ năm 1590 khác ngày nay (các cửa lạch đã đổi) — chấp nhận làm bản đồ định vị.
+
+**⏳ Chờ tư liệu — chưa chạy shot này:** Chua co BAN DO THAM CHIEU vung Outer Banks (dao Roanoke, dao Hatteras) trong refs/case-1 — gom roi doi sang chip @. Ban do John White 1585 (01-john-white-02) co Roanoac va Croatoan nhung chu viet tay co -> khong dung lam chip.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A simple flat map seen straight from above of a stretch of the North Carolina coast: the mainland along the left, a wide shallow sound in the middle with a small island inside it near the mainland, and a long thin chain of barrier islands along the right side separating the sound from the open ocean. The small island in the sound is filled with one flat red colour and labelled "ROANOKE", and the southern part of the long barrier island, where it bends at a sharp cape, is filled with one flat orange colour and labelled "CROATOAN", both in plain capital letters. The sound and the ocean are flat pale blue and the rest of the land plain pale beige. Draw only coastlines, with no state borders and no roads. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** NPS (brochure Fort Raleigh) xac dinh Croatoan la dao Hatteras ngay nay — nguon Codex dan o luong img-skill-nhieu-anh-moi-cau r3. Pham vi 'phan nam' la uoc luong. Loi ke 'It meant everyone had relocated safely' la suy doan cua White: ban do chi ve VI TRI, khong ve nguoi hay duong di.
+
 ### C1-23 · `object` · ⏸ chưa có trên Flow
 
 **Tên card:** Ship Tossed In A Storm
@@ -718,6 +891,28 @@ A length of thick hemp anchor cable from the 1500s snapped in two, its broken en
 A single iron ship's anchor of the 1500s lying flat: a long straight shank, two curved arms ending in pointed flukes, a ring at the top and a wooden crossbar just below the ring. No rope, no chain, no water, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.
 ```
 
+### C1-25b · `place` · ⏸ chưa tạo
+
+**Tên card:** Jagged Rocks Under Calm Water
+
+**Lời kể (`at`):** His ship's anchor cable snapped in the storm, leaving only a spare anchor in **waters full of hidden rocks**, and the crew refused to risk a wreck.
+
+**Ý đồ:** Vung nuoc day da ngam — ly do thuy thu khong dam o lai voi mot neo du phong (o anh 5). Hinh cat ngang de doc ra chu 'hidden'
+
+**🖼️ Ảnh sẽ ra:** Hình cắt ngang vùng nước nông nhìn từ bên hông: một đường mặt nước thẳng phẳng chạy ngang cả khung, bên dưới là mấy khối đá ngầm sẫm lởm chởm mọc từ đáy lên sát mặt nước, đỉnh đá nằm ngay dưới mép nước; nước xanh xám nhạt phẳng. Không tàu, không thuyền, không người, không cá, không chữ, không mặt trời.
+
+**🔍 Cần soi khi ra ảnh:** Đá phải nằm DƯỚI mặt nước (đọc ra "ngầm"); model có tự thêm tàu hay sóng không.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A cut-away side view of shallow sea water: one straight flat water surface line runs across the whole picture, and below it several jagged dark rocks rise from the sea floor to just under the surface, their tops hidden a little below the waterline, the water drawn in flat pale grey-green. No ship, no boat, no people, no fish, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Vung bien Outer Banks noi tieng bai can — loi ke goi la 'hidden rocks', ve theo loi ke.
+
 ### C1-26 · `group` · ⏸ chưa có trên Flow
 
 **Tên card:** Sailors Refusing The Governor
@@ -739,6 +934,30 @@ draw the same man as in @Bearded Governor Ref Wide Brim Hat, keep his face exact
 ```
 
 **Ghi chú:** Chua co anh tu lieu thuy thu the ky 16 — trang phuc thuy thu ta theo hieu biet chung (stillMissing). Anh neo 03, thu nghiem. | D09 (luong img-skill-nhieu-anh-moi-cau vong 3): bo net mat/dang nguoi truyen tam trang khong co nguon — net mat trung tinh la mac dinh. Loi ke khong noi White cau xin — chi noi thuy thu tu choi.
+
+### C1-26b · `place` · ⏸ chưa tạo · ⏳ chờ tư liệu
+
+**Tên card:** Open Ocean Map With Island Group
+
+**Lời kể (`at`):** The storm blew them completely off course, and by the time they spotted land again, they were **near the Azores**, off the coast of Spain.
+
+**Ý đồ:** Bao day tau dat toi Azores (o anh 6). Dat Azores DUNG vi tri giua Dai Tay Duong, khong theo cach noi long 'off the coast of Spain' cua loi ke
+
+**🖼️ Ảnh sẽ ra:** Bản đồ phẳng Bắc Đại Tây Dương: bờ đông Bắc Mỹ dọc mép trái, bờ châu Âu và tây bắc châu Phi dọc mép phải, và một cụm chín hòn đảo nhỏ nằm giữa biển, cách châu Âu khoảng một phần tư quãng đường sang châu Mỹ. Cụm đảo tô đỏ phẳng có chữ "AZORES"; biển xanh nhạt có chữ "ATLANTIC OCEAN"; đất liền màu be. Chỉ vẽ đường bờ, không ranh giới quốc gia. Không tiêu đề, không tên khác, không số, không la bàn, không thước tỷ lệ, không lưới, không mũi tên, không tàu. Mũi tên tàu dạt Tú gắn ở hậu kỳ.
+
+**🔍 Cần soi khi ra ảnh:** Chính tả "AZORES", "ATLANTIC OCEAN"; cụm Azores phải nằm GIỮA biển, xa bờ châu Âu — KHÔNG sát bờ Tây Ban Nha như lời kể nói lỏng ("off the coast of Spain").
+
+**⏳ Chờ tư liệu — chưa chạy shot này:** Chua co BAN DO THAM CHIEU Bac Dai Tay Duong co quan dao Azores trong refs/case-1 — gom roi doi sang chip @; chua co thi KHONG chay.
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+A simple flat map seen straight from above of the North Atlantic Ocean: the east coast of North America along the left edge, the coasts of Europe and north-west Africa along the right edge, and a small group of nine islands far out in the ocean, about a quarter of the way across from Portugal towards America. The small island group is filled with one flat red colour and labelled "AZORES", and the ocean is flat pale blue labelled "ATLANTIC OCEAN", both in plain capital letters. Draw only coastlines, with no country borders. The land is plain pale beige. Spell every name exactly as written here. No title, no other names, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no ships, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ghi chú:** Azores co 9 dao, cach bo Bo Dao Nha hon 1.300 km — hieu biet chung, chua dan nguon. KHONG ghi nhan SPAIN de ban do khong dat Azores thanh 'sat bo Tay Ban Nha'.
 
 ### C1-27 · `character` · ⏸ chưa có trên Flow
 
@@ -863,3 +1082,27 @@ A plain low mound of sandy earth with a simple cross made of two sticks tied tog
 ```text
 A square archaeological excavation pit dug into pale sandy soil, its four edges marked out with taut string tied to wooden pegs at the corners, the bottom of the pit flat and completely empty, and a small pointed mason's trowel stuck upright in the loose soil at one corner. No people, no bones, no objects in the pit, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
 ```
+
+### C1-32b · `place` · ⏸ chưa tạo
+
+**Tên card:** Grassy Earthwork Ramparts Under Pines
+
+**Lời kể (`at`):** **Not to this day**.
+
+**Ý đồ:** 'Den tan hom nay' — noi dat thuoc dia hom nay chi con luy dat va rung, khong loi giai (o anh 5)
+
+**🖼️ Ảnh sẽ ra:** Di tích Fort Raleigh ngày nay nhìn từ lối vào: hai gờ luỹ đất thấp tròn phủ cỏ và lá khô nâu hai bên khoảng trống lối vào, bên trong là khoảng đất cỏ phẳng được bao bởi một gờ đất cỏ thấp, xung quanh là rừng thông và sồi cao. Không người, không biển báo, không hàng rào, không nhà, không chữ, không mặt trời.
+
+**🔍 Cần soi khi ra ảnh:** Model có tự thêm biển báo có chữ, người tham quan, hàng rào không. Đây là cảnh HÔM NAY, không được trộn với làng 1587 (C1-03).
+
+**Sinh bằng:** prompt chữ + ảnh neo theo `kind`: `01-pyramid-place.png`
+
+**Prompt gửi Flow:**
+
+```text
+The low grass-covered earth ramparts of an old earthwork fort today, seen from its entrance: two rounded earth banks covered in grass and fallen brown leaves frame a gap, beyond them a flat grassy clearing enclosed by a low grassy bank, and tall pine and oak trees rise all around the clearing. No people, no signs, no fences, no buildings, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.
+```
+
+**Ảnh tư liệu đã soi (không gửi Flow):** `03-fort-raleigh-01.jpg`, `03-fort-raleigh-04.jpg`
+
+**Ghi chú:** Theo anh 03-fort-raleigh-01 (loi vao giua hai go luy phu la kho, khoang co ben trong, rung thong soi). Bo hai coc go va cay cot o giua anh (hien vat trung bay hom nay). Cong su dat nay thuong duoc cho la cua doan 1585, khong chac cua doan 1587 — hau ky KHONG ghi day la lang thuoc dia (hieu biet chung, chua dan nguon).
