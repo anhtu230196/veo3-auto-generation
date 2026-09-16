@@ -183,7 +183,12 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
    diễn biến để kể thành một câu chuyện có đầu có cuối** (bối cảnh → chuyện lạ
    xảy ra → điều tra/diễn biến → vỡ lẽ → dư âm). Case chỉ có 1 dữ kiện gây sốc
    rồi hết thì KHÔNG dùng được nữa, dù format cũ vẫn dùng tốt.
-   Nếu user đã tự đưa chủ đề thì bỏ qua bước này.
+   Với mỗi case gợi ý, ghi thêm **neo ngoài** (vật chứng, hồ sơ, người chứng
+   kiến độc lập) và nó chứng minh tới đâu. Case chỉ có lời một người thì xếp
+   sau. Xem mục 8 của
+   [story-structure.md](references/story-structure.md).
+   Nếu user đã tự đưa chủ đề thì bỏ qua phần gợi ý chủ đề, nhưng vẫn ghi neo
+   ngoài cho các case.
 2. **NGHIÊN CỨU TRƯỚC KHI VIẾT — đào SÂU** (xem mục "Kiểm chứng dữ kiện").
 3. **Thiết kế thứ tự tiết lộ rồi viết đầy đủ bằng tiếng Việt.** Đọc
    [Cách xây dựng và tiết lộ câu chuyện](references/story-structure.md) trước
@@ -209,6 +214,8 @@ trình tự sự việc thật và mức độ chắc chắn của nguồn vẫn
    *"Story 3: Carl Ledges and the 7-Year Secret Beneath the Well"*.
    Cụm sau dấu gạch hé tình huống lạ nhưng không nói trước lời giải hoặc phát
    hiện dành cho cuối case. Đối chiếu tiêu đề với thứ tự tiết lộ đã chọn.
+   Nếu case có hình ảnh neo (mục 9 của story-structure.md) và nó không lộ lời
+   giải, ưu tiên dựng cụm này quanh hình ảnh đó.
 
 2. **Mở bài — chọn 1 trong 2 kiểu:**
    - *Kiểu tuần tự* (mặc định): năm + địa điểm + tên + tuổi + cuộc sống bình
@@ -341,6 +348,10 @@ Grave"*. Case ngắn thì không cần.
   Các case giữa vẫn phải đủ diễn biến. Cân nhắc đổi kiểu mở, dạng phát hiện
   và sắc thái cảm xúc khi tư liệu cho phép, tránh lặp cùng một đường kể cho
   cả tập; không ép phải luân phiên theo một lịch cố định.
+- **Hai case cùng khung** (vd cùng là điều lạ dẫn tới phát hiện một cái chết)
+  chỉ đặt liền nhau khi case sau leo thang cơ chế, vd từ một dấu hiệu gián
+  tiếp lên một lời tố cáo trực tiếp. Không leo thang thì tách chúng ra bằng một
+  case khác loại.
 - **Kết video**: 1 câu mời subscribe + mời gợi ý chủ đề tập sau ở comment.
 
 ## Giọng văn — ĐÃ ĐỔI HẲN so với bản cũ

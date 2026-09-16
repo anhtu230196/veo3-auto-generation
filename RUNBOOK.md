@@ -11,6 +11,26 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### ✍️ (2026-09-16, tối) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, nhánh `claude/update-skill-story-telling`, chưa commit
+
+Tú yêu cầu cập nhật skill để viết được kịch bản như mẫu 7 case. Nhánh dựng trên
+bản của Codex (mục ngay dưới), thêm vào `references/story-structure.md` và
+`SKILL.md`, đồng bộ sang `.agents/`:
+- Mục 3: lúc đặt chi tiết thì kể hành động, không gán cách hiểu; lúc trả thì gợi
+  lại trong câu phát hiện, không bằng câu "như đã nói".
+- Mục 5: hậu quả trước dùng được giữa case. Mục 6: người chứng kiến xuất hiện
+  đúng lúc, theo đà leo thang. Mục 7: kết hai lớp, dư âm là nhịp cuối.
+- Mục 8 (mới): neo ngoài là tiêu chí chọn case ở bước 1. Mục 9 (mới): hình ảnh neo
+  của case, dùng cho tiêu đề/cao trào/dư âm và làm ứng viên thumbnail.
+- `SKILL.md`: bước 1 ghi neo ngoài; tiêu đề case dựng quanh hình ảnh neo; hai case
+  cùng khung chỉ đặt liền nhau khi case sau leo thang.
+
+⚠️ Ba nhánh cùng sửa skill này hôm nay, chưa nhánh nào vào `master`. Nhánh
+`gemini/update-skill-story-telling` **thêm** intro xưng "tôi – bạn" — ngược với
+quyết định bỏ giọng trò chuyện ghi ở bản Codex. Tú chọn hướng trước khi gộp.
+Luồng review `script-story-structure` đã mở (tác giả Claude, review Codex + Gemini).
+Claim `sys-script-story-structure-claude`.
+
 ### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, chưa commit
 
 Tú yêu cầu cập nhật skill từ phân tích kịch bản mẫu, **bỏ điểm 1 về giọng trò
