@@ -261,12 +261,14 @@ dữ kiện. Cấu trúc chuẩn:
 7. **Vỡ lẽ / điều tra** — sự thật lộ ra: cảnh sát vào cuộc, khai quật, lời thú
    tội, hồ sơ toà án.
 
-8. **Chi tiết rợn người chốt lại** — 1-2 đoạn cuối nêu chi tiết ám ảnh nhất,
+8. **Chi tiết rợn người chốt lại (Kỹ thuật Setup & Payoff)** — 1-2 đoạn cuối nêu chi tiết ám ảnh nhất,
    thường là thứ KHÔNG giải thích được hoặc chưa khép lại: camera cho thấy cô
-   đi một mình nói chuyện với không khí; đồng hồ dừng đúng 9 giờ 35; phần thi
-   thể phía trên đến nay chưa tìm thấy; nhiều nhà nhận được cuộc gọi lạ có
-   giọng phụ nữ nói tiếng Nhật.
-   KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
+   đi một mình nói chuyện với không khí; phần thi thể phía trên đến nay chưa tìm thấy.
+   **Bí quyết gieo hạt (Setup):** Để chi tiết cuối thực sự gây nổi da gà, phải cài cắm (setup) một chi tiết tưởng như vô thưởng vô phạt từ trước.
+   - *Ví dụ:* Mở đầu tả "người chồng đạp xe thấy xe nặng hơn bình thường" → Cuối chốt "người ta thấy anh chở một cô gái (linh hồn) phía sau".
+   - *Ví dụ:* Giữa tả "chồng quấn khăn quanh cổ vợ trước khi chôn" → Cuối chốt "mở khăn ra thấy vết siết cổ".
+   - *Ví dụ:* Mở đầu tả "đồng hồ trên hài cốt dừng ở 9:35" → Cuối chốt "đó chính xác là giờ bóng ma áo trắng hay xuất hiện".
+   Sự móc nối này là chìa khóa của format. KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
 
 ⚠️ **MẶT TRÁI CỦA QUY TẮC NÀY — đừng cắt nhầm người then chốt** (bổ sung
 2026-08-06): quy tắc dưới đây dùng để bỏ tên nhân vật MỜ NHẠT, KHÔNG phải để
@@ -316,7 +318,7 @@ Grave"*. Case ngắn thì không cần.
 
 ## Cấu trúc TOÀN VIDEO
 
-- **KHÔNG có lời mở đầu/chào kênh.** Video bắt đầu THẲNG bằng tiêu đề case #1.
+- **Lời mở đầu (Hook/Intro):** ĐƯỢC PHÉP và khuyến khích có một đoạn intro ngắn ở đầu video. Dùng giọng tâm sự cá nhân (xưng "tôi" - "bạn", vd: *"Chào bạn, tôi thì thường ít nói về..."*) để thiết lập bầu không khí (set tone) và tạo sự tò mò cho chủ đề của tập, sau đó mới đi vào tiêu đề case #1.
 - Mỗi case độc lập, không cần câu chuyển tiếp (tiêu đề case mới là dấu chuyển).
 - **Thứ tự**: mở bằng 1 case mạnh và dễ hình dung, để dành case mạnh nhất cho
   cuối. Case nhạt hơn xếp vào giữa.
@@ -352,7 +354,7 @@ báo cáo lạnh.
 - KHÔNG bông đùa/chơi chữ — chuyện nghiêm túc, người thật.
 
 **KHÔNG DÙNG:**
-- Xưng hô trực tiếp kiểu *"bạn hãy tưởng tượng"*, *"nếu là bạn thì sao"*.
+- Xưng hô trực tiếp để câu giờ hoặc dạy đời kiểu *"bạn hãy tưởng tượng"*, *"nếu là bạn thì sao"*. (Lưu ý: Vẫn **ĐƯỢC PHÉP** xưng "tôi" - "bạn" ở đoạn intro hoặc khi đưa ra một bình luận cá nhân cực ngắn kiểu *"theo tôi thì..."* để tăng tính trò chuyện).
 - Câu hỏi tu từ rải rác để câu giờ.
 
 ## Kiểm chứng dữ kiện
