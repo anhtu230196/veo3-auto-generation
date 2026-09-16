@@ -11,6 +11,23 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
+### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, chưa commit
+
+Tú yêu cầu cập nhật skill từ phân tích kịch bản mẫu, **bỏ điểm 1 về giọng trò
+chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
+`.claude/skills/true-story-compilation-script/SKILL.md` và thêm
+`references/story-structure.md`, đồng bộ cả hai sang `.agents/`.
+- Hướng dẫn: việc đời thường có mục đích; tiết lộ từng lớp; chi tiết đặt trước
+  được hiểu lại; chuỗi hành động có nguyên nhân; chọn kiểu mở/hồi tưởng;
+  nguồn và mức chắc chắn; kết quả cùng dư âm. Có bảng chuẩn bị và bảng rà.
+- Sửa mâu thuẫn cũ: cho phép đổi thứ tự kể nhưng giữ trình tự thật, không ép
+  mọi kết thúc rùng rợn, không coi số liệu/nhân chứng là xác nhận toàn bộ chuyện.
+- Giữ quy định giọng văn đã có, bản Việt duyệt trước bản Anh, cổng chọn case
+  và kịch bản hiện có. Không học câu chào, từ đệm hay câu dẫn từ mẫu.
+- Đã rà độc lập bằng sub-agent Codex và thử hai hồ sơ giả định (chuyện đơn
+  giản; lời nhân chứng đối chiếu nhật ký). **Chưa qua luồng Claude/Gemini;
+  chưa commit.** Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
+
 ### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
 
 `narration-scripts/ca-mot-nhom-nguoi-bien-mat-khong-dau-vet/case-1/case-1.shots.json`: 36 → **46 shot**, thêm 10 ứng viên
