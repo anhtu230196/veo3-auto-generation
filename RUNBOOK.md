@@ -11,7 +11,7 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
-### ✍️ (2026-09-16, tối) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, nhánh `claude/update-skill-story-telling`, chưa commit
+### ✍️ (2026-09-16→17) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, PR #4 (`claude/update-skill-story-telling`), chờ luồng review
 
 Tú yêu cầu cập nhật skill để viết được kịch bản như mẫu 7 case. Nhánh dựng trên
 bản của Codex (mục ngay dưới), thêm vào `references/story-structure.md` và
@@ -19,11 +19,16 @@ bản của Codex (mục ngay dưới), thêm vào `references/story-structure.m
 - Mục 3: lúc đặt chi tiết thì kể hành động, không gán cách hiểu; lúc trả thì gợi
   lại trong câu phát hiện, không bằng câu "như đã nói".
 - Mục 5: hậu quả trước dùng được giữa case. Mục 6: người chứng kiến xuất hiện
-  đúng lúc, theo đà leo thang. Mục 7: kết hai lớp, dư âm là nhịp cuối.
+  đúng lúc, kèm vai trò; chỉ gọi xác nhận độc lập khi có lời chứng/hồ sơ riêng.
+  Mục 7: kết hai lớp, dư âm là nhịp cuối.
 - Mục 8 (mới): neo ngoài là tiêu chí chọn case ở bước 1. Mục 9 (mới): hình ảnh neo
   của case, dùng cho tiêu đề/cao trào/dư âm và làm ứng viên thumbnail.
 - `SKILL.md`: bước 1 ghi neo ngoài; tiêu đề case dựng quanh hình ảnh neo; hai case
-  cùng khung chỉ đặt liền nhau khi case sau leo thang.
+  cùng khung đứng cạnh nhau thì tạo khác biệt (khuyến nghị, không bắt xen kẽ);
+  đổi ví dụ tiêu đề "7-Year Secret Beneath the Well" vì nó báo trước lời giải.
+- 2026-09-17: sửa theo review của Codex trên PR #4 (chức danh không chứng minh
+  nhân chứng độc lập; luật xếp case quá cứng). Review đó nằm ở comment PR, **chưa
+  vào luồng** — luồng vẫn chờ lượt r1 của Codex.
 
 ⚠️ Ba nhánh cùng sửa skill này hôm nay, chưa nhánh nào vào `master`. Nhánh
 `gemini/update-skill-story-telling` **thêm** intro xưng "tôi – bạn" — ngược với
@@ -31,7 +36,7 @@ quyết định bỏ giọng trò chuyện ghi ở bản Codex. Tú chọn hư�
 Luồng review `script-story-structure` đã mở (tác giả Claude, review Codex + Gemini).
 Claim `sys-script-story-structure-claude`.
 
-### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, chưa commit
+### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, commit `0c97659` (PR #3, đã gộp vào PR #4)
 
 Tú yêu cầu cập nhật skill từ phân tích kịch bản mẫu, **bỏ điểm 1 về giọng trò
 chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
@@ -45,8 +50,7 @@ chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
 - Giữ quy định giọng văn đã có, bản Việt duyệt trước bản Anh, cổng chọn case
   và kịch bản hiện có. Không học câu chào, từ đệm hay câu dẫn từ mẫu.
 - Đã rà độc lập bằng sub-agent Codex và thử hai hồ sơ giả định (chuyện đơn
-  giản; lời nhân chứng đối chiếu nhật ký). **Chưa qua luồng Claude/Gemini;
-  chưa commit.** Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
+  giản; lời nhân chứng đối chiếu nhật ký). **Chưa qua luồng Claude/Gemini.** Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
 
 ### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
 

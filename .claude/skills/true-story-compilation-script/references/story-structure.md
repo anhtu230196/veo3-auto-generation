@@ -11,7 +11,7 @@ trò chuyện trực tiếp, từ đệm, câu chào hay lời dẫn của ngư�
 
 Mục 8–9 và các đoạn bổ sung trong mục 3, 5, 6, 7 rút từ lượt phân tích thứ hai
 trên cùng kịch bản mẫu (Claude, cùng ngày): cách giấu và trả chi tiết đặt
-trước, người chứng kiến theo đà leo thang, kết hai lớp, neo ngoài khi chọn case
+trước, người chứng kiến xuất hiện đúng lúc, kết hai lớp, neo ngoài khi chọn case
 và hình ảnh neo của case.
 
 ## 1. Đời thường dẫn tới biến cố
@@ -127,15 +127,18 @@ chúng giúp hiểu diễn biến. Việc báo chí đưa tin chứng minh câu 
 hoặc lời giải có căn cứ nếu chúng thay đổi đáng kể cách hiểu câu chuyện;
 không bỏ chúng chỉ để giữ sức hút.
 
-**Người chứng kiến xuất hiện theo đà leo thang.** Khi nguồn ghi nhiều người
-chứng kiến ở những lúc khác nhau, giới thiệu từng người đúng lúc họ có mặt,
+**Người chứng kiến xuất hiện đúng lúc họ có mặt.** Khi nguồn ghi nhiều người
+chứng kiến ở những lúc khác nhau, giới thiệu từng người ở đúng bước họ có mặt,
 kèm vai trò (bạn, chủ nhà, cảnh sát, cai ngục), thay vì gom thành một câu "được
-nhiều người xác nhận" ở đầu hoặc cuối case. Trong lời kể mẫu, hiện tượng lan
-dần từ tấm gương sang ngôi nhà rồi phòng giam, và người chứng kiến cũng đổi dần
-từ bạn sang cảnh sát, cai ngục rồi mục sư. Chuyện càng khó tin thì người thấy
-càng có vị thế độc lập, nên người nghe khó gạt đi. Với mỗi người, nêu cụ thể họ
-thấy hay nói gì theo nguồn. Không đổi thời điểm họ có mặt, không thêm người
-nguồn không ghi, không biến lời kể của họ thành xác nhận nguyên nhân.
+nhiều người xác nhận" ở đầu hoặc cuối case. Vai trò cho người nghe biết người
+đó là ai và vì sao có mặt; nó không tự làm lời chứng đáng tin hơn. Trong lời
+kể mẫu, chuyện lan dần từ tấm gương sang ngôi nhà rồi phòng giam, và mỗi bước
+kéo thêm người vào. Sức hút nằm ở chỗ câu chuyện ra khỏi phạm vi một người,
+không nằm ở chức danh của người thấy. Với mỗi người, nêu cụ thể họ thấy hay nói
+gì theo nguồn. Chỉ gọi là xác nhận độc lập khi nguồn có lời chứng hoặc hồ sơ
+riêng của người đó, không phải chỉ được người kể chính nhắc tên. Không đổi thời
+điểm họ có mặt, không thêm người nguồn không ghi, không biến lời kể của họ thành
+xác nhận nguyên nhân.
 
 ## 7. Cho kết quả, rồi chọn dư âm gắn với mạch chính
 
@@ -162,15 +165,17 @@ kể, giữ đúng một chi tiết, không nối thành chuỗi.
 
 ## 8. Neo ngoài — tiêu chí chọn case, chạy ở bước 1
 
-Case cuốn nhất trong mẫu đều có ít nhất một thứ nằm ngoài lời kể của người
-trong cuộc: vật chứng, hồ sơ, hoặc người chứng kiến độc lập. Mạnh nhất là khi
-điều lạ dẫn tới một kết quả kiểm chứng được, như hài cốt được tìm thấy, một
-cuộc khai quật, lời khai hay bản án. Người nghe không tin hiện tượng vẫn phải
-chấp nhận kết quả, và câu hỏi còn lại thu về đúng một chỗ: vì sao người ta tìm
-ra. Tiêu đề tập hứa "chuyện có thật, có ghi chép" thì những neo này là thứ
-trả lời hứa đó.
+Theo lời kể mẫu, case cuốn nhất đều có ít nhất một thứ nằm ngoài lời kể của
+người trong cuộc: vật chứng, hồ sơ, hoặc lời chứng riêng của người chứng kiến.
+Mạnh nhất là khi điều lạ dẫn tới một kết quả kiểm chứng được, như hài cốt được
+tìm thấy, một cuộc khai quật, lời khai hay bản án. Người nghe không tin hiện
+tượng vẫn phải chấp nhận kết quả, và câu hỏi còn lại thu về đúng một chỗ: vì
+sao người ta tìm ra. Tiêu đề tập hứa "chuyện có thật, có ghi chép" thì những
+neo này là thứ trả lời hứa đó.
 
 Khi lọc case ở bước 1, ghi neo ngoài của từng case và nó chứng minh tới đâu.
+Người chứng kiến chỉ tính là neo ngoài khi có lời chứng hoặc hồ sơ riêng (mục
+6); người chỉ được người kể chính nhắc tên hay chức danh thì chưa phải neo.
 Case chỉ có lời một người, không có gì bên ngoài, thì xếp sau hoặc bỏ.
 
 Giới hạn:
@@ -213,7 +218,7 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
 | --- | --- |
 | Nhân vật và việc đang làm | Hành động, mục đích có nguồn; phần chưa biết |
 | Trình tự thật | Các mốc và nguồn; chỗ nguồn khác nhau |
-| Neo ngoài | Vật chứng, hồ sơ, người chứng kiến độc lập; mỗi thứ chứng minh tới đâu; hoặc không có |
+| Neo ngoài | Vật chứng, hồ sơ, lời chứng riêng của người chứng kiến; mỗi thứ chứng minh tới đâu; hoặc không có |
 | Thứ tự kể | Kiểu mở; từng phát hiện, người biết nó, và cách nó đổi tình huống; người chứng kiến nào xuất hiện ở bước nào |
 | Chi tiết nối trước–sau | Xuất hiện ở đâu và trông như việc thường gì; được hiểu lại ở đâu; nguồn đỡ mối nối; hoặc không có |
 | Hình ảnh neo | Hình ảnh có nguồn; dùng ở tiêu đề/mở, cao trào, dư âm; có qua cổng 4 không; hoặc không có |
@@ -231,7 +236,8 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
   hiệu và không bị gán sẵn một cách hiểu mà cú lật sẽ phủ nhận. Lúc trả, nếu
   cách xa, nó được gợi lại trong câu phát hiện, không bằng câu "như đã nói".
 - Người chứng kiến xuất hiện đúng lúc họ có mặt, có vai trò, có điều cụ thể họ
-  thấy; không có câu "được nhiều người xác nhận" chung chung.
+  thấy; không có câu "được nhiều người xác nhận" chung chung. Chỉ gọi là xác
+  nhận độc lập khi nguồn có lời chứng hoặc hồ sơ riêng của người đó.
 - Phân biệt chứng cứ, lời kể, suy đoán; đã giữ lại lời giải/phản chứng quan
   trọng. Thông tin chưa chắc vẫn được đánh dấu trong bản Việt.
 - Case có kết quả hoặc điểm dừng rõ. Chi tiết cuối thuộc mạch chính, không
