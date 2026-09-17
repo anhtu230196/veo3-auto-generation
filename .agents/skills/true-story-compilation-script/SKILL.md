@@ -210,14 +210,10 @@ Khung dưới là các chức năng cần cân nhắc, không phải 8 đoạn c
 trình tự sự việc thật và mức độ chắc chắn của nguồn vẫn phải rõ.
 
 1. **Tiêu đề case** — `Story N: [Tên người] – [cụm gợi tò mò]`.
-   Ví dụ: *"Story 1: A Fei – The 17-Day Walk in the Mist"*,
-   *"Story 3: Carl Ledges – The Figure in White by the Well"*.
+   Ví dụ: *"Story 1: A Fei – The Walk in the Mist"*,
+   *"Story 3: Carl Ledges – The Figure in White"*.
    Cụm sau dấu gạch hé tình huống lạ nhưng không nói trước lời giải hoặc phát
    hiện dành cho cuối case. Đối chiếu tiêu đề với thứ tự tiết lộ đã chọn.
-   (Tập `vu-viec-tam-linh-khong-the-giai-thich/en.md` đang dùng *"...and the
-   7-Year Secret Beneath the Well"*; cụm đó báo trước thứ bị giấu dưới giếng,
-   đừng lấy làm mẫu. Sửa tiêu đề trong tập đó hay không là việc riêng, không
-   thuộc thay đổi skill này.)
    Nếu case có hình ảnh neo (mục 9 của story-structure.md) và nó không lộ lời
    giải, ưu tiên dựng cụm này quanh hình ảnh đó.
 

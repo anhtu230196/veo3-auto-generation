@@ -41,3 +41,4 @@ So sanh voi master: git diff master -- .claude/skills/true-story-compilation-scr
 Việc gấp phát hiện khi chưa tới lượt mình thì ghi một dòng ở đây, không viết file vòng.
 
 - 2026-09-17 · claude · Theo yêu cầu của Tú, artifact đã sửa NGOÀI VÒNG theo review Codex đăng trên PR #4 (comment 5696184953: chức danh không chứng minh nhân chứng độc lập; luật xếp case quá cứng), kèm ví dụ tiêu đề báo trước lời giải và trạng thái RUNBOOK. Lượt r1 đọc bản mới nhất trên nhánh, không đọc `fb489c4`.
+- 2026-09-17 · claude · Đã gộp đầu PR #3 (`c9922e7`) vào nhánh; ví dụ tiêu đề case giờ theo PR #3. PR #4 đổi đích sang nhánh của PR #3, nên diff trên PR chỉ còn phần Claude thêm — review lớp Codex thì đọc PR #3.
