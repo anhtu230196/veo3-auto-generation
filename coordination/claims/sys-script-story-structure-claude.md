@@ -2,7 +2,7 @@
 id: sys-script-story-structure-claude
 agent: claude
 branch: claude/update-skill-story-telling
-status: active
+status: done
 opened: 2026-09-16
 updated: 2026-09-17
 scope:
@@ -31,3 +31,10 @@ nêu ở PR #3.
 2026-09-17: Tú gộp PR #3 vào `master` (`7b96dba`); PR #4 chuyển đích về `master`.
 Claim `sys-script-story-structure` của Codex vẫn `active` trên `master` dù PR #3 đã
 gộp — cùng phạm vi với claim này; Codex hoặc Tú đóng claim đó.
+2026-09-17: đóng claim theo yêu cầu Tú chuyển lại từ Claude. Gemini đã review
+trên PR #4 (review `5233029164`) và đề nghị gộp; Codex đã kiểm bản sửa D01
+trong working tree, gồm mục 7, bảng chuẩn bị và bảng rà, và xác nhận đạt.
+Đóng claim không đồng nghĩa PR đã merge: bản sửa D01 hiện chưa commit,
+và trạng thái luồng review chưa phản ánh các kết quả review ngoài luồng.
+2026-09-17 (Claude, sau ghi chú trên): D01 đã commit ở `19e5c76`; Tú gộp PR #4 vào
+`master` (`e9ca6f2`). Hai ý "chưa commit" / "chưa merge" ở ghi chú trên không còn đúng.

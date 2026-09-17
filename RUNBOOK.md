@@ -11,7 +11,7 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
-### ✍️ (2026-09-16→17) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, PR #4 (đích `master`), chờ luồng review
+### ✍️ (2026-09-16→17) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, PR #4 đã gộp `master` (`e9ca6f2`)
 
 Tú yêu cầu cập nhật skill để viết được kịch bản như mẫu 7 case. Nhánh
 `claude/update-skill-story-telling` dựng trên bản của Codex (mục ngay dưới).
@@ -36,8 +36,10 @@ PR #3 đã gộp vào `master` ngày 2026-09-17 (`7b96dba`); PR #4 chuyển đí
 ⚠️ Ba nhánh cùng sửa skill này từ 2026-09-16. PR #3 đã vào `master`; PR #2
 (`gemini/update-skill-story-telling`) vẫn mở và **thêm** intro xưng "tôi – bạn" —
 ngược với quyết định bỏ giọng trò chuyện đã vào `master` qua PR #3.
-Luồng review `script-story-structure` đã mở (tác giả Claude, review Codex + Gemini).
-Claim `sys-script-story-structure-claude`.
+Luồng review `script-story-structure` (tác giả Claude, review Codex + Gemini): Codex
+review r1 trong luồng (D01) rồi kiểm bản sửa D01 ngoài luồng và xác nhận đạt; Gemini
+review trên PR #4, không nêu điểm. Bảng điểm trong `THREAD.md` chưa phản ánh hai việc
+ngoài luồng đó. Claim `sys-script-story-structure-claude`: `done`.
 
 ### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, PR #3 đã gộp `master`
 
