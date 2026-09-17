@@ -206,7 +206,7 @@ trình tự sự việc thật và mức độ chắc chắn của nguồn vẫn
 
 1. **Tiêu đề case** — `Story N: [Tên người] – [cụm gợi tò mò]`.
    Ví dụ: *"Story 1: A Fei – The 17-Day Walk in the Mist"*,
-   *"Story 3: Carl Ledges and the 7-Year Secret Beneath the Well"*.
+   *"Story 3: Carl Ledges and the Figure in White"*.
    Cụm sau dấu gạch hé tình huống lạ nhưng không nói trước lời giải hoặc phát
    hiện dành cho cuối case. Đối chiếu tiêu đề với thứ tự tiết lộ đã chọn.
 

@@ -11,7 +11,7 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
-### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, chưa commit
+### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, PR #3 đang review
 
 Tú yêu cầu cập nhật skill từ phân tích kịch bản mẫu, **bỏ điểm 1 về giọng trò
 chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
@@ -26,7 +26,11 @@ chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
   và kịch bản hiện có. Không học câu chào, từ đệm hay câu dẫn từ mẫu.
 - Đã rà độc lập bằng sub-agent Codex và thử hai hồ sơ giả định (chuyện đơn
   giản; lời nhân chứng đối chiếu nhật ký). **Chưa qua luồng Claude/Gemini;
-  chưa commit.** Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
+  đã commit bản đầu tại `0c97659` trên nhánh `chatgpt/update-skill-story-telling`, PR #3.**
+  Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
+- Ngày 2026-09-17: sửa C1–C3 theo review Claude: ví dụ tiêu đề không lộ phát
+  hiện cuối, nhánh/trạng thái claim và ghi chép commit. C4 vẫn mở; chưa hoàn
+  tất review độc lập, chưa gộp master.
 
 ### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
 
