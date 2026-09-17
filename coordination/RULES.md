@@ -34,6 +34,19 @@ Bước 2 có hai lớp: agent review nguồn và tính nhất quán, **Tú duy�
 
 Bước 6 đụng vào `src/veo3bot/` thì người review **bắt buộc** đọc RUNBOOK.md mục 4 trước khi nêu điểm — phần lớn hành vi lạ ở đó là bug đã biết của Google Flow, không phải lỗi code.
 
+### Sản phẩm lưu theo người viết
+
+Một bước có thể được nhiều agent làm song song để Tú so sánh. Khi đó mỗi agent ghi sản phẩm vào thư mục con mang tên mình, không ghi đè lên nhau (Tú chốt 2026-09-17):
+
+- Thư mục `<agent>-<model>/` đặt ngay trong thư mục của sản phẩm, vd `narration-scripts/<tập>/claude-opus-5/vi.md`. `<model>` là ID model thật chạy lượt đó (`python scripts/orchestrate.py doctor`). ID đã bắt đầu bằng tên agent thì không lặp: `gemini-3.1-pro-high/`, không phải `gemini-gemini-3.1-pro-high/`.
+- Tên file bên trong giữ đúng tên chuẩn của sản phẩm (`vi.md`, `en.md`, `notes.md`...).
+- Dòng đầu file ghi `Người viết: <tên model> (<ID model>), <công cụ>, <ngày YYYY-MM-DD>`.
+- Agent không sửa thư mục của agent khác (xem "Điều một agent không được làm").
+- `artifact:` của luồng review trỏ vào file trong thư mục con.
+- Bản Tú chốt được chép ra vị trí chuẩn (vd `narration-scripts/<tập>/vi.md`). Chỉ bản ở vị trí chuẩn mới được bước sau dùng.
+
+Chi tiết cho kịch bản: skill `true-story-compilation-script`, mục "Lưu bản nháp theo người viết".
+
 ### Cấu trúc một luồng
 
 ```

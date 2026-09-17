@@ -191,7 +191,8 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
    Nếu user đã tự đưa chủ đề thì bỏ qua phần gợi ý chủ đề, nhưng vẫn ghi neo
    ngoài cho các case.
 2. **NGHIÊN CỨU TRƯỚC KHI VIẾT — đào SÂU** (xem mục "Kiểm chứng dữ kiện").
-3. **Thiết kế thứ tự tiết lộ rồi viết đầy đủ bằng tiếng Việt.** Đọc
+3. **Thiết kế thứ tự tiết lộ rồi viết đầy đủ bằng tiếng Việt**, lưu vào thư mục
+   người viết (xem "Lưu bản nháp theo người viết" ngay dưới). Đọc
    [Cách xây dựng và tiết lộ câu chuyện](references/story-structure.md) trước
    khi lập khung hoặc sửa cấu trúc case. Dùng bảng chuẩn bị ngắn trong tài liệu
    đó để nối dữ kiện đã tra cứu thành diễn biến; kiểm lại bằng bảng rà trước
@@ -201,6 +202,42 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
    TUYỆT ĐỐI không tự nhảy sang bước 5 khi chưa có xác nhận rõ ràng.
 5. **Sau khi được duyệt**, viết lại bằng tiếng Anh (REWRITE, không dịch
    word-by-word). Ngay sau đó **cập nhật `used-topics.md`**.
+
+### Lưu bản nháp theo người viết (thêm 2026-09-17)
+
+Một tập có thể được nhiều agent viết song song để Tú so sánh. Bản nháp của mỗi
+agent nằm trong thư mục con mang tên người viết, không ghi thẳng vào thư mục tập:
+
+```
+narration-scripts/<tập>/
+  claude-opus-5/          bản của Claude Opus 5
+    vi.md                 bản Việt chờ duyệt
+    notes.md              nguồn, bảng chuẩn bị, chỗ chưa chắc
+    en.md                 bản Anh, nếu agent này viết
+  codex-gpt-6-astra/      bản của Codex (cùng tên file bên trong)
+  vi.md                   bản chính thức, chỉ có sau khi Tú chốt
+  en.md                   bản thu âm chính thức
+  case-N/, refs/          pipeline ảnh, giữ ở thư mục tập như cũ
+```
+
+- **Tên thư mục** là `<agent>-<model>`, viết thường, nối bằng gạch ngang.
+  `<agent>` là `claude`, `codex` hoặc `gemini`. `<model>` là ID model thật đang
+  chạy lượt đó (`python scripts/orchestrate.py doctor` in ra model đang có hiệu
+  lực). ID đã bắt đầu bằng tên agent thì không lặp: `claude-opus-5/`,
+  `gemini-3.1-pro-high/`. Hai model khác nhau của cùng một agent là hai thư mục
+  khác nhau.
+- **Dòng đầu mỗi file** ghi người viết:
+  `Người viết: <tên model> (<ID model>), <công cụ>, <ngày YYYY-MM-DD>`. File bị
+  chép đi chỗ khác vẫn còn dấu.
+- **Tên file giữ chuẩn** (`vi.md`, `notes.md`, `en.md`) để so từng cặp giữa các
+  bản.
+- **Agent chỉ ghi vào thư mục của mình.** Góp ý cho bản của agent khác thì viết
+  vào luồng review, không sửa thẳng.
+- **Luồng review** đặt `artifact:` trỏ vào file trong thư mục con.
+- **Khi Tú chốt một bản:** chép `vi.md` (về sau là `en.md`) của bản đó ra thư mục
+  tập, giữ nguyên dòng người viết. Thư mục con giữ lại để truy vết. Chỉ file ở
+  thư mục tập mới được dùng để thu âm, làm ảnh và ghi vào `used-topics.md`.
+- **Tập viết trước 2026-09-17** giữ bố cục cũ, không chuyển.
 
 ## Công thức 1 CASE
 
