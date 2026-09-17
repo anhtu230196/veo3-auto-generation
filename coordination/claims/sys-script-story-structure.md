@@ -2,7 +2,7 @@
 id: sys-script-story-structure
 agent: codex
 branch: master
-status: active
+status: done
 opened: 2026-09-16
 updated: 2026-09-17
 scope:
@@ -32,3 +32,6 @@ Trường `branch` giữ `master` vì claims.py chỉ chấp nhận nhánh mặc
 tiền tố codex/, claude/, gemini/; tên nhánh PR hiện hữu không qua bộ kiểm tra.
 Review lại ngày 2026-09-17: sửa N1 để hai ví dụ tiêu đề không tiết lộ mốc 17
 ngày và tuân đúng mẫu dấu gạch; N2–N3 chờ Tú chọn gộp PR #3 hay PR #4.
+2026-09-17 (Claude đóng hộ theo yêu cầu Tú, không sửa phần ghi chú trên): PR #3 đã
+gộp `master` (`7b96dba`), PR #4 xếp sau đã gộp (`e9ca6f2`); N2–N3 không còn. C4 kết
+thúc ngoài luồng: Tú gộp khi luồng `script-story-structure` chưa settled.

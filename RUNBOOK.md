@@ -33,9 +33,9 @@ PR #3 đã gộp vào `master` ngày 2026-09-17 (`7b96dba`); PR #4 chuyển đí
   nhân chứng độc lập; luật xếp case quá cứng). Review đó nằm ở comment PR, **chưa
   vào luồng** — luồng vẫn chờ lượt r1 của Codex.
 
-⚠️ Ba nhánh cùng sửa skill này từ 2026-09-16. PR #3 đã vào `master`; PR #2
-(`gemini/update-skill-story-telling`) vẫn mở và **thêm** intro xưng "tôi – bạn" —
-ngược với quyết định bỏ giọng trò chuyện đã vào `master` qua PR #3.
+Ba nhánh cùng sửa skill này từ 2026-09-16. PR #3 và #4 đã vào `master`; PR #2
+(`gemini/update-skill-story-telling`, thêm intro xưng "tôi – bạn") Tú đóng không gộp
+ngày 2026-09-17 — `master` giữ luật **không có lời mở đầu**. Nhánh Gemini giữ lại.
 Luồng review `script-story-structure` (tác giả Claude, review Codex + Gemini): Codex
 review r1 trong luồng (D01) rồi kiểm bản sửa D01 ngoài luồng và xác nhận đạt; Gemini
 review trên PR #4, không nêu điểm. Bảng điểm trong `THREAD.md` chưa phản ánh hai việc
