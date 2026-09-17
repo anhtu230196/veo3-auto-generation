@@ -22,7 +22,7 @@ PR #3 đã gộp vào `master` ngày 2026-09-17 (`7b96dba`); PR #4 chuyển đí
   lại trong câu phát hiện, không bằng câu "như đã nói".
 - Mục 5: hậu quả trước dùng được giữa case. Mục 6: người chứng kiến xuất hiện
   đúng lúc, kèm vai trò; chỉ gọi xác nhận độc lập khi có lời chứng/hồ sơ riêng.
-  Mục 7: kết hai lớp, dư âm là nhịp cuối.
+  Mục 7: có chi tiết dư âm thì đặt sau kết quả; không có thì kết ở kết quả.
 - Mục 8 (mới): ghi neo ngoài theo hai mức ở bước 1 (neo kết quả / neo lời kể);
   case chỉ có lời một người vẫn hợp lệ khi lời kể truy được nguồn. Mục 9 (mới): hình ảnh neo
   của case, dùng cho tiêu đề/cao trào/dư âm và làm ứng viên thumbnail.

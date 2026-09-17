@@ -153,15 +153,19 @@ một đồ vật còn lại hoặc một giới hạn của điều tra. Không
 phải gây sợ, không thêm lời đồn nối đuôi. Trong cả tập, cân nhắc sự thay đổi
 giữa tò mò, căng thẳng, mất mát, công bằng hoặc nhẹ nhõm nếu các case cho phép.
 
-**Kết hai lớp, theo đúng thứ tự.** Lớp một đóng phần có câu trả lời: ai, chuyện
-gì đã xảy ra, kết quả pháp lý hay số phận nhân vật. Lớp hai là nhịp dư âm, ngắn
-vài câu, và là nhịp cuối cùng của case; không kể thêm diễn biến nào sau nó.
-Đảo thứ tự (dư âm trước, kết quả sau) thì thứ cuối cùng người nghe mang theo
-là một bản án hay một thủ tục, không còn là cảm giác của câu chuyện. Dư âm
-mạnh nhất thường chạm lại chi tiết đặt trước (mục 3) hoặc hình ảnh neo của
-case (mục 9). Trong lời kể mẫu, phần thi thể không bao giờ tìm thấy lại đúng
-là hình ảnh đã ám kẻ gây án. Dư âm là một báo cáo hay lời kể lẻ thì quy rõ ai
-kể, giữ đúng một chi tiết, không nối thành chuỗi.
+**Có chi tiết dư âm thì đặt nó sau kết quả.** Khi nguồn có một chi tiết cuối
+gắn với mạch chính, kết theo hai lớp. Lớp một đóng phần có câu trả lời: ai,
+chuyện gì đã xảy ra, kết quả pháp lý hay số phận nhân vật. Lớp hai là chi tiết
+dư âm, ngắn vài câu, và là nhịp cuối của case; không kể thêm diễn biến nào sau
+nó. Dư âm mạnh nhất thường chạm lại chi tiết đặt trước (mục 3) hoặc hình ảnh
+neo của case (mục 9). Trong lời kể mẫu, phần thi thể không bao giờ tìm thấy
+lại đúng là hình ảnh đã ám kẻ gây án. Dư âm là một báo cáo hay lời kể lẻ thì
+quy rõ ai kể, giữ đúng một chi tiết, không nối thành chuỗi.
+
+Nguồn không có chi tiết như vậy thì kết ngay ở kết quả hoặc ở điểm điều tra
+dừng lại. Bản thân kết quả (một cuộc đoàn tụ, một bản án, một kết quả xét
+nghiệm) có thể đủ sức nặng. Không lặp lại kết quả thành một đoạn cảm xúc, và
+không đi tìm lời kể phụ chỉ để đủ hai lớp.
 
 ## 8. Neo ngoài — ghi ở bước 1, không phải cổng loại case
 
@@ -243,7 +247,7 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
 | Thứ tự kể | Kiểu mở; từng phát hiện, người biết nó, và cách nó đổi tình huống; người chứng kiến nào xuất hiện ở bước nào |
 | Chi tiết nối trước–sau | Xuất hiện ở đâu và trông như việc thường gì; được hiểu lại ở đâu; nguồn đỡ mối nối; hoặc không có |
 | Hình ảnh neo | Hình ảnh có nguồn; dùng ở tiêu đề/mở, cao trào, dư âm; có qua cổng 4 không; hoặc không có |
-| Kết quả và dư âm | Điều đã biết, điều còn mở, điểm dừng phù hợp; chi tiết dư âm đặt sau kết quả |
+| Kết quả và dư âm | Điều đã biết, điều còn mở, điểm dừng phù hợp; chi tiết dư âm có nguồn đặt sau kết quả, hoặc ghi là không có |
 
 ## Rà trước khi gửi duyệt
 
@@ -263,7 +267,8 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
   trọng. Thông tin chưa chắc vẫn được đánh dấu trong bản Việt.
 - Case có kết quả hoặc điểm dừng rõ. Chi tiết cuối thuộc mạch chính, không
   chỉ là một lời đồn mới; không cố tạo bí ẩn khi tư liệu đã giải thích.
-  Kết quả đứng trước, dư âm là nhịp cuối cùng.
+  Có chi tiết dư âm thì nó đứng sau kết quả; không có thì case kết ở kết quả
+  hoặc điểm dừng điều tra, không dựng thêm lớp dư âm.
 - Mỗi case đã ghi mức neo ngoài (kết quả hay lời kể) và hình ảnh neo, hoặc ghi
   rõ là không có hình ảnh neo. Hình ảnh neo của case mở tập qua được cổng 4.
 - Case chỉ có lời một người được quy lời kể xuyên suốt; không có người xác nhận
