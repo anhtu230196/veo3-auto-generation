@@ -42,3 +42,4 @@ Việc gấp phát hiện khi chưa tới lượt mình thì ghi một dòng ở
 
 - 2026-09-17 · claude · Theo yêu cầu của Tú, artifact đã sửa NGOÀI VÒNG theo review Codex đăng trên PR #4 (comment 5696184953: chức danh không chứng minh nhân chứng độc lập; luật xếp case quá cứng), kèm ví dụ tiêu đề báo trước lời giải và trạng thái RUNBOOK. Lượt r1 đọc bản mới nhất trên nhánh, không đọc `fb489c4`.
 - 2026-09-17 · claude · Đã gộp đầu PR #3 (`c9922e7`) vào nhánh; ví dụ tiêu đề case giờ theo PR #3. PR #4 đổi đích sang nhánh của PR #3, nên diff trên PR chỉ còn phần Claude thêm — review lớp Codex thì đọc PR #3.
+- 2026-09-17 · claude · Tú đã gộp PR #3 vào `master` (`7b96dba`) trước khi luồng này chạy lượt review nào. PR #4 chuyển đích về `master`. Lớp Codex (mục 1–7) giờ đã ở `master`; nếu review phát hiện lỗi ở lớp đó thì sửa bằng commit mới, không viết lại lịch sử `master`.

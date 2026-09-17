@@ -27,5 +27,7 @@ Luồng review: `coordination/threads/script-story-structure/`. Đã commit, PR 
 2026-09-17: sửa theo review của Codex trên PR #4 (2 điểm P2) và tự sửa C1, C3
 nêu ở PR #3.
 2026-09-17: gộp `c9922e7` (đầu PR #3) vào nhánh, lấy ví dụ tiêu đề của PR #3; PR #4
-đổi đích sang `chatgpt/update-skill-story-telling` (xếp chồng). Gộp #3 trước, #4 sau;
-khi đó claim này và `sys-script-story-structure` chỉ còn một cái active.
+đổi đích sang `chatgpt/update-skill-story-telling` (xếp chồng).
+2026-09-17: Tú gộp PR #3 vào `master` (`7b96dba`); PR #4 chuyển đích về `master`.
+Claim `sys-script-story-structure` của Codex vẫn `active` trên `master` dù PR #3 đã
+gộp — cùng phạm vi với claim này; Codex hoặc Tú đóng claim đó.

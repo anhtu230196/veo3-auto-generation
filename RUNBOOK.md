@@ -11,12 +11,12 @@ video/Veo3/Flow.**
 
 ## 0. Trạng thái hiện tại (đọc đầu tiên)
 
-### ✍️ (2026-09-16→17) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, PR #4 xếp chồng lên PR #3, chờ luồng review
+### ✍️ (2026-09-16→17) SKILL KỊCH BẢN — CLAUDE BỔ SUNG 6 ĐIỂM, PR #4 (đích `master`), chờ luồng review
 
 Tú yêu cầu cập nhật skill để viết được kịch bản như mẫu 7 case. Nhánh
-`claude/update-skill-story-telling` dựng trên bản của Codex (mục ngay dưới). Từ
-2026-09-17, PR #4 đặt đích là nhánh của PR #3 nên chỉ hiện phần Claude thêm;
-**gộp #3 vào `master` trước, rồi mới gộp #4**. Phần thêm vào
+`claude/update-skill-story-telling` dựng trên bản của Codex (mục ngay dưới).
+PR #3 đã gộp vào `master` ngày 2026-09-17 (`7b96dba`); PR #4 chuyển đích về
+`master` và chỉ còn phần Claude thêm. Phần thêm vào
 `references/story-structure.md` và `SKILL.md`, đồng bộ sang `.agents/`:
 - Mục 3: lúc đặt chi tiết thì kể hành động, không gán cách hiểu; lúc trả thì gợi
   lại trong câu phát hiện, không bằng câu "như đã nói".
@@ -32,13 +32,13 @@ Tú yêu cầu cập nhật skill để viết được kịch bản như mẫu 
   nhân chứng độc lập; luật xếp case quá cứng). Review đó nằm ở comment PR, **chưa
   vào luồng** — luồng vẫn chờ lượt r1 của Codex.
 
-⚠️ Ba nhánh cùng sửa skill này từ 2026-09-16, chưa nhánh nào vào `master`. Nhánh
-`gemini/update-skill-story-telling` **thêm** intro xưng "tôi – bạn" — ngược với
-quyết định bỏ giọng trò chuyện ghi ở bản Codex. Tú chọn hướng trước khi gộp.
+⚠️ Ba nhánh cùng sửa skill này từ 2026-09-16. PR #3 đã vào `master`; PR #2
+(`gemini/update-skill-story-telling`) vẫn mở và **thêm** intro xưng "tôi – bạn" —
+ngược với quyết định bỏ giọng trò chuyện đã vào `master` qua PR #3.
 Luồng review `script-story-structure` đã mở (tác giả Claude, review Codex + Gemini).
 Claim `sys-script-story-structure-claude`.
 
-### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, PR #3 đang review
+### ✍️ (2026-09-16) SKILL KỊCH BẢN — CẤU TRÚC KỂ TỪ MẪU 7 CASE, PR #3 đã gộp `master`
 
 Tú yêu cầu cập nhật skill từ phân tích kịch bản mẫu, **bỏ điểm 1 về giọng trò
 chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
@@ -57,7 +57,9 @@ chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
   Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
 - Ngày 2026-09-17: sửa C1–C3 theo review Claude: ví dụ tiêu đề không lộ phát
   hiện cuối, trạng thái claim và ghi chép commit. C4 vẫn mở; chưa hoàn
-  tất review độc lập, chưa gộp master.
+  tất review độc lập.
+- 2026-09-17: Tú gộp PR #3 vào `master` (`7b96dba`) khi luồng review
+  `script-story-structure` chưa chạy lượt nào của Codex/Gemini.
 
 ### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
 
