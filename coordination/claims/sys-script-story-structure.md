@@ -30,3 +30,5 @@ Phần sửa chỉ thuộc nhánh PR #3, không sửa artifact trên nhánh Clau
 Nhánh làm việc thực tế: `chatgpt/update-skill-story-telling`; đích gộp: `master`.
 Trường `branch` giữ `master` vì claims.py chỉ chấp nhận nhánh mặc định hoặc
 tiền tố codex/, claude/, gemini/; tên nhánh PR hiện hữu không qua bộ kiểm tra.
+Review lại ngày 2026-09-17: sửa N1 để hai ví dụ tiêu đề không tiết lộ mốc 17
+ngày và tuân đúng mẫu dấu gạch; N2–N3 chờ Tú chọn gộp PR #3 hay PR #4.

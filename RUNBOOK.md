@@ -29,7 +29,7 @@ chuyện/từ đệm**, dùng các điểm 2–8. Đã cập nhật
   đã commit bản đầu tại `0c97659` trên nhánh `chatgpt/update-skill-story-telling`, PR #3.**
   Claim `sys-script-story-structure` ghi rõ phạm vi và trạng thái.
 - Ngày 2026-09-17: sửa C1–C3 theo review Claude: ví dụ tiêu đề không lộ phát
-  hiện cuối, nhánh/trạng thái claim và ghi chép commit. C4 vẫn mở; chưa hoàn
+  hiện cuối, trạng thái claim và ghi chép commit. C4 vẫn mở; chưa hoàn
   tất review độc lập, chưa gộp master.
 
 ### 📋 (2026-09-13, đêm) CASE 1 ROANOKE VIẾT LẠI THEO SKILL 4d-bis — 46 shot, chưa chạy thêm, chưa commit
