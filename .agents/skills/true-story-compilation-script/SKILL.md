@@ -1,6 +1,6 @@
 ---
 name: true-story-compilation-script
-description: Write long-form English YouTube narration scripts in the "compilation" format — several independent true-story cases assembled into one 15-18 minute video, each case told FULLY as a proper story from beginning to end in a warm conversational storyteller voice. Topics vary per video (paranormal cases, unexplained disappearances, strange crimes, survival, disasters...). Roughly 5-6 fully-told cases fills the runtime. Draft always written in Vietnamese first for manual review, then rewritten (not literally translated) into English for TTS narration. Use when the user wants topic ideas for this channel, wants a new episode script, or wants an approved Vietnamese draft turned into an English narration script.
+description: Write YouTube narration scripts compiling roughly 5-6 documented true-story cases, each told fully through clear actions, layered discoveries, and a meaningful ending. Topics include paranormal accounts, disappearances, strange crimes, survival, and disasters. Use a warm storyteller voice; prioritize complete stories over a fixed runtime. Draft in Vietnamese for user approval, then rewrite in English for TTS. Use for topic ideas, new episodes, revisions, or rewriting an approved Vietnamese draft into English narration.
 ---
 
 # Kịch bản tuyển tập chuyện có thật (Vietnamese draft → English narration)
@@ -185,7 +185,12 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
    rồi hết thì KHÔNG dùng được nữa, dù format cũ vẫn dùng tốt.
    Nếu user đã tự đưa chủ đề thì bỏ qua bước này.
 2. **NGHIÊN CỨU TRƯỚC KHI VIẾT — đào SÂU** (xem mục "Kiểm chứng dữ kiện").
-3. **Viết kịch bản đầy đủ bằng tiếng Việt** theo đúng công thức bên dưới.
+3. **Thiết kế thứ tự tiết lộ rồi viết đầy đủ bằng tiếng Việt.** Đọc
+   [Cách xây dựng và tiết lộ câu chuyện](references/story-structure.md) trước
+   khi lập khung hoặc sửa cấu trúc case. Dùng bảng chuẩn bị ngắn trong tài liệu
+   đó để nối dữ kiện đã tra cứu thành diễn biến; kiểm lại bằng bảng rà trước
+   khi gửi duyệt. Khi viết bản Anh, giữ các quan hệ nguyên nhân, chi tiết đặt
+   trước và thứ tự tiết lộ đã được duyệt, dù câu chữ được viết lại.
 4. **DỪNG LẠI xin user xét duyệt bản tiếng Việt.** Cổng thủ công bắt buộc —
    TUYỆT ĐỐI không tự nhảy sang bước 5 khi chưa có xác nhận rõ ràng.
 5. **Sau khi được duyệt**, viết lại bằng tiếng Anh (REWRITE, không dịch
@@ -193,13 +198,17 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
 
 ## Công thức 1 CASE
 
-Mỗi case là một CÂU CHUYỆN HOÀN CHỈNH, kể theo trình tự, không phải một mẩu
-dữ kiện. Cấu trúc chuẩn:
+Mỗi case là một CÂU CHUYỆN HOÀN CHỈNH. Người nghe phải theo được ai làm gì,
+vì sao có bước tiếp theo và phát hiện mới thay đổi điều họ hiểu thế nào.
+Khung dưới là các chức năng cần cân nhắc, không phải 8 đoạn cố định hay lý do
+để bịa thêm tình tiết. Có thể kể tuần tự hoặc mở bằng hậu quả rồi quay lại;
+trình tự sự việc thật và mức độ chắc chắn của nguồn vẫn phải rõ.
 
 1. **Tiêu đề case** — `Story N: [Tên người] – [cụm gợi tò mò]`.
-   Ví dụ: *"Story 1: A Fei – The 17-Day Walk in the Mist"*,
-   *"Story 3: Carl Ledges and the 7-Year Secret Beneath the Well"*.
-   Cụm sau dấu gạch phải hé một chi tiết lạ mà chưa giải thích.
+   Ví dụ: *"Story 1: A Fei – The Walk in the Mist"*,
+   *"Story 3: Carl Ledges – The Figure in White"*.
+   Cụm sau dấu gạch hé tình huống lạ nhưng không nói trước lời giải hoặc phát
+   hiện dành cho cuối case. Đối chiếu tiêu đề với thứ tự tiết lộ đã chọn.
 
 2. **Mở bài — chọn 1 trong 2 kiểu:**
    - *Kiểu tuần tự* (mặc định): năm + địa điểm + tên + tuổi + cuộc sống bình
@@ -209,23 +218,28 @@ dữ kiện. Cấu trúc chuẩn:
      quay lại kể từ đầu. Ví dụ mở bằng cảnh tài xế taxi dán kín bùa, nhốt mình
      trong xe — rồi mới kể anh ta là ai. Dùng khi hình ảnh mở đủ mạnh.
 
-3. **Việc đời thường** — nhân vật đang làm gì rất bình thường khi mọi chuyện
-   bắt đầu (đi chợ, kiểm tra chuồng ngựa, dự đám tang).
+3. **Việc đời thường và mục đích** — cho thấy nhân vật đang làm gì và điều gì
+   khiến họ bước vào tình huống (đi chợ, kiểm tra chuồng ngựa, dự đám tang).
+   Chọn phần đời thường dẫn tới biến cố; không kéo dài tiểu sử. Chỉ nêu động
+   cơ, suy nghĩ hoặc cảm xúc khi nguồn cho phép; nếu không, kể hành động.
 
 4. **Dấu hiệu bất thường đầu tiên** — nhỏ, dễ bỏ qua (sương dày bất thường, ngựa
    không chịu uống nước, bóng người mặc đồ trắng phía xa).
 
-5. **Leo thang theo trình tự thời gian** — phần dài nhất. Kể diễn biến tuần tự,
-   giữ nhịp, mỗi đoạn đẩy tình huống đi xa hơn. Đây là chỗ format cũ cắt bỏ và
-   format mới GIỮ LẠI ĐẦY ĐỦ.
+5. **Diễn biến và phát hiện từng lớp** — phần dài nhất. Mỗi đoạn cần làm tình
+   huống tiến triển: dấu hiệu → phản ứng/hành động có lý do → kết quả hoặc
+   phát hiện mới. Chỉ nối nhân quả khi tư liệu đỡ được; hai việc xảy ra liên
+   tiếp chưa chắc là nguyên nhân của nhau. Cho người nghe hiểu đủ để theo
+   hành động hiện tại, rồi mới đưa thông tin làm thay đổi cách hiểu ấy. Số
+   lớp tiết lộ tùy tư liệu, không bắt mọi case phải có nhiều cú xoay.
 
 6. **Khối giải thích bối cảnh** — khi câu chuyện dựa vào kiến thức khán giả Mỹ
    không có, phải giải thích rõ. Đây là điều format cũ CẤM, format mới BẮT
-   BUỘC. Ví dụ mẫu: *"Here is why that is scientifically impossible: Back in the
-   1950s, rural Taiwanese locals only spoke their native Taiwanese dialect.
-   Mandarin was brought over from the mainland and was strictly used by the
-   government and schools in major cities."* Không có khối này, cú twist mất
-   sạch sức nặng vì khán giả không hiểu vì sao nó bất khả thi.
+   BUỘC. Ví dụ, nếu một phát hiện dựa vào khác biệt ngôn ngữ, chỉ nêu phần
+   nền và khả năng ngôn ngữ của nhân vật mà nguồn xác nhận. Không suy từ nơi
+   sống ra điều một người chắc chắn không thể biết, hoặc gọi sự việc là
+   "bất khả thi về khoa học" khi chứng cứ không cho phép. Phần nền giúp người
+   nghe hiểu ý nghĩa của phát hiện mà không nâng mức chắc chắn của nó.
 
    ⚠️ **NHƯNG: giải thích ≠ THÔNG BÁO RẰNG MÌNH SẮP GIẢI THÍCH** (bổ sung
    2026-08-06 sau khi user chỉ đích danh đây là "mùi AI" rõ nhất còn sót lại).
@@ -258,15 +272,19 @@ dữ kiện. Cấu trúc chuẩn:
    tích trạm phát sóng...) làm chùng hẳn nhịp phim — nén thành 2-3 câu "quay
    cận cảnh" đúng chi tiết quyết định.
 
-7. **Vỡ lẽ / điều tra** — sự thật lộ ra: cảnh sát vào cuộc, khai quật, lời thú
-   tội, hồ sơ toà án.
+7. **Vỡ lẽ / điều tra** — kể cách thông tin được tìm ra, ai tìm ra, nó giải
+   quyết điều gì và còn giới hạn nào. Nếu một chi tiết trước đó mang ý nghĩa
+   mới, nối lại ngắn gọn đúng chỗ. Phân biệt vật chứng, lời khai và suy đoán;
+   việc cảnh sát xuất hiện không tự xác nhận toàn bộ lời kể.
 
-8. **Chi tiết rợn người chốt lại** — 1-2 đoạn cuối nêu chi tiết ám ảnh nhất,
-   thường là thứ KHÔNG giải thích được hoặc chưa khép lại: camera cho thấy cô
-   đi một mình nói chuyện với không khí; đồng hồ dừng đúng 9 giờ 35; phần thi
-   thể phía trên đến nay chưa tìm thấy; nhiều nhà nhận được cuộc gọi lạ có
-   giọng phụ nữ nói tiếng Nhật.
-   KHÔNG kết bằng bài học đạo đức, KHÔNG tổng kết ý nghĩa.
+8. **Kết quả và dư âm** — cho biết số phận nhân vật hoặc kết quả điều tra đến
+   mức nguồn cho phép. Sau đó, nếu tư liệu có, chọn một chi tiết cuối gắn với
+   mạch chính: đồ vật được hiểu lại, một lựa chọn của nhân vật, hệ quả kéo
+   dài hoặc phần còn chưa giải được. Dư âm có thể là nhẹ nhõm, công bằng, mất
+   mát hay băn khoăn; không ép mọi case thành rùng rợn. Trường hợp chưa giải
+   quyết thì nêu đúng điểm điều tra dừng lại. Không gom thêm lời đồn để kéo
+   đuôi, không giấu lời giải đã có để làm ra vẻ bí ẩn. KHÔNG kết bằng bài học
+   đạo đức hoặc tổng kết ý nghĩa.
 
 ⚠️ **MẶT TRÁI CỦA QUY TẮC NÀY — đừng cắt nhầm người then chốt** (bổ sung
 2026-08-06): quy tắc dưới đây dùng để bỏ tên nhân vật MỜ NHẠT, KHÔNG phải để
@@ -318,8 +336,11 @@ Grave"*. Case ngắn thì không cần.
 
 - **KHÔNG có lời mở đầu/chào kênh.** Video bắt đầu THẲNG bằng tiêu đề case #1.
 - Mỗi case độc lập, không cần câu chuyển tiếp (tiêu đề case mới là dấu chuyển).
-- **Thứ tự**: mở bằng 1 case mạnh và dễ hình dung, để dành case mạnh nhất cho
-  cuối. Case nhạt hơn xếp vào giữa.
+- **Thứ tự**: trong các case qua cổng chọn nội dung, mở bằng case sạch, dễ
+  hình dung và có diễn biến cuốn hút; chọn case cuối có kết quả/dư âm mạnh.
+  Các case giữa vẫn phải đủ diễn biến. Cân nhắc đổi kiểu mở, dạng phát hiện
+  và sắc thái cảm xúc khi tư liệu cho phép, tránh lặp cùng một đường kể cho
+  cả tập; không ép phải luân phiên theo một lịch cố định.
 - **Kết video**: 1 câu mời subscribe + mời gợi ý chủ đề tập sau ở comment.
 
 ## Giọng văn — ĐÃ ĐỔI HẲN so với bản cũ
@@ -331,8 +352,7 @@ báo cáo lạnh.
 - **Tính từ cảm xúc**: *terrifying, horrifying, chillingly, shocking, bizarre,
   breathtakingly beautiful*. Dùng đúng chỗ, không rải đều mọi câu.
 - **Giải thích, phân tích, nêu bối cảnh** cho khán giả hiểu (xem nhịp 6).
-- **Câu dẫn dắt trò chuyện**: *"The catch?"*, *"Here is why that is
-  scientifically impossible:"*, *"Naturally, this wild story caught the
+- **Câu dẫn dắt trò chuyện**: *"Naturally, this wild story caught the
   attention of..."*, *"Even more chillingly,"*. **LƯU Ý (2026-08-06)**: đây là
   VÍ DỤ để lấy cảm hứng, không phải công thức lặp lại nguyên văn mỗi case. Đặc
   biệt tránh cụm *"Here's [tính từ] part/detail..."* dùng lặp lại 2-3 lần trở
@@ -346,8 +366,8 @@ báo cáo lạnh.
 - **Câu dài có mệnh đề phụ** khi cần cho mạch kể trôi chảy.
 
 **VẪN GIỮ TỪ BẢN CŨ:**
-- Số liệu cụ thể vẫn rất quan trọng (17 ngày, 9 giờ 35, 40 năm, 97 tuổi) — chúng
-  là thứ khiến câu chuyện có thật.
+- Số liệu cụ thể giúp người nghe hình dung quy mô và đối chiếu diễn biến.
+  Dùng số được nguồn đỡ; độ chính xác bề ngoài không thay thế bằng chứng.
 - KHÔNG đúc kết bài học, KHÔNG dạy đời ở cuối.
 - KHÔNG bông đùa/chơi chữ — chuyện nghiêm túc, người thật.
 
@@ -366,9 +386,11 @@ nhau tuỳ loại case:
   nhận/đưa tin thật hay không** — có hồ sơ toà án, có báo đăng, có nhân chứng
   được nêu tên. KHÔNG kiểm chứng được bản thân hiện tượng ma quỷ, và đó là điều
   bình thường. Cách viết đúng: thuật lại điều NHÂN CHỨNG/HỒ SƠ nói, chứ không
-  khẳng định hiện tượng là thật. Nếu 1 vụ có xác nhận độc lập thì nêu rõ — vd
-  *"This story was publicly verified by many of the guards and police officers
-  who witnessed it that day."*
+  khẳng định hiện tượng là thật. Nếu có xác nhận độc lập, nêu rõ ai xác nhận
+  điều gì và nguồn nào ghi lại; tránh nói chung rằng "toàn bộ câu chuyện đã
+  được xác nhận". Phân biệt hình camera thực sự ghi được, lời người khác kể
+  về camera và cách nhân chứng giải thích hình ảnh đó. Không chốt "chỉ có hai
+  lời giải thích" nếu chưa có căn cứ loại trừ các khả năng khác.
 - **TUYỆT ĐỐI không bịa số** cho kêu hơn. Không tra được thì mô tả định tính.
 - **Đánh dấu chỗ chưa chắc** ngay trong bản tiếng Việt gửi duyệt (vd
   `[CHƯA XÁC MINH: nguồn ghi khác nhau, 5 hay 7 người]`).
