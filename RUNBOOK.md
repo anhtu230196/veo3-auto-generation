@@ -23,7 +23,8 @@ PR #3 đã gộp vào `master` ngày 2026-09-17 (`7b96dba`); PR #4 chuyển đí
 - Mục 5: hậu quả trước dùng được giữa case. Mục 6: người chứng kiến xuất hiện
   đúng lúc, kèm vai trò; chỉ gọi xác nhận độc lập khi có lời chứng/hồ sơ riêng.
   Mục 7: kết hai lớp, dư âm là nhịp cuối.
-- Mục 8 (mới): neo ngoài là tiêu chí chọn case ở bước 1. Mục 9 (mới): hình ảnh neo
+- Mục 8 (mới): ghi neo ngoài theo hai mức ở bước 1 (neo kết quả / neo lời kể);
+  case chỉ có lời một người vẫn hợp lệ khi lời kể truy được nguồn. Mục 9 (mới): hình ảnh neo
   của case, dùng cho tiêu đề/cao trào/dư âm và làm ứng viên thumbnail.
 - `SKILL.md`: bước 1 ghi neo ngoài; tiêu đề case dựng quanh hình ảnh neo; hai case
   cùng khung đứng cạnh nhau thì tạo khác biệt (khuyến nghị, không bắt xen kẽ).

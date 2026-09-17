@@ -163,9 +163,9 @@ case (mục 9). Trong lời kể mẫu, phần thi thể không bao giờ tìm t
 là hình ảnh đã ám kẻ gây án. Dư âm là một báo cáo hay lời kể lẻ thì quy rõ ai
 kể, giữ đúng một chi tiết, không nối thành chuỗi.
 
-## 8. Neo ngoài — tiêu chí chọn case, chạy ở bước 1
+## 8. Neo ngoài — ghi ở bước 1, không phải cổng loại case
 
-Theo lời kể mẫu, case cuốn nhất đều có ít nhất một thứ nằm ngoài lời kể của
+Theo lời kể mẫu, các case cuốn nhất có ít nhất một thứ nằm ngoài lời kể của
 người trong cuộc: vật chứng, hồ sơ, hoặc lời chứng riêng của người chứng kiến.
 Mạnh nhất là khi điều lạ dẫn tới một kết quả kiểm chứng được, như hài cốt được
 tìm thấy, một cuộc khai quật, lời khai hay bản án. Người nghe không tin hiện
@@ -173,10 +173,31 @@ tượng vẫn phải chấp nhận kết quả, và câu hỏi còn lại thu v
 sao người ta tìm ra. Tiêu đề tập hứa "chuyện có thật, có ghi chép" thì những
 neo này là thứ trả lời hứa đó.
 
-Khi lọc case ở bước 1, ghi neo ngoài của từng case và nó chứng minh tới đâu.
-Người chứng kiến chỉ tính là neo ngoài khi có lời chứng hoặc hồ sơ riêng (mục
-6); người chỉ được người kể chính nhắc tên hay chức danh thì chưa phải neo.
-Case chỉ có lời một người, không có gì bên ngoài, thì xếp sau hoặc bỏ.
+Khi lọc case ở bước 1, ghi neo của từng case theo một trong hai mức:
+
+| Mức | Gồm | Chứng minh được |
+| --- | --- | --- |
+| Neo kết quả | Vật chứng, hồ sơ, lời chứng hoặc hồ sơ riêng của người khác | Có một sự việc hoặc kết quả nằm ngoài lời kể |
+| Neo lời kể | Lời kể được ghi lại ở nguồn truy được: báo đăng thời đó, biên bản, phỏng vấn có ghi âm, hồ sơ hay sách của nhà nghiên cứu có nêu nguồn. Thêm chi tiết bối cảnh kiểm được (người, nơi, thời điểm có thật) nếu có | Người đó đã kể như vậy; phần bối cảnh kiểm được là có thật |
+
+Người chứng kiến chỉ tính là neo kết quả khi có lời chứng hoặc hồ sơ riêng
+(mục 6); người chỉ được người kể chính nhắc tên hay chức danh thì chưa phải.
+
+**Case chỉ có neo lời kể vẫn là case hợp lệ.** Nhiều chuyện tâm linh được ghi
+nhận kỹ chỉ có lời một nhân chứng, và với case tâm linh, skill này vốn chỉ kiểm
+chứng được việc lời kể đã được ghi nhận (SKILL.md, "Kiểm chứng dữ kiện"). Neo
+kết quả là điểm cộng khi phải chọn giữa các case ngang nhau về tư liệu, không
+phải điều kiện; tập không cần đủ bao nhiêu case có neo kết quả. Chỉ bỏ case
+khi chính lời kể không truy được về nguồn nào, đúng luật sẵn có.
+
+Kể một case chỉ có lời một người:
+- Quy lời kể cho người đó xuyên suốt case, không chỉ ở câu đầu.
+- Sức nặng đến từ chi tiết bối cảnh kiểm được, hoàn cảnh của người kể (họ là
+  ai, kể lúc nào, kể ra thì được hay mất gì) và việc họ làm sau đó, khi nguồn
+  ghi những điều này.
+- Có cách giải thích thông thường được nguồn nêu thì đưa vào (mục 6).
+- Không dựng thêm người xác nhận; không gọi người chỉ được nhắc tên là nhân
+  chứng độc lập.
 
 Giới hạn:
 - Neo ngoài chứng minh kết quả hoặc sự việc đã được ghi nhận, không chứng minh
@@ -218,7 +239,7 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
 | --- | --- |
 | Nhân vật và việc đang làm | Hành động, mục đích có nguồn; phần chưa biết |
 | Trình tự thật | Các mốc và nguồn; chỗ nguồn khác nhau |
-| Neo ngoài | Vật chứng, hồ sơ, lời chứng riêng của người chứng kiến; mỗi thứ chứng minh tới đâu; hoặc không có |
+| Neo ngoài | Mức neo: kết quả (vật chứng, hồ sơ, lời chứng riêng) hoặc lời kể (nguồn ghi lại lời kể, bối cảnh kiểm được); mỗi thứ chứng minh tới đâu |
 | Thứ tự kể | Kiểu mở; từng phát hiện, người biết nó, và cách nó đổi tình huống; người chứng kiến nào xuất hiện ở bước nào |
 | Chi tiết nối trước–sau | Xuất hiện ở đâu và trông như việc thường gì; được hiểu lại ở đâu; nguồn đỡ mối nối; hoặc không có |
 | Hình ảnh neo | Hình ảnh có nguồn; dùng ở tiêu đề/mở, cao trào, dư âm; có qua cổng 4 không; hoặc không có |
@@ -243,7 +264,9 @@ và không tạo thêm một cổng xin phép. Chỉ lập đủ để thấy c�
 - Case có kết quả hoặc điểm dừng rõ. Chi tiết cuối thuộc mạch chính, không
   chỉ là một lời đồn mới; không cố tạo bí ẩn khi tư liệu đã giải thích.
   Kết quả đứng trước, dư âm là nhịp cuối cùng.
-- Mỗi case đã ghi neo ngoài và hình ảnh neo, hoặc ghi rõ là không có. Hình ảnh
-  neo của case mở tập qua được cổng 4.
+- Mỗi case đã ghi mức neo ngoài (kết quả hay lời kể) và hình ảnh neo, hoặc ghi
+  rõ là không có hình ảnh neo. Hình ảnh neo của case mở tập qua được cổng 4.
+- Case chỉ có lời một người được quy lời kể xuyên suốt; không có người xác nhận
+  dựng thêm.
 - Các case được kể đủ và có cách triển khai phù hợp riêng; không ép đủ số
   cú xoay, kiểu mở hay cảm xúc chỉ để khớp mẫu.

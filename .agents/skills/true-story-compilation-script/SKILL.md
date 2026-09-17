@@ -183,9 +183,10 @@ với mp3, còn làm lại giọng đọc thì tốn quota vô ích cho video đ
    diễn biến để kể thành một câu chuyện có đầu có cuối** (bối cảnh → chuyện lạ
    xảy ra → điều tra/diễn biến → vỡ lẽ → dư âm). Case chỉ có 1 dữ kiện gây sốc
    rồi hết thì KHÔNG dùng được nữa, dù format cũ vẫn dùng tốt.
-   Với mỗi case gợi ý, ghi thêm **neo ngoài** (vật chứng, hồ sơ, lời chứng
-   riêng của người chứng kiến) và nó chứng minh tới đâu. Case chỉ có lời một
-   người thì xếp sau. Xem mục 8 của
+   Với mỗi case gợi ý, ghi thêm **mức neo ngoài**: neo kết quả (vật chứng, hồ
+   sơ, lời chứng riêng của người khác) hoặc neo lời kể (nguồn truy được ghi lại
+   lời kể). Case chỉ có lời một người vẫn dùng được khi lời kể có nguồn truy
+   được. Xem mục 8 của
    [story-structure.md](references/story-structure.md).
    Nếu user đã tự đưa chủ đề thì bỏ qua phần gợi ý chủ đề, nhưng vẫn ghi neo
    ngoài cho các case.
