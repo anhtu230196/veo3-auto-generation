@@ -2,9 +2,9 @@
 id: sys-script-lam-gia-mao-danh
 agent: claude
 branch: master
-status: active
+status: done
 opened: 2026-09-17
-updated: 2026-09-17
+updated: 2026-09-25
 scope:
   - narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/
 ---
@@ -23,3 +23,10 @@ Hitler, Anna Anderson, Van Meegeren. Bản Việt `claude-opus-5/vi.md` + `claud
 viết lại cùng 6 case bằng câu chữ độc lập, DÙNG LẠI nguyên nghiên cứu/nguồn của
 `claude-opus-5/notes.md` (không tra cứu mới). Mục đích: Tú so cách kể giữa hai
 model trên cùng dữ liệu. Cả hai bản đều đang chờ Tú chọn/duyệt, chưa commit.
+2026-09-25 (Opus 5.5): thêm `claude-opus-5-5/vi.md` + `claude-opus-5-5/notes.md` — tra
+cứu lại từ đầu, không đọc các bản khác. Thứ tự: Cottingley, Piltdown, Demara, Nhật ký
+Hitler, Anna Anderson, Van Meegeren. Chờ Tú duyệt, chưa commit. (Thư mục
+`claude-haiku-4-5/` cũng có một bản, có nhiều lỗi dữ kiện, vd Anna Anderson mất 1984 chứ
+không phải 1994.)
+2026-09-25: Tú chọn bản Opus 5.5. Đã viết `claude-opus-5-5/en.md`, chép `vi.md` + `en.md`
+ra thư mục tập, ghi `used-topics.md` (.claude + .agents). Claim → `done`. Chưa commit.
