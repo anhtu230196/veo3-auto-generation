@@ -1,0 +1,2570 @@
+{
+  "_doc": "Case 1 (Cottingley) cua tap lam-gia-va-mao-danh-bi-vach-tran. Viet 2026-09-25 (Claude Opus 5.5) theo skill nano-banana-image-prompts muc 4d + 4d-bis, duong .shots.json (image-prompts/SPEC-v2.md) + anh neo cua Tu. Anh tu lieu: refs/case-1/ (xem README o do). Truong `at` giu CAU LOI KE chua `cue` (kich ban kenh chua co VTT). CHUA CHAY FLOW — cho Tu duyet ban review (case-1.review.md). Build: python scripts/build_image_prompts.py --shots narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/case-1/case-1.shots.json ; review: python scripts/review_shots.py narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/case-1/case-1.shots.json ; chay (SAU KHI TU DUYET): npx tsx scripts/run-shots.ts --jobs narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/case-1/case-1.jobs.json --project lam-gia-c1-shots (project MOI, upload lai 3 anh neo). Shot co `choTuLieu` CHUA DUOC CHAY.",
+  "_raSoatSkill4d": {
+    "1_vatTacDongCoThe": "Khong co.",
+    "2_trangThaiNhanVat": "Hai co gai o 3 moc: 1917 (C1-02, C1-03), 1920 (C1-41, C1-42), gia (C1-68, C1-70) — moi moc mot asset rieng (skill 5b, doi tuoi + trang phuc). 'Frances died in 1986 / Elsie died in 1988' KHONG ve canh chet: dung lai chan dung gia, nam la chu hau ky.",
+    "3_nguoiCoThatDuocGoiTen": "Elsie Wright, Frances Griffiths (anh that: 5 tam anh tien + anh chung), Arthur Conan Doyle (anh ~1920), Edward Gardner (anh chan dung). KHONG co chan dung: Arthur Wright, Polly Wright, Harold Snelling, va hai chi em luc gia (1966-1983) — ha xuong `figure`, ta theo trang phuc dung thoi ky, ghi HU CAU trong note (SPEC-v2 muc 4c). Nguoi khong ten: dien gia buoi giang 1919, nha ngoai cam 1921 (co that la Geoffrey Hodson, loi ke khong goi ten), phong vien 1966, nguoi hoai nghi 1978, chuyen gia anh 1982 (co that la Geoffrey Crawley, loi ke khong goi ten).",
+    "4_tenSaiThoiKy": "Khong co ten doi theo thoi ky. 'The Strand' va 'Kodak' la ten dung nam 1920. Cape Town, Melbourne khong doi ten.",
+    "5_trangThaiGoc": "Hinh co gai mua trong sach (C1-77) -> hinh tien ve lai (C1-76) -> hinh cat ra (C1-78b) -> cam bang kim trong co (C1-78c) -> vut xuong suoi (C1-78e). Tam kinh trong khay (C1-14) -> anh hien ra (C1-14b).",
+    "6_choNoi": "Kim cai mu xuyen qua hinh giay cam xuong dat (C1-78c) — cho noi la chu the cua anh.",
+    "7_nhayCoc": "Them C1-12 (hai co gai mang may xuong suoi) va C1-12b (tra may cho cha) — loi ke xac nhan ca hai. KHONG them canh hai co gai dung hinh giay de chup o 1917 truoc khi loi ke tiet lo: se lo loi giai som. Canh 'chup anh' chi co o C1-78 sau loi thu nhan.",
+    "8_hanhViNoi": "Nguoi lon hoi (C1-07b: nguoi noi la me, nguoi nghe la hai co gai). Hai co gai tra loi (C1-08). Cha noi 'bia giay' (C1-18), cha tu choi (C1-21). Snelling tuyen bo (C1-33). Hai co gai giai thich voi Gardner (C1-42b). Nha ngoai cam noi thay tien (C1-62: ve HANH VI NOI, khong ve tien). Elsie gia tra loi phong vien (C1-68b). Hai ba thu nhan voi nguoi phong van (C1-75b). Elsie giai thich (C1-84). Frances khang dinh (C1-89).",
+    "9_mucChacChan": "C1-62 khong ve tien quanh nha ngoai cam (chi la loi anh ta noi). C1-89 va cau S90 (loi ke cua Frances ve chieu thu Bay mua) KHONG ve tien hien dan trong co — dung lai anh Frances gia dang noi. C1-30: ve Gardner cam tam kinh, khong ve 'tien hien ra'. Cau 'double exposure' la GIA THUYET cua chuyen gia — dung lai anh chuyen gia C1-72b, khong ve so do chup chong.",
+    "10_trungChucNang_dungLai": "Xem _dungLai (41 cau dung lai anh san co). BO vi trung chuc nang: canh 'sold out' (trung tap chi C1-53, chu hau ky), co nuoc Anh (trung ban do C1-01 — 'north of England' la dia ly, khong phai quoc gia hanh dong), bang/co Nam Phi 1917 (trung ban do C1-04), hai phu nu truong thanh 'grew up, got married' (khong co tu lieu, chu hau ky), so do chup chong (gia thuyet). BO vi gioi han Dan dung: co gai nhin tien hien ra trong co (S90), hai co gai 'played along' (S64, loi ke ve sau), cao be Doyle vui mung doc dien tin.",
+    "11_netMat": "Net mat trung tinh mac dinh. GIU nu cuoi o C1-12b (loi ke 'looking triumphant'). Cac shot khac khong gan tam trang."
+  },
+  "_thuNghiem": "Shot mention dua NGUOI MOI vao cau co goi ten anh neo (skill 4d-9d, CHUA DO): C1-26b, C1-28, C1-29, C1-34, C1-62, C1-68b, C1-70b, C1-72, C1-72b, C1-75b. Shot ve lai anh tien (C1-14b, C1-20, C1-46, C1-47): cau styleByKind 'Only one person in the image' noi vao cuoi — prompt noi ro tien KHONG phai nguoi; soi xem model co xoa tien khong.",
+  "_anhChung": "Mọi ảnh vẽ theo nét của ba ảnh neo phong cách Tú gửi — viền mực đen dày không đều, tô màu phẳng, gạch chì thấy nét, nền trắng trơn — khổ 16:9. Người có MẶT ĐƠN GIẢN: mắt chấm nhỏ, mũi ngắn, miệng một nét (hoặc hình mở khi đang nói/cười), không đổ bóng trên mặt. Shot vẽ bằng CHỮ thì runner tự đính một ảnh neo theo loại (một người → 02, nhóm → 03, đồ vật/nơi chốn → 01). Shot @MENTION chỉ dùng ảnh được gọi tên trong câu. NĂM TẤM ẢNH TIÊN GỐC là hiện vật thật: lúc dựng có thể chèn thẳng ảnh thật (refs/case-1/01-fairy-photos-*) cạnh bản vẽ lại C1-14b, C1-20, C1-46, C1-47, C1-48 — Tú chọn.",
+  "_dungLai": [
+    {
+      "at": "In the summer of 1917, in Cottingley, a small village just outside the city of Bradford in the north of England, two cousins kept getting into trouble for the very same thing.",
+      "cue": "two cousins kept getting into trouble",
+      "dungLai": [
+        "C1-06"
+      ],
+      "lyDo": "Hai co gai o suoi — dung chinh viec gay rac roi."
+    },
+    {
+      "at": "Nobody believed them.",
+      "cue": "Nobody believed them",
+      "dungLai": [
+        "C1-07b"
+      ],
+      "lyDo": "Me dang hoi, hai con dung nghe."
+    },
+    {
+      "at": "Right in front of her face, 4 tiny winged figures were dancing.",
+      "cue": "4 tiny winged figures were dancing",
+      "dungLai": [
+        "C1-14b"
+      ],
+      "lyDo": "Cung khung voi cau truoc; con so 4 la chu hau ky neu can."
+    },
+    {
+      "at": "Arthur didn't believe it for a second.",
+      "cue": "Arthur didn't believe it for a second",
+      "dungLai": [
+        "C1-13"
+      ],
+      "lyDo": "Cha trong buong toi, net mat trung tinh."
+    },
+    {
+      "at": "About 2 months later, the girls borrowed the camera again and came back with a second picture.",
+      "cue": "borrowed the camera again",
+      "dungLai": [
+        "C1-12"
+      ],
+      "lyDo": "Hai co gai mang may di."
+    },
+    {
+      "at": "It was funny, she wrote, that she had never seen the fairies in Africa.",
+      "cue": "never seen the fairies in Africa",
+      "dungLai": [
+        "C1-23",
+        "C1-04"
+      ],
+      "lyDo": "Frances viet thu + ban do Nam Phi. KHONG ve noi dung thu."
+    },
+    {
+      "at": "It must have been too hot for them there.",
+      "cue": "too hot for them there",
+      "dungLai": [
+        "C1-23"
+      ],
+      "lyDo": "Noi dung thu la chu hau ky."
+    },
+    {
+      "at": "Near the end of 1918, Frances wrote to an old friend back in Cape Town.",
+      "cue": "back in Cape Town",
+      "dungLai": [
+        "C1-04"
+      ],
+      "lyDo": "Ban do Nam Phi co CAPE TOWN."
+    },
+    {
+      "at": "The topic that evening was the life of fairies.",
+      "cue": "the life of fairies",
+      "dungLai": [
+        "C1-26b"
+      ],
+      "lyDo": "Buoi giang; de tai la chu hau ky."
+    },
+    {
+      "at": "Kodak couldn't find any sign of faking either, but it refused to certify that they were real pictures of fairies.",
+      "cue": "Kodak couldn't find any sign of faking",
+      "dungLai": [
+        "C1-34"
+      ],
+      "lyDo": "Logo Kodak THAT la hau ky (bang 4c: logo that), khong ve."
+    },
+    {
+      "at": "In real life, Doyle was a committed spiritualist.",
+      "cue": "Doyle was a committed spiritualist",
+      "dungLai": [
+        "C1-36"
+      ],
+      "lyDo": "Chan dung Doyle. Khong ve canh gop hon (khong co nguon canh cu the)."
+    },
+    {
+      "at": "That day, and again 2 days later, they took 3 more photographs.",
+      "cue": "they took 3 more photographs",
+      "dungLai": [
+        "C1-44b"
+      ],
+      "lyDo": "Hai co gai cam may; so 3 la chu hau ky."
+    },
+    {
+      "at": "And the fifth photograph has no girls in it at all.",
+      "cue": "the fifth photograph has no girls",
+      "dungLai": [
+        "C1-48"
+      ],
+      "lyDo": "Anh tien tam nang."
+    },
+    {
+      "at": "It became known as \"Fairies and Their Sun-Bath.\"",
+      "cue": "It became known as",
+      "dungLai": [
+        "C1-48"
+      ],
+      "lyDo": "Ten anh la chu hau ky."
+    },
+    {
+      "at": "The issue sold out within days.",
+      "cue": "The issue sold out within days",
+      "dungLai": [
+        "C1-53"
+      ],
+      "lyDo": "Tap chi mo; 'ban het' la chu hau ky."
+    },
+    {
+      "at": "The girls' real names were kept out of print, and they appeared as \"Alice\" and \"Iris.\"",
+      "cue": "kept out of print",
+      "dungLai": [
+        "C1-02",
+        "C1-03"
+      ],
+      "lyDo": "Hai chan dung 1917 + chu ten gia o hau ky."
+    },
+    {
+      "at": "One paper remarked dryly that what this story needed wasn't an understanding of the occult but an understanding of children.",
+      "cue": "One paper remarked dryly",
+      "dungLai": [
+        "C1-58"
+      ],
+      "lyDo": "Chong bao."
+    },
+    {
+      "at": "But Doyle didn't back down.",
+      "cue": "But Doyle didn't back down",
+      "dungLai": [
+        "C1-36"
+      ],
+      "lyDo": "Chan dung Doyle."
+    },
+    {
+      "at": "The girls saw nothing, and not a single new photograph was taken.",
+      "cue": "not a single new photograph was taken",
+      "dungLai": [
+        "C1-44b"
+      ],
+      "lyDo": "Hai co gai cam may + dau X hau ky."
+    },
+    {
+      "at": "Years later, the cousins admitted they had simply played along with him for fun.",
+      "cue": "played along with him for fun",
+      "dungLai": [
+        "C1-62"
+      ],
+      "lyDo": "Khong ve 'hua theo cho vui' (loi ke ve sau, khong co hinh thuc)."
+    },
+    {
+      "at": "After that, the story slowly faded.",
+      "cue": "the story slowly faded",
+      "dungLai": [
+        "C1-53"
+      ],
+      "lyDo": "Tap chi cu."
+    },
+    {
+      "at": "She said the fairies might have been figments of her imagination, but she left open the possibility that she had somehow photographed her own thoughts.",
+      "cue": "figments of her imagination",
+      "dungLai": [
+        "C1-68b"
+      ],
+      "lyDo": "Elsie dang noi voi phong vien."
+    },
+    {
+      "at": "But they still wouldn't admit to faking anything.",
+      "cue": "wouldn't admit to faking anything",
+      "dungLai": [
+        "C1-70b"
+      ],
+      "lyDo": "Hai ba tren truyen hinh."
+    },
+    {
+      "at": "They all came to the same conclusion.",
+      "cue": "They all came to the same conclusion",
+      "dungLai": [
+        "C1-72b"
+      ],
+      "lyDo": "Chuyen gia soi anh."
+    },
+    {
+      "at": "The pictures were fake.",
+      "cue": "The pictures were fake",
+      "dungLai": [
+        "C1-14b"
+      ],
+      "lyDo": "Anh tien + dau X do hau ky."
+    },
+    {
+      "at": "Arthur Wright had guessed right on that very first night in his darkroom.",
+      "cue": "guessed right on that very first night",
+      "dungLai": [
+        "C1-13"
+      ],
+      "lyDo": "Cha trong buong toi — cap dau cuoi voi C1-13."
+    },
+    {
+      "at": "And Harold Snelling hadn't been wrong either.",
+      "cue": "hadn't been wrong either",
+      "dungLai": [
+        "C1-32"
+      ],
+      "lyDo": "Snelling soi tam kinh."
+    },
+    {
+      "at": "The plates had never been tampered with.",
+      "cue": "never been tampered with",
+      "dungLai": [
+        "C1-14"
+      ],
+      "lyDo": "Tam kinh trong khay."
+    },
+    {
+      "at": "It just happened to be made of paper.",
+      "cue": "happened to be made of paper",
+      "dungLai": [
+        "C1-78c"
+      ],
+      "lyDo": "Hinh giay cam kim — cap dau cuoi voi C1-14b."
+    },
+    {
+      "at": "They were just 2 village kids, she said, and up against a brilliant man like Conan Doyle, all they could do was keep quiet.",
+      "cue": "just 2 village kids",
+      "dungLai": [
+        "C1-06",
+        "C1-36"
+      ],
+      "lyDo": "Hai co gai 1917 + Doyle."
+    },
+    {
+      "at": "Elsie said all 5 were fakes.",
+      "cue": "Elsie said all 5 were fakes",
+      "dungLai": [
+        "C1-84"
+      ],
+      "lyDo": "Elsie gia dang noi."
+    },
+    {
+      "at": "She said it was a wet Saturday afternoon, Elsie had nothing prepared, and Frances saw the fairies slowly taking shape in the grass, so she simply raised the camera and took the picture.",
+      "cue": "a wet Saturday afternoon",
+      "dungLai": [
+        "C1-89"
+      ],
+      "lyDo": "LOI KE cua Frances — khong ve tien hien ra (cau ra 9)."
+    },
+    {
+      "at": "One photography expert suggested it might have been an accidental double exposure, made while some of the paper fairies were still lying in the grass.",
+      "cue": "accidental double exposure",
+      "dungLai": [
+        "C1-72b"
+      ],
+      "lyDo": "Cung chuyen gia (Crawley). Gia thuyet — khong ve so do."
+    },
+    {
+      "at": "If so, both women could have been telling the truth as they saw it.",
+      "cue": "telling the truth as they saw it",
+      "dungLai": [
+        "C1-70b"
+      ],
+      "lyDo": "Hai ba ngoi canh nhau."
+    },
+    {
+      "at": "Frances died in 1986.",
+      "cue": "Frances died in 1986",
+      "dungLai": [
+        "C1-70"
+      ],
+      "lyDo": "Chan dung Frances gia; nam la chu hau ky. Khong ve cai chet."
+    },
+    {
+      "at": "Elsie died in 1988.",
+      "cue": "Elsie died in 1988",
+      "dungLai": [
+        "C1-68"
+      ],
+      "lyDo": "Chan dung Elsie gia."
+    },
+    {
+      "at": "Neither of them ever changed her story about that last photograph.",
+      "cue": "changed her story about that last photograph",
+      "dungLai": [
+        "C1-48"
+      ],
+      "lyDo": "Anh tien tam nang — nhip cuoi."
+    },
+    {
+      "at": "The girls grew up, got married, and spent years living abroad.",
+      "cue": "got married, and spent years living abroad",
+      "dungLai": [
+        "C1-42",
+        "C1-41"
+      ],
+      "lyDo": "Chan dung hai chi em 1920; 'lay chong, song o nuoc ngoai' la chu hau ky (khong co tu lieu hinh)."
+    },
+    {
+      "at": "But journalists never quite forgot them.",
+      "cue": "journalists never quite forgot them",
+      "dungLai": [
+        "C1-58"
+      ],
+      "lyDo": "Chong bao."
+    },
+    {
+      "at": "They showed exactly what had been in front of the camera.",
+      "cue": "exactly what had been in front of the camera",
+      "dungLai": [
+        "C1-14b"
+      ],
+      "lyDo": "Anh tien dau tien — tra chi tiet dat truoc o C1-33 (loi Snelling)."
+    },
+    {
+      "at": "But there was one photograph the cousins never agreed on.",
+      "cue": "one photograph the cousins never agreed on",
+      "dungLai": [
+        "C1-48"
+      ],
+      "lyDo": "Anh tam nang."
+    }
+  ],
+  "video": {
+    "id": "lam-gia-va-mao-danh-bi-vach-tran",
+    "title": "Forgeries and Impostors Exposed",
+    "transcript": "narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/en.md"
+  },
+  "styleBlock": "Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+  "styleByKind": {
+    "character": "Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "figure": "Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "group": "Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+  },
+  "assets": [
+    {
+      "id": "char-elsie17",
+      "flowAssetName": "Older Girl Ref Bell Hat White Dress"
+    },
+    {
+      "id": "char-frances17",
+      "flowAssetName": "Young Girl Ref Flower Band Long Hair"
+    },
+    {
+      "id": "place-beck",
+      "flowAssetName": "Stream Ref Flat Stones Small Fall"
+    },
+    {
+      "id": "char-mother",
+      "flowAssetName": "Mother Ref Pinned Bun Brown Coat"
+    },
+    {
+      "id": "prop-boxcamera",
+      "flowAssetName": "Box Camera Ref Black Leather"
+    },
+    {
+      "id": "char-father",
+      "flowAssetName": "Father Ref Moustache Waistcoat"
+    },
+    {
+      "id": "place-darkroom",
+      "flowAssetName": "Darkroom Ref Red Lamp Two Trays"
+    },
+    {
+      "id": "char-lecturer",
+      "flowAssetName": "Lecturer Ref Bald White Fringe"
+    },
+    {
+      "id": "char-gardner",
+      "flowAssetName": "Society Member Ref Dark Suit"
+    },
+    {
+      "id": "char-snelling",
+      "flowAssetName": "Photo Expert Ref Round Spectacles"
+    },
+    {
+      "id": "char-doyle",
+      "flowAssetName": "Author Ref Walrus Moustache"
+    },
+    {
+      "id": "prop-magazine",
+      "flowAssetName": "Magazine Ref Plain Blue Cover"
+    },
+    {
+      "id": "prop-foldingcams",
+      "flowAssetName": "Folding Cameras Ref Two Bellows"
+    },
+    {
+      "id": "char-frances20",
+      "flowAssetName": "Teen Girl Ref White Hair Bow"
+    },
+    {
+      "id": "char-elsie20",
+      "flowAssetName": "Young Woman Ref Dark Curls Side Fringe"
+    },
+    {
+      "id": "char-clairvoyant",
+      "flowAssetName": "Clairvoyant Ref Grey Tweed Jacket"
+    },
+    {
+      "id": "char-elsie-old",
+      "flowAssetName": "Elderly Woman Ref White Curls Cardigan"
+    },
+    {
+      "id": "char-frances-old",
+      "flowAssetName": "Old Lady Ref Grey Bob Green Jumper"
+    },
+    {
+      "id": "prop-paperfairy",
+      "flowAssetName": "Paper Cutout Ref Winged Dancer"
+    }
+  ],
+  "segments": [
+    {
+      "id": "C1",
+      "title": "Elsie and Frances – The Fairies at the Bottom of the Garden",
+      "start": "In the summer of 1917, in Cottingley",
+      "end": "changed her story about that last photograph.",
+      "refs": "narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/refs/case-1/",
+      "shots": [
+        {
+          "id": "C1-01",
+          "at": "In the summer of 1917, in Cottingley, a small village just outside the city of Bradford in the north of England, two cousins kept getting into trouble for the very same thing.",
+          "cue": "just outside the city of Bradford",
+          "kind": "place",
+          "outName": "Country Map With One Northern City Labelled",
+          "intent": "Dinh vi Cottingley cho nguoi xem: Bradford o mien bac nuoc Anh (o anh 6). Cottingley qua nho de ghi — cham + chu COTTINGLEY la hau ky neu Tu muon",
+          "tomTat": "Bản đồ nước Anh, có chữ ENGLAND và BRADFORD",
+          "anhSeRa": "Bản đồ phẳng nước Anh theo đúng hình bản đồ tham chiếu (13-maps-01): nước Anh tô một màu xanh lá nhạt phẳng, có chữ \"ENGLAND\" in hoa; thành phố Bradford ở phía bắc có chữ \"BRADFORD\" in hoa. Không tiêu đề, không số, không la bàn, không mũi tên, không tên nơi nào khác.",
+          "canSoi": "CHÍNH TẢ \"ENGLAND\" và \"BRADFORD\". Chữ BRADFORD phải nằm ở miền bắc-giữa nước Anh (Tây Yorkshire), không trôi xuống London. Model có tự thêm tên thành phố khác không.",
+          "mention": "draw a map shaped like {{13-maps-01.png}} with the same style as {{01-pyramid-place.png}}, fill England with one flat pale green colour and label it \"ENGLAND\" in plain capital letters, and write \"BRADFORD\" in plain capital letters at the position of the city of Bradford in the north of England, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+          "refs": [
+            "13-maps-01.png",
+            "13-maps-04.png"
+          ],
+          "note": "Skill 4d-bis phan 4a: ban do tham chieu = England location map (Commons). Ban do DINH VI hom nay, ranh gioi hien dai. Cham Cottingley/Bradford va mui ten la hau ky.",
+          "anhSeRaHash": "4a0f015fef44",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Country Map With One Northern City Labelled",
+            "promptHash": "4a0f015fef44",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-02",
+          "at": "Elsie Wright was 16.",
+          "cue": "Elsie Wright was 16",
+          "kind": "character",
+          "outName": "Older Girl Ref Bell Hat White Dress",
+          "intent": "Asset Elsie 1917 — nhan vat chinh, dung lai o 10 shot",
+          "tomTat": "Chân dung Elsie 16 tuổi, mũ chuông, váy trắng (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một cô gái khoảng 16 tuổi: mặt trái xoan, tóc nâu sẫm thẳng xoã dài quá vai, đội mũ nỉ sẫm hình chuông vành tròn sâu có cài một bông hoa nhạt bên hông; mặc váy cotton trắng rộng tay dài, cổ tròn mềm. Chỉ một người.",
+          "canSoi": "Asset gốc của Elsie 1917 — duyệt kỹ mũ chuông và tóc dài sẫm (thứ phân biệt với Frances). Model có vẽ cô già hơn 16 không.",
+          "draw": "A girl of about sixteen seen from the chest up. An oval face. Long straight dark brown hair worn loose and falling well past her shoulders, under a dark felt hat shaped like a bell with a deep rounded brim and a small pale flower pinned to one side. She wears a loose long-sleeved white cotton dress with a soft round neckline.",
+          "produces": "char-elsie17",
+          "refs": [
+            "01-fairy-photos-02.jpg",
+            "02-girls-01.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh that 1917 (Elsie va chu lun): toc sam thang xoa, mu chuong sam co hoa, vay trang rong tay dai co ren o co tay. Ten rieng khong vao outName (duong draw go outName vao prompt).",
+          "anhSeRaHash": "6f951e9c0cb5",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl Ref Bell Hat White Dress",
+            "promptHash": "6f951e9c0cb5",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-03",
+          "at": "Her cousin Frances Griffiths was only 9.",
+          "cue": "Frances Griffiths was only 9",
+          "kind": "character",
+          "outName": "Young Girl Ref Flower Band Long Hair",
+          "intent": "Asset Frances 1917 — nguoi trong buc anh neo cua case (C1-14b)",
+          "tomTat": "Chân dung Frances 9 tuổi, vòng hoa trên tóc (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một bé gái khoảng 9 tuổi: mặt tròn má bầu, tóc nâu nhạt dài xoã quá vai, một vòng hoa nhỏ màu nhạt vắt ngang đỉnh đầu; mặc váy cotton trắng trơn cổ nhỏ. Chỉ một người.",
+          "canSoi": "Phải ra TRẺ EM 9 tuổi, không ra thiếu nữ. Vòng hoa trên tóc là dấu nhận diện với ảnh gốc.",
+          "draw": "A girl of about nine seen from the chest up. A round face with full cheeks. Long light brown hair worn loose and falling past her shoulders, with a thin band of small pale flowers across the top of her head. She wears a plain white cotton dress with a small collar.",
+          "produces": "char-frances17",
+          "refs": [
+            "01-fairy-photos-01.jpg",
+            "02-girls-01.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh that 1917 (Frances va bon nang tien): mat tron, toc nau nhat xoa, vong hoa tren toc, ao trang.",
+          "anhSeRaHash": "b461448fb6fa",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Young Girl Ref Flower Band Long Hair",
+            "promptHash": "b461448fb6fa",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-04",
+          "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+          "cue": "back to England from South Africa",
+          "kind": "place",
+          "outName": "Southern Africa Map With Cape Town Labelled",
+          "intent": "Noi Frances tu do ve (o anh 6). Dung lai cho cau Cape Town (1918)",
+          "tomTat": "Bản đồ Nam Phi, có chữ SOUTH AFRICA và CAPE TOWN",
+          "anhSeRa": "Bản đồ phẳng Nam Phi theo hình bản đồ tham chiếu (13-maps-02): lãnh thổ Nam Phi tô một màu cam nhạt phẳng có chữ \"SOUTH AFRICA\" in hoa; chữ \"CAPE TOWN\" in hoa ở mũi tây nam. Không tiêu đề, không số, không tên nơi khác.",
+          "canSoi": "CHÍNH TẢ hai tên. CAPE TOWN phải ở mũi tây nam, sát bờ biển. Model có tự thêm tên các nước láng giềng không.",
+          "mention": "draw a map shaped like {{13-maps-02.png}} with the same style as {{01-pyramid-place.png}}, fill South Africa with one flat pale orange colour and label it \"SOUTH AFRICA\" in plain capital letters, and write \"CAPE TOWN\" in plain capital letters at the position of Cape Town on the south-western tip of the coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+          "refs": [
+            "13-maps-02.png"
+          ],
+          "note": "Skill 4d-bis 4a. Ranh gioi Nam Phi hien dai (nam 1917 la Lien bang Nam Phi) — ban do dinh vi cho nguoi xem hom nay.",
+          "anhSeRaHash": "0d297dc68314",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Southern Africa Map With Cape Town Labelled",
+            "promptHash": "0d297dc68314",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-04b",
+          "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+          "cue": "had recently come back",
+          "kind": "object",
+          "outName": "Passenger Steamship With Two Funnels",
+          "intent": "Vat ngam trong 'come back ... from South Africa' (o anh 3): chuyen di bang tau bien",
+          "tomTat": "Tàu hơi nước chở khách thập niên 1910",
+          "anhSeRa": "Một tàu hơi nước chở khách thập niên 1910 nhìn ngang: thân dài sẫm màu có một hàng cửa sổ tròn, boong trên màu trắng, hai ống khói cao, đang chạy trên mặt biển phẳng. Không người, không chữ, không cờ.",
+          "canSoi": "Model có vẽ tên tàu hay cờ lên thân không. Đây là tàu minh hoạ loại, không khẳng định con tàu thật họ đi.",
+          "draw": "A passenger steamship of the 1910s seen from the side: a long dark hull with one row of small round portholes, a white upper deck and two tall funnels, sailing on flat calm sea. No lettering, no flags, no people, no sun.",
+          "note": "Gioi han Dong nhat hien vat: khong khang dinh ten tau (nguon khong ghi).",
+          "anhSeRaHash": "8217c15fe998",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Passenger Steamship With Two Funnels",
+            "promptHash": "8217c15fe998",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-04c",
+          "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+          "cue": "staying with Elsie's family",
+          "kind": "place",
+          "outName": "Stone End Terrace House With Tall Gable Chimney",
+          "intent": "Nha gia dinh Wright o Cottingley — so 31 Main Street, nha dau day (anh 08-cottingley-03)",
+          "tomTat": "Nhà số 31 Main Street: nhà đá đầu dãy hai tầng",
+          "anhSeRa": "Ngôi nhà đầu dãy hai tầng nhìn thẳng mặt tiền, xây đá sa thạch khối thô màu vàng xám xếp hàng đều, tường hồi bên phải sẫm hơn. Mái ngói đá phiến xám dốc thấp, hàng con sơn đá nhỏ dưới máng xối; một ống khói đá cao vươn lên ở đầu hồi, một ống khói thấp có hàng chụp gốm ở chỗ giáp nhà bên. Mặt tiền: cửa gỗ sẫm có ô kính chữ nhật phía trên nằm bên trái; bên phải là một cửa sổ khung trượt ở tầng dưới và một cửa sổ y hệt thẳng phía trên ở tầng hai, lanh tô và bậu đá dày. Mép trái lộ một lát nhà bên cùng loại đá. Vườn trước hẹp có cây bụi và dây leo, sau bức tường đá thấp. Không người, không chữ, không số nhà.",
+          "canSoi": "Bố cục mặt tiền có khớp nhà số 31 thật không: cửa đi bên trái, hai cửa sổ chồng thẳng hàng bên phải, ống khói cao ở đầu hồi. Không được lọt đồ hiện đại của ảnh gốc: cửa nhựa đen có số, hàng rào gỗ sơn đen, ăng-ten, dây điện, xe đạp.",
+          "draw": "A two-storey end-of-terrace house seen straight from the front, built of rough-faced honey-grey Yorkshire sandstone blocks in even courses, the side gable wall on the right darker and weathered. A low-pitched grey slate roof with a row of small square stone blocks under the gutter; a tall plain stone chimney stack rising from the gable end, and a shorter chimney stack with a row of clay chimney pots where the roof meets the next house. On the front: a plain dark wooden panelled door on the left with a small rectangular glass pane above it; to its right one sash window with two-over-two panes on the ground floor and a matching sash window directly above it on the first floor, each with a thick plain stone lintel and a stone sill. Only a narrow slice of the neighbouring house, in the same stone, shows at the left edge. A narrow front garden with a few shrubs and a climbing plant, behind a low stone wall. No people, no lettering, no house number, no sun.",
+          "refs": [
+            "08-cottingley-03.jpg"
+          ],
+          "note": "Mo ta theo anh that 08-cottingley-03 (chup gan day, blog Yorkshire Ridings 2019; so 31 tren o kinh cua). Co y bo do hien dai: cua nhua den, hang rao go son den, ang-ten, day dien, xe dap. Than nha da khong doi tu 1917. Ten card doi so voi ban nhap vi ban nhap chua tung chay.",
+          "anhSeRaHash": "13347acb1c73",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Stone End Terrace House With Tall Gable Chimney",
+            "promptHash": "13347acb1c73",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-05",
+          "at": "At the bottom of the Wrights' garden ran a little stream, what the locals call a beck.",
+          "cue": "what the locals call a beck",
+          "kind": "place",
+          "outName": "Stream Ref Flat Stones Small Fall",
+          "intent": "Asset con suoi — boi canh cua ca vu, dung lai o 4 shot",
+          "tomTat": "Con suối nhỏ, đá phẳng, thác thấp (asset)",
+          "anhSeRa": "Một con suối nhỏ chảy qua những phiến đá xám phẳng giữa hai bờ cỏ dốc, có một thác nước nhỏ cao chừng đầu gối, dương xỉ và bụi lá thấp dọc bờ, vài cây mảnh nghiêng ra mặt nước. Không người, không cầu, không nhà, không chữ.",
+          "canSoi": "Suối phải NHỎ (con suối cuối vườn), không thành sông. Model có vẽ thêm người hay tiên không.",
+          "draw": "A small stream running over flat grey stones between two steep grassy banks, with one small waterfall about knee high, ferns and low leafy bushes along the banks and a few thin trees leaning over the water. No people, no bridge, no buildings, no lettering, no sun.",
+          "produces": "place-beck",
+          "refs": [
+            "07-beck-01.jpg",
+            "07-beck-02.jpg",
+            "02-girls-02.jpg",
+            "01-fairy-photos-01.jpg"
+          ],
+          "note": "Theo anh con suoi Cottingley hom nay + nen anh tien 1917 (thac nho ben trai) + anh Elsie ngoi tren bo suoi 1920 (da phang, bo doc).",
+          "anhSeRaHash": "f656167536f7",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Stream Ref Flat Stones Small Fall",
+            "promptHash": "f656167536f7",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-06",
+          "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+          "cue": "The girls spent hours down there",
+          "kind": "group",
+          "outName": "Two Girls Crouching On Stream Stones",
+          "intent": "Hai co gai choi o suoi — viec gay rac roi (dung lai cho cau mo 'two cousins' va cau 'village kids')",
+          "tomTat": "Elsie và Frances ngồi xổm trên đá suối",
+          "anhSeRa": "Vẽ lại CHÍNH hai cô gái từ asset C1-02 và C1-03 (giữ nguyên mặt), nguyên người: ngồi xổm trên đá phẳng ở mép con suối C1-05, thò tay xuống nước; Elsie mũ chuông, váy trắng, tất đen, bốt đen buộc dây; Frances nhỏ hơn hẳn (đầu tới vai Elsie), vòng hoa, váy trắng, tất trắng, giày quai. Không chữ.",
+          "canSoi": "Mặt hai cô có giữ đúng asset không. Frances phải thấp hơn rõ. Model có tự vẽ tiên không (KHÔNG được).",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, now seen full length from head to shoes crouching on the flat stones at the edge of the same stream as in {{Stream Ref Flat Stones Small Fall}} and reaching down into the water, the older girl in the same bell hat and white dress with black stockings and black lace-up ankle boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, in the same flower band and white dress with white socks and black strap shoes, no fairies, no other people, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17",
+            "place-beck"
+          ],
+          "note": "Skill 8c: ep chieu cao tre em o tung canh. Cam tuong minh tien (chua den luc).",
+          "anhSeRaHash": "3895f34aac58",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Crouching On Stream Stones",
+            "promptHash": "3895f34aac58",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-06b",
+          "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+          "cue": "soaking wet shoes",
+          "kind": "object",
+          "outName": "Pair Of Soaked Lace Up Girls Boots",
+          "intent": "Vat duoc goi ten (o anh 4): giay uot sung",
+          "tomTat": "Đôi bốt con gái ướt sũng, dính bùn",
+          "anhSeRa": "Một đôi bốt da đen cổ thấp buộc dây của bé gái thập niên 1910, ướt sũng, nước nhỏ giọt và vũng nước nhỏ quanh đế, bùn nâu bắn lên mũi giày. Không người, không chữ.",
+          "canSoi": "Giày cỡ trẻ em, kiểu 1910s (buộc dây cao cổ), không ra giày hiện đại.",
+          "draw": "A pair of small black leather lace-up ankle boots from the 1910s, soaking wet, with water dripping from them into a small puddle and brown mud splashed across the toes. No people, no lettering.",
+          "anhSeRaHash": "7fff3068552f",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Pair Of Soaked Lace Up Girls Boots",
+            "promptHash": "7fff3068552f",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-06c",
+          "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+          "cue": "muddy clothes",
+          "kind": "object",
+          "outName": "White Cotton Dress With Muddy Hem",
+          "intent": "Vat duoc goi ten (o anh 4): quan ao lam bun",
+          "tomTat": "Chiếc váy trắng lấm bùn ở gấu",
+          "anhSeRa": "Một chiếc váy cotton trắng của bé gái treo trên móc, gấu váy ướt và lấm vệt bùn nâu. Không người, không chữ.",
+          "canSoi": "Không vẽ người mặc váy.",
+          "draw": "A girl's plain white cotton dress hanging from a single wooden peg, its hem wet and streaked with brown mud. No people, no lettering.",
+          "anhSeRaHash": "0989283b7bd5",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "White Cotton Dress With Muddy Hem",
+            "promptHash": "0989283b7bd5",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-07",
+          "at": "When the grown-ups asked what they could possibly be doing down there to get so wet, the girls had an answer ready.",
+          "cue": "When the grown-ups asked",
+          "kind": "figure",
+          "outName": "Mother Ref Pinned Bun Brown Coat",
+          "intent": "Asset ba Polly Wright (me Elsie) — xuat hien 5 shot. KHONG co chan dung that",
+          "tomTat": "Chân dung người mẹ, tóc búi, áo khoác nâu (asset, hư cấu)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một phụ nữ đầu bốn mươi: tóc nâu sẫm búi gọn sau gáy, vài lọn gợn ở thái dương; áo blouse cổ cao màu kem dưới áo khoác len dài nâu sẫm cài cúc. Chỉ một người.",
+          "canSoi": "Nhân vật HƯ CẤU CÓ CƠ SỞ (trang phục thời kỳ) — không ghi trong video là chân dung bà Polly.",
+          "draw": "A woman in her early forties seen from the chest up. Dark brown hair pinned up in a neat bun at the back of her head, with a few soft waves at the temples. She wears a high-necked cream blouse under a long dark brown wool coat buttoned at the front.",
+          "produces": "char-mother",
+          "note": "SHOT TAO ASSET. Khong tim duoc anh Polly Wright (stillMissing). Ta theo trang phuc phu nu Anh 1917-1920.",
+          "anhSeRaHash": "e29d83e0177d",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Mother Ref Pinned Bun Brown Coat",
+            "promptHash": "e29d83e0177d",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-07b",
+          "at": "When the grown-ups asked what they could possibly be doing down there to get so wet, the girls had an answer ready.",
+          "cue": "what they could possibly be doing down there",
+          "kind": "group",
+          "outName": "Mother Asking Two Wet Girls",
+          "intent": "Hanh vi noi: nguoi lon HOI (nguoi noi = me, nguoi nghe = hai con) — luat 8",
+          "tomTat": "Mẹ cúi hỏi, hai cô gái đứng nghe",
+          "anhSeRa": "Vẽ lại mẹ (C1-07) và hai cô gái (C1-02, C1-03), giữ nguyên mặt, nguyên người: người mẹ hơi cúi về phía hai cô, một tay chỉ xuống đôi giày ướt của hai cô, miệng mở như đang hỏi; hai cô đứng cạnh nhau nhìn bà, giày ướt. Nét mặt trung tính. Không chữ.",
+          "canSoi": "Ba mặt có giữ đúng asset không. Không được thêm vẻ giận dữ (nguồn không nói).",
+          "mention": "draw the same woman as in {{Mother Ref Pinned Bun Brown Coat}}, keep her face exactly the same, now seen full length from head to shoes in the same brown coat over a long dark skirt with black boots, leaning slightly toward two girls and pointing down at their wet shoes as she asks them a question, and the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, standing side by side facing her in the same white dresses with wet boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background",
+          "useAsset": [
+            "char-mother",
+            "char-elsie17",
+            "char-frances17"
+          ],
+          "note": "Net mat trung tinh (skill 4d-bis 'Net mat'): loi ke khong noi me gian.",
+          "anhSeRaHash": "56f19e917720",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Mother Asking Two Wet Girls",
+            "promptHash": "56f19e917720",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-08",
+          "at": "They were going to see the fairies.",
+          "cue": "They were going to see the fairies",
+          "kind": "group",
+          "outName": "Two Girls Answering Their Mother",
+          "intent": "Hanh vi noi: hai co gai TRA LOI (nguoi noi = hai con, nguoi nghe = me)",
+          "tomTat": "Hai cô gái trả lời, mẹ nghe",
+          "anhSeRa": "Cùng ba người như C1-07b, giữ nguyên mặt: giờ hai cô gái đang nói, cô lớn chỉ tay về phía sau lưng (hướng con suối), mẹ đứng nghe. Không tiên, không chữ.",
+          "canSoi": "Không được vẽ tiên (lời hai cô chưa phải sự thật).",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, seen full length from head to shoes in the same white dresses and boots, talking with their mouths open while the older girl points back over her shoulder, the younger girl plainly shorter with her head only reaching the older girl's shoulder, and the same woman as in {{Mother Ref Pinned Bun Brown Coat}}, keep her face exactly the same, standing facing them in the same brown coat, long dark skirt and black boots, listening, no fairies, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17",
+            "char-mother"
+          ],
+          "note": "Luat 8. Gioi han muc chac chan: KHONG ve tien — chi la loi cua hai co.",
+          "anhSeRaHash": "2ac3a5d40ff9",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Answering Their Mother",
+            "promptHash": "2ac3a5d40ff9",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-10",
+          "at": "So one day in July 1917, Elsie borrowed her father's camera.",
+          "cue": "borrowed her father's camera",
+          "kind": "object",
+          "outName": "Box Camera Ref Black Leather",
+          "intent": "Asset may anh Midg (quarter-plate, W. Butcher & Sons) — dung lai 4 shot",
+          "tomTat": "Máy ảnh hộp bọc da đen thập niên 1910 (asset)",
+          "anhSeRa": "Một máy ảnh hộp thập niên 1910 hình hộp chữ nhật đứng, bọc da đen sần, quai da ngắn trên nóc, hai ô ngắm tròn nhỏ cạnh nhau ở phía trên mặt trước, một ống kính tròn viền kim loại mảnh ở giữa, cần chụp nhỏ bên dưới. Không chữ, không nhãn, không người.",
+          "canSoi": "Phải là máy HỘP (không ống xếp). Không vẽ lại tờ nhãn giấy dán bên hông như trong ảnh bảo tàng.",
+          "draw": "An old box camera from the 1910s shaped like an upright rectangular box, covered in black pebbled leather, with a short leather carrying strap on top, two small round viewfinder windows side by side near the top of the front, and one round lens with a thin metal ring in the middle of the front, a small shutter lever below it. No lettering, no labels, no people.",
+          "produces": "prop-boxcamera",
+          "refs": [
+            "09-cameras-02.png",
+            "09-cameras-03.jpg"
+          ],
+          "note": "Soi anh THAT chiec Midg cua ong Arthur Wright (Science Museum Group, qua blog NSMM va Museum Crush): hop dung da den san, quai da tren noc, hai o ngam tron phia tren, ong kinh tron giua, can chup ben duoi. Nhan giay dan ben hong la cua bao tang ve sau — khong ve.",
+          "anhSeRaHash": "46939c91bc83",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Box Camera Ref Black Leather",
+            "promptHash": "46939c91bc83",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-10b",
+          "at": "So one day in July 1917, Elsie borrowed her father's camera.",
+          "cue": "Elsie borrowed",
+          "kind": "character",
+          "outName": "Older Girl Holding Box Camera",
+          "intent": "Elsie cam may anh cua cha",
+          "tomTat": "Elsie ôm máy ảnh hộp",
+          "anhSeRa": "Vẽ lại Elsie từ asset C1-02 (giữ nguyên mặt), nửa người, hai tay ôm chiếc máy ảnh hộp C1-10 trước ngực. Nét mặt trung tính. Chỉ một người.",
+          "canSoi": "Máy có giữ đúng hình asset không.",
+          "mention": "draw the same girl as in {{Older Girl Ref Bell Hat White Dress}}, keep her face exactly the same, seen from the chest up holding the same camera as in {{Box Camera Ref Black Leather}} in both hands in front of her chest, in the same bell hat and white dress, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "prop-boxcamera"
+          ],
+          "anhSeRaHash": "60b60ad5e972",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl Holding Box Camera",
+            "promptHash": "60b60ad5e972",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-11",
+          "at": "Arthur Wright was a keen amateur photographer, with his own darkroom right there in the house.",
+          "cue": "Arthur Wright was a keen amateur photographer",
+          "kind": "figure",
+          "outName": "Father Ref Moustache Waistcoat",
+          "intent": "Asset ong Arthur Wright — 5 shot. KHONG co chan dung that",
+          "tomTat": "Chân dung người cha, ria mép, gi-lê (asset, hư cấu)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông ngoài bốn mươi: tóc sẫm ngắn rẽ ngôi lệch, ria mép sẫm rậm, không râu cằm; áo sơ mi trắng không cổ xắn tay dưới gi-lê sẫm cài cúc. Chỉ một người.",
+          "canSoi": "HƯ CẤU CÓ CƠ SỞ — không ghi trong video là chân dung ông Arthur.",
+          "draw": "A man in his forties seen from the chest up. Short dark hair parted on one side, a full dark moustache and no beard. He wears a white collarless shirt with the sleeves rolled up, under a dark buttoned waistcoat.",
+          "produces": "char-father",
+          "note": "SHOT TAO ASSET. Khong tim duoc anh Arthur Wright (stillMissing). Trang phuc dan ong Anh 1917. Toc/rau khac Doyle, Gardner, Snelling (skill 5a).",
+          "anhSeRaHash": "cf811c79796c",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Father Ref Moustache Waistcoat",
+            "promptHash": "cf811c79796c",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-11b",
+          "at": "Arthur Wright was a keen amateur photographer, with his own darkroom right there in the house.",
+          "cue": "his own darkroom right there in the house",
+          "kind": "place",
+          "outName": "Darkroom Ref Red Lamp Two Trays",
+          "intent": "Asset buong toi — noi lat lo lan dau, cap dau cuoi voi cau 'guessed right on that very first night'",
+          "tomTat": "Buồng tối: đèn đỏ, hai khay tráng ảnh (asset)",
+          "anhSeRa": "Một buồng tối gia đình thập niên 1910: bàn gỗ trơn dọc tường, hai khay tráng ảnh chữ nhật nông, một bình nước và vài chai thuỷ tinh; trên kệ phía trên là một chiếc đèn lồng nhỏ mặt kính đỏ sẫm đang sáng. Không người, không chữ.",
+          "canSoi": "Đèn đỏ phải là đèn lồng nhỏ kiểu cũ, không ra bóng đèn hiện đại. Chai lọ KHÔNG có nhãn chữ.",
+          "draw": "A small home darkroom of the 1910s: a plain wooden bench along a wall with two shallow rectangular developing trays on it, one jug and a few glass bottles with no labels, and above them on a shelf one small lantern with a deep red glass front glowing. No people, no lettering, no sun.",
+          "produces": "place-darkroom",
+          "refs": [
+            "10-glass-plate-01.jpg"
+          ],
+          "anhSeRaHash": "1add19ad6fe2",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Darkroom Ref Red Lamp Two Trays",
+            "promptHash": "1add19ad6fe2",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-12",
+          "at": "The girls took the camera down to the stream, and about half an hour later they came back looking triumphant.",
+          "cue": "took the camera down to the stream",
+          "kind": "group",
+          "outName": "Two Girls Carrying Camera Toward Stream",
+          "intent": "Hanh dong noi: mang may xuong suoi (luat 7, loi ke xac nhan)",
+          "tomTat": "Hai cô gái mang máy ảnh đi xuống suối",
+          "anhSeRa": "Hai cô gái (asset C1-02, C1-03) nguyên người đang đi, nhìn nghiêng về phía bên phải; Elsie ôm máy ảnh hộp C1-10, Frances đi cạnh nhỏ hơn. Không suối trong khung, không tiên, không chữ.",
+          "canSoi": "Không vẽ giấy, kéo hay hình tiên trong tay (chưa tới lúc lộ).",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, seen full length from head to shoes walking side by side toward the right, the older girl carrying the same camera as in {{Box Camera Ref Black Leather}} in both hands, both in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, nothing else in their hands, no fairies, no paper, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17",
+            "prop-boxcamera"
+          ],
+          "note": "Cam tuong minh giay/tien — hinh giay chi xuat hien sau loi thu nhan (C1-78).",
+          "anhSeRaHash": "e2013d91f8b6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Carrying Camera Toward Stream",
+            "promptHash": "e2013d91f8b6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-12b",
+          "at": "The girls took the camera down to the stream, and about half an hour later they came back looking triumphant.",
+          "cue": "came back looking triumphant",
+          "kind": "group",
+          "outName": "Girls Handing Camera Back To Father",
+          "intent": "Tra may cho cha, 'looking triumphant' — CO NGUON cho nu cuoi",
+          "tomTat": "Hai cô gái cười, trả máy cho cha",
+          "anhSeRa": "Hai cô gái (C1-02, C1-03) mỉm cười rạng rỡ, Elsie đưa máy ảnh hộp cho người cha (C1-11) đứng đối diện, nguyên người, gi-lê, quần sẫm, bốt đen; cha đưa tay nhận, mặt trung tính. Không chữ.",
+          "canSoi": "Nụ cười chỉ ở hai cô (lời kể 'triumphant'), cha trung tính. Bốn thứ đúng asset.",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, seen full length from head to shoes with big proud smiles, the older girl holding out the same camera as in {{Box Camera Ref Black Leather}} toward the same man as in {{Father Ref Moustache Waistcoat}}, keep his face exactly the same, who stands facing them full length in the same waistcoat and rolled shirt sleeves with dark trousers and black boots, reaching out to take it, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17",
+            "prop-boxcamera",
+            "char-father"
+          ],
+          "anhSeRaHash": "134cbcce7024",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Girls Handing Camera Back To Father",
+            "promptHash": "134cbcce7024",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-13",
+          "at": "That evening, Arthur developed the glass plate himself.",
+          "cue": "Arthur developed the glass plate himself",
+          "kind": "figure",
+          "outName": "Father Rocking Tray In Red Lit Darkroom",
+          "intent": "Cha trang tam kinh trong buong toi — dung lai cho 'didn't believe' va 'guessed right' (cap dau cuoi)",
+          "tomTat": "Cha lắc khay tráng ảnh dưới đèn đỏ",
+          "anhSeRa": "Vẽ lại người cha (C1-11, giữ nguyên mặt) nửa người, đứng trước bàn trong buồng tối C1-11b, hai tay nghiêng một khay tráng ảnh, mắt nhìn xuống khay; đèn đỏ trên kệ. Nét mặt trung tính. Chỉ một người.",
+          "canSoi": "Buồng tối có giữ bố cục asset không. Không vẽ hình tiên nổi lên khỏi khay.",
+          "mention": "draw the same man as in {{Father Ref Moustache Waistcoat}}, keep his face exactly the same, seen from the chest up standing at the bench of the same darkroom as in {{Darkroom Ref Red Lamp Two Trays}}, gently tilting one developing tray with both hands and looking down into it, the red lantern glowing on the shelf, no lettering, plain white background",
+          "useAsset": [
+            "char-father",
+            "place-darkroom"
+          ],
+          "anhSeRaHash": "3e79ab3569e6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Father Rocking Tray In Red Lit Darkroom",
+            "promptHash": "3e79ab3569e6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-14",
+          "at": "As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera.",
+          "cue": "As the image slowly appeared",
+          "kind": "object",
+          "outName": "Glass Plate With Faint Image In Tray",
+          "intent": "Tam kinh trong khay, hinh mo hien dan — dung lai cho 'plates never tampered with'",
+          "tomTat": "Tấm kính trong khay, hình cô gái và tiên mờ mờ hiện dần",
+          "anhSeRa": "Một khay tráng ảnh nông nhìn từ trên xuống, trong khay ngập nước là một tấm kính ảnh vuông nhỏ, trên đó hiện mờ mờ hình một bé gái tì cằm lên tay và bốn hình nhỏ có cánh trước mặt cô. Ánh đỏ nhạt. Không chữ.",
+          "canSoi": "Hình trên kính phải MỜ, chưa rõ nét. Không ra màn hình hiện đại.",
+          "draw": "A shallow rectangular developing tray seen from above, filled with liquid, holding one small square glass photographic plate on which a faint pale image is slowly appearing: a young girl resting her chin on her hand and four tiny winged figures in front of her face. A soft red glow over everything. No lettering, no people outside the image.",
+          "refs": [
+            "10-glass-plate-01.jpg",
+            "01-fairy-photos-01.jpg"
+          ],
+          "anhSeRaHash": "bf7eb678995b",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Glass Plate With Faint Image In Tray",
+            "promptHash": "bf7eb678995b",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-14b",
+          "at": "As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera.",
+          "cue": "her chin resting on her hand",
+          "kind": "character",
+          "outName": "Girl With Chin On Hand And Four Tiny Fairies",
+          "intent": "HINH ANH NEO cua case: ve lai tam anh tien dau tien. Ung vien thumbnail (qua cong 4). Cap dau cuoi voi C1-78c (hinh giay cam kim)",
+          "tomTat": "Frances tì cằm, bốn nàng tiên nhỏ múa trước mặt (ảnh neo)",
+          "anhSeRa": "Vẽ lại Frances (C1-03, giữ nguyên mặt) nửa người ngồi sau một bụi lá thấp, tì cằm lên bàn tay, nhìn thẳng ra người xem; ngay trước mặt cô là bốn nàng tiên tí hon có cánh mặc váy dài nhạt màu bay phấp phới, cao chừng bàn tay cô, một nàng thổi ống sáo mảnh. Thác nước nhỏ mờ phía sau bên trái. Không chữ.",
+          "canSoi": "Model có XOÁ tiên vì câu 'Only one person in the image' không — prompt đã nói tiên không phải người. Đúng BỐN tiên. Frances nhìn thẳng ra ngoài, không nhìn tiên (đúng ảnh gốc).",
+          "mention": "draw the same girl as in {{Young Girl Ref Flower Band Long Hair}}, keep her face exactly the same, seen from the chest up sitting behind a low leafy bush with her chin resting on her hand and looking straight at the viewer, while right in front of her face exactly four tiny winged fairies in long pale flowing dresses dance in a row, each fairy only as tall as her hand, one of them playing a thin pipe, and a small waterfall faint behind her on the left, she is the only person in the picture and the four fairies are small fairy figures that must all be drawn, no lettering, plain white background",
+          "useAsset": [
+            "char-frances17"
+          ],
+          "refs": [
+            "01-fairy-photos-01.jpg"
+          ],
+          "note": "Ve lai theo anh that 1917 (Alice and the Fairies). Tien ve NHU TRONG ANH (trong nhu tien) — dung la dieu ong Arthur thay dem do; loi giai den o C1-78. Anh that co the chen canh ban ve luc dung.",
+          "anhSeRaHash": "ef4eaa831f8f",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Girl With Chin On Hand And Four Tiny Fairies",
+            "promptHash": "ef4eaa831f8f",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-17",
+          "at": "He knew his daughter was a gifted artist, and Elsie had spent some time working in a photographer's studio.",
+          "cue": "his daughter was a gifted artist",
+          "kind": "character",
+          "outName": "Older Girl Painting With Paint Box",
+          "intent": "CHI TIET DAT TRUOC: Elsie ve gioi — ke bang hanh dong, KHONG cho thay ve tien (se lo loi giai)",
+          "tomTat": "Elsie ngồi vẽ màu nước",
+          "anhSeRa": "Vẽ lại Elsie (C1-02, giữ nguyên mặt) nửa người, không đội mũ, ngồi bên bàn, tay cầm cọ, trước mặt là hộp màu nước và tờ giấy quay mặt vẽ ra xa người xem (không thấy hình vẽ). Chỉ một người.",
+          "canSoi": "Tờ giấy phải QUAY LƯNG lại người xem — không được lộ hình tiên. Bỏ mũ có làm mất nhận diện không (tóc dài sẫm giữ nguyên).",
+          "mention": "draw the same girl as in {{Older Girl Ref Bell Hat White Dress}}, keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table painting with a small brush, a tin box of watercolour paints in front of her and a sheet of paper propped up facing away from the viewer so that nothing painted on it can be seen, in the same white dress, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17"
+          ],
+          "note": "Skill story-structure muc 3: luc dat chi tiet, ke hanh dong, khong bao hieu. Bao tang NSMM giu tranh mau nuoc ve tien cua Elsie — KHONG dua vao day.",
+          "anhSeRaHash": "e64e75025b41",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl Painting With Paint Box",
+            "promptHash": "e64e75025b41",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-17b",
+          "at": "He knew his daughter was a gifted artist, and Elsie had spent some time working in a photographer's studio.",
+          "cue": "working in a photographer's studio",
+          "kind": "character",
+          "outName": "Older Girl Beside Big Studio Camera",
+          "intent": "Chi tiet dat truoc thu hai: Elsie tung lam o tiem anh",
+          "tomTat": "Elsie đứng cạnh máy ảnh studio lớn trên chân gỗ",
+          "anhSeRa": "Vẽ lại Elsie (C1-02, giữ nguyên mặt) nguyên người đứng cạnh một máy ảnh studio lớn bằng gỗ trên chân ba chân, phía sau là một tấm phông vẽ cảnh vườn và một chiếc ghế gỗ. Chỉ một người. Không chữ.",
+          "canSoi": "Máy studio kiểu 1910s (hộp gỗ, ống xếp, chân ba chân), không ra máy hiện đại.",
+          "mention": "draw the same girl as in {{Older Girl Ref Bell Hat White Dress}}, keep her face exactly the same, seen full length from head to shoes in the same bell hat and white dress with black stockings and black lace-up ankle boots, standing beside a large wooden studio camera of the 1910s with a black bellows on a tall wooden tripod, with a painted garden backdrop and one plain wooden chair behind her, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17"
+          ],
+          "note": "Nguon ghi 'spent some time working in a photographer's studio' — khong ghi cong viec cu the nen khong ve ve lai/ sua anh.",
+          "anhSeRaHash": "bc37f82fd391",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl Beside Big Studio Camera",
+            "promptHash": "bc37f82fd391",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-18",
+          "at": "He said the figures were nothing but cardboard cutouts and called the whole thing a prank.",
+          "cue": "nothing but cardboard cutouts",
+          "kind": "figure",
+          "outName": "Father Holding Print And Speaking",
+          "intent": "Hanh vi noi cua cha: 'bia giay', 'tro dua' — ve nguoi noi",
+          "tomTat": "Cha cầm tấm ảnh, đang nói",
+          "anhSeRa": "Vẽ lại người cha (C1-11, giữ nguyên mặt) nửa người, một tay giơ một tấm ảnh nhỏ quay mặt sau về phía người xem, miệng mở đang nói. Nét mặt trung tính. Chỉ một người.",
+          "canSoi": "Tấm ảnh quay mặt sau — không cần vẽ lại hình tiên. Không thêm vẻ giận.",
+          "mention": "draw the same man as in {{Father Ref Moustache Waistcoat}}, keep his face exactly the same, seen from the chest up holding up one small photographic print with its plain back turned toward the viewer, talking with his mouth open, in the same waistcoat and rolled shirt sleeves, no lettering, plain white background",
+          "useAsset": [
+            "char-father"
+          ],
+          "note": "Luat 8: nguoi nghe khong ro (nguon khong ghi noi voi ai) — chi ve nguoi noi.",
+          "anhSeRaHash": "838100106230",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Father Holding Print And Speaking",
+            "promptHash": "838100106230",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-20",
+          "at": "This one showed Elsie sitting on the lawn, holding out her hand toward a gnome about one foot tall.",
+          "cue": "holding out her hand toward a gnome",
+          "kind": "character",
+          "outName": "Older Girl On Lawn Reaching To Small Gnome",
+          "intent": "Ve lai tam anh thu hai (1917): Elsie va chu lun",
+          "tomTat": "Elsie ngồi trên cỏ, đưa tay về phía chú lùn có cánh",
+          "anhSeRa": "Vẽ lại Elsie (C1-02, giữ nguyên mặt) nguyên người ngồi nghiêng trên bãi cỏ, váy trắng xoè, đưa một tay về phía một chú lùn tí hon cao chừng đầu gối cô: mũ nhọn, cánh như cánh bướm, chân khẳng khiu. Không chữ.",
+          "canSoi": "Chú lùn phải NHỎ (khoảng 30 cm so với cô ngồi). Model có xoá chú lùn vì câu 'Only one person' không.",
+          "mention": "draw the same girl as in {{Older Girl Ref Bell Hat White Dress}}, keep her face exactly the same, seen full length sitting sideways on a grass lawn in the same bell hat and white dress, holding out one hand toward a tiny gnome standing on the grass beside her, the gnome no taller than her knee, with a pointed cap, two butterfly-like wings and thin legs, she is the only person in the picture and the gnome is a small fairy creature that must be drawn, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17"
+          ],
+          "refs": [
+            "01-fairy-photos-02.jpg"
+          ],
+          "note": "Theo anh that 'Iris and the Gnome' (1917): Elsie ngoi nghieng, vay trang rong, tay dua ve chu lun canh buom, mu nhon.",
+          "anhSeRaHash": "00eb11010f1f",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl On Lawn Reaching To Small Gnome",
+            "promptHash": "00eb11010f1f",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-21",
+          "at": "After that, Arthur refused to lend them the camera at all.",
+          "cue": "refused to lend them the camera",
+          "kind": "group",
+          "outName": "Father Keeping Camera From Two Girls",
+          "intent": "Cha tu choi (hanh vi noi) — nguoi noi la cha, nguoi nghe la hai con",
+          "tomTat": "Cha giữ máy ảnh, lắc đầu với hai cô gái",
+          "anhSeRa": "Người cha (C1-11) nguyên người giữ chiếc máy ảnh hộp (C1-10) sát người, lắc đầu, miệng mở như đang nói; hai cô gái (C1-02, C1-03) đứng đối diện. Mặt trung tính. Không chữ.",
+          "canSoi": "Bốn asset đúng hình. Không thêm vẻ giận/buồn.",
+          "mention": "draw the same man as in {{Father Ref Moustache Waistcoat}}, keep his face exactly the same, seen full length in the same waistcoat, rolled shirt sleeves, dark trousers and black boots, holding the same camera as in {{Box Camera Ref Black Leather}} close against his chest and shaking his head as he speaks, and the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, standing facing him full length in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background",
+          "useAsset": [
+            "char-father",
+            "prop-boxcamera",
+            "char-elsie17",
+            "char-frances17"
+          ],
+          "anhSeRaHash": "1998c093d524",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Father Keeping Camera From Two Girls",
+            "promptHash": "1998c093d524",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-22",
+          "at": "His wife Polly, though, believed the photographs were real.",
+          "cue": "believed the photographs were real",
+          "kind": "figure",
+          "outName": "Mother Looking At Two Small Prints",
+          "intent": "Ba Polly tin anh la that — ve hanh dong nhin anh, khong ve cam xuc",
+          "tomTat": "Mẹ cầm hai tấm ảnh nhỏ nhìn",
+          "anhSeRa": "Vẽ lại người mẹ (C1-07, giữ nguyên mặt) nửa người, hai tay cầm hai tấm ảnh nhỏ nâu đỏ, mắt nhìn xuống ảnh. Nét mặt trung tính. Chỉ một người.",
+          "canSoi": "Hai tấm ảnh nhỏ, hình trên ảnh có thể mờ; không cần rõ.",
+          "mention": "draw the same woman as in {{Mother Ref Pinned Bun Brown Coat}}, keep her face exactly the same, seen from the chest up holding two small sepia photographic prints in her hands and looking down at them, in the same blouse and brown coat, no lettering, plain white background",
+          "useAsset": [
+            "char-mother"
+          ],
+          "anhSeRaHash": "d803d4097dfb",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Mother Looking At Two Small Prints",
+            "promptHash": "d803d4097dfb",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-23",
+          "at": "Near the end of 1918, Frances wrote to an old friend back in Cape Town.",
+          "cue": "Frances wrote to an old friend",
+          "kind": "character",
+          "outName": "Young Girl Writing A Letter At Table",
+          "intent": "Frances viet thu (hanh vi viet) — noi dung thu la chu hau ky",
+          "tomTat": "Frances ngồi viết thư",
+          "anhSeRa": "Vẽ lại Frances (C1-03, giữ nguyên mặt) nửa người ngồi bên bàn, cầm bút viết lên một tờ giấy thư; trên tờ giấy chỉ có vài dòng kẻ xám mảnh, không chữ. Chỉ một người.",
+          "canSoi": "KHÔNG có chữ trên thư. Frances năm 1918 khoảng 11 tuổi — asset 9 tuổi chấp nhận được.",
+          "mention": "draw the same girl as in {{Young Girl Ref Flower Band Long Hair}}, keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the sheet of paper showing only a few thin grey lines standing for writing and no letters, in the same white dress, no lettering, plain white background",
+          "useAsset": [
+            "char-frances17"
+          ],
+          "note": "Skill 6i: thu tu de trong. Loi trong thu ('too hot for them there') la chu hau ky.",
+          "anhSeRaHash": "9f3f2a1ddf94",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Young Girl Writing A Letter At Table",
+            "promptHash": "9f3f2a1ddf94",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-26",
+          "at": "In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people deeply interested in the spirit world.",
+          "cue": "a lecture given by the Theosophical Society",
+          "kind": "figure",
+          "outName": "Lecturer Ref Bald White Fringe",
+          "intent": "Asset dien gia buoi giang 1919 (khong ten) — 2 shot",
+          "tomTat": "Chân dung diễn giả râu xám, áo đuôi tôm (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông khoảng sáu mươi: đầu hói bóng, chỉ còn một vòng tóc bạc trắng quanh hai bên và sau gáy, mặt cạo nhẵn; áo khoác dài đen kiểu frock coat, cổ cồn trắng gập, cà vạt đen. Chỉ một người.",
+          "canSoi": "Người minh hoạ, không phải chân dung ai cụ thể. Đầu hói + mặt nhẵn để khác hẳn cha (ria), Gardner (râu tỉa), Snelling (kính tròn), Doyle (ria lớn).",
+          "draw": "A man of about sixty seen from the chest up. A shiny bald head with only a fringe of white hair around the sides and back, clean-shaven. He wears a long black frock coat, a white wing collar and a black tie.",
+          "produces": "char-lecturer",
+          "note": "Dien gia buoi giang o Bradford khong duoc nguon neu ten -> figure minh hoa.",
+          "anhSeRaHash": "6cb7c37abad6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Lecturer Ref Bald White Fringe",
+            "promptHash": "6cb7c37abad6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-26b",
+          "at": "In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people deeply interested in the spirit world.",
+          "cue": "deeply interested in the spirit world",
+          "kind": "group",
+          "outName": "Lecturer At Lectern Before Small Audience",
+          "intent": "Buoi giang cua hoi (o anh 5 noi chon + o anh 1 nguoi)",
+          "tomTat": "Diễn giả đứng bục giảng, vài người ngồi nghe",
+          "anhSeRa": "Diễn giả (C1-26, giữ nguyên mặt) nguyên người đứng sau một bục giảng gỗ, một tay giơ lên đang nói; phía trước là đúng năm người nghe ngồi trên ghế gỗ nhìn về phía ông (nam mặc vest, nữ đội mũ, trang phục 1919). Không chữ.",
+          "canSoi": "Năm người nghe có ra na ná nhau không. Không vẽ biểu ngữ, chữ trên bục.",
+          "mention": "draw the same man as in {{Lecturer Ref Bald White Fringe}}, keep his face exactly the same, seen full length in the same frock coat with dark trousers and black shoes, standing behind a plain wooden lectern with one hand raised as he speaks, and in front of him exactly five listeners of 1919 seated on plain wooden chairs facing him, three women in long coats and wide hats and two men in dark suits, in the same drawing style as {{03-five-men-group.png}}, no banners, no lettering, plain white background",
+          "useAsset": [
+            "char-lecturer"
+          ],
+          "note": "Nguoi moi la nhom -> goi anh neo 03 (skill 4d-9d, chua do).",
+          "anhSeRaHash": "a63c248ca20a",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Lecturer At Lectern Before Small Audience",
+            "promptHash": "a63c248ca20a",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-28",
+          "at": "When the talk was over, Polly showed the speaker the 2 photographs.",
+          "cue": "Polly showed the speaker the 2 photographs",
+          "kind": "group",
+          "outName": "Mother Showing Prints To Lecturer",
+          "intent": "Ba Polly dua anh cho dien gia",
+          "tomTat": "Mẹ đưa hai tấm ảnh cho diễn giả xem",
+          "anhSeRa": "Người mẹ (C1-07) nguyên người, áo khoác nâu, đội thêm mũ vành, đưa hai tấm ảnh nhỏ cho diễn giả (C1-26) đứng đối diện đang cúi nhìn. Mặt trung tính. Không chữ.",
+          "canSoi": "Hai mặt đúng asset. Thêm mũ có làm đổi mặt bà không.",
+          "mention": "draw the same woman as in {{Mother Ref Pinned Bun Brown Coat}}, keep her face exactly the same, seen full length in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, holding out two small sepia photographic prints toward the same man as in {{Lecturer Ref Bald White Fringe}}, keep his face exactly the same, who stands facing her full length in the same frock coat and bends slightly to look at them, no lettering, plain white background",
+          "useAsset": [
+            "char-mother",
+            "char-lecturer"
+          ],
+          "anhSeRaHash": "a3a62cc06dd5",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Mother Showing Prints To Lecturer",
+            "promptHash": "a3a62cc06dd5",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-29",
+          "at": "They were passed around the society until they reached Edward Gardner, one of its leading members.",
+          "cue": "They were passed around the society",
+          "kind": "group",
+          "outName": "Hands Passing Small Prints Along A Row",
+          "intent": "Anh duoc chuyen tay trong hoi",
+          "tomTat": "Ba người ngồi chuyền tay tấm ảnh",
+          "anhSeRa": "Ba người trang phục 1919 (hai nam vest sẫm, một nữ áo khoác và mũ) ngồi thành một hàng trên ghế gỗ, người giữa đang chuyền một tấm ảnh nhỏ sang tay người bên phải. Mặt trung tính. Không chữ.",
+          "canSoi": "Ba người không trùng mặt asset nào của case.",
+          "draw": "Three people of 1919 sitting in a row on plain wooden chairs, two men in dark suits and one woman in a long coat and a wide hat, the one in the middle passing one small sepia photograph into the hand of the person on the right, the others watching, seen full length from head to shoes. No lettering, no sun.",
+          "anhSeRaHash": "d43954447ff2",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Hands Passing Small Prints Along A Row",
+            "promptHash": "d43954447ff2",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-29b",
+          "at": "They were passed around the society until they reached Edward Gardner, one of its leading members.",
+          "cue": "Edward Gardner, one of its leading members",
+          "kind": "character",
+          "outName": "Society Member Ref Dark Suit",
+          "intent": "Asset Edward Gardner — 6 shot",
+          "tomTat": "Chân dung Edward Gardner (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông khoảng năm mươi: mặt gầy, sống mũi thẳng; tóc ngắn hoa râm chải hất ngược lên khỏi trán; râu cằm và ria tỉa ngắn gọn, lốm đốm bạc; áo vest sẫm, sơ mi trắng, nơ bướm sẫm. Chỉ một người.",
+          "canSoi": "Duyệt kỹ — 5 shot sau vẽ lại Gardner từ ảnh này. Nơ bướm + râu tỉa ngắn là dấu nhận diện.",
+          "draw": "A lean man of about fifty seen from the chest up. A narrow face with a straight nose. Short greying hair brushed up and back from his forehead, and a short neatly trimmed beard and moustache streaked with grey. He wears a dark suit jacket, a white shirt and a dark bow tie.",
+          "produces": "char-gardner",
+          "refs": [
+            "04-gardner-01.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh chan dung that (04-gardner-01, anh nghieng): toc ngan hoa ram hat nguoc, rau cam tia ngan, no buom, ao vest.",
+          "anhSeRaHash": "4f7169efd957",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Society Member Ref Dark Suit",
+            "promptHash": "4f7169efd957",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-30",
+          "at": "Gardner became convinced that for the very first time in history, fairies had appeared clearly enough to be captured on a photographic plate.",
+          "cue": "captured on a photographic plate",
+          "kind": "character",
+          "outName": "Society Member Holding Glass Plate To Light",
+          "intent": "Gardner cam tam kinh anh len soi — ve hanh dong, khong ve 'niem tin'",
+          "tomTat": "Gardner giơ tấm kính ảnh lên soi",
+          "anhSeRa": "Vẽ lại Gardner (C1-29b, giữ nguyên mặt) nửa người, giơ một tấm kính ảnh vuông nhỏ lên ngang mắt, nhìn qua nó. Nét mặt trung tính. Chỉ một người.",
+          "canSoi": "Không vẽ tiên bay ra khỏi tấm kính.",
+          "mention": "draw the same man as in {{Society Member Ref Dark Suit}}, keep his face exactly the same, seen from the chest up holding one small square glass photographic plate up at eye level and looking at it, in the same suit, no fairies, no lettering, plain white background",
+          "useAsset": [
+            "char-gardner"
+          ],
+          "note": "Gioi han muc chac chan: 'became convinced' la niem tin cua Gardner — khong ve tien that.",
+          "anhSeRaHash": "cad8170b644d",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Society Member Holding Glass Plate To Light",
+            "promptHash": "cad8170b644d",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-31",
+          "at": "Gardner took the original plates to a photography expert named Harold Snelling.",
+          "cue": "a photography expert named Harold Snelling",
+          "kind": "figure",
+          "outName": "Photo Expert Ref Round Spectacles",
+          "intent": "Asset Harold Snelling — 4 shot. KHONG co chan dung that",
+          "tomTat": "Chân dung chuyên gia ảnh, kính tròn (asset, hư cấu)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông ngoài năm mươi: tóc xám chải phẳng rẽ ngôi giữa, mặt cạo nhẵn, kính gọng kim loại tròn; bộ vest ba mảnh sẫm, cổ cồn trắng cao, cà vạt sẫm. Chỉ một người.",
+          "canSoi": "HƯ CẤU CÓ CƠ SỞ — không ghi trong video là chân dung Snelling.",
+          "draw": "A man in his fifties seen from the chest up. Grey hair combed flat and parted in the middle, clean-shaven, small round wire-rimmed spectacles. He wears a dark three-piece suit, a high white collar and a dark tie.",
+          "produces": "char-snelling",
+          "note": "SHOT TAO ASSET. Khong tim duoc anh Harold Snelling (stillMissing).",
+          "anhSeRaHash": "b5067e1f0479",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Photo Expert Ref Round Spectacles",
+            "promptHash": "b5067e1f0479",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-31b",
+          "at": "Gardner took the original plates to a photography expert named Harold Snelling.",
+          "cue": "Gardner took the original plates",
+          "kind": "group",
+          "outName": "Society Member Handing Plates To Expert",
+          "intent": "Gardner giao tam kinh cho Snelling",
+          "tomTat": "Gardner trao hai tấm kính cho Snelling",
+          "anhSeRa": "Gardner (C1-29b) và Snelling (C1-31) nguyên người đứng đối diện; Gardner trao hai tấm kính ảnh vuông nhỏ, Snelling đưa tay nhận. Mặt trung tính. Không chữ.",
+          "canSoi": "Hai mặt đúng asset, không trộn đặc điểm (kính tròn chỉ ở Snelling).",
+          "mention": "draw the same man as in {{Society Member Ref Dark Suit}}, keep his face exactly the same, seen full length in the same suit with dark trousers and black shoes, handing two small square glass photographic plates to the same man as in {{Photo Expert Ref Round Spectacles}}, keep his face and round spectacles exactly the same, who stands facing him full length in the same three-piece suit and reaches out to take them, do not mix their features, no lettering, plain white background",
+          "useAsset": [
+            "char-gardner",
+            "char-snelling"
+          ],
+          "anhSeRaHash": "af34dc49fb6e",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Society Member Handing Plates To Expert",
+            "promptHash": "af34dc49fb6e",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-32",
+          "at": "After studying them closely, Snelling declared that both negatives were genuine, with no sign of studio trickery using paper or card.",
+          "cue": "After studying them closely",
+          "kind": "figure",
+          "outName": "Expert Studying Plate Through Loupe",
+          "intent": "Snelling soi tam kinh — dung lai cho 'Snelling hadn't been wrong' (cap dau cuoi)",
+          "tomTat": "Snelling soi tấm kính qua kính lúp",
+          "anhSeRa": "Vẽ lại Snelling (C1-31, giữ nguyên mặt) nửa người, cúi xem một tấm kính ảnh đặt trên hộp đèn sáng, một mắt áp vào kính lúp nhỏ. Chỉ một người. Không chữ.",
+          "canSoi": "Kính lúp nhỏ kiểu thợ ảnh, không ra kính hiển vi.",
+          "mention": "draw the same man as in {{Photo Expert Ref Round Spectacles}}, keep his face exactly the same, seen from the chest up bending over one small glass photographic plate laid on a glowing light box, looking at it through a small magnifying loupe held to one eye, in the same suit, no lettering, plain white background",
+          "useAsset": [
+            "char-snelling"
+          ],
+          "anhSeRaHash": "6a4fd17c2f83",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Expert Studying Plate Through Loupe",
+            "promptHash": "6a4fd17c2f83",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-33",
+          "at": "These were straightforward photographs, he said, of whatever had been in front of the camera at the time.",
+          "cue": "These were straightforward photographs",
+          "kind": "figure",
+          "outName": "Expert Holding Plate And Speaking",
+          "intent": "Hanh vi noi cua Snelling — CHI TIET DAT TRUOC ('whatever had been in front of the camera'), tra o C1-80",
+          "tomTat": "Snelling cầm tấm kính, đang nói",
+          "anhSeRa": "Vẽ lại Snelling (C1-31) nửa người, một tay cầm tấm kính ảnh, tay kia giơ lên, miệng mở đang nói. Mặt trung tính. Chỉ một người.",
+          "canSoi": "Không thêm vẻ quả quyết/đắc thắng (trung tính).",
+          "mention": "draw the same man as in {{Photo Expert Ref Round Spectacles}}, keep his face exactly the same, seen from the chest up holding one small glass photographic plate in one hand and raising the other hand as he talks with his mouth open, in the same suit, no lettering, plain white background",
+          "useAsset": [
+            "char-snelling"
+          ],
+          "anhSeRaHash": "1d14585c17ce",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Expert Holding Plate And Speaking",
+            "promptHash": "1d14585c17ce",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-34",
+          "at": "The Kodak company examined them too.",
+          "cue": "The Kodak company examined them too",
+          "kind": "figure",
+          "outName": "Technician In White Coat Examining Print",
+          "intent": "Nguoi cua hang anh xem xet anh (figure minh hoa). Logo Kodak that la hau ky",
+          "tomTat": "Kỹ thuật viên áo blouse trắng soi tấm ảnh",
+          "anhSeRa": "Một kỹ thuật viên nam khoảng ba mươi, tóc nâu ngắn, áo blouse trắng dài, cầm một tấm ảnh nhỏ dưới một chiếc đèn bàn kiểu 1920 để soi. Chỉ một người. Không chữ, không logo.",
+          "canSoi": "KHÔNG có logo hay chữ Kodak trong ảnh (logo thật là hậu kỳ).",
+          "draw": "A laboratory technician of the 1920s, a man of about thirty with short brown hair, clean-shaven, in a long white work coat, seen from the chest up holding one small photographic print under an old desk lamp and examining it closely. No logos, no lettering.",
+          "note": "Bang 4c: logo that -> hau ky. Nguoi cu the o Kodak khong duoc nguon neu ten.",
+          "anhSeRaHash": "bdb41e6db18f",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Technician In White Coat Examining Print",
+            "promptHash": "bdb41e6db18f",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-35",
+          "at": "Kodak couldn't find any sign of faking either, but it refused to certify that they were real pictures of fairies.",
+          "cue": "refused to certify",
+          "kind": "object",
+          "outName": "Blank Certificate Paper With Empty Seal",
+          "intent": "Vat tuong trung cho 'khong cap giay chung nhan' — dau X do la hau ky",
+          "tomTat": "Tờ giấy chứng nhận trống, dấu niêm trống",
+          "anhSeRa": "Một tờ giấy chứng nhận kiểu cũ có viền trang trí mảnh, mặt giấy trống trơn, góc dưới có một con dấu tròn màu đỏ trơn không hoa văn. Không chữ.",
+          "canSoi": "Model rất hay điền chữ vào giấy chứng nhận — phải trống hoàn toàn.",
+          "draw": "An old-fashioned certificate on cream paper with a thin decorative border, its surface completely BLANK with absolutely no writing, no letters and no signature, and one plain round red wax seal with no design in the lower corner. No lettering anywhere.",
+          "note": "Skill 6i + 4d-bis 4c (vat tuong trung). Dau X do de len o hau ky.",
+          "anhSeRaHash": "547ba1982ce9",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Blank Certificate Paper With Empty Seal",
+            "promptHash": "547ba1982ce9",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-36",
+          "at": "The next person to hear about the photographs was Sir Arthur Conan Doyle, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic.",
+          "cue": "Sir Arthur Conan Doyle",
+          "kind": "character",
+          "outName": "Author Ref Walrus Moustache",
+          "intent": "Asset Conan Doyle ~1920 — 7 shot",
+          "tomTat": "Chân dung Conan Doyle, ria mép lớn (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông vạm vỡ khoảng sáu mươi: mặt to bè, hàm nặng; tóc xám ngắn, thưa và hói ở thái dương, chải phẳng sang hai bên; bộ ria mép xám rất to rậm, hai đầu hơi cong lên, không râu cằm; áo vest sẫm, sơ mi trắng cổ cồn cao cứng, cà vạt sẫm. Chỉ một người.",
+          "canSoi": "Bộ ria là dấu nhận diện số 1. Không gọi tên trong prompt (SPEC-v2 mục 1).",
+          "draw": "A heavy-set man of about sixty seen from the chest up. A broad full face with a heavy jaw. Short grey hair, thinning and receding at the temples, combed flat to the sides. A very large thick grey walrus moustache whose ends curl slightly upward, and no beard. He wears a dark suit jacket over a white shirt with a high stiff white collar and a dark tie.",
+          "produces": "char-doyle",
+          "refs": [
+            "03-doyle-01.jpg",
+            "03-doyle-02.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh Bain ~1920 (03-doyle-01: ria walrus vuot hai dau, co con cao, vest sam) va anh 1920 tren tau (03-doyle-02: mu phot nhat, gi-le trang).",
+          "anhSeRaHash": "6e275f366bc5",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Author Ref Walrus Moustache",
+            "promptHash": "6e275f366bc5",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-36b",
+          "at": "The next person to hear about the photographs was Sir Arthur Conan Doyle, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic.",
+          "cue": "the creator of Sherlock Holmes",
+          "kind": "object",
+          "outName": "Deerstalker Cap Beside Curved Pipe",
+          "intent": "VAT TUONG TRUNG cho Sherlock Holmes (o anh 8) — dat tach khoi canh co Doyle",
+          "tomTat": "Mũ thợ săn hai lưỡi trai + tẩu cong (tượng trưng Sherlock)",
+          "anhSeRa": "Một chiếc mũ vải ca rô kiểu thợ săn nai có hai lưỡi trai trước sau và hai vạt tai buộc lên, và một chiếc tẩu gỗ cong, đặt cạnh nhau. Không người, không chữ.",
+          "canSoi": "Hai vật RỜI đặt cạnh nhau — SHOT-LIST luật 2 cấm định vị tương đối; ở đây chấp nhận vì là một cụm biểu tượng, không cần khoảng cách chính xác. Không vẽ người đội mũ.",
+          "draw": "A checked cloth deerstalker cap with one peak at the front and one at the back and its ear flaps tied up on top, with one curved wooden tobacco pipe lying beside it. No people, no lettering.",
+          "note": "Skill 4d-bis 4c: vat tuong trung KHONG sinh chung voi nguoi.",
+          "anhSeRaHash": "70b80346141d",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Deerstalker Cap Beside Curved Pipe",
+            "promptHash": "70b80346141d",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-38",
+          "at": "The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment.",
+          "cue": "The Strand Magazine had just asked him",
+          "kind": "object",
+          "outName": "Magazine Ref Plain Blue Cover",
+          "intent": "Asset tap chi 1920 — dung lai o C1-53. Bia that la hau ky",
+          "tomTat": "Cuốn tạp chí bìa xanh trơn (asset)",
+          "anhSeRa": "Một cuốn tạp chí dày thập niên 1920 nằm nghiêng, bìa giấy xanh nhạt trơn, phần trên bìa có một ô chữ nhật trắng trống. Không chữ, không người.",
+          "canSoi": "Không được hiện chữ STRAND hay bất kỳ chữ nào.",
+          "draw": "A thick magazine of the 1920s lying at a slight angle, with a plain pale blue paper cover and one completely blank white rectangle near the top where a title would be. No lettering at all, no people.",
+          "produces": "prop-magazine",
+          "refs": [
+            "05-strand-1920-01.jpg"
+          ],
+          "note": "Skill 6i. Bia that tap chi Strand (tranh duong pho London) la anh that — chen o hau ky neu can.",
+          "anhSeRaHash": "fe531abbf8d6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Magazine Ref Plain Blue Cover",
+            "promptHash": "fe531abbf8d6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-38b",
+          "at": "The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment.",
+          "cue": "reached him at exactly the right moment",
+          "kind": "character",
+          "outName": "Author Holding Two Small Photographs",
+          "intent": "Anh den tay Doyle",
+          "tomTat": "Doyle cầm hai tấm ảnh nhỏ xem",
+          "anhSeRa": "Vẽ lại Doyle (C1-36, giữ nguyên mặt) nửa người, hai tay cầm hai tấm ảnh nhỏ nâu đỏ, mắt nhìn xuống ảnh. Mặt trung tính. Chỉ một người.",
+          "canSoi": "Không thêm vẻ phấn khích.",
+          "mention": "draw the same man as in {{Author Ref Walrus Moustache}}, keep his face exactly the same, seen from the chest up holding two small sepia photographic prints in his hands and looking down at them, in the same dark suit and high white collar, no lettering, plain white background",
+          "useAsset": [
+            "char-doyle"
+          ],
+          "anhSeRaHash": "9c9e46846bed",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Author Holding Two Small Photographs",
+            "promptHash": "9c9e46846bed",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-39",
+          "at": "In the summer of 1920, Gardner traveled to Cottingley himself.",
+          "cue": "Gardner traveled to Cottingley himself",
+          "kind": "character",
+          "outName": "Society Member Walking With Leather Case",
+          "intent": "Gardner den Cottingley",
+          "tomTat": "Gardner xách va li da đi tới",
+          "anhSeRa": "Vẽ lại Gardner (C1-29b, giữ nguyên mặt) nguyên người đang đi về phía phải, tay xách một va li da nâu nhỏ, đội mũ phớt. Chỉ một người. Không chữ.",
+          "canSoi": "Thêm mũ có làm đổi mặt không.",
+          "mention": "draw the same man as in {{Society Member Ref Dark Suit}}, keep his face exactly the same, now seen full length walking toward the right in the same suit with dark trousers and black shoes and a dark felt hat, carrying one small brown leather case in one hand, no lettering, plain white background",
+          "useAsset": [
+            "char-gardner"
+          ],
+          "note": "Phuong tien di lai khong duoc nguon ghi — khong ve tau hoa/xe.",
+          "anhSeRaHash": "c4edc085dc77",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Society Member Walking With Leather Case",
+            "promptHash": "c4edc085dc77",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-40",
+          "at": "He brought 2 new cameras and 24 photographic plates that had been secretly marked, so that nobody could swap them.",
+          "cue": "He brought 2 new cameras",
+          "kind": "object",
+          "outName": "Folding Cameras Ref Two Bellows",
+          "intent": "Asset hai may anh gap Cameo (W. Butcher & Sons) — dung lai C1-44b",
+          "tomTat": "Hai máy ảnh gấp có ống xếp (asset)",
+          "anhSeRa": "Hai máy ảnh gấp giống hệt nhau khoảng năm 1920 đặt cạnh nhau, đang mở: thân bọc da đen sần có quai trên nóc, nắp trước bật xuống thành bệ kim loại, ống xếp đen kéo dài trên bệ, tấm đỡ ống kính đen phía trước có một ống kính tròn và một ô ngắm nhỏ. Không chữ, không người.",
+          "canSoi": "Phải là máy ẢNH GẤP có ống xếp — khác hẳn máy hộp C1-10.",
+          "draw": "Two identical folding plate cameras from about 1920 standing side by side, each opened out: a black pebbled-leather body with a leather strap on top, its front cover dropped down flat to form a metal bed, a black pleated bellows stretched out along the bed, and a small black lens board at the front holding one round lens and one tiny viewfinder. No lettering, no labels, no people.",
+          "produces": "prop-foldingcams",
+          "note": "Soi anh THAT chiec Cameo thu ba (National Science and Media Museum, qua Museum Crush): than da den, nap truoc bat xuong thanh be, ong xep den, bang ong kinh + o ngam nho. Cameo quarter-plate, W. Butcher & Sons.",
+          "refs": [
+            "09-cameras-04.jpg"
+          ],
+          "anhSeRaHash": "47747e4bc618",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Folding Cameras Ref Two Bellows",
+            "promptHash": "47747e4bc618",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-40b",
+          "at": "He brought 2 new cameras and 24 photographic plates that had been secretly marked, so that nobody could swap them.",
+          "cue": "24 photographic plates",
+          "kind": "object",
+          "outName": "Open Box Of Glass Photographic Plates",
+          "intent": "Vat duoc goi ten: 24 tam kinh danh dau bi mat. So 24 la chu hau ky",
+          "tomTat": "Hộp giấy mở, xếp tấm kính ảnh",
+          "anhSeRa": "Một hộp giấy cứng nông đã mở nắp, bên trong xếp đứng một chồng tấm kính ảnh vuông mỏng. Không đánh dấu nhìn thấy được (dấu là bí mật). Không chữ.",
+          "canSoi": "Hộp không có nhãn chữ.",
+          "draw": "One open shallow cardboard box with its lid set aside, packed with a neat upright stack of thin square glass photographic plates. No labels, no lettering, no people.",
+          "refs": [
+            "10-glass-plate-02.jpg"
+          ],
+          "note": "'secretly marked' — dau an bi mat nen KHONG ve dau.",
+          "anhSeRaHash": "e7c6dbb6a385",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Open Box Of Glass Photographic Plates",
+            "promptHash": "e7c6dbb6a385",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-41",
+          "at": "Frances had moved away by then, but she was invited back to stay for the school holidays.",
+          "cue": "invited back to stay for the school holidays",
+          "kind": "character",
+          "outName": "Teen Girl Ref White Hair Bow",
+          "intent": "Asset Frances 1920 (13 tuoi) — 4 shot",
+          "tomTat": "Chân dung Frances 13 tuổi, nơ trắng lớn (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một cô bé khoảng 13 tuổi: mặt tròn, tóc nâu nhạt xoăn lọn dài quá vai, một chiếc nơ vải trắng to buộc sau đầu; áo blouse cotton trắng rộng cổ bẻ mềm. Chỉ một người.",
+          "canSoi": "Phải nhận ra là Frances lớn hơn C1-03 (cùng mặt tròn, tóc nâu nhạt), nơ trắng là dấu mới.",
+          "draw": "A girl of about thirteen seen from the chest up. A round face. Long light brown hair falling in loose ringlets past her shoulders, with a large white ribbon bow tied at the back of her head. She wears a loose white cotton blouse with a wide soft collar.",
+          "produces": "char-frances20",
+          "refs": [
+            "01-fairy-photos-03.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh that 1920 (Frances and the Leaping Fairy).",
+          "anhSeRaHash": "d7e11b9b241e",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Teen Girl Ref White Hair Bow",
+            "promptHash": "d7e11b9b241e",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-42",
+          "at": "The girls explained that the fairies wouldn't come out if anyone was watching.",
+          "cue": "The girls explained",
+          "kind": "character",
+          "outName": "Young Woman Ref Dark Curls Side Fringe",
+          "intent": "Asset Elsie 1920 (19 tuoi) — 4 shot",
+          "tomTat": "Chân dung Elsie 19 tuổi, tóc xoăn sẫm (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một thiếu nữ khoảng 19 tuổi: mặt trái xoan, tóc nâu sẫm dày xoăn lọn xoã quá vai, mái xoăn vắt lệch một bên trán; áo blouse màu nhạt in hoa văn xoáy mờ. Chỉ một người.",
+          "canSoi": "Nhận ra được là Elsie C1-02 lớn hơn (tóc sẫm) nhưng không đội mũ.",
+          "draw": "A young woman of about nineteen seen from the chest up. An oval face. Long thick dark brown hair in loose curls falling past her shoulders, with a curled fringe swept to one side of her forehead. She wears a pale loose blouse printed with a faint swirling pattern.",
+          "produces": "char-elsie20",
+          "refs": [
+            "01-fairy-photos-04.jpg"
+          ],
+          "note": "SHOT TAO ASSET. Soi anh that 1920 (Fairy offering Posy of Harebells to Elsie).",
+          "anhSeRaHash": "9b96c93ec2e8",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Young Woman Ref Dark Curls Side Fringe",
+            "promptHash": "9b96c93ec2e8",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-42b",
+          "at": "The girls explained that the fairies wouldn't come out if anyone was watching.",
+          "cue": "wouldn't come out if anyone was watching",
+          "kind": "group",
+          "outName": "Two Girls Explaining To Visitor In Suit",
+          "intent": "Hanh vi noi: hai co gai giai thich, Gardner nghe",
+          "tomTat": "Elsie và Frances (1920) nói, Gardner nghe",
+          "anhSeRa": "Elsie 1920 (C1-42) và Frances 1920 (C1-41) nguyên người đứng cạnh nhau đang nói, Elsie giơ một tay; Gardner (C1-29b) đứng đối diện lắng nghe. Không tiên, không chữ.",
+          "canSoi": "Ba mặt đúng asset. Không vẽ tiên.",
+          "mention": "draw the same young woman as in {{Young Woman Ref Dark Curls Side Fringe}} and the same girl as in {{Teen Girl Ref White Hair Bow}}, keep both faces exactly the same, seen full length side by side talking with their mouths open, the young woman raising one hand, the young woman in the same patterned blouse with a long dark skirt, dark stockings and black shoes, the girl a little shorter in the same white blouse with a dark pleated skirt to mid-calf, white stockings and black shoes, and the same man as in {{Society Member Ref Dark Suit}}, keep his face exactly the same, standing facing them full length in the same suit, listening, no fairies, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie20",
+            "char-frances20",
+            "char-gardner"
+          ],
+          "note": "Phan duoi trang phuc 1920 (vay, tat, giay) KHONG co trong anh that (anh chi thay nua tren) — ta theo thoi trang thieu nu Anh 1920.",
+          "anhSeRaHash": "e7176a25c3fb",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Explaining To Visitor In Suit",
+            "promptHash": "e7176a25c3fb",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-43",
+          "at": "It rained for days on end, and the weather didn't clear until August 19th.",
+          "cue": "It rained for days on end",
+          "kind": "place",
+          "outName": "Same Stream Under Heavy Rain",
+          "intent": "Trang thai moi cua con suoi: mua nhieu ngay",
+          "tomTat": "Con suối dưới mưa",
+          "anhSeRa": "Vẽ lại con suối C1-05 cùng góc nhìn, giờ mưa nặng hạt: các vệt mưa xiên thẳng phủ cả khung, mặt nước lăn tăn, bầu trời xám phía trên. Không người, không chữ.",
+          "canSoi": "Giữ đúng bố cục asset suối.",
+          "mention": "draw the same stream as in {{Stream Ref Flat Stones Small Fall}} from exactly the same viewpoint, now under heavy rain, with straight slanting streaks of rain across the whole picture, the water surface broken by raindrops and a flat grey sky above, no people, no lettering, plain white background",
+          "useAsset": [
+            "place-beck"
+          ],
+          "anhSeRaHash": "a60a38f43f57",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Same Stream Under Heavy Rain",
+            "promptHash": "a60a38f43f57",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-44",
+          "at": "That day, Polly went off to visit one of her sisters, leaving the 2 girls at home with the cameras.",
+          "cue": "Polly went off to visit one of her sisters",
+          "kind": "figure",
+          "outName": "Mother Walking Off With Travel Bag",
+          "intent": "Ba Polly di vang",
+          "tomTat": "Mẹ xách túi đi xa",
+          "anhSeRa": "Vẽ lại người mẹ (C1-07, giữ nguyên mặt) nguyên người đang đi về phía trái, áo khoác nâu, váy dài sẫm, mũ vành, tay xách một túi du lịch nhỏ. Chỉ một người. Không chữ.",
+          "canSoi": "Không thêm người đi cùng.",
+          "mention": "draw the same woman as in {{Mother Ref Pinned Bun Brown Coat}}, keep her face exactly the same, now seen full length walking toward the left in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, carrying one small travel bag, no lettering, plain white background",
+          "useAsset": [
+            "char-mother"
+          ],
+          "anhSeRaHash": "7f5cfc47d1d4",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Mother Walking Off With Travel Bag",
+            "promptHash": "7f5cfc47d1d4",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-44b",
+          "at": "That day, Polly went off to visit one of her sisters, leaving the 2 girls at home with the cameras.",
+          "cue": "leaving the 2 girls at home with the cameras",
+          "kind": "group",
+          "outName": "Two Girls Each Holding A Folding Camera",
+          "intent": "Hai co gai o nha voi may anh — dung lai cho '3 more photographs' va 'not a single new photograph'",
+          "tomTat": "Elsie và Frances (1920) mỗi người cầm một máy ảnh gấp",
+          "anhSeRa": "Elsie 1920 (C1-42) và Frances 1920 (C1-41) nguyên người đứng cạnh nhau, mỗi người cầm một chiếc máy ảnh gấp như C1-40. Mặt trung tính. Không tiên, không chữ.",
+          "canSoi": "Hai máy phải giống asset máy gấp. Không vẽ giấy hay hình tiên.",
+          "mention": "draw the same young woman as in {{Young Woman Ref Dark Curls Side Fringe}} and the same girl as in {{Teen Girl Ref White Hair Bow}}, keep both faces exactly the same, seen full length standing side by side in the same clothes with long skirts and black shoes, each holding one of the same cameras as in {{Folding Cameras Ref Two Bellows}} in both hands, the girl a little shorter, no fairies, no paper, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie20",
+            "char-frances20",
+            "prop-foldingcams"
+          ],
+          "anhSeRaHash": "8eb0df16ddc6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Each Holding A Folding Camera",
+            "promptHash": "8eb0df16ddc6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-46",
+          "at": "In one, a fairy leaps up right beside Frances's nose.",
+          "cue": "a fairy leaps up right beside Frances's nose",
+          "kind": "character",
+          "outName": "Teen Girl In Profile With Leaping Fairy",
+          "intent": "Ve lai anh thu ba (1920)",
+          "tomTat": "Frances nghiêng mặt, một nàng tiên nhảy vọt sát mũi",
+          "anhSeRa": "Vẽ lại Frances 1920 (C1-41, giữ nguyên mặt) nửa người nhìn nghiêng giữa bụi lá; một nàng tiên tí hon có cánh nhảy vọt lên ngay sát mũi cô, thân mảnh, tay dang. Không chữ.",
+          "canSoi": "Tiên có bị xoá không. Frances nhìn nghiêng.",
+          "mention": "draw the same girl as in {{Teen Girl Ref White Hair Bow}}, keep her face and white hair bow exactly the same, seen from the chest up in profile among leafy branches, while one tiny winged fairy with a slim body and outstretched arms leaps up in the air right beside her nose, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background",
+          "useAsset": [
+            "char-frances20"
+          ],
+          "refs": [
+            "01-fairy-photos-03.jpg"
+          ],
+          "note": "Theo anh that 1920 'Frances and the Leaping Fairy'.",
+          "anhSeRaHash": "b37075c00eab",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Teen Girl In Profile With Leaping Fairy",
+            "promptHash": "b37075c00eab",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-47",
+          "at": "In another, a fairy stands on a branch, offering Elsie a little bunch of harebells.",
+          "cue": "offering Elsie a little bunch of harebells",
+          "kind": "character",
+          "outName": "Young Woman Offered Flowers By Tiny Fairy",
+          "intent": "Ve lai anh thu tu (1920)",
+          "tomTat": "Nàng tiên trên cành đưa bó hoa chuông cho Elsie",
+          "anhSeRa": "Vẽ lại Elsie 1920 (C1-42, giữ nguyên mặt) nửa người, hơi cúi đầu; trên một cành cây ngang trước mặt cô, một nàng tiên tí hon có đôi cánh lớn, váy dài, đứng kiễng chân đưa về phía cô một bó hoa chuông xanh nhỏ. Không chữ.",
+          "canSoi": "Tiên có bị xoá không. Hoa chuông màu xanh nhạt.",
+          "mention": "draw the same young woman as in {{Young Woman Ref Dark Curls Side Fringe}}, keep her face exactly the same, seen from the chest up with her head tilted slightly down, while on a bare branch in front of her one tiny winged fairy with large pale wings and a long dress stands on tiptoe holding out a small bunch of pale blue harebell flowers toward her, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie20"
+          ],
+          "refs": [
+            "01-fairy-photos-04.jpg",
+            "12-harebell-01.jpg"
+          ],
+          "note": "Theo anh that 1920 'Fairy offering Posy of Harebells to Elsie'.",
+          "anhSeRaHash": "0a43dba97fc2",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Young Woman Offered Flowers By Tiny Fairy",
+            "promptHash": "0a43dba97fc2",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-47b",
+          "at": "In another, a fairy stands on a branch, offering Elsie a little bunch of harebells.",
+          "cue": "bunch of harebells",
+          "kind": "object",
+          "outName": "Small Bunch Of Pale Blue Bell Flowers",
+          "intent": "Vat duoc goi ten: hoa chuong (harebell) — nguoi xem My it biet hoa nay",
+          "tomTat": "Bó hoa chuông xanh nhỏ",
+          "anhSeRa": "Một bó nhỏ hoa chuông dại: những cuống xanh mảnh, mỗi cuống rủ một bông hình chuông màu xanh lam nhạt. Không người, không chữ.",
+          "canSoi": "Đúng hoa Campanula rotundifolia (chuông rủ), không ra hoa loa kèn.",
+          "draw": "A small bunch of harebells: thin green stems each ending in one drooping pale blue bell-shaped flower, tied together at the bottom. No people, no lettering.",
+          "refs": [
+            "12-harebell-01.jpg"
+          ],
+          "anhSeRaHash": "1c0c24bf4bd0",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Small Bunch Of Pale Blue Bell Flowers",
+            "promptHash": "1c0c24bf4bd0",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-48",
+          "at": "Just pale, misty fairy shapes among the grass.",
+          "cue": "Just pale, misty fairy shapes among the grass",
+          "kind": "place",
+          "outName": "Pale Misty Winged Shapes In Tall Grass",
+          "intent": "Ve lai anh thu nam 'Fairies and Their Sun-Bath' — dung lai o 4 cau cuoi (nhip ket case)",
+          "tomTat": "Những hình tiên mờ nhạt giữa đám cỏ cao (ảnh thứ năm)",
+          "anhSeRa": "Cận cảnh đám cỏ cao và hoa dại; giữa các thân cỏ có ba hình người có cánh mờ nhạt, trong suốt, khoác áo dài rủ xuống, vẽ nhạt như sương. Không cô gái nào, không người rõ nét, không chữ.",
+          "canSoi": "Các hình phải MỜ, nhạt — không vẽ rõ nét như các ảnh trước. Không có cô gái.",
+          "draw": "Tall grass and small wildflowers seen close up, and among the stalks three pale, blurry, see-through winged shapes in long draped robes, drawn faint and misty like mist. No girls, no clear people, no lettering, no sun.",
+          "refs": [
+            "01-fairy-photos-05.jpg",
+            "01-fairy-photos-06.jpg"
+          ],
+          "note": "Theo anh that 1920 'Fairies and Their Sun-Bath': cac hinh nhat, chong mo nhu phoi hai lan. Tam anh gay tranh cai giua hai chi em.",
+          "anhSeRaHash": "b6c6cb4eb001",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Pale Misty Winged Shapes In Tall Grass",
+            "promptHash": "b6c6cb4eb001",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-51",
+          "at": "Doyle was away on a lecture tour in Australia at the time.",
+          "cue": "a lecture tour in Australia",
+          "kind": "place",
+          "outName": "Australia Map With Melbourne Labelled",
+          "intent": "Noi Doyle o luc do (o anh 6)",
+          "tomTat": "Bản đồ Úc, có chữ AUSTRALIA và MELBOURNE",
+          "anhSeRa": "Bản đồ phẳng nước Úc theo hình bản đồ tham chiếu (13-maps-03): đất liền tô vàng nhạt phẳng có chữ \"AUSTRALIA\" in hoa; chữ \"MELBOURNE\" in hoa ở bờ đông nam. Không tiêu đề, không tên nơi khác.",
+          "canSoi": "CHÍNH TẢ. MELBOURNE ở góc đông nam lục địa (bang Victoria), không nhầm sang Sydney.",
+          "mention": "draw a map shaped like {{13-maps-03.png}} with the same style as {{01-pyramid-place.png}}, fill Australia with one flat pale yellow colour and label it \"AUSTRALIA\" in plain capital letters, and write \"MELBOURNE\" in plain capital letters at the position of Melbourne on the south-eastern coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+          "refs": [
+            "13-maps-03.png"
+          ],
+          "anhSeRaHash": "e604112d2dd8",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Australia Map With Melbourne Labelled",
+            "promptHash": "e604112d2dd8",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-51b",
+          "at": "Doyle was away on a lecture tour in Australia at the time.",
+          "cue": "Doyle was away on a lecture tour",
+          "kind": "character",
+          "outName": "Author Speaking At A Lectern",
+          "intent": "Doyle di dien thuyet",
+          "tomTat": "Doyle đứng bục diễn thuyết",
+          "anhSeRa": "Vẽ lại Doyle (C1-36, giữ nguyên mặt) nguyên người đứng sau bục giảng gỗ, một tay đặt lên bục, miệng mở đang nói. Chỉ một người. Không chữ.",
+          "canSoi": "Bục giảng khác bục ở C1-26b không quan trọng; không có khán giả.",
+          "mention": "draw the same man as in {{Author Ref Walrus Moustache}}, keep his face exactly the same, seen full length in the same dark suit with dark trousers and black shoes, standing behind a plain wooden lectern with one hand resting on it, talking with his mouth open, no audience, no lettering, plain white background",
+          "useAsset": [
+            "char-doyle"
+          ],
+          "anhSeRaHash": "eb1cbe7794e3",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Author Speaking At A Lectern",
+            "promptHash": "eb1cbe7794e3",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-52",
+          "at": "When he heard the news, he sent a telegram from Melbourne saying his heart was gladdened by 3 wonderful pictures that confirmed everything they had published.",
+          "cue": "he sent a telegram from Melbourne",
+          "kind": "object",
+          "outName": "Blank Telegram Form Paper",
+          "intent": "Vat duoc goi ten: buc dien tin. Noi dung la chu hau ky",
+          "tomTat": "Tờ điện tín trống",
+          "anhSeRa": "Một tờ giấy điện tín chữ nhật nhỏ kiểu năm 1920, màu vàng nhạt, có vài dải băng giấy dán ngang không chữ và vài dòng kẻ xám mảnh. Không chữ.",
+          "canSoi": "Model hay điền chữ TELEGRAM — phải trống.",
+          "draw": "A small rectangular telegram form of about 1920 on pale yellow paper, with a few narrow blank paper strips pasted across it and a few thin grey lines standing for text. Completely BLANK: absolutely no letters, no words and no numbers anywhere.",
+          "note": "Skill 6i.",
+          "anhSeRaHash": "d14acd8152db",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Blank Telegram Form Paper",
+            "promptHash": "d14acd8152db",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-53",
+          "at": "In December 1920, Doyle's article, \"Fairies Photographed,\" appeared in the Christmas issue of The Strand, along with the 2 photographs from 1917.",
+          "cue": "appeared in the Christmas issue of The Strand",
+          "kind": "object",
+          "outName": "Same Magazine Lying Open On Two Photos",
+          "intent": "Bai bao voi hai tam anh — trang that (05-strand-1920-01) chen o hau ky neu can",
+          "tomTat": "Tạp chí mở ra, hai trang có hai tấm ảnh",
+          "anhSeRa": "Vẽ lại cuốn tạp chí C1-38, giờ mở ra: mỗi trang có một khung ảnh nhỏ màu nâu đỏ (một bé gái với các hình nhỏ có cánh; một cô gái ngồi với chú lùn), quanh ảnh là các dòng kẻ xám thay cho chữ. Không chữ.",
+          "canSoi": "Không có chữ trên trang. Hai ảnh nhỏ mờ là đủ.",
+          "mention": "draw the same magazine as in {{Magazine Ref Plain Blue Cover}}, now lying open flat, each of the two open pages showing one small sepia photograph in a thin frame, one of a young girl with tiny winged figures and one of a girl sitting beside a small gnome, surrounded by thin grey lines standing for columns of text, absolutely no letters and no words, no people outside the pictures, plain white background",
+          "useAsset": [
+            "prop-magazine"
+          ],
+          "refs": [
+            "05-strand-1920-01.jpg"
+          ],
+          "anhSeRaHash": "04a0518f48b9",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Same Magazine Lying Open On Two Photos",
+            "promptHash": "04a0518f48b9",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-56",
+          "at": "Doyle wrote that once people accepted that fairies were real, it would jolt the heavy, materialistic mind of the 20th century out of its ruts.",
+          "cue": "Doyle wrote that once people accepted",
+          "kind": "character",
+          "outName": "Author Writing At His Desk",
+          "intent": "Hanh vi viet cua Doyle — noi dung la chu hau ky",
+          "tomTat": "Doyle ngồi viết ở bàn",
+          "anhSeRa": "Vẽ lại Doyle (C1-36, giữ nguyên mặt) nửa người ngồi bên bàn gỗ, tay cầm bút viết lên trang giấy chỉ có vài dòng kẻ xám. Chỉ một người. Không chữ.",
+          "canSoi": "Giấy không có chữ.",
+          "mention": "draw the same man as in {{Author Ref Walrus Moustache}}, keep his face exactly the same, seen from the chest up sitting at a wooden desk writing on a sheet of paper with a pen, the paper showing only a few thin grey lines and no letters, in the same dark suit, no lettering, plain white background",
+          "useAsset": [
+            "char-doyle"
+          ],
+          "refs": [
+            "03-doyle-01.jpg"
+          ],
+          "note": "Anh that 03-doyle-01 cung la Doyle cam but ben ban — tu the co nguon.",
+          "anhSeRaHash": "ece725f31ee7",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Author Writing At His Desk",
+            "promptHash": "ece725f31ee7",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-57",
+          "at": "In 1922, he published a whole book on the subject, called The Coming of the Fairies.",
+          "cue": "called The Coming of the Fairies",
+          "kind": "object",
+          "outName": "Closed Hardback Book With Plain Cloth Cover",
+          "intent": "Vat duoc goi ten: cuon sach 1922. Bia that la hau ky",
+          "tomTat": "Cuốn sách bìa vải trơn đứng dựng",
+          "anhSeRa": "Một cuốn sách bìa cứng bọc vải thập niên 1920 đứng dựng, bìa trơn màu xanh rêu sẫm, không chữ, không hình. Không người.",
+          "canSoi": "Không có tên sách trên bìa/gáy.",
+          "draw": "One closed hardback book of the 1920s standing upright, with a plain dark moss-green cloth cover and spine and nothing printed or stamped on it. No lettering, no pictures, no people.",
+          "note": "Mau bia that chua doi chieu — sach minh hoa loai. Anh bia that (neu co) chen o hau ky.",
+          "anhSeRaHash": "7f09932439e5",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Closed Hardback Book With Plain Cloth Cover",
+            "promptHash": "7f09932439e5",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-58",
+          "at": "The press was split.",
+          "cue": "The press was split",
+          "kind": "object",
+          "outName": "Stack Of Folded Newspapers Blank Columns",
+          "intent": "Bao chi chia phe — dung lai cho loi mia cua mot to bao",
+          "tomTat": "Chồng báo gấp, cột chữ trống",
+          "anhSeRa": "Một chồng báo gấp kiểu 1920, trang trên cùng có một ô chữ nhật trống cho ảnh và đúng bốn dòng kẻ xám thay cho cột chữ. Không chữ, không tiêu đề.",
+          "canSoi": "Model rất hay viết tiêu đề báo — phải trống.",
+          "draw": "A stack of folded newspapers of the 1920s, the top page showing one large blank rectangle where a photograph would be and EXACTLY FOUR thin grey horizontal lines standing for columns of text. No headlines, no letters, no words anywhere.",
+          "note": "Skill 6i: mat bao -> dong ke xam.",
+          "anhSeRaHash": "0ddf3c59eb75",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Stack Of Folded Newspapers Blank Columns",
+            "promptHash": "0ddf3c59eb75",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-61",
+          "at": "In the summer of 1921, Gardner came back one more time, bringing a clairvoyant with him.",
+          "cue": "bringing a clairvoyant with him",
+          "kind": "figure",
+          "outName": "Clairvoyant Ref Grey Tweed Jacket",
+          "intent": "Asset nha ngoai cam 1921 (loi ke khong goi ten) — 2 shot",
+          "tomTat": "Chân dung nhà ngoại cảm áo tweed xám (asset)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một người đàn ông gầy khoảng ba mươi lăm: tóc sẫm chải ngược lộ trán cao, mặt cạo nhẵn; áo khoác tweed xám, sơ mi trắng, cà vạt sẫm. Chỉ một người.",
+          "canSoi": "Người minh hoạ; khác hẳn Gardner (mặt, áo).",
+          "draw": "A slim man in his mid-thirties seen from the chest up. Dark hair combed straight back from a high forehead, clean-shaven. He wears a grey tweed jacket over a white shirt and a dark tie.",
+          "produces": "char-clairvoyant",
+          "note": "Nguoi that la Geoffrey Hodson; loi ke khong goi ten -> figure, khong soi chan dung.",
+          "anhSeRaHash": "71e59b423cc8",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Clairvoyant Ref Grey Tweed Jacket",
+            "promptHash": "71e59b423cc8",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-62",
+          "at": "The clairvoyant said he could see fairies everywhere.",
+          "cue": "he could see fairies everywhere",
+          "kind": "group",
+          "outName": "Clairvoyant Pointing While Two Girls Watch",
+          "intent": "Hanh vi noi cua nha ngoai cam — KHONG ve tien (chi la loi anh ta)",
+          "tomTat": "Nhà ngoại cảm chỉ tay nói, hai cô gái đứng nhìn",
+          "anhSeRa": "Nhà ngoại cảm (C1-61) nguyên người chỉ tay về phía một bụi cây, miệng mở đang nói; Elsie 1920 và Frances 1920 (C1-42, C1-41) đứng cạnh nhìn theo, mặt trung tính. KHÔNG có tiên. Không chữ.",
+          "canSoi": "TUYỆT ĐỐI không vẽ tiên (giới hạn mức chắc chắn).",
+          "mention": "draw the same man as in {{Clairvoyant Ref Grey Tweed Jacket}}, keep his face exactly the same, seen full length in the same tweed jacket with grey trousers and brown shoes, pointing at a leafy bush and talking with his mouth open, and the same young woman as in {{Young Woman Ref Dark Curls Side Fringe}} and the same girl as in {{Teen Girl Ref White Hair Bow}}, keep both faces exactly the same, standing beside him full length in the same clothes with long skirts and black shoes, looking where he points, absolutely no fairies anywhere and nothing in the bush, no lettering, plain white background",
+          "useAsset": [
+            "char-clairvoyant",
+            "char-elsie20",
+            "char-frances20"
+          ],
+          "note": "Cau ra 9: 'said he could see' — ve hanh vi noi.",
+          "anhSeRaHash": "288716ef77d3",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Clairvoyant Pointing While Two Girls Watch",
+            "promptHash": "288716ef77d3",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-68",
+          "at": "In 1966, a reporter tracked Elsie down.",
+          "cue": "In 1966, a reporter",
+          "kind": "figure",
+          "outName": "Elderly Woman Ref White Curls Cardigan",
+          "intent": "Asset Elsie luc gia (1966-1983) — KHONG co chan dung that, hu cau co co so",
+          "tomTat": "Chân dung Elsie lúc già, tóc bạc xoăn (asset, hư cấu)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một bà cụ khoảng bảy mươi lăm: mặt trái xoan, tóc bạc trắng ngắn uốn xoăn sát đầu; áo len cardigan xanh nhạt ngoài sơ mi trắng cổ tròn nhỏ. Chỉ một người.",
+          "canSoi": "HƯ CẤU — không ghi trong video là chân dung Elsie. Mặt trái xoan nối với asset trẻ.",
+          "draw": "An elderly woman of about seventy-five seen from the chest up. An oval face. Short white hair set in soft curls close to her head. She wears a pale blue cardigan over a white blouse with a small round collar.",
+          "produces": "char-elsie-old",
+          "note": "SHOT TAO ASSET. stillMissing: anh Elsie 1966-1985 (co tren truyen hinh YTV/BBC nhung chua tim ra anh tinh). Tim duoc thi viet lai + doi outName.",
+          "anhSeRaHash": "567a06a84213",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Elderly Woman Ref White Curls Cardigan",
+            "promptHash": "567a06a84213",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-68b",
+          "at": "In 1966, a reporter tracked Elsie down.",
+          "cue": "tracked Elsie down",
+          "kind": "group",
+          "outName": "Elderly Woman Talking To Reporter With Notebook",
+          "intent": "Phong vien gap Elsie, Elsie tra loi — dung lai cho cau 'figments of her imagination'",
+          "tomTat": "Elsie già nói, phóng viên ghi sổ",
+          "anhSeRa": "Elsie lúc già (C1-68, giữ nguyên mặt) ngồi trên ghế bành đang nói, một tay giơ nhẹ; đối diện là một phóng viên nam khoảng ba mươi, tóc nâu ngắn, vest xám thập niên 1960, cà vạt mảnh, cầm sổ và bút. Không chữ.",
+          "canSoi": "Sổ không có chữ. Phóng viên không trùng mặt asset khác.",
+          "mention": "draw the same elderly woman as in {{Elderly Woman Ref White Curls Cardigan}}, keep her face exactly the same, seen full length sitting in an armchair in the same cardigan with a grey skirt and flat shoes, talking with her mouth open and one hand slightly raised, and facing her a reporter of the 1960s, a man of about thirty with short brown hair, clean-shaven, in a grey suit and a thin dark tie, holding a small notebook and a pen, in the same drawing style as {{02-doctor-figure.png}}, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie-old"
+          ],
+          "note": "Luat 8: Elsie la nguoi noi. Nguoi moi mot nguoi -> anh neo 02 (4d-9d, chua do).",
+          "anhSeRaHash": "20a63124cc07",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Elderly Woman Talking To Reporter With Notebook",
+            "promptHash": "20a63124cc07",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-70",
+          "at": "In 1976, on television, both women agreed that a rational person doesn't see fairies.",
+          "cue": "In 1976, on television",
+          "kind": "figure",
+          "outName": "Old Lady Ref Grey Bob Green Jumper",
+          "intent": "Asset Frances luc gia (1976-1986) — KHONG co chan dung that, hu cau co co so",
+          "tomTat": "Chân dung Frances lúc già, tóc xám bob (asset, hư cấu)",
+          "anhSeRa": "Chân dung NỬA NGƯỜI một bà cụ khoảng bảy mươi: mặt tròn, tóc xám cắt bob ngắn thẳng rẽ ngôi lệch; áo len xanh lá sẫm, cổ đeo chuỗi ngọc trai nhỏ. Chỉ một người.",
+          "canSoi": "HƯ CẤU. Mặt tròn nối với asset Frances trẻ; tóc phải khác hẳn Elsie già.",
+          "draw": "An elderly woman of about seventy seen from the chest up. A round face. Grey hair cut in a short straight bob with a side parting. She wears a dark green wool jumper and a string of small pearls at her neck.",
+          "produces": "char-frances-old",
+          "note": "SHOT TAO ASSET. stillMissing: anh Frances 1970s-1980s.",
+          "anhSeRaHash": "fa398a20a016",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Old Lady Ref Grey Bob Green Jumper",
+            "promptHash": "fa398a20a016",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-70b",
+          "at": "In 1976, on television, both women agreed that a rational person doesn't see fairies.",
+          "cue": "both women agreed that a rational person",
+          "kind": "group",
+          "outName": "Two Elderly Women On Studio Sofa Before Camera",
+          "intent": "Hai ba tren truyen hinh 1976 — dung lai cho 'wouldn't admit' va 'both telling the truth'",
+          "tomTat": "Hai bà ngồi sofa trường quay, máy quay TV trước mặt",
+          "anhSeRa": "Elsie già (C1-68) và Frances già (C1-70), giữ nguyên mặt, nguyên người ngồi cạnh nhau trên một chiếc sofa trường quay; phía trước bên phải là một máy quay truyền hình thập niên 1970 trên chân. Mặt trung tính. Không chữ, không logo.",
+          "canSoi": "Hai mặt đúng asset, không trộn tóc. Máy quay không có logo đài.",
+          "mention": "draw the same elderly woman as in {{Elderly Woman Ref White Curls Cardigan}} and the same elderly woman as in {{Old Lady Ref Grey Bob Green Jumper}}, keep both faces and hair exactly the same and do not mix their features, seen full length sitting side by side on a plain television studio sofa in the same clothes with skirts and flat shoes, and one large 1970s television studio camera on a wheeled stand facing them from the right, no logos, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie-old",
+            "char-frances-old"
+          ],
+          "anhSeRaHash": "3e12d635d203",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Elderly Women On Studio Sofa Before Camera",
+            "promptHash": "3e12d635d203",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-72",
+          "at": "Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert went back over them from the very beginning.",
+          "cue": "enlarging the photographs with computers",
+          "kind": "figure",
+          "outName": "Man At Old Computer Screen With Grainy Photo",
+          "intent": "Nguoi hoai nghi phong to anh bang may tinh (1978)",
+          "tomTat": "Người ngồi trước máy tính cũ, màn hình phóng to ảnh tiên",
+          "anhSeRa": "Một người đàn ông khoảng ba mươi lăm, râu quai nón nâu, kính gọng dày, áo len cardigan nâu, ngồi trước một máy tính thập niên 1970 (màn hình lồi, bàn phím rời); trên màn hình là một hình phóng to hạt lợn cợn: bé gái với các hình nhỏ có cánh. Chỉ một người. Không chữ.",
+          "canSoi": "Máy tính kiểu 1970s, không ra máy hiện đại. Màn hình không có chữ.",
+          "mention": "draw a man of about thirty-five with a short brown beard and thick-rimmed glasses, in a brown cardigan, seen from the chest up sitting at a late-1970s computer terminal with a bulky curved screen and a separate keyboard, the screen showing an enlarged grainy picture of a young girl with tiny winged figures, in the same drawing style as {{02-doctor-figure.png}}, no letters on the screen, no lettering, plain white background",
+          "note": "Nguoi that (nhom Randi/CSICOP 1978) loi ke khong goi ten -> figure. Nguoi moi -> anh neo 02 (4d-9d).",
+          "anhSeRaHash": "1b8b1e618ae6",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Man At Old Computer Screen With Grainy Photo",
+            "promptHash": "1b8b1e618ae6",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-72b",
+          "at": "Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert went back over them from the very beginning.",
+          "cue": "went back over them from the very beginning",
+          "kind": "figure",
+          "outName": "Grey Bearded Expert Over Prints With Loupe",
+          "intent": "Chuyen gia anh 1982 (Crawley) soi lai — dung lai cho gia thuyet 'double exposure'",
+          "tomTat": "Chuyên gia râu xám soi các tấm ảnh bằng kính lúp",
+          "anhSeRa": "Một người đàn ông khoảng sáu mươi, tóc xám, râu cằm xám ngắn, áo tweed nâu, cúi trên bàn có vài tấm ảnh nhỏ nâu đỏ, mắt áp vào kính lúp. Chỉ một người. Không chữ.",
+          "canSoi": "Phải khác hẳn Snelling (C1-31) — không kính tròn, có râu.",
+          "mention": "draw a man of about sixty with grey hair and a short grey beard, in a brown tweed jacket, seen from the chest up bending over a table spread with a few small sepia photographs and looking at them through a small magnifying loupe held to one eye, in the same drawing style as {{02-doctor-figure.png}}, no lettering, plain white background",
+          "note": "Nguoi that la Geoffrey Crawley (British Journal of Photography 1982-83), loi ke khong goi ten. KHAC nguoi voi Snelling — khong dung lai C1-32 (se doc thanh cung mot nguoi).",
+          "anhSeRaHash": "a87ed9f68c1f",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Grey Bearded Expert Over Prints With Loupe",
+            "promptHash": "a87ed9f68c1f",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-75",
+          "at": "In 1983, in a magazine called The Unexplained, the 2 elderly cousins finally admitted it.",
+          "cue": "a magazine called The Unexplained",
+          "kind": "object",
+          "outName": "Glossy Magazine With Dark Blank Cover",
+          "intent": "Vat duoc goi ten: tap chi The Unexplained (1983). Bia that la hau ky",
+          "tomTat": "Tạp chí bóng láng bìa tối trống",
+          "anhSeRa": "Một cuốn tạp chí mỏng bóng láng thập niên 1980, bìa màu tối với một ô hình lớn trống, không chữ. Không người.",
+          "canSoi": "Khác hẳn tạp chí 1920 (C1-38): mỏng, bóng, bìa tối. Không chữ.",
+          "draw": "One thin glossy magazine of the early 1980s lying at a slight angle, with a dark cover and one large blank picture area, completely BLANK with no letters and no words. No people.",
+          "note": "Skill 6i.",
+          "anhSeRaHash": "28b54ca3c913",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Glossy Magazine With Dark Blank Cover",
+            "promptHash": "28b54ca3c913",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-75b",
+          "at": "In 1983, in a magazine called The Unexplained, the 2 elderly cousins finally admitted it.",
+          "cue": "the 2 elderly cousins finally admitted it",
+          "kind": "group",
+          "outName": "Two Elderly Women Talking To Interviewer",
+          "intent": "Hanh vi thu nhan: nguoi noi la hai ba, nguoi nghe la nguoi phong van",
+          "tomTat": "Hai bà nói, người phỏng vấn cầm máy ghi âm nghe",
+          "anhSeRa": "Elsie già và Frances già (C1-68, C1-70) ngồi trên ghế đang nói; đối diện là một người phỏng vấn nam khoảng bốn mươi, tóc sẫm, áo len, cầm một máy ghi âm cassette nhỏ. Mặt trung tính. Không chữ.",
+          "canSoi": "Hai mặt đúng asset. Không thêm nét mặt ăn năn/buồn (nguồn không nói).",
+          "mention": "draw the same elderly woman as in {{Elderly Woman Ref White Curls Cardigan}} and the same elderly woman as in {{Old Lady Ref Grey Bob Green Jumper}}, keep both faces and hair exactly the same and do not mix their features, seen full length sitting on two chairs in the same clothes with skirts and flat shoes, both talking, and facing them an interviewer of the early 1980s, a man of about forty with dark hair in a plain jumper, holding a small cassette tape recorder toward them, in the same drawing style as {{02-doctor-figure.png}}, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie-old",
+            "char-frances-old"
+          ],
+          "note": "Nguoi phong van that (Joe Cooper) loi ke khong goi ten. Nguoi moi mot nguoi -> anh neo 02.",
+          "anhSeRaHash": "2e2aa6078cd4",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Elderly Women Talking To Interviewer",
+            "promptHash": "2e2aa6078cd4",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-76",
+          "at": "Elsie had drawn the fairies herself.",
+          "cue": "Elsie had drawn the fairies herself",
+          "kind": "character",
+          "outName": "Older Girl Drawing A Winged Dancer",
+          "intent": "TRA chi tiet dat truoc C1-17 (Elsie ve gioi): gio lo hinh tren giay la tien",
+          "tomTat": "Elsie 1917 vẽ hình cô gái có cánh lên giấy",
+          "anhSeRa": "Vẽ lại Elsie (C1-02, không mũ, giữ nguyên mặt) nửa người ngồi bên bàn như C1-17, nhưng giờ tờ giấy quay về phía người xem: trên đó là hình một cô gái nhỏ đang múa, váy dài bay, có đôi cánh bướm. Chỉ một người. Không chữ.",
+          "canSoi": "Cặp đầu–cuối với C1-17 (skill 4b): cùng tư thế, chỉ khác tờ giấy lộ hình tiên.",
+          "mention": "draw the same girl as in {{Older Girl Ref Bell Hat White Dress}}, keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table drawing with a pencil, a sheet of card in front of her turned toward the viewer showing a drawing of a small dancing girl in a long flowing dress with a pair of butterfly wings, in the same white dress, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17"
+          ],
+          "note": "Skill 4b cap canh doi xung dau-cuoi voi C1-17. Story-structure muc 3: tra chi tiet trong cung cau phat hien.",
+          "anhSeRaHash": "573038dad67e",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Older Girl Drawing A Winged Dancer",
+            "promptHash": "573038dad67e",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-77",
+          "at": "She copied the figures of dancing girls from a popular children's book of the time, Princess Mary's Gift Book, changed a few details, and added wings.",
+          "cue": "Princess Mary's Gift Book",
+          "kind": "object",
+          "outName": "Open Picture Book With Three Dancing Girls",
+          "intent": "Nguon goc hinh tien: tranh Claude Shepperson trong sach 1914",
+          "tomTat": "Cuốn sách mở, trang tranh ba cô gái múa",
+          "anhSeRa": "Một cuốn sách tranh cũ mở phẳng, trang phải là tranh nét mực đen: ba cô gái chân trần múa trong váy dài bay, cùng giữ một dải khăn dài bay lượn; trang trái trống. Không chữ.",
+          "canSoi": "Không có chữ trên trang. Ba cô gái KHÔNG có cánh (cánh là Elsie thêm).",
+          "draw": "An old picture book lying open flat, the right-hand page showing a black ink line drawing of three barefoot girls dancing in long flowing dresses and holding one long floating scarf between them, the left-hand page blank. No wings on the girls, no lettering anywhere.",
+          "refs": [
+            "06-princess-mary-01.jpg",
+            "06-princess-mary-02.png"
+          ],
+          "note": "Soi tranh that (06-princess-mary-01, Shepperson, minh hoa bai tho 'A Spell for a Fairy' cua Alfred Noyes): ba co gai mua, khan dai, vai nguoi co canh mo — de tranh nham, prompt cam canh. Anh that chen o hau ky canh ban ve C1-14b de so sanh (06-princess-mary-02).",
+          "anhSeRaHash": "a0b67060fd5c",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Open Picture Book With Three Dancing Girls",
+            "promptHash": "a0b67060fd5c",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-78",
+          "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+          "cue": "The cousins cut the figures out",
+          "kind": "group",
+          "outName": "Two Girls Cutting Paper Figures With Scissors",
+          "intent": "Hanh dong cat hinh",
+          "tomTat": "Elsie và Frances (1917) cắt hình giấy bằng kéo",
+          "anhSeRa": "Elsie (không mũ) và Frances 1917 (C1-02, C1-03, giữ nguyên mặt) ngồi bên bàn, Elsie cầm kéo cắt quanh một hình cô gái có cánh vẽ trên bìa mỏng, Frances giữ một hình đã cắt xong. Không chữ.",
+          "canSoi": "Frances nhỏ hơn rõ. Kéo kiểu cũ.",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, the older girl without her hat, seen from the waist up sitting side by side at a table, the older girl cutting around a small drawn winged dancing figure on thin card with a pair of scissors and the younger girl holding up one figure already cut out, the younger girl plainly smaller, in the same white dresses, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17"
+          ],
+          "anhSeRaHash": "429ababc66a7",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Cutting Paper Figures With Scissors",
+            "promptHash": "429ababc66a7",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-78b",
+          "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+          "cue": "cut the figures out",
+          "kind": "object",
+          "outName": "Paper Cutout Ref Winged Dancer",
+          "intent": "Asset hinh tien giay — dung cho C1-78c va nhip 'made of paper'",
+          "tomTat": "Hình tiên cắt từ bìa mỏng, thấy mép cắt trắng (asset)",
+          "anhSeRa": "Một hình cô gái nhỏ đang múa, váy dài nhạt màu bay, đôi cánh hình cánh bướm lớn, vẽ trên bìa mỏng trắng và cắt theo đường viền — thấy rõ mép cắt trắng bao quanh; nằm phẳng. Không chữ.",
+          "canSoi": "Phải đọc ra là GIẤY cắt (mép trắng, phẳng), không ra tiên thật.",
+          "draw": "A small figure of a dancing girl in a long flowing pale dress with a pair of large butterfly-shaped wings, drawn on thin white card and cut out around its outline, with a thin white cut edge visible all the way around it, lying flat. It is clearly a flat piece of paper. No lettering, no people.",
+          "produces": "prop-paperfairy",
+          "refs": [
+            "06-princess-mary-02.png",
+            "01-fairy-photos-01.jpg"
+          ],
+          "anhSeRaHash": "7e189862bcb2",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Paper Cutout Ref Winged Dancer",
+            "promptHash": "7e189862bcb2",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-78c",
+          "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+          "cue": "stood them up in the grass with hatpins",
+          "kind": "object",
+          "outName": "Paper Dancer Pinned Upright In Grass",
+          "intent": "CHO NOI (luat 6): kim cai mu xuyen qua hinh giay cam xuong dat. Cap dau-cuoi voi C1-14b — dung lai cho 'made of paper'",
+          "tomTat": "Hình tiên giấy cắm thẳng trong cỏ bằng kim cài mũ",
+          "anhSeRa": "Vẽ lại hình tiên giấy C1-78b, giờ đứng thẳng giữa các ngọn cỏ, được giữ bởi một chiếc kim cài mũ dài mảnh đầu ngọc trai tròn xuyên qua tấm bìa cắm xuống đất; thấy rõ mép giấy trắng. Không người, không chữ.",
+          "canSoi": "Kim phải XUYÊN qua giấy xuống đất (chỗ nối là chủ thể). Hình vẫn đọc ra là giấy.",
+          "mention": "draw the same paper figure as in {{Paper Cutout Ref Winged Dancer}}, keep it exactly the same with its white cut edge, now standing upright among blades of grass, held up by one long thin steel hatpin with a small round pearl head pushed through the card and down into the ground, no people, no lettering, plain white background",
+          "useAsset": [
+            "prop-paperfairy"
+          ],
+          "refs": [
+            "11-hatpin-01.jpg"
+          ],
+          "anhSeRaHash": "b98c9814c335",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Paper Dancer Pinned Upright In Grass",
+            "promptHash": "b98c9814c335",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-78d",
+          "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+          "cue": "with hatpins",
+          "kind": "object",
+          "outName": "Long Steel Hatpin With Pearl Head",
+          "intent": "Vat duoc goi ten: kim cai mu — nguoi xem hom nay it biet",
+          "tomTat": "Một chiếc kim cài mũ dài đầu ngọc trai",
+          "anhSeRa": "Một chiếc kim cài mũ bằng thép dài và mảnh, đầu là một viên ngọc trai tròn nhỏ, nằm chéo. Không người, không chữ.",
+          "canSoi": "Kim phải rất dài so với đầu (kim cài mũ thời 1910s dài 15-25 cm).",
+          "draw": "One long thin steel hatpin with a small round pearl head, lying diagonally. No people, no lettering.",
+          "refs": [
+            "11-hatpin-01.jpg"
+          ],
+          "anhSeRaHash": "caaf7f2b5000",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Long Steel Hatpin With Pearl Head",
+            "promptHash": "caaf7f2b5000",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-78e",
+          "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+          "cue": "threw the props into the stream",
+          "kind": "group",
+          "outName": "Two Girls Tossing Paper Figures Into Stream",
+          "intent": "Hanh dong vut dao cu xuong suoi",
+          "tomTat": "Hai cô gái thả hình giấy xuống suối",
+          "anhSeRa": "Elsie và Frances 1917 (C1-02, C1-03) nguyên người đứng trên đá ở mép con suối C1-05, thả vài hình giấy nhỏ có cánh xuống dòng nước; các hình giấy trôi trên mặt nước. Không chữ.",
+          "canSoi": "Hình trôi phải đọc ra là giấy.",
+          "mention": "draw the same two girls as in {{Older Girl Ref Bell Hat White Dress}} and {{Young Girl Ref Flower Band Long Hair}}, keep both faces exactly the same, seen full length standing on the flat stones at the edge of the same stream as in {{Stream Ref Flat Stones Small Fall}}, in the same white dresses and boots, dropping a few small flat paper cut-out figures with wings into the water, where they float away on the current, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie17",
+            "char-frances17",
+            "place-beck"
+          ],
+          "anhSeRaHash": "aae806d7e956",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Two Girls Tossing Paper Figures Into Stream",
+            "promptHash": "aae806d7e956",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-84",
+          "at": "Elsie explained their long silence simply.",
+          "cue": "Elsie explained their long silence",
+          "kind": "figure",
+          "outName": "Elderly Woman Speaking With Open Hands",
+          "intent": "Hanh vi noi cua Elsie gia — dung lai cho 'all 5 were fakes'",
+          "tomTat": "Elsie già đang nói, hai tay mở",
+          "anhSeRa": "Vẽ lại Elsie lúc già (C1-68, giữ nguyên mặt) nửa người đang nói, hai bàn tay mở ra trước ngực. Mặt trung tính. Chỉ một người.",
+          "canSoi": "Không thêm nét buồn/ăn năn.",
+          "mention": "draw the same elderly woman as in {{Elderly Woman Ref White Curls Cardigan}}, keep her face exactly the same, seen from the chest up talking with her mouth open and both hands open in front of her chest, in the same cardigan, no lettering, plain white background",
+          "useAsset": [
+            "char-elsie-old"
+          ],
+          "anhSeRaHash": "e68712863c26",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Elderly Woman Speaking With Open Hands",
+            "promptHash": "e68712863c26",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-86",
+          "at": "Frances, in a letter written in 1983, said she had hated those photographs since she was 16 years old.",
+          "cue": "in a letter written in 1983",
+          "kind": "figure",
+          "outName": "Old Lady Writing A Letter At Table",
+          "intent": "Frances gia viet thu — noi dung la chu hau ky. Cap voi C1-23 (Frances be viet thu 1918)",
+          "tomTat": "Frances già ngồi viết thư",
+          "anhSeRa": "Vẽ lại Frances lúc già (C1-70, giữ nguyên mặt) nửa người ngồi bên bàn viết thư bằng bút, tờ giấy chỉ có dòng kẻ xám. Chỉ một người. Không chữ.",
+          "canSoi": "Đặt cạnh C1-23 (cùng tư thế viết thư) — đọc ra cùng một người qua 65 năm.",
+          "mention": "draw the same elderly woman as in {{Old Lady Ref Grey Bob Green Jumper}}, keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the paper showing only a few thin grey lines and no letters, in the same green jumper and pearls, no lettering, plain white background",
+          "useAsset": [
+            "char-frances-old"
+          ],
+          "note": "Skill 4b: dong dang voi C1-23 de hau ky cat canh nhau.",
+          "anhSeRaHash": "364e7bf6e686",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Old Lady Writing A Letter At Table",
+            "promptHash": "364e7bf6e686",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        },
+        {
+          "id": "C1-89",
+          "at": "Frances insisted, for the rest of her life, that the fifth one, the sun bath, was real.",
+          "cue": "Frances insisted, for the rest of her life",
+          "kind": "figure",
+          "outName": "Old Lady Speaking Holding One Photograph",
+          "intent": "Frances khang dinh anh thu nam la that (hanh vi noi) — dung lai cho loi ke 'wet Saturday'",
+          "tomTat": "Frances già cầm một tấm ảnh, đang nói",
+          "anhSeRa": "Vẽ lại Frances lúc già (C1-70, giữ nguyên mặt) nửa người, một tay cầm một tấm ảnh nhỏ nâu đỏ quay mặt sau ra người xem, đang nói. Mặt trung tính. Chỉ một người.",
+          "canSoi": "Tấm ảnh quay mặt sau — không vẽ tiên. Không thêm vẻ bướng/giận.",
+          "mention": "draw the same elderly woman as in {{Old Lady Ref Grey Bob Green Jumper}}, keep her face exactly the same, seen from the chest up holding one small sepia photograph with its plain back turned toward the viewer and talking with her mouth open, in the same green jumper and pearls, no fairies, no lettering, plain white background",
+          "useAsset": [
+            "char-frances-old"
+          ],
+          "note": "Cau ra 9: 'insisted ... was real' la loi cua Frances — khong ve tien.",
+          "anhSeRaHash": "972ee02cd942",
+          "daTao": {
+            "ok": true,
+            "soCard": 1,
+            "ten": "Old Lady Speaking Holding One Photograph",
+            "promptHash": "972ee02cd942",
+            "kiemLuc": "2026-09-28T00:09:15.857Z",
+            "nguon": "audit-flow"
+          }
+        }
+      ]
+    }
+  ]
+}

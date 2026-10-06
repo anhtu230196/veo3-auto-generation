@@ -1,0 +1,1668 @@
+[
+  {
+    "id": "C1-01",
+    "segment": "C1",
+    "at": "In the summer of 1917, in Cottingley, a small village just outside the city of Bradford in the north of England, two cousins kept getting into trouble for the very same thing.",
+    "kind": "place",
+    "outName": "Country Map With One Northern City Labelled",
+    "prompt": "draw a map shaped like @13-maps-01.png with the same style as @01-pyramid-place.png, fill England with one flat pale green colour and label it \"ENGLAND\" in plain capital letters, and write \"BRADFORD\" in plain capital letters at the position of the city of Bradford in the north of England, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-1\\13-maps-01.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", fill England with one flat pale green colour and label it \"ENGLAND\" in plain capital letters, and write \"BRADFORD\" in plain capital letters at the position of the city of Bradford in the north of England, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-02",
+    "segment": "C1",
+    "at": "Elsie Wright was 16.",
+    "kind": "character",
+    "outName": "Older Girl Ref Bell Hat White Dress",
+    "prompt": "A girl of about sixteen seen from the chest up. An oval face. Long straight dark brown hair worn loose and falling well past her shoulders, under a dark felt hat shaped like a bell with a deep rounded brim and a small pale flower pinned to one side. She wears a loose long-sleeved white cotton dress with a soft round neckline. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-03",
+    "segment": "C1",
+    "at": "Her cousin Frances Griffiths was only 9.",
+    "kind": "character",
+    "outName": "Young Girl Ref Flower Band Long Hair",
+    "prompt": "A girl of about nine seen from the chest up. A round face with full cheeks. Long light brown hair worn loose and falling past her shoulders, with a thin band of small pale flowers across the top of her head. She wears a plain white cotton dress with a small collar. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-04",
+    "segment": "C1",
+    "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+    "kind": "place",
+    "outName": "Southern Africa Map With Cape Town Labelled",
+    "prompt": "draw a map shaped like @13-maps-02.png with the same style as @01-pyramid-place.png, fill South Africa with one flat pale orange colour and label it \"SOUTH AFRICA\" in plain capital letters, and write \"CAPE TOWN\" in plain capital letters at the position of Cape Town on the south-western tip of the coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-1\\13-maps-02.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", fill South Africa with one flat pale orange colour and label it \"SOUTH AFRICA\" in plain capital letters, and write \"CAPE TOWN\" in plain capital letters at the position of Cape Town on the south-western tip of the coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-04b",
+    "segment": "C1",
+    "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+    "kind": "object",
+    "outName": "Passenger Steamship With Two Funnels",
+    "prompt": "A passenger steamship of the 1910s seen from the side: a long dark hull with one row of small round portholes, a white upper deck and two tall funnels, sailing on flat calm sea. No lettering, no flags, no people, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-04c",
+    "segment": "C1",
+    "at": "Frances and her mother had recently come back to England from South Africa, and they were staying with Elsie's family.",
+    "kind": "place",
+    "outName": "Stone End Terrace House With Tall Gable Chimney",
+    "prompt": "A two-storey end-of-terrace house seen straight from the front, built of rough-faced honey-grey Yorkshire sandstone blocks in even courses, the side gable wall on the right darker and weathered. A low-pitched grey slate roof with a row of small square stone blocks under the gutter; a tall plain stone chimney stack rising from the gable end, and a shorter chimney stack with a row of clay chimney pots where the roof meets the next house. On the front: a plain dark wooden panelled door on the left with a small rectangular glass pane above it; to its right one sash window with two-over-two panes on the ground floor and a matching sash window directly above it on the first floor, each with a thick plain stone lintel and a stone sill. Only a narrow slice of the neighbouring house, in the same stone, shows at the left edge. A narrow front garden with a few shrubs and a climbing plant, behind a low stone wall. No people, no lettering, no house number, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-05",
+    "segment": "C1",
+    "at": "At the bottom of the Wrights' garden ran a little stream, what the locals call a beck.",
+    "kind": "place",
+    "outName": "Stream Ref Flat Stones Small Fall",
+    "prompt": "A small stream running over flat grey stones between two steep grassy banks, with one small waterfall about knee high, ferns and low leafy bushes along the banks and a few thin trees leaning over the water. No people, no bridge, no buildings, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-06",
+    "segment": "C1",
+    "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+    "kind": "group",
+    "outName": "Two Girls Crouching On Stream Stones",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, now seen full length from head to shoes crouching on the flat stones at the edge of the same stream as in @Stream Ref Flat Stones Small Fall and reaching down into the water, the older girl in the same bell hat and white dress with black stockings and black lace-up ankle boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, in the same flower band and white dress with white socks and black strap shoes, no fairies, no other people, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair",
+      "Stream Ref Flat Stones Small Fall"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, now seen full length from head to shoes crouching on the flat stones at the edge of the same stream as in "
+      },
+      {
+        "asset": "Stream Ref Flat Stones Small Fall"
+      },
+      {
+        "text": " and reaching down into the water, the older girl in the same bell hat and white dress with black stockings and black lace-up ankle boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, in the same flower band and white dress with white socks and black strap shoes, no fairies, no other people, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-06b",
+    "segment": "C1",
+    "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+    "kind": "object",
+    "outName": "Pair Of Soaked Lace Up Girls Boots",
+    "prompt": "A pair of small black leather lace-up ankle boots from the 1910s, soaking wet, with water dripping from them into a small puddle and brown mud splashed across the toes. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-06c",
+    "segment": "C1",
+    "at": "The girls spent hours down there, and every time they came home with soaking wet shoes and muddy clothes.",
+    "kind": "object",
+    "outName": "White Cotton Dress With Muddy Hem",
+    "prompt": "A girl's plain white cotton dress hanging from a single wooden peg, its hem wet and streaked with brown mud. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-07",
+    "segment": "C1",
+    "at": "When the grown-ups asked what they could possibly be doing down there to get so wet, the girls had an answer ready.",
+    "kind": "figure",
+    "outName": "Mother Ref Pinned Bun Brown Coat",
+    "prompt": "A woman in her early forties seen from the chest up. Dark brown hair pinned up in a neat bun at the back of her head, with a few soft waves at the temples. She wears a high-necked cream blouse under a long dark brown wool coat buttoned at the front. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-07b",
+    "segment": "C1",
+    "at": "When the grown-ups asked what they could possibly be doing down there to get so wet, the girls had an answer ready.",
+    "kind": "group",
+    "outName": "Mother Asking Two Wet Girls",
+    "prompt": "draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, now seen full length from head to shoes in the same brown coat over a long dark skirt with black boots, leaning slightly toward two girls and pointing down at their wet shoes as she asks them a question, and the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, standing side by side facing her in the same white dresses with wet boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Mother Ref Pinned Bun Brown Coat",
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same woman as in "
+      },
+      {
+        "asset": "Mother Ref Pinned Bun Brown Coat"
+      },
+      {
+        "text": ", keep her face exactly the same, now seen full length from head to shoes in the same brown coat over a long dark skirt with black boots, leaning slightly toward two girls and pointing down at their wet shoes as she asks them a question, and the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, standing side by side facing her in the same white dresses with wet boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-08",
+    "segment": "C1",
+    "at": "They were going to see the fairies.",
+    "kind": "group",
+    "outName": "Two Girls Answering Their Mother",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length from head to shoes in the same white dresses and boots, talking with their mouths open while the older girl points back over her shoulder, the younger girl plainly shorter with her head only reaching the older girl's shoulder, and the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, standing facing them in the same brown coat, long dark skirt and black boots, listening, no fairies, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair",
+      "Mother Ref Pinned Bun Brown Coat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length from head to shoes in the same white dresses and boots, talking with their mouths open while the older girl points back over her shoulder, the younger girl plainly shorter with her head only reaching the older girl's shoulder, and the same woman as in "
+      },
+      {
+        "asset": "Mother Ref Pinned Bun Brown Coat"
+      },
+      {
+        "text": ", keep her face exactly the same, standing facing them in the same brown coat, long dark skirt and black boots, listening, no fairies, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-10",
+    "segment": "C1",
+    "at": "So one day in July 1917, Elsie borrowed her father's camera.",
+    "kind": "object",
+    "outName": "Box Camera Ref Black Leather",
+    "prompt": "An old box camera from the 1910s shaped like an upright rectangular box, covered in black pebbled leather, with a short leather carrying strap on top, two small round viewfinder windows side by side near the top of the front, and one round lens with a thin metal ring in the middle of the front, a small shutter lever below it. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-10b",
+    "segment": "C1",
+    "at": "So one day in July 1917, Elsie borrowed her father's camera.",
+    "kind": "character",
+    "outName": "Older Girl Holding Box Camera",
+    "prompt": "draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exactly the same, seen from the chest up holding the same camera as in @Box Camera Ref Black Leather in both hands in front of her chest, in the same bell hat and white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Box Camera Ref Black Leather"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up holding the same camera as in "
+      },
+      {
+        "asset": "Box Camera Ref Black Leather"
+      },
+      {
+        "text": " in both hands in front of her chest, in the same bell hat and white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-11",
+    "segment": "C1",
+    "at": "Arthur Wright was a keen amateur photographer, with his own darkroom right there in the house.",
+    "kind": "figure",
+    "outName": "Father Ref Moustache Waistcoat",
+    "prompt": "A man in his forties seen from the chest up. Short dark hair parted on one side, a full dark moustache and no beard. He wears a white collarless shirt with the sleeves rolled up, under a dark buttoned waistcoat. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-11b",
+    "segment": "C1",
+    "at": "Arthur Wright was a keen amateur photographer, with his own darkroom right there in the house.",
+    "kind": "place",
+    "outName": "Darkroom Ref Red Lamp Two Trays",
+    "prompt": "A small home darkroom of the 1910s: a plain wooden bench along a wall with two shallow rectangular developing trays on it, one jug and a few glass bottles with no labels, and above them on a shelf one small lantern with a deep red glass front glowing. No people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-12",
+    "segment": "C1",
+    "at": "The girls took the camera down to the stream, and about half an hour later they came back looking triumphant.",
+    "kind": "group",
+    "outName": "Two Girls Carrying Camera Toward Stream",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length from head to shoes walking side by side toward the right, the older girl carrying the same camera as in @Box Camera Ref Black Leather in both hands, both in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, nothing else in their hands, no fairies, no paper, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair",
+      "Box Camera Ref Black Leather"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length from head to shoes walking side by side toward the right, the older girl carrying the same camera as in "
+      },
+      {
+        "asset": "Box Camera Ref Black Leather"
+      },
+      {
+        "text": " in both hands, both in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, nothing else in their hands, no fairies, no paper, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-12b",
+    "segment": "C1",
+    "at": "The girls took the camera down to the stream, and about half an hour later they came back looking triumphant.",
+    "kind": "group",
+    "outName": "Girls Handing Camera Back To Father",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length from head to shoes with big proud smiles, the older girl holding out the same camera as in @Box Camera Ref Black Leather toward the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, who stands facing them full length in the same waistcoat and rolled shirt sleeves with dark trousers and black boots, reaching out to take it, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair",
+      "Box Camera Ref Black Leather",
+      "Father Ref Moustache Waistcoat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length from head to shoes with big proud smiles, the older girl holding out the same camera as in "
+      },
+      {
+        "asset": "Box Camera Ref Black Leather"
+      },
+      {
+        "text": " toward the same man as in "
+      },
+      {
+        "asset": "Father Ref Moustache Waistcoat"
+      },
+      {
+        "text": ", keep his face exactly the same, who stands facing them full length in the same waistcoat and rolled shirt sleeves with dark trousers and black boots, reaching out to take it, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-13",
+    "segment": "C1",
+    "at": "That evening, Arthur developed the glass plate himself.",
+    "kind": "figure",
+    "outName": "Father Rocking Tray In Red Lit Darkroom",
+    "prompt": "draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, seen from the chest up standing at the bench of the same darkroom as in @Darkroom Ref Red Lamp Two Trays, gently tilting one developing tray with both hands and looking down into it, the red lantern glowing on the shelf, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Father Ref Moustache Waistcoat",
+      "Darkroom Ref Red Lamp Two Trays"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Father Ref Moustache Waistcoat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up standing at the bench of the same darkroom as in "
+      },
+      {
+        "asset": "Darkroom Ref Red Lamp Two Trays"
+      },
+      {
+        "text": ", gently tilting one developing tray with both hands and looking down into it, the red lantern glowing on the shelf, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-14",
+    "segment": "C1",
+    "at": "As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera.",
+    "kind": "object",
+    "outName": "Glass Plate With Faint Image In Tray",
+    "prompt": "A shallow rectangular developing tray seen from above, filled with liquid, holding one small square glass photographic plate on which a faint pale image is slowly appearing: a young girl resting her chin on her hand and four tiny winged figures in front of her face. A soft red glow over everything. No lettering, no people outside the image. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-14b",
+    "segment": "C1",
+    "at": "As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera.",
+    "kind": "character",
+    "outName": "Girl With Chin On Hand And Four Tiny Fairies",
+    "prompt": "draw the same girl as in @Young Girl Ref Flower Band Long Hair, keep her face exactly the same, seen from the chest up sitting behind a low leafy bush with her chin resting on her hand and looking straight at the viewer, while right in front of her face exactly four tiny winged fairies in long pale flowing dresses dance in a row, each fairy only as tall as her hand, one of them playing a thin pipe, and a small waterfall faint behind her on the left, she is the only person in the picture and the four fairies are small fairy figures that must all be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Young Girl Ref Flower Band Long Hair"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up sitting behind a low leafy bush with her chin resting on her hand and looking straight at the viewer, while right in front of her face exactly four tiny winged fairies in long pale flowing dresses dance in a row, each fairy only as tall as her hand, one of them playing a thin pipe, and a small waterfall faint behind her on the left, she is the only person in the picture and the four fairies are small fairy figures that must all be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-17",
+    "segment": "C1",
+    "at": "He knew his daughter was a gifted artist, and Elsie had spent some time working in a photographer's studio.",
+    "kind": "character",
+    "outName": "Older Girl Painting With Paint Box",
+    "prompt": "draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table painting with a small brush, a tin box of watercolour paints in front of her and a sheet of paper propped up facing away from the viewer so that nothing painted on it can be seen, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": ", keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table painting with a small brush, a tin box of watercolour paints in front of her and a sheet of paper propped up facing away from the viewer so that nothing painted on it can be seen, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-17b",
+    "segment": "C1",
+    "at": "He knew his daughter was a gifted artist, and Elsie had spent some time working in a photographer's studio.",
+    "kind": "character",
+    "outName": "Older Girl Beside Big Studio Camera",
+    "prompt": "draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exactly the same, seen full length from head to shoes in the same bell hat and white dress with black stockings and black lace-up ankle boots, standing beside a large wooden studio camera of the 1910s with a black bellows on a tall wooden tripod, with a painted garden backdrop and one plain wooden chair behind her, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": ", keep her face exactly the same, seen full length from head to shoes in the same bell hat and white dress with black stockings and black lace-up ankle boots, standing beside a large wooden studio camera of the 1910s with a black bellows on a tall wooden tripod, with a painted garden backdrop and one plain wooden chair behind her, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-18",
+    "segment": "C1",
+    "at": "He said the figures were nothing but cardboard cutouts and called the whole thing a prank.",
+    "kind": "figure",
+    "outName": "Father Holding Print And Speaking",
+    "prompt": "draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, seen from the chest up holding up one small photographic print with its plain back turned toward the viewer, talking with his mouth open, in the same waistcoat and rolled shirt sleeves, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Father Ref Moustache Waistcoat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Father Ref Moustache Waistcoat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up holding up one small photographic print with its plain back turned toward the viewer, talking with his mouth open, in the same waistcoat and rolled shirt sleeves, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-20",
+    "segment": "C1",
+    "at": "This one showed Elsie sitting on the lawn, holding out her hand toward a gnome about one foot tall.",
+    "kind": "character",
+    "outName": "Older Girl On Lawn Reaching To Small Gnome",
+    "prompt": "draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exactly the same, seen full length sitting sideways on a grass lawn in the same bell hat and white dress, holding out one hand toward a tiny gnome standing on the grass beside her, the gnome no taller than her knee, with a pointed cap, two butterfly-like wings and thin legs, she is the only person in the picture and the gnome is a small fairy creature that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": ", keep her face exactly the same, seen full length sitting sideways on a grass lawn in the same bell hat and white dress, holding out one hand toward a tiny gnome standing on the grass beside her, the gnome no taller than her knee, with a pointed cap, two butterfly-like wings and thin legs, she is the only person in the picture and the gnome is a small fairy creature that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-21",
+    "segment": "C1",
+    "at": "After that, Arthur refused to lend them the camera at all.",
+    "kind": "group",
+    "outName": "Father Keeping Camera From Two Girls",
+    "prompt": "draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, seen full length in the same waistcoat, rolled shirt sleeves, dark trousers and black boots, holding the same camera as in @Box Camera Ref Black Leather close against his chest and shaking his head as he speaks, and the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, standing facing him full length in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Father Ref Moustache Waistcoat",
+      "Box Camera Ref Black Leather",
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Father Ref Moustache Waistcoat"
+      },
+      {
+        "text": ", keep his face exactly the same, seen full length in the same waistcoat, rolled shirt sleeves, dark trousers and black boots, holding the same camera as in "
+      },
+      {
+        "asset": "Box Camera Ref Black Leather"
+      },
+      {
+        "text": " close against his chest and shaking his head as he speaks, and the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, standing facing him full length in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-22",
+    "segment": "C1",
+    "at": "His wife Polly, though, believed the photographs were real.",
+    "kind": "figure",
+    "outName": "Mother Looking At Two Small Prints",
+    "prompt": "draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, seen from the chest up holding two small sepia photographic prints in her hands and looking down at them, in the same blouse and brown coat, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Mother Ref Pinned Bun Brown Coat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same woman as in "
+      },
+      {
+        "asset": "Mother Ref Pinned Bun Brown Coat"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up holding two small sepia photographic prints in her hands and looking down at them, in the same blouse and brown coat, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-23",
+    "segment": "C1",
+    "at": "Near the end of 1918, Frances wrote to an old friend back in Cape Town.",
+    "kind": "character",
+    "outName": "Young Girl Writing A Letter At Table",
+    "prompt": "draw the same girl as in @Young Girl Ref Flower Band Long Hair, keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the sheet of paper showing only a few thin grey lines standing for writing and no letters, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Young Girl Ref Flower Band Long Hair"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the sheet of paper showing only a few thin grey lines standing for writing and no letters, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-26",
+    "segment": "C1",
+    "at": "In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people deeply interested in the spirit world.",
+    "kind": "figure",
+    "outName": "Lecturer Ref Bald White Fringe",
+    "prompt": "A man of about sixty seen from the chest up. A shiny bald head with only a fringe of white hair around the sides and back, clean-shaven. He wears a long black frock coat, a white wing collar and a black tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-26b",
+    "segment": "C1",
+    "at": "In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people deeply interested in the spirit world.",
+    "kind": "group",
+    "outName": "Lecturer At Lectern Before Small Audience",
+    "prompt": "draw the same man as in @Lecturer Ref Bald White Fringe, keep his face exactly the same, seen full length in the same frock coat with dark trousers and black shoes, standing behind a plain wooden lectern with one hand raised as he speaks, and in front of him exactly five listeners of 1919 seated on plain wooden chairs facing him, three women in long coats and wide hats and two men in dark suits, in the same drawing style as @03-five-men-group.png, no banners, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Lecturer Ref Bald White Fringe"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Lecturer Ref Bald White Fringe"
+      },
+      {
+        "text": ", keep his face exactly the same, seen full length in the same frock coat with dark trousers and black shoes, standing behind a plain wooden lectern with one hand raised as he speaks, and in front of him exactly five listeners of 1919 seated on plain wooden chairs facing him, three women in long coats and wide hats and two men in dark suits, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\03-five-men-group.png"
+      },
+      {
+        "text": ", no banners, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-28",
+    "segment": "C1",
+    "at": "When the talk was over, Polly showed the speaker the 2 photographs.",
+    "kind": "group",
+    "outName": "Mother Showing Prints To Lecturer",
+    "prompt": "draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, seen full length in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, holding out two small sepia photographic prints toward the same man as in @Lecturer Ref Bald White Fringe, keep his face exactly the same, who stands facing her full length in the same frock coat and bends slightly to look at them, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Mother Ref Pinned Bun Brown Coat",
+      "Lecturer Ref Bald White Fringe"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same woman as in "
+      },
+      {
+        "asset": "Mother Ref Pinned Bun Brown Coat"
+      },
+      {
+        "text": ", keep her face exactly the same, seen full length in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, holding out two small sepia photographic prints toward the same man as in "
+      },
+      {
+        "asset": "Lecturer Ref Bald White Fringe"
+      },
+      {
+        "text": ", keep his face exactly the same, who stands facing her full length in the same frock coat and bends slightly to look at them, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-29",
+    "segment": "C1",
+    "at": "They were passed around the society until they reached Edward Gardner, one of its leading members.",
+    "kind": "group",
+    "outName": "Hands Passing Small Prints Along A Row",
+    "prompt": "Three people of 1919 sitting in a row on plain wooden chairs, two men in dark suits and one woman in a long coat and a wide hat, the one in the middle passing one small sepia photograph into the hand of the person on the right, the others watching, seen full length from head to shoes. No lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "C1-29b",
+    "segment": "C1",
+    "at": "They were passed around the society until they reached Edward Gardner, one of its leading members.",
+    "kind": "character",
+    "outName": "Society Member Ref Dark Suit",
+    "prompt": "A lean man of about fifty seen from the chest up. A narrow face with a straight nose. Short greying hair brushed up and back from his forehead, and a short neatly trimmed beard and moustache streaked with grey. He wears a dark suit jacket, a white shirt and a dark bow tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-30",
+    "segment": "C1",
+    "at": "Gardner became convinced that for the very first time in history, fairies had appeared clearly enough to be captured on a photographic plate.",
+    "kind": "character",
+    "outName": "Society Member Holding Glass Plate To Light",
+    "prompt": "draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the same, seen from the chest up holding one small square glass photographic plate up at eye level and looking at it, in the same suit, no fairies, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Society Member Ref Dark Suit"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Society Member Ref Dark Suit"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up holding one small square glass photographic plate up at eye level and looking at it, in the same suit, no fairies, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-31",
+    "segment": "C1",
+    "at": "Gardner took the original plates to a photography expert named Harold Snelling.",
+    "kind": "figure",
+    "outName": "Photo Expert Ref Round Spectacles",
+    "prompt": "A man in his fifties seen from the chest up. Grey hair combed flat and parted in the middle, clean-shaven, small round wire-rimmed spectacles. He wears a dark three-piece suit, a high white collar and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-31b",
+    "segment": "C1",
+    "at": "Gardner took the original plates to a photography expert named Harold Snelling.",
+    "kind": "group",
+    "outName": "Society Member Handing Plates To Expert",
+    "prompt": "draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the same, seen full length in the same suit with dark trousers and black shoes, handing two small square glass photographic plates to the same man as in @Photo Expert Ref Round Spectacles, keep his face and round spectacles exactly the same, who stands facing him full length in the same three-piece suit and reaches out to take them, do not mix their features, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Society Member Ref Dark Suit",
+      "Photo Expert Ref Round Spectacles"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Society Member Ref Dark Suit"
+      },
+      {
+        "text": ", keep his face exactly the same, seen full length in the same suit with dark trousers and black shoes, handing two small square glass photographic plates to the same man as in "
+      },
+      {
+        "asset": "Photo Expert Ref Round Spectacles"
+      },
+      {
+        "text": ", keep his face and round spectacles exactly the same, who stands facing him full length in the same three-piece suit and reaches out to take them, do not mix their features, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-32",
+    "segment": "C1",
+    "at": "After studying them closely, Snelling declared that both negatives were genuine, with no sign of studio trickery using paper or card.",
+    "kind": "figure",
+    "outName": "Expert Studying Plate Through Loupe",
+    "prompt": "draw the same man as in @Photo Expert Ref Round Spectacles, keep his face exactly the same, seen from the chest up bending over one small glass photographic plate laid on a glowing light box, looking at it through a small magnifying loupe held to one eye, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Photo Expert Ref Round Spectacles"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Photo Expert Ref Round Spectacles"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up bending over one small glass photographic plate laid on a glowing light box, looking at it through a small magnifying loupe held to one eye, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-33",
+    "segment": "C1",
+    "at": "These were straightforward photographs, he said, of whatever had been in front of the camera at the time.",
+    "kind": "figure",
+    "outName": "Expert Holding Plate And Speaking",
+    "prompt": "draw the same man as in @Photo Expert Ref Round Spectacles, keep his face exactly the same, seen from the chest up holding one small glass photographic plate in one hand and raising the other hand as he talks with his mouth open, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Photo Expert Ref Round Spectacles"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Photo Expert Ref Round Spectacles"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up holding one small glass photographic plate in one hand and raising the other hand as he talks with his mouth open, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-34",
+    "segment": "C1",
+    "at": "The Kodak company examined them too.",
+    "kind": "figure",
+    "outName": "Technician In White Coat Examining Print",
+    "prompt": "A laboratory technician of the 1920s, a man of about thirty with short brown hair, clean-shaven, in a long white work coat, seen from the chest up holding one small photographic print under an old desk lamp and examining it closely. No logos, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-35",
+    "segment": "C1",
+    "at": "Kodak couldn't find any sign of faking either, but it refused to certify that they were real pictures of fairies.",
+    "kind": "object",
+    "outName": "Blank Certificate Paper With Empty Seal",
+    "prompt": "An old-fashioned certificate on cream paper with a thin decorative border, its surface completely BLANK with absolutely no writing, no letters and no signature, and one plain round red wax seal with no design in the lower corner. No lettering anywhere. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-36",
+    "segment": "C1",
+    "at": "The next person to hear about the photographs was Sir Arthur Conan Doyle, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic.",
+    "kind": "character",
+    "outName": "Author Ref Walrus Moustache",
+    "prompt": "A heavy-set man of about sixty seen from the chest up. A broad full face with a heavy jaw. Short grey hair, thinning and receding at the temples, combed flat to the sides. A very large thick grey walrus moustache whose ends curl slightly upward, and no beard. He wears a dark suit jacket over a white shirt with a high stiff white collar and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-36b",
+    "segment": "C1",
+    "at": "The next person to hear about the photographs was Sir Arthur Conan Doyle, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic.",
+    "kind": "object",
+    "outName": "Deerstalker Cap Beside Curved Pipe",
+    "prompt": "A checked cloth deerstalker cap with one peak at the front and one at the back and its ear flaps tied up on top, with one curved wooden tobacco pipe lying beside it. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-38",
+    "segment": "C1",
+    "at": "The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment.",
+    "kind": "object",
+    "outName": "Magazine Ref Plain Blue Cover",
+    "prompt": "A thick magazine of the 1920s lying at a slight angle, with a plain pale blue paper cover and one completely blank white rectangle near the top where a title would be. No lettering at all, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-38b",
+    "segment": "C1",
+    "at": "The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment.",
+    "kind": "character",
+    "outName": "Author Holding Two Small Photographs",
+    "prompt": "draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the same, seen from the chest up holding two small sepia photographic prints in his hands and looking down at them, in the same dark suit and high white collar, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Author Ref Walrus Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Author Ref Walrus Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up holding two small sepia photographic prints in his hands and looking down at them, in the same dark suit and high white collar, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-39",
+    "segment": "C1",
+    "at": "In the summer of 1920, Gardner traveled to Cottingley himself.",
+    "kind": "character",
+    "outName": "Society Member Walking With Leather Case",
+    "prompt": "draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the same, now seen full length walking toward the right in the same suit with dark trousers and black shoes and a dark felt hat, carrying one small brown leather case in one hand, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Society Member Ref Dark Suit"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Society Member Ref Dark Suit"
+      },
+      {
+        "text": ", keep his face exactly the same, now seen full length walking toward the right in the same suit with dark trousers and black shoes and a dark felt hat, carrying one small brown leather case in one hand, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-40",
+    "segment": "C1",
+    "at": "He brought 2 new cameras and 24 photographic plates that had been secretly marked, so that nobody could swap them.",
+    "kind": "object",
+    "outName": "Folding Cameras Ref Two Bellows",
+    "prompt": "Two identical folding plate cameras from about 1920 standing side by side, each opened out: a black pebbled-leather body with a leather strap on top, its front cover dropped down flat to form a metal bed, a black pleated bellows stretched out along the bed, and a small black lens board at the front holding one round lens and one tiny viewfinder. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-40b",
+    "segment": "C1",
+    "at": "He brought 2 new cameras and 24 photographic plates that had been secretly marked, so that nobody could swap them.",
+    "kind": "object",
+    "outName": "Open Box Of Glass Photographic Plates",
+    "prompt": "One open shallow cardboard box with its lid set aside, packed with a neat upright stack of thin square glass photographic plates. No labels, no lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-41",
+    "segment": "C1",
+    "at": "Frances had moved away by then, but she was invited back to stay for the school holidays.",
+    "kind": "character",
+    "outName": "Teen Girl Ref White Hair Bow",
+    "prompt": "A girl of about thirteen seen from the chest up. A round face. Long light brown hair falling in loose ringlets past her shoulders, with a large white ribbon bow tied at the back of her head. She wears a loose white cotton blouse with a wide soft collar. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-42",
+    "segment": "C1",
+    "at": "The girls explained that the fairies wouldn't come out if anyone was watching.",
+    "kind": "character",
+    "outName": "Young Woman Ref Dark Curls Side Fringe",
+    "prompt": "A young woman of about nineteen seen from the chest up. An oval face. Long thick dark brown hair in loose curls falling past her shoulders, with a curled fringe swept to one side of her forehead. She wears a pale loose blouse printed with a faint swirling pattern. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-42b",
+    "segment": "C1",
+    "at": "The girls explained that the fairies wouldn't come out if anyone was watching.",
+    "kind": "group",
+    "outName": "Two Girls Explaining To Visitor In Suit",
+    "prompt": "draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the same girl as in @Teen Girl Ref White Hair Bow, keep both faces exactly the same, seen full length side by side talking with their mouths open, the young woman raising one hand, the young woman in the same patterned blouse with a long dark skirt, dark stockings and black shoes, the girl a little shorter in the same white blouse with a dark pleated skirt to mid-calf, white stockings and black shoes, and the same man as in @Society Member Ref Dark Suit, keep his face exactly the same, standing facing them full length in the same suit, listening, no fairies, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Young Woman Ref Dark Curls Side Fringe",
+      "Teen Girl Ref White Hair Bow",
+      "Society Member Ref Dark Suit"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same young woman as in "
+      },
+      {
+        "asset": "Young Woman Ref Dark Curls Side Fringe"
+      },
+      {
+        "text": " and the same girl as in "
+      },
+      {
+        "asset": "Teen Girl Ref White Hair Bow"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length side by side talking with their mouths open, the young woman raising one hand, the young woman in the same patterned blouse with a long dark skirt, dark stockings and black shoes, the girl a little shorter in the same white blouse with a dark pleated skirt to mid-calf, white stockings and black shoes, and the same man as in "
+      },
+      {
+        "asset": "Society Member Ref Dark Suit"
+      },
+      {
+        "text": ", keep his face exactly the same, standing facing them full length in the same suit, listening, no fairies, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-43",
+    "segment": "C1",
+    "at": "It rained for days on end, and the weather didn't clear until August 19th.",
+    "kind": "place",
+    "outName": "Same Stream Under Heavy Rain",
+    "prompt": "draw the same stream as in @Stream Ref Flat Stones Small Fall from exactly the same viewpoint, now under heavy rain, with straight slanting streaks of rain across the whole picture, the water surface broken by raindrops and a flat grey sky above, no people, no lettering, plain white background",
+    "refNames": [
+      "Stream Ref Flat Stones Small Fall"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same stream as in "
+      },
+      {
+        "asset": "Stream Ref Flat Stones Small Fall"
+      },
+      {
+        "text": " from exactly the same viewpoint, now under heavy rain, with straight slanting streaks of rain across the whole picture, the water surface broken by raindrops and a flat grey sky above, no people, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-44",
+    "segment": "C1",
+    "at": "That day, Polly went off to visit one of her sisters, leaving the 2 girls at home with the cameras.",
+    "kind": "figure",
+    "outName": "Mother Walking Off With Travel Bag",
+    "prompt": "draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, now seen full length walking toward the left in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, carrying one small travel bag, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Mother Ref Pinned Bun Brown Coat"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same woman as in "
+      },
+      {
+        "asset": "Mother Ref Pinned Bun Brown Coat"
+      },
+      {
+        "text": ", keep her face exactly the same, now seen full length walking toward the left in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, carrying one small travel bag, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-44b",
+    "segment": "C1",
+    "at": "That day, Polly went off to visit one of her sisters, leaving the 2 girls at home with the cameras.",
+    "kind": "group",
+    "outName": "Two Girls Each Holding A Folding Camera",
+    "prompt": "draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the same girl as in @Teen Girl Ref White Hair Bow, keep both faces exactly the same, seen full length standing side by side in the same clothes with long skirts and black shoes, each holding one of the same cameras as in @Folding Cameras Ref Two Bellows in both hands, the girl a little shorter, no fairies, no paper, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Young Woman Ref Dark Curls Side Fringe",
+      "Teen Girl Ref White Hair Bow",
+      "Folding Cameras Ref Two Bellows"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same young woman as in "
+      },
+      {
+        "asset": "Young Woman Ref Dark Curls Side Fringe"
+      },
+      {
+        "text": " and the same girl as in "
+      },
+      {
+        "asset": "Teen Girl Ref White Hair Bow"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length standing side by side in the same clothes with long skirts and black shoes, each holding one of the same cameras as in "
+      },
+      {
+        "asset": "Folding Cameras Ref Two Bellows"
+      },
+      {
+        "text": " in both hands, the girl a little shorter, no fairies, no paper, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-46",
+    "segment": "C1",
+    "at": "In one, a fairy leaps up right beside Frances's nose.",
+    "kind": "character",
+    "outName": "Teen Girl In Profile With Leaping Fairy",
+    "prompt": "draw the same girl as in @Teen Girl Ref White Hair Bow, keep her face and white hair bow exactly the same, seen from the chest up in profile among leafy branches, while one tiny winged fairy with a slim body and outstretched arms leaps up in the air right beside her nose, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Teen Girl Ref White Hair Bow"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Teen Girl Ref White Hair Bow"
+      },
+      {
+        "text": ", keep her face and white hair bow exactly the same, seen from the chest up in profile among leafy branches, while one tiny winged fairy with a slim body and outstretched arms leaps up in the air right beside her nose, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-47",
+    "segment": "C1",
+    "at": "In another, a fairy stands on a branch, offering Elsie a little bunch of harebells.",
+    "kind": "character",
+    "outName": "Young Woman Offered Flowers By Tiny Fairy",
+    "prompt": "draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe, keep her face exactly the same, seen from the chest up with her head tilted slightly down, while on a bare branch in front of her one tiny winged fairy with large pale wings and a long dress stands on tiptoe holding out a small bunch of pale blue harebell flowers toward her, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Young Woman Ref Dark Curls Side Fringe"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same young woman as in "
+      },
+      {
+        "asset": "Young Woman Ref Dark Curls Side Fringe"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up with her head tilted slightly down, while on a bare branch in front of her one tiny winged fairy with large pale wings and a long dress stands on tiptoe holding out a small bunch of pale blue harebell flowers toward her, the fairy only as tall as her hand, she is the only person in the picture and the fairy is a small fairy figure that must be drawn, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-47b",
+    "segment": "C1",
+    "at": "In another, a fairy stands on a branch, offering Elsie a little bunch of harebells.",
+    "kind": "object",
+    "outName": "Small Bunch Of Pale Blue Bell Flowers",
+    "prompt": "A small bunch of harebells: thin green stems each ending in one drooping pale blue bell-shaped flower, tied together at the bottom. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-48",
+    "segment": "C1",
+    "at": "Just pale, misty fairy shapes among the grass.",
+    "kind": "place",
+    "outName": "Pale Misty Winged Shapes In Tall Grass",
+    "prompt": "Tall grass and small wildflowers seen close up, and among the stalks three pale, blurry, see-through winged shapes in long draped robes, drawn faint and misty like mist. No girls, no clear people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-51",
+    "segment": "C1",
+    "at": "Doyle was away on a lecture tour in Australia at the time.",
+    "kind": "place",
+    "outName": "Australia Map With Melbourne Labelled",
+    "prompt": "draw a map shaped like @13-maps-03.png with the same style as @01-pyramid-place.png, fill Australia with one flat pale yellow colour and label it \"AUSTRALIA\" in plain capital letters, and write \"MELBOURNE\" in plain capital letters at the position of Melbourne on the south-eastern coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-1\\13-maps-03.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", fill Australia with one flat pale yellow colour and label it \"AUSTRALIA\" in plain capital letters, and write \"MELBOURNE\" in plain capital letters at the position of Melbourne on the south-eastern coast, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-51b",
+    "segment": "C1",
+    "at": "Doyle was away on a lecture tour in Australia at the time.",
+    "kind": "character",
+    "outName": "Author Speaking At A Lectern",
+    "prompt": "draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the same, seen full length in the same dark suit with dark trousers and black shoes, standing behind a plain wooden lectern with one hand resting on it, talking with his mouth open, no audience, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Author Ref Walrus Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Author Ref Walrus Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen full length in the same dark suit with dark trousers and black shoes, standing behind a plain wooden lectern with one hand resting on it, talking with his mouth open, no audience, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-52",
+    "segment": "C1",
+    "at": "When he heard the news, he sent a telegram from Melbourne saying his heart was gladdened by 3 wonderful pictures that confirmed everything they had published.",
+    "kind": "object",
+    "outName": "Blank Telegram Form Paper",
+    "prompt": "A small rectangular telegram form of about 1920 on pale yellow paper, with a few narrow blank paper strips pasted across it and a few thin grey lines standing for text. Completely BLANK: absolutely no letters, no words and no numbers anywhere. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-53",
+    "segment": "C1",
+    "at": "In December 1920, Doyle's article, \"Fairies Photographed,\" appeared in the Christmas issue of The Strand, along with the 2 photographs from 1917.",
+    "kind": "object",
+    "outName": "Same Magazine Lying Open On Two Photos",
+    "prompt": "draw the same magazine as in @Magazine Ref Plain Blue Cover, now lying open flat, each of the two open pages showing one small sepia photograph in a thin frame, one of a young girl with tiny winged figures and one of a girl sitting beside a small gnome, surrounded by thin grey lines standing for columns of text, absolutely no letters and no words, no people outside the pictures, plain white background",
+    "refNames": [
+      "Magazine Ref Plain Blue Cover"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same magazine as in "
+      },
+      {
+        "asset": "Magazine Ref Plain Blue Cover"
+      },
+      {
+        "text": ", now lying open flat, each of the two open pages showing one small sepia photograph in a thin frame, one of a young girl with tiny winged figures and one of a girl sitting beside a small gnome, surrounded by thin grey lines standing for columns of text, absolutely no letters and no words, no people outside the pictures, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-56",
+    "segment": "C1",
+    "at": "Doyle wrote that once people accepted that fairies were real, it would jolt the heavy, materialistic mind of the 20th century out of its ruts.",
+    "kind": "character",
+    "outName": "Author Writing At His Desk",
+    "prompt": "draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the same, seen from the chest up sitting at a wooden desk writing on a sheet of paper with a pen, the paper showing only a few thin grey lines and no letters, in the same dark suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Author Ref Walrus Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Author Ref Walrus Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the chest up sitting at a wooden desk writing on a sheet of paper with a pen, the paper showing only a few thin grey lines and no letters, in the same dark suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-57",
+    "segment": "C1",
+    "at": "In 1922, he published a whole book on the subject, called The Coming of the Fairies.",
+    "kind": "object",
+    "outName": "Closed Hardback Book With Plain Cloth Cover",
+    "prompt": "One closed hardback book of the 1920s standing upright, with a plain dark moss-green cloth cover and spine and nothing printed or stamped on it. No lettering, no pictures, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-58",
+    "segment": "C1",
+    "at": "The press was split.",
+    "kind": "object",
+    "outName": "Stack Of Folded Newspapers Blank Columns",
+    "prompt": "A stack of folded newspapers of the 1920s, the top page showing one large blank rectangle where a photograph would be and EXACTLY FOUR thin grey horizontal lines standing for columns of text. No headlines, no letters, no words anywhere. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-61",
+    "segment": "C1",
+    "at": "In the summer of 1921, Gardner came back one more time, bringing a clairvoyant with him.",
+    "kind": "figure",
+    "outName": "Clairvoyant Ref Grey Tweed Jacket",
+    "prompt": "A slim man in his mid-thirties seen from the chest up. Dark hair combed straight back from a high forehead, clean-shaven. He wears a grey tweed jacket over a white shirt and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-62",
+    "segment": "C1",
+    "at": "The clairvoyant said he could see fairies everywhere.",
+    "kind": "group",
+    "outName": "Clairvoyant Pointing While Two Girls Watch",
+    "prompt": "draw the same man as in @Clairvoyant Ref Grey Tweed Jacket, keep his face exactly the same, seen full length in the same tweed jacket with grey trousers and brown shoes, pointing at a leafy bush and talking with his mouth open, and the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the same girl as in @Teen Girl Ref White Hair Bow, keep both faces exactly the same, standing beside him full length in the same clothes with long skirts and black shoes, looking where he points, absolutely no fairies anywhere and nothing in the bush, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Clairvoyant Ref Grey Tweed Jacket",
+      "Young Woman Ref Dark Curls Side Fringe",
+      "Teen Girl Ref White Hair Bow"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Clairvoyant Ref Grey Tweed Jacket"
+      },
+      {
+        "text": ", keep his face exactly the same, seen full length in the same tweed jacket with grey trousers and brown shoes, pointing at a leafy bush and talking with his mouth open, and the same young woman as in "
+      },
+      {
+        "asset": "Young Woman Ref Dark Curls Side Fringe"
+      },
+      {
+        "text": " and the same girl as in "
+      },
+      {
+        "asset": "Teen Girl Ref White Hair Bow"
+      },
+      {
+        "text": ", keep both faces exactly the same, standing beside him full length in the same clothes with long skirts and black shoes, looking where he points, absolutely no fairies anywhere and nothing in the bush, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-68",
+    "segment": "C1",
+    "at": "In 1966, a reporter tracked Elsie down.",
+    "kind": "figure",
+    "outName": "Elderly Woman Ref White Curls Cardigan",
+    "prompt": "An elderly woman of about seventy-five seen from the chest up. An oval face. Short white hair set in soft curls close to her head. She wears a pale blue cardigan over a white blouse with a small round collar. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-68b",
+    "segment": "C1",
+    "at": "In 1966, a reporter tracked Elsie down.",
+    "kind": "group",
+    "outName": "Elderly Woman Talking To Reporter With Notebook",
+    "prompt": "draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan, keep her face exactly the same, seen full length sitting in an armchair in the same cardigan with a grey skirt and flat shoes, talking with her mouth open and one hand slightly raised, and facing her a reporter of the 1960s, a man of about thirty with short brown hair, clean-shaven, in a grey suit and a thin dark tie, holding a small notebook and a pen, in the same drawing style as @02-doctor-figure.png, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Elderly Woman Ref White Curls Cardigan"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Elderly Woman Ref White Curls Cardigan"
+      },
+      {
+        "text": ", keep her face exactly the same, seen full length sitting in an armchair in the same cardigan with a grey skirt and flat shoes, talking with her mouth open and one hand slightly raised, and facing her a reporter of the 1960s, a man of about thirty with short brown hair, clean-shaven, in a grey suit and a thin dark tie, holding a small notebook and a pen, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-70",
+    "segment": "C1",
+    "at": "In 1976, on television, both women agreed that a rational person doesn't see fairies.",
+    "kind": "figure",
+    "outName": "Old Lady Ref Grey Bob Green Jumper",
+    "prompt": "An elderly woman of about seventy seen from the chest up. A round face. Grey hair cut in a short straight bob with a side parting. She wears a dark green wool jumper and a string of small pearls at her neck. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C1-70b",
+    "segment": "C1",
+    "at": "In 1976, on television, both women agreed that a rational person doesn't see fairies.",
+    "kind": "group",
+    "outName": "Two Elderly Women On Studio Sofa Before Camera",
+    "prompt": "draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan and the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep both faces and hair exactly the same and do not mix their features, seen full length sitting side by side on a plain television studio sofa in the same clothes with skirts and flat shoes, and one large 1970s television studio camera on a wheeled stand facing them from the right, no logos, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Elderly Woman Ref White Curls Cardigan",
+      "Old Lady Ref Grey Bob Green Jumper"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Elderly Woman Ref White Curls Cardigan"
+      },
+      {
+        "text": " and the same elderly woman as in "
+      },
+      {
+        "asset": "Old Lady Ref Grey Bob Green Jumper"
+      },
+      {
+        "text": ", keep both faces and hair exactly the same and do not mix their features, seen full length sitting side by side on a plain television studio sofa in the same clothes with skirts and flat shoes, and one large 1970s television studio camera on a wheeled stand facing them from the right, no logos, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-72",
+    "segment": "C1",
+    "at": "Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert went back over them from the very beginning.",
+    "kind": "figure",
+    "outName": "Man At Old Computer Screen With Grainy Photo",
+    "prompt": "draw a man of about thirty-five with a short brown beard and thick-rimmed glasses, in a brown cardigan, seen from the chest up sitting at a late-1970s computer terminal with a bulky curved screen and a separate keyboard, the screen showing an enlarged grainy picture of a young girl with tiny winged figures, in the same drawing style as @02-doctor-figure.png, no letters on the screen, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a man of about thirty-five with a short brown beard and thick-rimmed glasses, in a brown cardigan, seen from the chest up sitting at a late-1970s computer terminal with a bulky curved screen and a separate keyboard, the screen showing an enlarged grainy picture of a young girl with tiny winged figures, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", no letters on the screen, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-72b",
+    "segment": "C1",
+    "at": "Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert went back over them from the very beginning.",
+    "kind": "figure",
+    "outName": "Grey Bearded Expert Over Prints With Loupe",
+    "prompt": "draw a man of about sixty with grey hair and a short grey beard, in a brown tweed jacket, seen from the chest up bending over a table spread with a few small sepia photographs and looking at them through a small magnifying loupe held to one eye, in the same drawing style as @02-doctor-figure.png, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a man of about sixty with grey hair and a short grey beard, in a brown tweed jacket, seen from the chest up bending over a table spread with a few small sepia photographs and looking at them through a small magnifying loupe held to one eye, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-75",
+    "segment": "C1",
+    "at": "In 1983, in a magazine called The Unexplained, the 2 elderly cousins finally admitted it.",
+    "kind": "object",
+    "outName": "Glossy Magazine With Dark Blank Cover",
+    "prompt": "One thin glossy magazine of the early 1980s lying at a slight angle, with a dark cover and one large blank picture area, completely BLANK with no letters and no words. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-75b",
+    "segment": "C1",
+    "at": "In 1983, in a magazine called The Unexplained, the 2 elderly cousins finally admitted it.",
+    "kind": "group",
+    "outName": "Two Elderly Women Talking To Interviewer",
+    "prompt": "draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan and the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep both faces and hair exactly the same and do not mix their features, seen full length sitting on two chairs in the same clothes with skirts and flat shoes, both talking, and facing them an interviewer of the early 1980s, a man of about forty with dark hair in a plain jumper, holding a small cassette tape recorder toward them, in the same drawing style as @02-doctor-figure.png, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Elderly Woman Ref White Curls Cardigan",
+      "Old Lady Ref Grey Bob Green Jumper"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Elderly Woman Ref White Curls Cardigan"
+      },
+      {
+        "text": " and the same elderly woman as in "
+      },
+      {
+        "asset": "Old Lady Ref Grey Bob Green Jumper"
+      },
+      {
+        "text": ", keep both faces and hair exactly the same and do not mix their features, seen full length sitting on two chairs in the same clothes with skirts and flat shoes, both talking, and facing them an interviewer of the early 1980s, a man of about forty with dark hair in a plain jumper, holding a small cassette tape recorder toward them, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-76",
+    "segment": "C1",
+    "at": "Elsie had drawn the fairies herself.",
+    "kind": "character",
+    "outName": "Older Girl Drawing A Winged Dancer",
+    "prompt": "draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table drawing with a pencil, a sheet of card in front of her turned toward the viewer showing a drawing of a small dancing girl in a long flowing dress with a pair of butterfly wings, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same girl as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": ", keep her face and her long dark hair exactly the same but without the hat, seen from the chest up sitting at a table drawing with a pencil, a sheet of card in front of her turned toward the viewer showing a drawing of a small dancing girl in a long flowing dress with a pair of butterfly wings, in the same white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-77",
+    "segment": "C1",
+    "at": "She copied the figures of dancing girls from a popular children's book of the time, Princess Mary's Gift Book, changed a few details, and added wings.",
+    "kind": "object",
+    "outName": "Open Picture Book With Three Dancing Girls",
+    "prompt": "An old picture book lying open flat, the right-hand page showing a black ink line drawing of three barefoot girls dancing in long flowing dresses and holding one long floating scarf between them, the left-hand page blank. No wings on the girls, no lettering anywhere. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-78",
+    "segment": "C1",
+    "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+    "kind": "group",
+    "outName": "Two Girls Cutting Paper Figures With Scissors",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, the older girl without her hat, seen from the waist up sitting side by side at a table, the older girl cutting around a small drawn winged dancing figure on thin card with a pair of scissors and the younger girl holding up one figure already cut out, the younger girl plainly smaller, in the same white dresses, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, the older girl without her hat, seen from the waist up sitting side by side at a table, the older girl cutting around a small drawn winged dancing figure on thin card with a pair of scissors and the younger girl holding up one figure already cut out, the younger girl plainly smaller, in the same white dresses, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-78b",
+    "segment": "C1",
+    "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+    "kind": "object",
+    "outName": "Paper Cutout Ref Winged Dancer",
+    "prompt": "A small figure of a dancing girl in a long flowing pale dress with a pair of large butterfly-shaped wings, drawn on thin white card and cut out around its outline, with a thin white cut edge visible all the way around it, lying flat. It is clearly a flat piece of paper. No lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-78c",
+    "segment": "C1",
+    "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+    "kind": "object",
+    "outName": "Paper Dancer Pinned Upright In Grass",
+    "prompt": "draw the same paper figure as in @Paper Cutout Ref Winged Dancer, keep it exactly the same with its white cut edge, now standing upright among blades of grass, held up by one long thin steel hatpin with a small round pearl head pushed through the card and down into the ground, no people, no lettering, plain white background",
+    "refNames": [
+      "Paper Cutout Ref Winged Dancer"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same paper figure as in "
+      },
+      {
+        "asset": "Paper Cutout Ref Winged Dancer"
+      },
+      {
+        "text": ", keep it exactly the same with its white cut edge, now standing upright among blades of grass, held up by one long thin steel hatpin with a small round pearl head pushed through the card and down into the ground, no people, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-78d",
+    "segment": "C1",
+    "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+    "kind": "object",
+    "outName": "Long Steel Hatpin With Pearl Head",
+    "prompt": "One long thin steel hatpin with a small round pearl head, lying diagonally. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C1-78e",
+    "segment": "C1",
+    "at": "The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream.",
+    "kind": "group",
+    "outName": "Two Girls Tossing Paper Figures Into Stream",
+    "prompt": "draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length standing on the flat stones at the edge of the same stream as in @Stream Ref Flat Stones Small Fall, in the same white dresses and boots, dropping a few small flat paper cut-out figures with wings into the water, where they float away on the current, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Older Girl Ref Bell Hat White Dress",
+      "Young Girl Ref Flower Band Long Hair",
+      "Stream Ref Flat Stones Small Fall"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same two girls as in "
+      },
+      {
+        "asset": "Older Girl Ref Bell Hat White Dress"
+      },
+      {
+        "text": " and "
+      },
+      {
+        "asset": "Young Girl Ref Flower Band Long Hair"
+      },
+      {
+        "text": ", keep both faces exactly the same, seen full length standing on the flat stones at the edge of the same stream as in "
+      },
+      {
+        "asset": "Stream Ref Flat Stones Small Fall"
+      },
+      {
+        "text": ", in the same white dresses and boots, dropping a few small flat paper cut-out figures with wings into the water, where they float away on the current, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-84",
+    "segment": "C1",
+    "at": "Elsie explained their long silence simply.",
+    "kind": "figure",
+    "outName": "Elderly Woman Speaking With Open Hands",
+    "prompt": "draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan, keep her face exactly the same, seen from the chest up talking with her mouth open and both hands open in front of her chest, in the same cardigan, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Elderly Woman Ref White Curls Cardigan"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Elderly Woman Ref White Curls Cardigan"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up talking with her mouth open and both hands open in front of her chest, in the same cardigan, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-86",
+    "segment": "C1",
+    "at": "Frances, in a letter written in 1983, said she had hated those photographs since she was 16 years old.",
+    "kind": "figure",
+    "outName": "Old Lady Writing A Letter At Table",
+    "prompt": "draw the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the paper showing only a few thin grey lines and no letters, in the same green jumper and pearls, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Old Lady Ref Grey Bob Green Jumper"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Old Lady Ref Grey Bob Green Jumper"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up sitting at a table writing a letter with a pen, the paper showing only a few thin grey lines and no letters, in the same green jumper and pearls, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C1-89",
+    "segment": "C1",
+    "at": "Frances insisted, for the rest of her life, that the fifth one, the sun bath, was real.",
+    "kind": "figure",
+    "outName": "Old Lady Speaking Holding One Photograph",
+    "prompt": "draw the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep her face exactly the same, seen from the chest up holding one small sepia photograph with its plain back turned toward the viewer and talking with her mouth open, in the same green jumper and pearls, no fairies, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Old Lady Ref Grey Bob Green Jumper"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same elderly woman as in "
+      },
+      {
+        "asset": "Old Lady Ref Grey Bob Green Jumper"
+      },
+      {
+        "text": ", keep her face exactly the same, seen from the chest up holding one small sepia photograph with its plain back turned toward the viewer and talking with her mouth open, in the same green jumper and pearls, no fairies, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  }
+]
