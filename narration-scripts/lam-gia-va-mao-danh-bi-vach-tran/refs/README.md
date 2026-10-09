@@ -7,3 +7,4 @@ không reset giữa các case.
 | Case | Thư mục | Nhóm ảnh | Ghi chú |
 | --- | --- | --- | --- |
 | 1 — Cottingley | `case-1/` | `01`–`13` | 2026-09-25; thêm ảnh nhà số 31 Main Street 2026-09-28. Thiếu: chân dung ông bà Wright, Snelling, hai chị em lúc già, ảnh nhà thời 1917. |
+| 2 — Piltdown | `case-2/` | `14`–`30` | 2026-10-09. Thiếu: ảnh Weiner năm 1953 (vẽ trẻ lại), nhà Woodward gần Piltdown, thuyền gỗ cổ. |

@@ -1,0 +1,1152 @@
+[
+  {
+    "id": "C2-01",
+    "segment": "C2",
+    "at": "Charles Dawson was a lawyer in the small town of Uckfield, in Sussex, in the south of England.",
+    "kind": "character",
+    "outName": "Collector Ref Bald Dome Big Moustache",
+    "prompt": "A heavy-set man of about forty-eight seen from the chest up. A broad face with full cheeks. Completely bald on top with a smooth high dome, only short dark hair at the sides above the ears. A large thick dark moustache whose ends curl upward, and a clean-shaven chin. He wears a dark three-piece suit with a waistcoat, a white shirt with a high stiff white collar and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-01b",
+    "segment": "C2",
+    "at": "Charles Dawson was a lawyer in the small town of Uckfield, in Sussex, in the south of England.",
+    "kind": "place",
+    "outName": "England Map With Southern County In Red",
+    "prompt": "draw a map shaped like @30-maps-03.png with the same style as @01-pyramid-place.png, fill England with one flat pale green colour and label it \"ENGLAND\" in plain capital letters, fill the county of Sussex on the south coast of England with one flat red colour and label it \"SUSSEX\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-2\\30-maps-03.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", fill England with one flat pale green colour and label it \"ENGLAND\" in plain capital letters, fill the county of Sussex on the south coast of England with one flat red colour and label it \"SUSSEX\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-01c",
+    "segment": "C2",
+    "at": "Charles Dawson was a lawyer in the small town of Uckfield, in Sussex, in the south of England.",
+    "kind": "character",
+    "outName": "Lawyer Reading Ribboned Documents At Desk",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, seen from the waist up sitting at a plain wooden office desk in the same dark suit, reading a legal document of several pages tied with a pink ribbon, a dip pen and an inkwell on the desk, the papers show only faint grey lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up sitting at a plain wooden office desk in the same dark suit, reading a legal document of several pages tied with a pink ribbon, a dip pen and an inkwell on the desk, the papers show only faint grey lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-02",
+    "segment": "C2",
+    "at": "In his spare time, he was a well-known amateur collector of antiquities.",
+    "kind": "character",
+    "outName": "Collector Studying Flint Tool Through Magnifier",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, seen from the waist up in the same dark suit, sitting at a table and looking closely at a small old flint stone tool through a round magnifying glass held in his other hand, a few more small old objects on the table: a pottery shard, an old coin and a small bronze figure, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up in the same dark suit, sitting at a table and looking closely at a small old flint stone tool through a round magnifying glass held in his other hand, a few more small old objects on the table: a pottery shard, an old coin and a small bronze figure, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-03",
+    "segment": "C2",
+    "at": "He found Roman figurines, Stone Age hand axes, and ancient wooden boats, so many remarkable things that the newspapers nicknamed him \"the Wizard of Sussex.\"",
+    "kind": "object",
+    "outName": "Small Green Bronze Robed Figurine",
+    "prompt": "A small ancient Roman bronze figurine, about the height of a hand, of a standing figure in a long robe that falls in simple folds to its feet, one forearm held out in front, the whole statuette covered in a green-blue bronze patina with rough worn edges. It stands upright on its own. No lettering, no labels, no real people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-03b",
+    "segment": "C2",
+    "at": "He found Roman figurines, Stone Age hand axes, and ancient wooden boats, so many remarkable things that the newspapers nicknamed him \"the Wizard of Sussex.\"",
+    "kind": "object",
+    "outName": "Pear Shaped Flint Hand Axe",
+    "prompt": "A Stone Age flint hand axe lying flat: a pear-shaped stone tool about the length of a hand, pointed at the top and rounded at the bottom, its surface covered in shallow scooped facets where flakes were knocked off, mottled grey-brown flint with a pale cream crust along one edge, and no handle. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-03c",
+    "segment": "C2",
+    "at": "He found Roman figurines, Stone Age hand axes, and ancient wooden boats, so many remarkable things that the newspapers nicknamed him \"the Wizard of Sussex.\"",
+    "kind": "object",
+    "outName": "Long Dugout Canoe From One Tree Trunk",
+    "prompt": "An ancient wooden dugout boat: a long narrow canoe hollowed out of a single tree trunk, dark brown waterlogged wood with long cracks along its length, blunt rounded ends, no seats, no paint and no oars, shown from the side and slightly above, empty. No lettering, no people, no water. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-03d",
+    "segment": "C2",
+    "at": "He found Roman figurines, Stone Age hand axes, and ancient wooden boats, so many remarkable things that the newspapers nicknamed him \"the Wizard of Sussex.\"",
+    "kind": "object",
+    "outName": "Three Folded Old Newspapers Blank Front Page",
+    "prompt": "A small stack of three folded old newspapers from about 1910, the top one showing its front page with narrow columns of plain grey lines instead of text, a large blank space where a headline would be, and one plain blank rectangle where a picture would be. Absolutely no letters, no words and no numbers anywhere. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-04",
+    "segment": "C2",
+    "at": "According to Dawson, sometime around 1908, a workman digging gravel on the grounds of Barkham Manor, near the village of Piltdown, handed him a piece of a skull.",
+    "kind": "place",
+    "outName": "Red Brick Georgian Manor With Pond",
+    "prompt": "A large Georgian country house of red-orange brick, two storeys high and square in shape, with a low hipped grey slate roof and three tall brick chimney stacks, rows of tall white sash windows, one tall round-arched window in the middle of the front, a smooth green lawn in front and a calm pond in the foreground, a few trees beside the house. No people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-04b",
+    "segment": "C2",
+    "at": "According to Dawson, sometime around 1908, a workman digging gravel on the grounds of Barkham Manor, near the village of Piltdown, handed him a piece of a skull.",
+    "kind": "place",
+    "outName": "Gravel Trench Ref Hedge Edge",
+    "prompt": "The edge of a flat grassy farm field beside a tall thick hedge of bushes and trees, with a long shallow trench dug along the foot of the hedge exposing brown gravel and earth, a few low heaps of dug gravel on the ground next to it, a wooden half-barrel tub and a round garden sieve standing by the trench, and a spade stuck upright in one gravel heap. No people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-04c",
+    "segment": "C2",
+    "at": "According to Dawson, sometime around 1908, a workman digging gravel on the grounds of Barkham Manor, near the village of Piltdown, handed him a piece of a skull.",
+    "kind": "figure",
+    "outName": "Farm Labourer Digging Gravel With Spade",
+    "prompt": "draw a farm labourer of about 1908 in the same drawing style as @02-doctor-figure.png, seen full length from head to boots: an older man with a short grey beard, a flat cloth cap, a collarless shirt with the sleeves rolled up, a dark waistcoat, dark work trousers held up by braces and heavy boots, digging gravel with a spade at @Gravel Trench Ref Hedge Edge, keep the place exactly the same, nothing in his other hand, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Gravel Trench Ref Hedge Edge"
+    ],
+    "promptParts": [
+      {
+        "text": "draw a farm labourer of about 1908 in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", seen full length from head to boots: an older man with a short grey beard, a flat cloth cap, a collarless shirt with the sleeves rolled up, a dark waistcoat, dark work trousers held up by braces and heavy boots, digging gravel with a spade at "
+      },
+      {
+        "asset": "Gravel Trench Ref Hedge Edge"
+      },
+      {
+        "text": ", keep the place exactly the same, nothing in his other hand, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-04d",
+    "segment": "C2",
+    "at": "According to Dawson, sometime around 1908, a workman digging gravel on the grounds of Barkham Manor, near the village of Piltdown, handed him a piece of a skull.",
+    "kind": "character",
+    "outName": "Collector Talking With Open Hand",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, seen from the waist up in the same dark suit, talking with his mouth open and one hand raised in an open gesture as he explains something, nothing in his hands, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up in the same dark suit, talking with his mouth open and one hand raised in an open gesture as he explains something, nothing in his hands, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-04e",
+    "segment": "C2",
+    "at": "According to Dawson, sometime around 1908, a workman digging gravel on the grounds of Barkham Manor, near the village of Piltdown, handed him a piece of a skull.",
+    "kind": "object",
+    "outName": "Skull Fragment Ref Reddish Brown",
+    "prompt": "One single curved fragment of an old skull bone about the size of a palm, shaped roughly like a broken piece of a bowl, its surface stained a deep reddish brown like rusty iron, smooth and slightly shiny on the outside, with rough broken edges and fine cracks. Shown alone. No lettering, no labels, no scale bar, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-05",
+    "segment": "C2",
+    "at": "Dawson said the workmen had smashed an entire skull, thinking it was a fossilized coconut.",
+    "kind": "object",
+    "outName": "Whole Brown Coconut In Husk",
+    "prompt": "One whole brown coconut still in its hairy husk, round and slightly oval, the fibres showing as fine lines, shown alone. No lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-06",
+    "segment": "C2",
+    "at": "Over the following years, he picked up a few more fragments.",
+    "kind": "object",
+    "outName": "Four Reddish Brown Skull Pieces Apart",
+    "prompt": "draw four separate curved fragments of old skull bone of different sizes and shapes, made of exactly the same reddish brown stained bone as @Skull Fragment Ref Reddish Brown, lying apart from one another, no labels, no lettering, plain white background",
+    "refNames": [
+      "Skull Fragment Ref Reddish Brown"
+    ],
+    "promptParts": [
+      {
+        "text": "draw four separate curved fragments of old skull bone of different sizes and shapes, made of exactly the same reddish brown stained bone as "
+      },
+      {
+        "asset": "Skull Fragment Ref Reddish Brown"
+      },
+      {
+        "text": ", lying apart from one another, no labels, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-07",
+    "segment": "C2",
+    "at": "In February 1912, Dawson wrote to Arthur Smith Woodward, the Keeper of Geology at the Natural History Museum in London.",
+    "kind": "character",
+    "outName": "Collector Writing Letter With Dip Pen",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, seen from the waist up in the same dark suit, sitting at a wooden desk writing a letter with a dip pen, an envelope and an inkwell beside the paper, the writing on the paper is only faint wavy lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up in the same dark suit, sitting at a wooden desk writing a letter with a dip pen, an envelope and an inkwell beside the paper, the writing on the paper is only faint wavy lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-07b",
+    "segment": "C2",
+    "at": "In February 1912, Dawson wrote to Arthur Smith Woodward, the Keeper of Geology at the Natural History Museum in London.",
+    "kind": "character",
+    "outName": "Keeper Ref Beard Pince Nez",
+    "prompt": "A man of about forty-eight seen from the chest up. A long face, bald on top with short dark hair streaked with grey at the sides. A full short beard and moustache, dark brown streaked with grey, neatly trimmed. Small oval pince-nez spectacles without arms clipped on his nose, with a thin black cord hanging down from them. He wears a dark suit jacket over a dark waistcoat, a white shirt with a turned-down collar and a black bow tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-07c",
+    "segment": "C2",
+    "at": "In February 1912, Dawson wrote to Arthur Smith Woodward, the Keeper of Geology at the Natural History Museum in London.",
+    "kind": "place",
+    "outName": "Victorian Museum Front Two Spired Towers",
+    "prompt": "The front of a large Victorian museum building made of pale buff and soft blue-grey terracotta bands, in a Romanesque cathedral style: two tall square towers with pointed slate spires on either side of a deep round-arched main entrance, rows of small round-arched windows across the front and many small carved decorations. Seen from the street at a slight angle. No people, no cars, no lettering, no flags, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-08",
+    "segment": "C2",
+    "at": "That summer, the 2 men went digging in the gravel pit, along with a young French Jesuit priest.",
+    "kind": "figure",
+    "outName": "Young Priest Ref Black Cassock",
+    "prompt": "A slim young man of about thirty seen from the chest up. A thin oval face with a long straight nose, short dark hair combed back from a high forehead, clean-shaven. He wears a plain black cassock buttoned up to the neck, with a narrow white clerical collar band at the throat. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-08b",
+    "segment": "C2",
+    "at": "That summer, the 2 men went digging in the gravel pit, along with a young French Jesuit priest.",
+    "kind": "group",
+    "outName": "Three Men Sifting Gravel By Hedge",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, in shirtsleeves with braces and a waistcoat, dark trousers and boots, holding a round garden sieve over a wooden half-barrel tub, and the same man as in @Keeper Ref Beard Pince Nez, keep his face, beard and pince-nez exactly the same, in a waistcoat with his sleeves rolled up, dark trousers and boots, bending over the same tub and sorting gravel with his hands, and the same young man as in @Young Priest Ref Black Cassock, keep his face exactly the same, in the same black cassock, standing in the shallow trench holding a small trowel, all three seen full length at @Gravel Trench Ref Hedge Edge, keep the place exactly the same, do not mix their features, no lettering. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache",
+      "Keeper Ref Beard Pince Nez",
+      "Young Priest Ref Black Cassock",
+      "Gravel Trench Ref Hedge Edge"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, in shirtsleeves with braces and a waistcoat, dark trousers and boots, holding a round garden sieve over a wooden half-barrel tub, and the same man as in "
+      },
+      {
+        "asset": "Keeper Ref Beard Pince Nez"
+      },
+      {
+        "text": ", keep his face, beard and pince-nez exactly the same, in a waistcoat with his sleeves rolled up, dark trousers and boots, bending over the same tub and sorting gravel with his hands, and the same young man as in "
+      },
+      {
+        "asset": "Young Priest Ref Black Cassock"
+      },
+      {
+        "text": ", keep his face exactly the same, in the same black cassock, standing in the shallow trench holding a small trowel, all three seen full length at "
+      },
+      {
+        "asset": "Gravel Trench Ref Hedge Edge"
+      },
+      {
+        "text": ", keep the place exactly the same, do not mix their features, no lettering. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-09",
+    "segment": "C2",
+    "at": "They found more pieces of skull, teeth, stone tools, and the bones of ancient animals.",
+    "kind": "object",
+    "outName": "Wooden Tray Of Brown Finds",
+    "prompt": "A shallow wooden tray seen from slightly above, holding a small collection of finds laid out in rows: three curved reddish brown skull pieces, four loose brown teeth, two chipped flint stone tools, and several pieces of old animal bone of different shapes, all stained brown. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-10",
+    "segment": "C2",
+    "at": "The most important pieces, more of the skull and half of a lower jaw, were all found by Dawson alone.",
+    "kind": "object",
+    "outName": "Jaw Ref Two Flat Molars",
+    "prompt": "Half of an old lower jaw bone seen from the side: a long low body of bone, broken off at the front end where the chin should be, rising at the back into a tall upright plate of bone with a broken top, and exactly two large back teeth, molars, standing side by side in the middle of the jaw with flat worn tops. The bone is stained a deep reddish brown like rusty iron and the two teeth are a paler yellow-brown. Shown alone. No other teeth, no lettering, no labels, no scale bar, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-10b",
+    "segment": "C2",
+    "at": "The most important pieces, more of the skull and half of a lower jaw, were all found by Dawson alone.",
+    "kind": "character",
+    "outName": "Collector Crouching Alone Holding Bone Piece",
+    "prompt": "draw the same man as in @Collector Ref Bald Dome Big Moustache, keep his face exactly the same, in shirtsleeves with braces and a waistcoat, dark trousers and boots, crouching alone at @Gravel Trench Ref Hedge Edge, keep the place exactly the same, holding up a small reddish brown piece of bone that he has just picked out of the gravel, nobody else anywhere in the picture, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Collector Ref Bald Dome Big Moustache",
+      "Gravel Trench Ref Hedge Edge"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Collector Ref Bald Dome Big Moustache"
+      },
+      {
+        "text": ", keep his face exactly the same, in shirtsleeves with braces and a waistcoat, dark trousers and boots, crouching alone at "
+      },
+      {
+        "asset": "Gravel Trench Ref Hedge Edge"
+      },
+      {
+        "text": ", keep the place exactly the same, holding up a small reddish brown piece of bone that he has just picked out of the gravel, nobody else anywhere in the picture, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-12",
+    "segment": "C2",
+    "at": "At first glance, it looked almost exactly like the jaw of a young chimpanzee.",
+    "kind": "object",
+    "outName": "Young Chimpanzee Sitting In Profile",
+    "prompt": "A young chimpanzee sitting on the ground seen from the side, its head turned in profile so the jutting jaw and muzzle are clear, dark fur, a pale bare face, large ears, long arms resting on its knees, a calm expression. Only the animal, no people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-13",
+    "segment": "C2",
+    "at": "But its 2 molars were worn flat, the way human teeth wear down from chewing.",
+    "kind": "object",
+    "outName": "Close View Two Flat Topped Molars",
+    "prompt": "draw a close-up of the two back teeth of the same jaw as in @Jaw Ref Two Flat Molars, seen from above and slightly to the side so their tops are clearly visible, both molars ground perfectly flat and smooth on top like a worn step, set in the reddish brown bone, no labels, no lettering, plain white background",
+    "refNames": [
+      "Jaw Ref Two Flat Molars"
+    ],
+    "promptParts": [
+      {
+        "text": "draw a close-up of the two back teeth of the same jaw as in "
+      },
+      {
+        "asset": "Jaw Ref Two Flat Molars"
+      },
+      {
+        "text": ", seen from above and slightly to the side so their tops are clearly visible, both molars ground perfectly flat and smooth on top like a worn step, set in the reddish brown bone, no labels, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-13b",
+    "segment": "C2",
+    "at": "But its 2 molars were worn flat, the way human teeth wear down from chewing.",
+    "kind": "figure",
+    "outName": "Man Biting Into Slice Of Bread",
+    "prompt": "A man of about 1910 seen from the chest up, biting into a thick slice of bread and chewing, wearing a plain collarless shirt and a dark waistcoat, short brown hair, clean-shaven. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-14",
+    "segment": "C2",
+    "at": "On December 18th, 1912, at a meeting of the Geological Society of London, Woodward announced a new species of early human.",
+    "kind": "group",
+    "outName": "Keeper At Lectern Before Five Gentlemen",
+    "prompt": "draw the same man as in @Keeper Ref Beard Pince Nez, keep his face, beard and pince-nez exactly the same, seen full length in a long black frock coat, dark trousers and black shoes, standing behind a plain wooden lectern with one hand raised as he speaks, and in front of him exactly five gentlemen of 1912 in dark suits and high white collars seated on wooden chairs facing him, in the same drawing style as @03-five-men-group.png, no banners, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Keeper Ref Beard Pince Nez"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Keeper Ref Beard Pince Nez"
+      },
+      {
+        "text": ", keep his face, beard and pince-nez exactly the same, seen full length in a long black frock coat, dark trousers and black shoes, standing behind a plain wooden lectern with one hand raised as he speaks, and in front of him exactly five gentlemen of 1912 in dark suits and high white collars seated on wooden chairs facing him, in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\03-five-men-group.png"
+      },
+      {
+        "text": ", no banners, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-16",
+    "segment": "C2",
+    "at": "His reconstruction showed a skull much like a modern human's, with a brain about two-thirds the size of ours, attached to the jaw of an ape.",
+    "kind": "object",
+    "outName": "Reconstructed Skull Ref Plaster Patches",
+    "prompt": "A reconstructed old skull seen from the left side: a high, rounded, human-like dome built mostly of smooth pale cream plaster, with several irregular dark reddish brown pieces of real bone set into the plaster like patches, and attached below it a long jutting ape-like lower jaw, also partly reddish brown, with a row of teeth. Shown alone. No lettering, no labels, no stand, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-16b",
+    "segment": "C2",
+    "at": "His reconstruction showed a skull much like a modern human's, with a brain about two-thirds the size of ours, attached to the jaw of an ape.",
+    "kind": "object",
+    "outName": "Two Simple Brains Small And Large",
+    "prompt": "Two simple pink drawings of a human brain seen from the side, placed side by side: the one on the left is clearly smaller, about two thirds the size of the one on the right, and both have the same simple wavy folds. No lettering, no numbers, no skulls, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-17",
+    "segment": "C2",
+    "at": "It fit perfectly with what many experts in England believed at the time, that as our ancestors became human, the brain grew large first and everything else followed.",
+    "kind": "group",
+    "outName": "Three Edwardian Scientists Talking",
+    "prompt": "Three English scientists of 1912 standing together and talking, seen full length: older men in dark frock coats or dark three-piece suits with high white collars, one with a short grey beard and a full head of grey hair, one clean-shaven with round spectacles, one with a dark moustache and dark hair; one of them gestures with an open hand while the other two listen and nod. No lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "C2-18",
+    "segment": "C2",
+    "at": "The newspapers called it the missing link between apes and humans.",
+    "kind": "object",
+    "outName": "Iron Chain With One Link Missing",
+    "prompt": "A short horizontal iron chain of plain oval links lying flat, with a clear empty gap in the middle where exactly one link is missing, so the chain is broken into a left part and a right part. Dark grey metal. Shown alone. No lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-19",
+    "segment": "C2",
+    "at": "In 1913, the young priest found a canine tooth in the same gravel pit, and Woodward said it fit the jaw perfectly.",
+    "kind": "figure",
+    "outName": "Young Priest Holding Up A Small Tooth",
+    "prompt": "draw the same young man as in @Young Priest Ref Black Cassock, keep his face exactly the same, in the same black cassock, crouching at @Gravel Trench Ref Hedge Edge, keep the place exactly the same, holding up between two fingers a small pointed tooth he has just found in the gravel and looking at it, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Young Priest Ref Black Cassock",
+      "Gravel Trench Ref Hedge Edge"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same young man as in "
+      },
+      {
+        "asset": "Young Priest Ref Black Cassock"
+      },
+      {
+        "text": ", keep his face exactly the same, in the same black cassock, crouching at "
+      },
+      {
+        "asset": "Gravel Trench Ref Hedge Edge"
+      },
+      {
+        "text": ", keep the place exactly the same, holding up between two fingers a small pointed tooth he has just found in the gravel and looking at it, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-19b",
+    "segment": "C2",
+    "at": "In 1913, the young priest found a canine tooth in the same gravel pit, and Woodward said it fit the jaw perfectly.",
+    "kind": "object",
+    "outName": "Single Pointed Canine Tooth Grey Brown",
+    "prompt": "One single canine tooth seen from the side: a narrow, slightly curved pointed tooth with a long root, worn flat along one side of its point, stained grey-brown with darker patches. Shown alone. No lettering, no labels, no scale bar, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-19c",
+    "segment": "C2",
+    "at": "In 1913, the young priest found a canine tooth in the same gravel pit, and Woodward said it fit the jaw perfectly.",
+    "kind": "character",
+    "outName": "Keeper Talking With Open Hands",
+    "prompt": "draw the same man as in @Keeper Ref Beard Pince Nez, keep his face, beard and pince-nez exactly the same, seen from the waist up in the same dark suit, talking with his mouth open and both hands held open in front of him, nothing in his hands, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Keeper Ref Beard Pince Nez"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Keeper Ref Beard Pince Nez"
+      },
+      {
+        "text": ", keep his face, beard and pince-nez exactly the same, seen from the waist up in the same dark suit, talking with his mouth open and both hands held open in front of him, nothing in his hands, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-20",
+    "segment": "C2",
+    "at": "That same year, an anatomy professor at King's College London argued in the journal Nature that this was simply an ape's jaw lying next to a human skull.",
+    "kind": "figure",
+    "outName": "Lecturer With Wire Spectacles Raising Finger",
+    "prompt": "A man of about thirty-five seen from the chest up: a lean face, short dark hair parted on one side, a neat dark moustache, round wire-rimmed spectacles, a dark suit with a high white collar and a dark tie, talking with one finger raised as if making a point. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-20b",
+    "segment": "C2",
+    "at": "That same year, an anatomy professor at King's College London argued in the journal Nature that this was simply an ape's jaw lying next to a human skull.",
+    "kind": "object",
+    "outName": "Thin Science Journal With Blank Cover",
+    "prompt": "A thin scientific journal from about 1913 lying flat, with a plain pale cover that has only a simple thin border line and an empty blank rectangle where the title would be, a few pages slightly open. Absolutely no letters, no words and no numbers anywhere. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-21",
+    "segment": "C2",
+    "at": "A few scientists in France and America thought the same.",
+    "kind": "place",
+    "outName": "World Map Two Countries In Red",
+    "prompt": "draw a world map shaped like @30-maps-01.png with the same style as @01-pyramid-place.png, all land in one flat pale green colour, fill France with one flat red colour and label it \"FRANCE\" in plain capital letters, fill the United States with one flat red colour and label it \"AMERICA\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a world map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-2\\30-maps-01.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", all land in one flat pale green colour, fill France with one flat red colour and label it \"FRANCE\" in plain capital letters, fill the United States with one flat red colour and label it \"AMERICA\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-23",
+    "segment": "C2",
+    "at": "In 1915, Dawson reported finding a second skull, which became known as Piltdown 2, at another site about 2 miles away.",
+    "kind": "object",
+    "outName": "Two Skull Pieces And One Molar",
+    "prompt": "draw two small pieces of old skull bone and one single back tooth, lying apart from one another, made of exactly the same reddish brown stained bone as @Skull Fragment Ref Reddish Brown, the tooth a paler yellow-brown, no labels, no lettering, plain white background",
+    "refNames": [
+      "Skull Fragment Ref Reddish Brown"
+    ],
+    "promptParts": [
+      {
+        "text": "draw two small pieces of old skull bone and one single back tooth, lying apart from one another, made of exactly the same reddish brown stained bone as "
+      },
+      {
+        "asset": "Skull Fragment Ref Reddish Brown"
+      },
+      {
+        "text": ", the tooth a paler yellow-brown, no labels, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-23b",
+    "segment": "C2",
+    "at": "In 1915, Dawson reported finding a second skull, which became known as Piltdown 2, at another site about 2 miles away.",
+    "kind": "place",
+    "outName": "Open Field With Hedgerows And Gate",
+    "prompt": "An open, gently rolling farm field in Sussex with low green grass, bordered by hedgerows and a few tall trees, a wooden field gate in one hedge, empty, with no digging anywhere. No people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-28",
+    "segment": "C2",
+    "at": "For decades afterward, Piltdown Man appeared in textbooks, in museums, and in more than 250 scientific papers.",
+    "kind": "object",
+    "outName": "Open Textbook With Skull Drawing",
+    "prompt": "An old school textbook lying open: its left page filled with plain grey lines instead of text, its right page showing a simple printed drawing of a reconstructed skull seen from the side with a high round dome and a jutting jaw. Absolutely no letters, no words and no numbers anywhere. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-28b",
+    "segment": "C2",
+    "at": "For decades afterward, Piltdown Man appeared in textbooks, in museums, and in more than 250 scientific papers.",
+    "kind": "object",
+    "outName": "Glass Museum Case With Skull On Stand",
+    "prompt": "draw the same skull as in @Reconstructed Skull Ref Plaster Patches, keep it exactly the same, standing on a small dark wooden stand inside a tall glass museum display case with a dark wooden frame, the case standing on its own, no label text, no people, no lettering, plain white background",
+    "refNames": [
+      "Reconstructed Skull Ref Plaster Patches"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same skull as in "
+      },
+      {
+        "asset": "Reconstructed Skull Ref Plaster Patches"
+      },
+      {
+        "text": ", keep it exactly the same, standing on a small dark wooden stand inside a tall glass museum display case with a dark wooden frame, the case standing on its own, no label text, no people, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-28c",
+    "segment": "C2",
+    "at": "For decades afterward, Piltdown Man appeared in textbooks, in museums, and in more than 250 scientific papers.",
+    "kind": "object",
+    "outName": "Tall Stack Of Scientific Papers",
+    "prompt": "A tall untidy stack of many scientific papers and thin journals piled on top of one another, some with plain coloured covers and some loose sheets sticking out, the stack taller than it is wide. Absolutely no letters, no words and no numbers. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-29",
+    "segment": "C2",
+    "at": "In 1924, an anatomist in South Africa announced the fossil of a young ancient ape-human with a small skull but a very humanlike jaw and teeth, the exact opposite of Piltdown.",
+    "kind": "place",
+    "outName": "Southern Africa Map With Country In Red",
+    "prompt": "draw a map shaped like @30-maps-04.png with the same style as @01-pyramid-place.png, fill South Africa with one flat red colour and label it \"SOUTH AFRICA\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun",
+    "refNames": [],
+    "promptParts": [
+      {
+        "text": "draw a map shaped like "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\narration-scripts\\lam-gia-va-mao-danh-bi-vach-tran\\refs\\case-2\\30-maps-04.png"
+      },
+      {
+        "text": " with the same style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\01-pyramid-place.png"
+      },
+      {
+        "text": ", fill South Africa with one flat red colour and label it \"SOUTH AFRICA\" in plain capital letters, spell every name exactly as written here, no title, no numbers, no compass rose, no scale bar, no grid lines, no arrows, no other place names, no sun"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-29c",
+    "segment": "C2",
+    "at": "In 1924, an anatomist in South Africa announced the fossil of a young ancient ape-human with a small skull but a very humanlike jaw and teeth, the exact opposite of Piltdown.",
+    "kind": "object",
+    "outName": "Small Fossil Skull Ref Pale Face",
+    "prompt": "A small fossil skull of a young ancient ape-like child seen from the front-left: a small rounded face of pale grey-cream stony bone with two large round eye sockets, a short flat nose opening, a small lower jaw with a row of small, even, human-like teeth, and behind the face a rough lumpy brown stone mass shaped like the back of the head. Shown alone. No lettering, no labels, no stand, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-29b",
+    "segment": "C2",
+    "at": "In 1924, an anatomist in South Africa announced the fossil of a young ancient ape-human with a small skull but a very humanlike jaw and teeth, the exact opposite of Piltdown.",
+    "kind": "figure",
+    "outName": "Young Anatomist Holding Small Fossil Skull",
+    "prompt": "draw a man of about thirty in the same drawing style as @02-doctor-figure.png, seen from the chest up, with neatly combed dark hair parted in the middle, clean-shaven, in a dark suit with a white shirt and a dark tie, holding up in one hand the same small fossil skull as in @Small Fossil Skull Ref Pale Face, keep the skull exactly the same, and looking at it, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Small Fossil Skull Ref Pale Face"
+    ],
+    "promptParts": [
+      {
+        "text": "draw a man of about thirty in the same drawing style as "
+      },
+      {
+        "asset": "C:\\Users\\AnhTu\\Desktop\\claude\\input\\style-ref\\_anchors\\02-doctor-figure.png"
+      },
+      {
+        "text": ", seen from the chest up, with neatly combed dark hair parted in the middle, clean-shaven, in a dark suit with a white shirt and a dark tie, holding up in one hand the same small fossil skull as in "
+      },
+      {
+        "asset": "Small Fossil Skull Ref Pale Face"
+      },
+      {
+        "text": ", keep the skull exactly the same, and looking at it, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-31",
+    "segment": "C2",
+    "at": "In the late 1940s, Kenneth Oakley, a geologist at the Natural History Museum, tried out a new technique.",
+    "kind": "character",
+    "outName": "Geologist Ref Long Face Tweed",
+    "prompt": "A tall lean man of about forty seen from the chest up. A long narrow face with a long straight nose and a high forehead, dark hair receding at the temples and combed straight back, clean-shaven, ears that stick out slightly. He wears a grey tweed jacket with faint pinstripes, a white shirt and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-31b",
+    "segment": "C2",
+    "at": "In the late 1940s, Kenneth Oakley, a geologist at the Natural History Museum, tried out a new technique.",
+    "kind": "character",
+    "outName": "Geologist Holding Up Test Tube At Bench",
+    "prompt": "draw the same man as in @Geologist Ref Long Face Tweed, keep his face exactly the same, seen from the waist up in the same tweed jacket, standing at a laboratory bench and holding up a glass test tube to look at it, a rack of test tubes and a few glass flasks on the bench, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Geologist Ref Long Face Tweed"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Geologist Ref Long Face Tweed"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up in the same tweed jacket, standing at a laboratory bench and holding up a glass test tube to look at it, a rack of test tubes and a few glass flasks on the bench, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-32",
+    "segment": "C2",
+    "at": "He measured how much fluorine the bones had absorbed from the soil over time.",
+    "kind": "object",
+    "outName": "Glass Vials Of Powder Beside Bone Sample",
+    "prompt": "A row of five small glass vials standing in a wooden rack, each holding a little pale powder, next to a small piece of reddish brown bone with a tiny drilled hole in it and a small glass dish. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-32b",
+    "segment": "C2",
+    "at": "He measured how much fluorine the bones had absorbed from the soil over time.",
+    "kind": "object",
+    "outName": "Ground Cut Away With Buried Bone",
+    "prompt": "A cross-section of the ground cut straight down like a slice of cake: a thin strip of green grass on top, then layers of brown earth, then a layer of pebbly gravel, and buried in the gravel layer a single old animal bone lying on its side. No lettering, no people, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-34",
+    "segment": "C2",
+    "at": "In 1953, Joseph Weiner, an anthropologist at Oxford University, began talking over the Piltdown puzzle with Oakley.",
+    "kind": "character",
+    "outName": "Anthropologist Ref Thick Dark Glasses",
+    "prompt": "A man of about thirty-eight seen from the chest up. A round, full face with soft cheeks, dark hair already receding at the front and thin on top, clean-shaven. Thick dark rectangular horn-rimmed spectacles. He wears a dark suit jacket, a white shirt and a dark tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-34b",
+    "segment": "C2",
+    "at": "In 1953, Joseph Weiner, an anthropologist at Oxford University, began talking over the Piltdown puzzle with Oakley.",
+    "kind": "group",
+    "outName": "Two Scholars Talking Face To Face",
+    "prompt": "draw the same man as in @Anthropologist Ref Thick Dark Glasses, keep his face and glasses exactly the same, seen full length in the same dark suit with dark trousers and black shoes, talking with one hand raised, and the same man as in @Geologist Ref Long Face Tweed, keep his face exactly the same, standing facing him full length in the same tweed jacket with grey trousers and brown shoes, listening, do not mix their features, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": [
+      "Anthropologist Ref Thick Dark Glasses",
+      "Geologist Ref Long Face Tweed"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Anthropologist Ref Thick Dark Glasses"
+      },
+      {
+        "text": ", keep his face and glasses exactly the same, seen full length in the same dark suit with dark trousers and black shoes, talking with one hand raised, and the same man as in "
+      },
+      {
+        "asset": "Geologist Ref Long Face Tweed"
+      },
+      {
+        "text": ", keep his face exactly the same, standing facing him full length in the same tweed jacket with grey trousers and brown shoes, listening, do not mix their features, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-34c",
+    "segment": "C2",
+    "at": "In 1953, Joseph Weiner, an anthropologist at Oxford University, began talking over the Piltdown puzzle with Oakley.",
+    "kind": "place",
+    "outName": "Round Domed Stone Library Building",
+    "prompt": "A large round domed library building of pale honey-coloured stone: a wide circular drum with pairs of tall columns all around it and tall windows between them, a rough stone base with arched doorways, a stone balustrade around the top, and a big lead-grey dome with small round windows, topped by a small lantern. Seen from a little above, standing on a green lawn. No people, no lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-35",
+    "segment": "C2",
+    "at": "Weiner went back through the reports and the casts of the fossils, and he noticed that the 2 molars were worn down just a little too evenly, as if someone had ground them with something.",
+    "kind": "character",
+    "outName": "Scholar Studying Plaster Jaw Cast",
+    "prompt": "draw the same man as in @Anthropologist Ref Thick Dark Glasses, keep his face and glasses exactly the same, seen from the waist up in the same dark suit, sitting at a table and looking closely at a pale plaster cast of a lower jaw that he holds in one hand, an open folder of papers and two more pale plaster casts on the table, the papers show only faint grey lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Anthropologist Ref Thick Dark Glasses"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Anthropologist Ref Thick Dark Glasses"
+      },
+      {
+        "text": ", keep his face and glasses exactly the same, seen from the waist up in the same dark suit, sitting at a table and looking closely at a pale plaster cast of a lower jaw that he holds in one hand, an open folder of papers and two more pale plaster casts on the table, the papers show only faint grey lines with no readable letters, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-36",
+    "segment": "C2",
+    "at": "His team took some chimpanzee teeth, filed them down, and stained them.",
+    "kind": "character",
+    "outName": "Scholar Filing A White Tooth At Bench",
+    "prompt": "draw the same man as in @Anthropologist Ref Thick Dark Glasses, keep his face and glasses exactly the same, seen from the waist up in a white laboratory coat, sitting at a lab bench and rubbing a small metal file across the top of a single white tooth held in his other hand, a few more white teeth lying on the bench, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Anthropologist Ref Thick Dark Glasses"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Anthropologist Ref Thick Dark Glasses"
+      },
+      {
+        "text": ", keep his face and glasses exactly the same, seen from the waist up in a white laboratory coat, sitting at a lab bench and rubbing a small metal file across the top of a single white tooth held in his other hand, a few more white teeth lying on the bench, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-36b",
+    "segment": "C2",
+    "at": "His team took some chimpanzee teeth, filed them down, and stained them.",
+    "kind": "object",
+    "outName": "Four Loose Pale Ape Teeth",
+    "prompt": "Four loose ape teeth lying apart on a plain white background: two broad back teeth with bumpy tops and long roots, and two smaller teeth, all clean and pale cream in colour. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-36c",
+    "segment": "C2",
+    "at": "His team took some chimpanzee teeth, filed them down, and stained them.",
+    "kind": "object",
+    "outName": "Tooth Soaking In Dish Of Brown Stain",
+    "prompt": "A small white porcelain dish filled with a dark brown liquid, one tooth lying in it with the half under the liquid stained brown and the rest still white, and a pair of metal tweezers resting on the rim of the dish. No lettering, no hands, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-37",
+    "segment": "C2",
+    "at": "The result looked almost identical to Piltdown.",
+    "kind": "object",
+    "outName": "Two Matching Brown Flat Topped Teeth",
+    "prompt": "Two brown back teeth side by side, both with tops ground perfectly flat and both stained the same reddish brown, looking almost exactly alike. No lettering, no labels, no people, plain white background. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-38",
+    "segment": "C2",
+    "at": "Then they put the real Piltdown teeth under a microscope, and the file marks were plain to see.",
+    "kind": "character",
+    "outName": "Geologist Looking Into Microscope",
+    "prompt": "draw the same man as in @Geologist Ref Long Face Tweed, keep his face exactly the same, seen from the waist up in the same tweed jacket, bending over a black laboratory microscope of the 1950s and looking into its eyepiece, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Geologist Ref Long Face Tweed"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same man as in "
+      },
+      {
+        "asset": "Geologist Ref Long Face Tweed"
+      },
+      {
+        "text": ", keep his face exactly the same, seen from the waist up in the same tweed jacket, bending over a black laboratory microscope of the 1950s and looking into its eyepiece, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-38b",
+    "segment": "C2",
+    "at": "Then they put the real Piltdown teeth under a microscope, and the file marks were plain to see.",
+    "kind": "object",
+    "outName": "Round Microscope View Of Scratched Tooth",
+    "prompt": "A round circle of view as seen through a microscope, filled with a close-up of the flat grey surface of a tooth, criss-crossed by many fine straight parallel scratch lines running diagonally in two directions, with a dark rim around the circle. No lettering, no numbers, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-39",
+    "segment": "C2",
+    "at": "X-rays showed that no new dentin had grown in beneath the worn surface, which meant the wear hadn't happened while the owner of those teeth was alive.",
+    "kind": "object",
+    "outName": "Dark X-Ray Film Of One Molar",
+    "prompt": "An old dental X-ray film: a small dark grey-black rectangle of film with a pale glowing white outline of a single molar tooth with two roots in the middle, the inside of the tooth slightly darker. No lettering, no numbers, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-41",
+    "segment": "C2",
+    "at": "Piltdown Man was a patchwork.",
+    "kind": "object",
+    "outName": "Skull Parts Pulled Apart",
+    "prompt": "draw the same reconstructed skull as in @Reconstructed Skull Ref Plaster Patches, now pulled apart into its separate parts floating slightly apart from each other with small gaps between them like an exploded diagram: the dark reddish brown pieces of the skull dome, the long ape-like jaw and a few loose teeth, the white plaster gone, no arrows, no lettering, plain white background",
+    "refNames": [
+      "Reconstructed Skull Ref Plaster Patches"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same reconstructed skull as in "
+      },
+      {
+        "asset": "Reconstructed Skull Ref Plaster Patches"
+      },
+      {
+        "text": ", now pulled apart into its separate parts floating slightly apart from each other with small gaps between them like an exploded diagram: the dark reddish brown pieces of the skull dome, the long ape-like jaw and a few loose teeth, the white plaster gone, no arrows, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-42",
+    "segment": "C2",
+    "at": "The skull came from a human who had lived in the Middle Ages.",
+    "kind": "figure",
+    "outName": "Medieval Man In Brown Hooded Tunic",
+    "prompt": "A medieval English peasant man of about the 1300s seen from the chest up: short brown hair and a short beard, wearing a plain brown wool tunic with a hood lying around his shoulders, a calm neutral face. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-43",
+    "segment": "C2",
+    "at": "The jaw came from an orangutan that had died about 500 years earlier.",
+    "kind": "object",
+    "outName": "Sitting Orangutan Reddish Hair",
+    "prompt": "An adult orangutan sitting calmly, seen from the front, with long shaggy reddish-orange hair on its long arms and body, a dark bare face with small eyes, and its long arms resting on the ground. Only the animal, no people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-44",
+    "segment": "C2",
+    "at": "There were also a few fossil chimpanzee teeth.",
+    "kind": "object",
+    "outName": "Three Dark Brown Fossil Ape Teeth",
+    "prompt": "Three small old fossil ape teeth lying apart, stained dark brown with a dull stony surface, one pointed and two broad. No lettering, no labels, no people, plain white background. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-45",
+    "segment": "C2",
+    "at": "Everything had been stained with an iron solution and chromic acid to make it look ancient.",
+    "kind": "object",
+    "outName": "Two Glass Bottles Of Brown Stain",
+    "prompt": "Two old glass chemist's bottles with glass stoppers standing side by side, one holding a rust-brown liquid and the other a dark orange liquid, each with a plain blank paper label with nothing written on it, and a small paintbrush with a brown-stained tip lying in front of them. Absolutely no letters, no words and no numbers. No people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-46",
+    "segment": "C2",
+    "at": "And the 2 flat, humanlike molars that had turned an ape's jaw into the missing link had been filed down by hand.",
+    "kind": "object",
+    "outName": "Hands Filing Teeth Of Jaw",
+    "prompt": "draw a close-up of the same jaw as in @Jaw Ref Two Flat Molars, keep it exactly the same, held still by one hand while another hand rubs a small flat metal file across the tops of its two back teeth, only the hands and wrists shown, no faces, no lettering, plain white background",
+    "refNames": [
+      "Jaw Ref Two Flat Molars"
+    ],
+    "promptParts": [
+      {
+        "text": "draw a close-up of the same jaw as in "
+      },
+      {
+        "asset": "Jaw Ref Two Flat Molars"
+      },
+      {
+        "text": ", keep it exactly the same, held still by one hand while another hand rubs a small flat metal file across the tops of its two back teeth, only the hands and wrists shown, no faces, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-47",
+    "segment": "C2",
+    "at": "For decades, the list of suspects kept growing.",
+    "kind": "symbol",
+    "outName": "Row Of Six Grey Silhouettes Of Men",
+    "prompt": "A row of six plain dark grey silhouettes of men standing side by side, seen full length, each one a flat solid shape with no face and no details, in different early-1900s outlines: two with bowler hats, one with a top hat, one bald, one in a long coat and one with a cloth cap. No lettering, no question marks. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-48",
+    "segment": "C2",
+    "at": "Then in 2016, after 8 years of research, a team from the Natural History Museum and Liverpool John Moores University published their conclusion.",
+    "kind": "group",
+    "outName": "Three Modern Scientists Studying Bone Fragments",
+    "prompt": "Three present-day scientists in white lab coats and blue gloves standing around a laboratory table, one woman with her hair tied back and two men, one of them holding a small brown bone fragment up to look at it, a laptop and a few brown bone pieces on the table. No lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.",
+    "refNames": []
+  },
+  {
+    "id": "C2-49",
+    "segment": "C2",
+    "at": "There had been only one forger.",
+    "kind": "symbol",
+    "outName": "One Grey Silhouette Of A Man In Bowler",
+    "prompt": "One single plain dark grey silhouette of a man of the early 1900s in a bowler hat, standing, seen full length, a flat solid shape with no face and no details. No lettering, no question mark. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-50b",
+    "segment": "C2",
+    "at": "The methods used on Piltdown 1 and Piltdown 2 were the same, from the way the bones were stained, to the gravel packed into their cracks, to the dental putty used to fix the teeth in place.",
+    "kind": "object",
+    "outName": "Bone Crack Packed With Gravel Grains",
+    "prompt": "draw a close-up of a single piece of skull bone made of exactly the same reddish brown stained bone as @Skull Fragment Ref Reddish Brown, with a deep crack running across it that is packed tight with tiny grains of brown gravel and sand, no labels, no lettering, plain white background",
+    "refNames": [
+      "Skull Fragment Ref Reddish Brown"
+    ],
+    "promptParts": [
+      {
+        "text": "draw a close-up of a single piece of skull bone made of exactly the same reddish brown stained bone as "
+      },
+      {
+        "asset": "Skull Fragment Ref Reddish Brown"
+      },
+      {
+        "text": ", with a deep crack running across it that is packed tight with tiny grains of brown gravel and sand, no labels, no lettering, plain white background"
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-50c",
+    "segment": "C2",
+    "at": "The methods used on Piltdown 1 and Piltdown 2 were the same, from the way the bones were stained, to the gravel packed into their cracks, to the dental putty used to fix the teeth in place.",
+    "kind": "object",
+    "outName": "Tooth Held In Socket With Grey Putty",
+    "prompt": "A close-up of a single brown back tooth set into a hole in a piece of reddish brown jaw bone, with a ring of grey-pink putty squeezed in around the base of the tooth to hold it in place. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-51",
+    "segment": "C2",
+    "at": "DNA analysis even showed that the teeth from both sites came from the same orangutan.",
+    "kind": "symbol",
+    "outName": "Twisted Ladder Double Helix",
+    "prompt": "A simple DNA double helix: two smooth ribbons twisting around each other, joined by short straight rungs like a twisted ladder, in blue and orange, standing upright. No letters, no lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-53",
+    "segment": "C2",
+    "at": "Another archaeologist went back through Dawson's lifelong collection and counted at least 38 fakes.",
+    "kind": "object",
+    "outName": "Wooden Cabinet Crowded With Antiquities",
+    "prompt": "A tall old wooden display cabinet with glass doors and several shelves crowded with small antiquities: old pottery jars, bronze figurines, flint tools, old coins, bricks and bones, each small object standing on its own. No lettering, no labels, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  },
+  {
+    "id": "C2-53b",
+    "segment": "C2",
+    "at": "Another archaeologist went back through Dawson's lifelong collection and counted at least 38 fakes.",
+    "kind": "figure",
+    "outName": "Modern Archaeologist With Magnifying Glass",
+    "prompt": "A present-day archaeologist, a man of about fifty with short grey hair and a short grey beard, in a blue shirt and a dark jumper, seen from the waist up sitting at a table and looking closely at a small old object through a magnifying glass, a few more small old objects on the table. No lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-55",
+    "segment": "C2",
+    "at": "When he retired in 1924, he bought a house near Piltdown, and for the next 20 years he kept digging in that same gravel pit, the one that hadn't given up a single bone since the day Dawson died.",
+    "kind": "character",
+    "outName": "Retired Scholar Ref White Beard Homburg",
+    "prompt": "An old man of about seventy seen from the chest up. A long face, a full white beard and a thick white moustache, small round spectacles. He wears a grey felt homburg hat with a dark band, a long dark overcoat over a white shirt and a black bow tie. Draw this in exactly the same drawing style as the reference images, on a plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": []
+  },
+  {
+    "id": "C2-55c",
+    "segment": "C2",
+    "at": "When he retired in 1924, he bought a house near Piltdown, and for the next 20 years he kept digging in that same gravel pit, the one that hadn't given up a single bone since the day Dawson died.",
+    "kind": "character",
+    "outName": "Old Man Sifting Gravel Alone By Hedge",
+    "prompt": "draw the same old man as in @Retired Scholar Ref White Beard Homburg, keep his face, white beard and spectacles exactly the same, wearing the same homburg hat but with his overcoat off, in a waistcoat and rolled-up shirtsleeves, dark trousers and boots, seen full length bending over a wooden half-barrel tub and sifting gravel through a round garden sieve, alone at @Gravel Trench Ref Hedge Edge, keep the place exactly the same, nobody else anywhere in the picture, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.",
+    "refNames": [
+      "Retired Scholar Ref White Beard Homburg",
+      "Gravel Trench Ref Hedge Edge"
+    ],
+    "promptParts": [
+      {
+        "text": "draw the same old man as in "
+      },
+      {
+        "asset": "Retired Scholar Ref White Beard Homburg"
+      },
+      {
+        "text": ", keep his face, white beard and spectacles exactly the same, wearing the same homburg hat but with his overcoat off, in a waistcoat and rolled-up shirtsleeves, dark trousers and boots, seen full length bending over a wooden half-barrel tub and sifting gravel through a round garden sieve, alone at "
+      },
+      {
+        "asset": "Gravel Trench Ref Hedge Edge"
+      },
+      {
+        "text": ", keep the place exactly the same, nobody else anywhere in the picture, no lettering. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image."
+      }
+    ],
+    "noAnchors": true
+  },
+  {
+    "id": "C2-57",
+    "segment": "C2",
+    "at": "He never found anything else.",
+    "kind": "object",
+    "outName": "Garden Sieve Holding Only Pebbles",
+    "prompt": "A round wooden garden sieve with a wire mesh bottom seen from above, holding only ordinary grey and brown pebbles and gravel and nothing else. No bones, no teeth, no lettering, no people. Draw this in exactly the same drawing style as the reference images, on a plain white background.",
+    "refNames": []
+  }
+]
