@@ -104,10 +104,43 @@ async function snapshotGridSrcs(page: Page): Promise<Set<string>> {
   return new Set(srcs);
 }
 
-/** `src` đầu tiên chưa có trong `baseline` — tức ảnh vừa được tạo. */
-async function findNewImageSrc(page: Page, baseline: ReadonlySet<string>): Promise<string | undefined> {
-  for (const src of await allImageSrcs(page)) if (!baseline.has(src)) return src;
-  return undefined;
+/** Thẻ trong lưới theo thứ tự DOM (mới nhất trước): nhãn thẻ (= tên card) + `src` ảnh. */
+async function gridTiles(page: Page): Promise<Array<{ label: string; src: string }>> {
+  return page.locator("flow-grid-tile-container").evaluateAll((els) =>
+    els.map((el) => ({
+      label: el.getAttribute("aria-label") ?? "",
+      src: el.querySelector("flow-image-tile img")?.getAttribute("src") ?? "",
+    }))
+  );
+}
+
+/**
+ * Ảnh vừa tạo = THẺ ĐẦU TIÊN có ảnh, với `src` VÀ nhãn đều chưa có lúc chụp baseline.
+ *
+ * 🔴 Đời 4 (2026-09-25). Đời 3 ("src đầu tiên chưa có trong baseline", quét cả lưới) vẫn đặt
+ * tên ĐÈ lên ảnh cũ: tập lam-gia case 1 có 5 thẻ cũ bị đổi tên (chân dung Gardner thành "Stack Of
+ * Folded Newspapers…", ảnh neo 03 thành "Society Member Holding Glass Plate…"), còn ảnh mới thật
+ * nằm vô danh với tên Flow tự đặt. Giả định "ảnh bị đẩy khỏi vùng render chỉ MẤT khỏi tập" sai khi
+ * project đã ~90 media: thẻ cũ ngoài vùng render lúc chụp baseline có thể hiện lại (hoặc `src`
+ * đổi token), trông như "chưa từng thấy". Nên giờ đòi thêm hai điều: nằm ở ĐẦU lưới (Flow xếp
+ * Recent), và nhãn chưa có trong baseline — thẻ cũ mang tên đã đặt, ảnh mới mang tên Flow tự sinh.
+ * Trùng nhãn tự sinh với một thẻ cũ thì không nhận ra → hết giờ → báo lỗi, KHÔNG đặt tên đè.
+ *
+ * 🔴 NHÃN RỖNG = CHƯA NHẬN (luồng img-pipeline-datao D01, 2026-10-09). Bản đầu đời 4 cho nhãn rỗng
+ * lọt qua ("thẻ chưa kịp có tên"). Sai ở nhánh reload khi hết giờ: reload đổi token `src` của MỌI
+ * thẻ, nên điều kiện `src` vô dụng; thẻ cũ ở đầu lưới mà lúc đó nhãn chưa nạp (rỗng) sẽ được nhận
+ * là ảnh mới và bị đặt tên đè. Giờ nhãn rỗng thì cứ chờ lượt poll sau — ảnh mới thật sẽ có chú
+ * thích tự sinh; không bao giờ có thì hết giờ, báo lỗi (an toàn).
+ */
+async function findNewImageSrc(
+  page: Page,
+  baseline: ReadonlySet<string>,
+  baselineLabels: ReadonlySet<string>
+): Promise<string | undefined> {
+  const first = (await gridTiles(page)).find((t) => t.src);
+  if (!first || !first.label) return undefined;
+  if (baseline.has(first.src) || baselineLabels.has(first.label)) return undefined;
+  return first.src;
 }
 
 /**
@@ -264,19 +297,38 @@ export async function typeMentionPrompt(page: Page, parts: PromptPart[]): Promis
     .replace(/\s+/g, " ")
     .trim();
   const wantChips = parts.filter((p) => "asset" in p).length;
+  // So KHỚP ĐÚNG, không chỉ "đủ": chữ + nhãn chip (nhãn chip = tên asset), bỏ mọi ký tự không
+  // phải chữ/số. Đo 2026-09-25: lượt gõ lại không xoá sạch lượt trước, prompt gửi đi mang cả
+  // phần thừa ("draw the same man as in draw the same man as in …") mà bộ kiểm "đủ chữ, đủ
+  // chip" vẫn cho qua — C1-38b, C1-39, C1-51b của tập lam-gia.
+  const squash = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+  const wantFull = squash(parts.map((p) => ("text" in p ? p.text : p.asset)).join(""));
 
   for (let attempt = 1; attempt <= 3; attempt++) {
-    await dismissOverlays(page);
-    await promptBox.click();
-    await page.keyboard.press("ControlOrMeta+A");
-    await page.keyboard.press("Backspace");
-
-    for (const part of parts) {
-      if ("text" in part) {
-        await page.keyboard.type(part.text);
-        continue;
+    if (!(await clearPromptBox(page, promptBox))) {
+      if (attempt === 3) {
+        await debugCapture(page, `mention-prompt-not-cleared`);
+        throw new Error("Không xoá sạch được ô prompt sau nhiều lần — không gửi prompt lẫn phần thừa.");
       }
-      await insertMentionChip(page, promptBox, part.asset);
+      continue;
+    }
+
+    // Lỗi văng ra GIỮA lúc chèn chip (dialog `@` không mở vì mảnh chữ trước rơi vào ô search —
+    // mục 4.49) cũng phải vào vòng gõ lại, không chỉ lỗi phát hiện lúc đọc lại. Đo 2026-09-25:
+    // cặp chip nối bằng " and " rơi 2/3 lần ở lượt đầu.
+    try {
+      for (const part of parts) {
+        if ("text" in part) {
+          await page.keyboard.type(part.text);
+          continue;
+        }
+        await insertMentionChip(page, promptBox, part.asset);
+      }
+    } catch (e) {
+      if (attempt === 3) throw e;
+      debugLog("mention", `lượt ${attempt}: chèn chip lỗi (${(e as Error).message}) — gõ lại từ đầu`);
+      await page.keyboard.press("Escape").catch(() => {});
+      continue;
     }
 
     // ĐỌC LẠI — xem docstring. `innerText` của ô prompt gồm cả nhãn chip, nên chỉ kiểm rằng
@@ -291,15 +343,16 @@ export async function typeMentionPrompt(page: Page, parts: PromptPart[]): Promis
     // Đếm theo `data-mention-id` chứ không theo class, vì id là thứ Flow bắt buộc phải có để
     // biết chip trỏ tới asset nào; class thì đổi tên lúc nào cũng được.
     const chipCount = await promptBox.locator("[data-mention-id]").count();
+    const exact = squash(got) === wantFull && chipCount === wantChips;
 
-    if (textOk && chipCount >= wantChips) {
+    if (textOk && exact) {
       debugLog("mention", `prompt @mention xong (${wantChips} chip): ${got.slice(0, 160)}`);
       return;
     }
 
     debugLog(
       "mention",
-      `lượt ${attempt}: prompt chưa đúng (chữ ${textOk ? "đủ" : "THIẾU"}, chip ${chipCount}/${wantChips}) — gõ lại. Đang có: ${got.slice(0, 200)}`
+      `lượt ${attempt}: prompt chưa đúng (chữ ${textOk ? "đủ" : "THIẾU"}, chip ${chipCount}/${wantChips}, khớp đúng ${exact ? "có" : "KHÔNG"}) — gõ lại. Đang có: ${got.slice(0, 200)}`
     );
     if (attempt === 3) {
       await debugCapture(page, `mention-prompt-broken`);
@@ -311,15 +364,55 @@ export async function typeMentionPrompt(page: Page, parts: PromptPart[]): Promis
   }
 }
 
+/**
+ * Đặt con trỏ ở CUỐI ô prompt. Bấm GÓC DƯỚI PHẢI chứ không bấm giữa ô: giữa ô có thể là một
+ * chip (contenteditable=false), bấm trúng thì con trỏ không nằm ở cuối (đo 2026-09-25).
+ *
+ * Lùi vào 24px theo chiều ngang (luồng img-pipeline-datao D02): prompt dài làm hiện thanh cuộn
+ * dọc sát mép phải, bấm trúng thanh cuộn thì ô không nhận focus và phím gõ rơi ra ngoài. Bấm xong
+ * vẫn KIỂM focus nằm trong ô; chưa thì gọi `focus()` thẳng lên phần tử rồi mới `Ctrl+End`.
+ */
+async function focusPromptEnd(page: Page, promptBox: ReturnType<Page["locator"]>): Promise<void> {
+  const box = await promptBox.boundingBox();
+  if (box) await page.mouse.click(box.x + Math.max(box.width - 24, box.width / 2), box.y + box.height - 6);
+  else await promptBox.click();
+  const focused = await promptBox
+    .evaluate((el) => el === document.activeElement || el.contains(document.activeElement))
+    .catch(() => false);
+  if (!focused) {
+    debugLog("mention", "bấm góc ô prompt không lấy được focus — gọi focus() thẳng");
+    await promptBox.focus().catch(() => {});
+  }
+  await page.keyboard.press("ControlOrMeta+End");
+  await page.keyboard.press("End");
+}
+
+/** Xoá ô prompt rồi ĐỌC LẠI cho tới khi trống thật (không chữ, không chip) — tối đa 5 lần. */
+async function clearPromptBox(
+  page: Page,
+  promptBox: ReturnType<Page["locator"]>
+): Promise<boolean> {
+  for (let i = 0; i < 5; i++) {
+    await dismissOverlays(page);
+    await promptBox.click();
+    await page.keyboard.press("ControlOrMeta+A");
+    await page.keyboard.press("Backspace");
+    await page.waitForTimeout(250);
+    const left = ((await promptBox.innerText().catch(() => "")) || "").trim();
+    const chips = await promptBox.locator("[data-mention-id]").count();
+    if (!left && !chips) return true;
+    debugLog("mention", `xoá ô prompt lần ${i + 1} chưa sạch (còn ${chips} chip): ${left.slice(0, 80)}`);
+  }
+  return false;
+}
+
 async function insertMentionChip(
   page: Page,
   promptBox: ReturnType<Page["locator"]>,
   assetName: string
 ): Promise<void> {
   // Luôn mở dialog khi cursor ở CUỐI tài liệu (phòng thủ 1 ở docstring trên).
-  await promptBox.click();
-  await page.keyboard.press("ControlOrMeta+ArrowDown");
-  await page.keyboard.press("End");
+  await focusPromptEnd(page, promptBox);
   await page.keyboard.type("@");
   await page.waitForTimeout(1200);
 
@@ -329,11 +422,23 @@ async function insertMentionChip(
   // `generate.ts` scope theo `[role="dialog"]` vì hồi đó UI khác — bê nguyên selector đó sang
   // đây thì khớp 0 phần tử và báo "không thấy asset" trong khi thẻ nằm ngay trước mắt.
   const search = page.getByRole("textbox", { name: /search assets/i }).first();
-  try {
-    await search.waitFor({ state: "visible", timeout: 8000 });
-  } catch {
-    await debugCapture(page, `mention-picker-fail-${assetName}`);
-    throw new Error(`Gõ "@" không mở được bảng chọn asset cho "${assetName}".`);
+  const opened = () =>
+    search.waitFor({ state: "visible", timeout: 8000 }).then(() => true, () => false);
+  if (!(await opened())) {
+    // Đo 2026-09-25 (ảnh debug): prompt sạch "… as in [chip] and", mà "@" KHÔNG hiện trong ô —
+    // con trỏ không ở cuối (cú bấm giữa ô trúng chip). Gõ lại một lần: về cuối, bỏ "@" lạc nếu
+    // có, gõ " @" có khoảng trắng đứng trước.
+    debugLog("mention", `"@" không mở bảng cho "${assetName}" — thử lại một lần`);
+    await page.keyboard.press("Escape").catch(() => {});
+    const tail = ((await promptBox.innerText().catch(() => "")) || "").trimEnd();
+    await focusPromptEnd(page, promptBox);
+    if (tail.endsWith("@")) await page.keyboard.press("Backspace");
+    await page.keyboard.type(" @");
+    await page.waitForTimeout(1200);
+    if (!(await opened())) {
+      await debugCapture(page, `mention-picker-fail-${assetName}`);
+      throw new Error(`Gõ "@" không mở được bảng chọn asset cho "${assetName}".`);
+    }
   }
   await search.fill(assetName);
   await page.waitForTimeout(2000);
@@ -407,9 +512,17 @@ async function insertMentionChip(
     await search.waitFor({ state: "hidden", timeout: 3000 }).catch(() => {});
   }
   await page.waitForTimeout(300);
-  await promptBox.click();
-  await page.keyboard.press("ControlOrMeta+ArrowDown");
-  await page.keyboard.press("End");
+  await focusPromptEnd(page, promptBox);
+  // Đo 2026-09-25: chữ gõ NGAY sau bước này mất 15-25 ký tự đầu, cả 3 lượt gõ lại — ô prompt
+  // chưa nhận lại focus hẳn. Chờ focus nằm trong ô contenteditable rồi mới trả về.
+  await page
+    .waitForFunction(
+      () => (document.activeElement as HTMLElement | null)?.isContentEditable === true,
+      null,
+      { timeout: 3000 }
+    )
+    .catch(() => {});
+  await page.waitForTimeout(500);
 }
 
 export async function attachReferenceImage(page: Page, referenceImagePath: string): Promise<void> {
@@ -751,12 +864,14 @@ export async function createImageIngredient(
    * trong project.
    */
   promptParts?: PromptPart[]
-): Promise<void> {
+): Promise<"created" | "existing"> {
   // 🔴 CHỐNG TẠO TRÙNG — xem docstring assetAlreadyExists. Phải đứng TRƯỚC mọi thao tác tạo:
   // asset `failed` trong JSON không có nghĩa là Flow chưa có ảnh của nó.
+  // Trả "existing" để người gọi PHÂN BIỆT với "created": run-shots.ts chỉ được ghi dấu prompt
+  // (`daTao.promptHash`) khi ảnh vừa sinh ra từ đúng prompt đó — ảnh có sẵn có thể là prompt cũ.
   if (await assetAlreadyExists(page, name, projectUrl)) {
     console.log(`[imageAsset] "${name}" ĐÃ có sẵn trong Flow — bỏ qua, không tạo lại.`);
-    return;
+    return "existing";
   }
 
   // Pill hiển thị mode/tỷ lệ khung hình hiện tại — cùng selector đã xác nhận trong
@@ -867,6 +982,7 @@ export async function createImageIngredient(
   // Baseline = TẬP HỢP src đang render, chụp khi lưới đã render xong (xem docstring
   // snapshotGridSrcs — so vị trí 0 như bản cũ đã gây đổi tên đè lên ảnh cũ).
   const baselineSrcs = await snapshotGridSrcs(page);
+  const baselineLabels = new Set((await gridTiles(page)).map((t) => t.label));
   debugLog("baseline", `ingredient "${name}": ${baselineSrcs.size} ảnh đang render trước khi tạo`);
   // Card lỗi của asset TRƯỚC có thể còn nằm đó — ghi lại để chỉ phản ứng với lỗi MỚI.
   const failureBefore = await findGenerationFailure(page);
@@ -876,7 +992,7 @@ export async function createImageIngredient(
   const deadline = Date.now() + GENERATE_TIMEOUT_MS;
   let newImageSrc: string | undefined;
   while (Date.now() < deadline) {
-    newImageSrc = await findNewImageSrc(page, baselineSrcs);
+    newImageSrc = await findNewImageSrc(page, baselineSrcs, baselineLabels);
     if (newImageSrc) break;
     // Bắt lỗi NGAY trong lúc poll: hết quota thì chờ đủ 2 phút rồi reload là vô ích, mà còn
     // xoá mất card lỗi — đúng cách bản cũ đã chẩn đoán nhầm thành lỗi selector.
@@ -915,10 +1031,10 @@ export async function createImageIngredient(
     // thời gian cố định vốn có thể quá ngắn khi project đã tích luỹ nhiều media.
     await page.locator(PROJECT_READY_SELECTOR).waitFor({ state: "visible", timeout: 90000 }).catch(() => {});
     const recheckDeadline = Date.now() + RELOAD_RECHECK_TIMEOUT_MS;
-    newImageSrc = await findNewImageSrc(page, baselineSrcs);
+    newImageSrc = await findNewImageSrc(page, baselineSrcs, baselineLabels);
     while (!newImageSrc && Date.now() < recheckDeadline) {
       await page.waitForTimeout(POLL_INTERVAL_MS);
-      newImageSrc = await findNewImageSrc(page, baselineSrcs);
+      newImageSrc = await findNewImageSrc(page, baselineSrcs, baselineLabels);
     }
     if (!newImageSrc) {
       await debugCapture(page, `timeout-ingredient-${name}`);
@@ -971,4 +1087,5 @@ export async function createImageIngredient(
 
   // Chốt lại: tên phải TRA ĐƯỢC thật, không chỉ "đã bấm Done" (xem docstring assertAssetNamed).
   await assertAssetNamed(page, name);
+  return "created";
 }

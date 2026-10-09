@@ -10,91 +10,91 @@ Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.js
 
 | Mã | Lời kể (`at`) | Loại | Tên card | Sinh bằng | Trạng thái |
 |---|---|---|---|---|---|
-| C1-01 | In the summer of 1917, in Cottingley, a small village **just outside the city of Bradford** in the north of England, two cousins kept getting into trouble for the very same thing. | `place` | Country Map With One Northern City Labelled | chip @ | ✅ có trên Flow |
-| C1-02 | **Elsie Wright was 16**. | `character` | Older Girl Ref Bell Hat White Dress | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-03 | Her cousin **Frances Griffiths was only 9**. | `character` | Young Girl Ref Flower Band Long Hair | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-04 | Frances and her mother had recently come **back to England from South Africa**, and they were staying with Elsie's family. | `place` | Southern Africa Map With Cape Town Labelled | chip @ | ✅ có trên Flow |
-| C1-04b | Frances and her mother **had recently come back** to England from South Africa, and they were staying with Elsie's family. | `object` | Passenger Steamship With Two Funnels | chữ + ảnh neo | ✅ có trên Flow |
-| C1-04c | Frances and her mother had recently come back to England from South Africa, and they were **staying with Elsie's family**. | `place` | Stone End Terrace House With Tall Gable Chimney | chữ + ảnh neo | ✅ có trên Flow |
-| C1-05 | At the bottom of the Wrights' garden ran a little stream, **what the locals call a beck**. | `place` | Stream Ref Flat Stones Small Fall | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-06 | **The girls spent hours down there**, and every time they came home with soaking wet shoes and muddy clothes. | `group` | Two Girls Crouching On Stream Stones | chip @ | ✅ có trên Flow |
-| C1-06b | The girls spent hours down there, and every time they came home with **soaking wet shoes** and muddy clothes. | `object` | Pair Of Soaked Lace Up Girls Boots | chữ + ảnh neo | ✅ có trên Flow |
-| C1-06c | The girls spent hours down there, and every time they came home with soaking wet shoes and **muddy clothes**. | `object` | White Cotton Dress With Muddy Hem | chữ + ảnh neo | ✅ có trên Flow |
-| C1-07 | **When the grown-ups asked** what they could possibly be doing down there to get so wet, the girls had an answer ready. | `figure` | Mother Ref Pinned Bun Brown Coat | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-07b | When the grown-ups asked **what they could possibly be doing down there** to get so wet, the girls had an answer ready. | `group` | Mother Asking Two Wet Girls | chip @ | ✅ có trên Flow |
-| C1-08 | **They were going to see the fairies**. | `group` | Two Girls Answering Their Mother | chip @ | ✅ có trên Flow |
-| C1-10 | So one day in July 1917, Elsie **borrowed her father's camera**. | `object` | Box Camera Ref Black Leather | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-10b | So one day in July 1917, **Elsie borrowed** her father's camera. | `character` | Older Girl Holding Box Camera | chip @ | ✅ có trên Flow |
-| C1-11 | **Arthur Wright was a keen amateur photographer**, with his own darkroom right there in the house. | `figure` | Father Ref Moustache Waistcoat | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-11b | Arthur Wright was a keen amateur photographer, with **his own darkroom right there in the house**. | `place` | Darkroom Ref Red Lamp Two Trays | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-12 | The girls **took the camera down to the stream**, and about half an hour later they came back looking triumphant. | `group` | Two Girls Carrying Camera Toward Stream | chip @ | ✅ có trên Flow |
-| C1-12b | The girls took the camera down to the stream, and about half an hour later they **came back looking triumphant**. | `group` | Girls Handing Camera Back To Father | chip @ | ✅ có trên Flow |
-| C1-13 | That evening, **Arthur developed the glass plate himself**. | `figure` | Father Rocking Tray In Red Lit Darkroom | chip @ | ✅ có trên Flow |
-| C1-14 | **As the image slowly appeared** in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera. | `object` | Glass Plate With Faint Image In Tray | chữ + ảnh neo | ✅ có trên Flow |
-| C1-14b | As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, **her chin resting on her hand**, looking straight into the camera. | `character` | Girl With Chin On Hand And Four Tiny Fairies | chip @ | ✅ có trên Flow |
-| C1-17 | He knew **his daughter was a gifted artist**, and Elsie had spent some time working in a photographer's studio. | `character` | Older Girl Painting With Paint Box | chip @ | ✅ có trên Flow |
-| C1-17b | He knew his daughter was a gifted artist, and Elsie had spent some time **working in a photographer's studio**. | `character` | Older Girl Beside Big Studio Camera | chip @ | ✅ có trên Flow |
-| C1-18 | He said the figures were **nothing but cardboard cutouts** and called the whole thing a prank. | `figure` | Father Holding Print And Speaking | chip @ | ✅ có trên Flow |
-| C1-20 | This one showed Elsie sitting on the lawn, **holding out her hand toward a gnome** about one foot tall. | `character` | Older Girl On Lawn Reaching To Small Gnome | chip @ | ✅ có trên Flow |
-| C1-21 | After that, Arthur **refused to lend them the camera** at all. | `group` | Father Keeping Camera From Two Girls | chip @ | ✅ có trên Flow |
-| C1-22 | His wife Polly, though, **believed the photographs were real**. | `figure` | Mother Looking At Two Small Prints | chip @ | ✅ có trên Flow |
-| C1-23 | Near the end of 1918, **Frances wrote to an old friend** back in Cape Town. | `character` | Young Girl Writing A Letter At Table | chip @ | ✅ có trên Flow |
-| C1-26 | In 1919, Polly went to **a lecture given by the Theosophical Society** in Bradford, a group of people deeply interested in the spirit world. | `figure` | Lecturer Ref Bald White Fringe | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-26b | In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people **deeply interested in the spirit world**. | `group` | Lecturer At Lectern Before Small Audience | chip @ | ✅ có trên Flow |
-| C1-28 | When the talk was over, **Polly showed the speaker the 2 photographs**. | `group` | Mother Showing Prints To Lecturer | chip @ | ✅ có trên Flow |
-| C1-29 | **They were passed around the society** until they reached Edward Gardner, one of its leading members. | `group` | Hands Passing Small Prints Along A Row | chữ + ảnh neo | ✅ có trên Flow |
-| C1-29b | They were passed around the society until they reached **Edward Gardner, one of its leading members**. | `character` | Society Member Ref Dark Suit | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-30 | Gardner became convinced that for the very first time in history, fairies had appeared clearly enough to be **captured on a photographic plate**. | `character` | Society Member Holding Glass Plate To Light | chip @ | ✅ có trên Flow |
-| C1-31 | Gardner took the original plates to **a photography expert named Harold Snelling**. | `figure` | Photo Expert Ref Round Spectacles | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-31b | **Gardner took the original plates** to a photography expert named Harold Snelling. | `group` | Society Member Handing Plates To Expert | chip @ | ✅ có trên Flow |
-| C1-32 | **After studying them closely**, Snelling declared that both negatives were genuine, with no sign of studio trickery using paper or card. | `figure` | Expert Studying Plate Through Loupe | chip @ | ✅ có trên Flow |
-| C1-33 | **These were straightforward photographs**, he said, of whatever had been in front of the camera at the time. | `figure` | Expert Holding Plate And Speaking | chip @ | ✅ có trên Flow |
-| C1-34 | **The Kodak company examined them too**. | `figure` | Technician In White Coat Examining Print | chữ + ảnh neo | ✅ có trên Flow |
-| C1-35 | Kodak couldn't find any sign of faking either, but it **refused to certify** that they were real pictures of fairies. | `object` | Blank Certificate Paper With Empty Seal | chữ + ảnh neo | ✅ có trên Flow |
-| C1-36 | The next person to hear about the photographs was **Sir Arthur Conan Doyle**, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic. | `character` | Author Ref Walrus Moustache | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-36b | The next person to hear about the photographs was Sir Arthur Conan Doyle, **the creator of Sherlock Holmes**, the most famous detective in all of fiction, a man who trusted nothing but observation and logic. | `object` | Deerstalker Cap Beside Curved Pipe | chữ + ảnh neo | ✅ có trên Flow |
-| C1-38 | **The Strand Magazine had just asked him** to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment. | `object` | Magazine Ref Plain Blue Cover | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-38b | The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs **reached him at exactly the right moment**. | `character` | Author Holding Two Small Photographs | chip @ | ✅ có trên Flow |
-| C1-39 | In the summer of 1920, **Gardner traveled to Cottingley himself**. | `character` | Society Member Walking With Leather Case | chip @ | ✅ có trên Flow |
-| C1-40 | **He brought 2 new cameras** and 24 photographic plates that had been secretly marked, so that nobody could swap them. | `object` | Folding Cameras Ref Two Bellows | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-40b | He brought 2 new cameras and **24 photographic plates** that had been secretly marked, so that nobody could swap them. | `object` | Open Box Of Glass Photographic Plates | chữ + ảnh neo | ✅ có trên Flow |
-| C1-41 | Frances had moved away by then, but she was **invited back to stay for the school holidays**. | `character` | Teen Girl Ref White Hair Bow | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-42 | **The girls explained** that the fairies wouldn't come out if anyone was watching. | `character` | Young Woman Ref Dark Curls Side Fringe | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-42b | The girls explained that the fairies **wouldn't come out if anyone was watching**. | `group` | Two Girls Explaining To Visitor In Suit | chip @ | ✅ có trên Flow |
-| C1-43 | **It rained for days on end**, and the weather didn't clear until August 19th. | `place` | Same Stream Under Heavy Rain | chip @ | ✅ có trên Flow |
-| C1-44 | That day, **Polly went off to visit one of her sisters**, leaving the 2 girls at home with the cameras. | `figure` | Mother Walking Off With Travel Bag | chip @ | ✅ có trên Flow |
-| C1-44b | That day, Polly went off to visit one of her sisters, **leaving the 2 girls at home with the cameras**. | `group` | Two Girls Each Holding A Folding Camera | chip @ | ✅ có trên Flow |
-| C1-46 | In one, **a fairy leaps up right beside Frances's nose**. | `character` | Teen Girl In Profile With Leaping Fairy | chip @ | ✅ có trên Flow |
-| C1-47 | In another, a fairy stands on a branch, **offering Elsie a little bunch of harebells**. | `character` | Young Woman Offered Flowers By Tiny Fairy | chip @ | ✅ có trên Flow |
-| C1-47b | In another, a fairy stands on a branch, offering Elsie a little **bunch of harebells**. | `object` | Small Bunch Of Pale Blue Bell Flowers | chữ + ảnh neo | ✅ có trên Flow |
-| C1-48 | **Just pale, misty fairy shapes among the grass**. | `place` | Pale Misty Winged Shapes In Tall Grass | chữ + ảnh neo | ✅ có trên Flow |
-| C1-51 | Doyle was away on **a lecture tour in Australia** at the time. | `place` | Australia Map With Melbourne Labelled | chip @ | ✅ có trên Flow |
-| C1-51b | **Doyle was away on a lecture tour** in Australia at the time. | `character` | Author Speaking At A Lectern | chip @ | ✅ có trên Flow |
-| C1-52 | When he heard the news, **he sent a telegram from Melbourne** saying his heart was gladdened by 3 wonderful pictures that confirmed everything they had published. | `object` | Blank Telegram Form Paper | chữ + ảnh neo | ✅ có trên Flow |
-| C1-53 | In December 1920, Doyle's article, "Fairies Photographed," **appeared in the Christmas issue of The Strand**, along with the 2 photographs from 1917. | `object` | Same Magazine Lying Open On Two Photos | chip @ | ✅ có trên Flow |
-| C1-56 | **Doyle wrote that once people accepted** that fairies were real, it would jolt the heavy, materialistic mind of the 20th century out of its ruts. | `character` | Author Writing At His Desk | chip @ | ✅ có trên Flow |
-| C1-57 | In 1922, he published a whole book on the subject, **called The Coming of the Fairies**. | `object` | Closed Hardback Book With Plain Cloth Cover | chữ + ảnh neo | ✅ có trên Flow |
-| C1-58 | **The press was split**. | `object` | Stack Of Folded Newspapers Blank Columns | chữ + ảnh neo | ✅ có trên Flow |
-| C1-61 | In the summer of 1921, Gardner came back one more time, **bringing a clairvoyant with him**. | `figure` | Clairvoyant Ref Grey Tweed Jacket | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-62 | The clairvoyant said **he could see fairies everywhere**. | `group` | Clairvoyant Pointing While Two Girls Watch | chip @ | ✅ có trên Flow |
-| C1-68 | **In 1966, a reporter** tracked Elsie down. | `figure` | Elderly Woman Ref White Curls Cardigan | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-68b | In 1966, a reporter **tracked Elsie down**. | `group` | Elderly Woman Talking To Reporter With Notebook | chip @ | ✅ có trên Flow |
-| C1-70 | **In 1976, on television**, both women agreed that a rational person doesn't see fairies. | `figure` | Old Lady Ref Grey Bob Green Jumper | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-70b | In 1976, on television, **both women agreed that a rational person** doesn't see fairies. | `group` | Two Elderly Women On Studio Sofa Before Camera | chip @ | ✅ có trên Flow |
-| C1-72 | Meanwhile, skeptics were **enlarging the photographs with computers**, and a photography expert went back over them from the very beginning. | `figure` | Man At Old Computer Screen With Grainy Photo | chip @ | ✅ có trên Flow |
-| C1-72b | Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert **went back over them from the very beginning**. | `figure` | Grey Bearded Expert Over Prints With Loupe | chip @ | ✅ có trên Flow |
-| C1-75 | In 1983, in **a magazine called The Unexplained**, the 2 elderly cousins finally admitted it. | `object` | Glossy Magazine With Dark Blank Cover | chữ + ảnh neo | ✅ có trên Flow |
-| C1-75b | In 1983, in a magazine called The Unexplained, **the 2 elderly cousins finally admitted it**. | `group` | Two Elderly Women Talking To Interviewer | chip @ | ✅ có trên Flow |
-| C1-76 | **Elsie had drawn the fairies herself**. | `character` | Older Girl Drawing A Winged Dancer | chip @ | ✅ có trên Flow |
-| C1-77 | She copied the figures of dancing girls from a popular children's book of the time, **Princess Mary's Gift Book**, changed a few details, and added wings. | `object` | Open Picture Book With Three Dancing Girls | chữ + ảnh neo | ✅ có trên Flow |
-| C1-78 | **The cousins cut the figures out**, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream. | `group` | Two Girls Cutting Paper Figures With Scissors | chip @ | ✅ có trên Flow |
-| C1-78b | The cousins **cut the figures out**, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream. | `object` | Paper Cutout Ref Winged Dancer | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow |
-| C1-78c | The cousins cut the figures out, **stood them up in the grass with hatpins**, took their pictures, and then threw the props into the stream. | `object` | Paper Dancer Pinned Upright In Grass | chip @ | ✅ có trên Flow |
-| C1-78d | The cousins cut the figures out, stood them up in the grass **with hatpins**, took their pictures, and then threw the props into the stream. | `object` | Long Steel Hatpin With Pearl Head | chữ + ảnh neo | ✅ có trên Flow |
-| C1-78e | The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then **threw the props into the stream**. | `group` | Two Girls Tossing Paper Figures Into Stream | chip @ | ✅ có trên Flow |
-| C1-84 | **Elsie explained their long silence** simply. | `figure` | Elderly Woman Speaking With Open Hands | chip @ | ✅ có trên Flow |
-| C1-86 | Frances, **in a letter written in 1983**, said she had hated those photographs since she was 16 years old. | `figure` | Old Lady Writing A Letter At Table | chip @ | ✅ có trên Flow |
-| C1-89 | **Frances insisted, for the rest of her life**, that the fifth one, the sun bath, was real. | `figure` | Old Lady Speaking Holding One Photograph | chip @ | ✅ có trên Flow |
+| C1-01 | In the summer of 1917, in Cottingley, a small village **just outside the city of Bradford** in the north of England, two cousins kept getting into trouble for the very same thing. | `place` | Country Map With One Northern City Labelled | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-02 | **Elsie Wright was 16**. | `character` | Older Girl Ref Bell Hat White Dress | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-03 | Her cousin **Frances Griffiths was only 9**. | `character` | Young Girl Ref Flower Band Long Hair | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-04 | Frances and her mother had recently come **back to England from South Africa**, and they were staying with Elsie's family. | `place` | Southern Africa Map With Cape Town Labelled | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-04b | Frances and her mother **had recently come back** to England from South Africa, and they were staying with Elsie's family. | `object` | Passenger Steamship With Two Funnels | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-04c | Frances and her mother had recently come back to England from South Africa, and they were **staying with Elsie's family**. | `place` | Stone End Terrace House With Tall Gable Chimney | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-05 | At the bottom of the Wrights' garden ran a little stream, **what the locals call a beck**. | `place` | Stream Ref Flat Stones Small Fall | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-06 | **The girls spent hours down there**, and every time they came home with soaking wet shoes and muddy clothes. | `group` | Two Girls Crouching On Stream Stones | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-06b | The girls spent hours down there, and every time they came home with **soaking wet shoes** and muddy clothes. | `object` | Pair Of Soaked Lace Up Girls Boots | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-06c | The girls spent hours down there, and every time they came home with soaking wet shoes and **muddy clothes**. | `object` | White Cotton Dress With Muddy Hem | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-07 | **When the grown-ups asked** what they could possibly be doing down there to get so wet, the girls had an answer ready. | `figure` | Mother Ref Pinned Bun Brown Coat | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-07b | When the grown-ups asked **what they could possibly be doing down there** to get so wet, the girls had an answer ready. | `group` | Mother Asking Two Wet Girls | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-08 | **They were going to see the fairies**. | `group` | Two Girls Answering Their Mother | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-10 | So one day in July 1917, Elsie **borrowed her father's camera**. | `object` | Box Camera Ref Black Leather | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-10b | So one day in July 1917, **Elsie borrowed** her father's camera. | `character` | Older Girl Holding Box Camera | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-11 | **Arthur Wright was a keen amateur photographer**, with his own darkroom right there in the house. | `figure` | Father Ref Moustache Waistcoat | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-11b | Arthur Wright was a keen amateur photographer, with **his own darkroom right there in the house**. | `place` | Darkroom Ref Red Lamp Two Trays | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-12 | The girls **took the camera down to the stream**, and about half an hour later they came back looking triumphant. | `group` | Two Girls Carrying Camera Toward Stream | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-12b | The girls took the camera down to the stream, and about half an hour later they **came back looking triumphant**. | `group` | Girls Handing Camera Back To Father | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-13 | That evening, **Arthur developed the glass plate himself**. | `figure` | Father Rocking Tray In Red Lit Darkroom | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-14 | **As the image slowly appeared** in the darkroom, he saw Frances sitting behind a bush, her chin resting on her hand, looking straight into the camera. | `object` | Glass Plate With Faint Image In Tray | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-14b | As the image slowly appeared in the darkroom, he saw Frances sitting behind a bush, **her chin resting on her hand**, looking straight into the camera. | `character` | Girl With Chin On Hand And Four Tiny Fairies | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-17 | He knew **his daughter was a gifted artist**, and Elsie had spent some time working in a photographer's studio. | `character` | Older Girl Painting With Paint Box | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-17b | He knew his daughter was a gifted artist, and Elsie had spent some time **working in a photographer's studio**. | `character` | Older Girl Beside Big Studio Camera | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-18 | He said the figures were **nothing but cardboard cutouts** and called the whole thing a prank. | `figure` | Father Holding Print And Speaking | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-20 | This one showed Elsie sitting on the lawn, **holding out her hand toward a gnome** about one foot tall. | `character` | Older Girl On Lawn Reaching To Small Gnome | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-21 | After that, Arthur **refused to lend them the camera** at all. | `group` | Father Keeping Camera From Two Girls | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-22 | His wife Polly, though, **believed the photographs were real**. | `figure` | Mother Looking At Two Small Prints | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-23 | Near the end of 1918, **Frances wrote to an old friend** back in Cape Town. | `character` | Young Girl Writing A Letter At Table | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-26 | In 1919, Polly went to **a lecture given by the Theosophical Society** in Bradford, a group of people deeply interested in the spirit world. | `figure` | Lecturer Ref Bald White Fringe | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-26b | In 1919, Polly went to a lecture given by the Theosophical Society in Bradford, a group of people **deeply interested in the spirit world**. | `group` | Lecturer At Lectern Before Small Audience | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-28 | When the talk was over, **Polly showed the speaker the 2 photographs**. | `group` | Mother Showing Prints To Lecturer | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-29 | **They were passed around the society** until they reached Edward Gardner, one of its leading members. | `group` | Hands Passing Small Prints Along A Row | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-29b | They were passed around the society until they reached **Edward Gardner, one of its leading members**. | `character` | Society Member Ref Dark Suit | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-30 | Gardner became convinced that for the very first time in history, fairies had appeared clearly enough to be **captured on a photographic plate**. | `character` | Society Member Holding Glass Plate To Light | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-31 | Gardner took the original plates to **a photography expert named Harold Snelling**. | `figure` | Photo Expert Ref Round Spectacles | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-31b | **Gardner took the original plates** to a photography expert named Harold Snelling. | `group` | Society Member Handing Plates To Expert | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-32 | **After studying them closely**, Snelling declared that both negatives were genuine, with no sign of studio trickery using paper or card. | `figure` | Expert Studying Plate Through Loupe | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-33 | **These were straightforward photographs**, he said, of whatever had been in front of the camera at the time. | `figure` | Expert Holding Plate And Speaking | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-34 | **The Kodak company examined them too**. | `figure` | Technician In White Coat Examining Print | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-35 | Kodak couldn't find any sign of faking either, but it **refused to certify** that they were real pictures of fairies. | `object` | Blank Certificate Paper With Empty Seal | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-36 | The next person to hear about the photographs was **Sir Arthur Conan Doyle**, the creator of Sherlock Holmes, the most famous detective in all of fiction, a man who trusted nothing but observation and logic. | `character` | Author Ref Walrus Moustache | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-36b | The next person to hear about the photographs was Sir Arthur Conan Doyle, **the creator of Sherlock Holmes**, the most famous detective in all of fiction, a man who trusted nothing but observation and logic. | `object` | Deerstalker Cap Beside Curved Pipe | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-38 | **The Strand Magazine had just asked him** to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs reached him at exactly the right moment. | `object` | Magazine Ref Plain Blue Cover | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-38b | The Strand Magazine had just asked him to write an article about fairies for its Christmas issue of 1920, and the Cottingley photographs **reached him at exactly the right moment**. | `character` | Author Holding Two Small Photographs | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-39 | In the summer of 1920, **Gardner traveled to Cottingley himself**. | `character` | Society Member Walking With Leather Case | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-40 | **He brought 2 new cameras** and 24 photographic plates that had been secretly marked, so that nobody could swap them. | `object` | Folding Cameras Ref Two Bellows | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-40b | He brought 2 new cameras and **24 photographic plates** that had been secretly marked, so that nobody could swap them. | `object` | Open Box Of Glass Photographic Plates | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-41 | Frances had moved away by then, but she was **invited back to stay for the school holidays**. | `character` | Teen Girl Ref White Hair Bow | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-42 | **The girls explained** that the fairies wouldn't come out if anyone was watching. | `character` | Young Woman Ref Dark Curls Side Fringe | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-42b | The girls explained that the fairies **wouldn't come out if anyone was watching**. | `group` | Two Girls Explaining To Visitor In Suit | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-43 | **It rained for days on end**, and the weather didn't clear until August 19th. | `place` | Same Stream Under Heavy Rain | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-44 | That day, **Polly went off to visit one of her sisters**, leaving the 2 girls at home with the cameras. | `figure` | Mother Walking Off With Travel Bag | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-44b | That day, Polly went off to visit one of her sisters, **leaving the 2 girls at home with the cameras**. | `group` | Two Girls Each Holding A Folding Camera | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-46 | In one, **a fairy leaps up right beside Frances's nose**. | `character` | Teen Girl In Profile With Leaping Fairy | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-47 | In another, a fairy stands on a branch, **offering Elsie a little bunch of harebells**. | `character` | Young Woman Offered Flowers By Tiny Fairy | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-47b | In another, a fairy stands on a branch, offering Elsie a little **bunch of harebells**. | `object` | Small Bunch Of Pale Blue Bell Flowers | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-48 | **Just pale, misty fairy shapes among the grass**. | `place` | Pale Misty Winged Shapes In Tall Grass | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-51 | Doyle was away on **a lecture tour in Australia** at the time. | `place` | Australia Map With Melbourne Labelled | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-51b | **Doyle was away on a lecture tour** in Australia at the time. | `character` | Author Speaking At A Lectern | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-52 | When he heard the news, **he sent a telegram from Melbourne** saying his heart was gladdened by 3 wonderful pictures that confirmed everything they had published. | `object` | Blank Telegram Form Paper | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-53 | In December 1920, Doyle's article, "Fairies Photographed," **appeared in the Christmas issue of The Strand**, along with the 2 photographs from 1917. | `object` | Same Magazine Lying Open On Two Photos | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-56 | **Doyle wrote that once people accepted** that fairies were real, it would jolt the heavy, materialistic mind of the 20th century out of its ruts. | `character` | Author Writing At His Desk | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-57 | In 1922, he published a whole book on the subject, **called The Coming of the Fairies**. | `object` | Closed Hardback Book With Plain Cloth Cover | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-58 | **The press was split**. | `object` | Stack Of Folded Newspapers Blank Columns | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-61 | In the summer of 1921, Gardner came back one more time, **bringing a clairvoyant with him**. | `figure` | Clairvoyant Ref Grey Tweed Jacket | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-62 | The clairvoyant said **he could see fairies everywhere**. | `group` | Clairvoyant Pointing While Two Girls Watch | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-68 | **In 1966, a reporter** tracked Elsie down. | `figure` | Elderly Woman Ref White Curls Cardigan | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-68b | In 1966, a reporter **tracked Elsie down**. | `group` | Elderly Woman Talking To Reporter With Notebook | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-70 | **In 1976, on television**, both women agreed that a rational person doesn't see fairies. | `figure` | Old Lady Ref Grey Bob Green Jumper | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-70b | In 1976, on television, **both women agreed that a rational person** doesn't see fairies. | `group` | Two Elderly Women On Studio Sofa Before Camera | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-72 | Meanwhile, skeptics were **enlarging the photographs with computers**, and a photography expert went back over them from the very beginning. | `figure` | Man At Old Computer Screen With Grainy Photo | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-72b | Meanwhile, skeptics were enlarging the photographs with computers, and a photography expert **went back over them from the very beginning**. | `figure` | Grey Bearded Expert Over Prints With Loupe | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-75 | In 1983, in **a magazine called The Unexplained**, the 2 elderly cousins finally admitted it. | `object` | Glossy Magazine With Dark Blank Cover | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-75b | In 1983, in a magazine called The Unexplained, **the 2 elderly cousins finally admitted it**. | `group` | Two Elderly Women Talking To Interviewer | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-76 | **Elsie had drawn the fairies herself**. | `character` | Older Girl Drawing A Winged Dancer | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-77 | She copied the figures of dancing girls from a popular children's book of the time, **Princess Mary's Gift Book**, changed a few details, and added wings. | `object` | Open Picture Book With Three Dancing Girls | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-78 | **The cousins cut the figures out**, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream. | `group` | Two Girls Cutting Paper Figures With Scissors | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-78b | The cousins **cut the figures out**, stood them up in the grass with hatpins, took their pictures, and then threw the props into the stream. | `object` | Paper Cutout Ref Winged Dancer | chữ + ảnh neo · **tạo asset** | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-78c | The cousins cut the figures out, **stood them up in the grass with hatpins**, took their pictures, and then threw the props into the stream. | `object` | Paper Dancer Pinned Upright In Grass | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-78d | The cousins cut the figures out, stood them up in the grass **with hatpins**, took their pictures, and then threw the props into the stream. | `object` | Long Steel Hatpin With Pearl Head | chữ + ảnh neo | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-78e | The cousins cut the figures out, stood them up in the grass with hatpins, took their pictures, and then **threw the props into the stream**. | `group` | Two Girls Tossing Paper Figures Into Stream | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-84 | **Elsie explained their long silence** simply. | `figure` | Elderly Woman Speaking With Open Hands | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-86 | Frances, **in a letter written in 1983**, said she had hated those photographs since she was 16 years old. | `figure` | Old Lady Writing A Letter At Table | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
+| C1-89 | **Frances insisted, for the rest of her life**, that the fifth one, the sun bath, was real. | `figure` | Old Lady Speaking Holding One Photograph | chip @ | ✅ có trên Flow · chưa rõ prompt tạo ảnh |
 
 ## Các quyết định theo skill 4d (rà 10 câu hỏi)
 
@@ -114,7 +114,7 @@ Sinh bằng `scripts/review_shots.py` từ `case-1.shots.json` + `case-1.jobs.js
 
 ## Từng shot
 
-### C1-01 · `place` · ✅ có trên Flow
+### C1-01 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Country Map With One Northern City Labelled
 
@@ -138,7 +138,7 @@ draw a map shaped like @13-maps-01.png with the same style as @01-pyramid-place.
 
 **Ghi chú:** Skill 4d-bis phan 4a: ban do tham chieu = England location map (Commons). Ban do DINH VI hom nay, ranh gioi hien dai. Cham Cottingley/Bradford va mui ten la hau ky.
 
-### C1-02 · `character` · ✅ có trên Flow
+### C1-02 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl Ref Bell Hat White Dress
 
@@ -164,7 +164,7 @@ A girl of about sixteen seen from the chest up. An oval face. Long straight dark
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh that 1917 (Elsie va chu lun): toc sam thang xoa, mu chuong sam co hoa, vay trang rong tay dai co ren o co tay. Ten rieng khong vao outName (duong draw go outName vao prompt).
 
-### C1-03 · `character` · ✅ có trên Flow
+### C1-03 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Young Girl Ref Flower Band Long Hair
 
@@ -190,7 +190,7 @@ A girl of about nine seen from the chest up. A round face with full cheeks. Long
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh that 1917 (Frances va bon nang tien): mat tron, toc nau nhat xoa, vong hoa tren toc, ao trang.
 
-### C1-04 · `place` · ✅ có trên Flow
+### C1-04 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Southern Africa Map With Cape Town Labelled
 
@@ -214,7 +214,7 @@ draw a map shaped like @13-maps-02.png with the same style as @01-pyramid-place.
 
 **Ghi chú:** Skill 4d-bis 4a. Ranh gioi Nam Phi hien dai (nam 1917 la Lien bang Nam Phi) — ban do dinh vi cho nguoi xem hom nay.
 
-### C1-04b · `object` · ✅ có trên Flow
+### C1-04b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Passenger Steamship With Two Funnels
 
@@ -236,7 +236,7 @@ A passenger steamship of the 1910s seen from the side: a long dark hull with one
 
 **Ghi chú:** Gioi han Dong nhat hien vat: khong khang dinh ten tau (nguon khong ghi).
 
-### C1-04c · `place` · ✅ có trên Flow
+### C1-04c · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Stone End Terrace House With Tall Gable Chimney
 
@@ -260,7 +260,7 @@ A two-storey end-of-terrace house seen straight from the front, built of rough-f
 
 **Ghi chú:** Mo ta theo anh that 08-cottingley-03 (chup gan day, blog Yorkshire Ridings 2019; so 31 tren o kinh cua). Co y bo do hien dai: cua nhua den, hang rao go son den, ang-ten, day dien, xe dap. Than nha da khong doi tu 1917. Ten card doi so voi ban nhap vi ban nhap chua tung chay.
 
-### C1-05 · `place` · ✅ có trên Flow
+### C1-05 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Stream Ref Flat Stones Small Fall
 
@@ -286,7 +286,7 @@ A small stream running over flat grey stones between two steep grassy banks, wit
 
 **Ghi chú:** Theo anh con suoi Cottingley hom nay + nen anh tien 1917 (thac nho ben trai) + anh Elsie ngoi tren bo suoi 1920 (da phang, bo doc).
 
-### C1-06 · `group` · ✅ có trên Flow
+### C1-06 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Crouching On Stream Stones
 
@@ -308,7 +308,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 
 **Ghi chú:** Skill 8c: ep chieu cao tre em o tung canh. Cam tuong minh tien (chua den luc).
 
-### C1-06b · `object` · ✅ có trên Flow
+### C1-06b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Pair Of Soaked Lace Up Girls Boots
 
@@ -328,7 +328,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 A pair of small black leather lace-up ankle boots from the 1910s, soaking wet, with water dripping from them into a small puddle and brown mud splashed across the toes. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.
 ```
 
-### C1-06c · `object` · ✅ có trên Flow
+### C1-06c · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** White Cotton Dress With Muddy Hem
 
@@ -348,7 +348,7 @@ A pair of small black leather lace-up ankle boots from the 1910s, soaking wet, w
 A girl's plain white cotton dress hanging from a single wooden peg, its hem wet and streaked with brown mud. No people, no lettering. Draw this in exactly the same drawing style as the reference images, on a plain white background.
 ```
 
-### C1-07 · `figure` · ✅ có trên Flow
+### C1-07 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Mother Ref Pinned Bun Brown Coat
 
@@ -372,7 +372,7 @@ A woman in her early forties seen from the chest up. Dark brown hair pinned up i
 
 **Ghi chú:** SHOT TAO ASSET. Khong tim duoc anh Polly Wright (stillMissing). Ta theo trang phuc phu nu Anh 1917-1920.
 
-### C1-07b · `group` · ✅ có trên Flow
+### C1-07b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Mother Asking Two Wet Girls
 
@@ -394,7 +394,7 @@ draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exact
 
 **Ghi chú:** Net mat trung tinh (skill 4d-bis 'Net mat'): loi ke khong noi me gian.
 
-### C1-08 · `group` · ✅ có trên Flow
+### C1-08 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Answering Their Mother
 
@@ -416,7 +416,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 
 **Ghi chú:** Luat 8. Gioi han muc chac chan: KHONG ve tien — chi la loi cua hai co.
 
-### C1-10 · `object` · ✅ có trên Flow
+### C1-10 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Box Camera Ref Black Leather
 
@@ -442,7 +442,7 @@ An old box camera from the 1910s shaped like an upright rectangular box, covered
 
 **Ghi chú:** Soi anh THAT chiec Midg cua ong Arthur Wright (Science Museum Group, qua blog NSMM va Museum Crush): hop dung da den san, quai da tren noc, hai o ngam tron phia tren, ong kinh tron giua, can chup ben duoi. Nhan giay dan ben hong la cua bao tang ve sau — khong ve.
 
-### C1-10b · `character` · ✅ có trên Flow
+### C1-10b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl Holding Box Camera
 
@@ -462,7 +462,7 @@ An old box camera from the 1910s shaped like an upright rectangular box, covered
 draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exactly the same, seen from the chest up holding the same camera as in @Box Camera Ref Black Leather in both hands in front of her chest, in the same bell hat and white dress, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-11 · `figure` · ✅ có trên Flow
+### C1-11 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Father Ref Moustache Waistcoat
 
@@ -486,7 +486,7 @@ A man in his forties seen from the chest up. Short dark hair parted on one side,
 
 **Ghi chú:** SHOT TAO ASSET. Khong tim duoc anh Arthur Wright (stillMissing). Trang phuc dan ong Anh 1917. Toc/rau khac Doyle, Gardner, Snelling (skill 5a).
 
-### C1-11b · `place` · ✅ có trên Flow
+### C1-11b · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Darkroom Ref Red Lamp Two Trays
 
@@ -510,7 +510,7 @@ A small home darkroom of the 1910s: a plain wooden bench along a wall with two s
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `10-glass-plate-01.jpg`
 
-### C1-12 · `group` · ✅ có trên Flow
+### C1-12 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Carrying Camera Toward Stream
 
@@ -532,7 +532,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 
 **Ghi chú:** Cam tuong minh giay/tien — hinh giay chi xuat hien sau loi thu nhan (C1-78).
 
-### C1-12b · `group` · ✅ có trên Flow
+### C1-12b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Girls Handing Camera Back To Father
 
@@ -552,7 +552,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length from head to shoes with big proud smiles, the older girl holding out the same camera as in @Box Camera Ref Black Leather toward the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, who stands facing them full length in the same waistcoat and rolled shirt sleeves with dark trousers and black boots, reaching out to take it, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-13 · `figure` · ✅ có trên Flow
+### C1-13 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Father Rocking Tray In Red Lit Darkroom
 
@@ -572,7 +572,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, seen from the chest up standing at the bench of the same darkroom as in @Darkroom Ref Red Lamp Two Trays, gently tilting one developing tray with both hands and looking down into it, the red lantern glowing on the shelf, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-14 · `object` · ✅ có trên Flow
+### C1-14 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Glass Plate With Faint Image In Tray
 
@@ -594,7 +594,7 @@ A shallow rectangular developing tray seen from above, filled with liquid, holdi
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `10-glass-plate-01.jpg`, `01-fairy-photos-01.jpg`
 
-### C1-14b · `character` · ✅ có trên Flow
+### C1-14b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Girl With Chin On Hand And Four Tiny Fairies
 
@@ -618,7 +618,7 @@ draw the same girl as in @Young Girl Ref Flower Band Long Hair, keep her face ex
 
 **Ghi chú:** Ve lai theo anh that 1917 (Alice and the Fairies). Tien ve NHU TRONG ANH (trong nhu tien) — dung la dieu ong Arthur thay dem do; loi giai den o C1-78. Anh that co the chen canh ban ve luc dung.
 
-### C1-17 · `character` · ✅ có trên Flow
+### C1-17 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl Painting With Paint Box
 
@@ -640,7 +640,7 @@ draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face and
 
 **Ghi chú:** Skill story-structure muc 3: luc dat chi tiet, ke hanh dong, khong bao hieu. Bao tang NSMM giu tranh mau nuoc ve tien cua Elsie — KHONG dua vao day.
 
-### C1-17b · `character` · ✅ có trên Flow
+### C1-17b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl Beside Big Studio Camera
 
@@ -662,7 +662,7 @@ draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exa
 
 **Ghi chú:** Nguon ghi 'spent some time working in a photographer's studio' — khong ghi cong viec cu the nen khong ve ve lai/ sua anh.
 
-### C1-18 · `figure` · ✅ có trên Flow
+### C1-18 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Father Holding Print And Speaking
 
@@ -684,7 +684,7 @@ draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly t
 
 **Ghi chú:** Luat 8: nguoi nghe khong ro (nguon khong ghi noi voi ai) — chi ve nguoi noi.
 
-### C1-20 · `character` · ✅ có trên Flow
+### C1-20 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl On Lawn Reaching To Small Gnome
 
@@ -708,7 +708,7 @@ draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exa
 
 **Ghi chú:** Theo anh that 'Iris and the Gnome' (1917): Elsie ngoi nghieng, vay trang rong, tay dua ve chu lun canh buom, mu nhon.
 
-### C1-21 · `group` · ✅ có trên Flow
+### C1-21 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Father Keeping Camera From Two Girls
 
@@ -728,7 +728,7 @@ draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face exa
 draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly the same, seen full length in the same waistcoat, rolled shirt sleeves, dark trousers and black boots, holding the same camera as in @Box Camera Ref Black Leather close against his chest and shaking his head as he speaks, and the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, standing facing him full length in the same white dresses and boots, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-22 · `figure` · ✅ có trên Flow
+### C1-22 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Mother Looking At Two Small Prints
 
@@ -748,7 +748,7 @@ draw the same man as in @Father Ref Moustache Waistcoat, keep his face exactly t
 draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, seen from the chest up holding two small sepia photographic prints in her hands and looking down at them, in the same blouse and brown coat, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-23 · `character` · ✅ có trên Flow
+### C1-23 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Young Girl Writing A Letter At Table
 
@@ -770,7 +770,7 @@ draw the same girl as in @Young Girl Ref Flower Band Long Hair, keep her face ex
 
 **Ghi chú:** Skill 6i: thu tu de trong. Loi trong thu ('too hot for them there') la chu hau ky.
 
-### C1-26 · `figure` · ✅ có trên Flow
+### C1-26 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Lecturer Ref Bald White Fringe
 
@@ -794,7 +794,7 @@ A man of about sixty seen from the chest up. A shiny bald head with only a fring
 
 **Ghi chú:** Dien gia buoi giang o Bradford khong duoc nguon neu ten -> figure minh hoa.
 
-### C1-26b · `group` · ✅ có trên Flow
+### C1-26b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Lecturer At Lectern Before Small Audience
 
@@ -816,7 +816,7 @@ draw the same man as in @Lecturer Ref Bald White Fringe, keep his face exactly t
 
 **Ghi chú:** Nguoi moi la nhom -> goi anh neo 03 (skill 4d-9d, chua do).
 
-### C1-28 · `group` · ✅ có trên Flow
+### C1-28 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Mother Showing Prints To Lecturer
 
@@ -836,7 +836,7 @@ draw the same man as in @Lecturer Ref Bald White Fringe, keep his face exactly t
 draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, seen full length in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, holding out two small sepia photographic prints toward the same man as in @Lecturer Ref Bald White Fringe, keep his face exactly the same, who stands facing her full length in the same frock coat and bends slightly to look at them, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-29 · `group` · ✅ có trên Flow
+### C1-29 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Hands Passing Small Prints Along A Row
 
@@ -856,7 +856,7 @@ draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exact
 Three people of 1919 sitting in a row on plain wooden chairs, two men in dark suits and one woman in a long coat and a wide hat, the one in the middle passing one small sepia photograph into the hand of the person on the right, the others watching, seen full length from head to shoes. No lettering, no sun. Draw this in exactly the same drawing style as the reference images, on a plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-29b · `character` · ✅ có trên Flow
+### C1-29b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Society Member Ref Dark Suit
 
@@ -882,7 +882,7 @@ A lean man of about fifty seen from the chest up. A narrow face with a straight 
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh chan dung that (04-gardner-01, anh nghieng): toc ngan hoa ram hat nguoc, rau cam tia ngan, no buom, ao vest.
 
-### C1-30 · `character` · ✅ có trên Flow
+### C1-30 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Society Member Holding Glass Plate To Light
 
@@ -904,7 +904,7 @@ draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the
 
 **Ghi chú:** Gioi han muc chac chan: 'became convinced' la niem tin cua Gardner — khong ve tien that.
 
-### C1-31 · `figure` · ✅ có trên Flow
+### C1-31 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Photo Expert Ref Round Spectacles
 
@@ -928,7 +928,7 @@ A man in his fifties seen from the chest up. Grey hair combed flat and parted in
 
 **Ghi chú:** SHOT TAO ASSET. Khong tim duoc anh Harold Snelling (stillMissing).
 
-### C1-31b · `group` · ✅ có trên Flow
+### C1-31b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Society Member Handing Plates To Expert
 
@@ -948,7 +948,7 @@ A man in his fifties seen from the chest up. Grey hair combed flat and parted in
 draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the same, seen full length in the same suit with dark trousers and black shoes, handing two small square glass photographic plates to the same man as in @Photo Expert Ref Round Spectacles, keep his face and round spectacles exactly the same, who stands facing him full length in the same three-piece suit and reaches out to take them, do not mix their features, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-32 · `figure` · ✅ có trên Flow
+### C1-32 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Expert Studying Plate Through Loupe
 
@@ -968,7 +968,7 @@ draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the
 draw the same man as in @Photo Expert Ref Round Spectacles, keep his face exactly the same, seen from the chest up bending over one small glass photographic plate laid on a glowing light box, looking at it through a small magnifying loupe held to one eye, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-33 · `figure` · ✅ có trên Flow
+### C1-33 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Expert Holding Plate And Speaking
 
@@ -988,7 +988,7 @@ draw the same man as in @Photo Expert Ref Round Spectacles, keep his face exactl
 draw the same man as in @Photo Expert Ref Round Spectacles, keep his face exactly the same, seen from the chest up holding one small glass photographic plate in one hand and raising the other hand as he talks with his mouth open, in the same suit, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-34 · `figure` · ✅ có trên Flow
+### C1-34 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Technician In White Coat Examining Print
 
@@ -1010,7 +1010,7 @@ A laboratory technician of the 1920s, a man of about thirty with short brown hai
 
 **Ghi chú:** Bang 4c: logo that -> hau ky. Nguoi cu the o Kodak khong duoc nguon neu ten.
 
-### C1-35 · `object` · ✅ có trên Flow
+### C1-35 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Blank Certificate Paper With Empty Seal
 
@@ -1032,7 +1032,7 @@ An old-fashioned certificate on cream paper with a thin decorative border, its s
 
 **Ghi chú:** Skill 6i + 4d-bis 4c (vat tuong trung). Dau X do de len o hau ky.
 
-### C1-36 · `character` · ✅ có trên Flow
+### C1-36 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Author Ref Walrus Moustache
 
@@ -1058,7 +1058,7 @@ A heavy-set man of about sixty seen from the chest up. A broad full face with a 
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh Bain ~1920 (03-doyle-01: ria walrus vuot hai dau, co con cao, vest sam) va anh 1920 tren tau (03-doyle-02: mu phot nhat, gi-le trang).
 
-### C1-36b · `object` · ✅ có trên Flow
+### C1-36b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Deerstalker Cap Beside Curved Pipe
 
@@ -1080,7 +1080,7 @@ A checked cloth deerstalker cap with one peak at the front and one at the back a
 
 **Ghi chú:** Skill 4d-bis 4c: vat tuong trung KHONG sinh chung voi nguoi.
 
-### C1-38 · `object` · ✅ có trên Flow
+### C1-38 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Magazine Ref Plain Blue Cover
 
@@ -1106,7 +1106,7 @@ A thick magazine of the 1920s lying at a slight angle, with a plain pale blue pa
 
 **Ghi chú:** Skill 6i. Bia that tap chi Strand (tranh duong pho London) la anh that — chen o hau ky neu can.
 
-### C1-38b · `character` · ✅ có trên Flow
+### C1-38b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Author Holding Two Small Photographs
 
@@ -1126,7 +1126,7 @@ A thick magazine of the 1920s lying at a slight angle, with a plain pale blue pa
 draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the same, seen from the chest up holding two small sepia photographic prints in his hands and looking down at them, in the same dark suit and high white collar, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-39 · `character` · ✅ có trên Flow
+### C1-39 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Society Member Walking With Leather Case
 
@@ -1148,7 +1148,7 @@ draw the same man as in @Society Member Ref Dark Suit, keep his face exactly the
 
 **Ghi chú:** Phuong tien di lai khong duoc nguon ghi — khong ve tau hoa/xe.
 
-### C1-40 · `object` · ✅ có trên Flow
+### C1-40 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Folding Cameras Ref Two Bellows
 
@@ -1174,7 +1174,7 @@ Two identical folding plate cameras from about 1920 standing side by side, each 
 
 **Ghi chú:** Soi anh THAT chiec Cameo thu ba (National Science and Media Museum, qua Museum Crush): than da den, nap truoc bat xuong thanh be, ong xep den, bang ong kinh + o ngam nho. Cameo quarter-plate, W. Butcher & Sons.
 
-### C1-40b · `object` · ✅ có trên Flow
+### C1-40b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Open Box Of Glass Photographic Plates
 
@@ -1198,7 +1198,7 @@ One open shallow cardboard box with its lid set aside, packed with a neat uprigh
 
 **Ghi chú:** 'secretly marked' — dau an bi mat nen KHONG ve dau.
 
-### C1-41 · `character` · ✅ có trên Flow
+### C1-41 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Teen Girl Ref White Hair Bow
 
@@ -1224,7 +1224,7 @@ A girl of about thirteen seen from the chest up. A round face. Long light brown 
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh that 1920 (Frances and the Leaping Fairy).
 
-### C1-42 · `character` · ✅ có trên Flow
+### C1-42 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Young Woman Ref Dark Curls Side Fringe
 
@@ -1250,7 +1250,7 @@ A young woman of about nineteen seen from the chest up. An oval face. Long thick
 
 **Ghi chú:** SHOT TAO ASSET. Soi anh that 1920 (Fairy offering Posy of Harebells to Elsie).
 
-### C1-42b · `group` · ✅ có trên Flow
+### C1-42b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Explaining To Visitor In Suit
 
@@ -1272,7 +1272,7 @@ draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the 
 
 **Ghi chú:** Phan duoi trang phuc 1920 (vay, tat, giay) KHONG co trong anh that (anh chi thay nua tren) — ta theo thoi trang thieu nu Anh 1920.
 
-### C1-43 · `place` · ✅ có trên Flow
+### C1-43 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Same Stream Under Heavy Rain
 
@@ -1292,7 +1292,7 @@ draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the 
 draw the same stream as in @Stream Ref Flat Stones Small Fall from exactly the same viewpoint, now under heavy rain, with straight slanting streaks of rain across the whole picture, the water surface broken by raindrops and a flat grey sky above, no people, no lettering, plain white background
 ```
 
-### C1-44 · `figure` · ✅ có trên Flow
+### C1-44 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Mother Walking Off With Travel Bag
 
@@ -1312,7 +1312,7 @@ draw the same stream as in @Stream Ref Flat Stones Small Fall from exactly the s
 draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exactly the same, now seen full length walking toward the left in the same brown coat over a long dark skirt with black boots and a plain dark wide-brimmed hat, carrying one small travel bag, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-44b · `group` · ✅ có trên Flow
+### C1-44b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Each Holding A Folding Camera
 
@@ -1332,7 +1332,7 @@ draw the same woman as in @Mother Ref Pinned Bun Brown Coat, keep her face exact
 draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe and the same girl as in @Teen Girl Ref White Hair Bow, keep both faces exactly the same, seen full length standing side by side in the same clothes with long skirts and black shoes, each holding one of the same cameras as in @Folding Cameras Ref Two Bellows in both hands, the girl a little shorter, no fairies, no paper, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-46 · `character` · ✅ có trên Flow
+### C1-46 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Teen Girl In Profile With Leaping Fairy
 
@@ -1356,7 +1356,7 @@ draw the same girl as in @Teen Girl Ref White Hair Bow, keep her face and white 
 
 **Ghi chú:** Theo anh that 1920 'Frances and the Leaping Fairy'.
 
-### C1-47 · `character` · ✅ có trên Flow
+### C1-47 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Young Woman Offered Flowers By Tiny Fairy
 
@@ -1380,7 +1380,7 @@ draw the same young woman as in @Young Woman Ref Dark Curls Side Fringe, keep he
 
 **Ghi chú:** Theo anh that 1920 'Fairy offering Posy of Harebells to Elsie'.
 
-### C1-47b · `object` · ✅ có trên Flow
+### C1-47b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Small Bunch Of Pale Blue Bell Flowers
 
@@ -1402,7 +1402,7 @@ A small bunch of harebells: thin green stems each ending in one drooping pale bl
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `12-harebell-01.jpg`
 
-### C1-48 · `place` · ✅ có trên Flow
+### C1-48 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Pale Misty Winged Shapes In Tall Grass
 
@@ -1426,7 +1426,7 @@ Tall grass and small wildflowers seen close up, and among the stalks three pale,
 
 **Ghi chú:** Theo anh that 1920 'Fairies and Their Sun-Bath': cac hinh nhat, chong mo nhu phoi hai lan. Tam anh gay tranh cai giua hai chi em.
 
-### C1-51 · `place` · ✅ có trên Flow
+### C1-51 · `place` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Australia Map With Melbourne Labelled
 
@@ -1448,7 +1448,7 @@ draw a map shaped like @13-maps-03.png with the same style as @01-pyramid-place.
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `13-maps-03.png`
 
-### C1-51b · `character` · ✅ có trên Flow
+### C1-51b · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Author Speaking At A Lectern
 
@@ -1468,7 +1468,7 @@ draw a map shaped like @13-maps-03.png with the same style as @01-pyramid-place.
 draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the same, seen full length in the same dark suit with dark trousers and black shoes, standing behind a plain wooden lectern with one hand resting on it, talking with his mouth open, no audience, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-52 · `object` · ✅ có trên Flow
+### C1-52 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Blank Telegram Form Paper
 
@@ -1490,7 +1490,7 @@ A small rectangular telegram form of about 1920 on pale yellow paper, with a few
 
 **Ghi chú:** Skill 6i.
 
-### C1-53 · `object` · ✅ có trên Flow
+### C1-53 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Same Magazine Lying Open On Two Photos
 
@@ -1512,7 +1512,7 @@ draw the same magazine as in @Magazine Ref Plain Blue Cover, now lying open flat
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `05-strand-1920-01.jpg`
 
-### C1-56 · `character` · ✅ có trên Flow
+### C1-56 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Author Writing At His Desk
 
@@ -1536,7 +1536,7 @@ draw the same man as in @Author Ref Walrus Moustache, keep his face exactly the 
 
 **Ghi chú:** Anh that 03-doyle-01 cung la Doyle cam but ben ban — tu the co nguon.
 
-### C1-57 · `object` · ✅ có trên Flow
+### C1-57 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Closed Hardback Book With Plain Cloth Cover
 
@@ -1558,7 +1558,7 @@ One closed hardback book of the 1920s standing upright, with a plain dark moss-g
 
 **Ghi chú:** Mau bia that chua doi chieu — sach minh hoa loai. Anh bia that (neu co) chen o hau ky.
 
-### C1-58 · `object` · ✅ có trên Flow
+### C1-58 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Stack Of Folded Newspapers Blank Columns
 
@@ -1580,7 +1580,7 @@ A stack of folded newspapers of the 1920s, the top page showing one large blank 
 
 **Ghi chú:** Skill 6i: mat bao -> dong ke xam.
 
-### C1-61 · `figure` · ✅ có trên Flow
+### C1-61 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Clairvoyant Ref Grey Tweed Jacket
 
@@ -1604,7 +1604,7 @@ A slim man in his mid-thirties seen from the chest up. Dark hair combed straight
 
 **Ghi chú:** Nguoi that la Geoffrey Hodson; loi ke khong goi ten -> figure, khong soi chan dung.
 
-### C1-62 · `group` · ✅ có trên Flow
+### C1-62 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Clairvoyant Pointing While Two Girls Watch
 
@@ -1626,7 +1626,7 @@ draw the same man as in @Clairvoyant Ref Grey Tweed Jacket, keep his face exactl
 
 **Ghi chú:** Cau ra 9: 'said he could see' — ve hanh vi noi.
 
-### C1-68 · `figure` · ✅ có trên Flow
+### C1-68 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Elderly Woman Ref White Curls Cardigan
 
@@ -1650,7 +1650,7 @@ An elderly woman of about seventy-five seen from the chest up. An oval face. Sho
 
 **Ghi chú:** SHOT TAO ASSET. stillMissing: anh Elsie 1966-1985 (co tren truyen hinh YTV/BBC nhung chua tim ra anh tinh). Tim duoc thi viet lai + doi outName.
 
-### C1-68b · `group` · ✅ có trên Flow
+### C1-68b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Elderly Woman Talking To Reporter With Notebook
 
@@ -1672,7 +1672,7 @@ draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan, keep 
 
 **Ghi chú:** Luat 8: Elsie la nguoi noi. Nguoi moi mot nguoi -> anh neo 02 (4d-9d, chua do).
 
-### C1-70 · `figure` · ✅ có trên Flow
+### C1-70 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Old Lady Ref Grey Bob Green Jumper
 
@@ -1696,7 +1696,7 @@ An elderly woman of about seventy seen from the chest up. A round face. Grey hai
 
 **Ghi chú:** SHOT TAO ASSET. stillMissing: anh Frances 1970s-1980s.
 
-### C1-70b · `group` · ✅ có trên Flow
+### C1-70b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Elderly Women On Studio Sofa Before Camera
 
@@ -1716,7 +1716,7 @@ An elderly woman of about seventy seen from the chest up. A round face. Grey hai
 draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan and the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep both faces and hair exactly the same and do not mix their features, seen full length sitting side by side on a plain television studio sofa in the same clothes with skirts and flat shoes, and one large 1970s television studio camera on a wheeled stand facing them from the right, no logos, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-72 · `figure` · ✅ có trên Flow
+### C1-72 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Man At Old Computer Screen With Grainy Photo
 
@@ -1738,7 +1738,7 @@ draw a man of about thirty-five with a short brown beard and thick-rimmed glasse
 
 **Ghi chú:** Nguoi that (nhom Randi/CSICOP 1978) loi ke khong goi ten -> figure. Nguoi moi -> anh neo 02 (4d-9d).
 
-### C1-72b · `figure` · ✅ có trên Flow
+### C1-72b · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Grey Bearded Expert Over Prints With Loupe
 
@@ -1760,7 +1760,7 @@ draw a man of about sixty with grey hair and a short grey beard, in a brown twee
 
 **Ghi chú:** Nguoi that la Geoffrey Crawley (British Journal of Photography 1982-83), loi ke khong goi ten. KHAC nguoi voi Snelling — khong dung lai C1-32 (se doc thanh cung mot nguoi).
 
-### C1-75 · `object` · ✅ có trên Flow
+### C1-75 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Glossy Magazine With Dark Blank Cover
 
@@ -1782,7 +1782,7 @@ One thin glossy magazine of the early 1980s lying at a slight angle, with a dark
 
 **Ghi chú:** Skill 6i.
 
-### C1-75b · `group` · ✅ có trên Flow
+### C1-75b · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Elderly Women Talking To Interviewer
 
@@ -1804,7 +1804,7 @@ draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan and th
 
 **Ghi chú:** Nguoi phong van that (Joe Cooper) loi ke khong goi ten. Nguoi moi mot nguoi -> anh neo 02.
 
-### C1-76 · `character` · ✅ có trên Flow
+### C1-76 · `character` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Older Girl Drawing A Winged Dancer
 
@@ -1826,7 +1826,7 @@ draw the same girl as in @Older Girl Ref Bell Hat White Dress, keep her face and
 
 **Ghi chú:** Skill 4b cap canh doi xung dau-cuoi voi C1-17. Story-structure muc 3: tra chi tiet trong cung cau phat hien.
 
-### C1-77 · `object` · ✅ có trên Flow
+### C1-77 · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Open Picture Book With Three Dancing Girls
 
@@ -1850,7 +1850,7 @@ An old picture book lying open flat, the right-hand page showing a black ink lin
 
 **Ghi chú:** Soi tranh that (06-princess-mary-01, Shepperson, minh hoa bai tho 'A Spell for a Fairy' cua Alfred Noyes): ba co gai mua, khan dai, vai nguoi co canh mo — de tranh nham, prompt cam canh. Anh that chen o hau ky canh ban ve C1-14b de so sanh (06-princess-mary-02).
 
-### C1-78 · `group` · ✅ có trên Flow
+### C1-78 · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Cutting Paper Figures With Scissors
 
@@ -1870,7 +1870,7 @@ An old picture book lying open flat, the right-hand page showing a black ink lin
 draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, the older girl without her hat, seen from the waist up sitting side by side at a table, the older girl cutting around a small drawn winged dancing figure on thin card with a pair of scissors and the younger girl holding up one figure already cut out, the younger girl plainly smaller, in the same white dresses, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-78b · `object` · ✅ có trên Flow
+### C1-78b · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Paper Cutout Ref Winged Dancer
 
@@ -1894,7 +1894,7 @@ A small figure of a dancing girl in a long flowing pale dress with a pair of lar
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `06-princess-mary-02.png`, `01-fairy-photos-01.jpg`
 
-### C1-78c · `object` · ✅ có trên Flow
+### C1-78c · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Paper Dancer Pinned Upright In Grass
 
@@ -1916,7 +1916,7 @@ draw the same paper figure as in @Paper Cutout Ref Winged Dancer, keep it exactl
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `11-hatpin-01.jpg`
 
-### C1-78d · `object` · ✅ có trên Flow
+### C1-78d · `object` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Long Steel Hatpin With Pearl Head
 
@@ -1938,7 +1938,7 @@ One long thin steel hatpin with a small round pearl head, lying diagonally. No p
 
 **Ảnh tư liệu đã soi (không gửi Flow):** `11-hatpin-01.jpg`
 
-### C1-78e · `group` · ✅ có trên Flow
+### C1-78e · `group` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Two Girls Tossing Paper Figures Into Stream
 
@@ -1958,7 +1958,7 @@ One long thin steel hatpin with a small round pearl head, lying diagonally. No p
 draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Girl Ref Flower Band Long Hair, keep both faces exactly the same, seen full length standing on the flat stones at the edge of the same stream as in @Stream Ref Flat Stones Small Fall, in the same white dresses and boots, dropping a few small flat paper cut-out figures with wings into the water, where they float away on the current, the younger girl plainly shorter with her head only reaching the older girl's shoulder, no lettering, plain white background. Adult body proportions like the people in the reference drawings: adults about six and a half heads tall, heads small relative to the bodies, legs a little under half of the total height. Simple faces: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking, no shading and no modelling on the faces, drawn like the faces in the reference drawings.
 ```
 
-### C1-84 · `figure` · ✅ có trên Flow
+### C1-84 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Elderly Woman Speaking With Open Hands
 
@@ -1978,7 +1978,7 @@ draw the same two girls as in @Older Girl Ref Bell Hat White Dress and @Young Gi
 draw the same elderly woman as in @Elderly Woman Ref White Curls Cardigan, keep her face exactly the same, seen from the chest up talking with her mouth open and both hands open in front of her chest, in the same cardigan, no lettering, plain white background. Simple face: the eyes are small dots, a simple short nose, a simple mouth drawn with a single line, or a simple open shape when talking or laughing, no shading and no modelling on the face, drawn like the faces in the reference drawings. Only one person in the image.
 ```
 
-### C1-86 · `figure` · ✅ có trên Flow
+### C1-86 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Old Lady Writing A Letter At Table
 
@@ -2000,7 +2000,7 @@ draw the same elderly woman as in @Old Lady Ref Grey Bob Green Jumper, keep her 
 
 **Ghi chú:** Skill 4b: dong dang voi C1-23 de hau ky cat canh nhau.
 
-### C1-89 · `figure` · ✅ có trên Flow
+### C1-89 · `figure` · ✅ có trên Flow · chưa rõ prompt tạo ảnh
 
 **Tên card:** Old Lady Speaking Holding One Photograph
 

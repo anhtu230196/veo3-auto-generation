@@ -22,12 +22,18 @@
  *
  * --aspect <ty-le>: mặc định `16:9`, nhận `9:16` / `1:1`, `none` = giữ cài đặt của project.
  * Đừng bỏ mặc: Flow LƯU tỷ lệ theo project, xem ghi chú trong `main()`.
+ *
+ * TRƯỜNG `daTao` (2026-09-28): có `.shots.json` cạnh file jobs thì NGAY SAU MỖI SHOT runner ghi
+ * kết quả vào `daTao` của shot đó — dừng giữa mẻ vẫn giữ được phần đã xong. Xem
+ * scripts/lib/shotsStatus.ts. Runner chỉ tra tên theo chuỗi con, nên sau mẻ nên chạy
+ * scripts/audit-shots.ts để xác nhận bằng cách đếm đúng nguyên tên trên Flow.
  */
 import fs from "node:fs/promises";
 import path from "node:path";
 import { launchVeo3Browser } from "../src/veo3bot/browser.js";
 import { ensureProject } from "../src/veo3bot/project.js";
 import { createImageIngredient, GenerationRejectedError } from "../src/veo3bot/imageAsset.js";
+import { promptHash, shotsFileFor, writeDaTao, type DaTao } from "./lib/shotsStatus.js";
 
 type Job = {
   id: string;
@@ -101,6 +107,36 @@ async function anchorResolver(dir: string): Promise<(kind: string) => string[]> 
   return (kind: string) => abs(pick(kind) ?? pick("default") ?? all);
 }
 
+/**
+ * Ghi `daTao` cho một shot vừa chạy xong.
+ *
+ * - `created`: ảnh vừa sinh từ ĐÚNG `job.prompt` → ghi dấu prompt đó, luôn ghi đè.
+ * - `existing`: Flow đã có ảnh mang tên này nên runner bỏ qua. Ảnh đó có thể vẽ từ prompt CŨ,
+ *   nên nếu `daTao` đã xác nhận cùng tên thì để nguyên (giữ dấu prompt thật); chưa có thì ghi
+ *   `ok: true` KHÔNG kèm `promptHash` — không biết ảnh vẽ từ prompt nào thì để trống, đừng lấy
+ *   prompt hiện tại thế vào (luồng img-pipeline-datao D04). Cùng luật với audit-shots.ts.
+ * - lỗi: `daTao` đã xác nhận cùng tên thì để nguyên (ảnh vẫn nằm trên Flow); chưa thì ghi `ok: false`.
+ */
+function recordDaTao(shotsFile: string | undefined, job: Job, result: "created" | "existing" | { error: string }) {
+  if (!shotsFile) return;
+  const kiemLuc = new Date().toISOString();
+  const update = (prev: DaTao | undefined): DaTao | undefined => {
+    const confirmed = prev?.ok && prev.ten === job.outName;
+    if (result === "created") {
+      return { ok: true, ten: job.outName, promptHash: promptHash(job.prompt), kiemLuc, nguon: "run-shots" };
+    }
+    if (confirmed) return undefined;
+    if (result === "existing") return { ok: true, ten: job.outName, kiemLuc, nguon: "run-shots" };
+    return { ok: false, ten: job.outName, kiemLuc, nguon: "run-shots", loi: result.error.slice(0, 300) };
+  };
+  try {
+    writeDaTao(shotsFile, new Map([[job.id, update]]));
+  } catch (e) {
+    // Ghi hỏng không được làm rơi cả mẻ — ảnh đã tạo rồi, audit-shots.ts ghi bù được.
+    console.error(`  ⚠️ không ghi được daTao vào ${shotsFile}: ${(e as Error).message}`);
+  }
+}
+
 async function main() {
   const jobsFile = arg("--jobs");
   const projectKey = arg("--project") ?? "shots-run";
@@ -134,7 +170,10 @@ async function main() {
       : [...anchors, ...job.refNames];
   }
 
+  const shotsFile = shotsFileFor(jobsFile);
+
   console.log(`${jobs.length} shot tu ${jobsFile}`);
+  console.log(shotsFile ? `Ghi daTao vao: ${shotsFile}` : "Khong co .shots.json canh file jobs — khong ghi daTao");
   console.log(`Project Flow: ${projectKey}`);
   console.log(`Ty le khung: ${aspect ?? "(giu cai dat cua project)"}`);
   console.log(
@@ -157,6 +196,7 @@ async function main() {
       const error = `outName trung refNames (${job.outName}) — bo qua de khong mat canh im lang`;
       console.error(`→ ${job.id}  ❌ ${error}`);
       log.push({ ...job, ok: false, secs: 0, error });
+      recordDaTao(shotsFile, job, { error });
       continue;
     }
 
@@ -170,7 +210,7 @@ async function main() {
     console.log(`→ ${job.id} [${job.at}] "${job.outName}"${ref}`);
     const t0 = Date.now();
     try {
-      await createImageIngredient(
+      const result = await createImageIngredient(
         page,
         job.outName,
         job.prompt,
@@ -182,12 +222,14 @@ async function main() {
       );
       const secs = (Date.now() - t0) / 1000;
       log.push({ ...job, ok: true, secs });
-      console.log(`  ✅ ${secs.toFixed(1)}s`);
+      console.log(`  ✅ ${secs.toFixed(1)}s${result === "existing" ? " (da co san tren Flow, khong tao lai)" : ""}`);
+      recordDaTao(shotsFile, job, result);
     } catch (e) {
       const secs = (Date.now() - t0) / 1000;
       const error = (e as Error).message;
       log.push({ ...job, ok: false, secs, error });
       console.error(`  ❌ ${error}`);
+      recordDaTao(shotsFile, job, { error });
       if (e instanceof GenerationRejectedError && e.quotaExhausted) quotaStop = true;
     }
     if (quotaStop) {

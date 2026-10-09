@@ -376,6 +376,7 @@ prompt trước khi chạy: `python scripts/review_shots.py <file>.shots.json --
 | `shots[].anhSeRaHash` | | sha1 (12 ký tự đầu) của prompt nguyên văn trong `.jobs.json` lúc viết `anhSeRa`; lệch thì bản review báo mô tả đã cũ |
 | `shots[].canSoi` | | rủi ro đã biết, cần soi khi ra ảnh |
 | `shots[].choTuLieu` | | lý do shot **chưa được chạy** vì thiếu ảnh tư liệu đối chiếu (skill 4d-bis phần 2) |
+| `shots[].daTao` | | **MÁY GHI, đừng gõ tay.** Ảnh của shot đã có trên Flow chưa — `run-shots.ts` ghi sau mỗi shot, `audit-shots.ts` ghi khi tra thẳng Flow. Xem 5e |
 
 Và ở cấp file, cạnh `styleBlock`:
 
@@ -423,6 +424,54 @@ Bộ kiểm phải cài đúng luật này: `A1-13` có `kind: "character"` và 
 `refs` — đó là hợp lệ, không phải thiếu sót.
 
 ---
+
+### 5e. `daTao` — ảnh đã tạo chưa (Tú yêu cầu 2026-09-28)
+
+Trường duy nhất trong `.shots.json` do **máy ghi**. Người viết prompt không gõ tay, không xoá.
+Kiểu và luật ghi nằm ở `scripts/lib/shotsStatus.ts`.
+
+```json
+"daTao": {
+  "ok": true,
+  "soCard": 1,
+  "ten": "Stone End Terrace House With Tall Gable Chimney",
+  "promptHash": "13347acb1c73",
+  "kiemLuc": "2026-09-28T00:09:15.857Z",
+  "nguon": "audit-flow"
+}
+```
+
+| Trường | Nghĩa |
+| --- | --- |
+| `ok` | `true` = ảnh đã có trên Flow dưới tên `ten`. Với audit: có **đúng một** card mang tên đó — trùng tên (`soCard` > 1) là `false`, vì chip `@` có thể đính nhầm |
+| `soCard` | số card mang **đúng nguyên** tên đó. `0` = chưa có, `>1` = trùng tên (chip `@` có thể đính nhầm). Chỉ audit đếm được, runner không ghi |
+| `ten` | `outName` lúc ghi. **Lệch `outName` hiện tại** = ảnh trên Flow mang tên cũ, cần tạo lại |
+| `promptHash` | sha1 (12 ký tự đầu) của prompt **đã sinh ra ảnh**. **Lệch prompt hiện tại** = ảnh là của prompt cũ. **Chỉ runner ghi được** (lúc vừa tạo); không biết thì **để trống** — bản review hiện "chưa rõ prompt tạo ảnh" |
+| `kiemLuc` | lúc ghi, ISO, giờ UTC |
+| `nguon` | `run-shots` hoặc `audit-flow` |
+| `loi` | lý do rơi, khi runner báo ❌ |
+| `khopCat` | `true` khi audit chỉ khớp được qua **nhãn bị Flow cắt bằng dấu ba chấm** (RUNBOOK, mục "Ba điều về UI phải biết trước khi sửa `typeMentionPrompt`", điều 2) — không chắc chắn vì tên khác chung phần đầu cũng khớp; xem ảnh audit. Khớp nguyên văn vẫn là đường chính (luồng `img-pipeline-datao` D03) |
+
+**Hai nơi ghi, độ tin khác nhau:**
+
+- `scripts/run-shots.ts` ghi **ngay sau mỗi shot**, nên mẻ dừng giữa chừng vẫn giữ phần đã xong. Runner biết chắc
+  prompt vừa gửi nên `promptHash` của nó là dấu thật. Nhưng nó chỉ tra tên theo **chuỗi con**
+  (`assertAssetNamed`), không đếm được trùng tên.
+- `scripts/audit-shots.ts --jobs <.jobs.json> --project <khoá>` **tra thẳng Flow**, đếm card mang đúng nguyên tên,
+  tải ảnh từng shot về để xem bằng mắt. Nó bắt được thứ log không biết: ảnh tạo tay, card bị đổi tên về sau,
+  tên đặt nhầm lên ảnh khác (sự cố 2026-09-25). **Chạy sau mỗi mẻ.**
+
+**Dấu prompt không bao giờ được "hợp thức hoá" ảnh cũ.** Shot bị bỏ qua vì Flow đã có ảnh cùng tên
+(`createImageIngredient` trả `"existing"`) có thể là ảnh vẽ từ prompt cũ. Nên runner và audit **giữ nguyên**
+`promptHash` khi `daTao` đã xác nhận cùng tên, và **chưa có dấu thì để trống** — không bao giờ lấy prompt hiện tại
+thế vào (luồng `img-pipeline-datao` D04). Chỉ nhánh `created` của runner mới đặt dấu. Runner báo ❌ cho shot đã xác
+nhận thì cũng để nguyên, vì ảnh vẫn nằm trên Flow.
+
+`review_shots.py` lấy cột trạng thái từ `daTao` trước, không có mới theo log. Nó hiện `✅ có trên Flow`
+(audit), `✅ đã tạo (runner báo, chưa audit)` (hai trạng thái này kèm `· chưa rõ prompt tạo ảnh` khi không có `promptHash`), `🔁 … cần tạo lại`, `⚠️ … prompt đã đổi`, `⚠️ trùng N card`,
+`⏸ chưa có`, hoặc `❌ lần chạy trước rơi`.
+
+⚠️ `ok: true` chỉ chứng minh **tên** có trên Flow, không chứng minh ảnh đúng nội dung. Vẫn phải xem ảnh.
 
 ## 6. Cái gì đổi trong code
 

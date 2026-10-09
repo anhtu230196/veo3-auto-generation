@@ -2,9 +2,9 @@
 id: sys-img-lam-gia-c1
 agent: claude
 branch: master
-status: active
+status: done
 opened: 2026-09-25
-updated: 2026-10-06
+updated: 2026-10-09
 scope:
   - narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/refs/case-1/
   - narration-scripts/lam-gia-va-mao-danh-bi-vach-tran/case-1/
@@ -45,3 +45,5 @@ chưa chạy thật (tốn lượt tạo ảnh) — lần tạo ảnh kế tiế
 project, hai claim). Phần CODE (`imageAsset.ts`, `run-shots.ts`, `review_shots.py`, `audit-shots.ts`,
 `scripts/lib/`, SPEC-v2) CHƯA commit — còn cần qua luồng review theo CLAUDE.md. `case-1.shots.json`
 đã mang trường `daTao` dù code ghi nó chưa lên master (builder bỏ qua trường lạ, không vỡ gì).
+2026-10-09: luồng review `coordination/threads/img-pipeline-datao/` (bước 6, chỉ Gemini — Codex hết hạn) **settled** sau 3 vòng, 5 điểm chốt: D01 nhãn rỗng = chưa nhận (nhánh reload), D02 focus ô prompt tránh thanh cuộn, D03 audit khớp qua nhãn bị cắt + cờ `khopCat` (Tú quyết), D04 không tự gán `promptHash` (gỡ 85 dấu tự gán ở case 1), D05 SPEC `ok` = đúng một card. Code ĐÃ QUA REVIEW, chưa commit.
+2026-10-09: DONG claim — Tu cho commit + push toan bo (code da qua luong img-pipeline-datao settled, case 1 + case 2).

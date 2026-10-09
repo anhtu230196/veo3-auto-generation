@@ -12,6 +12,9 @@ sinh (chu + anh neo, hay chip @ tu asset nao), va trang thai da tao hay chua (do
 
 Ra file <file>.review.md canh file .shots.json.
 
+Trang thai: shot co truong `daTao` (do scripts/audit-shots.ts tra thang Flow roi ghi vao) thi
+lay theo truong do, khong thi theo log. Nen chay audit-shots.ts sau moi me anh.
+
 Vi sao doc prompt tu .jobs.json chu khong tu ghep lai: builder moi la noi quyet prompt that
 (noi styleByKind vao cau mention, doi {{ten}} thanh chip). Ghep lai o day la tao ban thu hai
 co the lech ban that — dung cai bay D08 cua build_image_prompts.py.
@@ -78,6 +81,37 @@ def main() -> int:
     jobs = {j["id"]: j for j in json.loads(jobs_path.read_text(encoding="utf-8"))}
     by_kind = json.loads(BY_KIND.read_text(encoding="utf-8")) if BY_KIND.exists() else {}
     status = read_status(args.log)
+    # `daTao` = truong trong tung shot (2026-09-28, scripts/lib/shotsStatus.ts). Hai noi ghi:
+    # run-shots.ts ngay sau moi shot (`nguon: run-shots`), audit-shots.ts tra THANG Flow
+    # (`nguon: audit-flow`, manh hon). Thang log; --flow-status van thang no.
+    kiem_luc = []
+    for seg in data["segments"]:
+        for s in seg["shots"]:
+            d = s.get("daTao")
+            if not d:
+                continue
+            kiem_luc.append(d.get("kiemLuc", "?"))
+            audit = d.get("nguon") == "audit-flow"
+            if d.get("ten") != s["outName"]:
+                status[s["id"]] = "🔁 ảnh trên Flow mang tên cũ — cần tạo lại"
+            elif not d.get("ok"):
+                n = d.get("soCard", 0)
+                if not audit:
+                    status[s["id"]] = "❌ lần chạy trước rơi" + (f": {cell(d['loi'][:80])}" if d.get("loi") else "")
+                else:
+                    status[s["id"]] = "⏸ chưa có trên Flow" if n == 0 else f"⚠️ trùng {n} card cùng tên trên Flow"
+            elif not d.get("promptHash"):
+                # Khong biet anh ve tu prompt nao (anh co san truoc khi co truong nay) — khong doan.
+                status[s["id"]] = ("✅ có trên Flow" if audit else "✅ đã tạo (runner báo, chưa audit)") + " · chưa rõ prompt tạo ảnh"
+            elif s["id"] in jobs and d["promptHash"] != prompt_hash(jobs[s["id"]]["prompt"]):
+                status[s["id"]] = "⚠️ có trên Flow nhưng prompt đã đổi sau khi tạo — cân nhắc tạo lại"
+            else:
+                status[s["id"]] = "✅ có trên Flow" if audit else "✅ đã tạo (runner báo, chưa audit)"
+            if d.get("khopCat") and status[s["id"]].startswith("✅"):
+                # Audit chi khop duoc qua nhan bi Flow cat bang dau ba cham — khong chac chan (D03).
+                status[s["id"]] += " · khớp qua nhãn bị cắt, xem ảnh audit"
+    if kiem_luc:
+        args.log.append(f"trường `daTao` trong {shots_path.name}, kiểm Flow lúc {max(kiem_luc)[:16].replace('T', ' ')} UTC")
     if args.flow_status:
         fs_data = json.loads(Path(args.flow_status).read_text(encoding="utf-8"))
         # Flow tra theo TEN CARD. Shot da doi outName (vd bo net mat khong nguon, luong
